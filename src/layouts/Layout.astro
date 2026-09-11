@@ -1,0 +1,18 @@
+---
+import '../styles/global.css';
+interface Props {
+  title?: string;
+}
+const { title = "Denver AV Group" } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+  </head>
+  <body class="bg-[#0A0C0B] text-[#E8E9E6] antialiased">
+    <slot />
+  </body>
+</html>
