@@ -1,19 +1,109 @@
 @import "tailwindcss";
-
 @theme {
-  --color-ink: #090B0A;
-  --color-forest: #183B31;
-  --color-paper: #EDE9E0;
-  --color-cream-1: #F2EFE7;
-  --color-cream-2: #EBE7DC;
-  --color-cream-3: #E2DDCE;
-  --color-signal: #1A8F6E;
-  --color-dark-1: #F1F0EB;
-  --color-dark-2: #A7AAA5;
-  --color-dark-3: #7F847E;
-  --color-paper-1: #0B0D0C;
-  --color-paper-2: #51544F;
+  /* Four-surface system */
+  --color-surface-ink: #090B0A;
+  --color-surface-forest: #183B31;
+  --color-surface-paper: #EDE9E0;
+  /* Approved V4 cream-family variants */
+  --color-cream-01: #F2EFE7;
+  --color-cream-02: #EBE7DC;
+  --color-cream-03: #E2DDCE;
+  /* Dark-field typography */
+  --color-text-primary-dark: #F1F0EB;
+  --color-text-secondary-dark: #A7AAA5;
+  --color-text-tertiary-dark: #7F847E;
+  /* Paper typography */
+  --color-text-primary-paper: #0B0D0C;
+  --color-text-secondary-paper: #51544F;
+  /* Signal color */
+  --color-accent-signal: #1A8F6E;
+  /* Hairlines & rules */
+  --color-border-dark: rgb(241 240 235 / 18%);
+  --color-border-dark-soft: rgb(241 240 235 / 10%);
+  --color-border-paper: rgb(11 13 12 / 16%);
+  --color-rule-accent: rgb(26 143 110 / 78%);
+  /* Scrims */
+  --color-scrim-ink-soft: rgb(9 11 10 / 38%);
+  --color-scrim-ink-strong: rgb(9 11 10 / 66%);
+  /* Spatial typography */
+  --color-spatial-word-dark: rgb(241 240 235 / 12%);
+  --color-spatial-word-forest: rgb(241 240 235 / 14%);
+  /* Fonts */
   --font-display: "Schibsted Grotesk", sans-serif;
   --font-body: "Instrument Sans", sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-mono: "JetBrains Mono", monospace;
+}
+/* Base resets matching Korta V4 */
+html, body {
+  background-color: var(--color-surface-ink);
+  color: var(--color-text-primary-dark);
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+/* Locked Architectural Background Typography */
+.architectural-background-section {
+  position: relative;
+  overflow: hidden;
+}
+.architectural-background-title {
+  position: absolute;
+  top: 4.5%;
+  left: -2%;
+  z-index: 0;
+  pointer-events: none;
+  font-family: var(--font-display);
+  font-size: clamp(12rem, 16vw, 17.25rem);
+  font-weight: 300;
+  line-height: 0.78;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.architectural-background-title[data-surface="ink"] {
+  color: var(--color-spatial-word-dark);
+  -webkit-text-fill-color: currentColor;
+  background: none;
+}
+.architectural-background-title[data-surface="juniper"] {
+  color: var(--color-spatial-word-forest);
+  -webkit-text-fill-color: currentColor;
+  background: none;
+}
+.architectural-background-title[data-surface="cream"] {
+  background: linear-gradient(
+    90deg,
+    rgba(91, 108, 99, 0.42) 0%,
+    rgba(124, 130, 119, 0.34) 30%,
+    rgba(151, 150, 136, 0.28) 58%,
+    rgba(193, 184, 163, 0.22) 82%,
+    rgba(226, 216, 195, 0.16) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.section-content,
+.section-visual,
+.section-annotations {
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 1024px) {
+  .architectural-background-title {
+    font-size: clamp(9rem, 17vw, 13rem);
+    letter-spacing: -0.05em;
+  }
+}
+
+@media (max-width: 640px) {
+  .architectural-background-title {
+    font-size: clamp(6.5rem, 29vw, 10rem);
+    font-weight: 300;
+    line-height: 0.78;
+    letter-spacing: -0.055em;
+  }
 }

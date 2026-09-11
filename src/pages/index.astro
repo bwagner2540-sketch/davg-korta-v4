@@ -14,37 +14,9 @@ import '../styles/global.css';
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <style>
-    :root {
-      --color-surface-ink: #090B0A;
-      --color-surface-forest: #183B31;
-      --color-surface-paper: #EDE9E0;
-      --color-text-primary-dark: #F1F0EB;
-      --color-text-secondary-dark: #A7AAA5;
-      --color-text-tertiary-dark: #7F847E;
-      --color-text-primary-paper: #0B0D0C;
-      --color-text-secondary-paper: #51544F;
-      --color-accent-signal: #1A8F6E;
-      --color-border-dark: rgb(241 240 235 / 18%);
-      --color-border-dark-soft: rgb(241 240 235 / 10%);
-      --color-border-paper: rgb(11 13 12 / 16%);
-      --color-rule-accent: rgb(26 143 110 / 78%);
-      --color-scrim-ink-soft: rgb(9 11 10 / 38%);
-      --color-scrim-ink-strong: rgb(9 11 10 / 66%);
-      --color-spatial-word-dark: rgb(241 240 235 / 12%);
-      --color-spatial-word-forest: rgb(241 240 235 / 14%);
-      --font-display: "Schibsted Grotesk";
-      --font-body: "Instrument Sans";
-      --font-mono: "JetBrains Mono";
-    }
-
     * { box-sizing: border-box; }
 
     html, body {
-      background: var(--color-surface-ink);
-      color: var(--color-text-primary-dark);
-      font-family: var(--font-body), sans-serif;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
       max-width: 100%;
       overflow-x: hidden;
     }
@@ -76,78 +48,10 @@ import '../styles/global.css';
       .folio { padding-left: 64px; padding-right: 64px; }
     }
 
-    .architectural-background-section {
-      position: relative;
-      overflow: hidden;
-      isolation: isolate;
-    }
-
-    .architectural-background-section > .section-content,
-    .architectural-background-section > .section-visual,
-    .architectural-background-section > .section-annotations {
-      position: relative;
-      z-index: 2;
-    }
-
-    .architectural-background-title {
-      top: 4.5%;
-      left: -2%;
-      font-family: var(--font-display), sans-serif;
-      font-size: clamp(12rem, 16vw, 17.25rem);
-      font-weight: 300;
-      line-height: 0.78;
-      letter-spacing: -0.045em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .architectural-background-title[data-surface="ink"] {
-      color: #F1F0EB;
-      -webkit-text-fill-color: currentColor;
-      background: none;
-    }
-
-    .architectural-background-title[data-surface="juniper"] {
-      color: #F1F0EB;
-      -webkit-text-fill-color: currentColor;
-      background: none;
-    }
-
-    .architectural-background-title[data-surface="cream"] {
-      background: linear-gradient(
-        90deg,
-        rgba(91, 108, 99, 0.42) 0%,
-        rgba(124, 130, 119, 0.34) 30%,
-        rgba(151, 150, 136, 0.28) 58%,
-        rgba(193, 184, 163, 0.22) 82%,
-        rgba(226, 216, 195, 0.16) 100%
-      );
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      -webkit-text-fill-color: transparent;
-    }
-
     .hero-spatial {
       top: auto;
       bottom: -6%;
       left: -3%;
-    }
-
-    @media (max-width: 1024px) {
-      .architectural-background-title {
-        font-size: clamp(9rem, 17vw, 13rem);
-        letter-spacing: -0.05em;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .architectural-background-title {
-        font-size: clamp(6.5rem, 29vw, 10rem);
-        font-weight: 300;
-        line-height: 0.78;
-        letter-spacing: -0.055em;
-      }
     }
 
     .spec-row {
@@ -194,7 +98,7 @@ import '../styles/global.css';
     }
 
     .keypad-btn.is-active {
-      border-color: rgb(26 143 110 / 78%);
+      border-color: var(--color-rule-accent);
     }
 
     #mobile-nav { display: none; }
@@ -211,398 +115,371 @@ import '../styles/global.css';
     }
   </style>
 </head>
-<body class="bg-ink font-body text-dark-1">
+<body class="bg-surface-ink font-body text-text-primary-dark">
 
-  <a href="#hero" class="sr-only focus:not-sr-only focus:absolute focus:left-6 focus:top-6 focus:z-[80] focus:bg-paper focus:px-4 focus:py-2 focus:text-paper-1">Skip to content</a>
+  <a href="#answer" class="sr-only focus:not-sr-only focus:absolute focus:left-6 focus:top-6 focus:z-[80] focus:bg-surface-paper focus:px-4 focus:py-2 focus:text-text-primary-paper">Skip to content</a>
 
-  <!-- Masthead -->
-  <header class="fixed inset-x-0 top-0 z-50 border-b border-[rgb(241_240_235/0.10)] bg-ink">
+  <header class="fixed inset-x-0 top-0 z-50 border-b border-border-dark-soft bg-surface-ink">
     <div class="folio flex h-16 items-center justify-between md:h-20">
-      <a href="#hero" class="flex items-center gap-4">
-        <span class="font-mono text-[11px] font-medium tracking-[0.16em] text-dark-1">DAVG</span>
-        <span class="hidden h-3 w-px bg-[rgb(241_240_235/0.18)] sm:block"></span>
-        <span class="hidden font-mono text-[11px] tracking-[0.12em] text-dark-3 sm:block">EST. 2013</span>
+      <a href="#answer" class="flex items-center gap-4">
+        <span class="font-mono text-[11px] font-medium tracking-[0.16em] text-text-primary-dark">DAVG</span>
+        <span class="hidden h-3 w-px bg-border-dark sm:block"></span>
+        <span class="hidden font-mono text-[11px] tracking-[0.12em] text-text-tertiary-dark sm:block">EST. 2013</span>
       </a>
 
       <nav class="hidden items-center gap-8 lg:flex" aria-label="Primary">
-        <a href="#systems" class="font-body text-[11px] font-medium uppercase tracking-[0.12em] text-dark-2 transition-colors hover:text-dark-1">Systems</a>
-        <a href="#discipline" class="font-body text-[11px] font-medium uppercase tracking-[0.12em] text-dark-2 transition-colors hover:text-dark-1">Discipline</a>
-        <a href="#scope" class="font-body text-[11px] font-medium uppercase tracking-[0.12em] text-dark-2 transition-colors hover:text-dark-1">Scope</a>
-        <a href="#service" class="font-body text-[11px] font-medium uppercase tracking-[0.12em] text-dark-2 transition-colors hover:text-dark-1">Service area</a>
+        <a href="#answer" class="font-body text-[11px] font-medium uppercase tracking-[0.12em] text-text-secondary-dark transition-colors hover:text-text-primary-dark">Answer</a>
+        <a href="#systems" class="font-body text-[11px] font-medium uppercase tracking-[0.12em] text-text-secondary-dark transition-colors hover:text-text-primary-dark">Systems</a>
+        <a href="#proof" class="font-body text-[11px] font-medium uppercase tracking-[0.12em] text-text-secondary-dark transition-colors hover:text-text-primary-dark">Proof</a>
+        <a href="#scope" class="font-body text-[11px] font-medium uppercase tracking-[0.12em] text-text-secondary-dark transition-colors hover:text-text-primary-dark">Scope</a>
+        <a href="#trade" class="font-body text-[11px] font-medium uppercase tracking-[0.12em] text-text-secondary-dark transition-colors hover:text-text-primary-dark">Trade</a>
+        <a href="#inquiry" class="font-body text-[11px] font-medium uppercase tracking-[0.12em] text-text-secondary-dark transition-colors hover:text-text-primary-dark">Inquiry</a>
       </nav>
 
       <div class="flex items-center gap-4">
-        <a href="tel:7206381603" class="hidden font-mono text-[11px] tracking-[0.12em] text-dark-2 transition-colors hover:text-dark-1 md:inline">720.638.1603</a>
-        <a href="#scope" class="hidden items-center border border-[rgb(241_240_235/0.18)] bg-paper px-5 py-2.5 font-body text-[11px] font-medium uppercase tracking-[0.12em] text-paper-1 transition-colors hover:bg-cream-1 lg:inline-flex">Begin a project</a>
-        <label for="nav-toggle" class="flex h-8 w-8 shrink-0 cursor-pointer flex-col items-center justify-center gap-1.5 border border-[rgb(241_240_235/0.18)] lg:hidden">
+        <a href="tel:7206381603" class="hidden font-mono text-[11px] tracking-[0.12em] text-text-secondary-dark transition-colors hover:text-text-primary-dark md:inline">720.638.1603</a>
+        <a href="#inquiry" class="hidden items-center border border-border-dark bg-surface-paper px-5 py-2.5 font-body text-[11px] font-medium uppercase tracking-[0.12em] text-text-primary-paper transition-colors hover:bg-cream-01 lg:inline-flex">Begin a project</a>
+        <label for="nav-toggle" class="flex h-8 w-8 shrink-0 cursor-pointer flex-col items-center justify-center gap-1.5 border border-border-dark lg:hidden">
           <span class="sr-only">Open menu</span>
-          <span class="block h-px w-3.5 bg-dark-1"></span>
-          <span class="block h-px w-3.5 bg-dark-1"></span>
+          <span class="block h-px w-3.5 bg-text-primary-dark"></span>
+          <span class="block h-px w-3.5 bg-text-primary-dark"></span>
         </label>
       </div>
     </div>
 
     <input id="nav-toggle" type="checkbox" class="peer hidden" />
-    <nav id="mobile-nav" class="border-t border-[rgb(241_240_235/0.10)] bg-ink" aria-label="Mobile">
+    <nav id="mobile-nav" class="border-t border-border-dark-soft bg-surface-ink" aria-label="Mobile">
       <div class="folio flex flex-col gap-5 py-6">
-        <a href="#systems" class="font-body text-[11px] font-medium uppercase tracking-[0.12em] text-dark-2">Systems</a>
-        <a href="#discipline" class="font-body text-[11px] font-medium uppercase tracking-[0.12em] text-dark-2">Discipline</a>
-        <a href="#scope" class="font-body text-[11px] font-medium uppercase tracking-[0.12em] text-dark-2">Scope</a>
-        <a href="#service" class="font-body text-[11px] font-medium uppercase tracking-[0.12em] text-dark-2">Service area</a>
+        <a href="#answer" class="font-body text-[11px] font-medium uppercase tracking-[0.12em] text-text-secondary-dark">Answer</a>
+        <a href="#systems" class="font-body text-[11px] font-medium uppercase tracking-[0.12em] text-text-secondary-dark">Systems</a>
+        <a href="#proof" class="font-body text-[11px] font-medium uppercase tracking-[0.12em] text-text-secondary-dark">Proof</a>
+        <a href="#scope" class="font-body text-[11px] font-medium uppercase tracking-[0.12em] text-text-secondary-dark">Scope</a>
+        <a href="#trade" class="font-body text-[11px] font-medium uppercase tracking-[0.12em] text-text-secondary-dark">Trade</a>
+        <a href="#inquiry" class="font-body text-[11px] font-medium uppercase tracking-[0.12em] text-text-secondary-dark">Inquiry</a>
       </div>
     </nav>
   </header>
 
   <main>
-    <!-- 01 Obsidian dark hero -->
-    <section id="hero" class="architectural-background-section relative min-h-screen overflow-hidden scroll-mt-20 bg-ink pt-16 md:pt-20">
+    <!-- Phase 1 — Definitive Answer -->
+    <section id="answer" class="architectural-background-section relative overflow-hidden scroll-mt-20 bg-surface-paper pt-24 text-text-primary-paper md:pt-32">
+      <h2 class="architectural-background-title" data-surface="cream" aria-hidden="true">Clearance</h2>
+      <div class="section-content folio py-24 md:py-32">
+        <p class="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-text-secondary-paper">01 / Direct answer</p>
+        <h1 class="mt-8 max-w-[18ch] font-display text-[clamp(2.5rem,5.4vw,64px)] font-normal leading-[0.98] tracking-[-0.035em]">
+          Pocket depth is a dimension, not a finish.
+        </h1>
+        <p class="mt-8 max-w-[62ch] text-[16px] leading-[1.5] text-text-secondary-paper">
+          What’s the pocket depth for motorized Lutron Palladiom shades behind a floor-to-ceiling window wall?
+        </p>
+        <p class="mt-6 max-w-[62ch] text-[18px] font-medium leading-[1.45] text-text-primary-paper">
+          Typical pocket depth for motorized Lutron Palladiom shades behind a floor-to-ceiling window wall is 5.5–7.5 inches, with low-voltage clearance reserved in the head condition before drywall. Undersize either dimension and the fabric roll binds against trim within a season.
+        </p>
+        <p class="mt-6 max-w-[62ch] text-[16px] leading-[1.5] text-text-secondary-paper">
+          DAVG is a residential integration firm — Lutron Certified HomeWorks Integrator, Control4 Platinum Dealer, 2026 CEDIA Member — designing architectural AV, lighting, shade, and home intelligence across South Metro Denver: Cherry Hills Village, Castle Pines, Greenwood Village, Littleton, Centennial, and Lone Tree. Operating since 2013.
+        </p>
+        <dl class="mt-16 max-w-3xl border-t border-border-paper">
+          <div class="spec-row grid-cols-1 border-border-paper sm:grid-cols-2">
+            <dt class="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-text-secondary-paper">Palladiom pocket</dt>
+            <dd class="text-[13px] leading-[1.35] text-text-primary-paper sm:text-right">5.5–7.5 in typical</dd>
+          </div>
+          <div class="spec-row grid-cols-1 border-border-paper sm:grid-cols-2">
+            <dt class="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-text-secondary-paper">Low-voltage clearance</dt>
+            <dd class="text-[13px] leading-[1.35] text-text-primary-paper sm:text-right">Reserved in the head condition, pre-drywall</dd>
+          </div>
+          <div class="spec-row grid-cols-1 border-b-0 border-border-paper sm:grid-cols-2">
+            <dt class="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-text-secondary-paper">Credentials</dt>
+            <dd class="text-[13px] leading-[1.35] text-text-primary-paper sm:text-right">HomeWorks Integrator · Control4 Platinum · CEDIA 2026</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- Phase 2 — Category Authority -->
+    <section id="systems" class="architectural-background-section relative overflow-hidden scroll-mt-20 bg-surface-forest">
+      <h2 class="architectural-background-title" data-surface="ink" aria-hidden="true">Intelligence</h2>
+      <div class="section-content folio py-24 md:py-32">
+        <div class="grid grid-cols-12 gap-6 border-b border-border-dark-soft pb-8 lg:gap-8">
+          <p class="col-span-12 font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-text-tertiary-dark lg:col-span-5">02 / Category authority</p>
+          <p class="col-span-12 font-mono text-[11px] tracking-[0.12em] text-text-tertiary-dark lg:col-span-7 lg:text-right">HomeWorks QSX · Control4 OS 3 · 0.8–10 Nm</p>
+        </div>
+        <div class="mt-16 grid grid-cols-12 gap-12 lg:mt-20 lg:gap-20">
+          <div class="col-span-12 min-w-0 lg:col-span-5">
+            <h2 class="font-display text-[clamp(2rem,4vw,44px)] font-normal leading-[1.02] tracking-[-0.025em] text-text-primary-dark">
+              A motorized shade is a system, not a kit.
+            </h2>
+            <p class="mt-8 max-w-[42ch] text-[16px] leading-[1.5] text-text-secondary-dark">
+              Fabric, tubular motor, control protocol, and a power path have to size together. A big-box smart blind is a self-contained unit. Architectural shade work is fabric selection, then motor and tube sizing, then a Lutron HomeWorks QSX processor talking to Control4 or standing alone, then the invisible layer: low-voltage wiring and a pocket or valance that conceals the roll.
+            </p>
+            <p class="mt-6 max-w-[42ch] text-[16px] leading-[1.5] text-text-secondary-dark">
+              Lighting follows the same distinction. Ketra is tunable-white architectural light. It is not a smart LED bulb. The processor topology is the operating layer both systems share.
+            </p>
+          </div>
+          <div class="col-span-12 min-w-0 lg:col-span-7">
+            <div class="border-t border-border-dark" role="table" aria-label="Technical specification ledger">
+              <div class="spec-row" role="row">
+                <span class="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-text-tertiary-dark" role="cell">Processor</span>
+                <span class="text-[13px] leading-[1.35] text-text-primary-dark" role="cell">Lutron HomeWorks QSX</span>
+              </div>
+              <div class="spec-row" role="row">
+                <span class="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-text-tertiary-dark" role="cell">Control layer</span>
+                <span class="text-[13px] leading-[1.35] text-text-primary-dark" role="cell">Control4 OS 3</span>
+              </div>
+              <div class="spec-row" role="row">
+                <span class="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-text-tertiary-dark" role="cell">Shade drive</span>
+                <span class="text-[13px] leading-[1.35] text-text-primary-dark" role="cell">Quiet tubular motor, 0.8–10 Nm</span>
+              </div>
+              <div class="spec-row" role="row">
+                <span class="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-text-tertiary-dark" role="cell">Pocket clearance</span>
+                <span class="text-[13px] leading-[1.35] text-text-primary-dark" role="cell">5.5–7.5 in typical Palladiom</span>
+              </div>
+              <div class="spec-row" role="row">
+                <span class="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-text-tertiary-dark" role="cell">Integration bus</span>
+                <span class="text-[13px] leading-[1.35] text-text-primary-dark" role="cell">QS Link · IP</span>
+              </div>
+              <div class="spec-row border-b-0" role="row">
+                <span class="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-text-tertiary-dark" role="cell">Lighting</span>
+                <span class="text-[13px] leading-[1.35] text-text-primary-dark" role="cell">Ketra / HomeWorks QS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Phase 3 — Tactile & Sensory Proof -->
+    <section id="proof" class="architectural-background-section relative min-h-screen overflow-hidden scroll-mt-20 bg-surface-ink pt-16 md:pt-20">
       <div class="absolute inset-0 z-0 overflow-hidden">
         <img
           src="/images/davg-living-room-lutron-shades-orlando-01-1600w.webp"
           alt="Living room with recessed Lutron shades"
           class="h-full w-full object-cover"
         />
-        <div class="absolute inset-0" style="background: rgb(9 11 10 / 66%);"></div>
+        <div class="absolute inset-0 bg-scrim-ink-strong"></div>
       </div>
-
-      <h2 class="architectural-background-title hero-spatial absolute pointer-events-none select-none -z-10 opacity-[0.03]" data-surface="ink" aria-hidden="true">Residence</h2>
-
+      <h2 class="architectural-background-title hero-spatial" data-surface="ink" aria-hidden="true">Residence</h2>
       <div class="section-annotations pointer-events-none absolute inset-0 z-[2] hidden lg:block">
         <div class="folio relative h-full">
           <div class="absolute right-0 top-[30%] flex w-[240px] flex-col gap-10">
             <div class="flex items-start gap-3">
               <span class="annotation-node mt-1.5 block shrink-0"></span>
-              <span class="mt-2 h-px w-10 shrink-0 bg-[rgb(241_240_235/0.18)]"></span>
+              <span class="mt-2 h-px w-10 shrink-0 bg-border-dark"></span>
               <div>
-                <p class="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-dark-1">Daylight</p>
-                <p class="mt-1 font-mono text-[11px] leading-[1.35] tracking-[0.12em] text-dark-3">South glass. Harvested, not fought.</p>
+                <p class="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-text-primary-dark">Daylight</p>
+                <p class="mt-1 font-mono text-[11px] leading-[1.35] tracking-[0.12em] text-text-tertiary-dark">South glass. Harvested, not fought.</p>
               </div>
             </div>
             <div class="flex items-start gap-3">
               <span class="annotation-node mt-1.5 block shrink-0"></span>
-              <span class="mt-2 h-px w-10 shrink-0 bg-[rgb(241_240_235/0.18)]"></span>
+              <span class="mt-2 h-px w-10 shrink-0 bg-border-dark"></span>
               <div>
-                <p class="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-dark-1">Shade pocket</p>
-                <p class="mt-1 font-mono text-[11px] leading-[1.35] tracking-[0.12em] text-dark-3">Recessed head condition.</p>
+                <p class="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-text-primary-dark">Shade pocket</p>
+                <p class="mt-1 font-mono text-[11px] leading-[1.35] tracking-[0.12em] text-text-tertiary-dark">Recessed head. 0–2px site radii.</p>
               </div>
             </div>
             <div class="flex items-start gap-3">
               <span class="annotation-node mt-1.5 block shrink-0"></span>
-              <span class="mt-2 h-px w-10 shrink-0 bg-[rgb(241_240_235/0.18)]"></span>
+              <span class="mt-2 h-px w-10 shrink-0 bg-border-dark"></span>
               <div>
-                <p class="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-dark-1">Control</p>
-                <p class="mt-1 font-mono text-[11px] leading-[1.35] tracking-[0.12em] text-dark-3">One operating layer. Local processor.</p>
+                <p class="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-text-primary-dark">Quiet drive</p>
+                <p class="mt-1 font-mono text-[11px] leading-[1.35] tracking-[0.12em] text-text-tertiary-dark">Tubular motor, not a box-store hum.</p>
               </div>
             </div>
           </div>
         </div>
       </div>
-
       <div class="section-content folio relative flex min-h-[calc(100vh-5rem)] flex-col justify-between py-16 md:py-20">
         <div class="grid grid-cols-12 gap-6 lg:gap-8">
           <div class="col-span-12 min-w-0 lg:col-span-5">
-            <p class="max-w-[22ch] font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-dark-3 md:max-w-none md:tracking-[0.16em]">DAVG · South Metro Denver · Est. 2013</p>
-            <h1 class="mt-8 font-display text-[clamp(2.5rem,5.4vw,64px)] font-normal leading-[0.98] tracking-[-0.035em] text-dark-1">
-              Technology that disappears into architecture.
-            </h1>
-            <p class="mt-8 max-w-none text-[18px] leading-[1.45] text-dark-2 md:max-w-[36ch]">
-              We design architectural AV, lighting, shade, and home intelligence for residences across Colorado. Specified with the building, not added after it.
+            <p class="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-text-tertiary-dark">03 / Tactile proof</p>
+            <h2 class="mt-8 font-display text-[clamp(2rem,4vw,44px)] font-normal leading-[1.02] tracking-[-0.025em] text-text-primary-dark">
+              6:15 AM, three inches of light, no one else wakes.
+            </h2>
+            <p class="mt-8 max-w-[42ch] text-[16px] leading-[1.5] text-text-secondary-dark">
+              Primary bedroom shades rise a few inches to let in light without waking the room next door, then fully open at the scene set for actual wake time. The motor is quiet tubular drive — 0.8–10 Nm — not the rattle of a retail kit against the headrail.
             </p>
-            <div class="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-8 sm:gap-y-4">
-              <a href="#scope" class="inline-flex items-center border border-[rgb(241_240_235/0.18)] bg-paper px-6 py-3 font-body text-[11px] font-medium uppercase tracking-[0.12em] text-paper-1 transition-colors hover:bg-cream-1">Begin a project</a>
-              <a href="#systems" class="font-body text-[11px] font-medium uppercase tracking-[0.12em] text-dark-2 transition-colors hover:text-dark-1">Explore our systems</a>
-            </div>
           </div>
         </div>
-
-        <div class="mt-16 grid grid-cols-2 gap-4 border-t border-[rgb(241_240_235/0.10)] py-7 md:grid-cols-4 md:gap-8">
-          <p class="font-mono text-[11px] leading-[1.35] tracking-[0.12em] text-dark-3">Lutron Certified<br />HomeWorks Integrator</p>
-          <p class="font-mono text-[11px] leading-[1.35] tracking-[0.12em] text-dark-3">Control4<br />Platinum Dealer</p>
-          <p class="font-mono text-[11px] leading-[1.35] tracking-[0.12em] text-dark-3">2026 CEDIA<br />Member</p>
-          <p class="font-mono text-[11px] leading-[1.35] tracking-[0.12em] text-dark-3 md:text-right">Study 01 / 04<br />Ink field</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 02 Deep Juniper technical spec grid ledger -->
-    <section id="systems" class="architectural-background-section relative overflow-hidden scroll-mt-20 bg-forest">
-      <h2 class="architectural-background-title absolute pointer-events-none select-none -z-10 opacity-[0.03]" data-surface="juniper" aria-hidden="true">Intelligence</h2>
-
-      <div class="section-content folio py-24 md:py-32">
-        <div class="grid grid-cols-12 gap-6 border-b border-[rgb(241_240_235/0.10)] pb-8 lg:gap-8">
-          <p class="col-span-12 font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-dark-3 lg:col-span-5">02 / System specification</p>
-          <p class="col-span-12 font-mono text-[11px] tracking-[0.12em] text-dark-3 lg:col-span-7 lg:text-right">HomeWorks QSX · Control4 OS 3 · Front Range</p>
-        </div>
-
-        <figure class="relative mt-16 overflow-hidden lg:mt-20">
+        <figure class="relative mt-16 max-w-xl overflow-hidden md:ml-auto">
           <img
             src="/images/davg-bedroom-motorized-shades-01-1600w.webp"
             alt="Primary bedroom with motorized architectural shades"
-            class="h-full w-full object-cover"
+            class="w-full object-cover"
           />
         </figure>
-
-        <div class="mt-16 grid grid-cols-12 gap-12 lg:mt-20 lg:gap-20">
-          <div class="col-span-12 min-w-0 lg:col-span-5">
-            <h2 class="font-display text-[clamp(2rem,4vw,44px)] font-normal leading-[1.02] tracking-[-0.025em] text-dark-1">
-              An operating layer specified as architecture.
-            </h2>
-            <p class="mt-8 max-w-[42ch] text-[16px] leading-[1.5] text-dark-2">
-              Lighting, shade, audio, and control share one processor topology. The ledger below is the same class of information we hand to architects and framers before drywall.
-            </p>
-            <p class="mt-6 max-w-[42ch] text-[16px] leading-[1.5] text-dark-2">
-              Pocket depth is not cosmetic. Undersize it and the fabric roll binds against trim within a season. The numbers are the work.
-            </p>
-          </div>
-
-          <div class="col-span-12 min-w-0 lg:col-span-7">
-            <div class="border-t border-[rgb(241_240_235/0.18)]" role="table" aria-label="Technical specification ledger">
-              <div class="spec-row" role="row">
-                <span class="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-dark-3" role="cell">Processor</span>
-                <span class="text-[13px] leading-[1.35] text-dark-1" role="cell">Lutron HomeWorks QSX</span>
-              </div>
-              <div class="spec-row" role="row">
-                <span class="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-dark-3" role="cell">Control layer</span>
-                <span class="text-[13px] leading-[1.35] text-dark-1" role="cell">Control4 OS 3</span>
-              </div>
-              <div class="spec-row" role="row">
-                <span class="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-dark-3" role="cell">Lighting</span>
-                <span class="text-[13px] leading-[1.35] text-dark-1" role="cell">Ketra / HomeWorks QS</span>
-              </div>
-              <div class="spec-row" role="row">
-                <span class="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-dark-3" role="cell">Shade drive</span>
-                <span class="text-[13px] leading-[1.35] text-dark-1" role="cell">Quiet tubular motor, 0.8–10 Nm</span>
-              </div>
-              <div class="spec-row" role="row">
-                <span class="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-dark-3" role="cell">Pocket clearance</span>
-                <span class="text-[13px] leading-[1.35] text-dark-1" role="cell">5.5–7.5 in typical Palladiom</span>
-              </div>
-              <div class="spec-row" role="row">
-                <span class="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-dark-3" role="cell">Integration bus</span>
-                <span class="text-[13px] leading-[1.35] text-dark-1" role="cell">QS Link · IP</span>
-              </div>
-              <div class="spec-row" role="row">
-                <span class="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-dark-3" role="cell">Hembar finish</span>
-                <span class="text-[13px] leading-[1.35] text-dark-1" role="cell">Architect-specified, matched to trim</span>
-              </div>
-              <div class="spec-row" role="row">
-                <span class="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-dark-3" role="cell">Solar logic</span>
-                <span class="text-[13px] leading-[1.35] text-dark-1" role="cell">Automated daylight tracking</span>
-              </div>
-              <div class="spec-row" role="row">
-                <span class="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-dark-3" role="cell">Network core</span>
-                <span class="text-[13px] leading-[1.35] text-dark-1" role="cell">Local processor, dedicated VLAN</span>
-              </div>
-              <div class="spec-row border-b-0" role="row">
-                <span class="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-dark-3" role="cell">Credentials</span>
-                <span class="text-[13px] leading-[1.35] text-dark-1" role="cell">HomeWorks Integrator · Control4 Platinum · CEDIA 2026</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="mt-20 flex flex-wrap items-center justify-between gap-4 border-t border-[rgb(241_240_235/0.10)] pt-7">
-          <p class="font-mono text-[11px] tracking-[0.12em] text-dark-3">Juniper field · Spec matrix</p>
-          <p class="font-mono text-[11px] tracking-[0.12em] text-dark-3">Plate 02 / DAVG-HW-QSX</p>
-        </div>
       </div>
     </section>
 
-    <!-- 03 Ivory paper editorial block -->
-    <section id="discipline" class="architectural-background-section relative overflow-hidden scroll-mt-20 bg-paper text-paper-1">
-      <h2 class="architectural-background-title absolute pointer-events-none select-none -z-10 opacity-[0.03]" data-surface="cream" aria-hidden="true">Home Control</h2>
-
+    <!-- Phase 4 — Tiered Scope -->
+    <section id="scope" class="architectural-background-section relative overflow-hidden scroll-mt-20 bg-surface-ink">
+      <h2 class="architectural-background-title" data-surface="ink" aria-hidden="true">Scope</h2>
       <div class="section-content folio py-24 md:py-32">
-        <div class="grid grid-cols-12 gap-12 lg:gap-20">
-          <div class="col-span-12 min-w-0 lg:col-span-5">
-            <p class="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-paper-2">03 / Direct answer</p>
-            <h2 class="mt-8 font-display text-[clamp(2rem,4vw,44px)] font-normal leading-[1.02] tracking-[-0.025em] text-paper-1">
-              DAVG is a residential<br />integration firm.
-            </h2>
-            <p class="mt-8 max-w-[42ch] text-[18px] leading-[1.45] text-paper-1">
-              We specialize in pre-construction low-voltage engineering, architectural lighting and shade control, and whole-home automation across South Metro Denver — Cherry Hills Village, Castle Pines, Greenwood Village, Littleton, Centennial, and Lone Tree.
-            </p>
-            <p class="mt-6 max-w-[42ch] text-[16px] leading-[1.5] text-paper-2">
-              The control layer is meant to be legible here and invisible in the finished house. Keypads sit flush. Processors live in the rack. Scenes are named for rooms, not devices.
-            </p>
-            <p class="mt-6 max-w-[42ch] text-[16px] leading-[1.5] text-paper-2">
-              Lutron Certified HomeWorks Integrator. Control4 Platinum Dealer. 2026 CEDIA Member. Operating since 2013.
-            </p>
-          </div>
-
-          <div class="section-visual col-span-12 flex min-w-0 items-end justify-center lg:col-span-7 lg:justify-end">
-            <div class="relative w-full max-w-xl overflow-hidden">
-              <div class="absolute -left-6 top-10 hidden h-[1px] w-24 bg-[rgb(11_13_12/0.16)] lg:block"></div>
-              <div class="absolute -left-6 top-10 hidden h-24 w-[1px] bg-[rgb(11_13_12/0.16)] lg:block"></div>
-              <div class="flex items-end gap-10">
-                <div class="keypad-plate">
-                  <div>
-                    <p class="font-mono text-[10px] tracking-[0.12em] text-dark-3">Palladiom · Great Room</p>
-                    <div class="mt-8 grid grid-cols-2 gap-3">
-                      <div class="keypad-btn is-active"></div>
-                      <div class="keypad-btn"></div>
-                      <div class="keypad-btn"></div>
-                      <div class="keypad-btn"></div>
-                    </div>
-                  </div>
-                  <div class="border-t border-[rgb(241_240_235/0.10)] pt-5">
-                    <p class="font-display text-[20px] tracking-[-0.005em] text-dark-1">Evening</p>
-                    <p class="mt-2 font-mono text-[11px] tracking-[0.12em] text-dark-3">2700K · Shades 40%</p>
-                  </div>
-                </div>
-                <div class="hidden min-w-0 flex-1 pb-4 md:block">
-                  <figure class="relative mb-8 overflow-hidden">
-                    <img
-                      src="/images/davg-bedroom-shade-fascia-detail-01-800w.webp"
-                      alt="Recessed shade fascia and pocket detail"
-                      class="w-full object-cover"
-                    />
-                  </figure>
-                  <p class="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-paper-2">Spatial organization</p>
-                  <ul class="mt-6 space-y-0">
-                    <li class="flex items-baseline justify-between gap-4 border-b border-[rgb(11_13_12/0.16)] py-3">
-                      <span class="font-mono text-[11px] tracking-[0.12em] text-paper-2">01</span>
-                      <span class="flex-1 text-[13px] text-paper-1">Rack / utility core</span>
-                    </li>
-                    <li class="flex items-baseline justify-between gap-4 border-b border-[rgb(11_13_12/0.16)] py-3">
-                      <span class="font-mono text-[11px] tracking-[0.12em] text-paper-2">02</span>
-                      <span class="flex-1 text-[13px] text-paper-1">QSX processor</span>
-                    </li>
-                    <li class="flex items-baseline justify-between gap-4 border-b border-[rgb(11_13_12/0.16)] py-3">
-                      <span class="font-mono text-[11px] tracking-[0.12em] text-paper-2">03</span>
-                      <span class="flex-1 text-[13px] text-paper-1">Room keypads</span>
-                    </li>
-                    <li class="flex items-baseline justify-between gap-4 py-3">
-                      <span class="font-mono text-[11px] tracking-[0.12em] text-paper-2">04</span>
-                      <span class="flex-1 text-[13px] text-paper-1">Shade / lighting loads</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div id="service" class="mt-20 grid grid-cols-2 gap-4 border-t border-[rgb(11_13_12/0.16)] pt-7 md:grid-cols-6">
-          <p class="font-mono text-[11px] tracking-[0.12em] text-paper-2">Pre-construction</p>
-          <p class="font-mono text-[11px] tracking-[0.12em] text-paper-2">Lighting</p>
-          <p class="font-mono text-[11px] tracking-[0.12em] text-paper-2">Shade</p>
-          <p class="font-mono text-[11px] tracking-[0.12em] text-paper-2">Audio</p>
-          <p class="font-mono text-[11px] tracking-[0.12em] text-paper-2">Control</p>
-          <p class="font-mono text-[11px] tracking-[0.12em] text-paper-2 md:text-right">Network</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 04 Horizontal 3-column engineering scope comparison -->
-    <section id="scope" class="scroll-mt-20 bg-ink">
-      <div class="folio py-24 md:py-32">
         <div class="max-w-3xl">
-          <p class="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-dark-3">04 / Engineering scope</p>
-          <h2 class="mt-8 font-display text-[clamp(2rem,4vw,44px)] font-normal leading-[1.02] tracking-[-0.025em] text-dark-1">
+          <p class="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-text-tertiary-dark">04 / Engineering scope</p>
+          <h2 class="mt-8 font-display text-[clamp(2rem,4vw,44px)] font-normal leading-[1.02] tracking-[-0.025em] text-text-primary-dark">
             Three scopes. The difference is engineering, not a menu.
           </h2>
-          <p class="mt-8 max-w-[56ch] text-[16px] leading-[1.5] text-dark-2">
+          <p class="mt-8 max-w-[56ch] text-[16px] leading-[1.5] text-text-secondary-dark">
             Room, home, and estate describe how far the operating layer reaches — fabric and motor grade, number of openings, integration depth, and what has to live in the wall before drywall.
           </p>
         </div>
 
-        <div class="mt-16 grid grid-cols-1 border-t border-[rgb(241_240_235/0.18)] md:mt-20 md:grid-cols-3">
-          <article class="min-w-0 border-b border-[rgb(241_240_235/0.10)] py-10 md:border-b-0 md:border-r md:pr-10 lg:pr-12">
-            <p class="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-dark-3">01 / Room</p>
-            <h3 class="mt-6 font-display text-[36px] font-normal leading-[1.08] tracking-[-0.020em] text-dark-1">Room-level</h3>
-            <p class="mt-6 text-[16px] leading-[1.5] text-dark-2">A single volume that has to perform: screening room, primary suite, or great room.</p>
-            <dl class="mt-8 space-y-0 border-t border-[rgb(241_240_235/0.10)]">
+        <div class="mt-16 grid grid-cols-1 border-t border-border-dark md:mt-20 md:grid-cols-3">
+          <article class="min-w-0 border-b border-border-dark-soft py-10 md:border-b-0 md:border-r md:pr-10 lg:pr-12">
+            <p class="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-text-tertiary-dark">01 / Room</p>
+            <h3 class="mt-6 font-display text-[36px] font-normal leading-[1.08] tracking-[-0.020em] text-text-primary-dark">Room-level</h3>
+            <p class="mt-6 text-[16px] leading-[1.5] text-text-secondary-dark">A single volume that has to perform: screening room, primary suite, or great room.</p>
+            <dl class="mt-8 space-y-0 border-t border-border-dark-soft">
               <div class="flex flex-col gap-2 py-4 md:flex-row md:justify-between md:gap-4">
-                <dt class="font-mono text-[11px] uppercase tracking-[0.12em] text-dark-3">Includes</dt>
-                <dd class="min-w-0 text-[13px] leading-[1.35] text-dark-1 md:max-w-[28ch] md:text-right">Standalone lighting or shade, dedicated acoustics</dd>
+                <dt class="font-mono text-[11px] uppercase tracking-[0.12em] text-text-tertiary-dark">Includes</dt>
+                <dd class="min-w-0 text-[13px] leading-[1.35] text-text-primary-dark md:max-w-[28ch] md:text-right">Standalone lighting or shade, dedicated acoustics</dd>
               </div>
-              <div class="flex flex-col gap-2 border-t border-[rgb(241_240_235/0.10)] py-4 md:flex-row md:justify-between md:gap-4">
-                <dt class="font-mono text-[11px] uppercase tracking-[0.12em] text-dark-3">Solves</dt>
-                <dd class="min-w-0 text-[13px] leading-[1.35] text-dark-1 md:max-w-[28ch] md:text-right">One room, one standard, no whole-home scene graph</dd>
+              <div class="flex flex-col gap-2 border-t border-border-dark-soft py-4 md:flex-row md:justify-between md:gap-4">
+                <dt class="font-mono text-[11px] uppercase tracking-[0.12em] text-text-tertiary-dark">Solves</dt>
+                <dd class="min-w-0 text-[13px] leading-[1.35] text-text-primary-dark md:max-w-[28ch] md:text-right">One room, one standard, no whole-home scene graph</dd>
               </div>
-              <div class="flex flex-col gap-2 border-t border-[rgb(241_240_235/0.10)] py-4 md:flex-row md:justify-between md:gap-4">
-                <dt class="font-mono text-[11px] uppercase tracking-[0.12em] text-dark-3">Right for</dt>
-                <dd class="min-w-0 text-[13px] leading-[1.35] text-dark-1 md:max-w-[28ch] md:text-right">A defined volume with a clear performance requirement</dd>
+              <div class="flex flex-col gap-2 border-t border-border-dark-soft py-4 md:flex-row md:justify-between md:gap-4">
+                <dt class="font-mono text-[11px] uppercase tracking-[0.12em] text-text-tertiary-dark">Right for</dt>
+                <dd class="min-w-0 text-[13px] leading-[1.35] text-text-primary-dark md:max-w-[28ch] md:text-right">A defined volume with a clear performance requirement</dd>
               </div>
             </dl>
           </article>
 
-          <article class="min-w-0 border-b border-[rgb(241_240_235/0.10)] py-10 md:border-b-0 md:border-r md:px-10 lg:px-12">
-            <p class="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-signal">02 / Home</p>
-            <div class="mt-2 h-px w-8 bg-[rgb(26_143_110/0.78)]"></div>
-            <h3 class="mt-6 font-display text-[36px] font-normal leading-[1.08] tracking-[-0.020em] text-dark-1">Home-level</h3>
-            <p class="mt-6 text-[16px] leading-[1.5] text-dark-2">The residence operates as one system: lighting, shade, audio, and control on a shared processor.</p>
-            <dl class="mt-8 space-y-0 border-t border-[rgb(241_240_235/0.10)]">
+          <article class="min-w-0 border-b border-border-dark-soft py-10 md:border-b-0 md:border-r md:px-10 lg:px-12">
+            <p class="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-accent-signal">02 / Home</p>
+            <div class="mt-2 h-px w-8 bg-rule-accent"></div>
+            <h3 class="mt-6 font-display text-[36px] font-normal leading-[1.08] tracking-[-0.020em] text-text-primary-dark">Home-level</h3>
+            <p class="mt-6 text-[16px] leading-[1.5] text-text-secondary-dark">The residence operates as one system: lighting, shade, audio, and control on a shared processor.</p>
+            <dl class="mt-8 space-y-0 border-t border-border-dark-soft">
               <div class="flex flex-col gap-2 py-4 md:flex-row md:justify-between md:gap-4">
-                <dt class="font-mono text-[11px] uppercase tracking-[0.12em] text-dark-3">Includes</dt>
-                <dd class="min-w-0 text-[13px] leading-[1.35] text-dark-1 md:max-w-[28ch] md:text-right">HomeWorks / Control4, distributed audio, network core</dd>
+                <dt class="font-mono text-[11px] uppercase tracking-[0.12em] text-text-tertiary-dark">Includes</dt>
+                <dd class="min-w-0 text-[13px] leading-[1.35] text-text-primary-dark md:max-w-[28ch] md:text-right">HomeWorks / Control4, distributed audio, network core</dd>
               </div>
-              <div class="flex flex-col gap-2 border-t border-[rgb(241_240_235/0.10)] py-4 md:flex-row md:justify-between md:gap-4">
-                <dt class="font-mono text-[11px] uppercase tracking-[0.12em] text-dark-3">Solves</dt>
-                <dd class="min-w-0 text-[13px] leading-[1.35] text-dark-1 md:max-w-[28ch] md:text-right">Fragmented apps and rooms that do not share scenes</dd>
+              <div class="flex flex-col gap-2 border-t border-border-dark-soft py-4 md:flex-row md:justify-between md:gap-4">
+                <dt class="font-mono text-[11px] uppercase tracking-[0.12em] text-text-tertiary-dark">Solves</dt>
+                <dd class="min-w-0 text-[13px] leading-[1.35] text-text-primary-dark md:max-w-[28ch] md:text-right">Fragmented apps and rooms that do not share scenes</dd>
               </div>
-              <div class="flex flex-col gap-2 border-t border-[rgb(241_240_235/0.10)] py-4 md:flex-row md:justify-between md:gap-4">
-                <dt class="font-mono text-[11px] uppercase tracking-[0.12em] text-dark-3">Right for</dt>
-                <dd class="min-w-0 text-[13px] leading-[1.35] text-dark-1 md:max-w-[28ch] md:text-right">A completed or in-progress house that should behave as one</dd>
+              <div class="flex flex-col gap-2 border-t border-border-dark-soft py-4 md:flex-row md:justify-between md:gap-4">
+                <dt class="font-mono text-[11px] uppercase tracking-[0.12em] text-text-tertiary-dark">Right for</dt>
+                <dd class="min-w-0 text-[13px] leading-[1.35] text-text-primary-dark md:max-w-[28ch] md:text-right">A completed or in-progress house that should behave as one</dd>
               </div>
             </dl>
           </article>
 
           <article class="min-w-0 py-10 md:pl-10 lg:pl-12">
-            <p class="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-dark-3">03 / Estate</p>
-            <h3 class="mt-6 font-display text-[36px] font-normal leading-[1.08] tracking-[-0.020em] text-dark-1">Estate-level</h3>
-            <p class="mt-6 text-[16px] leading-[1.5] text-dark-2">Zero-compromise coordination from schematic through occupancy, including cinema and concealed infrastructure.</p>
-            <dl class="mt-8 space-y-0 border-t border-[rgb(241_240_235/0.10)]">
+            <p class="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-text-tertiary-dark">03 / Estate</p>
+            <h3 class="mt-6 font-display text-[36px] font-normal leading-[1.08] tracking-[-0.020em] text-text-primary-dark">Estate-level</h3>
+            <p class="mt-6 text-[16px] leading-[1.5] text-text-secondary-dark">Zero-compromise coordination from schematic through occupancy, including cinema and concealed infrastructure.</p>
+            <dl class="mt-8 space-y-0 border-t border-border-dark-soft">
               <div class="flex flex-col gap-2 py-4 md:flex-row md:justify-between md:gap-4">
-                <dt class="font-mono text-[11px] uppercase tracking-[0.12em] text-dark-3">Includes</dt>
-                <dd class="min-w-0 text-[13px] leading-[1.35] text-dark-1 md:max-w-[28ch] md:text-right">Pocket details, rack core, Ketra, stewardship after occupancy</dd>
+                <dt class="font-mono text-[11px] uppercase tracking-[0.12em] text-text-tertiary-dark">Includes</dt>
+                <dd class="min-w-0 text-[13px] leading-[1.35] text-text-primary-dark md:max-w-[28ch] md:text-right">Pocket details, rack core, Ketra, stewardship after occupancy</dd>
               </div>
-              <div class="flex flex-col gap-2 border-t border-[rgb(241_240_235/0.10)] py-4 md:flex-row md:justify-between md:gap-4">
-                <dt class="font-mono text-[11px] uppercase tracking-[0.12em] text-dark-3">Solves</dt>
-                <dd class="min-w-0 text-[13px] leading-[1.35] text-dark-1 md:max-w-[28ch] md:text-right">The cost and quality gap between pre-wired and retrofitted work</dd>
+              <div class="flex flex-col gap-2 border-t border-border-dark-soft py-4 md:flex-row md:justify-between md:gap-4">
+                <dt class="font-mono text-[11px] uppercase tracking-[0.12em] text-text-tertiary-dark">Solves</dt>
+                <dd class="min-w-0 text-[13px] leading-[1.35] text-text-primary-dark md:max-w-[28ch] md:text-right">The cost and quality gap between pre-wired and retrofitted work</dd>
               </div>
-              <div class="flex flex-col gap-2 border-t border-[rgb(241_240_235/0.10)] py-4 md:flex-row md:justify-between md:gap-4">
-                <dt class="font-mono text-[11px] uppercase tracking-[0.12em] text-dark-3">Right for</dt>
-                <dd class="min-w-0 text-[13px] leading-[1.35] text-dark-1 md:max-w-[28ch] md:text-right">New construction and major renovations specified with the architecture</dd>
+              <div class="flex flex-col gap-2 border-t border-border-dark-soft py-4 md:flex-row md:justify-between md:gap-4">
+                <dt class="font-mono text-[11px] uppercase tracking-[0.12em] text-text-tertiary-dark">Right for</dt>
+                <dd class="min-w-0 text-[13px] leading-[1.35] text-text-primary-dark md:max-w-[28ch] md:text-right">New construction and major renovations specified with the architecture</dd>
               </div>
             </dl>
           </article>
         </div>
+        <p class="mt-16 max-w-[54ch] border-t border-border-dark-soft pt-8 text-[16px] leading-[1.5] text-text-secondary-dark">
+          Coordinate before drywall. Pre-wired shade pockets and a centralized rack are the difference between a system that disappears and one that has to be explained.
+        </p>
+      </div>
+    </section>
 
-        <div class="mt-16 flex flex-col gap-8 border-t border-[rgb(241_240_235/0.10)] pt-8 md:flex-row md:items-center md:justify-between">
-          <p class="max-w-[54ch] text-[16px] leading-[1.5] text-dark-2">
-            Coordinate before drywall. Pre-wired shade pockets and a centralized rack are the difference between a system that disappears and one that has to be explained.
-          </p>
-          <a href="mailto:info@davg.ai" class="inline-flex shrink-0 items-center border border-[rgb(241_240_235/0.18)] bg-paper px-6 py-3 font-body text-[11px] font-medium uppercase tracking-[0.12em] text-paper-1 transition-colors hover:bg-cream-1">Begin a project</a>
+    <!-- Phase 5 — Trade & Engineering Validation -->
+    <section id="trade" class="architectural-background-section relative overflow-hidden scroll-mt-20 bg-surface-forest">
+      <h2 class="architectural-background-title" data-surface="ink" aria-hidden="true">Recessed</h2>
+      <div class="section-content folio py-24 md:py-32">
+        <div class="grid grid-cols-12 gap-12 lg:gap-20">
+          <div class="col-span-12 min-w-0 lg:col-span-5">
+            <p class="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-text-tertiary-dark">05 / Trade validation</p>
+            <h2 class="mt-8 font-display text-[clamp(2rem,4vw,44px)] font-normal leading-[1.02] tracking-[-0.025em] text-text-primary-dark">
+              The same pocket detail we hand to framers.
+            </h2>
+            <p class="mt-8 max-w-[42ch] text-[16px] leading-[1.5] text-text-secondary-dark">
+              This is a pre-construction coordination resource, not a finished-room photograph. Pocket and valance details, low-voltage rough-in, and the rack path from HomeWorks QSX into Control4 are specified before drywall. Lutron Certified HomeWorks Integrator status is the credential attached to that processor claim. Control4 Platinum Dealer status is the credential attached to the control-layer claim.
+            </p>
+          </div>
+          <div class="section-visual col-span-12 min-w-0 lg:col-span-7">
+            <figure class="relative overflow-hidden">
+              <img
+                src="/images/davg-bedroom-shade-fascia-detail-01-800w.webp"
+                alt="Recessed shade fascia and pocket detail for pre-construction coordination"
+                class="w-full object-cover"
+              />
+            </figure>
+            <ul class="mt-10 border-t border-border-dark">
+              <li class="flex items-baseline justify-between gap-4 border-b border-border-dark-soft py-4">
+                <span class="font-mono text-[11px] tracking-[0.12em] text-text-tertiary-dark">01</span>
+                <span class="flex-1 text-[13px] text-text-primary-dark">Rack / utility core</span>
+              </li>
+              <li class="flex items-baseline justify-between gap-4 border-b border-border-dark-soft py-4">
+                <span class="font-mono text-[11px] tracking-[0.12em] text-text-tertiary-dark">02</span>
+                <span class="flex-1 text-[13px] text-text-primary-dark">HomeWorks QSX processor</span>
+              </li>
+              <li class="flex items-baseline justify-between gap-4 border-b border-border-dark-soft py-4">
+                <span class="font-mono text-[11px] tracking-[0.12em] text-text-tertiary-dark">03</span>
+                <span class="flex-1 text-[13px] text-text-primary-dark">Room keypads</span>
+              </li>
+              <li class="flex items-baseline justify-between gap-4 py-4">
+                <span class="font-mono text-[11px] tracking-[0.12em] text-text-tertiary-dark">04</span>
+                <span class="flex-1 text-[13px] text-text-primary-dark">Shade and lighting loads</span>
+              </li>
+            </ul>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Phase 6 — Stewardship & Conversion -->
+    <section id="inquiry" class="architectural-background-section relative overflow-hidden scroll-mt-20 bg-surface-ink">
+      <h2 class="architectural-background-title" data-surface="ink" aria-hidden="true">Steward</h2>
+      <div class="section-content folio py-24 md:py-32">
+        <p class="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-text-tertiary-dark">06 / Stewardship</p>
+        <h2 class="mt-8 max-w-[16ch] font-display text-[clamp(2rem,4vw,44px)] font-normal leading-[1.02] tracking-[-0.025em] text-text-primary-dark">
+          The system needs a relationship, not a ticket.
+        </h2>
+        <p class="mt-8 max-w-[54ch] text-[16px] leading-[1.5] text-text-secondary-dark">
+          Firmware and processor health are monitored. Scenes are tuned seasonally. Response is priority, not a queue. Year one is commissioning and occupancy calibration. Year three is firmware, shade fabric, and scene review. Beyond that, the same operating layer is still ours to keep quiet. DAVG has done this work since 2013.
+        </p>
+        <p class="mt-6 max-w-[54ch] text-[16px] leading-[1.5] text-text-secondary-dark">
+          South Metro Denver — Cherry Hills Village, Castle Pines, Greenwood Village, Littleton, Centennial, Lone Tree.
+        </p>
+        <a href="mailto:info@davg.ai" class="mt-10 inline-flex items-center border border-border-dark bg-surface-paper px-6 py-3 font-body text-[11px] font-medium uppercase tracking-[0.12em] text-text-primary-paper transition-colors hover:bg-cream-01">Begin a project</a>
+        <p class="mt-16 font-mono text-[11px] tracking-[0.12em] text-text-tertiary-dark">Your Home, Automated by Design</p>
       </div>
     </section>
   </main>
 
-  <footer class="border-t border-[rgb(241_240_235/0.10)] bg-ink">
+  <footer class="border-t border-border-dark-soft bg-surface-ink">
     <div class="folio py-8">
       <div class="grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-8">
         <div>
-          <p class="font-mono text-[11px] tracking-[0.12em] text-dark-3">Office</p>
-          <a href="tel:7206381603" class="mt-2 block font-mono text-[11px] tracking-[0.12em] text-dark-1">720.638.1603</a>
+          <p class="font-mono text-[11px] tracking-[0.12em] text-text-tertiary-dark">Office</p>
+          <a href="tel:7206381603" class="mt-2 block font-mono text-[11px] tracking-[0.12em] text-text-primary-dark">720.638.1603</a>
         </div>
         <div>
-          <p class="font-mono text-[11px] tracking-[0.12em] text-dark-3">Direct · Field</p>
-          <a href="tel:7203277337" class="mt-2 block font-mono text-[11px] tracking-[0.12em] text-dark-1">720.327.7337</a>
+          <p class="font-mono text-[11px] tracking-[0.12em] text-text-tertiary-dark">Direct · Field</p>
+          <a href="tel:7203277337" class="mt-2 block font-mono text-[11px] tracking-[0.12em] text-text-primary-dark">720.327.7337</a>
         </div>
         <div>
-          <p class="font-mono text-[11px] tracking-[0.12em] text-dark-3">Email</p>
-          <a href="mailto:info@davg.ai" class="mt-2 block font-mono text-[11px] tracking-[0.12em] text-dark-1">info@davg.ai</a>
+          <p class="font-mono text-[11px] tracking-[0.12em] text-text-tertiary-dark">Email</p>
+          <a href="mailto:info@davg.ai" class="mt-2 block font-mono text-[11px] tracking-[0.12em] text-text-primary-dark">info@davg.ai</a>
         </div>
         <div class="md:text-right">
-          <p class="font-mono text-[11px] tracking-[0.12em] text-dark-3">Identity</p>
-          <p class="mt-2 font-mono text-[11px] tracking-[0.12em] text-dark-1">Your Home, Automated by Design</p>
+          <p class="font-mono text-[11px] tracking-[0.12em] text-text-tertiary-dark">South Metro</p>
+          <p class="mt-2 font-mono text-[11px] tracking-[0.12em] text-text-primary-dark">Colorado</p>
         </div>
       </div>
-      <div class="mt-8 flex flex-col justify-between gap-3 border-t border-[rgb(241_240_235/0.10)] pt-6 md:flex-row">
-        <p class="font-mono text-[11px] tracking-[0.12em] text-dark-3">© 2026 DAVG · Formerly Denver AV Guy</p>
-        <p class="font-mono text-[11px] tracking-[0.12em] text-dark-3">Lutron HomeWorks · Control4 Platinum · CEDIA 2026</p>
+      <div class="mt-8 flex flex-col justify-between gap-3 border-t border-border-dark-soft pt-6 md:flex-row">
+        <p class="font-mono text-[11px] tracking-[0.12em] text-text-tertiary-dark">© 2026 DAVG · Formerly Denver AV Guy</p>
+        <p class="font-mono text-[11px] tracking-[0.12em] text-text-tertiary-dark">Lutron HomeWorks · Control4 Platinum · CEDIA 2026</p>
       </div>
     </div>
   </footer>
@@ -610,26 +487,53 @@ import '../styles/global.css';
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "DAVG",
-    "alternateName": "Denver AV Guy",
-    "url": "https://davg.ai",
-    "foundingDate": "2013",
-    "email": "info@davg.ai",
-    "telephone": "+1-720-638-1603",
-    "description": "DAVG is a residential integration firm specializing in pre-construction low-voltage engineering, architectural lighting and shade control, and whole-home automation across South Metro Denver.",
-    "areaServed": [
-      "Cherry Hills Village",
-      "Castle Pines",
-      "Greenwood Village",
-      "Littleton",
-      "Centennial",
-      "Lone Tree"
-    ],
-    "hasCredential": [
-      "Lutron Certified HomeWorks Integrator",
-      "Control4 Platinum Dealer",
-      "2026 CEDIA Member"
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://davg.ai/#business",
+        "name": "DAVG",
+        "alternateName": "Denver AV Guy",
+        "url": "https://davg.ai",
+        "foundingDate": "2013",
+        "email": "info@davg.ai",
+        "telephone": "+1-720-638-1603",
+        "description": "DAVG is a residential integration firm — Lutron Certified HomeWorks Integrator, Control4 Platinum Dealer, 2026 CEDIA Member — designing architectural AV, lighting, shade, and home intelligence across South Metro Denver: Cherry Hills Village, Castle Pines, Greenwood Village, Littleton, Centennial, and Lone Tree. Operating since 2013.",
+        "areaServed": [
+          "Cherry Hills Village",
+          "Castle Pines",
+          "Greenwood Village",
+          "Littleton",
+          "Centennial",
+          "Lone Tree"
+        ],
+        "hasCredential": [
+          "Lutron Certified HomeWorks Integrator",
+          "Control4 Platinum Dealer",
+          "2026 CEDIA Member"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://davg.ai/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What’s the pocket depth for motorized Lutron Palladiom shades behind a floor-to-ceiling window wall?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Typical pocket depth for motorized Lutron Palladiom shades behind a floor-to-ceiling window wall is 5.5–7.5 inches, with low-voltage clearance reserved in the head condition before drywall. Undersize either dimension and the fabric roll binds against trim within a season."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Who is DAVG?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "DAVG is a residential integration firm — Lutron Certified HomeWorks Integrator, Control4 Platinum Dealer, 2026 CEDIA Member — designing architectural AV, lighting, shade, and home intelligence across South Metro Denver: Cherry Hills Village, Castle Pines, Greenwood Village, Littleton, Centennial, and Lone Tree. Operating since 2013."
+            }
+          }
+        ]
+      }
     ]
   }
   </script>
