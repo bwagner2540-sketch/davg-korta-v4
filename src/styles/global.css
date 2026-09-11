@@ -1,1 +1,19 @@
 @import "tailwindcss";
+
+@theme {
+  --color-ink: #090B0A;
+  --color-forest: #183B31;
+  --color-paper: #EDE9E0;
+  --color-cream-1: #F2EFE7;
+  --color-cream-2: #EBE7DC;
+  --color-cream-3: #E2DDCE;
+  --color-signal: #1A8F6E;
+  --color-dark-1: #F1F0EB;
+  --color-dark-2: #A7AAA5;
+  --color-dark-3: #7F847E;
+  --color-paper-1: #0B0D0C;
+  --color-paper-2: #51544F;
+  --font-display: "Schibsted Grotesk", sans-serif;
+  --font-body: "Instrument Sans", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}

@@ -1,3 +1,6 @@
+---
+import '../styles/global.css';
+---
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -9,34 +12,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            ink: "#090B0A",
-            forest: "#183B31",
-            paper: "#EDE9E0",
-            cream: { 1: "#F2EFE7", 2: "#EBE7DC", 3: "#E2DDCE" },
-            signal: "#1A8F6E",
-            "dark-1": "#F1F0EB",
-            "dark-2": "#A7AAA5",
-            "dark-3": "#7F847E",
-            "paper-1": "#0B0D0C",
-            "paper-2": "#51544F",
-          },
-          fontFamily: {
-            display: ['"Schibsted Grotesk"', "sans-serif"],
-            body: ['"Instrument Sans"', "sans-serif"],
-            mono: ['"JetBrains Mono"', "ui-monospace", "monospace"],
-          },
-          maxWidth: { folio: "1440px" },
-        },
-      },
-    };
-  </script>
 
   <style>
     :root {
@@ -104,6 +79,7 @@
     .architectural-background-section {
       position: relative;
       overflow: hidden;
+      isolation: isolate;
     }
 
     .architectural-background-section > .section-content,
@@ -114,11 +90,8 @@
     }
 
     .architectural-background-title {
-      position: absolute;
       top: 4.5%;
       left: -2%;
-      z-index: 0;
-      pointer-events: none;
       font-family: var(--font-display), sans-serif;
       font-size: clamp(12rem, 16vw, 17.25rem);
       font-weight: 300;
@@ -129,13 +102,13 @@
     }
 
     .architectural-background-title[data-surface="ink"] {
-      color: var(--color-spatial-word-dark);
+      color: #F1F0EB;
       -webkit-text-fill-color: currentColor;
       background: none;
     }
 
     .architectural-background-title[data-surface="juniper"] {
-      color: var(--color-spatial-word-forest);
+      color: #F1F0EB;
       -webkit-text-fill-color: currentColor;
       background: none;
     }
@@ -282,17 +255,17 @@
 
   <main>
     <!-- 01 Obsidian dark hero -->
-    <section id="hero" class="architectural-background-section relative min-h-screen scroll-mt-20 bg-ink pt-16 md:pt-20">
-      <div class="absolute inset-0 z-0">
+    <section id="hero" class="architectural-background-section relative min-h-screen overflow-hidden scroll-mt-20 bg-ink pt-16 md:pt-20">
+      <div class="absolute inset-0 z-0 overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2400&q=80"
-          alt="Modern residence with floor-to-ceiling glass at dusk"
+          src="/images/davg-living-room-lutron-shades-orlando-01-1600w.webp"
+          alt="Living room with recessed Lutron shades"
           class="h-full w-full object-cover"
         />
         <div class="absolute inset-0" style="background: rgb(9 11 10 / 66%);"></div>
       </div>
 
-      <h2 class="architectural-background-title hero-spatial" data-surface="ink" aria-hidden="true">Residence</h2>
+      <h2 class="architectural-background-title hero-spatial absolute pointer-events-none select-none -z-10 opacity-[0.03]" data-surface="ink" aria-hidden="true">Residence</h2>
 
       <div class="section-annotations pointer-events-none absolute inset-0 z-[2] hidden lg:block">
         <div class="folio relative h-full">
@@ -352,14 +325,22 @@
     </section>
 
     <!-- 02 Deep Juniper technical spec grid ledger -->
-    <section id="systems" class="architectural-background-section scroll-mt-20 bg-forest">
-      <h2 class="architectural-background-title" data-surface="juniper" aria-hidden="true">Intelligence</h2>
+    <section id="systems" class="architectural-background-section relative overflow-hidden scroll-mt-20 bg-forest">
+      <h2 class="architectural-background-title absolute pointer-events-none select-none -z-10 opacity-[0.03]" data-surface="juniper" aria-hidden="true">Intelligence</h2>
 
       <div class="section-content folio py-24 md:py-32">
         <div class="grid grid-cols-12 gap-6 border-b border-[rgb(241_240_235/0.10)] pb-8 lg:gap-8">
           <p class="col-span-12 font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-dark-3 lg:col-span-5">02 / System specification</p>
           <p class="col-span-12 font-mono text-[11px] tracking-[0.12em] text-dark-3 lg:col-span-7 lg:text-right">HomeWorks QSX · Control4 OS 3 · Front Range</p>
         </div>
+
+        <figure class="relative mt-16 overflow-hidden lg:mt-20">
+          <img
+            src="/images/davg-bedroom-motorized-shades-01-1600w.webp"
+            alt="Primary bedroom with motorized architectural shades"
+            class="h-full w-full object-cover"
+          />
+        </figure>
 
         <div class="mt-16 grid grid-cols-12 gap-12 lg:mt-20 lg:gap-20">
           <div class="col-span-12 min-w-0 lg:col-span-5">
@@ -428,8 +409,8 @@
     </section>
 
     <!-- 03 Ivory paper editorial block -->
-    <section id="discipline" class="architectural-background-section scroll-mt-20 bg-paper text-paper-1">
-      <h2 class="architectural-background-title" data-surface="cream" aria-hidden="true">Home Control</h2>
+    <section id="discipline" class="architectural-background-section relative overflow-hidden scroll-mt-20 bg-paper text-paper-1">
+      <h2 class="architectural-background-title absolute pointer-events-none select-none -z-10 opacity-[0.03]" data-surface="cream" aria-hidden="true">Home Control</h2>
 
       <div class="section-content folio py-24 md:py-32">
         <div class="grid grid-cols-12 gap-12 lg:gap-20">
@@ -450,7 +431,7 @@
           </div>
 
           <div class="section-visual col-span-12 flex min-w-0 items-end justify-center lg:col-span-7 lg:justify-end">
-            <div class="relative w-full max-w-xl">
+            <div class="relative w-full max-w-xl overflow-hidden">
               <div class="absolute -left-6 top-10 hidden h-[1px] w-24 bg-[rgb(11_13_12/0.16)] lg:block"></div>
               <div class="absolute -left-6 top-10 hidden h-24 w-[1px] bg-[rgb(11_13_12/0.16)] lg:block"></div>
               <div class="flex items-end gap-10">
@@ -469,7 +450,14 @@
                     <p class="mt-2 font-mono text-[11px] tracking-[0.12em] text-dark-3">2700K · Shades 40%</p>
                   </div>
                 </div>
-                <div class="hidden flex-1 pb-4 md:block">
+                <div class="hidden min-w-0 flex-1 pb-4 md:block">
+                  <figure class="relative mb-8 overflow-hidden">
+                    <img
+                      src="/images/davg-bedroom-shade-fascia-detail-01-800w.webp"
+                      alt="Recessed shade fascia and pocket detail"
+                      class="w-full object-cover"
+                    />
+                  </figure>
                   <p class="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-paper-2">Spatial organization</p>
                   <ul class="mt-6 space-y-0">
                     <li class="flex items-baseline justify-between gap-4 border-b border-[rgb(11_13_12/0.16)] py-3">
