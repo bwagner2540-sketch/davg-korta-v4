@@ -1,13 +1,14 @@
 ---
 import '../styles/global.css';
+import SEO from '../layouts/SEO.astro';
 ---
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DAVG — Architectural AV and Home Intelligence, Colorado</title>
-  <meta name="description" content="DAVG is a residential integration firm designing architectural AV, lighting, shade, and home intelligence across South Metro Denver. Lutron Certified HomeWorks Integrator. Control4 Platinum Dealer. CEDIA Member. Since 2013." />
+  <meta name="generator" content={Astro.generator} />
+  <SEO canonicalPath="/" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -128,7 +129,7 @@ import '../styles/global.css';
       <a href="#answer" class="flex items-center gap-4">
         <span class="font-mono text-[11px] font-medium tracking-[0.16em] text-text-primary-dark">DAVG</span>
         <span class="hidden h-3 w-px bg-border-dark sm:block"></span>
-        <span class="hidden font-mono text-[11px] tracking-[0.12em] text-text-tertiary-dark sm:block">EST. 2013</span>
+        <span class="hidden font-mono text-[11px] tracking-[0.12em] text-text-tertiary-dark sm:block">DENVER · SOUTH METRO</span>
       </a>
 
       <nav class="hidden items-center gap-8 lg:flex" aria-label="Primary">
@@ -141,7 +142,7 @@ import '../styles/global.css';
       </nav>
 
       <div class="flex items-center gap-4">
-        <a href="tel:7206381603" class="hidden font-mono text-[11px] tracking-[0.12em] text-text-secondary-dark transition-colors hover:text-text-primary-dark md:inline">720.638.1603</a>
+        <span class="hidden font-mono text-[11px] tracking-[0.12em] text-text-secondary-dark md:inline">LUXURY RESIDENTIAL</span>
         <a href="#inquiry" class="hidden items-center border border-border-dark bg-surface-paper px-5 py-2.5 font-body text-[11px] font-medium uppercase tracking-[0.12em] text-text-primary-paper transition-colors hover:bg-cream-01 lg:inline-flex">Begin a project</a>
         <label for="nav-toggle" class="flex h-8 w-8 shrink-0 cursor-pointer flex-col items-center justify-center gap-1.5 border border-border-dark lg:hidden">
           <span class="sr-only">Open menu</span>
@@ -180,7 +181,7 @@ import '../styles/global.css';
           Typical pocket depth for motorized Lutron Palladiom shades behind a floor-to-ceiling window wall is 5.5–7.5 inches, with low-voltage clearance reserved in the head condition before drywall. Undersize either dimension and the fabric roll binds against trim within a season.
         </p>
         <p class="mt-6 max-w-[62ch] text-[16px] leading-[1.5] text-text-secondary-paper">
-          DAVG is a residential integration firm — Lutron Certified HomeWorks Integrator, Control4 Platinum Dealer, 2026 CEDIA Member — designing architectural AV, lighting, shade, and home intelligence across South Metro Denver: Cherry Hills Village, Castle Pines, Greenwood Village, Littleton, Centennial, and Lone Tree. Operating since 2013.
+          DAVG is a residential integration firm — Lutron Certified HomeWorks Integrator, Control4 Platinum Dealer, 2026 CEDIA Member — designing architectural AV, lighting, motorized shading, and home intelligence across Denver and South Metro Denver.
         </p>
         <dl class="mt-16 max-w-3xl border-t border-border-paper">
           <div class="spec-row grid-cols-1 border-border-paper sm:grid-cols-2">
@@ -449,12 +450,12 @@ import '../styles/global.css';
           The system needs a relationship, not a ticket.
         </h2>
         <p class="mt-8 max-w-[54ch] text-[16px] leading-[1.5] text-text-secondary-dark">
-          Firmware and processor health are monitored. Scenes are tuned seasonally. Response is priority, not a queue. Year one is commissioning and occupancy calibration. Year three is firmware, shade fabric, and scene review. Beyond that, the same operating layer is still ours to keep quiet. DAVG has done this work since 2013.
+          Firmware and processor health are monitored. Scenes are tuned seasonally. Response is priority, not a queue. Year one is commissioning and occupancy calibration. Year three is firmware, shade fabric, and scene review. Beyond that, the same operating layer is still ours to keep quiet.
         </p>
         <p class="mt-6 max-w-[54ch] text-[16px] leading-[1.5] text-text-secondary-dark">
-          South Metro Denver — Cherry Hills Village, Castle Pines, Greenwood Village, Littleton, Centennial, Lone Tree.
+          Denver and South Metro Denver, Colorado.
         </p>
-        <a href="mailto:info@davg.ai" class="mt-10 inline-flex items-center border border-border-dark bg-surface-paper px-6 py-3 font-body text-[11px] font-medium uppercase tracking-[0.12em] text-text-primary-paper transition-colors hover:bg-cream-01">Begin a project</a>
+        <span class="mt-10 inline-flex items-center border border-border-dark bg-surface-paper px-6 py-3 font-body text-[11px] font-medium uppercase tracking-[0.12em] text-text-primary-paper">Begin a project</span>
         <p class="mt-16 font-mono text-[11px] tracking-[0.12em] text-text-tertiary-dark">Your Home, Automated by Design</p>
       </div>
     </section>
@@ -464,82 +465,29 @@ import '../styles/global.css';
     <div class="folio py-8">
       <div class="grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-8">
         <div>
-          <p class="font-mono text-[11px] tracking-[0.12em] text-text-tertiary-dark">Office</p>
-          <a href="tel:7206381603" class="mt-2 block font-mono text-[11px] tracking-[0.12em] text-text-primary-dark">720.638.1603</a>
+          <p class="font-mono text-[11px] tracking-[0.12em] text-text-tertiary-dark">Service Area</p>
+          <p class="mt-2 font-mono text-[11px] tracking-[0.12em] text-text-primary-dark">Denver · South Metro</p>
         </div>
         <div>
-          <p class="font-mono text-[11px] tracking-[0.12em] text-text-tertiary-dark">Direct · Field</p>
-          <a href="tel:7203277337" class="mt-2 block font-mono text-[11px] tracking-[0.12em] text-text-primary-dark">720.327.7337</a>
+          <p class="font-mono text-[11px] tracking-[0.12em] text-text-tertiary-dark">Home Intelligence</p>
+          <p class="mt-2 font-mono text-[11px] tracking-[0.12em] text-text-primary-dark">Control4 Platinum</p>
         </div>
         <div>
-          <p class="font-mono text-[11px] tracking-[0.12em] text-text-tertiary-dark">Email</p>
-          <a href="mailto:info@davg.ai" class="mt-2 block font-mono text-[11px] tracking-[0.12em] text-text-primary-dark">info@davg.ai</a>
+          <p class="font-mono text-[11px] tracking-[0.12em] text-text-tertiary-dark">Lighting & Shading</p>
+          <p class="mt-2 font-mono text-[11px] tracking-[0.12em] text-text-primary-dark">Lutron HomeWorks</p>
         </div>
         <div class="md:text-right">
-          <p class="font-mono text-[11px] tracking-[0.12em] text-text-tertiary-dark">South Metro</p>
-          <p class="mt-2 font-mono text-[11px] tracking-[0.12em] text-text-primary-dark">Colorado</p>
+          <p class="font-mono text-[11px] tracking-[0.12em] text-text-tertiary-dark">Industry</p>
+          <p class="mt-2 font-mono text-[11px] tracking-[0.12em] text-text-primary-dark">CEDIA Member · 2026</p>
         </div>
       </div>
       <div class="mt-8 flex flex-col justify-between gap-3 border-t border-border-dark-soft pt-6 md:flex-row">
-        <p class="font-mono text-[11px] tracking-[0.12em] text-text-tertiary-dark">© 2026 DAVG · Formerly Denver AV Guy</p>
+        <p class="font-mono text-[11px] tracking-[0.12em] text-text-tertiary-dark">© 2026 Denver AV Group · Formerly Denver AV Guy</p>
         <p class="font-mono text-[11px] tracking-[0.12em] text-text-tertiary-dark">Lutron HomeWorks · Control4 Platinum · CEDIA 2026</p>
       </div>
     </div>
   </footer>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "LocalBusiness",
-        "@id": "https://davg.ai/#business",
-        "name": "DAVG",
-        "alternateName": "Denver AV Guy",
-        "url": "https://davg.ai",
-        "foundingDate": "2013",
-        "email": "info@davg.ai",
-        "telephone": "+1-720-638-1603",
-        "description": "DAVG is a residential integration firm — Lutron Certified HomeWorks Integrator, Control4 Platinum Dealer, 2026 CEDIA Member — designing architectural AV, lighting, shade, and home intelligence across South Metro Denver: Cherry Hills Village, Castle Pines, Greenwood Village, Littleton, Centennial, and Lone Tree. Operating since 2013.",
-        "areaServed": [
-          "Cherry Hills Village",
-          "Castle Pines",
-          "Greenwood Village",
-          "Littleton",
-          "Centennial",
-          "Lone Tree"
-        ],
-        "hasCredential": [
-          "Lutron Certified HomeWorks Integrator",
-          "Control4 Platinum Dealer",
-          "2026 CEDIA Member"
-        ]
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "https://davg.ai/#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What’s the pocket depth for motorized Lutron Palladiom shades behind a floor-to-ceiling window wall?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Typical pocket depth for motorized Lutron Palladiom shades behind a floor-to-ceiling window wall is 5.5–7.5 inches, with low-voltage clearance reserved in the head condition before drywall. Undersize either dimension and the fabric roll binds against trim within a season."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Who is DAVG?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "DAVG is a residential integration firm — Lutron Certified HomeWorks Integrator, Control4 Platinum Dealer, 2026 CEDIA Member — designing architectural AV, lighting, shade, and home intelligence across South Metro Denver: Cherry Hills Village, Castle Pines, Greenwood Village, Littleton, Centennial, and Lone Tree. Operating since 2013."
-            }
-          }
-        ]
-      }
-    ]
-  }
-  </script>
   <script>
     if (location.hash) {
       document.documentElement.classList.remove("scroll-smooth");
