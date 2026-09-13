@@ -1,0 +1,124 @@
+---
+import { SITE, getPageSEO, normalizePath, type BreadcrumbItem } from '../site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+  image?: string;
+  imageAlt?: string;
+  noindex?: boolean;
+  serviceName?: string;
+  breadcrumbs?: BreadcrumbItem[];
+}
+
+const pathname = normalizePath(Astro.props.canonicalPath ?? Astro.url.pathname);
+const defaults = getPageSEO(pathname);
+
+const title = Astro.props.title ?? defaults?.title ?? `${SITE.name} | Luxury Residential Technology`;
+const description = Astro.props.description ?? defaults?.description ?? SITE.description;
+const image = Astro.props.image ?? defaults?.image ?? SITE.defaultImage;
+const imageAlt = Astro.props.imageAlt ?? `${SITE.name} residential technology`; 
+const noindex = Astro.props.noindex ?? defaults?.noindex ?? false;
+const serviceName = Astro.props.serviceName ?? defaults?.serviceName;
+const breadcrumbs = Astro.props.breadcrumbs ?? defaults?.breadcrumbs ?? [];
+
+const canonicalUrl = new URL(pathname, SITE.url).toString();
+const imageUrl = new URL(image, SITE.url).toString();
+const robots = noindex
+  ? 'noindex, nofollow'
+  : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
+
+const organization = {
+  '@type': 'Organization',
+  '@id': `${SITE.url}/#organization`,
+  name: SITE.name,
+  alternateName: [SITE.shortName, SITE.legacyName],
+  url: SITE.url,
+  description: SITE.description,
+  areaServed: SITE.areaServed,
+  knowsAbout: SITE.knowsAbout,
+};
+
+const website = {
+  '@type': 'WebSite',
+  '@id': `${SITE.url}/#website`,
+  url: SITE.url,
+  name: SITE.name,
+  alternateName: SITE.shortName,
+  publisher: { '@id': `${SITE.url}/#organization` },
+  inLanguage: SITE.language,
+};
+
+const webpage = {
+  '@type': 'WebPage',
+  '@id': `${canonicalUrl}#webpage`,
+  url: canonicalUrl,
+  name: title,
+  description,
+  isPartOf: { '@id': `${SITE.url}/#website` },
+  about: { '@id': `${SITE.url}/#organization` },
+  inLanguage: SITE.language,
+  primaryImageOfPage: {
+    '@type': 'ImageObject',
+    url: imageUrl,
+  },
+};
+
+const graph: Record<string, unknown>[] = [organization, website, webpage];
+
+if (serviceName) {
+  graph.push({
+    '@type': 'Service',
+    '@id': `${canonicalUrl}#service`,
+    name: serviceName,
+    description,
+    url: canonicalUrl,
+    provider: { '@id': `${SITE.url}/#organization` },
+    areaServed: SITE.areaServed,
+    mainEntityOfPage: { '@id': `${canonicalUrl}#webpage` },
+  });
+}
+
+if (breadcrumbs.length >= 2) {
+  graph.push({
+    '@type': 'BreadcrumbList',
+    '@id': `${canonicalUrl}#breadcrumb`,
+    itemListElement: breadcrumbs.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: new URL(normalizePath(item.path), SITE.url).toString(),
+    })),
+  });
+}
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': graph,
+};
+---
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="robots" content={robots} />
+<meta name="author" content={SITE.name} />
+<meta name="theme-color" content={SITE.themeColor} />
+<link rel="canonical" href={canonicalUrl} />
+<link rel="sitemap" href="/sitemap.xml" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={SITE.name} />
+<meta property="og:locale" content={SITE.locale} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:image" content={imageUrl} />
+<meta property="og:image:alt" content={imageAlt} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageUrl} />
+<meta name="twitter:image:alt" content={imageAlt} />
+
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
