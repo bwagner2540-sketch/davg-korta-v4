@@ -1,5 +1,8 @@
 # DAVG V4 — repair state, 30 September 2026
 
+## Hub production — Media & Audio
+Draft at `/systems/media-audio/` via `HubPage`. Slots 01–03 placed. Slots 06–08 missing. The Forest study is a conceptual invisible-speaker section. The PDX photograph is captioned as a visible loudspeaker. Desktop 1440 and mobile 390 checked: images decoded, no overflow, no Vite overlay. Not deployed.
+
 ## Hub production — Home Intelligence
 Draft rendered by `HubPage` at `/systems/home-intelligence/`. Slots 01 and 03 placed. Slot 02 withheld because the touchscreen shows personal names. Slots 06–08 missing. Halo and Halo Touch product photographs are placed. Studies are conceptual. Desktop 1440 and mobile 390 checked in the browser: no overflow, no Vite overlay, Forest only on the rail and the signature study. Not deployed.
 
