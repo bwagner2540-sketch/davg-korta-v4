@@ -1,0 +1,28 @@
+---
+interface Props { slotId: string; kicker: string; heading: string; lede: string; word: string; }
+const { slotId, kicker, heading, lede, word } = Astro.props;
+---
+<section class="folio architectural-background-section" id={slotId} data-study-slot={slotId} data-study-built="true" data-surface-role="signature-study" data-signature-study="true" aria-labelledby={`${slotId}-title`}>
+  <p class="architectural-background-title" data-surface="juniper" aria-hidden="true">{word}</p>
+  <div class="folio-copy section-content">
+    <p class="section-kicker">{kicker}</p>
+    <h3 id={`${slotId}-title`}>{heading}</h3>
+    <p>{lede}</p>
+  </div>
+  <div class="folio-visual section-visual">
+    <slot />
+  </div>
+</section>
+<style>
+.folio {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  margin-top: 2.5rem;
+  padding: clamp(1.5rem, 3vw, 2.75rem);
+  overflow: hidden;
+}
+.folio-copy { display: grid; gap: 0.85rem; max-width: 38rem; }
+.folio h3 { font-size: clamp(2rem, 3.4vw, 3.4rem); max-width: 16ch; }
+.folio-copy p { max-width: 46ch; line-height: 1.5; color: var(--surface-muted); }
+.folio-visual { min-width: 0; }
+</style>

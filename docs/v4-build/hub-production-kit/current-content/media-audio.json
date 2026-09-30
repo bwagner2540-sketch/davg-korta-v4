@@ -1,0 +1,373 @@
+{
+  "slug": "media-audio",
+  "name": "Media & Audio",
+  "seo": {
+    "title": "Media & Audio | DAVG",
+    "description": "Listening areas, seats, daylight, and visible finishes determine the equipment. A living room should work for conversation as well as a film.",
+    "canonicalPath": "/systems/media-audio/"
+  },
+  "hero": {
+    "heading": "Give every room the sound and picture it needs.",
+    "deck": "Listening areas, seats, daylight, and visible finishes determine the equipment. A living room should work for conversation as well as a film.",
+    "ctaLabel": "Discuss your project",
+    "ctaHref": "#project-inquiry"
+  },
+  "study": "Begin with a room-use map, then zoom into one living room. Speaker positions, TV choice and control remain tied to that map.",
+  "chapters": [
+    {
+      "id": "rooms",
+      "title": "Music follows people, not a speaker count.",
+      "layout": "zone-map",
+      "paragraphs": [
+        "A kitchen island and a reading chair are different listening positions. An open-plan room may need several speakers at moderate levels so music stays even as people move.",
+        "A listening room may need a clear stereo image at a particular seat. Ceiling speakers designed for background coverage are not automatically the best choice for that job.",
+        "Map where people sit, work and gather. Speaker count follows the coverage, ceiling height, room shape and intended volume; square footage alone is not enough."
+      ],
+      "visual": "Floor plan with people/activities and proposed zones. Use an illustrative plan label unless it is a documented project.",
+      "sources": [
+        "sonance",
+        "triad"
+      ],
+      "table": null,
+      "detail": null
+    },
+    {
+      "id": "speakers",
+      "title": "How visible should the sound be?",
+      "layout": "product-gallery",
+      "paragraphs": [
+        "In-ceiling and in-wall speakers leave a grille visible. Invisible speakers sit behind a specified finish system; installation depth and finish thickness are part of their performance.",
+        "Visible speakers can be placed and aimed for a listening position. Concealed speakers preserve more of the room’s visual surface, but their location still needs acoustic planning.",
+        "Sonance and Triad offer different product families for architectural, listening and cinema use. Compare the actual speaker, enclosure, placement and system role rather than assigning one brand a higher rank.",
+        "A single-stereo speaker can reproduce left and right signals from one location, which may suit a small room. It does not create the same separated stereo image as a properly placed pair."
+      ],
+      "visual": "Real grille, invisible-before-finish, invisible-finished and visible-speaker views. Include actual Sonance VX/Invisible and selected Triad models.",
+      "sources": [
+        "sonance",
+        "invisible",
+        "triad"
+      ],
+      "table": {
+        "headers": [
+          "Type",
+          "Useful role",
+          "Design responsibility"
+        ],
+        "rows": [
+          [
+            "In-ceiling",
+            "Distributed music coverage",
+            "Position around activities and ceiling constraints"
+          ],
+          [
+            "In-wall",
+            "Architectural stereo or front-stage use",
+            "Wall depth, enclosure and listening geometry"
+          ],
+          [
+            "Invisible",
+            "Sound behind a continuous finish",
+            "Specified finish system and installation inspection"
+          ],
+          [
+            "Visible speaker",
+            "Dedicated listening or flexible placement",
+            "Furniture, aiming and visual presence"
+          ]
+        ]
+      },
+      "detail": null
+    },
+    {
+      "id": "picture",
+      "title": "Choose the screen for the light in the room.",
+      "layout": "comparison",
+      "paragraphs": [
+        "OLED pixels produce their own light. Mini LED televisions use small LEDs behind an LCD panel, with performance that depends on the panel and backlight design.",
+        "A bright room calls for a review of reflections, sustained brightness and viewing positions. A darker room may put more emphasis on shadow detail and black levels.",
+        "QLED describes a display technology feature, not one fixed level of picture quality. An art-style television solves a visual-design problem; 8K resolution alone does not solve seating distance, glare or source quality."
+      ],
+      "visual": "Same wall from daytime and evening, with measured seat distances. Real model views; no invented comparative screen photographs.",
+      "sources": [
+        "display"
+      ],
+      "table": {
+        "headers": [
+          "Decision",
+          "Start here",
+          "Then verify"
+        ],
+        "rows": [
+          [
+            "OLED or LCD/Mini LED",
+            "Daylight, contrast preference and use",
+            "Actual model performance and reflections"
+          ],
+          [
+            "Art-style display",
+            "How the wall should look when idle",
+            "Picture priorities, installation and cable detail"
+          ],
+          [
+            "Screen size",
+            "Seat distance and viewing comfort",
+            "Wall proportions and sightlines"
+          ],
+          [
+            "4K or 8K",
+            "Content and normal viewing distance",
+            "Whether extra resolution changes the experience"
+          ]
+        ]
+      },
+      "detail": null
+    },
+    {
+      "id": "surround",
+      "title": "Background music and surround sound have different geometry.",
+      "layout": "sound-map",
+      "paragraphs": [
+        "Movie dialogue should come from the screen area. Surround speakers create the sound field around the seats; overhead speakers add a distinct height layer in a compatible Atmos layout.",
+        "A 3.1 layout uses three main channels and a subwoofer role. A 5.1.4 layout adds two surround channels and four height channels; the notation describes the intended layout, not a promise about the room’s result.",
+        "Start with the seats, then place the speakers. Do not put every channel in the ceiling simply because the ceiling is easy to access."
+      ],
+      "visual": "Switch between 3.1, 5.1 and 5.1.4 on one plan; distinguish ear-level and overhead positions. Provide static labels and a default diagram.",
+      "sources": [
+        "dolby"
+      ],
+      "table": null,
+      "detail": null
+    },
+    {
+      "id": "control",
+      "title": "Watch and Listen should be literal.",
+      "layout": "scene-study",
+      "paragraphs": [
+        "A Watch command selects the intended video source, display and sound path. A Listen command chooses the music source and room; grouping adds other supported zones.",
+        "The system still depends on the selected sources and services. A streaming account, network problem or unsupported device can affect one part of the chain.",
+        "Set practical volume limits and straightforward room names. The best everyday control is the one a guest can understand without a tour."
+      ],
+      "visual": "Show one remote and a short Watch/Listen action list; use a real or clearly labeled sample interface.",
+      "sources": [
+        "control4",
+        "connect"
+      ],
+      "table": null,
+      "detail": null
+    },
+    {
+      "id": "installation",
+      "title": "The finish work is part of the system.",
+      "layout": "construction-detail",
+      "paragraphs": [
+        "In-wall equipment needs space, cable paths and access. An invisible speaker also needs coordination with the finish contractor before paint makes the work disappear.",
+        "Subwoofers need placement and testing because bass changes across the room. More output does not guarantee even bass at every seat.",
+        "Commission the installed system with the furniture and normal listening positions in place. Check source selection, channel levels, zone grouping and everyday controls."
+      ],
+      "visual": "Cable detail, speaker before finishing, finished room and commissioning positions.",
+      "sources": [
+        "invisible",
+        "triad",
+        "dolby"
+      ],
+      "table": null,
+      "detail": null
+    }
+  ],
+  "projectPaths": [
+    {
+      "type": "retrofit",
+      "title": "Improve the rooms you already use",
+      "body": "Audit sources, speaker positions and cable routes. Reuse sound equipment where it suits the room, and address placement before replacing everything."
+    },
+    {
+      "type": "remodel",
+      "title": "Plan sound before surfaces close",
+      "body": "Coordinate grilles, invisible speakers, wall depth, display recesses and service access with the interior designer and trades."
+    },
+    {
+      "type": "custom-build",
+      "title": "Give each room an audio role",
+      "body": "Separate background zones, focused listening and media-room geometry on the plans. Coordinate wiring, enclosures, equipment cooling and display walls early."
+    }
+  ],
+  "scopeOptions": [
+    {
+      "label": "Good — focused rooms",
+      "scope": "A defined TV or music area, suitable equipment, clear source control and installed-system setup.",
+      "dependencies": "Existing wiring and sources are checked; concealment work is priced separately."
+    },
+    {
+      "label": "Better — connected zones",
+      "scope": "Several music zones and a planned media-room system, source grouping, display selection and commissioning.",
+      "dependencies": "Speaker count and surround layout follow room geometry and listening needs."
+    },
+    {
+      "label": "Best — architecture-led media",
+      "scope": "Whole-home audio planning, coordinated concealment, dedicated listening/media design and documented controls.",
+      "dependencies": "Invisible speakers, premium displays and additional channels are selected for a stated room benefit."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "How many ceiling speakers do I need?",
+      "answer": "That follows the room shape, activities, ceiling height and speaker coverage. We map listening areas before recommending a count."
+    },
+    {
+      "question": "Is Sonance better than Triad?",
+      "answer": "The meaningful comparison is between selected models and their roles. Coverage, enclosure, placement and listening goals matter more than a brand ladder."
+    },
+    {
+      "question": "Does every TV need Atmos?",
+      "answer": "No. A suitable front-stage or simpler surround system may fit the room better; height channels need appropriate positions and content."
+    },
+    {
+      "question": "What changes cost?",
+      "answer": "Zones, speaker and display models, wall/ceiling work, sources, amplification, control and installation access."
+    }
+  ],
+  "media": [
+    {
+      "id": "ma-room",
+      "subject": "One living room with seated positions",
+      "view": "Wide daytime and evening installed views",
+      "status": "needed",
+      "src": null,
+      "alt": null,
+      "sourceKey": "display",
+      "rightsStatus": "unconfirmed"
+    },
+    {
+      "id": "ma-speakers",
+      "subject": "Sonance VX, Invisible and selected Triad",
+      "view": "Exact front/grille, installation and finish views",
+      "status": "needed",
+      "src": null,
+      "alt": null,
+      "sourceKey": "sonance",
+      "rightsStatus": "unconfirmed"
+    },
+    {
+      "id": "ma-tv",
+      "subject": "Selected OLED, Mini LED and art-style models",
+      "view": "Exact model and installation detail",
+      "status": "needed",
+      "src": null,
+      "alt": null,
+      "sourceKey": "display",
+      "rightsStatus": "unconfirmed"
+    }
+  ],
+  "sources": [
+    "sonance",
+    "invisible",
+    "triad",
+    "display",
+    "dolby",
+    "control4",
+    "connect"
+  ],
+  "inquiry": {
+    "heading": "Start with the project you have.",
+    "body": "Tell us which rooms matter, what already exists, and when construction starts. Share plans or photographs if you have them.",
+    "fields": [
+      "Project path",
+      "Rooms or zones",
+      "Existing systems",
+      "Construction timing",
+      "Contact details"
+    ],
+    "endpointStatus": "requires existing site form integration"
+  },
+  "navigation": [
+    {
+      "label": "Overview",
+      "href": "#overview"
+    },
+    {
+      "label": "Design",
+      "href": "#design"
+    },
+    {
+      "label": "Systems",
+      "href": "#systems"
+    },
+    {
+      "label": "Installation",
+      "href": "#installation"
+    },
+    {
+      "label": "Investment",
+      "href": "#investment"
+    }
+  ],
+  "openingQA": {
+    "question": "Why does each room need its own sound and picture plan?",
+    "answer": [
+      "Background music needs coverage where people move. A film needs dialogue and a sound field positioned around the seats; a television needs to suit the room’s light.",
+      "Matching those roles before selecting equipment makes the system useful in the actual room. It also tells you what should remain visible and what can be concealed."
+    ]
+  },
+  "groups": [
+    {
+      "id": "overview",
+      "label": "Overview",
+      "chapterIds": [
+        "rooms"
+      ]
+    },
+    {
+      "id": "design",
+      "label": "Design",
+      "chapterIds": [
+        "picture",
+        "surround"
+      ]
+    },
+    {
+      "id": "systems",
+      "label": "Systems",
+      "chapterIds": [
+        "speakers",
+        "control"
+      ]
+    },
+    {
+      "id": "installation",
+      "label": "Installation",
+      "chapterIds": [
+        "installation"
+      ]
+    },
+    {
+      "id": "investment",
+      "label": "Investment",
+      "chapterIds": []
+    }
+  ],
+  "signatureStudy": {
+    "group": "design",
+    "heading": "How the design fits together.",
+    "description": "Begin with a room-use map, then zoom into one living room. Speaker positions, TV choice and control remain tied to that map.",
+    "status": "artwork-needed",
+    "src": null,
+    "alt": null,
+    "spatialWord": null
+  },
+  "layoutContract": {
+    "opening": "full-width",
+    "splitStart": "overview",
+    "splitEnd": "investment",
+    "desktopColumns": [
+      1,
+      3
+    ],
+    "closing": "full-width",
+    "scrollOwner": "document"
+  },
+  "spatialWords": {
+    "opening": null,
+    "study": null,
+    "note": "Other final word choices remain unresolved; do not invent a universal set."
+  }
+}

@@ -1,0 +1,23 @@
+---
+interface Props { slotId: string; kicker: string; heading: string; lede: string; }
+const { slotId, kicker, heading, lede } = Astro.props;
+---
+<section class="neutral-study" id={slotId} data-study-slot={slotId} data-study-built="true" data-surface-role="editorial" aria-labelledby={`${slotId}-title`}>
+  <p class="section-kicker">{kicker}</p>
+  <h3 id={`${slotId}-title`}>{heading}</h3>
+  <p class="neutral-lede">{lede}</p>
+  <div class="neutral-visual"><slot /></div>
+</section>
+<style>
+.neutral-study {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 2.5rem;
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  border: 1px solid var(--color-border-paper);
+}
+.neutral-study h3 { font-size: clamp(1.7rem, 2.6vw, 2.4rem); max-width: 22ch; color: var(--color-text-on-paper); }
+.neutral-lede { max-width: 62ch; line-height: 1.55; color: var(--color-text-muted-paper); }
+.neutral-visual { min-width: 0; }
+.neutral-visual :global(svg) { display: block; width: 100%; height: auto; }
+</style>

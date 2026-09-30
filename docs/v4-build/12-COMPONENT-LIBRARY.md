@@ -1,0 +1,17 @@
+# Component library
+
+Revision: 30 September 2026. These sections are shared. A service page passes its own facts in. It does not copy another service's claims.
+
+| Component | File | Use |
+| --- | --- | --- |
+| Site header | `src/components/SiteNav.astro` | Green utility bar, centered lockup, Company / Home Solutions / Resources / Support. Labels and hrefs: `src/config/navigation.ts`. |
+| Chapter rail | `src/components/ServicePageShell.astro` | Sticky 25% forest rail. Eight services, five chapters under the active one. |
+| Answer frame | `src/components/library/AnswerFrame.astro` | Thick black frame around a direct answer. Used in Questions. |
+| Hover-card CTA | `src/components/library/HoverCardCta.astro` | Black squares at the end of a service page. The photograph appears on hover. Each card can set the inquiry path. |
+| Comparison | `src/components/library/ComparisonSplit.astro` | Two-column before/after. Shading uses view-through against darkness. |
+| Case study | `src/components/library/CaseStudy.astro` | Diptych study page. Specimen: `/company/our-work/`. Product photographs stay labeled as illustrations until a project record is cleared. |
+| Hub page | `src/components/services/hubs/HubPage.astro` | Draft service frame with placed photographs, honest missing slots, a Forest signature study and a neutral technical study. |
+
+Home Solutions in the header points at the existing system routes: Lighting Control, Motorized Shades, Whole-Home Audio, Home Theater, Networking & Wi-Fi, Security & Access. The left rail still lists all eight services.
+
+Do not fill these sections with uncleared prices, project counts, warranties, response times, or client quotes. The navbar mockup shows 720-638-1603. Business facts still record that number as one of three conflicting candidates, so it is displayed in the header and is not a confirmed LocalBusiness telephone.

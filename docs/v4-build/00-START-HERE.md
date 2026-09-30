@@ -1,60 +1,22 @@
-# DAVG V4 — Start building in Cursor
+# DAVG V4 — Current build entry point
+Revision: 30 September 2026 · repair based on checkpoint dc9ff37.
 
-29 September 2026. This is the active build pack. It replaces the earlier pre-build, Claude reconciliation and fixed motion directives. The Relume chat is excluded.
+Work in the existing `bwagner2540-sketch/davg-korta-v4` checkout. Read `11-SYNC-CONTRACT.md`, `02-SERVICE-LAYOUT.md` and `BUILD-STATE.md`. Use `npm run dev` for local review and `npm run build:sandbox` for the local static check. `npm run build` is a public-release build and deliberately stops while no pages are approved.
 
-## Cursor already building?
+The Motorized Shading sandbox is one implementation rendered at both `/systems/motorized-shades/` and `/solutions/motorized-shades/`. The live copy is `src/content/services/motorized-shades.json` with `src/components/services/ServicePage.astro`. Neither route may be published, including a Cloudflare preview. Keep the specimen current with approved decisions; do not replace it with an archived starter.
 
-Keep working in the existing local Cursor project. Read `06-CURSOR-LOCAL-WORKFLOW.md` first. Add this pack only as reference files at `docs/v4-build/`; do not replace working website code or restart the build.
+Architectural Lighting is a draft rendered by `src/components/services/hubs/HubPage.astro` from `src/data/services/architectural-lighting.json`. It is not a collection entry and it is not approved for release. The other six `/systems/` routes remain `ServiceDraft` drafts until their hub pass. A route existing is not a finished page.
 
-## Your first hour
+Active ownership:
+- `01-DESIGN-SYSTEM.md`: visual tokens and typography.
+- `13-SURFACE-COLOR-SYSTEM.md`: service-page surface roles. It replaces the previous two-surface addendum, including any forced dark/cream ratio, consecutive-cream limit, brass accent or conversion claim.
+- `02-SERVICE-LAYOUT.md`: full-width openings/closings, five chapters and nested navigation.
+- `src/content/services/motorized-shades.json`: live shading copy. The other seven services stay in `src/data/services/*.json` as drafts, not collection entries. Architectural Lighting is rendered by `HubPage`; progress is `HUB-PROGRESS.md`.
+- `src/config/site.ts`: names, URLs and contact configuration.
+- `src/config/publication.json`: explicit page-release allowlist, empty today.
+- `src/components/services/ServicePage.astro`: integrated shading specimen, used by both shading routes.
+- `11-SYNC-CONTRACT.md` / `BUILD-STATE.md`: source precedence and actual verification.
 
-1. Copy this folder into the existing Cursor project as `docs/v4-build/`. Keep your local code and assets.
-2. Open `prompts/01-FIRST-HOUR.md` and paste its prompt into Cursor Agent. Attach the supplied layout screenshots and `07-motorized-shades-green.jpeg`.
-3. Build the 25% sticky left / 75% scrolling right shell and the first five Motorized Shading sections with the actual copy and blank media rectangles.
-4. Open the preview. Check desktop proportions, mobile order and text. Save this small win. The rest of the page can follow in the next batch.
+Everything under `archive/` and `v4-gpt-original-design/` is reference. Old 15-section maps, document 09's eleven labels and the nine-label starter cannot override these active files. Archived PDFs and spreadsheets are not current completion reports. Reference artwork does not establish dimensions, measured outcomes or project proof.
 
-The hour is a work target, not a promise to deploy the whole site. If the shell takes longer, finish it and the hero before adding another task.
-
-## What stays fixed
-
-DAVG's voice, the Korta visual direction, its logo treatment, the eight service names, the requested 25/75 service-page shell, and each service's detailed educational content. Read `01-DESIGN-SYSTEM.md` once. Then use only the hub you are building.
-
-## What can wait
-
-Photo sourcing, finished cutaways, advanced interaction, final background-word selection, named bylines, future city/spoke/resource pages, CMS, and old component-library paperwork. A blank image slot is enough to build and review a section. No Claude approval, component reconciliation, research dossier, or architectural-technician wording is required to start or finish a page layout.
-
-## Finish pages in small wins
-
-Recommended order: Motorized Shading → Architectural Lighting → Media & Audio → Home Intelligence → Private Cinemas → Digital Infrastructure & Privacy → Security Cameras & Access Control → Outdoor Entertainment. This order reuses the Lutron selection components first. It is a practical recommendation, not a requirement.
-
-For each service: build 01–05, then 06–10, then 11–15; do a mobile pass; save. The IDs locate content. They do not require fifteen full-height screens. Section 06 can contain several scrollable selection modules without becoming five new pages.
-
-The spreadsheet has one service tab at a time. Mark Content and Layout separately. Leave Media pending until the section is ready for imagery.
-
-## Open only these files
-
-| Job | File |
-|---|---|
-| Visual decisions | `01-DESIGN-SYSTEM.md` |
-| Service shell and section anatomy | `02-SERVICE-LAYOUT.md` |
-| Build order and remaining pages | `03-PAGES-AND-BUILD-ORDER.md` |
-| Paste-ready Cursor tasks | `prompts/` |
-| Copy, topics and exact section order | The selected file in `hubs/` |
-| Decisions recovered, actual gaps, archive history | `04-RECONCILIATION.md` |
-| Brand and contact configuration | `05-BUSINESS-FACTS.md` |
-
-## Confirmed project and local workflow
-
-Brandon confirmed that `bwagner2540-sketch/davg-korta-v4` is the deployment repository. Cursor edits the local project already open on his computer. GitHub receives committed code for deployment; Dropbox supplies the current reference pack. Motorized Shading on localhost is the design/layout test page before creating the other pages. That page is a design sandbox: it must reflect the latest approved decisions, and it must not be deployed to production or preview.
-
-Preserve Cursor's current files and unpublished experiments. Do not change projects, reset work, fetch another implementation, or treat the earlier `davg-ai` typography PR as a prerequisite. Read the local `docs/v4-build/` files for brand, layout, exact section order and copy. A separate agent checkout is not the running Cursor project.
-
-## Build complete versus public release
-
-A page layout is complete when its real text, tables, section order, blank image dimensions, links and mobile behavior work. Missing images do not stop that milestone. Before a public release, replace or hide empty proof modules, test the form end-to-end, and remove unresolved factual claims from public copy. Test the existing project's normal production build. A working preview can be deployed earlier with indexing disabled.
-
-## New: cleaned GBB comparisons
-
-Read `07-GBB-SECTION-MAP.md` for the content adapted from Claude GBB Refined 6.7.pdf. Section-ready copy and JSON are in `content-additions/gbb/`. Use them to refine the existing service chapters, beginning with the current Motorized Shading test page. No new product pages or process gates are required.
-
-
+No push, merge or deployment is part of this repair. Workers Builds preview settings were not changed. Apply the patch locally first; report the resulting commit and verify it before claiming Cursor is synced.

@@ -1,46 +1,37 @@
-# Eight service pages — 25/75 layout
+# DAVG V4 — Active service-page layout
+Revision: 30 September 2026. This supersedes all prior 9-, 11- and 15-label rendered maps.
 
-## Page frame
+The ordered frame is:
+1. Full-width architectural hero.
+2. Full-width opening question and direct answer.
+3. A bounded desktop middle: 25% Forest sticky rail and 75% editorial field.
+4. Full-width Questions section, outside the middle.
+5. Full-width project inquiry, outside the middle.
 
-Desktop: left rail is exactly one quarter of the page frame; right field is three quarters. Use `grid-template-columns: minmax(0,1fr) minmax(0,3fr)`. These are frame proportions before internal padding. Keep the document as the vertical scroller. Make the rail sticky below the existing masthead; do not make the 75% column a second wheel-scroll pane.
+The middle has exactly five chapter groups and links: Overview #overview; Design #design; Systems #systems; Installation #installation; Investment #investment. Chapters contain as many meaningful subsections as the service needs. They do not impose fifteen screens, mandatory cards or sentence-length rail labels. FAQ questions stay in Questions and never become chapter names.
 
-Rail: original DAVG mark, service navigation with current service emphasized, and a small set of chapter anchors relevant to that page. Use the source-copy groups to keep the navigation short. Do not cram fifteen labels beside the page. If the rail exceeds the available viewport, only its menu may overflow. No portrait or required staff title.
+The eight service names remain in the rail. The current service is emphasized. Its five chapter links are nested immediately beneath that service inside its navigation item, before the next service. No detached 'On this page' block after all eight services. The single source for rail labels is `chapterNavigation` in `src/config/site.ts`.
 
-Right: actual service headline, opening explanation and primary action, followed by the hub's ordered chapters. Use the full right field for media/studies. Readable body copy has a comfortable measure around 55–70 characters. A comparison can divide the field 50/50. A technical study can divide image/text around 60/40. These are local section choices inside the 75% field.
+Desktop uses `minmax(0,1fr) minmax(0,3fr)` before internal padding. The rail starts with Overview and its sticky lifetime ends at the bottom of Investment. The document owns vertical scrolling. Only the rail menu may scroll when cramped; the right field is not a second scrolling pane. Below 1024px the middle becomes one column with a compact disclosure menu; selecting an anchor closes the menu. Do not shrink wide comparison tables to fit mobile.
 
-Mobile starting breakpoint: 1024px; adjust if the actual navigation becomes cramped. Replace the desktop rail with a compact native disclosure menu or reuse the existing mobile navigation. Keep the source-copy order, full-width media, anchor offsets and readable tables. Selection tables can become stacked rows or a deliberate horizontal table scroll. Do not shrink text to fit all columns.
+Shading placement, with the surface role for each passage:
+- Hero, full width: Ink, with the architectural photograph.
+- Opening answer, full width: Paper.
+- Overview, right field: Paper. Opening types, survey and window conditions.
+- Design, right field: Paper for fabric, privacy/darkness, the view-through comparison and ordinary mounting. The recessed plate is the only signature study, marked `data-signature-study`, and keeps the Forest-to-Ink treatment inside that component.
+- Systems, right field: Charcoal. Three shade families, supported control platforms, keypads and room scenes.
+- Installation, right field: Paper. Retrofit, remodel and custom-build paths.
+- Investment, right field: Stone. Complete project scope, dependencies and delivery. No invented installed prices.
+- Questions, full width: Paper. Inquiry, full width: Ink.
 
-## Working section anatomy
+The rail stays Forest and does not repaint with the chapter. Draft services use the same roles and do not receive a placeholder study.
 
-| Pattern | Build it this way |
-|---|---|
-| Editorial hero | Headline, short deck, one primary action, broad blank media field. Put category context in ordinary text if no eyebrow is needed. |
-| Direct answer | Short lead and meaningful explanation, with a service identifier only if the composition has room. |
-| Room experience | Wide image slot plus a few useful room/time examples. |
-| System architecture | Unboxed text/specification split or diagram slot with a plain system explanation. |
-| Signature study | Large diagram/comparison slot, live headline and caption; static state first. |
-| Selection guide | Several purposeful modules: decision tables, best-fit/tradeoff text and associated product/photo slots. Do not collapse the deep education into three marketing cards. |
-| Applied examples | Actual source-copy scenarios with a matched slot per example where useful. |
-| Technical detail | Large cutaway/detail rectangle and adjacent leader-label/specification text. |
-| Build route / pitfalls | Short construction/retrofit branches and useful mistakes to avoid. |
-| Project proof | Reserved image/caption structure in preview. Hide it publicly until real evidence is available. |
-| Investment | Scope comparison and cost drivers. No invented installed prices. |
-| Ownership | Steps for measure/install/program/test/handoff in an unboxed sequence. |
-| FAQ | Native `details/summary` or existing accessible accordion; preserve the supplied questions/answers. |
-| Inquiry | Shared working form, with service preselected and the page-specific brief fields from the hub. A direct contact route remains available. |
+Hardware families, control platforms, and Good/Better/Best scopes stay three separate comparisons. Palladiom is not an automatic quality or price endpoint.
 
-## Blank media now; images later
+The reusable section library lives in `src/components/library/` and is catalogued in `12-COMPONENT-LIBRARY.md`. Service pages compose those sections. They do not each invent a new layout.
 
-Use simple square-edged blank rectangles at the intended aspect ratio. A 16:9 room slot, 4:3 rack/detail slot and 1:1 product slot are starting choices; change them to fit the exact screenshot composition. Every slot has a stable ID such as `shading-06-palladiom`, subject and ratio in the content manifest. The visible placeholder can be blank; its purpose remains documented outside public copy. Do not require one literal square aspect ratio for every image.
+The signature study is the supplied recessed coordination plate in Design. The plate is conceptual. Pocket size, drive, finish and solar logic on the artwork are not a universal specification and do not prove a completed DAVG project. Existing product photographs stay captioned as illustrations.
 
-Replace a slot by changing its source, not rebuilding the section. Keep final images from moving the text after loading. Empty filenames should render a placeholder rather than a broken `<img>`. Concept studies can explain systems; they do not become completed-project claims.
+Local specimen source: `src/content/services/motorized-shades.json` rendered by `src/components/services/ServicePage.astro` at both `/systems/motorized-shades/` and `/solutions/motorized-shades/`. Architectural Lighting uses `HubPage.astro` and `src/data/services/architectural-lighting.json`. The other six service files still use `ServiceDraft.astro`. All seven remain drafts, not live collection entries. No public release is implied.
 
-## Section maps
-
-Each hub begins with an ordered 01–15 checklist containing a layout and visible completion criterion. It continues with the substantive copy recovered on September 28. Build from that copy; do not rewrite the full service to fit a generic template. The common shell does not make the topics or section layouts identical.
-
-## Starter code
-
-`starter/` contains small portable components and the CSS token block. They are optional implementation starters, not a replacement Astro project. Cursor should adapt them to existing layout, navigation, assets and imports. Set the sticky offset to the actual masthead height. The snippets still need integration and browser checking inside your project.
-
-
+The site header is `SiteNav`, from `src/config/navigation.ts`. It is separate from the five-chapter rail.

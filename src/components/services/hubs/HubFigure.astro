@@ -1,0 +1,31 @@
+---
+import MediaPlaceholder from '../../MediaPlaceholder.astro';
+interface Photo {
+  id: string;
+  src: string;
+  alt: string;
+  title: string;
+  caption: string;
+  fit?: 'cover' | 'contain';
+}
+interface Props {
+  photo: Photo;
+  ratio?: string;
+  loading?: 'lazy' | 'eager';
+  sizes?: string;
+}
+const { photo, ratio = '16 / 10', loading = 'lazy', sizes = '(min-width: 1024px) 42vw, 100vw' } = Astro.props;
+---
+<figure class="hub-figure" data-photo-slot={photo.id} data-slot-status="placed">
+  <MediaPlaceholder id={photo.id} subject={photo.title} ratio={ratio} src={photo.src} alt={photo.alt} loading={loading} sizes={sizes} fit={photo.fit ?? 'cover'} />
+  <figcaption>
+    <strong>{photo.title}</strong>
+    <span>{photo.caption}</span>
+    <span class="mono-label">Illustration · rights unconfirmed</span>
+  </figcaption>
+</figure>
+<style>
+.hub-figure { display: grid; gap: 0.75rem; margin: 0; }
+.hub-figure figcaption { display: grid; gap: 0.35rem; max-width: 62ch; color: var(--surface-muted, var(--color-text-muted-dark)); font-size: 0.9375rem; line-height: 1.45; }
+.hub-figure strong { color: var(--surface-fg, inherit); font-weight: 500; }
+</style>
