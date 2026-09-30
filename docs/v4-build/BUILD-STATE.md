@@ -1,5 +1,8 @@
 # DAVG V4 — repair state, 30 September 2026
 
+## Hub production — Motorized Shading consistency
+Implemented on the existing `ServicePage`, not `HubPage`. `motorized-shades-04` is the recessed Forest signature study. `motorized-shades-05` is the existing paper comparison of solar fabric and darkness. Kit photographs were not substituted. Slots 06–08 stay missing. Desktop 1440 and mobile 390 checked on `/systems/motorized-shades/`. `/solutions/motorized-shades/` serves the same studies. Not added to `approvedPages`. Not deployed.
+
 ## Hub production — Outdoor Entertainment
 Draft at `/systems/outdoor-entertainment/` via `HubPage`. Three photographs and the Episode ES-LS-2 pair are placed. Captions identify Episode and SunBrite, not Sonance. Sonance Landscape/Garden is still missing. Slots 06–08 missing. Sandbox build at 14:41 passed, 26 pages. Desktop 1440 and mobile 390 checked. Not deployed.
 

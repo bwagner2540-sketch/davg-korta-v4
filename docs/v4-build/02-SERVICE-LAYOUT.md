@@ -30,7 +30,7 @@ Hardware families, control platforms, and Good/Better/Best scopes stay three sep
 
 The reusable section library lives in `src/components/library/` and is catalogued in `12-COMPONENT-LIBRARY.md`. Service pages compose those sections. They do not each invent a new layout.
 
-The signature study is the supplied recessed coordination plate in Design. The plate is conceptual. Pocket size, drive, finish and solar logic on the artwork are not a universal specification and do not prove a completed DAVG project. Existing product photographs stay captioned as illustrations.
+The signature study is the supplied recessed coordination plate in Design, marked `motorized-shades-04`. The plate is conceptual. Pocket size, drive, finish and solar logic on the artwork are not a universal specification and do not prove a completed DAVG project. The existing solar-versus-darkness comparison is the neutral study `motorized-shades-05` and stays on paper. Existing product photographs stay captioned as illustrations. Kit photographs were not substituted. Slots 06, 07 and 08 remain empty because those photographs are not permission-cleared project proof.
 
 Local specimen source: `src/content/services/motorized-shades.json` rendered by `src/components/services/ServicePage.astro` at both `/systems/motorized-shades/` and `/solutions/motorized-shades/`. The seven draft service hubs use `HubPage.astro` with their JSON files. None of those seven are live collection entries. No public release is implied.
 
