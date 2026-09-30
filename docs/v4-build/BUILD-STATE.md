@@ -1,5 +1,8 @@
 # DAVG V4 — repair state, 30 September 2026
 
+## Hub production — Home Intelligence
+Draft rendered by `HubPage` at `/systems/home-intelligence/`. Slots 01 and 03 placed. Slot 02 withheld because the touchscreen shows personal names. Slots 06–08 missing. Halo and Halo Touch product photographs are placed. Studies are conceptual. Desktop 1440 and mobile 390 checked in the browser: no overflow, no Vite overlay, Forest only on the rail and the signature study. Not deployed.
+
 ## Hub production — Architectural Lighting
 Implemented on branch `checkpoint/davg-local-2026-09-30`. Handoff installed from `/Users/brandon-davg/Documents/DAVG-HUB-BUILD-QUEUE.md` and `DAVG-HUB-PRODUCTION-KIT.zip`. The Dropbox copies are byte-identical (`a79a2e170d0ddaf2a6cb42767f2d680b14acb9379bc980e4f1072a1fce29c7af` and `52ed83075466579d020038f0fea19b5904781e7d12353e8ea7dfffa5f17e6c4b`). Kit path: `docs/v4-build/hub-production-kit/`. Progress: `docs/v4-build/HUB-PROGRESS.md`.
 

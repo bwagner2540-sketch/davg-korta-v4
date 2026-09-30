@@ -32,6 +32,6 @@ The reusable section library lives in `src/components/library/` and is catalogue
 
 The signature study is the supplied recessed coordination plate in Design. The plate is conceptual. Pocket size, drive, finish and solar logic on the artwork are not a universal specification and do not prove a completed DAVG project. Existing product photographs stay captioned as illustrations.
 
-Local specimen source: `src/content/services/motorized-shades.json` rendered by `src/components/services/ServicePage.astro` at both `/systems/motorized-shades/` and `/solutions/motorized-shades/`. Architectural Lighting uses `HubPage.astro` and `src/data/services/architectural-lighting.json`. The other six service files still use `ServiceDraft.astro`. All seven remain drafts, not live collection entries. No public release is implied.
+Local specimen source: `src/content/services/motorized-shades.json` rendered by `src/components/services/ServicePage.astro` at both `/systems/motorized-shades/` and `/solutions/motorized-shades/`. Architectural Lighting and Home Intelligence use `HubPage.astro` with their JSON files. The other five service files still use `ServiceDraft.astro`. All seven remain drafts, not live collection entries. No public release is implied.
 
 The site header is `SiteNav`, from `src/config/navigation.ts`. It is separate from the five-chapter rail.

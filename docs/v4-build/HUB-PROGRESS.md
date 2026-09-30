@@ -7,8 +7,8 @@ Branch: `checkpoint/davg-local-2026-09-30`. Deploy: not run. A push to `origin` 
 
 | Hub | Components built | Required photos / 6 | Studies / 2 | Additional product views | Visual checks | Commit | Deployment URL | Remaining gaps |
 |---|---|---|---|---|---|---|---|---|
-| Architectural Lighting | HubPage, SignatureFolio, NeutralStudy | 3 placed (01 hero, 02 keypad, 03 kitchen). 0 proof-verified. 06, 07, 08 missing | 2 built, conceptual, not fact-approved | Alisse tile, Alisse wallpaper, Palladiom QS, RRD-W7B-WH, RRD-H6BRL-MN, RR-T10RL-SW, Vibrant AZ-43 placed. Sunnata front missing. LED driver missing | Desktop 1440: two-column hero, Forest rail, images decoded, no overflow, no Vite overlay. Mobile 390: rail hidden, one column, no overflow, no overlay. Mobile screenshot timed out | pending this commit | none | 06 project wide, 07 project detail, 08 regional proof, Sunnata, driver, same-room layer photo |
-| Home Intelligence | not started | 0 / 6 | 0 / 2 | — | — | — | none | Next hub |
+| Architectural Lighting | HubPage, SignatureFolio, NeutralStudy | 3 placed (01 hero, 02 keypad, 03 kitchen). 0 proof-verified. 06, 07, 08 missing | 2 built, conceptual, not fact-approved | Alisse tile, Alisse wallpaper, Palladiom QS, RRD-W7B-WH, RRD-H6BRL-MN, RR-T10RL-SW, Vibrant AZ-43 placed. Sunnata front missing. LED driver missing | Desktop 1440: two-column hero, Forest rail, images decoded, no overflow, no Vite overlay. Mobile 390: rail hidden, one column, no overflow, no overlay. Mobile screenshot timed out | 460c771 | none | 06 project wide, 07 project detail, 08 regional proof, Sunnata, driver, same-room layer photo |
+| Home Intelligence | HubPage, SignatureFolio, NeutralStudy | 2 placed (01 dusk exterior, 03 living room). 02 withheld. 06, 07, 08 missing | 2 built, conceptual | Halo and Halo Touch docks, plus a wall touchscreen of lighting loads. Selected Avalon Beach screen withheld | Desktop 1440: two-column hero, Forest rail, images decoded, no overflow, no overlay. Mobile 390: rail hidden, one column, no overflow, no overlay | this commit | none | 02 personal names on screen, 06, 07, 08, verified residence |
 | Media & Audio | not started | 0 / 6 | 0 / 2 | — | — | — | none | Queued |
 | Private Cinemas | not started | 0 / 6 | 0 / 2 | — | — | — | none | Queued |
 | Infrastructure & Privacy | not started | 0 / 6 | 0 / 2 | — | — | — | none | Queued. Rack_cables-1.jpg will stay withheld |
@@ -16,4 +16,4 @@ Branch: `checkpoint/davg-local-2026-09-30`. Deploy: not run. A push to `origin` 
 | Outdoor Entertainment | not started | 0 / 6 | 0 / 2 | — | — | — | none | Queued. Episode photos must not be captioned as Sonance |
 | Motorized Shading | existing ServicePage specimen | existing product photographs retained; 06–08 still missing | recessed study exists; neutral solar study not yet marked | existing keypad and family photos | prior session | not in this commit | none — must not deploy | Consistency pass is last |
 
-Next unfinished task: Home Intelligence at `/systems/home-intelligence/`.
+Next unfinished task: Media & Audio at `/systems/media-audio/`.
