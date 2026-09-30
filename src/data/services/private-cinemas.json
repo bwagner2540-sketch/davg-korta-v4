@@ -1,0 +1,337 @@
+{
+  "slug": "private-cinemas",
+  "name": "Private Cinemas",
+  "seo": {
+    "title": "Private Cinemas | DAVG",
+    "description": "Seat positions determine sightlines, screen size, speaker geometry, and much of the room design. Equipment comes after that plan.",
+    "canonicalPath": "/systems/private-cinemas/"
+  },
+  "hero": {
+    "heading": "Start with the seats. Build the room around them.",
+    "deck": "Seat positions determine sightlines, screen size, speaker geometry, and much of the room design. Equipment comes after that plan.",
+    "ctaLabel": "Discuss your project",
+    "ctaHref": "#project-inquiry"
+  },
+  "study": "One conceptual cinema section and a separate wall diagram. Neither is a measured room.",
+  "chapters": [
+    {
+      "id": "room",
+      "title": "Does this need to be a dedicated cinema?",
+      "layout": "room-cutaway",
+      "paragraphs": [
+        "A dedicated room lets you control light, seating and sound more closely. A shared media room has to accommodate daylight, circulation and other uses.",
+        "Decide how the room will be used and how often. A cinema is justified by that use, not by filling a spare room with the largest possible screen.",
+        "The room dimensions and structure create limits before a projector is selected. Doors, soffits, ceiling height and equipment access all belong in the first survey."
+      ],
+      "visual": "One measured or clearly illustrative room cutaway with doors, soffits and intended seat rows.",
+      "sources": [
+        "dolby",
+        "screens"
+      ],
+      "table": null,
+      "detail": null
+    },
+    {
+      "id": "seats",
+      "title": "The second row needs a sightline too.",
+      "layout": "sightline-study",
+      "paragraphs": [
+        "Screen height and seat distance determine how comfortably people can watch. A rear row needs to see over the front row without forcing the screen too high.",
+        "Reclining seats change clearances and eye positions. Riser height follows those positions and the room\u2019s available headroom.",
+        "Review the plan and section together. The last seat should be part of the design from the start, not added after the screen is ordered."
+      ],
+      "visual": "Section drawing showing actual eye positions and sightlines. No universal seat-distance or riser rule.",
+      "sources": [],
+      "table": null,
+      "detail": null
+    },
+    {
+      "id": "image",
+      "title": "Projection or direct view?",
+      "layout": "comparison",
+      "paragraphs": [
+        "Projection can create a large image with equipment outside the screen plane. It also depends on throw distance, screen material, light control and projector placement.",
+        "A direct-view display brings its own light source to the screen. Its size, installation access, reflections and wall construction still need review.",
+        "An acoustically transparent projection screen allows suitable speakers behind it. Screen material must fit the projector geometry and lighting conditions; an ambient-light-rejecting label is not a cure for every room."
+      ],
+      "visual": "Show projector/light path and speakers behind an AT screen. Pair with a direct-view wall section.",
+      "sources": [
+        "screens",
+        "unity",
+        "display"
+      ],
+      "table": {
+        "headers": [
+          "Choice",
+          "Reason to consider it",
+          "Check"
+        ],
+        "rows": [
+          [
+            "Projection",
+            "Large image and flexible screen integration",
+            "Throw, room light, ventilation and material"
+          ],
+          [
+            "Direct view",
+            "Emissive picture without projection throw",
+            "Size, reflections, access and support"
+          ],
+          [
+            "Acoustically transparent screen",
+            "Sound from behind the image",
+            "Speaker clearance and selected material"
+          ],
+          [
+            "Light-rejecting material",
+            "Specific ambient-light conditions",
+            "Projector position and viewing geometry"
+          ]
+        ]
+      },
+      "detail": null
+    },
+    {
+      "id": "sound",
+      "title": "Channels describe positions, not quality.",
+      "layout": "sound-map",
+      "paragraphs": [
+        "A 7.2.4 installation describes seven main-channel speaker positions, two subwoofers in the design, and four height-channel positions. The source format\u2019s LFE channel and the number of installed subwoofers are different things.",
+        "Ear-level speakers establish the horizontal sound field. Overhead speakers provide the height layer; placing both groups in the ceiling weakens that separation.",
+        "Subwoofer positions and calibration affect how evenly bass reaches the seats. Additional speakers or subwoofers should solve a defined coverage problem."
+      ],
+      "visual": "Plan and section of the same room with separate ear-level, height and subwoofer labels. Do not call any existing DAVG project 7.2.4 without records.",
+      "sources": [
+        "dolby",
+        "triad"
+      ],
+      "table": null,
+      "detail": null
+    },
+    {
+      "id": "acoustics",
+      "title": "Treating the room and isolating it are different work.",
+      "layout": "construction-detail",
+      "paragraphs": [
+        "Acoustic treatment changes reflections and decay inside the room. Sound isolation reduces transmission through the room\u2019s boundaries.",
+        "Isolation depends on walls, ceilings, doors, penetrations and paths around them. A treated wall does not stop sound escaping through an untreated door or duct.",
+        "Ventilation has to move air without creating an obvious noise or sound path. That coordination belongs with the builder and mechanical team before the finish package is set."
+      ],
+      "visual": "Real assembly sections, door seal and ventilation path. Clearly label design concepts; no unverified decibel claims.",
+      "sources": [],
+      "table": null,
+      "detail": null
+    },
+    {
+      "id": "operation",
+      "title": "Make the room ready in one deliberate sequence.",
+      "layout": "scene-study",
+      "paragraphs": [
+        "A movie scene can select the source, set the sound path, lower supported shades and fade lights to their agreed levels. A Pause scene can bring enough light back to move around.",
+        "Commissioning checks the image, sound, sources and controls at the intended seats. The target is a consistent experience across the designed seating area.",
+        "Leave access for projector filters, equipment replacement and cable service. The room should remain serviceable after the decorative panels are installed."
+      ],
+      "visual": "Movie and Pause states of the same room, with a labeled service-access elevation.",
+      "sources": [
+        "control4",
+        "dolby"
+      ],
+      "table": null,
+      "detail": null
+    }
+  ],
+  "projectPaths": [
+    {
+      "type": "retrofit",
+      "title": "Assess the available room",
+      "body": "Measure structure, doors, seating and noise paths. Decide what can be improved within the existing envelope and what requires construction."
+    },
+    {
+      "type": "remodel",
+      "title": "Use access to solve the room",
+      "body": "Coordinate risers, isolation details, ventilation, wiring and screen wall before finishing. Review sightlines with the selected seating."
+    },
+    {
+      "type": "custom-build",
+      "title": "Reserve the right envelope",
+      "body": "Coordinate dimensions, structure, mechanical noise, equipment access and adjoining rooms with the architect and builder. Allow the cinema design to shape the shell early."
+    }
+  ],
+  "scopeOptions": [
+    {
+      "label": "Good \u2014 dedicated viewing",
+      "scope": "Defined seating plan, suitable image and sound, basic light control and commissioned operation.",
+      "dependencies": "Existing envelope limits and required construction are explicit."
+    },
+    {
+      "label": "Better \u2014 designed cinema",
+      "scope": "Coordinated sightlines, screen/speaker geometry, subwoofer placement, acoustic treatment and scene control.",
+      "dependencies": "Isolation work is a separate assembly scope, not implied by treatment."
+    },
+    {
+      "label": "Best \u2014 room and structure together",
+      "scope": "Early architectural coordination, detailed isolation/ventilation design, custom integration and documented commissioning.",
+      "dependencies": "Channel count and equipment choices follow the room; no automatic hardware ladder."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "How big does the room need to be?",
+      "answer": "Enough for the chosen seats, clearances, image and speaker geometry. A measured plan determines the usable layout; one minimum dimension does not describe every cinema."
+    },
+    {
+      "question": "Will acoustic panels keep sound upstairs quiet?",
+      "answer": "Panels mainly change sound inside the cinema. Reducing transmission upstairs requires a review of structure, boundaries and flanking paths."
+    },
+    {
+      "question": "Is more Atmos always better?",
+      "answer": "No. Each channel needs a useful position and appropriate coverage; the room and seats determine whether more channels help."
+    },
+    {
+      "question": "What drives cost?",
+      "answer": "Construction, seating, screen and projector/display, speaker system, acoustic work, isolation, ventilation and commissioning."
+    }
+  ],
+  "media": [
+    {
+      "id": "pc-room",
+      "subject": "Actual cinema or labeled design study",
+      "view": "Finished cinema illustration. Not verified project proof.",
+      "status": "needed",
+      "src": "/images/private-cinemas-asset-d4ea83ac798a.webp",
+      "alt": "Cinema with a menu on the screen and a bar in front. Manufacturer library photograph.",
+      "sourceKey": "dolby",
+      "rightsStatus": "unconfirmed"
+    },
+    {
+      "id": "pc-screen",
+      "subject": "Selected screen material and projector",
+      "view": "No selected screen-material or projector photograph is in this set.",
+      "status": "needed",
+      "src": null,
+      "alt": null,
+      "sourceKey": "screens",
+      "rightsStatus": "unconfirmed"
+    },
+    {
+      "id": "pc-build",
+      "subject": "Isolation and treatment assemblies",
+      "view": "No isolation or treatment assembly photograph is in this set.",
+      "status": "needed",
+      "src": null,
+      "alt": null,
+      "sourceKey": null,
+      "rightsStatus": "unconfirmed"
+    }
+  ],
+  "sources": [
+    "dolby",
+    "triad",
+    "screens",
+    "unity",
+    "display",
+    "control4"
+  ],
+  "inquiry": {
+    "heading": "Start with the project you have.",
+    "body": "Tell us which rooms matter, what already exists, and when construction starts. Share plans or photographs if you have them.",
+    "fields": [
+      "Project path",
+      "Rooms or zones",
+      "Existing systems",
+      "Construction timing",
+      "Contact details"
+    ],
+    "endpointStatus": "requires existing site form integration"
+  },
+  "navigation": [
+    {
+      "label": "Overview",
+      "href": "#overview"
+    },
+    {
+      "label": "Design",
+      "href": "#design"
+    },
+    {
+      "label": "Systems",
+      "href": "#systems"
+    },
+    {
+      "label": "Installation",
+      "href": "#installation"
+    },
+    {
+      "label": "Investment",
+      "href": "#investment"
+    }
+  ],
+  "openingQA": {
+    "question": "What makes a room work as a cinema?",
+    "answer": [
+      "Seat positions establish sightlines and speaker geometry. The screen, lighting, acoustic treatment and ventilation then need to support those positions.",
+      "A coordinated room design addresses the experience at the intended seats. Adding larger equipment alone does not resolve the room."
+    ]
+  },
+  "groups": [
+    {
+      "id": "overview",
+      "label": "Overview",
+      "chapterIds": [
+        "room"
+      ]
+    },
+    {
+      "id": "design",
+      "label": "Design",
+      "chapterIds": [
+        "seats",
+        "acoustics"
+      ]
+    },
+    {
+      "id": "systems",
+      "label": "Systems",
+      "chapterIds": [
+        "image",
+        "sound",
+        "operation"
+      ]
+    },
+    {
+      "id": "installation",
+      "label": "Installation",
+      "chapterIds": []
+    },
+    {
+      "id": "investment",
+      "label": "Investment",
+      "chapterIds": []
+    }
+  ],
+  "signatureStudy": {
+    "group": "design",
+    "heading": "How the design fits together.",
+    "description": "Derived sightline section and a neutral wall, treatment and air-path diagram. No dedicated cinema mockup was supplied.",
+    "status": "conceptual-built",
+    "src": null,
+    "alt": null,
+    "spatialWord": null
+  },
+  "layoutContract": {
+    "opening": "full-width",
+    "splitStart": "overview",
+    "splitEnd": "investment",
+    "desktopColumns": [
+      1,
+      3
+    ],
+    "closing": "full-width",
+    "scrollOwner": "document"
+  },
+  "spatialWords": {
+    "opening": null,
+    "study": null,
+    "note": "Other final word choices remain unresolved; do not invent a universal set."
+  }
+}

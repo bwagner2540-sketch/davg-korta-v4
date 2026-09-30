@@ -1,5 +1,8 @@
 # DAVG V4 — repair state, 30 September 2026
 
+## Hub production — Private Cinemas
+Draft at `/systems/private-cinemas/` via `HubPage`. Three manufacturer photographs placed. The rack stays off the hero. Both studies are derived diagrams and say so. Slots 06–08, screen/projector and isolation photographs are missing. Desktop 1440 and mobile 390 checked. Sandbox build passed with the later hubs also wired locally. Not deployed.
+
 ## Hub production — Media & Audio
 Draft at `/systems/media-audio/` via `HubPage`. Slots 01–03 placed. Slots 06–08 missing. The Forest study is a conceptual invisible-speaker section. The PDX photograph is captioned as a visible loudspeaker. Desktop 1440 and mobile 390 checked: images decoded, no overflow, no Vite overlay. Not deployed.
 

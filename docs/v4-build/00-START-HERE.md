@@ -5,7 +5,7 @@ Work in the existing `bwagner2540-sketch/davg-korta-v4` checkout. Read `11-SYNC-
 
 The Motorized Shading sandbox is one implementation rendered at both `/systems/motorized-shades/` and `/solutions/motorized-shades/`. The live copy is `src/content/services/motorized-shades.json` with `src/components/services/ServicePage.astro`. Neither route may be published, including a Cloudflare preview. Keep the specimen current with approved decisions; do not replace it with an archived starter.
 
-Architectural Lighting, Home Intelligence and Media & Audio are drafts rendered by `HubPage`. They are not collection entries and they are not approved for release. The remaining `/systems/` routes stay on `ServiceDraft` until their hub pass. A route existing is not a finished page.
+Architectural Lighting, Home Intelligence, Media & Audio and Private Cinemas are drafts rendered by `HubPage`. They are not collection entries and they are not approved for release. Infrastructure, Security and Outdoor remain on `ServiceDraft` until their hub pass. A route existing is not a finished page.
 
 Active ownership:
 - `01-DESIGN-SYSTEM.md`: visual tokens and typography.
