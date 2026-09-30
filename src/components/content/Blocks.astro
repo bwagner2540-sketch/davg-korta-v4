@@ -1,0 +1,22 @@
+---
+/** Renders parsed hub copy blocks. */
+import type { Block } from '../../lib/hubs';
+import Heading from '../ui/Heading.astro';
+import SelectionTable from './SelectionTable.astro';
+import FAQ from './FAQ.astro';
+interface Props { blocks: Block[]; tone?: 'dark' | 'paper' }
+const { blocks, tone = 'dark' } = Astro.props;
+const p = tone === 'paper';
+const rule = p ? 'border-line-paper' : 'border-line-dark';
+---
+{blocks.map((b, i) => {
+  if (b.type === 'h3') return <Heading level={3} tone={tone} class={i ? 'mt-8' : ''}>{b.text}</Heading>;
+  if (b.type === 'p') return <p class:list={['m-0 max-w-measure text-pretty leading-[1.6]', i === 0 ? ['text-body-lg', p ? 'text-on-paper' : 'text-on-dark'] : ['text-body', p ? 'text-muted-paper' : 'text-muted-dark']]} set:html={b.html} />;
+  if (b.type === 'list') return (
+    <ul class:list={['m-0 max-w-measure list-none border-b p-0', rule]}>
+      {b.items.map((it) => <li class:list={['flex gap-3.5 border-t py-3.5 text-body', rule, p ? 'text-muted-paper' : 'text-muted-dark']}><span class="mt-2.5 size-1 flex-none rounded-full bg-signal"></span><span set:html={it} /></li>)}
+    </ul>
+  );
+  if (b.type === 'table') return <SelectionTable tone={tone} columns={b.head} rows={b.rows} minWidth={b.head.length > 3 ? 760 : 560} />;
+  if (b.type === 'faq') return <FAQ tone={tone} items={b.items} />;
+})}

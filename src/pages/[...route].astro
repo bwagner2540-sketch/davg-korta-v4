@@ -1,0 +1,62 @@
+---
+/** Generates the eight service hubs at their build-master routes. */
+import ServiceLayout from '../layouts/ServiceLayout.astro';
+import PlanSection from '../components/service/PlanSection.astro';
+import { buildHubs, type Hub } from '../lib/hubs';
+import { GROUPS, SLOTS, MEDIA, zoneOf } from '../data/services';
+import { GBB } from '../data/gbb';
+import { site } from '../config/site';
+
+export function getStaticPaths() {
+  const hubs = buildHubs(import.meta.glob('../data/hubs/*.md', { query: '?raw', import: 'default', eager: true }) as Record<string, string>);
+  return hubs.map((hub) => ({ params: { route: hub.path }, props: { hub, hubs } }));
+}
+interface Props { hub: Hub; hubs: Hub[] }
+const { hub, hubs } = Astro.props;
+
+const media = MEDIA[hub.n] ?? {};
+const services = hubs.map((h) => ({ name: h.name, href: h.route, current: h.n === hub.n }));
+const has = (nn: string) => hub.sections.some((s) => s.nn === nn);
+const chapters = GROUPS.filter((g) => g.sections.some(has)).map((g) => ({ id: g.id, label: g.label }));
+// Render order: top zone, then the five chapters in GROUPS order, then the end zone.
+const order = [
+  ...hub.sections.filter((s) => zoneOf(s.nn) === 'top'),
+  ...GROUPS.flatMap((g) => g.sections.map((nn) => hub.sections.find((s) => s.nn === nn)).filter((s): s is NonNullable<typeof s> => !!s)),
+  ...hub.sections.filter((s) => zoneOf(s.nn) === 'end'),
+];
+const seo = hub.sections[0]?.meta ?? {};
+const title = seo.headline ? `${hub.name} | ${site.short}` : `${hub.name} | ${site.name}`;
+
+// Decide treatment per section.
+// The spatial word has one home on every page: the bottom edge of the full-width split hero.
+let flip = false;
+const plan = order.map((s) => {
+  const L = s.layout;
+  const zone = zoneOf(s.nn);
+  const base = { s, zone, slots: [] as any[], gbb: [] as any[], group: null as string | null, word: null as string | null };
+  if (s.nn === '01') return { ...base, kind: 'hero' as const };
+  if (s.nn === '15') return { ...base, kind: 'inquiry' as const };
+  if (s.nn === '02') return { ...base, kind: 'chapter' as const, tone: 'forest' as const };
+  if (s.nn === '14') return { ...base, kind: 'chapter' as const, tone: 'ink' as const, group: 'Questions' };
+  if (/proof/.test(L) || /proof/i.test(s.title)) return { ...base, kind: 'proof' as const };
+  const study = /signature|study|cutaway|detail/.test(L) && !/product study|applied|system text/.test(L);
+  let tone: 'ink' | 'paper' | 'forest';
+  if (study) tone = 'forest'; else { flip = !flip; tone = flip ? 'ink' : 'paper'; }
+  const group = GROUPS.find((g) => g.sections[0] === s.nn)?.label ?? null;
+  const slots = (SLOTS[s.nn] ?? []).map(([ratio, subject], k, all) => {
+    const m = k === 0 ? media[s.nn] : undefined;
+    return { slotId: `${hub.slug}-${s.nn}${all.length > 1 ? String.fromCharCode(97 + k) : ''}`, subject, ratio: m ? '16 / 9' : ratio, src: m?.src, alt: m?.alt };
+  });
+  const gbb = s.nn === '12' ? GBB[hub.n] ?? [] : [];
+  return { ...base, kind: 'chapter' as const, tone, group, slots, gbb };
+});
+---
+<ServiceLayout title={title} description={seo.deck} services={services} chapters={chapters} cta={{ label: 'Begin a project', href: '#s15' }}>
+  <Fragment slot="top">{plan.filter((x) => x.zone === 'top').map((x) => <PlanSection x={x} hub={hub} media={media} />)}</Fragment>
+  {GROUPS.filter((g) => g.sections.some(has)).map((g) => (
+    <div id={g.id} data-chapter={g.label} class="scroll-mt-16">
+      {plan.filter((x) => x.zone === 'body' && (g.sections as readonly string[]).includes(x.s.nn)).map((x) => <PlanSection x={x} hub={hub} media={media} />)}
+    </div>
+  ))}
+  <Fragment slot="end">{plan.filter((x) => x.zone === 'end').map((x) => <PlanSection x={x} hub={hub} media={media} />)}</Fragment>
+</ServiceLayout>

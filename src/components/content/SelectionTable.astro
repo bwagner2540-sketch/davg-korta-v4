@@ -1,0 +1,22 @@
+---
+/** Decision table for selection guides. Scrolls horizontally on narrow fields instead of shrinking text. Cells accept inline HTML. */
+interface Props { columns: string[]; rows: string[][]; caption?: string; highlight?: number; minWidth?: number; tone?: 'dark' | 'paper' }
+const { columns, rows, caption, highlight, minWidth = 640, tone = 'dark' } = Astro.props;
+const p = tone === 'paper';
+const rule = p ? 'border-line-paper' : 'border-line-dark';
+---
+<div class="overflow-x-auto">
+  <table class:list={['w-full border-collapse font-body', p ? 'text-on-paper' : 'text-on-dark']} style={`min-width:${minWidth}px`}>
+    {caption && <caption class:list={['caption-bottom pt-3.5 text-left text-caption', p ? 'text-muted-paper' : 'text-quiet-dark']}>{caption}</caption>}
+    <thead><tr>{columns.map((c) => <th scope="col" class:list={['mono-label border-b pb-3 pr-4 text-left align-bottom font-medium', rule, p ? 'text-muted-paper' : 'text-quiet-dark']}>{c}</th>)}</tr></thead>
+    <tbody>
+      {rows.map((r, i) => (
+        <tr>
+          {r.map((cell, j) => j === 0
+            ? <th scope="row" class:list={['border-b py-4 pr-4 text-left align-top text-body font-medium leading-[1.35]', highlight === i ? 'border-signal' : rule]} set:html={cell} />
+            : <td class:list={['border-b py-4 pr-4 text-left align-top text-caption leading-[1.45]', highlight === i ? 'border-signal' : rule, p ? 'text-muted-paper' : 'text-muted-dark']} set:html={cell} />)}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

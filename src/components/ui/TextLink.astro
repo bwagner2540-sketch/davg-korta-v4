@@ -1,0 +1,9 @@
+---
+/** Quiet secondary action beside a Button. */
+interface Props { href: string; tone?: 'dark' | 'paper'; class?: string }
+const { href, tone = 'dark', class: cls } = Astro.props;
+---
+<a href={href} class:list={[
+  'group inline-flex items-center gap-2 font-body font-medium text-nav no-underline border-b border-transparent pb-0.5 transition-colors duration-150 hover:border-signal',
+  tone === 'paper' ? 'text-on-paper hover:text-on-paper' : 'text-on-dark hover:text-on-dark', cls,
+]}><slot /><span aria-hidden="true" class="transition-transform duration-150 group-hover:translate-x-0.5">→</span></a>

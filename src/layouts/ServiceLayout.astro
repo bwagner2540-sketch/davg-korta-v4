@@ -1,0 +1,24 @@
+---
+/** Service page frame: masthead, full-width opener (slot "top"), 25/75 split with sticky Forest rail, full-width close (slot "end").
+ *  With the 'photo' hero the masthead is drawn inside the hero, over the image, so it is skipped here. */
+import BaseLayout from './BaseLayout.astro';
+import TopNav from '../components/nav/TopNav.astro';
+import ServiceRail from '../components/service/ServiceRail.astro';
+import { site } from '../config/site';
+interface Props {
+  title: string; description?: string;
+  services: { name: string; href: string; current: boolean }[];
+  chapters: { id: string; label: string }[];
+  cta?: { label: string; href: string };
+}
+const { title, description, services, chapters, cta } = Astro.props;
+---
+<BaseLayout title={title} description={description}>
+  {site.heroVariant !== 'photo' && <TopNav links={[]} cta={cta} />}
+  <slot name="top" />
+  <div class="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,3fr)] lg:items-start">
+    <ServiceRail services={services} chapters={chapters} cta={cta} />
+    <main class="min-w-0"><slot /></main>
+  </div>
+  <slot name="end" />
+</BaseLayout>

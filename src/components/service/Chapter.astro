@@ -1,0 +1,21 @@
+---
+/** One hub section. Tone: ink / paper alternate; forest for signature studies and the section-02 direct answer. */
+import Heading from '../ui/Heading.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+import SpatialWord from '../ui/SpatialWord.astro';
+interface Props { id: string; title: string; tone: 'ink' | 'paper' | 'forest'; group?: string | null; word?: string | null; label?: string }
+const { id, title, tone, group, word, label } = Astro.props;
+const t = tone === 'paper' ? 'paper' : 'dark';
+---
+<section id={id} data-screen-label={label ?? title} class:list={[
+  'architectural-background-section scroll-mt-16 px-page py-section lg:scroll-mt-0',
+  { ink: 'bg-ink border-t border-line-dark-soft', paper: 'bg-paper', forest: 'bg-forest' }[tone],
+  word && 'has-spatial-band',
+]}>
+  <div class="section-content flex flex-col gap-8">
+    {group && <Eyebrow tone={t} rule>{group}</Eyebrow>}
+    <Heading level={2} tone={t} class="max-w-headline">{title}</Heading>
+    <slot />
+    {word && <SpatialWord word={word} surface={tone} />}
+  </div>
+</section>

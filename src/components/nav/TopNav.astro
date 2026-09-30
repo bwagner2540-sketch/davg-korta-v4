@@ -1,0 +1,23 @@
+---
+/** Masthead. Logo lockup picked by tone — never set "DAVG" as type.
+ *  overlay: transparent, for use inside the photo service hero; the hairline sits on the page inset. */
+import Button from '../ui/Button.astro';
+import { site } from '../../config/site';
+interface Props { links: { label: string; href: string }[]; active?: string; cta?: { label: string; href: string }; tone?: 'dark' | 'paper'; overlay?: boolean }
+const { links, active, cta, tone = 'dark', overlay = false } = Astro.props;
+const p = tone === 'paper';
+---
+<header class:list={['flex items-center justify-between gap-8 px-page py-5', overlay ? 'relative z-[3] bg-transparent' : ['border-b', p ? 'bg-paper border-line-paper' : 'bg-ink border-line-dark']]}>
+  <a href="/" aria-label={`${site.name} — home`} class="flex flex-none"><img src={p ? site.logo.paper : site.logo.dark} alt={site.name} class="block h-10 w-auto" /></a>
+  <nav class="hidden items-center gap-8 md:flex">
+    {links.map((l) => (
+      <a href={l.href} aria-current={l.label === active ? 'page' : undefined} class:list={[
+        'border-b pb-0.5 text-nav font-medium no-underline',
+        l.label === active ? 'border-signal' : 'border-transparent',
+        p ? (l.label === active ? 'text-on-paper' : 'text-muted-paper hover:text-on-paper') : (l.label === active ? 'text-on-dark' : 'text-muted-dark hover:text-on-dark'),
+      ]}>{l.label}</a>
+    ))}
+  </nav>
+  {cta && <Button href={cta.href} tone={tone} variant="outline" size="sm">{cta.label}</Button>}
+</header>
+{overlay && <div class="relative z-[3] mx-page border-t border-line-dark"></div>}
