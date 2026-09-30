@@ -1,0 +1,181 @@
+---
+/**
+ * 25/75 service page frame from ServiceShell.jsx reference.
+ * Sticky Forest rail (≥1024px) and sticky disclosure bar (<1024px).
+ * Chapters sit directly under the current service. Exact gaps: services 11px, chapters 8px, label→list 14px.
+ */
+import Button from '../ui/Button.astro';
+import { site } from '../../config/site';
+
+interface Props {
+  services: { name: string; href: string; current: boolean }[];
+  chapters: { id: string; label: string }[];
+  cta?: { label: string; href: string };
+}
+
+const { services, chapters, cta } = Astro.props;
+---
+<div class="service-shell">
+  <!-- Mobile / tablet -->
+  <div class="sticky top-0 z-20 bg-forest text-on-dark lg:hidden">
+    <details class="group">
+      <summary class="flex cursor-pointer list-none items-center justify-between px-page py-3.5">
+        <img src={site.logo.dark} alt={site.name} class="block h-logo-mobile w-auto" width="132" height="30" />
+        <span class="text-nav font-medium text-muted-dark">{services.find((s) => s.current)?.name} · Menu</span>
+      </summary>
+      <nav class="max-h-[70vh] overflow-y-auto border-t border-line-dark px-page pt-2 pb-6" aria-label="Services">
+        <ol class="m-0 flex list-none flex-col gap-rail-service p-0">
+          {services.map((s, i) => (
+            <li>
+              <a
+                href={s.href}
+                class:list={[
+                  'flex items-center gap-3.5 text-rail no-underline',
+                  s.current ? 'text-on-dark' : 'text-muted-dark',
+                ]}
+              >
+                <span class:list={['w-rail-num flex-none mono-label', s.current ? 'text-signal' : 'text-quiet-dark']}>
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <span class:list={['border-b pb-0.5', s.current ? 'border-signal' : 'border-transparent']}>{s.name}</span>
+              </a>
+              {s.current && chapters.length > 0 && (
+                <div class="rail-chapters">
+                  <ol class="m-0 flex list-none flex-col gap-2 p-0">
+                    {chapters.map((c) => (
+                      <li>
+                        <a
+                          href={'#' + c.id}
+                          data-chapter-link={c.id}
+                          class="flex items-center gap-2.5 text-nav leading-nav text-muted-dark no-underline data-active:text-on-dark"
+                        >
+                          <span class="size-node flex-none rounded-full data-active:bg-signal" data-chapter-node></span>
+                          {c.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              )}
+            </li>
+          ))}
+        </ol>
+      </nav>
+    </details>
+  </div>
+
+  <div class="service-shell-grid">
+    <!-- Desktop rail -->
+    <aside
+      class="sticky top-shell hidden h-shell flex-col bg-forest px-8 pt-12 pb-8 text-on-dark lg:flex"
+      aria-label="Service navigation"
+    >
+      <a href="/" aria-label={`${site.name} — home`} class="flex">
+        <img src={site.logo.dark} alt={site.name} class="block h-auto w-logo-rail" width="132" height="28" />
+      </a>
+      <nav class="mt-12 flex min-h-0 flex-1 flex-col gap-8 overflow-y-auto" aria-label="Services">
+        <div class="flex flex-col gap-3.5">
+          <span class="mono-label text-quiet-dark">Services</span>
+          <ol class="m-0 flex list-none flex-col gap-rail-service p-0">
+            {services.map((s, i) => (
+              <li>
+                <a
+                  href={s.href}
+                  aria-current={s.current ? 'page' : undefined}
+                  class:list={[
+                    'flex items-center gap-3.5 text-rail no-underline hover:text-on-dark',
+                    s.current ? 'text-on-dark' : 'text-muted-dark',
+                  ]}
+                >
+                  <span class:list={['w-rail-num flex-none mono-label', s.current ? 'text-signal' : 'text-quiet-dark']}>
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <span class:list={['border-b pb-0.5', s.current ? 'border-signal' : 'border-transparent']}>{s.name}</span>
+                </a>
+                {s.current && chapters.length > 0 && (
+                  <div class="rail-chapters">
+                    <ol class="m-0 flex list-none flex-col gap-2 p-0">
+                      {chapters.map((c) => (
+                        <li>
+                          <a
+                            href={'#' + c.id}
+                            data-chapter-link={c.id}
+                            class="flex items-center gap-2.5 text-nav leading-nav text-muted-dark no-underline data-active:text-on-dark"
+                          >
+                            <span class="size-node flex-none rounded-full" data-chapter-node></span>
+                            {c.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                )}
+              </li>
+            ))}
+          </ol>
+        </div>
+      </nav>
+      <div class="flex flex-col gap-4 pt-6">
+        {cta && (
+          <div>
+            <Button href={cta.href}>{cta.label}</Button>
+          </div>
+        )}
+        <div class="text-caption text-muted-dark">{site.credentials.join(' · ')}</div>
+      </div>
+    </aside>
+
+    <main class="min-w-0">
+      <slot />
+    </main>
+  </div>
+</div>
+
+<style>
+  .service-shell-grid {
+    display: block;
+  }
+  @media (min-width: 1024px) {
+    .service-shell-grid {
+      display: grid;
+      grid-template-columns: var(--shell-rail) var(--shell-field);
+      align-items: start;
+    }
+  }
+  .top-shell {
+    top: var(--shell-sticky-top);
+  }
+  .h-shell {
+    height: calc(100vh - var(--shell-sticky-top));
+  }
+  .rail-chapters {
+    margin: 12px 0 4px 32px;
+    padding-left: 14px;
+    border-left: 1px solid var(--color-line-dark);
+  }
+  a[data-chapter-link][data-active] {
+    color: var(--color-on-dark);
+  }
+  a[data-chapter-link][data-active] [data-chapter-node] {
+    background: var(--color-signal);
+  }
+</style>
+
+<script>
+  const links = [...document.querySelectorAll<HTMLElement>('[data-chapter-link]')];
+  const ids = [...new Set(links.map((l) => l.dataset.chapterLink!))];
+  const set = (id: string) =>
+    links.forEach((l) => l.toggleAttribute('data-active', l.dataset.chapterLink === id));
+  if (ids.length) set(ids[0]);
+  const io = new IntersectionObserver(
+    (es) => es.forEach((e) => e.isIntersecting && set(e.target.id)),
+    { rootMargin: '-35% 0px -60% 0px' },
+  );
+  ids.forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) io.observe(el);
+  });
+  links.forEach((l) =>
+    l.addEventListener('click', () => l.closest('details')?.removeAttribute('open')),
+  );
+</script>

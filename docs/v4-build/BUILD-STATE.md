@@ -31,7 +31,7 @@ Decision: **adopted for the current build** — static Astro file routes, shared
 ## Current work record
 | Area | Decision / specification | Implementation | Verification / next action |
 |---|---|---|---|
-| Visual design | Adopted: `01-DESIGN-SYSTEM.md` (Forest called out as the sidebar primary on 29 Sep). `02-SERVICE-LAYOUT.md` | Partial. Tokens and 25/75 shell exist. Rail is Ink | Do not restyle the rail until a shading task explicitly applies `01`/`09` |
+| Visual design | Adopted: `01-DESIGN-SYSTEM.md` + `.cursor/rules/korta-v4.mdc` (Forest rail, Signal accent-only) | Implemented for tokens, TopNav, ServiceRail (Forest), GoodBetterBest | Replace temporary SVG wordmark with real brand lockup; continue chapter body gap cleanup |
 | Shading story | Adopted spec: `09` supersedes `08` chapter map. Page code not migrated in this sync | Partial. Local page is the pre-09 specimen with real media slots filled except proof | Next shading task may reconcile chapters to `09` without dropping the 14 photographs or the blank proof slot |
 | GBB additions | Proposed refinement. `07-GBB-SECTION-MAP.md` and `content-additions/gbb/` | Pending. Not applied to page copy | Use when refining the current shading page; no new product pages |
 | Content routing | Proposed in `10`: collections + MDX + `[slug]` | Pending. Standalone static routes remain the adopted path | Migrate shading first only in a later task, after this import |
@@ -66,5 +66,13 @@ A dev server was already listening on port 4321. This task did not start another
 - Remaining items: Forest rail vs current Ink rail; `09` chapter map vs the live shading sequence; IBM Plex Mono vs installed JetBrains Mono; seven unbuilt service routes; sitemap/robots/canonical; form destination and conflicting phone numbers; empty project-proof slot.
 - Commit/branch: import commit `b71bf120fc1bc3573a57333c051cc15b3c345c72` on `main`. Unrelated local files stay uncommitted.
 - Preview/production status: not deployed. Local preview may already be served by the existing process on port 4321.
+
+- Date/task: 30 September 2026 — import `DAVG Korta V4 Design System.zip` handoff and apply Korta V4 permanent rules.
+- Decision: **adopted** — `.cursor/rules/korta-v4.mdc` is always-on. Forest rail + Signal accent-only. No utility/teal top bar. Tokens live in `src/styles/global.css` under the short names (`ink`, `forest`, `paper`, `signal`, `line-*`) with legacy aliases kept for older class names.
+- Specification: `.cursor/rules/korta-v4.mdc`; reference values from handoff `ServiceShell.jsx.txt` and `GoodBetterBest.jsx.txt` (handoff folder removed after import).
+- Implementation: **partial → implemented for shell/nav/GBB**. Added `TopNav.astro`, `ServiceRail.astro` (25/75 + sticky Forest rail matching ServiceShell gaps), `GoodBetterBest.astro`, `Button.astro`, `config/site.ts`, self-hosted Schibsted / Instrument / IBM Plex Mono. Homepage uses `TopNav` (no utility bar). Shading hub uses `ServiceRail` + ruled study list + GBB. Temporary SVG wordmarks at `public/images/brand/` until the real lockup is supplied.
+- Verification: `npm run build` on 30 September 2026 passed (pages `/` and `/solutions/motorized-shades/`). Rule-2 astro grep: zero hits. Not deployed.
+- Remaining: real brand SVG (replace temporary mark); confirm public phone; seven unbuilt service routes; `09` chapter map vs live shading sequence; form destination; empty project-proof slot; optional full page restyle of leftover `space-y-*` chapter bodies to parent-gap only.
+- Branch: `cursor/korta-v4-handoff-fixes-40c1` (commit recorded after push).
 
 Do not publish this internal record on the public website.

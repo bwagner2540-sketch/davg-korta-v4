@@ -1,0 +1,90 @@
+---
+/**
+ * Masthead for non-service pages (home, about, projects).
+ * One masthead only — no utility bar above it.
+ * Logo left; links right in text-nav / 500 / sentence case.
+ * `transparent`: only over full-bleed image or Ink heroes. Turns solid bg-ink with a hairline after the hero. No blur, gradient, or shadow.
+ */
+import Button from '../ui/Button.astro';
+import { site } from '../../config/site';
+
+interface Props {
+  links: { label: string; href: string }[];
+  active?: string;
+  cta?: { label: string; href: string };
+  tone?: 'dark' | 'paper';
+  transparent?: boolean;
+}
+
+const { links, active, cta, tone = 'dark', transparent = false } = Astro.props;
+const p = tone === 'paper';
+---
+<header
+  id="top-nav"
+  data-transparent={transparent ? '' : undefined}
+  class:list={[
+    'fixed inset-x-0 top-0 z-50 flex items-center justify-between gap-8 px-page py-5',
+    transparent
+      ? 'border-b border-transparent bg-transparent text-on-dark'
+      : p
+        ? 'border-b border-line-paper bg-paper'
+        : 'border-b border-line-dark bg-ink',
+  ]}
+>
+  <a href="/" aria-label={`${site.name} — home`} class="flex flex-none">
+    <img
+      src={p && !transparent ? site.logo.paper : site.logo.dark}
+      alt={site.name}
+      class="block h-logo-nav w-auto"
+      width="132"
+      height="40"
+    />
+  </a>
+  <nav class="hidden items-center gap-8 md:flex" aria-label="Primary">
+    {links.map((l) => (
+      <a
+        href={l.href}
+        aria-current={l.label === active ? 'page' : undefined}
+        class:list={[
+          'border-b pb-0.5 text-nav font-medium no-underline',
+          l.label === active ? 'border-signal text-on-dark' : 'border-transparent',
+          !transparent && p
+            ? l.label === active
+              ? 'text-on-paper'
+              : 'text-muted-paper hover:text-on-paper'
+            : l.label === active
+              ? 'text-on-dark'
+              : 'text-muted-dark hover:text-on-dark',
+        ]}
+      >
+        {l.label}
+      </a>
+    ))}
+  </nav>
+  {cta && (
+    <Button href={cta.href} tone={transparent || !p ? 'dark' : 'paper'} variant="outline" size="sm">
+      {cta.label}
+    </Button>
+  )}
+</header>
+
+{transparent && (
+  <script>
+    const nav = document.getElementById('top-nav');
+    if (nav) {
+      const hero = document.querySelector('[data-nav-hero]');
+      const sync = () => {
+        const past = hero
+          ? hero.getBoundingClientRect().bottom <= 0
+          : window.scrollY > 24;
+        nav.classList.toggle('bg-ink', past);
+        nav.classList.toggle('border-line-dark', past);
+        nav.classList.toggle('bg-transparent', !past);
+        nav.classList.toggle('border-transparent', !past);
+      };
+      sync();
+      window.addEventListener('scroll', sync, { passive: true });
+      window.addEventListener('resize', sync);
+    }
+  </script>
+)}

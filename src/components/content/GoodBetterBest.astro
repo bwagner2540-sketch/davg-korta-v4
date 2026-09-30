@@ -1,0 +1,73 @@
+---
+/**
+ * Good / Better / Best tier set from GoodBetterBest.jsx reference.
+ * Three unboxed hairline columns; tier label carries a signal node.
+ * Prices only when supplied — never invented.
+ */
+interface Tier {
+  tier?: string;
+  label?: string;
+  name: string;
+  body?: string;
+  detail?: string;
+  from?: string;
+}
+interface Props {
+  title?: string;
+  model?: string;
+  tiers: Tier[];
+  note?: string;
+  tone?: 'dark' | 'paper';
+}
+const { title, model, tiers, note, tone = 'dark' } = Astro.props;
+const p = tone === 'paper';
+const rule = p ? 'border-line-paper' : 'border-line-dark';
+const fg = p ? 'text-on-paper' : 'text-on-dark';
+const mute = p ? 'text-muted-paper' : 'text-muted-dark';
+const quiet = p ? 'text-muted-paper' : 'text-quiet-dark';
+const names = ['Good', 'Better', 'Best'];
+---
+<div class="flex flex-col gap-5">
+  {(title || model) && (
+    <div class="flex flex-wrap items-baseline justify-between gap-6">
+      {title && <div class:list={['font-display text-h5', fg]}>{title}</div>}
+      {model && <div class:list={['mono-label', quiet]}>{model}</div>}
+    </div>
+  )}
+  <div class:list={['gbb-grid border-y', rule]}>
+    {tiers.map((t, i) => (
+      <div
+        class:list={[
+          'group relative flex flex-col gap-2.5 py-6 pr-6',
+          i === 0 ? 'pl-0' : ['pl-6 border-l', rule],
+        ]}
+      >
+        <span class="absolute inset-x-0 -top-px h-px bg-transparent transition-colors duration-150 group-hover:bg-signal"></span>
+        <div class:list={['mono-label flex items-center gap-2.5', fg]}>
+          <span class="size-node rounded-full bg-signal" style={`opacity:${0.4 + i * 0.3}`}></span>
+          {t.tier ?? names[i]}
+        </div>
+        {t.label && <div class:list={['text-caption', mute]}>{t.label}</div>}
+        <div class:list={['font-display text-h6', fg]}>{t.name}</div>
+        {t.body && <p class:list={['text-caption leading-normal text-pretty', mute]}>{t.body}</p>}
+        <div class="mt-auto flex flex-col gap-1.5 pt-2.5">
+          {t.detail && <div class:list={['text-detail leading-snug', quiet]}>{t.detail}</div>}
+          {t.from && (
+            <div class="flex items-baseline gap-2">
+              <span class:list={['mono-label', quiet]}>Starting from</span>
+              <span class:list={['font-mono text-sm', fg]}>{t.from}</span>
+            </div>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+  {note && <div class:list={['text-caption max-w-measure', quiet]}>{note}</div>}
+</div>
+
+<style>
+  .gbb-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+</style>
