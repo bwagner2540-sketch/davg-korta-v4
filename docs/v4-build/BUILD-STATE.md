@@ -1,5 +1,8 @@
 # DAVG V4 — repair state, 30 September 2026
 
+## Hub production — Outdoor Entertainment
+Draft at `/systems/outdoor-entertainment/` via `HubPage`. Three photographs and the Episode ES-LS-2 pair are placed. Captions identify Episode and SunBrite, not Sonance. Sonance Landscape/Garden is still missing. Slots 06–08 missing. Sandbox build at 14:41 passed, 26 pages. Desktop 1440 and mobile 390 checked. Not deployed.
+
 ## Hub production — Security
 Draft at `/systems/security-access/` via `HubPage`. Three camera photographs and the Luma rack are placed. The plan study is labelled fictitious. Entry hardware is missing. Slots 06–08 missing. Desktop 1440 and mobile 390 checked. Not deployed.
 
