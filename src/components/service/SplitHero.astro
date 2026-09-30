@@ -9,6 +9,7 @@ import TextLink from '../ui/TextLink.astro';
 import MediaSlot from '../ui/MediaSlot.astro';
 import SpatialWord from '../ui/SpatialWord.astro';
 import TopNav from '../nav/TopNav.astro';
+import { MASTHEAD_LINKS, mastheadActive } from '../../data/services';
 interface Props {
   id?: string; eyebrow?: string; title: string; deck?: string;
   primary?: { label: string; href: string }; secondary?: { label: string; href: string };
@@ -16,7 +17,8 @@ interface Props {
   word?: string | null; variant?: 'photo' | 'monument' | 'stacked' | 'overlay'; surface?: 'ink' | 'forest';
   cta?: { label: string; href: string };
 }
-const { id, eyebrow, title, deck, primary, secondary, media, word, variant = 'photo', surface = 'ink', cta } = Astro.props;
+const { id, eyebrow, title, deck, primary, secondary, media, word, variant = 'photo', surface = 'ink' } = Astro.props;
+const active = mastheadActive(Astro.url.pathname);
 const photo = variant === 'photo';
 const bg = surface === 'forest' ? 'bg-forest' : 'bg-ink';
 const overlay = variant === 'overlay';
@@ -32,7 +34,7 @@ const subject = media.subject ?? 'Hero — finished architectural room';
       : <div class="absolute inset-3 flex items-center justify-center border border-dashed border-line-dark p-4 text-center font-mono text-[11px] uppercase tracking-[0.12em] text-quiet-dark">{subject} · {media.slotId}</div>}
     <div class="absolute inset-0 bg-scrim-strong"></div>
   </div>
-  <TopNav links={[]} cta={cta} overlay />
+  <TopNav links={MASTHEAD_LINKS} active={active} overlay />
   <div class="section-content flex max-w-[760px] flex-1 flex-col justify-center px-page py-section">
     {eyebrow && <Eyebrow class="mb-6">{eyebrow}</Eyebrow>}
     <Heading level={1}>{title}</Heading>

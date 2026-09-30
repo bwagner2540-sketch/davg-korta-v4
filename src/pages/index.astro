@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import TopNav from '../components/nav/TopNav.astro';
+import { MASTHEAD_LINKS } from '../data/services';
 ---
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
@@ -105,12 +107,6 @@ import '../styles/global.css';
       border-color: var(--color-rule-accent);
     }
 
-    #mobile-nav { display: none; }
-    #nav-toggle:checked ~ #mobile-nav { display: block; }
-    @media (min-width: 1024px) {
-      #mobile-nav { display: none !important; }
-    }
-
     a:focus-visible,
     button:focus-visible,
     summary:focus-visible {
@@ -123,50 +119,11 @@ import '../styles/global.css';
 
   <a href="#answer" class="sr-only focus:not-sr-only focus:absolute focus:left-6 focus:top-6 focus:z-[80] focus:bg-surface-paper focus:px-4 focus:py-2 focus:text-text-primary-paper">Skip to content</a>
 
-  <header class="fixed inset-x-0 top-0 z-50 border-b border-border-dark-soft bg-surface-ink">
-    <div class="folio flex h-16 items-center justify-between md:h-20">
-      <a href="#answer" class="flex items-center gap-4">
-        <span class="font-mono text-[11px] font-medium tracking-[0.16em] text-text-primary-dark">DAVG</span>
-        <span class="hidden h-3 w-px bg-border-dark sm:block"></span>
-        <span class="hidden font-mono text-[11px] tracking-[0.12em] text-text-tertiary-dark sm:block">EST. 2013</span>
-      </a>
-
-      <nav class="hidden items-center gap-8 lg:flex" aria-label="Primary">
-        <a href="#answer" class="font-body text-[11px] font-medium uppercase tracking-[0.12em] text-text-secondary-dark transition-colors hover:text-text-primary-dark">Answer</a>
-        <a href="#systems" class="font-body text-[11px] font-medium uppercase tracking-[0.12em] text-text-secondary-dark transition-colors hover:text-text-primary-dark">Systems</a>
-        <a href="#proof" class="font-body text-[11px] font-medium uppercase tracking-[0.12em] text-text-secondary-dark transition-colors hover:text-text-primary-dark">Proof</a>
-        <a href="#scope" class="font-body text-[11px] font-medium uppercase tracking-[0.12em] text-text-secondary-dark transition-colors hover:text-text-primary-dark">Scope</a>
-        <a href="#trade" class="font-body text-[11px] font-medium uppercase tracking-[0.12em] text-text-secondary-dark transition-colors hover:text-text-primary-dark">Trade</a>
-        <a href="#inquiry" class="font-body text-[11px] font-medium uppercase tracking-[0.12em] text-text-secondary-dark transition-colors hover:text-text-primary-dark">Inquiry</a>
-      </nav>
-
-      <div class="flex items-center gap-4">
-        <a href="tel:7206381603" class="hidden font-mono text-[11px] tracking-[0.12em] text-text-secondary-dark transition-colors hover:text-text-primary-dark md:inline">720.638.1603</a>
-        <a href="#inquiry" class="hidden items-center border border-border-dark bg-surface-paper px-5 py-2.5 font-body text-[11px] font-medium uppercase tracking-[0.12em] text-text-primary-paper transition-colors hover:bg-cream-01 lg:inline-flex">Begin a project</a>
-        <label for="nav-toggle" class="flex h-8 w-8 shrink-0 cursor-pointer flex-col items-center justify-center gap-1.5 border border-border-dark lg:hidden">
-          <span class="sr-only">Open menu</span>
-          <span class="block h-px w-3.5 bg-text-primary-dark"></span>
-          <span class="block h-px w-3.5 bg-text-primary-dark"></span>
-        </label>
-      </div>
-    </div>
-
-    <input id="nav-toggle" type="checkbox" class="peer hidden" />
-    <nav id="mobile-nav" class="border-t border-border-dark-soft bg-surface-ink" aria-label="Mobile">
-      <div class="folio flex flex-col gap-5 py-6">
-        <a href="#answer" class="font-body text-[11px] font-medium uppercase tracking-[0.12em] text-text-secondary-dark">Answer</a>
-        <a href="#systems" class="font-body text-[11px] font-medium uppercase tracking-[0.12em] text-text-secondary-dark">Systems</a>
-        <a href="#proof" class="font-body text-[11px] font-medium uppercase tracking-[0.12em] text-text-secondary-dark">Proof</a>
-        <a href="#scope" class="font-body text-[11px] font-medium uppercase tracking-[0.12em] text-text-secondary-dark">Scope</a>
-        <a href="#trade" class="font-body text-[11px] font-medium uppercase tracking-[0.12em] text-text-secondary-dark">Trade</a>
-        <a href="#inquiry" class="font-body text-[11px] font-medium uppercase tracking-[0.12em] text-text-secondary-dark">Inquiry</a>
-      </div>
-    </nav>
-  </header>
+  <TopNav links={MASTHEAD_LINKS} active="Home" />
 
   <main>
     <!-- Phase 1 — Definitive Answer -->
-    <section id="answer" class="architectural-background-section relative overflow-hidden scroll-mt-20 bg-surface-paper pt-24 text-text-primary-paper md:pt-32">
+    <section id="answer" class="architectural-background-section relative overflow-hidden scroll-mt-20 bg-surface-paper text-text-primary-paper">
       <h2 class="architectural-background-title" data-surface="cream" aria-hidden="true">Clearance</h2>
       <div class="section-content folio py-24 md:py-32">
         <p class="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-text-secondary-paper">01 / Direct answer</p>

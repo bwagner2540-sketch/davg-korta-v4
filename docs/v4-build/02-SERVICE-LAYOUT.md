@@ -4,6 +4,8 @@
 
 Desktop: left rail is exactly one quarter of the page frame; right field is three quarters. Use `grid-template-columns: minmax(0,1fr) minmax(0,3fr)`. These are frame proportions before internal padding. Keep the document as the vertical scroller. Make the rail sticky below the existing masthead; do not make the 75% column a second wheel-scroll pane.
 
+Masthead: one `TopNav` — logo left, sentence-case links right (Home plus the eight services). No utility bar. On the photo hero the same list is `overlay` (transparent, hairline under it). Current service uses the existing active style.
+
 Zones: the photo hero (section 01) stays full width above the split. Section 02 is the first block of the Overview chapter inside the 75% field, directly under the rail, ahead of section 03. Sections 14 and 15 stay full width below the split.
 
 Rail: original DAVG mark, service navigation with current service emphasized, and a small set of chapter anchors relevant to that page. Use the source-copy groups to keep the navigation short. Do not cram fifteen labels beside the page. If the rail exceeds the available viewport, only its menu may overflow. No portrait or required staff title.

@@ -9,6 +9,37 @@ export const SERVICES = [
   { n: '08', name: 'Outdoor Entertainment', file: '08-outdoor-entertainment', key: /outdoor/ },
 ] as const;
 
+/** Sentence-case masthead labels and live routes, in SERVICES order.
+ *  File slugs are not the public URLs (shading → shades, media-and-audio → media-audio). */
+const MASTHEAD_SERVICE: Record<(typeof SERVICES)[number]['n'], { label: string; href: string }> = {
+  '01': { label: 'Home intelligence', href: '/solutions/home-intelligence/' },
+  '02': { label: 'Architectural lighting', href: '/solutions/architectural-lighting/' },
+  '03': { label: 'Motorized shading', href: '/solutions/motorized-shades/' },
+  '04': { label: 'Media and audio', href: '/solutions/media-audio/' },
+  '05': { label: 'Private cinemas', href: '/solutions/private-cinemas/' },
+  '06': { label: 'Security and access', href: '/solutions/security-access/' },
+  '07': { label: 'Infrastructure and privacy', href: '/solutions/infrastructure-privacy/' },
+  '08': { label: 'Outdoor entertainment', href: '/solutions/outdoor-entertainment/' },
+};
+
+/** Home plus the eight services. Passed to TopNav from the homepage and ServiceLayout. */
+export const MASTHEAD_LINKS: { label: string; href: string }[] = [
+  { label: 'Home', href: '/' },
+  ...SERVICES.map((s) => MASTHEAD_SERVICE[s.n]),
+];
+
+const normalizePath = (href: string) => {
+  const path = (href || '/').split(/[?#]/)[0];
+  if (path === '/') return '/';
+  return path.endsWith('/') ? path : `${path}/`;
+};
+
+/** Label for TopNav's existing active style (`l.label === active`). */
+export function mastheadActive(href: string | undefined): string | undefined {
+  const path = normalizePath(href ?? '');
+  return MASTHEAD_LINKS.find((l) => normalizePath(l.href) === path)?.label;
+}
+
 /** Rail chapters, identical on all eight services. The sticky 25/75 body renders these sections in this order. */
 export const GROUPS = [
   { id: 'overview', label: 'Overview', sections: ['02', '03'] },

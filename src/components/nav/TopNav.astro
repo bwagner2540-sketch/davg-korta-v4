@@ -7,12 +7,12 @@ interface Props { links: { label: string; href: string }[]; active?: string; cta
 const { links, active, cta, tone = 'dark', overlay = false } = Astro.props;
 const p = tone === 'paper';
 ---
-<header class:list={['flex items-center justify-between gap-8 px-page py-5', overlay ? 'relative z-[3] bg-transparent' : ['border-b', p ? 'bg-paper border-line-paper' : 'bg-ink border-line-dark']]}>
+<header class:list={['flex flex-nowrap items-center gap-(--gap-headline-body) px-page py-5', overlay ? 'relative z-[3] bg-transparent' : ['border-b', p ? 'bg-paper border-line-paper' : 'bg-ink border-line-dark']]}>
   <a href="/" aria-label={`${site.name} — home`} class="flex flex-none"><img src={p ? site.logo.paper : site.logo.dark} alt={site.name} class="block h-10 w-auto" /></a>
-  <nav class="hidden items-center gap-8 md:flex">
+  <nav class="hidden min-w-0 flex-1 flex-nowrap items-center justify-between md:flex" aria-label="Primary">
     {links.map((l) => (
       <a href={l.href} aria-current={l.label === active ? 'page' : undefined} class:list={[
-        'border-b pb-0.5 text-nav font-medium no-underline',
+        'whitespace-nowrap border-b pb-0.5 text-nav font-medium no-underline',
         l.label === active ? 'border-signal' : 'border-transparent',
         p ? (l.label === active ? 'text-on-paper' : 'text-muted-paper hover:text-on-paper') : (l.label === active ? 'text-on-dark' : 'text-muted-dark hover:text-on-dark'),
       ]}>{l.label}</a>

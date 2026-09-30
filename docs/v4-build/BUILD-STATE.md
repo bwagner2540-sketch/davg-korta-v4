@@ -85,4 +85,13 @@ A dev server was already listening on port 4321. This task did not start another
 - Commit/branch: this entry is on `korta-v4-photo-hero`. The handoff names the commit.
 - Preview/production status: branch preview only; not production. Not merged to `main`.
 
+- Date/task: 30 September 2026 — replace the old masthead with one `TopNav` on the homepage and every service hub.
+- Decision: **adopted**. No utility bar. Logo left, nine sentence-case links right (Home plus the eight services in `MASTHEAD_LINKS`). Photo hero uses `overlay`. Current service uses TopNav's existing active style.
+- Specification: `docs/v4-build/02-SERVICE-LAYOUT.md` (masthead sentence under Page frame). Hub markdown was not edited.
+- Implementation: **implemented** on `korta-v4-photo-hero`. `src/data/services.ts` (`MASTHEAD_LINKS`, `mastheadActive`), `src/components/nav/TopNav.astro`, `src/layouts/ServiceLayout.astro`, `src/components/service/SplitHero.astro` (photo hero draws the same list), `src/pages/index.astro` (inline header and mobile nav removed). At 1440 the nine labels do not fit `gap-8` (32px); the logo uses `--gap-headline-body` (24px) and the link row stays one line (`justify-between`, about 21px). No new colour, type, or spacing token.
+- Verification: **pass** on 30 September 2026. `npm run build` completed (10 pages). Chrome at 1440×900: `/` shows the ink masthead, Home active, sentence-case links, no teal utility bar, no EST. 2013 bar, no uppercase Answer/Systems row. `/solutions/motorized-shades/` shows the same list over the photo (transparent, hairline), Motorized shading active, Forest rail below the hero. Screenshots: `nav-home-1440.png`, `nav-shades-1440.png`.
+- Remaining: guided brief steps 2–4; public phone, email, and form destination still empty; homepage body is otherwise the specimen page.
+- Commit/branch: this entry is on `korta-v4-photo-hero`. The handoff names the commit.
+- Preview/production status: not deployed. Not merged to `main`. `davg.ai` was not changed.
+
 Do not publish this internal record on the public website.
