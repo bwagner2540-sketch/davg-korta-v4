@@ -1,52 +1,328 @@
 @import "tailwindcss";
+@import "@fontsource-variable/schibsted-grotesk/wght.css";
+@import "@fontsource-variable/instrument-sans/wght.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+
+/* DAVG Korta V4 — Tailwind v4 theme. Every token below becomes a utility:
+   bg-ink, text-on-dark, border-line-dark, font-display, text-h1, px-page, py-section, max-w-measure … */
 @theme {
-  /* Four-surface system */
-  --color-surface-ink: #090B0A;
-  --color-surface-forest: #183B31;
-  --color-surface-paper: #EDE9E0;
-  /* Approved V4 cream-family variants */
+  /* Fields */
+  --color-ink: #090B0A;
+  --color-forest: #183B31; /* brand primary: service rail, brand fields, primary action on Paper */
+  --color-paper: #EDE9E0;
   --color-cream-01: #F2EFE7;
   --color-cream-02: #EBE7DC;
   --color-cream-03: #E2DDCE;
-  /* Dark-field typography */
+  /* Legacy aliases (pre-handoff class names) */
+  --color-surface-ink: #090B0A;
+  --color-surface-forest: #183B31;
+  --color-surface-paper: #EDE9E0;
+  /* Text */
+  --color-on-dark: #F1F0EB;
+  --color-muted-dark: #A7AAA5;
+  --color-quiet-dark: #7F847E;
+  --color-on-paper: #0B0D0C;
+  --color-muted-paper: #51544F;
   --color-text-primary-dark: #F1F0EB;
   --color-text-secondary-dark: #A7AAA5;
   --color-text-tertiary-dark: #7F847E;
-  /* Paper typography */
   --color-text-primary-paper: #0B0D0C;
   --color-text-secondary-paper: #51544F;
-  /* Signal color */
+  /* Accent — matches the logo mark. Never a background fill. */
+  --color-signal: #1A8F6E;
   --color-accent-signal: #1A8F6E;
-  /* Hairlines & rules */
-  --color-border-dark: rgb(241 240 235 / 18%);
-  --color-border-dark-soft: rgb(241 240 235 / 10%);
-  --color-border-paper: rgb(11 13 12 / 16%);
+  /* Hairlines */
+  --color-line-dark: rgb(241 240 235 / 16%);
+  --color-line-dark-soft: rgb(241 240 235 / 9%);
+  --color-line-dark-strong: rgb(241 240 235 / 36%);
+  --color-line-paper: rgb(11 13 12 / 14%);
+  --color-border-dark: rgb(241 240 235 / 16%);
+  --color-border-dark-soft: rgb(241 240 235 / 9%);
+  --color-border-paper: rgb(11 13 12 / 14%);
   --color-rule-accent: rgb(26 143 110 / 78%);
-  /* Scrims */
-  --color-scrim-ink-soft: rgb(9 11 10 / 38%);
-  --color-scrim-ink-strong: rgb(9 11 10 / 66%);
-  /* Spatial typography */
+  /* Scrims (flat, never gradients) */
+  --color-scrim-soft: rgb(9 11 10 / 38%);
+  --color-scrim-strong: rgb(9 11 10 / 66%);
+  /* Spatial / monument word fills */
+  --color-word-dark: rgb(241 240 235 / 12%);
+  --color-word-forest: rgb(241 240 235 / 14%);
+  --color-word-paper: rgb(11 13 12 / 10%);
   --color-spatial-word-dark: rgb(241 240 235 / 12%);
   --color-spatial-word-forest: rgb(241 240 235 / 14%);
-  /* Fonts */
-  --font-display: "Schibsted Grotesk", sans-serif;
-  --font-body: "Instrument Sans", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+
+  /* Fonts — IBM Plex Mono for eyebrows/labels/numbers only */
+  --font-display: "Schibsted Grotesk Variable", "Schibsted Grotesk", sans-serif;
+  --font-body: "Instrument Sans Variable", "Instrument Sans", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  /* Type scale (reference + design system) */
+  --text-h1: clamp(2.5rem, 4.5vw, 4rem);
+  --text-h1--line-height: 0.98;
+  --text-h1--letter-spacing: -0.035em;
+  --text-h2: clamp(2rem, 3vw, 2.75rem);
+  --text-h2--line-height: 1.02;
+  --text-h2--letter-spacing: -0.025em;
+  --text-h3: 2.25rem;
+  --text-h3--line-height: 1.08;
+  --text-h3--letter-spacing: -0.02em;
+  --text-h5: 1.5rem;
+  --text-h5--line-height: 1.2;
+  --text-h5--letter-spacing: -0.01em;
+  --text-h6: 1.25rem;
+  --text-h6--line-height: 1.2;
+  --text-h6--letter-spacing: -0.005em;
+  --text-body-lg: 1.125rem;
+  --text-body-lg--line-height: 1.45;
+  --text-body: 1rem;
+  --text-body--line-height: 1.5;
+  --text-caption: 0.8125rem;
+  --text-caption--line-height: 1.35;
+  --text-nav: 0.8125rem;
+  --text-nav--line-height: 1.3;
+  --text-mono: 0.6875rem;
+  --text-mono--line-height: 1.35;
+  --text-mono--letter-spacing: 0.1em;
+  --text-rail: 0.9375rem; /* 15px — ServiceShell service labels */
+  --text-detail: 0.75rem; /* 12px — GBB detail line */
+
+  /* Spacing */
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-page: clamp(1.25rem, 3vw, 4rem);
+  --spacing-section: clamp(3rem, 6vw, 6rem);
+
+  /* Shell — 25/75 frame (ServiceShell) */
+  --shell-rail: minmax(0, 1fr);
+  --shell-field: minmax(0, 3fr);
+  --shell-sticky-top: 0px;
+
+  /* Measure */
+  --container-measure: 38rem; /* ~ body measure */
+
+  /* Control radius */
+  --radius-control: 2px;
+
+  /* Logo / rail sizes from ServiceShell reference */
+  --size-logo-rail: 132px;
+  --size-logo-mobile: 30px;
+  --size-logo-nav: 2.5rem;
+  --size-rail-num: 18px;
+  --size-node: 4px;
+  --width-logo-rail: 132px;
+  --width-rail-num: 18px;
+  --height-logo-mobile: 30px;
+  --height-logo-nav: 2.5rem;
+  --spacing-rail-service: 11px; /* service list gap */
+  --leading-nav: 1.3;
 }
-/* Base resets matching Korta V4 */
-html, body {
-  background-color: var(--color-surface-ink);
-  color: var(--color-text-primary-dark);
-  font-family: var(--font-body);
+
+/* Base — every element starts at margin:0. Spacing comes from parent gap only. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
   margin: 0;
   padding: 0;
+  background-color: var(--color-ink);
+  color: var(--color-on-dark);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
-/* Locked Architectural Background Typography */
+
+h1, h2, h3, h4, h5, h6,
+p, ul, ol, li, figure, figcaption, dl, dt, dd, blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Mono label — eyebrows, SERVICES, rail numbers, tier labels, SCOPE / EXPERIENCE TIER */
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  letter-spacing: var(--text-mono--letter-spacing);
+  line-height: var(--text-mono--line-height);
+  text-transform: uppercase;
+}
+
+/* Ruled list rows — hairline rules, mono accent number, 14px padding/gap */
+.ruled-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: var(--container-measure);
+  border-bottom: 1px solid var(--color-line-paper);
+}
+
+.ruled-list[data-tone="dark"] {
+  border-bottom-color: var(--color-line-dark);
+}
+
+.ruled-list > li {
+  display: flex;
+  gap: 14px;
+  padding: 14px 0;
+  border-top: 1px solid var(--color-line-paper);
+  font-size: var(--text-body);
+  line-height: 1.5;
+}
+
+.ruled-list[data-tone="dark"] > li {
+  border-top-color: var(--color-line-dark);
+}
+
+.ruled-list > li > .ruled-num {
+  flex: none;
+  width: var(--size-rail-num);
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  letter-spacing: var(--text-mono--letter-spacing);
+  line-height: var(--text-mono--line-height);
+  text-transform: uppercase;
+  color: var(--color-signal);
+}
+
+/* Page / section spacing helpers */
+.px-page {
+  padding-inline: var(--spacing-page);
+}
+
+.py-section {
+  padding-block: var(--spacing-section);
+}
+
+.max-w-measure {
+  max-width: var(--container-measure);
+}
+
+/* Border color aliases used by components (border-line-*) */
+.border-line-dark {
+  border-color: var(--color-line-dark);
+}
+
+.border-line-paper {
+  border-color: var(--color-line-paper);
+}
+
+/* SPATIAL BAND — the only way a background word is drawn.
+   Size: viewport-locked, so the 75% field and full-width sections match. 8 characters max always fit; never cropped sideways.
+   Position: last row of a section, on the content inset, cap-height tall; letters stand on the section's bottom edge.
+   Metrics are Schibsted Grotesk's (cap 0.703em; cap top 0.1545em below the line box at line-height 1). */
+:root {
+  --spatial-size: clamp(3.5rem, 12vw, 13.5rem);
+  --spatial-cap: 0.703;
+  --spatial-trim: 0.1545em;
+  --spatial-gap: 4rem;
+}
+
+.spatial-band {
+  position: relative;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  overflow: hidden;
+  flex: none;
+  align-self: stretch;
+  grid-column: 1 / -1;
+  margin-top: var(--spatial-gap);
+  height: calc(var(--spatial-size) * var(--spatial-cap));
+}
+
+.spatial-band > span {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--spatial-size);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  margin: calc(-1 * var(--spatial-trim)) 0 0 -0.045em;
+}
+
+.spatial-band[data-surface="ink"] {
+  color: var(--color-word-dark);
+}
+
+.spatial-band[data-surface="forest"] {
+  color: var(--color-word-forest);
+}
+
+.spatial-band[data-surface="paper"] {
+  color: var(--color-word-paper);
+}
+
+.has-spatial-band {
+  padding-bottom: 0 !important;
+}
+
+.section-content,
+.section-visual,
+.section-annotations {
+  position: relative;
+  z-index: 2;
+}
+
+/* MONUMENT WORD — hero only. The page word fitted edge to edge; solid spatial-word token colour. */
+.monument-word {
+  position: relative;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  overflow: visible;
+}
+
+.monument-word > span {
+  display: block;
+  width: max-content;
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 0.74;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  margin-left: -0.035em;
+  font-size: min(calc(88vw / (var(--chars, 6) * 0.64)), 13vw, 220px);
+  color: var(--color-word-dark);
+}
+
+.monument-word[data-surface="forest"] > span {
+  color: var(--color-word-forest);
+}
+
+/* Legacy oversized background word used by existing page sections */
 .architectural-background-section {
   position: relative;
   overflow: hidden;
 }
+
 .architectural-background-title {
   position: absolute;
   top: 4.5%;
@@ -60,36 +336,17 @@ html, body {
   letter-spacing: -0.045em;
   text-transform: uppercase;
   white-space: nowrap;
+  color: var(--color-word-dark);
 }
-.architectural-background-title[data-surface="ink"] {
-  color: var(--color-spatial-word-dark);
-  -webkit-text-fill-color: currentColor;
-  background: none;
+
+.architectural-background-title[data-surface="juniper"],
+.architectural-background-title[data-surface="forest"] {
+  color: var(--color-word-forest);
 }
-.architectural-background-title[data-surface="juniper"] {
-  color: var(--color-spatial-word-forest);
-  -webkit-text-fill-color: currentColor;
-  background: none;
-}
-.architectural-background-title[data-surface="cream"] {
-  background: linear-gradient(
-    90deg,
-    rgba(91, 108, 99, 0.42) 0%,
-    rgba(124, 130, 119, 0.34) 30%,
-    rgba(151, 150, 136, 0.28) 58%,
-    rgba(193, 184, 163, 0.22) 82%,
-    rgba(226, 216, 195, 0.16) 100%
-  );
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-}
-.section-content,
-.section-visual,
-.section-annotations {
-  position: relative;
-  z-index: 2;
+
+.architectural-background-title[data-surface="cream"],
+.architectural-background-title[data-surface="paper"] {
+  color: var(--color-word-paper);
 }
 
 @media (max-width: 1024px) {
@@ -102,8 +359,6 @@ html, body {
 @media (max-width: 640px) {
   .architectural-background-title {
     font-size: clamp(6.5rem, 29vw, 10rem);
-    font-weight: 300;
-    line-height: 0.78;
     letter-spacing: -0.055em;
   }
 }
