@@ -1,5 +1,8 @@
 # DAVG V4 — repair state, 30 September 2026
 
+## Hub production — Security
+Draft at `/systems/security-access/` via `HubPage`. Three camera photographs and the Luma rack are placed. The plan study is labelled fictitious. Entry hardware is missing. Slots 06–08 missing. Desktop 1440 and mobile 390 checked. Not deployed.
+
 ## Hub production — Infrastructure
 Draft at `/systems/infrastructure-privacy/` via `HubPage`. Hero and ceiling photograph placed. `Rack_cables-1.jpg` withheld because it shows switch name SW03 and port labels. Slots 06–08 missing. Studies state no bandwidth figures. Desktop 1440 and mobile 390 checked. Not deployed.
 
