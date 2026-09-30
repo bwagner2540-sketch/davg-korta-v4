@@ -73,6 +73,6 @@ A dev server was already listening on port 4321. This task did not start another
 - Implementation: **partial → implemented for shell/nav/GBB**. Added `TopNav.astro`, `ServiceRail.astro` (25/75 + sticky Forest rail matching ServiceShell gaps), `GoodBetterBest.astro`, `Button.astro`, `config/site.ts`, self-hosted Schibsted / Instrument / IBM Plex Mono. Homepage uses `TopNav` (no utility bar). Shading hub uses `ServiceRail` + ruled study list + GBB. Temporary SVG wordmarks at `public/images/brand/` until the real lockup is supplied.
 - Verification: `npm run build` on 30 September 2026 passed (pages `/` and `/solutions/motorized-shades/`). Rule-2 astro grep: zero hits. Not deployed.
 - Remaining: real brand SVG (replace temporary mark); confirm public phone; seven unbuilt service routes; `09` chapter map vs live shading sequence; form destination; empty project-proof slot; optional full page restyle of leftover `space-y-*` chapter bodies to parent-gap only.
-- Branch: `cursor/korta-v4-handoff-fixes-40c1` (commit recorded after push).
+- Branch/commit: `cursor/korta-v4-handoff-fixes-40c1` @ `1bc6c5e44f005877a661cd7a571c883ab661fec7`. Not deployed.
 
 Do not publish this internal record on the public website.
