@@ -1,477 +1,1250 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import ServicePageShell from '../../components/ServicePageShell.astro';
+import MediaPlaceholder from '../../components/MediaPlaceholder.astro';
+
+const chapters = [
+  { id: 'daylight', label: 'Daylight, shaped around the room' },
+  { id: 'window', label: 'Start with the window' },
+  { id: 'privacy', label: 'Keep the view. Choose the privacy' },
+  { id: 'architecture', label: 'Choose how the shade meets the architecture' },
+  { id: 'coordinate', label: 'Now coordinate the room' },
+  { id: 'controls', label: 'Choose the control you’ll actually use' },
+  { id: 'scenes', label: 'Give each button a purpose' },
+  { id: 'stage', label: 'Designed for the stage your home is in' },
+  { id: 'installed', label: 'The detail, installed' },
+  { id: 'scope', label: 'Compare the complete scope' },
+  { id: 'windows', label: 'Start with your windows' },
+];
 ---
-<Layout title="Motorized Shading — Architectural Daylight & Solar Automation | DAVG">
-  <main class="min-h-screen bg-[var(--color-surface-ink)] text-[var(--color-text-primary-dark)] antialiased selection:bg-[var(--color-accent-signal)] selection:text-white">
-    <!-- CHAPTER 01: RESIDENCE / HERO (Ink Surface) -->
-    <section class="architectural-background-section min-h-[90vh] flex flex-col justify-between pt-32 pb-16 px-6 md:px-16 border-b border-[var(--color-border-dark)]">
-      <div class="architectural-background-title select-none" data-surface="ink">
-        DAYLIGHT
+<Layout
+  title="Motorized Shades & Lutron Shading | DAVG"
+  description="Quiet motorized shading coordinated with glass, structure, lighting, and solar exposure for new and existing Denver-area homes."
+>
+  <ServicePageShell currentPath="/solutions/motorized-shades/" chapters={chapters} headerOffset="0px">
+    <a slot="brand" class="brand-lockup" href="/">
+      <span class="brand-name">DAVG</span>
+      <span class="brand-est">Est. 2013</span>
+    </a>
+
+    <section id="daylight" class="band band-ink" data-rail="daylight">
+      <p class="kicker">Lutron motorized shades</p>
+      <h1>Daylight, shaped around the room.</h1>
+      <p class="deck">Keep the view. Soften afternoon glare. Create privacy when the lights come on. DAVG designs Lutron roller shades around your windows, your rooms and the way you live.</p>
+      <p class="actions"><a class="btn" href="#inquiry">Plan Your Shading</a></p>
+      <MediaPlaceholder id="shading-01-room" subject="Glass-wall shading photograph" ratio="16 / 9" loading="eager" src="/images/davg-living-room-sheer-roller-shades-sun-01-1600w.webp" alt="Floor-to-ceiling sheer roller shades on a living-room glass wall, with the sun still visible through the fabric" />
+      <p class="caption">Illustrative living-room glass. Product photograph, not a completed DAVG project. The same west-facing living room and a primary bedroom return through the decisions below.</p>
+
+      <h2 class="prompt">Where is your home in the process?</h2>
+      <p class="measure">These three choices describe construction conditions. Fabric, hardware and control stay available either way. Selecting one highlights the matching notes and fills the inquiry. Nothing is stored in the page address.</p>
+      <div class="stage-controls" role="group" aria-label="Where is your home in the process?">
+        <button type="button" data-project-stage="retrofit" aria-pressed="false">Existing home / Retrofit</button>
+        <button type="button" data-project-stage="remodel" aria-pressed="false">Remodel</button>
+        <button type="button" data-project-stage="custom" aria-pressed="false">Custom build</button>
       </div>
-      <div class="section-content max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
-        <div class="lg:col-span-8">
-          <div class="inline-flex items-center gap-3 mb-6">
-            <span class="w-2 h-2 rounded-full bg-[var(--color-accent-signal)]"></span>
-            <span class="font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-text-secondary-dark)]">
-              01 / Architectural Shading
-            </span>
-          </div>
-          <h1 class="text-4xl md:text-6xl lg:text-7xl font-display font-light tracking-tight leading-[0.98] mb-8 text-[var(--color-text-primary-dark)]">
-            Daylight harvested, glare managed, structure preserved.
-          </h1>
-          <p class="text-lg md:text-xl text-[var(--color-text-secondary-dark)] max-w-2xl font-light leading-relaxed">
-            Motorized window treatments engineered into pre-construction pockets and window assemblies across South Metro Denver. Specified with the architecture, not mounted over trim after the fact.
-          </p>
-        </div>
-        <div class="lg:col-span-4 border-l border-[var(--color-border-dark-soft)] pl-8 space-y-6">
-          <div>
-            <span class="block font-mono text-[11px] uppercase tracking-widest text-[var(--color-text-tertiary-dark)] mb-1">Operating Protocol</span>
-            <p class="text-sm font-display text-[var(--color-text-primary-dark)]">Lutron HomeWorks QSX · Clear Connect Type X</p>
-          </div>
-          <div>
-            <span class="block font-mono text-[11px] uppercase tracking-widest text-[var(--color-text-tertiary-dark)] mb-1">Front Range Solar Profile</span>
-            <p class="text-sm font-display text-[var(--color-text-primary-dark)]">5,280' high-altitude UV mitigation & solar tracking</p>
-          </div>
-          <div>
-            <span class="block font-mono text-[11px] uppercase tracking-widest text-[var(--color-text-tertiary-dark)] mb-1">Firm Verification</span>
-            <p class="text-sm font-display text-[var(--color-text-primary-dark)]">Lutron Certified HomeWorks Integrator · Est. 2013</p>
-          </div>
-        </div>
+      <div class="paths paths-3">
+        <article data-stage="retrofit">
+          <h3>Existing home / Retrofit</h3>
+          <p>Start with the windows you want to improve and the controls already installed. Fit, support, fabric, access and power come before a battery or wired recommendation.</p>
+          <p>Recently purchased a home with shades? Identify the shades, processor, controls and access before replacing hardware.</p>
+          <p>Preparing to hand the system to a new owner? Document the equipment, everyday controls, account access and service contact. Transfer depends on the actual system.</p>
+        </article>
+        <article data-stage="remodel">
+          <h3>Remodel</h3>
+          <p>An open ceiling or a changed window is the time to resolve layers, mounting and power while that work is still accessible.</p>
+        </article>
+        <article data-stage="custom">
+          <h3>Custom build</h3>
+          <p>Bring shading into the window and lighting plan before framing and electrical decisions are fixed.</p>
+        </article>
       </div>
-      <!-- Hero Visual Frame with Hairline Border -->
-      <div class="section-visual max-w-7xl mx-auto w-full mt-12 pt-6 border-t border-[var(--color-border-dark-soft)]">
-        <div class="relative w-full aspect-[21/9] overflow-hidden bg-[var(--color-surface-forest)]">
-          <img 
-            src="/images/davg-living-room-lutron-shades-orlando-01-1600w.webp" 
-            alt="Floor-to-ceiling glass wall with recessed Lutron motorized shades overlooking Front Range landscape"
-            class="w-full h-full object-cover opacity-80"
-          />
-          <div class="absolute bottom-4 left-6 font-mono text-[11px] tracking-widest uppercase text-[var(--color-text-primary-dark)] bg-[var(--color-surface-ink)]/70 px-3 py-1 border border-[var(--color-border-dark)]">
-            Figure 1.1 — Recessed Dual-Roller Condition · Great Room
+    </section>
+
+    <section id="window" class="band band-paper" data-rail="window">
+      <span id="purpose" class="alias"></span>
+      <span id="openings" class="alias"></span>
+      <h2>Start with the window.</h2>
+      <div class="measure">
+        <p>The opening sets the work: how the glass is grouped, whether someone can reach it, and how dark the room actually needs to be. A standard window, a wide glass wall, a tall opening and a bedroom do not share one size limit or one product.</p>
+        <p>These four briefs use the illustrative living room and bedroom. They are not a predetermined specification, and they are not a claim that a named product fits every opening.</p>
+      </div>
+      <div class="example-grid">
+        <figure>
+          <MediaPlaceholder id="shading-02-standard" subject="Standard bedroom window" ratio="4 / 3" src="/images/davg-bedroom-motorized-shades-01-1600w.webp" alt="Bedroom with motorized roller shades at a window" />
+          <figcaption>Standard window. Bedroom roller shades. Product photograph, not a DAVG project record. Group it with the room only when the hems and the daily use match.</figcaption>
+        </figure>
+        <figure>
+          <MediaPlaceholder id="shading-07-west" subject="Wide living-room glass" ratio="16 / 9" src="/images/davg-living-room-vaulted-roller-shades-01-800w.webp" alt="Vaulted living room with light roller shades on several windows and daylight still in the room" />
+          <figcaption>Wide glass wall. Living-room rollers with daylight still in the room. Product photograph. Alignment across the elevation matters more than a single maximum width.</figcaption>
+        </figure>
+        <figure>
+          <MediaPlaceholder id="shading-07-glazing" subject="Tall glazed wall" ratio="16 / 9" position="center 8%" src="/images/davg-loft-tall-roller-shades-01-800w.webp" alt="Tall glazed wall with translucent roller shades closed, tree shadows falling across the fabric" />
+          <figcaption>Tall opening. Roller shades closed, with tree shadows on the fabric. Product photograph. Access for service is part of the decision, not an afterthought.</figcaption>
+        </figure>
+        <figure>
+          <MediaPlaceholder id="shading-07-bedroom" subject="Bedroom window for darkness and privacy" ratio="4 / 3" src="/images/davg-triathlon-bedroom-shades-closed-01-800w.webp" alt="Bedroom with two white Triathlon shades fully closed across a wide window" />
+          <figcaption>Bedroom. Triathlon shades fully closed. Product photograph. Darkness depends on the fabric and the gaps, not on the room name.</figcaption>
+        </figure>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Opening</th>
+              <th>Condition to settle</th>
+              <th>What can change the path</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Standard window</td>
+              <td>Finished size, handles, trim and whether the shade is reached for service</td>
+              <td>A battery roller can fit. A pocket or a second layer needs a different assembly.</td>
+            </tr>
+            <tr>
+              <td>Wide glass wall</td>
+              <td>How panels group, where seams fall, and how hems align</td>
+              <td>One fabric width may have to become several panels. Night privacy is a separate layer.</td>
+            </tr>
+            <tr>
+              <td>Tall or hard-to-reach opening</td>
+              <td>Drive location, bracket support and a way to remove the shade later</td>
+              <td>Fabric weight, roll diameter and structure can rule out a single panel.</td>
+            </tr>
+            <tr>
+              <td>Bedroom</td>
+              <td>Dawn light, night privacy and whether the room must go dark</td>
+              <td>Blackout fabric alone does not make a dark room. Edge, top and bottom conditions still count.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>What DAVG measures before specifying shades</h3>
+      <ul class="plain-list">
+        <li>Finished and rough opening dimensions at multiple points.</li>
+        <li>Orientation, view priority and nighttime privacy.</li>
+        <li>Mullions, handles, trim, drapery, furniture and door swing.</li>
+        <li>Mounting support, power route, roll direction and service access.</li>
+        <li>How neighboring shades should group, align and move.</li>
+      </ul>
+    </section>
+
+    <section id="privacy" class="band band-forest" data-rail="privacy">
+      <span id="light" class="alias"></span>
+      <h2>Keep the view. Choose the privacy.</h2>
+      <div class="measure">
+        <p>The fabric determines what you see, how light enters and how private the room feels. Start with the job of each window, then choose one layer or two. Openness describes the open area of the weave. It is not a percentage guarantee of glare reduction, heat rejection or privacy.</p>
+        <p>Use the same living room and bedroom as the example. Sample fabric in real day and night light. A shade does not reject a fixed share of UV and heat, and it does not improve HVAC efficiency by a stated amount.</p>
+      </div>
+      <div class="paths paths-3">
+        <article>
+          <h3>Keep the view</h3>
+          <p>Solar-screen fabrics soften daylight while retaining a view through the weave. Openness and color change the result. More openness usually keeps more view and admits more direct light.</p>
+        </article>
+        <article>
+          <h3>Create privacy</h3>
+          <p>Translucent fabrics diffuse light and obscure the view. Daytime appearance does not settle nighttime privacy. Check the fabric with the interior lights on.</p>
+        </article>
+        <article>
+          <h3>Darken the room</h3>
+          <p>Opaque fabrics block light through the material. Bedroom darkness also depends on the gaps around the shade and the mounting detail. Room-darkening and light-tight construction are different goals.</p>
+        </article>
+      </div>
+      <div class="guide">
+        <div>
+          <h3>One window. Two different needs.</h3>
+          <div class="measure">
+            <p>The living room may need a view during the day and privacy after dark. The bedroom may need filtered daylight and a separate blackout layer for sleep. Two independently controlled fabrics can serve those moments.</p>
+            <p><strong>Day.</strong> A solar layer filters daylight while keeping the exterior visible.</p>
+            <p><strong>Night.</strong> A privacy or blackout layer closes the view into the room.</p>
+            <p>A dual roller needs room for both assemblies. A roller paired with drapery may suit the architecture better. Palladiom and Triathlon do not have the same dual-bracket options as Sivoia. Lutron’s layering notes and room-darkening matrix are a selection vocabulary, not a performance promise for an unspecified fabric.</p>
           </div>
+        </div>
+        <div class="guide-gallery">
+          <figure>
+            <MediaPlaceholder id="shading-06-fabric" subject="Sheer fabric and hembar" ratio="4 / 3" position="center 58%" src="/images/davg-sivoia-sheer-hembar-detail-01-800w.webp" alt="Light Sivoia QS sheer fabric, stitched hembar, and gray Lutron end cap against a bright window" />
+            <figcaption>Sivoia QS sheer. Fabric, hembar and end cap in daylight. Product photograph.</figcaption>
+          </figure>
+          <figure>
+            <MediaPlaceholder id="shading-06-sivoia" subject="Sheer hem with a view below" ratio="4 / 3" position="center 70%" src="/images/davg-sivoia-slate-sheer-hem-01-800w.webp" alt="Dark Sivoia QS sheer, with the hem and a narrow view of trees below the fabric" />
+            <figcaption>Sivoia QS sheer, hem against the glass. Product photograph. The view through the weave is the point of this layer.</figcaption>
+          </figure>
+          <figure>
+            <MediaPlaceholder id="shading-03-day" subject="Bedroom shade partly raised" ratio="16 / 9" position="left center" src="/images/davg-palladiom-bedroom-shades-partial-01-1600w.webp" alt="Bedroom with Palladiom roller shades partly raised, daylight coming in below the fabric" />
+            <figcaption>Bedroom, shade partly raised. Product photograph. Daylight below the fabric is a position, not a second fabric.</figcaption>
+          </figure>
+          <figure>
+            <MediaPlaceholder id="shading-06-elevation" subject="Living-room shades fully closed" ratio="16 / 9" src="/images/davg-sivoia-living-room-shades-closed-01-1600w.webp" alt="Living room with two Sivoia QS woven shades fully closed beside built-in shelves" />
+            <figcaption>Living room, Sivoia QS shades fully closed. Product photograph. This is the privacy position, not proof of nighttime opacity.</figcaption>
+          </figure>
         </div>
       </div>
     </section>
-    <!-- CHAPTER 02: THE ANSWER (Paper Editorial Reset) -->
-    <section class="relative bg-[var(--color-surface-paper)] text-[var(--color-text-primary-paper)] py-28 px-6 md:px-16 border-b border-[var(--color-border-paper)]">
-      <div class="max-w-6xl mx-auto">
-        <span class="font-mono text-xs tracking-[0.2em] text-[var(--color-text-secondary-paper)] uppercase block mb-4">
-          02 / The Definitive Answer
-        </span>
-        <h2 class="text-3xl md:text-5xl font-display font-light text-[var(--color-text-primary-paper)] leading-tight tracking-tight max-w-4xl mb-10">
-          A motorized shade is an integrated envelope system, not an aftermarket blind.
-        </h2>
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 border-t border-[var(--color-border-paper)] pt-10">
-          <div class="lg:col-span-7 space-y-6 text-base text-[var(--color-text-secondary-paper)] leading-relaxed">
-            <p class="text-lg text-[var(--color-text-primary-paper)] font-normal">
-              Typical pocket depth for motorized Lutron Palladiom shades behind a floor-to-ceiling window wall is 5.5 to 7.5 inches, with low-voltage clearance reserved in the head condition before drywall. Undersize either dimension and the fabric roll binds against trim within a season.
-            </p>
-            <p>
-              Motorized shading integrates four distinct layers: performance architectural fabric (openness factor and emissivity), precision tubular drives operating below conversation decibels, digital control bus architecture (Lutron QS Link or wireless Clear Connect), and continuous low-voltage power infrastructure homerun back to a central equipment core.
-            </p>
-            <p>
-              When engineered during schematic framing, motorized window treatments eliminate visible wiring, expose zero mounting brackets, and coordinate with reflected ceiling plans to drop invisibly from flush ceiling pockets.
-            </p>
-          </div>
-          <div class="lg:col-span-5 border-l border-[var(--color-border-paper)] pl-8 space-y-6">
-            <div class="pb-6 border-b border-[var(--color-border-paper)]">
-              <span class="font-mono text-xs uppercase tracking-widest text-[var(--color-text-secondary-paper)] block mb-1">Primary Dimension</span>
-              <p class="font-display text-2xl text-[var(--color-text-primary-paper)]">5.5" – 7.5" Pocket Depth</p>
-              <span class="font-mono text-[11px] text-[var(--color-text-secondary-paper)]">Single or dual roller clearance</span>
-            </div>
-            <div class="pb-6 border-b border-[var(--color-border-paper)]">
-              <span class="font-mono text-xs uppercase tracking-widest text-[var(--color-text-secondary-paper)] block mb-1">Acoustic Floor</span>
-              <p class="font-display text-2xl text-[var(--color-text-primary-paper)]">&lt; 38 dBA Sound Level</p>
-              <span class="font-mono text-[11px] text-[var(--color-text-secondary-paper)]">Lutron Quiet Electronic Drive (QED)</span>
-            </div>
-            <div>
-              <span class="font-mono text-xs uppercase tracking-widest text-[var(--color-text-secondary-paper)] block mb-1">Wiring Standard</span>
-              <p class="font-display text-2xl text-[var(--color-text-primary-paper)]">16/2 AWG + Cat6 Low-Voltage</p>
-              <span class="font-mono text-[11px] text-[var(--color-text-secondary-paper)]">Homerun to central power distribution panel</span>
-            </div>
-          </div>
+
+    <section id="architecture" class="band band-paper" data-rail="architecture">
+      <span id="selection" class="alias"></span>
+      <span id="details" class="alias"></span>
+      <h2>Choose how the shade meets the architecture.</h2>
+      <p class="measure">Recessed, fascia or intentionally exposed. The mount and the Lutron family answer the same physical question: what you see at the top of the window, and what the opening can support.</p>
+
+      <div class="paths paths-3" id="shade-design-paths">
+        <article>
+          <h3>Recessed</h3>
+          <p>Coordinate a ceiling pocket so the raised shade is concealed. Resolve the roller, structure, power and service access before the ceiling is finished.</p>
+        </article>
+        <article>
+          <h3>Fascia</h3>
+          <p>A visible cover conceals the roller without a recessed pocket. Its proportion, height and service access still matter.</p>
+        </article>
+        <article>
+          <h3>Exposed</h3>
+          <p>Palladiom makes the bracket and bottom rail part of the design. Choose this when the hardware should complement the window and the finishes.</p>
+        </article>
+      </div>
+
+      <h3>Three shading paths</h3>
+      <p class="measure">Start with the opening and the effect you want from the fabric. Then choose the treatment, mounting detail, power and control path. These are project-fit routes, not a quality ladder and not installed prices.</p>
+      <div class="paths paths-3">
+        <article>
+          <h3>Finished-home simplicity</h3>
+          <p>A battery-powered roller approach can bring shading to selected rooms without running a new power cable to every opening.</p>
+          <ul class="plain-list">
+            <li>Consider Triathlon; compare Serena where its system and control options fit.</li>
+            <li>Check fabric, opening size, battery access and integration.</li>
+            <li>Use a mount that respects the finished room.</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Integrated architectural shading</h3>
+          <p>A Sivoia QS-based design can support a more coordinated shading plan, with the treatment and power path selected for the project.</p>
+          <ul class="plain-list">
+            <li>Coordinate rollers, drapery or other supported treatments.</li>
+            <li>Plan pockets, blocking, wiring and service access.</li>
+            <li>Choose compatible lighting and whole-home controls.</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Exposed design detail</h3>
+          <p>Palladiom roller shades make the bracket and finish part of the architecture.</p>
+          <ul class="plain-list">
+            <li>Choose visible hardware with intention.</li>
+            <li>Select wired or wire-free equipment to suit the opening.</li>
+            <li>Coordinate alignment, fabric and neighboring finishes.</li>
+          </ul>
+        </article>
+      </div>
+      <p class="step-close">A wireless control connection does not necessarily mean battery power. Confirm communication, power and platform compatibility as separate choices.</p>
+
+      <div class="guide">
+        <div class="guide-gallery">
+          <figure>
+            <MediaPlaceholder id="shading-08-pocket" subject="Triathlon fascia" ratio="4 / 3" src="/images/davg-triathlon-fascia-boucle-01-800w.webp" alt="White Triathlon fascia box mounted on shiplap above a light woven shade" />
+            <figcaption>Triathlon fascia above a light woven shade. Product photograph. A fascia conceals the roller without a ceiling pocket.</figcaption>
+          </figure>
+          <figure>
+            <MediaPlaceholder id="shading-04-system" subject="Roller and fabric at the ceiling" ratio="4 / 3" src="/images/davg-bedroom-shade-fascia-detail-01-800w.webp" alt="Close view of a dark roller and gray woven shade fabric at a white ceiling" />
+            <figcaption>Roller and woven fabric at the ceiling. Product photograph. This shows the top condition, not a measured pocket section.</figcaption>
+          </figure>
+          <figure>
+            <MediaPlaceholder id="shading-06-palladiom" subject="Palladiom exposed bracket" ratio="1 / 1" position="left center" src="/images/davg-palladiom-exposed-roller-bracket-01-800w.webp" alt="Palladiom exposed roller with a fabric-wrapped tube and rounded metal bracket above a night window" />
+            <figcaption>Palladiom roller hardware: fabric-wrapped tube and metal bracket. Product photograph. The keypad of the same name is a separate product.</figcaption>
+          </figure>
+          <figure>
+            <MediaPlaceholder id="shading-07-exposed" subject="Palladiom shade in a finished room" ratio="4 / 3" position="center 22%" src="/images/davg-palladiom-bathroom-window-shade-01-800w.webp" alt="Bathroom with a Palladiom shade lowered partway over a wide black-framed window" />
+            <figcaption>Palladiom shade lowered over a wide window. Product photograph. Exposed hardware is a design choice, not an automatic upgrade over a concealed Sivoia shade.</figcaption>
+          </figure>
         </div>
+        <div>
+          <h3>Family profiles</h3>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Family</th>
+                  <th>Start here when</th>
+                  <th>Resolve before ordering</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Triathlon</td>
+                  <td>Finished rooms and straightforward roller conditions. Battery-powered configurations can avoid a new power run. Supported wired-power configurations also exist.</td>
+                  <td>Fabric, fit, top treatment and power or battery access</td>
+                </tr>
+                <tr>
+                  <td>Sivoia QS</td>
+                  <td>Concealed pockets, layered rollers or more demanding openings. The roller follows the measured window, fabric and mounting condition.</td>
+                  <td>Roller sizing, mounting, power, control and service access</td>
+                </tr>
+                <tr>
+                  <td>Palladiom</td>
+                  <td>Visible brackets and finish coordination. Wired and Wire-Free versions are different installation paths.</td>
+                  <td>Bracket support, finish, geometry and the wired or wire-free route</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="measure">A Sivoia concealed roller can be the right decision in a top-tier residence. A Palladiom Wire-Free shade can be the right retrofit. Palladiom is not the required choice for a recessed pocket.</p>
+        </div>
+      </div>
+
+      <h3>Mounting and light-gap decisions</h3>
+      <dl class="ledger">
+        <div>
+          <dt>Inside mount</dt>
+          <dd>Preserves surrounding architecture and gives up some fabric width to brackets and operator clearance. Survey the opening at multiple points and show the expected side gap.</dd>
+        </div>
+        <div>
+          <dt>Outside mount</dt>
+          <dd>Can overlap trim to improve coverage. The shade and brackets stay visible and may conflict with doors, handles or drapery.</dd>
+        </div>
+        <div>
+          <dt>Recessed pocket</dt>
+          <dd>Coordinate chassis, one or two rollers, roll diameter, blocking, wire entry and a removable service opening before framing. Lutron’s measuring note gives configuration-specific minimums, including 3.5 × 3.5 inches for one Roller 64 assembly and a larger dual mount. Those figures are not a universal finished pocket.</dd>
+        </div>
+        <div>
+          <dt>Room darkening</dt>
+          <dd>A closed fabric can still leak light at the side, top or bottom. Specify the side channel, bottom condition and pocket when darkness matters.</dd>
+        </div>
+      </dl>
+
+      <details class="drawer">
+        <summary>Published configuration examples</summary>
+        <p>These are illustrative published configurations, not a promise that maximum width and maximum drop can occur together, and not a quote. DAVG checks the current model specification for each opening.</p>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Published configuration</th>
+                <th>Example manufacturer limit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Triathlon Select roller</td>
+                <td>Up to 108 in wide × 120 in high, subject to its available configuration</td>
+              </tr>
+              <tr>
+                <td>Triathlon WIDR roller</td>
+                <td>Up to 144 × 144 in in Lutron’s luxury residential matrix</td>
+              </tr>
+              <tr>
+                <td>Palladiom Wire-Free roller</td>
+                <td>21–144 in wide × 12–144 in high, varying by fabric</td>
+              </tr>
+              <tr>
+                <td>Sivoia QS Roller 100, a specific recessed 5-in configuration</td>
+                <td>A listed single-panel width range that varies by fabric and height, with a typical maximum area of 100 sq ft</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </section>
+
+    <section id="coordinate" class="band band-ink" data-rail="coordinate">
+      <span id="system" class="alias"></span>
+      <h2>Now coordinate the room.</h2>
+      <p class="deck">The roller shade and the control system do different jobs. The shade manages the window. The system coordinates shades, lighting and the way you operate the home. We choose both together so the hardware, controls and everyday behavior fit the project.</p>
+      <p class="measure">The shade solves the window. The control system coordinates the room.</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Path</th>
+              <th>Homeowner explanation</th>
+              <th>Likely starting situation</th>
+              <th>What must be confirmed</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Focused shade control</td>
+              <td>A compatible remote or supported Lutron hub/system can manage selected shades without making a whole-home lighting project necessary.</td>
+              <td>A defined room or shading-only improvement</td>
+              <td>Exact shade, remote and hub compatibility, and whether grouping, an app or schedules are required</td>
+            </tr>
+            <tr>
+              <td>RadioRA 3</td>
+              <td>Coordinate compatible shades and lighting through a professionally configured wireless control system, with supported keypads, remotes, app operation and scenes.</td>
+              <td>Existing homes, remodels or new homes whose scope suits its supported devices and topology</td>
+              <td>Shade RF path, keypad power, coverage and current supported models</td>
+            </tr>
+            <tr>
+              <td>HomeWorks</td>
+              <td>Plan lighting and shading as a broader residential control architecture, including architectural keypad choices and the appropriate wired or wireless infrastructure.</td>
+              <td>Projects needing its system scope, control choices or construction coordination; often custom builds and substantial remodels</td>
+              <td>Processor, shade links, keypad wiring and system design. Existing-home eligibility is project-specific</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="measure">If you already have Lutron controls, we begin there. A shade addition may extend the current system. A larger project may justify a different architecture. The decision follows the home and the desired controls—not a rule that every retrofit uses RadioRA 3 or every custom build needs HomeWorks.</p>
+      <p class="measure">Where the home uses Control4, compatible Lutron systems can participate in broader household scenes. Control4 is the integration layer in this explanation, not a fourth Lutron shade family. Confirm the installed processor and supported driver before promising functions.</p>
+      <div class="signal" aria-label="Physical shade path and control path">
+        <ol>
+          <li>Fabric and roller</li>
+          <li>Compatible Lutron shade and control link</li>
+          <li>Selected Lutron system</li>
+          <li>Keypad or app</li>
+        </ol>
+        <p>Optional branch: Control4 can coordinate compatible Lutron scenes. The keypad does not power the motor. Wired shade power is not the same thing as wired communication.</p>
       </div>
     </section>
-    <!-- CHAPTER 03: DAVG SYSTEM STUDY (Deep Forest / Juniper Surface) -->
-    <section class="architectural-background-section bg-[var(--color-surface-forest)] text-[var(--color-text-primary-dark)] py-28 px-6 md:px-16 border-b border-[var(--color-border-dark-soft)]">
-      <div class="architectural-background-title select-none" data-surface="juniper">
-        SOLAR STUDY
+
+    <section id="controls" class="band band-paper" data-rail="controls">
+      <h2>Choose the control you’ll actually use.</h2>
+      <p class="measure">A shade can have its own open and close control, or join a room scene with the lights. The keypad should make those choices obvious and suit the wall where it lives. We resolve the button layout, labels and finish with the control system.</p>
+      <p class="measure">That system determines which controls belong on the wall.</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Control</th>
+              <th>System context</th>
+              <th>What to understand</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Pico remote</td>
+              <td>Compatible shade or system configurations; wall, tabletop or handheld as specified</td>
+              <td>Simple control without assuming every wall position needs a mains-powered keypad. The face should be the shade or scene version actually selected.</td>
+            </tr>
+            <tr>
+              <td>Sunnata RF keypad</td>
+              <td>RadioRA 3 version reviewed for this page: 2-button, 3-button with raise/lower, and 4-button variants</td>
+              <td>Fewer or more buttons change the daily task. RF communication does not make this keypad battery powered. Installation requires appropriate power. Other platforms may use a similar name; the exact model has to be identified.</td>
+            </tr>
+            <tr>
+              <td>seeTouch</td>
+              <td>The RadioRA 3-compatible model, and a HomeWorks model separately if that system is specified</td>
+              <td>Clearly labeled button control. One photograph does not prove every seeTouch works on every system.</td>
+            </tr>
+            <tr>
+              <td>Palladiom keypad</td>
+              <td>HomeWorks residential model</td>
+              <td>Flat architectural face and coordinated finishes. A Palladiom keypad does not require Palladiom roller hardware, and the roller does not require this keypad.</td>
+            </tr>
+            <tr>
+              <td>Alisse</td>
+              <td>HomeWorks QSX wired QS-link model</td>
+              <td>Architectural metal face, circular buttons and personalized engraving. It is not a RadioRA 3 keypad upgrade.</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div class="section-content max-w-7xl mx-auto">
-        <div class="max-w-3xl mb-16">
-          <span class="font-mono text-xs tracking-[0.2em] text-[var(--color-accent-signal)] uppercase block mb-3">
-            03 / Signature System Study
-          </span>
-          <h2 class="text-3xl md:text-5xl font-display font-light leading-tight tracking-tight mb-6">
-            Solar Geometry Study: Front Range Altitude & Thermal Control
-          </h2>
-          <p class="text-base text-[var(--color-text-secondary-dark)] leading-relaxed">
-            At 5,280 feet, ultraviolet exposure and low-angle winter solar gain degrade interiors and overheat living zones. Motorized shades operate as automated thermal baffles based on calculated solar azimuth.
-          </p>
-        </div>
-        <!-- System Study 6-Part Crawlable HTML Ledger -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 border-t border-[var(--color-border-dark)] pt-8">
-          <div class="space-y-8">
-            <div>
-              <span class="font-mono text-[11px] uppercase tracking-widest text-[var(--color-accent-signal)] block mb-2">1. What You Are Evaluating</span>
-              <p class="text-sm text-[var(--color-text-secondary-dark)] leading-relaxed">
-                Calculated solar angles across southern and western glass exposures. Low-angle winter sun penetrates deeply into living volumes, causing severe glare, while summer sun increases air conditioning load exponentially.
-              </p>
-            </div>
-            <div>
-              <span class="font-mono text-[11px] uppercase tracking-widest text-[var(--color-accent-signal)] block mb-2">2. Why It Matters to Architecture</span>
-              <p class="text-sm text-[var(--color-text-secondary-dark)] leading-relaxed">
-                Automated fabric positioning preserves view lines while stopping up to 85% of solar radiation before it converts to interior heat, protecting wide-plank hardwood floors and fine art from photodegradation.
-              </p>
-            </div>
-            <div>
-              <span class="font-mono text-[11px] uppercase tracking-widest text-[var(--color-accent-signal)] block mb-2">3. What DAVG Evaluates</span>
-              <p class="text-sm text-[var(--color-text-secondary-dark)] leading-relaxed">
-                Fabric openness factors (1%, 3%, 5%, or blackout), internal weave reflection coefficients, bracket deflection under load, and roll-diameter clearance inside ceiling assemblies.
-              </p>
-            </div>
-          </div>
-          <div class="space-y-8 lg:border-l lg:border-[var(--color-border-dark-soft)] lg:pl-12">
-            <div>
-              <span class="font-mono text-[11px] uppercase tracking-widest text-[var(--color-accent-signal)] block mb-2">4. What Commonly Goes Wrong</span>
-              <p class="text-sm text-[var(--color-text-secondary-dark)] leading-relaxed">
-                Undersized pockets that crush fabric hems, unbacked drywall anchors that sag under 40-pound shade assemblies, and noisy line-voltage motors that turn wake-up routines into industrial rattle.
-              </p>
-            </div>
-            <div>
-              <span class="font-mono text-[11px] uppercase tracking-widest text-[var(--color-accent-signal)] block mb-2">5. How DAVG Verifies & Delivers</span>
-              <p class="text-sm text-[var(--color-text-secondary-dark)] leading-relaxed">
-                Laser measurement of window frames post-drywall, CAD blocking diagrams provided to framers at framing stage, hembar tolerance verification, and astronomical clock commissioning.
-              </p>
-            </div>
-            <div>
-              <span class="font-mono text-[11px] uppercase tracking-widest text-[var(--color-accent-signal)] block mb-2">6. Related System Decision</span>
-              <p class="text-sm text-[var(--color-text-secondary-dark)] leading-relaxed">
-                Coordinate shade automation directly with <a href="/solutions/architectural-lighting/" class="text-[var(--color-text-primary-dark)] underline decoration-[var(--color-accent-signal)] underline-offset-4">Architectural Lighting</a> and <a href="/solutions/home-intelligence/" class="text-[var(--color-text-primary-dark)] underline decoration-[var(--color-accent-signal)] underline-offset-4">Home Intelligence</a> for unified circadian wake and evening scenes.
-              </p>
-            </div>
-          </div>
+      <div class="guide">
+        <figure>
+          <MediaPlaceholder id="shading-06-control" subject="Palladiom keypad beside a lowered shade" ratio="4 / 3" position="left center" src="/images/davg-palladiom-keypad-with-shade-01-800w.webp" alt="Brushed-metal keypad engraved Entertain, Relax, and Dine, with a lowered shade behind the seating" />
+          <figcaption>Palladiom keypad, engraved Entertain, Relax and Dine, with a lowered shade beside it. Lutron product photograph, not a DAVG job record. This is the keypad, not the Palladiom roller bracket.</figcaption>
+        </figure>
+        <div>
+          <p class="kicker">Proposed programming</p>
+          <p class="measure">A three-scene layout might label Morning, Privacy and Evening, with raise and lower on a compatible configuration. These labels are conceptual. They are not the engraving on the photograph.</p>
+          <ol class="sequence">
+            <li>Morning — raise the living-room solar shade.</li>
+            <li>Privacy — lower the bedroom privacy layer.</li>
+            <li>Evening — close the selected shades with the lighting scene.</li>
+          </ol>
         </div>
       </div>
-    </section>
-    <!-- CHAPTER 04: THE DECISION (Cream / Paper Surface) -->
-    <section class="relative bg-[var(--color-surface-paper)] text-[var(--color-text-primary-paper)] py-28 px-6 md:px-16 border-b border-[var(--color-border-paper)]">
-      <div class="max-w-7xl mx-auto">
-        <span class="font-mono text-xs tracking-[0.2em] text-[var(--color-text-secondary-paper)] uppercase block mb-4">
-          04 / Decision Framework
-        </span>
-        <h2 class="text-3xl md:text-5xl font-display font-light text-[var(--color-text-primary-paper)] leading-tight tracking-tight max-w-3xl mb-12">
-          Comparing shade architectures: hardwired vs. wireless retrofit.
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 border-t border-b border-[var(--color-border-paper)] divide-y md:divide-y-0 md:divide-x divide-[var(--color-border-paper)]">
-          <div class="py-10 md:pr-12">
-            <span class="font-mono text-[11px] uppercase tracking-widest text-[var(--color-text-secondary-paper)] block mb-2">Architecture 01</span>
-            <h3 class="text-2xl font-display font-normal text-[var(--color-text-primary-paper)] mb-4">Hardwired Low-Voltage (Pre-Construction)</h3>
-            <p class="text-sm text-[var(--color-text-secondary-paper)] leading-relaxed mb-6">
-              Low-voltage wiring pulled home to central Lutron panels. Ideal for new builds, additions, and studs-up remodels where ceiling cavities remain accessible.
-            </p>
-            <ul class="space-y-3 font-mono text-xs text-[var(--color-text-secondary-paper)]">
-              <li class="flex items-center gap-2"><span class="text-[var(--color-accent-signal)]">✓</span> Zero battery maintenance forever</li>
-              <li class="flex items-center gap-2"><span class="text-[var(--color-accent-signal)]">✓</span> Supports ultra-quiet Palladiom exposed architectural brackets</li>
-              <li class="flex items-center gap-2"><span class="text-[var(--color-accent-signal)]">✓</span> Perfectly synchronized hembar alignment across multi-window spans</li>
-              <li class="flex items-center gap-2"><span class="text-red-700">✕</span> Requires low-voltage rough-in before insulation and drywall</li>
-            </ul>
-          </div>
-          <div class="py-10 md:pl-12">
-            <span class="font-mono text-[11px] uppercase tracking-widest text-[var(--color-text-secondary-paper)] block mb-2">Architecture 02</span>
-            <h3 class="text-2xl font-display font-normal text-[var(--color-text-primary-paper)] mb-4">Battery RF Wireless (Occupied Retrofit)</h3>
-            <p class="text-sm text-[var(--color-text-secondary-paper)] leading-relaxed mb-6">
-              Operates on standard D-cell alkaline batteries using Clear Connect RF. Ideal for completed homes where running new wiring through finished ceilings is cost-prohibitive.
-            </p>
-            <ul class="space-y-3 font-mono text-xs text-[var(--color-text-secondary-paper)]">
-              <li class="flex items-center gap-2"><span class="text-[var(--color-accent-signal)]">✓</span> Installs without opening drywall or repainting</li>
-              <li class="flex items-center gap-2"><span class="text-[var(--color-accent-signal)]">✓</span> 3–5 year battery life under typical daily operation</li>
-              <li class="flex items-center gap-2"><span class="text-[var(--color-accent-signal)]">✓</span> Full keypad, app, and scene integration with Control4/Lutron</li>
-              <li class="flex items-center gap-2"><span class="text-red-700">✕</span> Limited to enclosed cassette headrails to conceal battery pack</li>
-            </ul>
-          </div>
-        </div>
+      <div class="example-grid pending-grid">
+        <figure>
+          <MediaPlaceholder id="shading-06-pico" subject="Pico shade remote, photograph pending" ratio="4 / 3" />
+          <figcaption>Pico shade or scene remote. Photograph pending. No stand-in image is shown.</figcaption>
+        </figure>
+        <figure>
+          <MediaPlaceholder id="shading-06-sunnata" subject="Sunnata RadioRA 3 keypad layouts, photographs pending" ratio="4 / 3" />
+          <figcaption>Sunnata RF keypad for RadioRA 3. Front views of the 2-button, 3-button and 4-button layouts are pending.</figcaption>
+        </figure>
+        <figure>
+          <MediaPlaceholder id="shading-06-seetouch" subject="seeTouch keypad, photograph pending" ratio="4 / 3" />
+          <figcaption>seeTouch. Photograph of the exact residential model is pending.</figcaption>
+        </figure>
+        <figure>
+          <MediaPlaceholder id="shading-06-alisse" subject="Alisse keypad, photograph pending" ratio="4 / 3" />
+          <figcaption>Alisse HomeWorks QSX keypad. Photograph pending.</figcaption>
+        </figure>
       </div>
     </section>
-    <!-- CHAPTER 05: BEHIND THE ARCHITECTURE (Near-Black Technical Detail) -->
-    <section class="relative bg-[var(--color-surface-ink)] text-[var(--color-text-primary-dark)] py-28 px-6 md:px-16 border-b border-[var(--color-border-dark)]">
-      <div class="max-w-7xl mx-auto">
-        <div class="max-w-3xl mb-16">
-          <span class="font-mono text-xs tracking-[0.2em] text-[var(--color-accent-signal)] uppercase block mb-3">
-            05 / Behind The Architecture
-          </span>
-          <h2 class="text-3xl md:text-5xl font-display font-light leading-tight tracking-tight mb-6">
-            Structural blocking, pocket coordination, and wiring pathways.
-          </h2>
-          <p class="text-base text-[var(--color-text-secondary-dark)] leading-relaxed">
-            Every bracket carries the full weight and continuous operating torque of the shade. We coordinate low-voltage rough-in and structural framing before walls close.
-          </p>
-        </div>
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div class="lg:col-span-6 space-y-4">
-            <div class="p-6 border border-[var(--color-border-dark)] bg-[var(--color-surface-forest)]/20">
-              <span class="font-mono text-[11px] uppercase tracking-widest text-[var(--color-accent-signal)] block mb-1">Specification 01</span>
-              <h3 class="text-lg font-display text-[var(--color-text-primary-dark)] mb-2">Structural Continuous Blocking</h3>
-              <p class="text-sm text-[var(--color-text-secondary-dark)]">Solid 2x wood blocking secured to header structure. Shades are never anchored to drywall, plaster, or hollow window jambs.</p>
-            </div>
-            <div class="p-6 border border-[var(--color-border-dark)] bg-[var(--color-surface-forest)]/20">
-              <span class="font-mono text-[11px] uppercase tracking-widest text-[var(--color-accent-signal)] block mb-1">Specification 02</span>
-              <h3 class="text-lg font-display text-[var(--color-text-primary-dark)] mb-2">Dual Pocket Sizing Standard</h3>
-              <p class="text-sm text-[var(--color-text-secondary-dark)]">Minimum 7" depth by 7" drop required when running dual rollers (independent 3% solar screen paired with 100% blackout roller).</p>
-            </div>
-            <div class="p-6 border border-[var(--color-border-dark)] bg-[var(--color-surface-forest)]/20">
-              <span class="font-mono text-[11px] uppercase tracking-widest text-[var(--color-accent-signal)] block mb-1">Specification 03</span>
-              <h3 class="text-lg font-display text-[var(--color-text-primary-dark)] mb-2">Low-Voltage Head Entry</h3>
-              <p class="text-sm text-[var(--color-text-secondary-dark)]">Motor wire drops inside pocket on motor jamb side, leaving 12" service loop to allow drive removal without touching finished ceilings.</p>
-            </div>
-          </div>
-          <div class="lg:col-span-6 border border-[var(--color-border-dark)] p-4 bg-[var(--color-surface-forest)]/10">
-            <img 
-              src="/images/davg-bedroom-shade-fascia-detail-01-800w.webp" 
-              alt="Architectural pocket detail showing recessed shade fascia and framing blocking"
-              class="w-full h-auto object-cover"
-            />
-            <div class="mt-4 font-mono text-[11px] text-[var(--color-text-tertiary-dark)] uppercase">
-              Plate 05-B — Pre-Drywall Head Condition Pocket Detail
-            </div>
-          </div>
-        </div>
+
+    <section id="scenes" class="band band-forest band-solar" data-rail="scenes">
+      <span id="solar" class="alias"></span>
+      <p class="spatial-word" aria-hidden="true">SHADES</p>
+      <h2>Give each button a purpose.</h2>
+      <p class="deck">Return to the same two rooms. These are proposed responses for the illustrative living room and bedroom, not a recorded DAVG program and not a sun-tracking simulation.</p>
+      <div class="time-controls" role="group" aria-label="Proposed time of day">
+        <button type="button" data-scene="Morning" aria-pressed="true">Morning</button>
+        <button type="button" data-scene="Afternoon" aria-pressed="false">Afternoon</button>
+        <button type="button" data-scene="Evening" aria-pressed="false">Evening</button>
+      </div>
+      <p class="caption" id="scene-caption"><span id="scene-label">Morning</span>. <span id="scene-copy">Living room: raise the solar shade and let the view in. Bedroom: open enough for daylight without a separate task at the glass.</span></p>
+      <div class="example-grid">
+        <figure>
+          <MediaPlaceholder id="shading-07-living-scene" subject="Illustrative living room" ratio="16 / 9" src="/images/davg-living-room-lutron-shades-orlando-01-1600w.webp" alt="Living room with roller shades and daylight in the room" />
+          <figcaption>Living room used as the scene example. Product photograph. One picture stands in for the written scene. It does not change with the buttons.</figcaption>
+        </figure>
+        <figure>
+          <MediaPlaceholder id="shading-05-solar" subject="Bedroom window wall at mixed shade positions" ratio="16 / 9" src="/images/davg-bedroom-window-wall-roller-shades-01-1600w.webp" alt="Bedroom window wall with black roller shades held at different heights above a view of trees" />
+          <figcaption>Bedroom window wall, shades at different heights. Product photograph. The heights illustrate positions. They are not a validated afternoon glare study.</figcaption>
+        </figure>
+      </div>
+      <div class="measure">
+        <p>Operate one window, a room or a group. Use a compatible keypad, remote or app, and set schedules around the household. Where the selected system supports it, Lutron’s Natural Light Optimization can adjust shade positions around the sun’s movement. That feature is specified per system. It is not assumed here.</p>
+        <p>For a home with Control4, compatible Lutron shading can join broader household scenes after the processor, integration and intended behavior are confirmed.</p>
       </div>
     </section>
-    <!-- CHAPTER 06: THE PROOF (Full-Bleed Verified Photography) -->
-    <section class="relative bg-[var(--color-surface-ink)] py-28 px-6 md:px-16 border-b border-[var(--color-border-dark)]">
-      <div class="max-w-7xl mx-auto">
-        <span class="font-mono text-xs tracking-[0.2em] text-[var(--color-accent-signal)] uppercase block mb-4">
-          06 / First-Party Evidence
-        </span>
-        <h2 class="text-3xl md:text-5xl font-display font-light text-[var(--color-text-primary-dark)] leading-tight tracking-tight max-w-3xl mb-12">
-          Finished execution: Cherry Hills Village Residence.
-        </h2>
-        <div class="relative w-full aspect-[16/9] overflow-hidden border border-[var(--color-border-dark)]">
-          <img 
-            src="/images/davg-bedroom-motorized-shades-01-1600w.webp" 
-            alt="Completed bedroom installation with Lutron motorized shades recessed into ceiling pocket"
-            class="w-full h-full object-cover"
-          />
+
+    <section id="stage" class="band band-paper" data-rail="stage">
+      <span id="construction" class="alias"></span>
+      <span id="pitfalls" class="alias"></span>
+      <h2>Designed for the stage your home is in.</h2>
+      <p class="measure">The same daylight goal can require very different work in a finished room and a home still on paper. We plan the shade around the construction opportunity, then coordinate the details with the people responsible for the window, ceiling and controls.</p>
+      <div class="stage-controls" role="group" aria-label="Project stage, repeated from the introduction">
+        <button type="button" data-project-stage="retrofit" aria-pressed="false">Existing home / Retrofit</button>
+        <button type="button" data-project-stage="remodel" aria-pressed="false">Remodel</button>
+        <button type="button" data-project-stage="custom" aria-pressed="false">Custom build</button>
+      </div>
+      <div class="paths paths-3">
+        <article data-stage="retrofit">
+          <h3>Existing home / Retrofit</h3>
+          <p>Start with the windows you want to improve and the controls already installed. We assess fit, support, fabric, access and available power before recommending battery or wired options.</p>
+          <p>Coordinate existing trim, mounting support, finish protection, access and any targeted electrical work. A battery shade, exposed hardware or fascia may mean less construction. It still needs support and a service path.</p>
+          <p>Recently purchased a home? Identify the existing shades, processor, controls and access arrangements before replacing hardware. Explain what can be retained and what needs service or reconfiguration.</p>
+          <p>Preparing a handoff? Document the equipment, everyday controls, applicable account ownership and service contact. Coordinate transfer and remove former-owner access as appropriate. Do not assume every platform transfers automatically.</p>
+        </article>
+        <article data-stage="remodel">
+          <h3>Remodel</h3>
+          <p>An open ceiling or changed window is an opportunity to resolve a cleaner detail. Decide layers, mounting and power while the affected work is accessible.</p>
+          <p>Coordinate revised elevations, pocket sections, blocking, power routing, finish interfaces and a service opening.</p>
+        </article>
+        <article data-stage="custom">
+          <h3>Custom build</h3>
+          <p>Bring shading into the window and lighting plan early. Coordinate each opening’s fabric, assembly and controls before framing and electrical decisions are fixed.</p>
+          <p>Share the opening schedule, glazing and elevations, pocket or roller sections, support, electrical responsibilities, keypad locations and the finish or engraving schedule.</p>
+        </article>
+      </div>
+      <h3>For architects, builders and interior designers</h3>
+      <p class="measure">We coordinate the technology portion with the architectural and interior design intent: shade assemblies, power and control requirements, proposed keypad locations and the interfaces that need agreement. Structural, architectural and electrical work stays with the appropriate project team. DAVG is not presented here as an architecture practice.</p>
+      <h3>Questions to settle in the proposal</h3>
+      <ol class="plain-list">
+        <li>What framing, finish or electrical work is required at each opening?</li>
+        <li>Who provides bracket blocking, power and the final pocket or fascia dimensions?</li>
+        <li>Can a shade be removed for service without damaging the finish?</li>
+        <li>When is the opening field measured, and who approves fabric, seam and hembar alignment?</li>
+      </ol>
+      <h3>Problems worth preventing</h3>
+      <dl class="ledger">
+        <div>
+          <dt>No solid mounting structure</dt>
+          <dd>Issue blocking details before the relevant walls or ceilings close.</dd>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8 pt-8 border-t border-[var(--color-border-dark-soft)] font-mono text-xs text-[var(--color-text-secondary-dark)]">
-          <div>
-            <span class="text-[var(--color-text-tertiary-dark)] block uppercase mb-1">Project Location</span>
-            <p class="text-[var(--color-text-primary-dark)]">Cherry Hills Village, CO</p>
-          </div>
-          <div>
-            <span class="text-[var(--color-text-tertiary-dark)] block uppercase mb-1">Integration Scope</span>
-            <p class="text-[var(--color-text-primary-dark)]">18 motorized openings, recessed dual-roller pockets, Lutron HomeWorks QSX</p>
-          </div>
-          <div>
-            <span class="text-[var(--color-text-tertiary-dark)] block uppercase mb-1">System Delivery</span>
-            <p class="text-[var(--color-text-primary-dark)]">Pre-drywall framing coordination to final fabric drop calibration</p>
-          </div>
+        <div>
+          <dt>Pocket sized by guess</dt>
+          <dd>Size it from the selected shade, width, fabric roll and configuration.</dd>
         </div>
+        <div>
+          <dt>Misaligned hems across glass</dt>
+          <dd>Survey and group the elevation as one composition.</dd>
+        </div>
+        <div>
+          <dt>Late decision</dt>
+          <dd>Deciding after the ceiling is closed can force a visible fascia, a light gap, or the loss of a second layer. That is a construction consequence, not a published price.</dd>
+        </div>
+      </dl>
+      <figure>
+        <MediaPlaceholder id="shading-08-cutaway" subject="Architectural pocket cutaway" ratio="16 / 9" />
+        <figcaption>Pocket section drawing pending. The fascia and bracket photographs above are finished top conditions, not a construction section and not a DAVG project record.</figcaption>
+      </figure>
+    </section>
+
+    <section id="installed" class="band band-forest" data-rail="installed">
+      <span id="proof" class="alias"></span>
+      <h2>The detail, installed.</h2>
+      <p class="measure">A verified DAVG project is not published here yet. This slot stays empty until a project record can name the window, the shading objective and the coordination. Product photographs elsewhere on this page are not that record. Comfort and energy results are omitted until they are measured.</p>
+      <MediaPlaceholder id="shading-11-proof" subject="Reserved shading project photograph" ratio="16 / 9" />
+    </section>
+
+    <section id="scope" class="band band-paper" data-rail="scope">
+      <span id="investment" class="alias"></span>
+      <span id="ownership" class="alias"></span>
+      <h2>Compare the complete scope.</h2>
+      <p class="measure">The investment changes with the openings, the fabric and layers, the mount and shade family, the control system, the keypad and the construction. Good, Better and Best describe DAVG project scope. They are not Lutron grades, not a Triathlon-to-Palladiom quality ladder, and not a rule that RadioRA 3 or HomeWorks occupies a fixed tier. No installed prices are published.</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Scope</th>
+              <th>What it delivers</th>
+              <th>What the scope includes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Good — focused shading</td>
+              <td>Solve a defined glare or privacy problem in selected rooms</td>
+              <td>A suitable fabric and layer, a mount that fits the finished opening, and straightforward shade control</td>
+            </tr>
+            <tr>
+              <td>Better — coordinated rooms</td>
+              <td>Consistent shading across related rooms, with useful groups and schedules</td>
+              <td>More openings, finish coordination, and a keypad, remote or system plan such as RadioRA 3 when that system fits</td>
+            </tr>
+            <tr>
+              <td>Best — architectural shading</td>
+              <td>Resolve shading with the ceiling, lighting and household operation</td>
+              <td>Selected pockets or exposed finishes, a second layer where it is justified, a broader system such as HomeWorks when the project needs it, keypad finish and greater trade coordination</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="measure">Any shade family can appear in more than one scope. A whole-home Triathlon project may cost more than a single Palladiom opening. A proposal should list, opening by opening, the drive, fabric, layers, mount, power, control, light-gap expectation, service method and construction allowance. Generic per-window pricing is not published.</p>
+      <h3>Delivery</h3>
+      <ol class="sequence">
+        <li>Measure and sample.</li>
+        <li>Specify each opening.</li>
+        <li>Coordinate mounting and power.</li>
+        <li>Install and program.</li>
+        <li>Demonstrate controls and service access.</li>
+      </ol>
+      <p class="measure">DAVG is a Lutron Certified HomeWorks Integrator. The work is to verify platform, shade and control compatibility; survey and measure each opening; present fabric and hardware samples; create the shade, power, control and pocket schedules; coordinate the related trades; order the approved configuration; program grouping, scenes and limits; and document maintenance access. Lutron is selected when its shade families, hardware, controls and service path meet the brief.</p>
+    </section>
+
+    <section id="windows" class="band band-paper" data-rail="windows">
+      <span id="questions" class="alias"></span>
+      <h2>Start with your windows.</h2>
+      <div class="measure">
+        <p>Tell us which rooms need better light or privacy, whether the home is finished or under construction, and what controls are already installed. Plans or window photographs help define the next step.</p>
+        <p>At elevation, strong sun and large temperature swings make west- and south-facing glass demanding. A Denver-area shade plan should account for seasonal sun angle, the view, privacy after dark, and high-contrast daylight on screens and materials.</p>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Can shades be added without opening the walls?</summary>
+          <p>Often. Battery-powered configurations can avoid a new power run, but mounting support, dimensions and access still need checking.</p>
+        </details>
+        <details>
+          <summary>Do solar shades provide privacy at night?</summary>
+          <p>Do not assume so. When the room is brighter than outdoors, an open-weave fabric can allow a view inside. Test the fabric at the real window and add a privacy or blackout layer where evening privacy is required.</p>
+        </details>
+        <details>
+          <summary>Does blackout fabric make a bedroom completely dark?</summary>
+          <p>It blocks light through the fabric. Edge gaps, the top detail and the bottom condition also determine the room’s darkness.</p>
+        </details>
+        <details>
+          <summary>Are wireless shades always battery powered?</summary>
+          <p>No. Wireless describes the control link. Some shades use wired power with wireless communication. Battery models need service access and eventual replacement. Wired-power models need a planned power path.</p>
+        </details>
+        <details>
+          <summary>Which Lutron shade is best?</summary>
+          <p>The fit depends on the opening and the architectural goal. Triathlon, Sivoia QS and Palladiom serve different installation and design priorities. There is no single maximum size. Published examples range from Triathlon Select configurations up to 108 × 120 inches to larger specified Palladiom and Sivoia configurations. Fabric, width, drop, area, seam, drive and mounting still have to pass the current sizing tool.</p>
+        </details>
+        <details>
+          <summary>Can they work with my existing controls?</summary>
+          <p>We check the existing Lutron or other automation system, processor and integration before confirming compatibility. Compatible shades and lighting can share a programmed scene. A local override stays available, and a schedule should be explainable.</p>
+        </details>
+        <details>
+          <summary>How much pocket depth do motorized shades actually need?</summary>
+          <p>There is no universal depth. For illustration, Lutron’s measuring guide identifies 3.5 × 3.5 inches as minimum mounting space for one Roller 64 assembly and 7.5 inches of depth for a particular dual Roller 64 assembly. That does not determine the finished pocket for another roller, fabric, fascia or service detail. Size the selected assembly on a section before framing.</p>
+        </details>
+        <details>
+          <summary>What is the structural requirement on a large window wall?</summary>
+          <p>The bracket, fastener and substrate must support the selected shade and its operating load. Blocking or another approved attachment is detailed with the architect or builder, particularly where drywall will conceal the support. The measured opening and the installation instructions control the answer.</p>
+        </details>
       </div>
     </section>
-    <!-- CHAPTER 07: SCOPE & INVESTMENT FRAMING (3-Column 1px Hairline Grid) -->
-    <section class="relative bg-[var(--color-surface-ink)] py-28 px-6 md:px-16 border-b border-[var(--color-border-dark)]">
-      <div class="max-w-7xl mx-auto">
-        <div class="mb-16">
-          <span class="font-mono text-xs tracking-[0.2em] text-[var(--color-accent-signal)] uppercase block mb-3">
-            07 / Scope & Investment Framing
-          </span>
-          <h2 class="text-3xl md:text-5xl font-display font-light text-[var(--color-text-primary-dark)] tracking-tight">
-            Three scopes. The difference is engineering, not a menu.
-          </h2>
-          <p class="text-sm text-[var(--color-text-secondary-dark)] mt-4 max-w-2xl leading-relaxed">
-            Scope is driven by window geometry, fabric openness specifications, structural pocket complexity, and integration depth.
-          </p>
-        </div>
-        <div class="grid grid-cols-1 lg:grid-cols-3 border-t border-b border-[var(--color-border-dark)] divide-y lg:divide-y-0 lg:divide-x divide-[var(--color-border-dark)]">
-          <!-- Room Tier -->
-          <div class="py-12 lg:px-8 first:pl-0">
-            <span class="font-mono text-[10px] tracking-widest text-[var(--color-accent-signal)]">01 / ROOM</span>
-            <h3 class="text-2xl font-display text-[var(--color-text-primary-dark)] mt-2 mb-4">Room-Level Focus</h3>
-            <p class="text-sm text-[var(--color-text-secondary-dark)] mb-8 leading-relaxed">
-              Targeted automation for primary spaces: master bedroom blackout shades or great room solar management.
-            </p>
-            <div class="space-y-6 pt-6 border-t border-[var(--color-border-dark-soft)]">
-              <div>
-                <span class="block font-mono text-[10px] tracking-widest text-[var(--color-text-tertiary-dark)] uppercase mb-1">Includes</span>
-                <p class="text-sm text-[var(--color-text-primary-dark)]">Lutron wireless or hardwired shades, Pico or Palladiom keypads, local scene control</p>
-              </div>
-              <div>
-                <span class="block font-mono text-[10px] tracking-widest text-[var(--color-text-tertiary-dark)] uppercase mb-1">Solves</span>
-                <p class="text-sm text-[var(--color-text-primary-dark)]">Hard-to-reach clerestory windows, daily manual adjustments, morning light bleed</p>
-              </div>
-              <div>
-                <span class="block font-mono text-[10px] tracking-widest text-[var(--color-text-tertiary-dark)] uppercase mb-1">Right For</span>
-                <p class="text-sm text-[var(--color-text-primary-dark)]">Single-room renovations and occupied home refreshes</p>
-              </div>
-            </div>
-          </div>
-          <!-- Home Tier -->
-          <div class="py-12 lg:px-8">
-            <span class="font-mono text-[10px] tracking-widest text-[var(--color-accent-signal)]">02 / HOME</span>
-            <h3 class="text-2xl font-display text-[var(--color-text-primary-dark)] mt-2 mb-4">Whole-Home Coordination</h3>
-            <p class="text-sm text-[var(--color-text-secondary-dark)] mb-8 leading-relaxed">
-              All primary window elevations synchronized across solar tracking, lighting scenes, and security modes.
-            </p>
-            <div class="space-y-6 pt-6 border-t border-[var(--color-border-dark-soft)]">
-              <div>
-                <span class="block font-mono text-[10px] tracking-widest text-[var(--color-text-tertiary-dark)] uppercase mb-1">Includes</span>
-                <p class="text-sm text-[var(--color-text-primary-dark)]">HomeWorks QSX processor, hardwired low-voltage panels, full astronomical clock automation</p>
-              </div>
-              <div>
-                <span class="block font-mono text-[10px] tracking-widest text-[var(--color-text-tertiary-dark)] uppercase mb-1">Solves</span>
-                <p class="text-sm text-[var(--color-text-primary-dark)]">Walking room-to-room to close shades; whole-house thermal gain on western exposures</p>
-              </div>
-              <div>
-                <span class="block font-mono text-[10px] tracking-widest text-[var(--color-text-tertiary-dark)] uppercase mb-1">Right For</span>
-                <p class="text-sm text-[var(--color-text-primary-dark)]">Substantial residential renovations and custom builds</p>
-              </div>
-            </div>
-          </div>
-          <!-- Estate Tier -->
-          <div class="py-12 lg:px-8 last:pr-0">
-            <span class="font-mono text-[10px] tracking-widest text-[var(--color-accent-signal)]">03 / ESTATE</span>
-            <h3 class="text-2xl font-display text-[var(--color-text-primary-dark)] mt-2 mb-4">Estate-Level Architecture</h3>
-            <p class="text-sm text-[var(--color-text-secondary-dark)] mb-8 leading-relaxed">
-              Zero-compromise integration from schematic architectural planning through long-term concierge stewardship.
-            </p>
-            <div class="space-y-6 pt-6 border-t border-[var(--color-border-dark-soft)]">
-              <div>
-                <span class="block font-mono text-[10px] tracking-widest text-[var(--color-text-tertiary-dark)] uppercase mb-1">Includes</span>
-                <p class="text-sm text-[var(--color-text-primary-dark)]">Custom recessed dual pockets, custom architectural hembars, Ketra lighting synchronization, on-site framing templates</p>
-              </div>
-              <div>
-                <span class="block font-mono text-[10px] tracking-widest text-[var(--color-text-tertiary-dark)] uppercase mb-1">Solves</span>
-                <p class="text-sm text-[var(--color-text-primary-dark)]">Any visible technology or bracketry; eliminates trade clash between framers, electricians, and finish carpenters</p>
-              </div>
-              <div>
-                <span class="block font-mono text-[10px] tracking-widest text-[var(--color-text-tertiary-dark)] uppercase mb-1">Right For</span>
-                <p class="text-sm text-[var(--color-text-primary-dark)]">Large custom estate builds coordinated with architects and general contractors</p>
-              </div>
-            </div>
-          </div>
-        </div>
+
+    <section id="inquiry" class="band band-ink" data-rail="windows">
+      <h2>Bring the windows.</h2>
+      <p class="deck">Elevations, a window schedule or a few photographs are enough to start. The project stage selected above is filled in here. It is not added to the address bar.</p>
+      <div class="contact-routes">
+        <p><a href="mailto:info@davg.ai?subject=Motorized%20Shading">info@davg.ai</a></p>
+        <p><a href="tel:7206381603">720.638.1603</a></p>
+        <p><a href="tel:7203277337">720.327.7337</a></p>
       </div>
+      <form class="inquiry" id="shading-inquiry" action="#" method="post" novalidate>
+        <p class="form-note" id="inquiry-note">This form does not send. No inquiry destination is connected yet. Use the email or phone above.</p>
+        <div class="form-grid">
+          <label>
+            Name
+            <input name="name" type="text" autocomplete="name" />
+          </label>
+          <label>
+            Email
+            <input name="email" type="email" autocomplete="email" />
+          </label>
+          <label>
+            City or ZIP
+            <input name="location" type="text" autocomplete="postal-code" />
+          </label>
+          <label>
+            Project stage
+            <select id="project-stage" name="projectStage">
+              <option value="">Not selected</option>
+              <option value="retrofit">Existing home / Retrofit</option>
+              <option value="remodel">Remodel</option>
+              <option value="custom">Custom build</option>
+            </select>
+          </label>
+          <label>
+            Existing controls
+            <input name="controls" type="text" />
+          </label>
+          <label>
+            Service
+            <input name="service" type="text" value="Motorized Shading" readonly />
+          </label>
+        </div>
+        <label>
+          Rooms and priorities
+          <textarea name="rooms" rows="4"></textarea>
+        </label>
+        <label>
+          Elevations, window schedule, or photograph notes
+          <textarea name="windows" rows="4"></textarea>
+        </label>
+        <button class="btn" type="submit">Plan Your Shading</button>
+        <p class="form-status" id="inquiry-status" role="status"></p>
+      </form>
     </section>
-    <!-- CHAPTER 08: LOCAL KNOWLEDGE + LOCKED VERBATIM FAQ (Paper Surface) -->
-    <section class="relative bg-[var(--color-surface-paper)] text-[var(--color-text-primary-paper)] py-28 px-6 md:px-16 border-b border-[var(--color-border-paper)]">
-      <div class="max-w-6xl mx-auto">
-        <span class="font-mono text-xs tracking-[0.2em] text-[var(--color-text-secondary-paper)] uppercase block mb-4">
-          08 / Local Knowledge & Verified FAQ
-        </span>
-        <h2 class="text-3xl md:text-5xl font-display font-light text-[var(--color-text-primary-paper)] leading-tight tracking-tight mb-12">
-          Technical specifications & Front Range field answers.
-        </h2>
-        <!-- Locked Verbatim Q&A from DAVG_WEBSITE_SERVICE_FAQ_CANONICAL.md -->
-        <div class="border-t border-b border-[var(--color-border-paper)] divide-y divide-[var(--color-border-paper)]">
-          <div class="py-8">
-            <h3 class="text-xl font-display font-normal text-[var(--color-text-primary-paper)] mb-3">
-              What's the structural requirement for mounting shades on a large window wall?
-            </h3>
-            <p class="text-base text-[var(--color-text-secondary-paper)] leading-relaxed">
-              Every Lutron motorized shade bracket has to land on blocking or another solid structural member, not drywall alone — the bracket carries the full weight and operating load of the shade continuously. On a floor-to-ceiling glass wall, that structural blocking has to be coordinated with the architect before drywall closes the wall, which is exactly why early involvement during framing matters more here than almost anywhere else in the build.
-            </p>
-          </div>
-          <div class="py-8">
-            <h3 class="text-xl font-display font-normal text-[var(--color-text-primary-paper)] mb-3">
-              How much pocket depth do motorized shades actually need?
-            </h3>
-            <p class="text-base text-[var(--color-text-secondary-paper)] leading-relaxed">
-              Pocket depth depends on shade width, fabric roll diameter, and whether the assembly is a single or dual (blackout-plus-sheer) configuration — commonly landing in a 3.5" to 7" range depending on those variables, not one universal number. The DAVG team sizes the pocket to the specific window and product line during design so the framing crew builds to a confirmed spec, not a retrofit guess.
-            </p>
-          </div>
-          <div class="py-8">
-            <h3 class="text-xl font-display font-normal text-[var(--color-text-primary-paper)] mb-3">
-              Are Lutron shades battery-powered or hardwired, and which is better?
-            </h3>
-            <p class="text-base text-[var(--color-text-secondary-paper)] leading-relaxed">
-              Both exist for real reasons. Battery-powered lines install without new wiring and suit retrofit projects where opening walls isn't practical. Hardwired shades suit whole-home new-construction projects where continuous reliability and zero battery maintenance outweigh install simplicity. The DAVG team specs based on the project and the wall's construction phase, not a default preference.
-            </p>
-          </div>
-          <div class="py-8">
-            <h3 class="text-xl font-display font-normal text-[var(--color-text-primary-paper)] mb-3">
-              Can motorized shades be added after construction, or do they need early planning?
-            </h3>
-            <p class="text-base text-[var(--color-text-secondary-paper)] leading-relaxed">
-              They can be added afterward, but the results improve measurably — cleaner pocket integration, no visible conduit, and no compromise on window sizing — when planned during design rather than retrofitted into a finished room. A retrofit shade has to work around what's already built; a planned shade is built around from the start.
-            </p>
-          </div>
-          <div class="py-8">
-            <h3 class="text-xl font-display font-normal text-[var(--color-text-primary-paper)] mb-3">
-              How quiet are these shades in actual operation?
-            </h3>
-            <p class="text-base text-[var(--color-text-secondary-paper)] leading-relaxed">
-              Lutron's Quiet Electronic Drive (QED) motors are engineered to run below the threshold that interrupts conversation or a movie, which matters most in a bedroom or theater where a mechanically loud shade motor would be a real functional problem, not a minor annoyance.
-            </p>
-          </div>
-          <div class="py-8">
-            <h3 class="text-xl font-display font-normal text-[var(--color-text-primary-paper)] mb-3">
-              Can shades be scheduled to respond to the sun automatically?
-            </h3>
-            <p class="text-base text-[var(--color-text-secondary-paper)] leading-relaxed">
-              Yes — shades can run on a fixed schedule, sunrise/sunset timing, or a solar sensor responding to actual glare and solar heat gain, removing the need to manually operate them as the sun moves across the property through the day.
-            </p>
-          </div>
-          <div class="py-8">
-            <h3 class="text-xl font-display font-normal text-[var(--color-text-primary-paper)] mb-3">
-              What distinguishes Palladiom from Lutron's other shade lines?
-            </h3>
-            <p class="text-base text-[var(--color-text-secondary-paper)] leading-relaxed">
-              Palladiom is Lutron's top-tier shade platform, engineered around a minimal architectural aesthetic and built to integrate with Lutron's highest-tier lighting and control ecosystem, including its own dedicated keypad design. Which line fits a given project depends on the specific window geometry and the rest of the home's finish level, which the DAVG team specs on a per-project basis.
-            </p>
-          </div>
-          <div class="py-8">
-            <h3 class="text-xl font-display font-normal text-[var(--color-text-primary-paper)] mb-3">
-              Do shades integrate with Lutron lighting scenes, or run independently?
-            </h3>
-            <p class="text-base text-[var(--color-text-secondary-paper)] leading-relaxed">
-              They're part of the same architecture — a "Movie" scene can lower shades and dim lights together in one action, and a "Good Morning" scene can raise shades on schedule, all triggered from the same keypad or app as the rest of the lighting system.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- CHAPTER 09: DISCOVER / BEGIN (Juniper to Ink Surface Close) -->
-    <section class="relative bg-gradient-to-b from-[var(--color-surface-forest)] to-[var(--color-surface-ink)] py-28 px-6 md:px-16 border-t border-[var(--color-border-dark-soft)]">
-      <div class="max-w-7xl mx-auto">
-        <div class="mb-16">
-          <span class="font-mono text-xs tracking-[0.2em] text-[var(--color-accent-signal)] uppercase block mb-3">
-            09 / Exploration & Engagement
-          </span>
-          <h2 class="text-3xl md:text-5xl font-display font-light text-[var(--color-text-primary-dark)] tracking-tight">
-            Related architectural systems.
-          </h2>
-        </div>
-        <!-- Canonical 8-Solution Inter-linking -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20 font-mono text-xs border-t border-b border-[var(--color-border-dark)] py-8">
-          <a href="/solutions/home-intelligence/" class="text-[var(--color-text-secondary-dark)] hover:text-[var(--color-text-primary-dark)] transition-colors">01 Home Intelligence →</a>
-          <a href="/solutions/architectural-lighting/" class="text-[var(--color-text-secondary-dark)] hover:text-[var(--color-text-primary-dark)] transition-colors">02 Architectural Lighting →</a>
-          <a href="/solutions/media-audio/" class="text-[var(--color-text-secondary-dark)] hover:text-[var(--color-text-primary-dark)] transition-colors">04 Media & Audio →</a>
-          <a href="/solutions/private-cinemas/" class="text-[var(--color-text-secondary-dark)] hover:text-[var(--color-text-primary-dark)] transition-colors">05 Private Cinemas →</a>
-          <a href="/solutions/security-access/" class="text-[var(--color-text-secondary-dark)] hover:text-[var(--color-text-primary-dark)] transition-colors">06 Security & Access →</a>
-          <a href="/solutions/infrastructure-privacy/" class="text-[var(--color-text-secondary-dark)] hover:text-[var(--color-text-primary-dark)] transition-colors">07 Digital Infrastructure →</a>
-          <a href="/solutions/outdoor-entertainment/" class="text-[var(--color-text-secondary-dark)] hover:text-[var(--color-text-primary-dark)] transition-colors">08 Outdoor Systems →</a>
-          <a href="/trade-partners/" class="text-[var(--color-text-secondary-dark)] hover:text-[var(--color-text-primary-dark)] transition-colors">Trade Coordination →</a>
-        </div>
-        <!-- Single Primary CTA -->
-        <div class="max-w-2xl">
-          <p class="font-mono text-xs tracking-widest uppercase text-[var(--color-accent-signal)] mb-2">Engage The Firm</p>
-          <h3 class="text-3xl font-display font-light text-[var(--color-text-primary-dark)] mb-6">
-            Begin your architectural shading consultation.
-          </h3>
-          <p class="text-sm text-[var(--color-text-secondary-dark)] leading-relaxed mb-8">
-            Consultation during schematic design ensures structural pocket framing, low-voltage wiring pathways, and Lutron HomeWorks coordination are integrated before construction bids close.
-          </p>
-          <a 
-            href="/contact/" 
-            class="inline-block bg-[var(--color-surface-paper)] text-[var(--color-text-primary-paper)] font-display text-sm tracking-wide uppercase px-8 py-4 border border-[var(--color-border-paper)] hover:bg-white transition-colors"
-          >
-            Begin A Project
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
+  </ServicePageShell>
 </Layout>
+<script>
+  const stageButtons = document.querySelectorAll<HTMLButtonElement>('[data-project-stage]');
+  const stageNotes = document.querySelectorAll<HTMLElement>('[data-stage]');
+  const stageField = document.querySelector<HTMLSelectElement>('#project-stage');
+
+  const setStage = (stage: string) => {
+    stageButtons.forEach((button) => {
+      button.setAttribute('aria-pressed', button.dataset.projectStage === stage ? 'true' : 'false');
+    });
+    stageNotes.forEach((note) => {
+      note.classList.toggle('is-active', Boolean(stage) && note.dataset.stage === stage);
+    });
+    if (stageField && stageField.value !== stage) stageField.value = stage;
+  };
+
+  stageButtons.forEach((button) => {
+    button.addEventListener('click', () => setStage(button.dataset.projectStage ?? ''));
+  });
+  stageField?.addEventListener('change', () => setStage(stageField.value));
+
+  const sceneCopy: Record<string, string> = {
+    Morning: 'Living room: raise the solar shade and let the view in. Bedroom: open enough for daylight without a separate task at the glass.',
+    Afternoon: 'Living room: lower the solar shade before west glare reaches the seating. Bedroom: keep the privacy layer where dawn light or a street view requires it.',
+    Evening: 'Living room: close the privacy treatment as the lights come on. Bedroom: lower the darkening layer for sleep. Proposed responses only.',
+  };
+  const sceneButtons = document.querySelectorAll<HTMLButtonElement>('[data-scene]');
+  const sceneLabel = document.getElementById('scene-label');
+  const sceneText = document.getElementById('scene-copy');
+  sceneButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const scene = button.dataset.scene ?? '';
+      sceneButtons.forEach((item) => item.setAttribute('aria-pressed', item === button ? 'true' : 'false'));
+      if (sceneLabel) sceneLabel.textContent = scene;
+      if (sceneText) sceneText.textContent = sceneCopy[scene] ?? '';
+    });
+  });
+
+  const form = document.getElementById('shading-inquiry');
+  const status = document.getElementById('inquiry-status');
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (status) {
+      status.textContent = 'Not sent. This inquiry has no delivery destination yet. Email info@davg.ai or call 720.638.1603.';
+    }
+  });
+</script>
+<style>
+  .band {
+    padding: var(--spacing-section) var(--spacing-page-inline);
+  }
+  .band-ink {
+    background: var(--color-surface-ink);
+    color: var(--color-text-on-dark);
+  }
+  .band-forest {
+    background: var(--color-surface-forest);
+    color: var(--color-text-on-dark);
+  }
+  .band-paper {
+    background: var(--color-surface-paper);
+    color: var(--color-text-on-paper);
+  }
+  .band-solar {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: clamp(7.5rem, 14vw, 11rem);
+  }
+  .spatial-word {
+    position: absolute;
+    right: -0.04em;
+    bottom: -0.42em;
+    z-index: 0;
+    margin: 0;
+    pointer-events: none;
+    font-family: var(--font-display);
+    font-size: clamp(5.5rem, 12vw, 10rem);
+    font-weight: 300;
+    line-height: 0.78;
+    letter-spacing: -0.045em;
+    color: var(--color-spatial-forest);
+    white-space: nowrap;
+    user-select: none;
+  }
+  .band-solar > :not(.spatial-word) {
+    position: relative;
+    z-index: 1;
+  }
+  .alias {
+    display: block;
+    height: 0;
+    scroll-margin-top: 4.5rem;
+  }
+  .kicker {
+    margin: 0 0 1.25rem;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--color-text-muted-dark);
+  }
+  .band-paper .kicker {
+    color: var(--color-text-muted-paper);
+  }
+  h1, h2, h3 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-wrap: balance;
+  }
+  h1 {
+    max-width: 16ch;
+    font-weight: 300;
+    font-size: var(--text-h1);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+  }
+  h2 {
+    max-width: 22ch;
+    font-size: var(--text-h2);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+  }
+  h2.prompt {
+    max-width: 28ch;
+    margin-top: 3rem;
+  }
+  h3 {
+    margin-top: 3rem;
+    max-width: 28ch;
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+  .paths h3,
+  .guide h3 {
+    margin-top: 0;
+  }
+  p, li, dd {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .deck {
+    max-width: 62ch;
+    margin: 1.5rem 0 0;
+    font-size: 1.125rem;
+    line-height: 1.45;
+    color: var(--color-text-muted-dark);
+  }
+  .band-paper .deck,
+  .band-paper .measure,
+  .band-paper .step-close,
+  .band-paper li,
+  .band-paper dd,
+  .band-paper .signal p {
+    color: var(--color-text-muted-paper);
+  }
+  .band-ink .deck,
+  .band-forest .deck,
+  .band-ink .measure,
+  .band-forest .measure,
+  .band-ink li,
+  .band-forest li,
+  .band-ink dd,
+  .band-forest dd {
+    color: var(--color-text-muted-dark);
+  }
+  .measure {
+    max-width: 68ch;
+  }
+  .measure p,
+  .band > .measure {
+    margin: 1.25rem 0 0;
+  }
+  .paths p {
+    margin: 0.75rem 0 0;
+  }
+  .actions {
+    margin: 2rem 0 2.5rem;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.8rem 1.1rem;
+    border: 1px solid var(--color-border-paper);
+    border-radius: var(--radius-control);
+    background: var(--color-surface-paper);
+    color: var(--color-text-on-paper);
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .band-paper .btn {
+    background: var(--color-surface-ink);
+    color: var(--color-text-on-dark);
+    border-color: var(--color-surface-ink);
+  }
+  .btn:hover {
+    background: var(--color-cream-01);
+  }
+  .band-paper .btn:hover {
+    background: #141716;
+  }
+  button:focus-visible,
+  select:focus-visible {
+    outline: 2px solid var(--color-accent-signal);
+    outline-offset: 4px;
+  }
+  .band :global(.media-slot) {
+    margin-top: 2rem;
+  }
+  .caption, figcaption {
+    margin: 0.75rem 0 0;
+    max-width: 68ch;
+    font-family: var(--font-body);
+    font-size: var(--text-caption);
+    line-height: 1.35;
+    color: var(--color-text-muted-dark);
+  }
+  .band-paper figcaption,
+  .band-paper .caption {
+    color: var(--color-text-muted-paper);
+  }
+  a:not(.btn) {
+    color: inherit;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+  }
+  .stage-controls,
+  .time-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+  .stage-controls button,
+  .time-controls button {
+    padding: 0.7rem 0.85rem;
+    border: 1px solid var(--color-border-dark);
+    border-radius: var(--radius-control);
+    background: transparent;
+    color: var(--color-text-on-dark);
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .band-paper .stage-controls button {
+    border-color: var(--color-border-paper);
+    color: var(--color-text-on-paper);
+  }
+  .stage-controls button[aria-pressed="true"],
+  .time-controls button[aria-pressed="true"] {
+    background: var(--color-surface-paper);
+    color: var(--color-text-on-paper);
+    border-color: var(--color-surface-paper);
+    box-shadow: inset 3px 0 0 var(--color-accent-signal);
+  }
+  .band-paper .stage-controls button[aria-pressed="true"] {
+    background: var(--color-surface-ink);
+    color: var(--color-text-on-dark);
+    border-color: var(--color-surface-ink);
+  }
+  .paths {
+    display: grid;
+    gap: 1.75rem;
+    margin-top: 2rem;
+  }
+  .paths article {
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border-dark);
+  }
+  .band-paper .paths article {
+    border-top-color: var(--color-border-paper);
+  }
+  .paths article.is-active {
+    box-shadow: inset 3px 0 0 var(--color-accent-signal);
+    padding-left: 0.9rem;
+  }
+  .step-close {
+    max-width: 68ch;
+    margin: 1.25rem 0 0;
+    font-weight: 500;
+  }
+  .table-scroll {
+    margin-top: 1.25rem;
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    min-width: 44rem;
+    border-collapse: collapse;
+  }
+  th, td {
+    padding: 0.9rem 0.85rem 0.9rem 0;
+    border-bottom: 1px solid var(--color-border-paper);
+    text-align: left;
+    vertical-align: top;
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    line-height: 1.45;
+  }
+  .band-ink th,
+  .band-ink td,
+  .band-forest th,
+  .band-forest td {
+    border-bottom-color: var(--color-border-dark);
+  }
+  th {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: inherit;
+  }
+  .ledger {
+    margin: 1.5rem 0 0;
+  }
+  .ledger div {
+    display: grid;
+    gap: 0.35rem;
+    padding: 0.95rem 0;
+    border-top: 1px solid var(--color-border-paper);
+  }
+  .band-ink .ledger div,
+  .band-forest .ledger div {
+    border-top-color: var(--color-border-dark);
+  }
+  .ledger div:last-child {
+    border-bottom: 1px solid var(--color-border-paper);
+  }
+  .band-ink .ledger div:last-child,
+  .band-forest .ledger div:last-child {
+    border-bottom-color: var(--color-border-dark);
+  }
+  dt {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  dd {
+    margin: 0;
+  }
+  .guide {
+    display: grid;
+    gap: 2rem;
+    align-items: start;
+    margin-top: 3rem;
+  }
+  .guide-gallery {
+    display: grid;
+    gap: 1.75rem;
+  }
+  figure {
+    margin: 2rem 0 0;
+  }
+  .guide-gallery figure,
+  .example-grid figure,
+  .pending-grid figure {
+    margin: 0;
+  }
+  .guide-gallery :global(.media-slot),
+  .example-grid :global(.media-slot),
+  .pending-grid :global(.media-slot) {
+    margin-top: 0;
+  }
+  .plain-list, .sequence {
+    max-width: 68ch;
+    margin: 1.25rem 0 0;
+    padding-left: 1.15rem;
+  }
+  .paths .plain-list {
+    margin-top: 0.75rem;
+  }
+  .plain-list li + li,
+  .sequence li + li {
+    margin-top: 0.75rem;
+  }
+  .example-grid,
+  .pending-grid {
+    display: grid;
+    gap: 1.75rem;
+    margin-top: 2rem;
+  }
+  .sequence {
+    list-style: decimal;
+  }
+  .signal ol {
+    display: grid;
+    gap: 0.75rem;
+    margin: 1.5rem 0 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: signal;
+  }
+  .signal li {
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--color-border-dark);
+    counter-increment: signal;
+  }
+  .signal li::before {
+    content: counter(signal) "  ";
+    font-variant-numeric: tabular-nums;
+  }
+  .signal p {
+    max-width: 68ch;
+    margin: 1rem 0 0;
+    color: var(--color-text-muted-dark);
+  }
+  .drawer {
+    max-width: 68ch;
+    margin-top: 2rem;
+    border-top: 1px solid var(--color-border-paper);
+  }
+  .drawer summary {
+    padding: 1rem 0;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    font-weight: 500;
+  }
+  .drawer p {
+    margin: 0 0 1rem;
+    color: var(--color-text-muted-paper);
+  }
+  .faq {
+    margin-top: 2rem;
+    border-top: 1px solid var(--color-border-paper);
+  }
+  .faq details {
+    border-bottom: 1px solid var(--color-border-paper);
+  }
+  .faq summary {
+    padding: 1rem 0;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    font-weight: 500;
+  }
+  .faq details p {
+    max-width: 68ch;
+    margin: 0 0 1.1rem;
+    color: var(--color-text-muted-paper);
+  }
+  .contact-routes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    margin-top: 1.5rem;
+  }
+  .contact-routes p {
+    margin: 0;
+  }
+  .inquiry {
+    display: grid;
+    gap: 1rem;
+    max-width: 46rem;
+    margin-top: 2rem;
+  }
+  .form-note, .form-status {
+    margin: 0;
+    max-width: 62ch;
+    color: var(--color-text-muted-dark);
+    font-size: 0.9375rem;
+  }
+  .form-status:empty {
+    display: none;
+  }
+  .form-grid {
+    display: grid;
+    gap: 1rem;
+  }
+  .inquiry label {
+    display: grid;
+    gap: 0.4rem;
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    font-weight: 500;
+  }
+  .inquiry input,
+  .inquiry textarea,
+  .inquiry select {
+    width: 100%;
+    padding: 0.75rem 0.8rem;
+    border: 1px solid var(--color-border-dark);
+    border-radius: var(--radius-control);
+    background: transparent;
+    color: var(--color-text-on-dark);
+    font-family: var(--font-body);
+    font-size: 1rem;
+  }
+  .inquiry select {
+    appearance: auto;
+  }
+  .inquiry input[readonly] {
+    color: var(--color-text-muted-dark);
+  }
+  .inquiry button {
+    justify-self: start;
+  }
+  strong {
+    font-weight: 500;
+  }
+  @media (min-width: 800px) {
+    .paths-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem 2rem;
+    }
+    .guide {
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: 3rem;
+    }
+    .example-grid,
+    .form-grid,
+    .signal ol {
+      grid-template-columns: 1fr 1fr;
+    }
+    .pending-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .ledger div {
+      grid-template-columns: minmax(0, 0.34fr) minmax(0, 0.66fr);
+      gap: 1.5rem;
+      align-items: baseline;
+    }
+  }
+  @media (min-width: 1100px) {
+    .signal ol {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 1023px) {
+    h1 {
+      max-width: 14ch;
+    }
+  }
+</style>

@@ -45,7 +45,7 @@ The spreadsheet has one service tab at a time. Mark Content and Layout separatel
 
 ## Confirmed project and local workflow
 
-Brandon confirmed that `bwagner2540-sketch/davg-korta-v4` is the deployment repository. Cursor edits the local project already open on his computer. GitHub receives committed code for deployment; Dropbox supplies the current reference pack. Motorized Shading on localhost is the design/layout test page before creating the other pages.
+Brandon confirmed that `bwagner2540-sketch/davg-korta-v4` is the deployment repository. Cursor edits the local project already open on his computer. GitHub receives committed code for deployment; Dropbox supplies the current reference pack. Motorized Shading on localhost is the design/layout test page before creating the other pages. That page is a design sandbox: it must reflect the latest approved decisions, and it must not be deployed to production or preview.
 
 Preserve Cursor's current files and unpublished experiments. Do not change projects, reset work, fetch another implementation, or treat the earlier `davg-ai` typography PR as a prerequisite. Read the local `docs/v4-build/` files for brand, layout, exact section order and copy. A separate agent checkout is not the running Cursor project.
 

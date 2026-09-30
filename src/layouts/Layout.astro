@@ -2,8 +2,9 @@
 import '../styles/global.css';
 interface Props {
   title?: string;
+  description?: string;
 }
-const { title = "Denver AV Group" } = Astro.props;
+const { title = "Denver AV Group", description } = Astro.props;
 ---
 <!doctype html>
 <html lang="en">
@@ -11,6 +12,7 @@ const { title = "Denver AV Group" } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+    {description && <meta name="description" content={description} />}
   </head>
   <body class="bg-surface-ink text-text-primary-dark antialiased">
     <slot />

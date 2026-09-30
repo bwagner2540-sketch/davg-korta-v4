@@ -56,7 +56,7 @@ Pricing is optional for this build pass. If DAVG has a current installed range i
 
 ## Small wins checklist
 
-- [ ] Motorized Shading: replace Section 06’s family comparison and review the localhost test page.
+- [x] Motorized Shading: replace Section 06’s family comparison and review the localhost test page. Applied 30 September 2026 inside document 09 chapter 4 (“Choose how the shade meets the architecture”), not as a fifteenth standalone chapter. Public copy only.
 - [ ] Architectural Lighting: merge Sections 04, 06 and 12.
 - [ ] Media & Audio: merge Sections 06, 10 and 12.
 - [ ] Home Intelligence: merge Sections 06 and 07.

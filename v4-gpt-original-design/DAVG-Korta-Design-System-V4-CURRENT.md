@@ -1,10 +1,18 @@
 # DAVG Korta Design System — V4
 
-# LOCKED CONSTRAINTS
+# WORKING DESIGN SYSTEM — ACTIVE REFINEMENT
 
-> The tokens, type scale, spacing, and components defined in this document are locked constraints for this project — not inspiration or reference material. Use only the values and components defined here. Do not introduce new colors, fonts, spacing values, radii, or component patterns that are not explicitly listed in this file.
+> **Status: evolving working draft.** This document records the strongest current implementation direction, not a finished or permanently locked brand system. The motorized-shades page is the active reference specimen. Values and component rules should be tested against real page compositions, accessibility, responsive behavior, and Brandon's visual review before promotion to an approved standard.
 >
-> **Exception:** `--color-surface-forest: #183B31` is **PROPOSED / PENDING CONFIRMATION**. It was derived from image analysis and is not an approved brand-source value. Every other token and canonical ruling in this document remains confirmed/locked as stated.
+> Use four evidence states throughout refinement: **working baseline**, **directly evidenced**, **proposed**, and **rejected**. Nothing in this file is final merely because it has already been implemented. `--color-surface-forest: #183B31` remains proposed pending visual confirmation.
+
+## Current refinement priorities — 2026-09-12
+
+1. Refine the motorized-shades page as the canonical working specimen before propagating patterns to other routes.
+2. Reduce the page's density: one dominant idea per section, fewer repetitive ledgers, and more architectural photography or construction evidence.
+3. Keep claims verifiable and internally consistent; remove placeholder citation markers and unsupported numeric precision.
+4. Validate typography, spatial-word scale, surface contrast, and mobile crops visually before freezing tokens.
+5. Build reusable Astro components only after a pattern survives at least two materially different page compositions.
 
 ## 1. Color Tokens
 
