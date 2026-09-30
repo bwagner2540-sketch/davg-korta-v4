@@ -76,4 +76,13 @@ A dev server was already listening on port 4321. This task did not start another
 - Commit/branch: see handoff on `korta-v4-photo-hero` (not merged to `main`).
 - Preview/production status: branch preview only; not production.
 
+- Date/task: 30 September 2026 — fold section 02 into the Overview chapter of the 25/75, and replace the service inquiry form with guided brief step 01.
+- Decision: **adopted**. Hero (01) stays full width above the split. Section 02 is the first Overview block inside the sticky 25/75, before 03. End zone (14 FAQ and 15 close) stays full width below the split. The inquiry form UI is replaced on every hub by one shared guided brief. Questions 2–4 were not in the reference and were not invented. CONTINUE and SKIP TO CONTACT both move to the existing inquiry close (`#s15-close`: the hub final headline and support line). No new color, type, or spacing token.
+- Specification: `docs/v4-build/02-SERVICE-LAYOUT.md` (zones paragraph and Inquiry row). Hub markdown copy was not edited.
+- Implementation: **implemented** on `korta-v4-photo-hero`. `src/data/services.ts` (`GROUPS`, `zoneOf`), `src/pages/[...route].astro`, `src/components/service/GuidedBrief.astro`, `src/components/service/PlanSection.astro`, `src/pages/scratchpad.astro`. `InquiryForm.astro` remains in the repo and is no longer rendered. Scratchpad lists the brief with Button, Heading, Eyebrow, and TextLink. Selected option uses a Forest field and a Signal hairline, not a Signal fill. No floor-plan illustration.
+- Verification: **pass** on 30 September 2026. `npm run build` completed (10 pages). Chrome at 1440×900 on `/solutions/motorized-shades/`: hero full-bleed above the split; section 02 is the first Overview block inside the 75% column (rail 356px / field 1069px); FAQ and inquiry stay full width below the split; the bottom CTA is the guided brief, not the old form. Selected option computed style is Forest `rgb(24, 59, 49)` with Signal border `rgb(26, 143, 110)`. CONTINUE moves to `#s15-close`. The same brief is on `/solutions/home-intelligence/`.
+- Remaining: guided brief steps 2–4 (questions, options, and what a completed brief submits); public phone, email, and form destination are still empty; scratchpad is a local bench at `/scratchpad/`.
+- Commit/branch: this entry is on `korta-v4-photo-hero`. The handoff names the commit.
+- Preview/production status: branch preview only; not production. Not merged to `main`.
+
 Do not publish this internal record on the public website.

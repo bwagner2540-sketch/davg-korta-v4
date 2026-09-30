@@ -2,12 +2,11 @@
 /** Renders one planned hub section (hero, chapter, case-study reservation, inquiry). Used by the service route in all three page zones. */
 import SplitHero from './SplitHero.astro';
 import Chapter from './Chapter.astro';
-import InquiryForm from './InquiryForm.astro';
+import GuidedBrief from './GuidedBrief.astro';
 import Blocks from '../content/Blocks.astro';
 import GoodBetterBest from '../content/GoodBetterBest.astro';
 import MediaSlot from '../ui/MediaSlot.astro';
 import Heading from '../ui/Heading.astro';
-import { SERVICES } from '../../data/services';
 import { site } from '../../config/site';
 interface Props { x: any; hub: any; media: Record<string, { src: string; alt: string }> }
 const { x, hub, media } = Astro.props;
@@ -21,17 +20,15 @@ const showProof = site.showProofPreview || import.meta.env.DEV;
     media={{ slotId: `${hub.slug}-01`, src: media['01']?.src, alt: media['01']?.alt }} />
 )}
 {x.kind === 'inquiry' && (
-  <section id={s.id} data-screen-label="15 Inquiry" class="flex scroll-mt-16 flex-col gap-12 bg-paper px-page py-section">
-    {s.blocks.filter((b: any) => b.type === 'p').map((b: any) => <p class="m-0 max-w-measure text-body leading-[1.6] text-muted-paper" set:html={b.html} />)}
-    <div class="flex flex-col gap-6 border-t border-line-paper pt-12">
-      <Heading level={2} tone="paper">{s.meta.final_headline || s.title}</Heading>
-      {s.meta.support_line && <p class="m-0 max-w-measure text-body-lg text-muted-paper">{s.meta.support_line}</p>}
+  <section id={s.id} data-screen-label="15 Inquiry" class="scroll-mt-16 bg-paper">
+    <div class="flex flex-col gap-12 px-page py-section">
+      {s.blocks.filter((b: any) => b.type === 'p').map((b: any) => <p class="m-0 max-w-measure text-body leading-[1.6] text-muted-paper" set:html={b.html} />)}
+      <div id={`${s.id}-close`} class="flex scroll-mt-16 flex-col gap-6 border-t border-line-paper pt-12">
+        <Heading level={2} tone="paper">{s.meta.final_headline || s.title}</Heading>
+        {s.meta.support_line && <p class="m-0 max-w-measure text-body-lg text-muted-paper">{s.meta.support_line}</p>}
+      </div>
     </div>
-    <InquiryForm services={SERVICES.map((v) => v.name)} service={hub.name} submitLabel={s.meta.cta || 'Send project brief'} briefFields={[
-      { id: 'stage', label: 'Project stage', type: 'select', options: ['New construction', 'Renovation', 'Finished home', 'System takeover'] },
-      { id: 'area', label: 'Community', type: 'select', options: [...site.territory, 'Elsewhere in Colorado'] },
-      { id: 'notes', label: 'What should we know?', type: 'textarea' },
-    ]} />
+    <GuidedBrief continueHref={`#${s.id}-close`} skipHref={`#${s.id}-close`} />
   </section>
 )}
 {x.kind === 'proof' && (showProof ? (

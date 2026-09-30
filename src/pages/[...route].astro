@@ -18,7 +18,7 @@ const media = MEDIA[hub.n] ?? {};
 const services = hubs.map((h) => ({ name: h.name, href: h.route, current: h.n === hub.n }));
 const has = (nn: string) => hub.sections.some((s) => s.nn === nn);
 const chapters = GROUPS.filter((g) => g.sections.some(has)).map((g) => ({ id: g.id, label: g.label }));
-// Render order: top zone, then the five chapters in GROUPS order, then the end zone.
+// Render order: hero (top), then the five chapters in GROUPS order (Overview starts at 02), then the end zone.
 const order = [
   ...hub.sections.filter((s) => zoneOf(s.nn) === 'top'),
   ...GROUPS.flatMap((g) => g.sections.map((nn) => hub.sections.find((s) => s.nn === nn)).filter((s): s is NonNullable<typeof s> => !!s)),
@@ -30,19 +30,20 @@ const title = seo.headline ? `${hub.name} | ${site.short}` : `${hub.name} | ${si
 // Decide treatment per section.
 // The spatial word has one home on every page: the bottom edge of the full-width split hero.
 let flip = false;
+const firstPresent = (sections: readonly string[]) => sections.find((nn) => has(nn));
 const plan = order.map((s) => {
   const L = s.layout;
   const zone = zoneOf(s.nn);
   const base = { s, zone, slots: [] as any[], gbb: [] as any[], group: null as string | null, word: null as string | null };
+  const group = GROUPS.find((g) => firstPresent(g.sections) === s.nn)?.label ?? null;
   if (s.nn === '01') return { ...base, kind: 'hero' as const };
   if (s.nn === '15') return { ...base, kind: 'inquiry' as const };
-  if (s.nn === '02') return { ...base, kind: 'chapter' as const, tone: 'forest' as const };
+  if (s.nn === '02') return { ...base, kind: 'chapter' as const, tone: 'forest' as const, group };
   if (s.nn === '14') return { ...base, kind: 'chapter' as const, tone: 'ink' as const, group: 'Questions' };
   if (/proof/.test(L) || /proof/i.test(s.title)) return { ...base, kind: 'proof' as const };
   const study = /signature|study|cutaway|detail/.test(L) && !/product study|applied|system text/.test(L);
   let tone: 'ink' | 'paper' | 'forest';
   if (study) tone = 'forest'; else { flip = !flip; tone = flip ? 'ink' : 'paper'; }
-  const group = GROUPS.find((g) => g.sections[0] === s.nn)?.label ?? null;
   const slots = (SLOTS[s.nn] ?? []).map(([ratio, subject], k, all) => {
     const m = k === 0 ? media[s.nn] : undefined;
     return { slotId: `${hub.slug}-${s.nn}${all.length > 1 ? String.fromCharCode(97 + k) : ''}`, subject, ratio: m ? '16 / 9' : ratio, src: m?.src, alt: m?.alt };

@@ -11,15 +11,15 @@ export const SERVICES = [
 
 /** Rail chapters, identical on all eight services. The sticky 25/75 body renders these sections in this order. */
 export const GROUPS = [
-  { id: 'overview', label: 'Overview', sections: ['03'] },
+  { id: 'overview', label: 'Overview', sections: ['02', '03'] },
   { id: 'design', label: 'Design', sections: ['06', '07'] },
   { id: 'systems', label: 'Systems', sections: ['04', '05', '08'] },
   { id: 'installation', label: 'Installation', sections: ['09', '10', '13'] },
   { id: 'investment', label: 'Investment', sections: ['12', '11'] },
 ] as const;
 
-/** Page zones: 01–02 full width above the 25/75 split, 03–13 inside it, 14–15 full width below. */
-export const zoneOf = (nn: string): 'top' | 'body' | 'end' => (nn <= '02' ? 'top' : nn >= '14' ? 'end' : 'body');
+/** Page zones: 01 full width above the 25/75 split, 02–13 inside it, 14–15 full width below. */
+export const zoneOf = (nn: string): 'top' | 'body' | 'end' => (nn <= '01' ? 'top' : nn >= '14' ? 'end' : 'body');
 
 /** Image slots per section number: [aspect ratio, subject]. */
 export const SLOTS: Record<string, [string, string][]> = {

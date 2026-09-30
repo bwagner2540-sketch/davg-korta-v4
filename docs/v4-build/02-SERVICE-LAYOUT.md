@@ -4,6 +4,8 @@
 
 Desktop: left rail is exactly one quarter of the page frame; right field is three quarters. Use `grid-template-columns: minmax(0,1fr) minmax(0,3fr)`. These are frame proportions before internal padding. Keep the document as the vertical scroller. Make the rail sticky below the existing masthead; do not make the 75% column a second wheel-scroll pane.
 
+Zones: the photo hero (section 01) stays full width above the split. Section 02 is the first block of the Overview chapter inside the 75% field, directly under the rail, ahead of section 03. Sections 14 and 15 stay full width below the split.
+
 Rail: original DAVG mark, service navigation with current service emphasized, and a small set of chapter anchors relevant to that page. Use the source-copy groups to keep the navigation short. Do not cram fifteen labels beside the page. If the rail exceeds the available viewport, only its menu may overflow. No portrait or required staff title.
 
 Right: actual service headline, opening explanation and primary action, followed by the hub's ordered chapters. Use the full right field for media/studies. Readable body copy has a comfortable measure around 55–70 characters. A comparison can divide the field 50/50. A technical study can divide image/text around 60/40. These are local section choices inside the 75% field.
@@ -27,7 +29,7 @@ Mobile starting breakpoint: 1024px; adjust if the actual navigation becomes cram
 | Investment | Scope comparison and cost drivers. No invented installed prices. |
 | Ownership | Steps for measure/install/program/test/handoff in an unboxed sequence. |
 | FAQ | Native `details/summary` or existing accessible accordion; preserve the supplied questions/answers. |
-| Inquiry | Shared working form, with service preselected and the page-specific brief fields from the hub. A direct contact route remains available. |
+| Inquiry | Guided brief step 01 (`GuidedBrief`) in the full-width close, after the hub’s existing final headline and support line. CONTINUE and SKIP TO CONTACT move to that close (`#s15-close`). Questions 2–4 are not specified. The older field form is not shown. |
 
 ## Blank media now; images later
 
