@@ -1,5 +1,8 @@
 # DAVG V4 — repair state, 30 September 2026
 
+## Hub production — Infrastructure
+Draft at `/systems/infrastructure-privacy/` via `HubPage`. Hero and ceiling photograph placed. `Rack_cables-1.jpg` withheld because it shows switch name SW03 and port labels. Slots 06–08 missing. Studies state no bandwidth figures. Desktop 1440 and mobile 390 checked. Not deployed.
+
 ## Hub production — Private Cinemas
 Draft at `/systems/private-cinemas/` via `HubPage`. Three manufacturer photographs placed. The rack stays off the hero. Both studies are derived diagrams and say so. Slots 06–08, screen/projector and isolation photographs are missing. Desktop 1440 and mobile 390 checked. Sandbox build passed with the later hubs also wired locally. Not deployed.
 
