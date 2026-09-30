@@ -1,0 +1,619 @@
+---
+import ServicePageShell from '../../components/v4/ServicePageShell.astro';
+import MediaPlaceholder from '../../components/v4/MediaPlaceholder.astro';
+
+const chapters = [
+  { id: 'shading-01', label: 'Daylight' },
+  { id: 'shading-02', label: 'Purpose' },
+  { id: 'shading-05', label: 'Solar study' },
+  { id: 'shading-06', label: 'Selection' },
+  { id: 'shading-07', label: 'Openings' },
+  { id: 'shading-08', label: 'Pocket' },
+  { id: 'shading-12', label: 'Investment' },
+  { id: 'shading-14', label: 'Questions' },
+  { id: 'shading-15', label: 'Inquiry' },
+];
+---
+<!--
+  Place inside the site layout. Do not wrap this shell in another main.
+  Section 11 is a publish hold: no project proof is rendered until a verified
+  DAVG project, permission, and specification exist.
+  Form delivery is unresolved. The form does not report success.
+-->
+<ServicePageShell
+  currentPath="/solutions/motorized-shades/"
+  chapters={chapters}
+  menuLabel="Motorized Shading"
+  contactHref="#shading-15"
+  contactLabel="Plan your shading"
+>
+  <section id="shading-01" class="field field-ink">
+    <p class="word" aria-hidden="true">SHADES</p>
+    <div class="copy">
+      <p class="eyebrow">Motorized Shading</p>
+      <h1>Daylight, shaped around the room.</h1>
+      <p class="deck">Quiet motorized shades manage glare, privacy, heat, and atmosphere while preserving the architecture of the window.</p>
+      <a class="action" href="#shading-15">Plan Your Shading</a>
+    </div>
+    <MediaPlaceholder id="shading-01-room" subject="Glass-wall or bedroom shading photograph" ratio="16 / 9" />
+  </section>
+
+  <section id="shading-02" class="field field-paper">
+    <div class="copy">
+      <h2>What must each shade accomplish?</h2>
+      <p>Motorized shading is an architectural system, not an accessory selected after the room is complete. Fabric, openness, motor, power, pocket, fascia, bracket, control, and window geometry have to work together to manage daylight without compromising the intended interior.</p>
+      <p>DAVG coordinates those details with the lighting and control architecture so shades can operate individually, by room, on schedule, or as part of a scene.</p>
+    </div>
+  </section>
+
+  <section id="shading-03" class="field field-ink">
+    <div class="copy">
+      <h2>Light, privacy and the view</h2>
+      <p>Morning light can enter gradually. West-facing glass can respond before glare overtakes the room. A cinema or media scene can lower the appropriate shades with the lights. Bedrooms can gain privacy without adding another visible device or daily task.</p>
+      <p>When shading is right, the movement is quiet, aligned, and expected. The window remains the focus.</p>
+    </div>
+    <MediaPlaceholder id="shading-03-rooms" subject="Room examples of daylight, privacy, and view" ratio="16 / 9" />
+  </section>
+
+  <section id="shading-04" class="field field-paper">
+    <div class="split">
+      <div class="copy">
+        <h2>Fabric, hardware, power and control</h2>
+        <p>The design combines window dimensions, orientation, solar exposure, fabric performance, roll direction, hembar alignment, motor selection, power, structural blocking, pockets or fascia, control groups, keypad functions, sensors, and automation logic.</p>
+        <p>Large or repeated openings require elevation-level coordination so adjacent shades align visually and move in a deliberate sequence.</p>
+      </div>
+      <MediaPlaceholder id="shading-04-system" subject="Shading system diagram" ratio="4 / 3" />
+    </div>
+  </section>
+
+  <section id="shading-05" class="field field-ink">
+    <div class="copy">
+      <h2>Solar geometry and glare study</h2>
+      <p>Fabric openness, orientation, pocket design, and shade control can moderate glare and material exposure while preserving the view. A shade does not automatically reject a fixed share of UV and heat, improve HVAC efficiency by a fixed amount, or require one pocket depth. Those results depend on the specified fabric, glazing, solar conditions, and construction detail.</p>
+    </div>
+    <form class="solar">
+      <fieldset>
+        <legend>Time of day</legend>
+        <input type="radio" name="solar-time" id="solar-morning" checked />
+        <label for="solar-morning">Morning</label>
+        <input type="radio" name="solar-time" id="solar-midday" />
+        <label for="solar-midday">Midday</label>
+        <input type="radio" name="solar-time" id="solar-afternoon" />
+        <label for="solar-afternoon">Late Afternoon</label>
+        <input type="radio" name="solar-time" id="solar-evening" />
+        <label for="solar-evening">Evening</label>
+      </fieldset>
+      <MediaPlaceholder id="shading-05-study" subject="Double-height glazing elevation with seasonal sun paths" ratio="16 / 9" />
+      <p class="solar-note" data-time="morning">Morning light can enter gradually. Design the response around the sun and the room, then specify the fabric.</p>
+      <p class="solar-note" data-time="midday">High sun changes which glass needs coverage. Design the response around the sun and the room, then specify the fabric.</p>
+      <p class="solar-note" data-time="afternoon">West-facing glass can respond before glare overtakes the room. Design the response around the sun and the room, then specify the fabric.</p>
+      <p class="solar-note" data-time="evening">Privacy after dark is a separate fabric decision from daytime glare. Design the response around the sun and the room, then specify the fabric.</p>
+    </form>
+  </section>
+
+  <section id="shading-06" class="field field-paper">
+    <div class="copy">
+      <h2>Choose fabric, form and Lutron family</h2>
+      <p>The order matters: goal at each window, then fabric and privacy, treatment form, visible or concealed design, shade family and feasible dimensions, power and control, then construction and investment.</p>
+    </div>
+
+    <h3>What must the window do?</h3>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Priority</th><th>Best starting point</th><th>Important limitation</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Keep a view and reduce daytime glare</td>
+            <td>Solar-screen roller fabric sampled against that orientation; consider 1%, 3%, 5% or 10% openness</td>
+            <td>More openness usually preserves more view but admits more direct light. An open-weave fabric is not dependable nighttime privacy when the room is brighter than outdoors.</td>
+          </tr>
+          <tr>
+            <td>Daytime glow with more privacy</td>
+            <td>Translucent/privacy fabric</td>
+            <td>It diffuses light but sacrifices the clear view. Inspect it from outside after dark.</td>
+          </tr>
+          <tr>
+            <td>Bedroom darkness</td>
+            <td>Opaque/blackout fabric, with side channels, bottom/sill and pocket detail if strong light exclusion matters</td>
+            <td>Blackout fabric alone does not eliminate edge gaps. Distinguish room-darkening from light-tight construction.</td>
+          </tr>
+          <tr>
+            <td>Both daytime view and night privacy/darkness</td>
+            <td>Two separately controlled layers, when there is adequate mounting space, or a solar roller paired with drapery</td>
+            <td>Dual fabric requires more depth, more drives and controls, and a careful sequence. Palladiom and Triathlon do not have the same dual-bracket options as Sivoia.</td>
+          </tr>
+          <tr>
+            <td>Large view wall or specialty opening</td>
+            <td>Elevation-level shade schedule and engineered drive/fabric review</td>
+            <td>Width, drop, aspect ratio, roll diameter, seam, support and access may force multiple shades or another treatment.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Lutron’s 1%, 3%, 5% and 10% openness options, and the distinction between translucent and blackout fabric, are a selection vocabulary, not a performance promise for an unspecified fabric. Sources: <a href="https://www.lutron.com/us/en/articles/how-to-layer-window-treatments-with-motorized-shades">Lutron fabric layering</a>, <a href="https://www.lutron.com/us/en/window-treatments/shades/roller-shades">roller shade types</a>, and the <a href="https://assets.lutron.com/a/documents/3686848_luxury_resi_shade_matrix.pdf">room-darkening design matrix</a>.</p>
+
+    <h3>Which treatment belongs in the room?</h3>
+    <p>Roller shades are the primary architectural path for broad glazing, a crisp hem and a restrained sightline. Honeycomb/cellular can suit a smaller window or a different softness or insulation brief. Roman shades introduce folds and a textile presence. Wood and horizontal-sheer blinds provide tilt or a different privacy and view behavior. Drapery is appropriate when softness, acoustic character or a larger fabric composition is the goal. These are not interchangeable versions of a roller. A complete style gallery stays unpublished until DAVG confirms which families it will sell and support. Lutron’s <a href="https://www.lutron.com/us/en/window-treatments/residential-shades">residential window-treatment overview</a> documents the available families.</p>
+
+    <h3>Good, better, and best fit</h3>
+    <p>These labels are editorial shorthand for fit and architectural ambition. They are not a manufacturer quality grade or an installed price.</p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Relative path</th><th>Likely fit</th><th>What changes beyond price</th><th>Power and design caveat</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Good — professionally specified Triathlon / Triathlon Select</td>
+            <td>Finished rooms and several coordinated windows where minimal construction and a clean roller result matter most</td>
+            <td>Battery or supported low-voltage variants, accessible fascia or open-roll choices, programmed scenes and retrofit flexibility</td>
+            <td>Select is a narrower configuration. It is not a drop-in replacement for a concealed dual roller.</td>
+          </tr>
+          <tr>
+            <td>Better — Sivoia QS, including the correctly sized roller chassis</td>
+            <td>New build or renovation where hidden pockets, large windows, specialty mounting, precise alignment or a dual layer drive the design</td>
+            <td>Wider architectural configuration range. Roller 64, 100, 150, 300 or a specialty product follows the measured opening.</td>
+            <td>Plan power, support, pocket and service access while construction is open. A wireless control link can still have wired power.</td>
+          </tr>
+          <tr>
+            <td>Best for visible craft — Palladiom wired or Wire-Free</td>
+            <td>The shade mechanism is intentionally visible and must coordinate with architecture, finishes and Lutron wall controls</td>
+            <td>Designed exposed brackets, matched bottom rail and finish choices. The wire-free version can achieve this look in a finished home.</td>
+            <td>Palladiom is not automatically the right choice for a disappearing recessed pocket.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>A concealed Sivoia roller may be the stronger decision for a top-tier residence. A Palladiom Wire-Free shade may be the stronger retrofit. Sources: <a href="https://www.lutron.com/us/en/window-treatments/residential-shades">Triathlon, Sivoia and Palladiom</a> and the <a href="https://assets.lutron.com/a/documents/3686848_luxury_resi_shade_matrix.pdf">technology and compatibility matrix</a>.</p>
+
+    <h3>Shade-path comparison</h3>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Shade path</th><th>Strongest fit</th><th>Architectural effect</th><th>Power and service</th><th>Primary tradeoff</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Triathlon / Triathlon Select</td>
+            <td>Finished homes and straightforward roller conditions</td>
+            <td>Low-profile visible top treatment or accessible open roll</td>
+            <td>Confirm the model’s battery or supported wired-power option and future access</td>
+            <td>Limited architectural configuration compared with engineered Sivoia pockets</td>
+          </tr>
+          <tr>
+            <td>Sivoia QS concealed roller</td>
+            <td>New construction and renovation with coordinated pockets</td>
+            <td>The shade can disappear into the architecture when raised</td>
+            <td>Confirm chassis, pocket, blocking, power and control route, service access and light gaps</td>
+            <td>Integration depends on early coordination and the correct enclosure size</td>
+          </tr>
+          <tr>
+            <td>Palladiom exposed roller, wired</td>
+            <td>High-design openings where visible hardware is desirable and wiring is available</td>
+            <td>Refined exposed bracket and bottom rail become part of the elevation</td>
+            <td>Coordinate support, finish, alignment, power route and access</td>
+            <td>Visible geometry and attachment must be resolved precisely</td>
+          </tr>
+          <tr>
+            <td>Palladiom Wire-Free exposed roller</td>
+            <td>Finished rooms needing the Palladiom exposed expression with less wiring work</td>
+            <td>Similar crafted visual intent without a concealed power route</td>
+            <td>Battery replacement access, RF design and exact size and fabric eligibility still matter</td>
+            <td>Less construction does not remove the need for blocking and alignment</td>
+          </tr>
+          <tr>
+            <td>Dual Sivoia roller, or a layered roller plus drapery</td>
+            <td>Openings needing both view-through solar control and room darkening or privacy</td>
+            <td>Two layers solve different daylight states</td>
+            <td>Larger assembly, separate drives and more control and trim coordination</td>
+            <td>Greater flexibility at higher spatial and installation complexity</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Exposed versus concealed, battery versus hardwired, and wired versus wireless communication are three separate decisions. Sivoia QS is not universally wired-communication only, and Palladiom is not invariably line-powered.</p>
+
+    <h3>How large a shade can be chosen?</h3>
+    <p>These are illustrative published configurations. They do not describe every Lutron shade or guarantee a quote. The selected fabric, drive, width and drop, mounting condition and current Lutron design tool have to approve the opening. DAVG checks the current model page and project sizing before release.</p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Published configuration</th><th>Example manufacturer limit</th><th>What it means</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Triathlon Select roller</td>
+            <td>Up to 108 in wide × 120 in high, subject to its available configuration</td>
+            <td>A useful finished-room reference. Oversize glass or a different top treatment may require another family.</td>
+          </tr>
+          <tr>
+            <td>Triathlon WIDR roller</td>
+            <td>Up to 144 × 144 in in Lutron’s luxury residential matrix</td>
+            <td>Width can be larger than standard Select. Fabric, weight and construction still determine the approved size.</td>
+          </tr>
+          <tr>
+            <td>Palladiom Wire-Free roller</td>
+            <td>21–144 in wide × 12–144 in high, varying by fabric</td>
+            <td>Large exposed openings can be viable without a concealed power run, if bracket support and battery access are engineered.</td>
+          </tr>
+          <tr>
+            <td>Sivoia QS Roller 100, a specific recessed 5-in configuration</td>
+            <td>A listed 24–176 in single-panel width, varying by fabric and height, with a typical maximum area of 100 sq ft</td>
+            <td>Maximum width and maximum drop are not promised together. Lutron sizes by configuration, area, fabric and aspect ratio.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Mounting, pocket and light gaps</h3>
+    <ul>
+      <li><strong>Inside mount</strong> preserves surrounding architecture but loses some usable fabric width to brackets and operator clearance.</li>
+      <li><strong>Outside mount</strong> can overlap trim to improve coverage. The shade and brackets become visible and may interfere with doors, handles or drapery.</li>
+      <li><strong>Exposed roller</strong> is an intentional design object. It does not require a ceiling pocket, and it still requires structural support.</li>
+      <li><strong>Fascia</strong> conceals the roller below an existing ceiling. Evaluate its visible height, service access and proportion.</li>
+      <li><strong>Recessed pocket</strong> must be coordinated for chassis, one or two rollers, roll diameter, hanger orientation, depth and height, blocking, wire entry and removable service access before framing. Lutron measuring application note 598 gives, for example, Roller 64 a 3.5 × 3.5 in minimum mounting space for a single shade and 5.5 in height × 7.5 in depth for a dual mount. Those are configuration-specific minimums, not a universal finished pocket. Roller 100, 150, 300 and special conditions can require more room.</li>
+      <li><strong>Room darkening:</strong> a 0%-openness fabric can still allow light at the side, top or bottom. Specify the side channel, bottom bar or sill, and pocket condition when darkness matters.</li>
+    </ul>
+
+    <h3>Power, communications and everyday control</h3>
+    <p>Wire-free, wireless, and battery are not synonyms. Ask separately how the motor receives power, how it receives commands, and how the owner acts. A wired-power Sivoia QS may communicate through wired QS or a supported wireless receiver. Palladiom is available wired and Wire-Free. Triathlon includes battery and supported low-voltage variants. The everyday result is a wall button or supported keypad scene, a scheduled position, app access when appropriate, and an immediate manual override. Shade control may share an intentional lighting keypad. There is no special wall slider or extra shade keypad required by default.</p>
+
+    <div class="study-split">
+      <div class="study-sticky">
+        <p>View or blackout?</p>
+        <p>Hidden or exposed?</p>
+        <p>Battery or wired?</p>
+      </div>
+      <div class="study-gallery">
+        <figure>
+          <MediaPlaceholder id="shading-06-fabric" subject="Fabric against daylight" ratio="16 / 9" />
+          <figcaption>Fabric against daylight. Openness and color are sampled at the window.</figcaption>
+        </figure>
+        <figure>
+          <MediaPlaceholder id="shading-06-elevation" subject="Shade from the room at full elevation" ratio="16 / 9" />
+          <figcaption>Shade from the room at full elevation.</figcaption>
+        </figure>
+        <figure>
+          <MediaPlaceholder id="shading-06-palladiom" subject="Palladiom bracket and hembar" ratio="1 / 1" />
+          <figcaption>Palladiom bracket and bottom rail.</figcaption>
+        </figure>
+        <figure>
+          <MediaPlaceholder id="shading-06-sivoia" subject="Sivoia pocket or fascia section" ratio="4 / 3" />
+          <figcaption>Sivoia pocket or fascia section.</figcaption>
+        </figure>
+        <figure>
+          <MediaPlaceholder id="shading-06-control" subject="Finished wall control" ratio="1 / 1" />
+          <figcaption>Finished wall control.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <h3>Fabric decisions that change the result</h3>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Decision</th><th>What the homeowner experiences</th><th>What must be tested or documented</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Openness factor</td>
+            <td>Balance among view-through, glare reduction, daytime privacy, and solar control</td>
+            <td>Evaluate from the actual orientation and interior, not a loose sample alone</td>
+          </tr>
+          <tr>
+            <td>Color</td>
+            <td>Changes view, reflected light, exterior appearance, and perceived contrast</td>
+            <td>Review against glass, wall, trim, and daylight conditions</td>
+          </tr>
+          <tr>
+            <td>Blackout construction</td>
+            <td>Controls direct light but depends on side channels, sill, pocket, and room conditions for complete darkness</td>
+            <td>Define whether the goal is room darkening or near-total light control</td>
+          </tr>
+          <tr>
+            <td>Single versus dual fabric</td>
+            <td>One condition versus a flexible sheer and blackout combination</td>
+            <td>Confirm pocket depth, roll diameter, bracket, and control grouping</td>
+          </tr>
+          <tr>
+            <td>Railroaded or seamed fabric</td>
+            <td>Enables certain sizes but changes visual continuity</td>
+            <td>Approve seam placement and appearance before fabrication</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>What DAVG measures before specifying shades</h3>
+    <ul>
+      <li>Finished and rough opening dimensions at multiple points.</li>
+      <li>Window orientation, seasonal solar path, view priority, and nighttime privacy.</li>
+      <li>Mullions, handles, trim, drapery, furniture, and door-operation conflicts.</li>
+      <li>Pocket width and depth, blocking, power route, roll direction, fascia or reveal, and service access.</li>
+      <li>Fabric roll diameter and alignment across adjacent openings.</li>
+      <li>Grouping, speed and sequence, local control, scenes, schedules, and sensor logic.</li>
+      <li>Integration with <a href="/solutions/architectural-lighting/">architectural lighting scenes</a> and the <a href="/solutions/home-intelligence/">whole-home control architecture</a>.</li>
+    </ul>
+    <p>Late shading decisions can reduce glass coverage, force visible fascia, expose wire, misalign adjacent shades, remove the dual-fabric option, or require a pocket that competes with structure and ceiling details.</p>
+  </section>
+
+  <section id="shading-07" class="field field-ink">
+    <div class="copy">
+      <h2>Four opening studies</h2>
+      <p>These are example briefs, not a specification or a claim that a named product works in every opening.</p>
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Opening and priority</th><th>Likely starting path</th><th>What to review</th><th>What can change the path</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>West-facing living-room glass; preserve a mountain view</td>
+            <td>Solar-screen roller selected for glare and view</td>
+            <td>The actual view and screen glare at the intended hour, plus fabric width, mullions and the exposed or recessed head</td>
+            <td>Night privacy is a separate need. Add a second treatment or change fabric if the room must screen occupants after dark.</td>
+          </tr>
+          <tr>
+            <td>Street-facing bedroom; privacy at night and reduced dawn light</td>
+            <td>Translucent or room-darkening treatment with an appropriate overlap, side channel or dual layer</td>
+            <td>The exterior sightline after dark, and the side, top and bottom gaps</td>
+            <td>Blackout fabric alone does not make a dark room. Egress, window operation and buildable side channels matter.</td>
+          </tr>
+          <tr>
+            <td>Double-height or unusually wide glazing</td>
+            <td>A measured Sivoia chassis or another approved engineered configuration, with possible mullion-aligned divisions</td>
+            <td>Every panel width and drop, seams, drive location, bracket structure and lift alignment</td>
+            <td>Fabric weight, roll diameter, aspect ratio and available structure may rule out a single panel.</td>
+          </tr>
+          <tr>
+            <td>Finished sitting room with intentional exposed hardware</td>
+            <td>Palladiom Wire-Free, or wired Palladiom if the size, support and finish fit</td>
+            <td>Bracket and bottom rail, plus the installed elevation</td>
+            <td>Battery access, trim, structure and a preference against visible hardware can favor Triathlon, fascia or a pocket instead.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="example-media">
+      <MediaPlaceholder id="shading-07-west" subject="West-facing living room opening" ratio="16 / 9" />
+      <MediaPlaceholder id="shading-07-bedroom" subject="Street-facing bedroom opening" ratio="16 / 9" />
+      <MediaPlaceholder id="shading-07-tall" subject="Double-height or wide glazing" ratio="16 / 9" />
+      <MediaPlaceholder id="shading-07-sitting" subject="Finished sitting room with exposed hardware" ratio="4 / 3" />
+    </div>
+  </section>
+
+  <section id="shading-08" class="field field-paper">
+    <div class="split">
+      <div class="copy">
+        <h2>Pocket, clearance, blocking and power</h2>
+        <p>The concealed work includes load-bearing blocking, pocket dimensions, wire paths, transformer and panel locations, accessible service conditions, fabric roll calculations, motor capacity, alignment tolerances, group addressing, and limit programming.</p>
+        <p class="measure">Roller 64 example from Lutron note 598: 3.5 × 3.5 in minimum mounting space for one shade. A listed dual mount needs 5.5 in height × 7.5 in depth. Confirm the selected assembly before framing.</p>
+      </div>
+      <MediaPlaceholder id="shading-08-pocket" subject="Pocket, fascia, or exposed hardware detail" ratio="4 / 3" />
+    </div>
+  </section>
+
+  <section id="shading-09" class="field field-ink">
+    <div class="copy">
+      <h2>New build or finished-home installation</h2>
+      <ul>
+        <li><strong>New construction:</strong> confirm pockets, structure, power, and window dimensions before framing and drywall.</li>
+        <li><strong>Renovation:</strong> coordinate with trim, ceiling, glazing, and electrical work while cavities are accessible.</li>
+        <li><strong>Retrofit:</strong> measure finished conditions and choose between battery, targeted wiring, fascia, or exposed architectural hardware.</li>
+        <li><strong>Replacement:</strong> document existing pockets, brackets, power, controls, and fabric widths before assuming new equipment will fit.</li>
+      </ul>
+      <p>Four questions belong in the proposal. What framing, finish or electrical work is required per opening? Who provides bracket blocking, power and the final pocket dimensions? Can an installer remove a shade for service without damaging the finish? When will the opening be field measured, and who signs off on fabric, seam and hembar alignment? Neither a retrofit nor a new-build pocket has a universal price ranking.</p>
+    </div>
+  </section>
+
+  <section id="shading-10" class="field field-paper">
+    <div class="copy">
+      <h2>Prevent fit and mounting problems</h2>
+      <ul>
+        <li><strong>No solid mounting structure:</strong> issue blocking details before walls close.</li>
+        <li><strong>Pocket sized by guess:</strong> size from the selected shade, width, fabric roll, and configuration.</li>
+        <li><strong>Misaligned hems across glass:</strong> survey and group the elevation as one composition.</li>
+        <li><strong>Wrong fabric for the objective:</strong> evaluate view-through, glare, privacy, and darkening separately.</li>
+        <li><strong>Visible wiring or inaccessible power:</strong> coordinate routes and service access early.</li>
+        <li><strong>Automation that surprises occupants:</strong> make schedules legible and manual override immediate.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="shading-12" class="field field-ink">
+    <div class="copy">
+      <h2>What changes shade investment?</h2>
+      <p>Important variables include shade width and height, opening count, fabric, single versus dual rollers, exposed versus concealed hardware, hardwired versus battery power, structural access, control integration, lift alignment, and custom finish requirements.</p>
+      <p>Quote from a measured window schedule and confirmed architectural details. This page does not publish generic per-window pricing.</p>
+      <ul>
+        <li>A straightforward battery roller at an accessible finished window usually needs less invasive construction.</li>
+        <li>A wired multi-opening project adds power and coordination.</li>
+        <li>Concealed large-format or dual-roller work adds pocket, structure, finishing and alignment.</li>
+        <li>Exposed Palladiom may add finish and mounting detail without a pocket.</li>
+      </ul>
+      <p>The owner should receive a line-by-line opening schedule showing drive, treatment, fabric, control, power, mounting, finish, anticipated light gap, service method and construction allowance. Installed budget bands stay unpublished until estimating records support them.</p>
+    </div>
+  </section>
+
+  <section id="shading-13" class="field field-paper">
+    <div class="copy">
+      <h2>Measure, commission and maintain</h2>
+      <ol>
+        <li>Survey the glass and orientation.</li>
+        <li>Define performance and privacy objectives.</li>
+        <li>Select and sample fabric.</li>
+        <li>Engineer pockets, structure, power, and controls.</li>
+        <li>Field-verify dimensions.</li>
+        <li>Install, align, set limits, program scenes, and teach local override.</li>
+        <li>Preserve the final shade schedule and service-access notes with the home’s documentation.</li>
+      </ol>
+      <p>DAVG is a Lutron Certified HomeWorks Integrator. That work includes verifying platform, shade and control compatibility; measuring each opening; presenting fabric and hardware samples; creating the shade, power, control and pocket schedules; coordinating the builder, electrician and window or trim trades; ordering the approved configuration; programming grouping, scenes and limits; demonstrating owner and manual control; and documenting maintenance and battery or service access. Lutron is selected when its verified shade families, architectural hardware, control ecosystem and service path meet the brief.</p>
+    </div>
+  </section>
+
+  <section id="shading-14" class="field field-ink">
+    <div class="copy">
+      <h2>Denver sun and homeowner questions</h2>
+      <p>At elevation, strong solar exposure and large temperature swings make west- and south-facing glazing especially demanding. A Denver-area shade strategy should account for seasonal sun angle, mountain-view preservation, privacy after dark, and the way high-contrast daylight affects screens and interior materials.</p>
+      <p>Local shading decisions start with window orientation, privacy, view, pocket, and fabric. Cherry Hills Village, Greenwood Village, Castle Pines, Castle Rock, and west- and south-facing Denver homes are where those conditions most often define the brief.</p>
+    </div>
+    <div class="faqs">
+      <details>
+        <summary>What's the structural requirement for mounting shades on a large window wall?</summary>
+        <p>The bracket, fastener and substrate must support the selected shade and its operating load. DAVG details blocking or an approved structural attachment with the architect or installer, particularly where finished drywall will conceal the support. A measured opening and the specific installation instructions control the answer.</p>
+      </details>
+      <details>
+        <summary>How much pocket depth do motorized shades actually need?</summary>
+        <p>There is no universal depth. For illustration, Lutron’s measuring guide identifies 3.5 × 3.5 inches as minimum mounting space for one Roller 64 assembly and 7.5 inches of depth for a particular dual Roller 64 assembly. That does not determine the finished pocket for another roller, fabric, fascia or service detail. Size the selected assembly on a section before framing.</p>
+      </details>
+      <details>
+        <summary>Are Lutron shades battery-powered or hardwired, and which is better?</summary>
+        <p>Both exist. Battery models can reduce construction in a finished home but need service access and eventual replacement. Wired-power models need a planned power path. Separately, controls may use a wired or wireless communication link. The opening, product family, desired hardware and construction stage decide the better fit.</p>
+      </details>
+      <details>
+        <summary>Do shades integrate with Lutron lighting scenes, or run independently?</summary>
+        <p>Compatible shades and lighting can share a programmed Lutron scene and supported wall control — for example, lower a shade and dim a room for viewing. DAVG checks the selected platform, shade and keypad combination, preserves a local override, and explains what a schedule will do.</p>
+      </details>
+      <details>
+        <summary>What is the largest Lutron shade I can use in my home?</summary>
+        <p>There is no single maximum for every product. Published examples range from Triathlon Select up to 108 × 120 inches to larger specified Palladiom and Sivoia configurations. The fabric, width and drop pairing, area, seam, drive, bracket and mounting condition all have to pass the current model-specific sizing tool.</p>
+      </details>
+      <details>
+        <summary>Can a solar screen provide privacy at night?</summary>
+        <p>Do not assume so. Openness, lighting on both sides of the glass and viewing angle change what is visible. Test a fabric at the real window and consider a translucent or blackout layer if evening privacy is required.</p>
+      </details>
+    </div>
+  </section>
+
+  <section id="shading-15" class="field field-paper">
+    <div class="copy">
+      <h2>Let the room decide how daylight enters.</h2>
+      <p>Continue to <a href="/solutions/architectural-lighting/">Architectural Lighting</a>, <a href="/solutions/home-intelligence/">Home Intelligence</a>, or <a href="/solutions/media-audio/">Media &amp; Audio</a>.</p>
+      <p>Bring elevations, window schedules, or a few photographs. Early answers protect both performance and architecture.</p>
+      <p>This form is not connected to a delivery service. It will not show a success message. Email <a href="mailto:info@davg.ai">info@davg.ai</a> and include Motorized Shading in the subject. Public phone numbers are left unset here until the conflicting values are confirmed.</p>
+    </div>
+    <form class="inquiry" id="shading-inquiry">
+      <input type="hidden" name="service" value="Motorized Shading" />
+      <label>Name <input name="name" type="text" autocomplete="name" /></label>
+      <label>Email <input name="email" type="email" autocomplete="email" /></label>
+      <label>Location <input name="location" type="text" autocomplete="address-level2" /></label>
+      <label>Elevations, window schedule, or photographs <textarea name="openings" rows="4"></textarea></label>
+      <label>Message <textarea name="message" rows="4"></textarea></label>
+      <button type="submit">Plan Your Shading</button>
+      <p class="form-status" role="status" hidden></p>
+    </form>
+  </section>
+</ServicePageShell>
+<script>
+  const form = document.getElementById('shading-inquiry');
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const status = form.querySelector('.form-status');
+    if (!(status instanceof HTMLElement)) return;
+    status.hidden = false;
+    status.textContent = 'This form is not connected to a delivery service yet. Email info@davg.ai and include Motorized Shading in the subject.';
+  });
+</script>
+<style>
+  .field { position: relative; padding: clamp(3rem, 6vw, 6rem) clamp(1.25rem, 3vw, 3rem); }
+  .field-ink { background: var(--color-surface-ink); color: var(--color-text-on-dark); }
+  .field-paper { background: var(--color-surface-paper); color: var(--color-text-on-paper); }
+  .copy { max-width: 68ch; }
+  .word {
+    position: absolute;
+    top: 0;
+    left: -0.04em;
+    z-index: 0;
+    margin: 0;
+    overflow: hidden;
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(6rem, 14vw, 11rem);
+    line-height: 0.8;
+    letter-spacing: -0.04em;
+    color: var(--color-spatial-dark);
+    pointer-events: none;
+    user-select: none;
+  }
+  .eyebrow, h1, h2, h3, .deck, .action, p, li, .note, figcaption { position: relative; z-index: 1; }
+  .eyebrow { margin: 0 0 1.25rem; font-family: var(--font-body); font-size: 0.875rem; font-weight: 500; }
+  h1, h2, h3 { margin: 0; font-family: var(--font-display); font-weight: 400; }
+  h1 { font-size: clamp(2.5rem, 4.5vw, 4rem); line-height: 0.98; letter-spacing: -0.035em; font-weight: 300; }
+  h2 { font-size: clamp(2rem, 3vw, 2.75rem); line-height: 1.02; letter-spacing: -0.025em; font-weight: 300; }
+  h3 { margin-top: 2.5rem; font-size: clamp(1.5rem, 2vw, 2rem); letter-spacing: -0.02em; }
+  p, li { font-family: var(--font-body); font-size: 1rem; line-height: 1.5; }
+  .deck { margin-top: 1.5rem; max-width: 62ch; }
+  .field-ink p, .field-ink li { color: var(--color-text-muted-dark); }
+  .field-paper p, .field-paper li { color: var(--color-text-muted-paper); }
+  h1, h2, h3, .eyebrow { color: inherit; }
+  .field-ink h1, .field-ink h2, .field-ink h3, .field-ink .eyebrow { color: var(--color-text-on-dark); }
+  .field-paper h1, .field-paper h2, .field-paper h3, .field-paper .eyebrow { color: var(--color-text-on-paper); }
+  a { color: inherit; }
+  .action, button {
+    display: inline-block;
+    margin-top: 1.75rem;
+    padding: 0.8rem 1.1rem;
+    border: 0;
+    border-radius: 2px;
+    background: var(--color-surface-paper);
+    color: var(--color-text-on-paper);
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .field-paper .action, .field-paper button { background: var(--color-surface-forest); color: var(--color-text-on-dark); }
+  .split, .study-split { display: grid; gap: 2rem; align-items: start; }
+  .split { margin-top: 0; }
+  @media (min-width: 900px) {
+    .split { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); }
+    .study-split { grid-template-columns: minmax(0, 3fr) minmax(0, 7fr); }
+    .study-sticky { position: sticky; top: 1.5rem; }
+  }
+  .study-split { margin-top: 2.5rem; }
+  .study-gallery { display: grid; gap: 1.5rem; }
+  figure { margin: 0; }
+  figcaption, .note, .measure { margin-top: 0.75rem; font-size: 0.8125rem; line-height: 1.35; }
+  .measure { font-family: var(--font-mono); letter-spacing: 0.04em; }
+  ul, ol { padding-left: 1.15rem; }
+  li + li { margin-top: 0.75rem; }
+  .table-scroll { margin-top: 1.25rem; overflow-x: auto; }
+  table { width: 100%; min-width: 44rem; border-collapse: collapse; }
+  th, td { padding: 0.9rem 0.8rem; border-bottom: 1px solid color-mix(in srgb, currentColor 14%, transparent); text-align: left; vertical-align: top; font-family: var(--font-body); font-size: 0.9375rem; line-height: 1.45; }
+  th { font-weight: 500; }
+  .example-media { display: grid; gap: 1rem; margin-top: 2rem; }
+  @media (min-width: 800px) { .example-media { grid-template-columns: 1fr 1fr; } }
+  .solar fieldset { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.5rem 0; padding: 0; border: 0; }
+  .solar legend { width: 100%; margin-bottom: 0.25rem; font-family: var(--font-body); font-size: 0.875rem; font-weight: 500; }
+  .solar input { position: absolute; opacity: 0; }
+  .solar label { padding: 0.45rem 0.7rem; border: 1px solid var(--color-border-dark); border-radius: 2px; font-family: var(--font-body); font-size: 0.875rem; font-weight: 500; cursor: pointer; }
+  .solar input:focus-visible + label { outline: 2px solid var(--color-accent-signal); outline-offset: 3px; }
+  .solar input:checked + label { border-color: var(--color-accent-signal); color: var(--color-text-on-dark); }
+  .solar-note { display: none; max-width: 68ch; }
+  #solar-morning:checked ~ .solar-note[data-time="morning"],
+  #solar-midday:checked ~ .solar-note[data-time="midday"],
+  #solar-afternoon:checked ~ .solar-note[data-time="afternoon"],
+  #solar-evening:checked ~ .solar-note[data-time="evening"] { display: block; }
+  .faqs { display: grid; gap: 0.75rem; margin-top: 2rem; }
+  details { border-top: 1px solid var(--color-border-dark); padding-top: 0.75rem; }
+  summary { cursor: pointer; font-family: var(--font-body); font-weight: 500; color: var(--color-text-on-dark); }
+  .inquiry { display: grid; gap: 1rem; max-width: 36rem; margin-top: 2rem; }
+  .inquiry label { display: grid; gap: 0.4rem; font-family: var(--font-body); font-size: 0.875rem; font-weight: 500; color: var(--color-text-on-paper); }
+  .inquiry input, .inquiry textarea {
+    width: 100%;
+    padding: 0.7rem 0.75rem;
+    border: 1px solid var(--color-border-paper);
+    border-radius: 2px;
+    background: var(--color-cream-01);
+    color: var(--color-text-on-paper);
+    font-family: var(--font-body);
+    font-size: 1rem;
+  }
+  .form-status { color: var(--color-text-on-paper); }
+</style>
+
+

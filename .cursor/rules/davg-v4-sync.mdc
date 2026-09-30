@@ -1,0 +1,14 @@
+---
+description: Current DAVG V4 build sources, state and handoff
+alwaysApply: true
+---
+
+Work in the existing project. Follow current user instructions and existing higher-priority repository guidance.
+Read docs/v4-build/11-SYNC-CONTRACT.md and docs/v4-build/BUILD-STATE.md before a DAVG V4 task.
+Use the active files identified there; old design masters and archived handoffs are historical references.
+Preserve local work. Do not reset, switch projects or force-push.
+Keep code, affected active specifications and BUILD-STATE updated together.
+Distinguish proposed, documented, implemented, verified and deployed.
+At handoff identify branch/commit or uncommitted state, changed paths, actual checks and remaining items.
+The 25/75 service shell does not require every hub to use the same story.
+
