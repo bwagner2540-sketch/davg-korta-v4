@@ -1,16 +1,46 @@
 ---
 import '../styles/global.css';
+import SEO from './SEO.astro';
+import type { BreadcrumbItem } from '../site';
+
 interface Props {
   title?: string;
+  description?: string;
+  canonicalPath?: string;
+  image?: string;
+  imageAlt?: string;
+  noindex?: boolean;
+  serviceName?: string;
+  breadcrumbs?: BreadcrumbItem[];
 }
-const { title = "Denver AV Group" } = Astro.props;
+
+const {
+  title,
+  description,
+  canonicalPath,
+  image,
+  imageAlt,
+  noindex,
+  serviceName,
+  breadcrumbs,
+} = Astro.props;
 ---
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title}</title>
+    <meta name="generator" content={Astro.generator} />
+    <SEO
+      title={title}
+      description={description}
+      canonicalPath={canonicalPath}
+      image={image}
+      imageAlt={imageAlt}
+      noindex={noindex}
+      serviceName={serviceName}
+      breadcrumbs={breadcrumbs}
+    />
   </head>
   <body class="bg-surface-ink text-text-primary-dark antialiased">
     <slot />
