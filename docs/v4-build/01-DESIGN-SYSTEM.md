@@ -1,10 +1,14 @@
 # DAVG Korta V4 — Current design system
 
-29 September 2026. Concise implementation baseline. User decisions override earlier implementation notes. Values below are working starting points; adjust proportion and spacing against the screenshots. They are not a closed component inventory.
+29 September 2026, token sample aligned to live CSS on 2 October 2026. User decisions override earlier implementation notes. This is not a closed component inventory.
+
+The names and values in `src/styles/global.css` are canonical. The sample below matches that file. Do not replace them with screenshot measurements, with `docs/v4-build/starter/src/styles/v4-tokens.css`, or with `v4-gpt-original-design/`. Those sources are historical. IBM Plex Mono is explicitly retired. Do not reintroduce it from the starter, from `04-RECONCILIATION.md`, `08-SHADING-PAGE-EDITORIAL-REDESIGN.md`, `prompts/01-FIRST-HOUR.md`, or the hub manuscripts. Those files stay historical.
 
 ## 1. Color tokens
 
-Use Ink, Forest, Paper and architectural photography as distinct fields. Forest is the brand primary color. It needs to be used in a way that sets it apart from the other colors and makes it stand out as the primary color. It should be used on the left sidebar, and as an accent color on other elements. 
+Use Ink, Forest, Paper and architectural photography as distinct fields. Forest is the brand primary color. It needs to be used in a way that sets it apart from the other colors and makes it stand out as the primary color. It should be used on the left sidebar, and as an accent color on other elements.
+
+Canonical color names are `--color-text-primary-dark`, `--color-text-secondary-dark`, `--color-text-tertiary-dark`, `--color-text-primary-paper`, and `--color-text-secondary-paper`. Border alphas are 18% dark and 16% paper. Spatial-word alphas are 12% on ink and 14% on forest. The older pack names (`on-dark`, `muted`, `quiet`, `on-paper`, `spatial-dark`, `spatial-forest`) are aliases of those live values. They do not restore the retired 16%/14% borders, 10%/12% spatial alphas, or `--spacing-page-inline`.
 
 ```css
 @theme {
@@ -14,60 +18,95 @@ Use Ink, Forest, Paper and architectural photography as distinct fields. Forest 
   --color-cream-01: #F2EFE7;
   --color-cream-02: #EBE7DC;
   --color-cream-03: #E2DDCE;
-  --color-text-on-dark: #F1F0EB;
-  --color-text-muted-dark: #A7AAA5;
-  --color-text-quiet-dark: #7F847E;
-  --color-text-on-paper: #0B0D0C;
-  --color-text-muted-paper: #51544F;
+  --color-text-primary-dark: #F1F0EB;
+  --color-text-secondary-dark: #A7AAA5;
+  --color-text-tertiary-dark: #7F847E;
+  --color-text-primary-paper: #0B0D0C;
+  --color-text-secondary-paper: #51544F;
   --color-accent-signal: #1A8F6E;
-  --color-border-dark: rgb(241 240 235 / 16%);
-  --color-border-paper: rgb(11 13 12 / 14%);
-  --color-spatial-dark: rgb(241 240 235 / 10%);
-  --color-spatial-forest: rgb(241 240 235 / 12%);
-  --font-display: "Schibsted Grotesk Variable", "Schibsted Grotesk", sans-serif;
+  --color-border-dark: rgb(241 240 235 / 18%);
+  --color-border-dark-soft: rgb(241 240 235 / 10%);
+  --color-border-paper: rgb(11 13 12 / 16%);
+  --color-rule-accent: rgb(26 143 110 / 78%);
+  --color-scrim-ink-soft: rgb(9 11 10 / 38%);
+  --color-scrim-ink-strong: rgb(9 11 10 / 66%);
+  --color-spatial-word-dark: rgb(241 240 235 / 12%);
+  --color-spatial-word-forest: rgb(241 240 235 / 14%);
+  /* Aliases. Same rendered colors as the canonical tokens above. */
+  --color-text-on-dark: var(--color-text-primary-dark);
+  --color-text-muted-dark: var(--color-text-secondary-dark);
+  --color-text-quiet-dark: var(--color-text-tertiary-dark);
+  --color-text-on-paper: var(--color-text-primary-paper);
+  --color-text-muted-paper: var(--color-text-secondary-paper);
+  --color-spatial-dark: var(--color-spatial-word-dark);
+  --color-spatial-forest: var(--color-spatial-word-forest);
   --font-sans: "Instrument Sans Variable", "Instrument Sans", sans-serif;
+  --font-display: "Schibsted Grotesk Variable", "Schibsted Grotesk", sans-serif;
   --font-body: "Instrument Sans Variable", "Instrument Sans", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
   --text-h1: clamp(2.5rem, 4.5vw, 4rem);
   --text-h1--line-height: 0.98;
   --text-h1--letter-spacing: -0.035em;
+  --text-h1--font-weight: 400;
   --text-h2: clamp(2rem, 3vw, 2.75rem);
   --text-h2--line-height: 1.02;
   --text-h2--letter-spacing: -0.025em;
+  --text-h2--font-weight: 400;
+  --text-h3: clamp(1.5rem, 2.2vw, 2.25rem);
+  --text-h3--line-height: 1.08;
+  --text-h3--letter-spacing: -0.02em;
+  --text-h3--font-weight: 400;
   --text-body: 1rem;
   --text-body--line-height: 1.5;
-  --text-caption: .8125rem;
+  --text-body-lg: 1.125rem;
+  --text-body-lg--line-height: 1.45;
+  --text-caption: 0.8125rem;
   --text-caption--line-height: 1.35;
-  --text-label: .6875rem;
-  --text-label--letter-spacing: .1em;
-  --spacing-page-inline: clamp(1.25rem, 3vw, 4rem);
+  --text-mono: 0.6875rem;
+  --text-mono--line-height: 1.35;
+  --text-mono--letter-spacing: 0.1em;
+  --container-measure-narrow: 42ch;
+  --container-measure: 62ch;
+  --container-measure-wide: 72ch;
+  --container-content: 90rem;
+  --spacing-micro: 0.5rem;
+  --spacing-text: clamp(1.25rem, 2vw, 2rem);
+  --spacing-component: clamp(1.5rem, 2.5vw, 2.5rem);
   --spacing-section: clamp(3rem, 6vw, 6rem);
-  --radius-control: 2px;
+  --spacing-gutter: var(--page-gutter);
 }
+
+/* Stepped gutter. Media queries live in global.css. Do not copy a clamp over this. */
+:root { --page-gutter: 1.5rem; }          /* below 768px */
+/* 768px */  :root { --page-gutter: 3rem; }
+/* 1280px */ :root { --page-gutter: 4rem; }
 ```
 
-This is CSS-first Tailwind 4. Merge tokens into the existing global CSS. No `tailwind.config.js` migration is needed. Preserve installed versions and lockfile. The target is Astro 7 / Tailwind 4; the two observed repositories use different compatible minor versions.
+This is CSS-first Tailwind 4. The live file is already `src/styles/global.css`. No `tailwind.config.js` migration is needed. Do not redefine Tailwind's default numeric spacing (`--spacing-1` and the rest); `p-4` is 16px, `p-6` is 24px, `p-24` is 96px, and `p-32` is 128px. Preserve installed versions and lockfile. The target is Astro 7 / Tailwind 4.
+
+Utilities generated from these keys: `text-h1`, `text-h2`, `text-h3`, `text-body`, `text-body-lg`, `text-caption`, `text-mono`, `max-w-measure-narrow`, `max-w-measure`, `max-w-measure-wide`, `max-w-content`, and `py-section`. The shared frame class is `.folio` (`max-width: var(--container-content)` and `padding-inline: var(--page-gutter)`).
 
 ## 2. Typography
 
-Active font system, restored 2 October 2026 in `src/styles/global.css`. Self-hosted. IBM Plex Mono is retired and is not part of the active design system.
+Active font system, restored 2 October 2026 in `src/styles/global.css`. Self-hosted. IBM Plex Mono is explicitly retired and is not part of the active design system. Do not load Google Fonts or IBM Plex.
 
 | Role | Family | Working size / weight / tracking |
 |---|---|---|
-| H1 | Schibsted Grotesk | 40–64px responsive; 400; −.035em; line-height 0.98 |
-| H2 | Schibsted Grotesk | 32–44px; 400; −.025em; line-height 1.02 |
-| H3 | Schibsted Grotesk | 24–36px; 400; −.02em; line-height 1.08 |
-| Body and interface | Instrument Sans | 16px; 400; line-height 1.5; ordinary tracking |
-| Captions | Instrument Sans | 13px; 400/500; line-height 1.35 |
-| Buttons / navigation | Instrument Sans | 12–14px; 500; modest tracking |
-| Eyebrow / measurement / technical metadata | JetBrains Mono | 11px; 400/500; .1em |
+| H1 | Schibsted Grotesk | `text-h1`: 40–64px responsive; 400; −.035em; line-height 0.98 |
+| H2 | Schibsted Grotesk | `text-h2`: 32–44px; 400; −.025em; line-height 1.02 |
+| H3 | Schibsted Grotesk | `text-h3`: 24–36px; 400; −.02em; line-height 1.08 |
+| Body | Instrument Sans | `text-body`: 16px; 400; line-height 1.5 |
+| Emphasized body | Instrument Sans | `text-body-lg`: 18px; line-height 1.45 |
+| Captions | Instrument Sans | `text-caption`: 13px; line-height 1.35 |
+| Buttons / navigation | Instrument Sans | `text-caption` (13px) at weight 500; no extra tracking utility |
+| Eyebrow / measurement / technical metadata | JetBrains Mono | `text-mono`: 11px; .1em; line-height 1.35 |
 | Background word | Schibsted Grotesk | CSS still requests 300; solid, large, cropped, low opacity |
 
-Do not typeset navigation, body copy or section titles like a terminal. Keep headings upright and sentence case. Display weights stay at 400 in the base rules. Existing page utilities still set the composed heading sizes.
+Do not typeset navigation, body copy or section titles like a terminal. Keep headings upright and sentence case. Display weights stay at 400. Pages use `text-h1`, `text-h2`, and `text-h3`, so the heading utilities and the base rules carry the same sizes. Do not set a page weight of 300. Installed variable faces start at 400, so 300 snaps to 400.
 
-The installed Schibsted variable file covers weights 400–900 only. Instrument Sans variable covers 400–700. A `font-weight: 300` declaration therefore resolves to 400. The 300 target stays in the spatial-word rules. No separate 300 cut exists in the self-hosted files or in the earlier Google Fonts stylesheet. No `font-feature-settings` were present in the recovered CSS.
+The installed Schibsted variable file covers weights 400–900 only. Instrument Sans variable covers 400–700. A `font-weight: 300` declaration therefore resolves to 400. The 300 target stays in the spatial-word rules only. No separate 300 cut exists in the self-hosted files. No `font-feature-settings` were present in the recovered CSS.
 
-Foundation tokens, defined and not forced onto existing sections:
+Foundation tokens, applied on the homepage and the shading page for type, measure, the `.folio` gutter, and section padding:
 
 | Token | Value |
 |---|---|
@@ -75,8 +114,8 @@ Foundation tokens, defined and not forced onto existing sections:
 | Standard body measure | 62ch |
 | Wider measure | 72ch |
 | Content width | 90rem (1440px, current homepage folio) |
-| Page gutter | 1.5rem / 3rem / 4rem at 768px and 1280px |
-| Micro / text / component / section spacing | 0.5rem; clamp(1.25rem, 2vw, 2rem); clamp(1.5rem, 2.5vw, 2.5rem); clamp(3rem, 6vw, 6rem) |
+| Page gutter | `--page-gutter` on `:root`: 1.5rem / 3rem / 4rem at 768px and 1280px. `.folio` is the only frame. |
+| Micro / text / component / section spacing | 0.5rem; clamp(1.25rem, 2vw, 2rem); clamp(1.5rem, 2.5vw, 2.5rem); clamp(3rem, 6vw, 6rem). Section vertical padding is `py-section` once. |
 
 ## 3. Spacing, radius and borders
 

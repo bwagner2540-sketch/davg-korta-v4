@@ -1,5 +1,5 @@
 # DAVG V4 — Build state
-Updated 29 September 2026 during the one-time source sync. This replaces the remote-audit unknowns with the local project that was actually open.
+Updated 2 October 2026. The task log at the bottom is the current status. Earlier rows are corrected where they contradicted the code.
 
 ## Shared checkpoint
 - Repository: `bwagner2540-sketch/davg-korta-v4` (`origin` `https://github.com/bwagner2540-sketch/davg-korta-v4.git`). Matches the expected remote. No branch switch or reset.
@@ -19,10 +19,10 @@ Decision: **adopted for the current build** — static Astro file routes, shared
 | Output | `output: 'static'`, `site: 'https://davg.ai'`, `@astrojs/cloudflare` | Matches the audit. No runtime POST routes. |
 | Versions | Astro 7.3.2, Tailwind 4.3.3, `@tailwindcss/vite` 4.3.3, Cloudflare adapter 14.3.1, Node v24.18.0 | Lockfile matches the audit. Node meets `>=22.12.0`. |
 | Routes | `src/pages/index.astro`, `src/pages/solutions/motorized-shades.astro` | No `src/content.config.ts`, no MDX, no `solutions/[slug].astro`. Other seven service URLs are linked and not built. |
-| Shell | `src/components/ServicePageShell.astro` and `src/components/MediaPlaceholder.astro` | Present locally. The audit only saw the Dropbox starter. Working files were not replaced by `docs/v4-build/starter/`. |
-| Rail | 25/75 frame. Rail background is Ink (`--color-surface-ink`), not Forest | `01` and `09` now ask for a Forest sticky rail. That visual change is not applied in this sync. |
-| Tokens | `src/styles/global.css` `@theme` block, including pack aliases such as `--color-text-on-dark` | Local uncommitted token work kept. Starter `v4-tokens.css` remains a reference under `docs/`. |
-| Fonts | Self-hosted Schibsted Grotesk (display), Instrument Sans (body/UI) and JetBrains Mono (technical metadata) from `global.css` | IBM Plex Mono is retired and not installed. Homepage no longer loads Google Fonts. Variable Schibsted covers 400–900, so a CSS weight of 300 renders at 400. |
+| Shell | 25/75 `ServicePageShell` is specified in `02` and exists only under `docs/v4-build/starter/` | Unmounted. `src/components/` does not exist. Homepage keeps its own document shell. Shading uses `Layout.astro` only. This layout pass did not mount the shell. |
+| Rail | 25/75 frame is specified, not mounted. No live rail to recolor | `01` and `09` ask for a Forest sticky rail. That visual change is not applied. |
+| Tokens | Canonical names and values are `src/styles/global.css` `@theme`, plus stepped `--page-gutter` on `:root`. Pack aliases (`--color-text-on-dark`, muted, quiet, on-paper, spatial-dark / spatial-forest) resolve to those live values and do not change the rendered hex or alpha. | Implemented on `/` and `/solutions/motorized-shades/` for type, measure, the shared `.folio` gutter, and `py-section`. Starter `v4-tokens.css` is bannered as not the live theme. |
+| Fonts | Self-hosted Schibsted Grotesk (display), Instrument Sans (body/UI) and JetBrains Mono (technical metadata) from `global.css` | IBM Plex Mono is explicitly retired in `01` and in the technical-target sentence of `11-SYNC-CONTRACT.md`. It is not installed. Variable faces start at weight 400, so a CSS weight of 300 renders at 400. Spatial-word rules still request 300. |
 | SEO | Shared `Layout.astro` accepts an optional `description` and emits it when passed. Homepage keeps its own description and LocalBusiness/FAQPage JSON-LD | No canonical, social image, sitemap, robots, or 404 source. Shading does not pass a description into the layout. |
 | Shading page | Working specimen at `/solutions/motorized-shades/`. Section IDs exist. Fourteen shade photographs are placed. `shading-11-proof` stays a blank reservation | Chapter order is the earlier editorial sequence (daylight through inquiry), not the 11-chapter map in `09`. Photographs and structure were preserved on purpose. |
 | Forms | Shading inquiry form posts nowhere (`action="#"`) and states that no destination is connected. Homepage uses mailto and visible phone/email | No Worker endpoint, Turnstile, or HubSpot mapping. |
@@ -31,7 +31,7 @@ Decision: **adopted for the current build** — static Astro file routes, shared
 ## Current work record
 | Area | Decision / specification | Implementation | Verification / next action |
 |---|---|---|---|
-| Visual design | Adopted: `01-DESIGN-SYSTEM.md` (Forest called out as the sidebar primary on 29 Sep). `02-SERVICE-LAYOUT.md` | Partial. Tokens and 25/75 shell exist. Rail is Ink | Do not restyle the rail until a shading task explicitly applies `01`/`09` |
+| Visual design | Adopted: `01-DESIGN-SYSTEM.md` (sample matched to live CSS on 2 Oct). `02-SERVICE-LAYOUT.md` still specifies the 25/75 shell | Partial. Live pages use the global tokens and `.folio`. The 25/75 shell is still unmounted. Forest rail is not applied | Do not restyle a rail that is not mounted. Do not treat the starter or `v4-gpt-original-design/` as the theme |
 | Shading story | Adopted spec: `09` supersedes `08` chapter map. Page code not migrated in this sync | Partial. Local page is the pre-09 specimen with real media slots filled except proof | Next shading task may reconcile chapters to `09` without dropping the 14 photographs or the blank proof slot |
 | GBB additions | Proposed refinement. `07-GBB-SECTION-MAP.md` and `content-additions/gbb/` | Pending. Not applied to page copy | Use when refining the current shading page; no new product pages |
 | Content routing | Proposed in `10`: collections + MDX + `[slug]` | Pending. Standalone static routes remain the adopted path | Migrate shading first only in a later task, after this import |
@@ -57,6 +57,8 @@ These files were already dirty local work. This sync did not overwrite them and 
 
 A dev server was already listening on port 4321. This task did not start another one.
 
+Status after 2 October 2026: the page and CSS paths from that list are in git. `src/components/` is not in the tree. The 25/75 shell was never mounted. `v4-gpt-original-design/` stays historical and was not used as the token source.
+
 ## Task log
 - Date/task: 29 September 2026 — one-time source and status sync from `DAVG-V4-Sync-Update-2026-09-29.zip`.
 - Decision changed: imported current briefs, GBB additions, audit `10`, sync contract `11`, and this state file. Collections/MDX remain proposed. Shading page code was not redesigned.
@@ -75,6 +77,16 @@ A dev server was already listening on port 4321. This task did not start another
 - Checks and results: `npm run build` passed. Static output remains two pages: `/` and `/solutions/motorized-shades/`. Home Intelligence and Architectural Lighting are not built on this branch. Browser check at 1440, 1728, and 390 confirmed the three self-hosted families render and IBM Plex Mono is not a loaded face. No hero, nav, or document-level horizontal overflow regression from this change. Not deployed.
 - Remaining items: Phase 2 layout work (measure, gutters, spatial-word placement, service compositions). Schibsted has no weight below 400. The sync contract's IBM Plex sentence is still the older wording.
 - Commit/branch: parent inspected before this commit was `d00f5e23cc8422a0dcaaba9f8cd323a0983f3659` on `main`. The working tree was clean, so no checkpoint commit was created. This file cannot store its own commit SHA.
+- Preview/production status: not deployed.
+
+## Task log — 2 October 2026 — layout tokens
+- Date/task: 2 October 2026 — lock the homepage and the shading page to the tokens already in `src/styles/global.css`. No copy redesign, no chapter reorder, no photography change, no Forest-rail change, no deploy.
+- Decision: **adopted.** Canonical token names and values are the live `@theme` block plus the stepped `--page-gutter` on `:root`. Pack aliases resolve to those colors and do not change rendered hex or alpha. `--text-body-lg` (1.125rem / 1.45) is the emphasized body role. Section vertical padding is `--spacing-section` via `py-section`, once. The first homepage section clears the fixed header (`pt-16 md:pt-20`) and then applies section padding once. `.folio` is the shared frame. IBM Plex Mono stays retired. The 25/75 shell stays unmounted.
+- Specification: `docs/v4-build/01-DESIGN-SYSTEM.md` sample now matches `src/styles/global.css`. `docs/v4-build/11-SYNC-CONTRACT.md` technical-target sentence names JetBrains Mono and retires IBM Plex Mono. Starter `v4-tokens.css`, starter shell CSS, and starter shading page CSS are bannered as not the live theme.
+- Implementation: **implemented** for type, measure, gutter, and section padding on `src/pages/index.astro` and `src/pages/solutions/motorized-shades.astro`, with shared `.folio` and `.annotation-node` in `src/styles/global.css`. Homepage still has its own document shell. Shading still uses `Layout.astro`. `src/components/` was not created.
+- Verification: **pass**, 2 October 2026. `npm run build` completed. Static output is two pages: `/` and `/solutions/motorized-shades/`. Chrome at 1440, 1200, 1000, 768, and 390 measured both pages. H1 at 1000px is 45px (token), weight 400, tracking −0.035em. H2 at 1200px is 36px. Folio gutters match on both pages: 64px at 1440, 48px at 768 and 1000, 24px at 390. Homepage `#answer` clears the header once (80px from 768px, 64px at 390px) and applies section padding once. Shading section padding is the section token (86.4px at 1440, 48px at 390), not 112px. Closing band background is ink with no gradient. Annotation node is 4×4px with radius 0. `scrollWidth` equals `clientWidth` on both pages at every measured width, with document overflow visible. Not deployed.
+- Remaining items: 25/75 shell still unmounted; Forest rail not applied; shading chapter order is still the live sequence, not the `09` map; seven service routes unbuilt; sitemap/robots/canonical; form destination and conflicting phone numbers; empty project-proof slot; `text-red-700` on the shading comparison marks; `selection:text-white` on the shading main; homepage proof study still uses `py-16 md:py-20` inside the viewport band; character-count wraps `max-w-[18ch]` and `max-w-[16ch]` kept as line breaks; headline `max-w-3xl` / `max-w-4xl` wraps kept. Do not mark the shell, Forest rail, chapter map, forms, or SEO complete.
+- Commit/branch: this file cannot store the hash of its own commit. Branch `cursor/lock-layout-tokens-bc95`.
 - Preview/production status: not deployed.
 
 Do not publish this internal record on the public website.

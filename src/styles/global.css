@@ -34,13 +34,21 @@
   /* Spatial typography */
   --color-spatial-word-dark: rgb(241 240 235 / 12%);
   --color-spatial-word-forest: rgb(241 240 235 / 14%);
+  /* Pack-name aliases. Same rendered colors as the canonical tokens above. */
+  --color-text-on-dark: var(--color-text-primary-dark);
+  --color-text-muted-dark: var(--color-text-secondary-dark);
+  --color-text-quiet-dark: var(--color-text-tertiary-dark);
+  --color-text-on-paper: var(--color-text-primary-paper);
+  --color-text-muted-paper: var(--color-text-secondary-paper);
+  --color-spatial-dark: var(--color-spatial-word-dark);
+  --color-spatial-forest: var(--color-spatial-word-forest);
   /* Fonts — family names match the self-hosted @font-face rules */
   --font-sans: "Instrument Sans Variable", "Instrument Sans", sans-serif;
   --font-display: "Schibsted Grotesk Variable", "Schibsted Grotesk", sans-serif;
   --font-body: "Instrument Sans Variable", "Instrument Sans", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-  /* Type scale recovered from the pre-IBM handoff tokens. Utilities only; composed headings keep their own classes. */
+  /* Type scale. Page headings, body, captions, and mono labels use these utilities. */
   --text-h1: clamp(2.5rem, 4.5vw, 4rem);
   --text-h1--line-height: 0.98;
   --text-h1--letter-spacing: -0.035em;
@@ -55,6 +63,8 @@
   --text-h3--font-weight: 400;
   --text-body: 1rem;
   --text-body--line-height: 1.5;
+  --text-body-lg: 1.125rem;
+  --text-body-lg--line-height: 1.45;
   --text-caption: 0.8125rem;
   --text-caption--line-height: 1.35;
   --text-mono: 0.6875rem;
@@ -67,7 +77,7 @@
   --container-measure-wide: 72ch;
   --container-content: 90rem;
 
-  /* Spacing family for the next phase. Not applied to existing sections. */
+  /* Spacing. Section padding uses py-section. Do not duplicate these on :root. */
   --spacing-micro: 0.5rem;
   --spacing-text: clamp(1.25rem, 2vw, 2rem);
   --spacing-component: clamp(1.5rem, 2.5vw, 2.5rem);
@@ -75,14 +85,10 @@
   --spacing-gutter: var(--page-gutter);
 }
 
-/* Page gutters follow the homepage folio: 24px, 48px, 64px.
-   Spacing tokens live here so they stay available even when no utility uses them yet. */
+/* Stepped page gutters. They change with media queries, so they stay on :root.
+   --spacing-gutter in @theme references this variable. */
 :root {
   --page-gutter: 1.5rem;
-  --spacing-micro: 0.5rem;
-  --spacing-text: clamp(1.25rem, 2vw, 2rem);
-  --spacing-component: clamp(1.5rem, 2.5vw, 2.5rem);
-  --spacing-section: clamp(3rem, 6vw, 6rem);
   --measure-narrow: var(--container-measure-narrow);
   --measure-body: var(--container-measure);
   --measure-wide: var(--container-measure-wide);
@@ -115,7 +121,7 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Fallback hierarchy only. Page utilities still set the composed heading sizes. */
+/* Fallback hierarchy. Utilities text-h1, text-h2, and text-h3 set the same sizes. */
 @layer base {
   h1,
   h2,
@@ -145,6 +151,26 @@ html, body {
     line-height: var(--text-h3--line-height);
     letter-spacing: var(--text-h3--letter-spacing);
   }
+}
+
+/* Shared frame. Both pages use this instead of a second hardcoded gutter. */
+.folio {
+  width: 100%;
+  max-width: var(--container-content);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--page-gutter);
+  padding-right: var(--page-gutter);
+  min-width: 0;
+}
+
+/* 4px square annotation. Radius stays 0. */
+.annotation-node {
+  width: 4px;
+  height: 4px;
+  border-radius: 0;
+  background: var(--color-accent-signal);
+  box-shadow: 0 0 0 1px rgb(9 11 10 / 40%);
 }
 
 /* Selective mono for eyebrows and metadata. Not used as a global text style. */
