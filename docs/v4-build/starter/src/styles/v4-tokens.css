@@ -1,3 +1,7 @@
+/* NOT THE LIVE THEME.
+   Historical starter only. Do not copy this file over src/styles/global.css.
+   IBM Plex Mono and the values in this block are retired.
+   Canonical names and values live in src/styles/global.css. */
 @theme {
   --color-surface-ink: #090B0A;
   --color-surface-forest: #183B31;
