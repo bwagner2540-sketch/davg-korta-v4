@@ -24,9 +24,10 @@ Use Ink, Forest, Paper and architectural photography as distinct fields. Forest 
   --color-border-paper: rgb(11 13 12 / 14%);
   --color-spatial-dark: rgb(241 240 235 / 10%);
   --color-spatial-forest: rgb(241 240 235 / 12%);
-  --font-display: "Schibsted Grotesk";
-  --font-body: "Instrument Sans";
-  --font-mono: "IBM Plex Mono";
+  --font-display: "Schibsted Grotesk Variable", "Schibsted Grotesk", sans-serif;
+  --font-sans: "Instrument Sans Variable", "Instrument Sans", sans-serif;
+  --font-body: "Instrument Sans Variable", "Instrument Sans", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
   --text-h1: clamp(2.5rem, 4.5vw, 4rem);
   --text-h1--line-height: 0.98;
   --text-h1--letter-spacing: -0.035em;
@@ -49,20 +50,33 @@ This is CSS-first Tailwind 4. Merge tokens into the existing global CSS. No `tai
 
 ## 2. Typography
 
+Active font system, restored 2 October 2026 in `src/styles/global.css`. Self-hosted. IBM Plex Mono is retired and is not part of the active design system.
+
 | Role | Family | Working size / weight / tracking |
 |---|---|---|
-| H1 | Schibsted Grotesk | 40–64px responsive; 300/400; −.035em |
-| H2 | Schibsted Grotesk | 32–44px; 300/400; −.025em |
-| H3 | Schibsted Grotesk | 24–36px; 400; −.02em |
-| Body and interface | Instrument Sans | 16–18px; 400; ordinary tracking |
-| Captions | Instrument Sans | 12–13px; 400/500 |
+| H1 | Schibsted Grotesk | 40–64px responsive; 400; −.035em; line-height 0.98 |
+| H2 | Schibsted Grotesk | 32–44px; 400; −.025em; line-height 1.02 |
+| H3 | Schibsted Grotesk | 24–36px; 400; −.02em; line-height 1.08 |
+| Body and interface | Instrument Sans | 16px; 400; line-height 1.5; ordinary tracking |
+| Captions | Instrument Sans | 13px; 400/500; line-height 1.35 |
 | Buttons / navigation | Instrument Sans | 12–14px; 500; modest tracking |
-| Optional factual eyebrow / measurement | IBM Plex Mono | 11–12px; 400/500; .1em |
-| Background word | Schibsted Grotesk | 300; solid, large, cropped, low opacity |
+| Eyebrow / measurement / technical metadata | JetBrains Mono | 11px; 400/500; .1em |
+| Background word | Schibsted Grotesk | CSS still requests 300; solid, large, cropped, low opacity |
 
-Self-host the named fonts. No JetBrains Mono. IBM is intentional and selective; most sections can have no eyebrow. Do not typeset navigation, body copy or section titles like a terminal. Keep headings upright and sentence case.
+Do not typeset navigation, body copy or section titles like a terminal. Keep headings upright and sentence case. Display weights stay at 400 in the base rules. Existing page utilities still set the composed heading sizes.
 
-The prior PR reports that its Schibsted asset bottoms out at 400. Check the actual local asset later; retain the 300 CSS target and keep building. Do not claim an exact weight match if the available outline differs. No font-source approval gate is imposed on layout work.
+The installed Schibsted variable file covers weights 400–900 only. Instrument Sans variable covers 400–700. A `font-weight: 300` declaration therefore resolves to 400. The 300 target stays in the spatial-word rules. No separate 300 cut exists in the self-hosted files or in the earlier Google Fonts stylesheet. No `font-feature-settings` were present in the recovered CSS.
+
+Foundation tokens, defined and not forced onto existing sections:
+
+| Token | Value |
+|---|---|
+| Narrow measure | 42ch |
+| Standard body measure | 62ch |
+| Wider measure | 72ch |
+| Content width | 90rem (1440px, current homepage folio) |
+| Page gutter | 1.5rem / 3rem / 4rem at 768px and 1280px |
+| Micro / text / component / section spacing | 0.5rem; clamp(1.25rem, 2vw, 2rem); clamp(1.5rem, 2.5vw, 2.5rem); clamp(3rem, 6vw, 6rem) |
 
 ## 3. Spacing, radius and borders
 
