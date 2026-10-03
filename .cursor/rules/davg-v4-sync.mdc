@@ -1,14 +1,12 @@
 ---
-description: Current DAVG V4 build sources, state and handoff
+description: Active DAVG V4 source, layout, verification and sandbox policy
 alwaysApply: true
 ---
-
-Work in the existing project. Follow current user instructions and existing higher-priority repository guidance.
-Read docs/v4-build/11-SYNC-CONTRACT.md and docs/v4-build/BUILD-STATE.md before a DAVG V4 task.
-Use the active files identified there; old design masters and archived handoffs are historical references.
-Preserve local work. Do not reset, switch projects or force-push.
-Keep code, affected active specifications and BUILD-STATE updated together.
-Distinguish proposed, documented, implemented, verified and deployed.
-At handoff identify branch/commit or uncommitted state, changed paths, actual checks and remaining items.
-The 25/75 service shell does not require every hub to use the same story.
-
+Read docs/v4-build/11-SYNC-CONTRACT.md and BUILD-STATE.md before editing.
+Use docs/v4-build/01-DESIGN-SYSTEM.md, 13-SURFACE-COLOR-SYSTEM.md and 02-SERVICE-LAYOUT.md plus src/data/services/ and src/config/site.ts. Forest stays on the rail. In the right field, Forest is only the designated signature study.
+Retire older document 09's eleven rail labels and all 9/15-label maps. The five current labels are Overview, Design, Systems, Installation, Investment, nested directly beneath the active service.
+Place two full-width sections above the bounded 25/75 middle and two below. Rail starts with Overview and ends with Investment. Document owns scrolling.
+Use self-hosted Schibsted Grotesk, Instrument Sans and selective IBM Plex Mono. Do not revive JetBrains imports from old skill guidance.
+Keep the shading sandbox up to date. Never publish it, including a preview. Use build:sandbox for local checks; preserve the guarded production build.
+Archive and v4-gpt-original-design are reference, not active instructions. Preserve local work; no reset, forced project switch or force-push.
+Update affected current specs and BUILD-STATE with code. Report verified paths, exact branch/head and deployment state. A saved file does not establish sync.

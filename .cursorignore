@@ -1,0 +1,4 @@
+docs/v4-build/archive/
+v4-gpt-original-design/
+dist*/
+node_modules/

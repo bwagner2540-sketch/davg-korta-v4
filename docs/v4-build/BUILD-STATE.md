@@ -1,5 +1,10 @@
 # DAVG V4 — repair state, 30 September 2026
 
+## Service order and local preview — 1 October 2026
+Uncommitted local work on branch `checkpoint/davg-local-2026-09-30`, HEAD `c20e3736e431e7996ac4ec601d3558cd08929ff7`. `services` in `src/config/site.ts` is now the only ordered list. Header Home Solutions, the footer, the rail, `/systems/`, and `/preview/` read it. Confirmed order: Home Intelligence, Media & Audio, Private Cinemas, Architectural Lighting, Motorized Shading, Outdoor Entertainment, Infrastructure & Privacy, Security & Access. Position 2 stays Media & Audio. Position 5 stays the motorized-shades sandbox; the list label stays Motorized Shading and the page title stays Motorized Shades. Position 7 stays Infrastructure & Privacy in lists and Digital Infrastructure & Privacy as the page name. Position 8 stays Security & Access in lists and Security Cameras & Access Control as the page name. `/preview/` is noindex and is not in `publication.json` or the sitemap.
+
+Checked on the existing dev server at http://127.0.0.1:4321/. All eight `/systems/{slug}/` routes returned 200. Desktop 1440: Home Solutions dropdown, Forest rail, and footer showed that order; activating Motorized Shading opened `/systems/motorized-shades/` with its existing shade page. Mobile 390: desktop rail hidden, no horizontal overflow, the Menu list used the same order. `/preview/` listed Home plus the eight hubs and opened Private Cinemas. Sitemap had no URLs. `approvedPages` stayed empty. Nothing was committed, pushed, or deployed.
+
 ## Hub production — Motorized Shading consistency
 Implemented on the existing `ServicePage`, not `HubPage`. `motorized-shades-04` is the recessed Forest signature study. `motorized-shades-05` is the existing paper comparison of solar fabric and darkness. Kit photographs were not substituted. Slots 06–08 stay missing. Desktop 1440 and mobile 390 checked on `/systems/motorized-shades/`. `/solutions/motorized-shades/` serves the same studies. Not added to `approvedPages`. Not deployed.
 

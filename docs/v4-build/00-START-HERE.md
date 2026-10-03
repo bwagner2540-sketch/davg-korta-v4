@@ -3,6 +3,8 @@ Revision: 30 September 2026 · repair based on checkpoint dc9ff37.
 
 Work in the existing `bwagner2540-sketch/davg-korta-v4` checkout. Read `11-SYNC-CONTRACT.md`, `02-SERVICE-LAYOUT.md` and `BUILD-STATE.md`. Use `npm run dev` for local review and `npm run build:sandbox` for the local static check. `npm run build` is a public-release build and deliberately stops while no pages are approved.
 
+The stable local review URL is http://127.0.0.1:4321/preview/. Refresh it after each local change. It is noindex and stays off the publication allowlist.
+
 The Motorized Shading sandbox is one implementation rendered at both `/systems/motorized-shades/` and `/solutions/motorized-shades/`. The live copy is `src/content/services/motorized-shades.json` with `src/components/services/ServicePage.astro`. Neither route may be published, including a Cloudflare preview. Keep the specimen current with approved decisions; do not replace it with an archived starter.
 
 The seven draft service hubs are rendered by `HubPage`. They are not collection entries and they are not approved for release. Motorized Shading stays on `ServicePage` and off the publication allowlist. A route existing is not a finished page.
@@ -12,7 +14,7 @@ Active ownership:
 - `13-SURFACE-COLOR-SYSTEM.md`: service-page surface roles. It replaces the previous two-surface addendum, including any forced dark/cream ratio, consecutive-cream limit, brass accent or conversion claim.
 - `02-SERVICE-LAYOUT.md`: full-width openings/closings, five chapters and nested navigation.
 - `src/content/services/motorized-shades.json`: live shading copy. The other seven services stay in `src/data/services/*.json` as drafts, not collection entries. Architectural Lighting is rendered by `HubPage`; progress is `HUB-PROGRESS.md`.
-- `src/config/site.ts`: names, URLs and contact configuration.
+- `src/config/site.ts`: the only ordered service list, plus names, URLs and contact configuration. Header, footer, and the rail read `services`.
 - `src/config/publication.json`: explicit page-release allowlist, empty today.
 - `src/components/services/ServicePage.astro`: integrated shading specimen, used by both shading routes.
 - `11-SYNC-CONTRACT.md` / `BUILD-STATE.md`: source precedence and actual verification.

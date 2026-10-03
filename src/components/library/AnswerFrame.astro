@@ -1,0 +1,25 @@
+---
+interface Props { question?: string; answer: string; }
+const { answer } = Astro.props;
+---
+<div class="answer-frame">
+  <p>{answer}</p>
+</div>
+<style>
+.answer-frame {
+  margin-top: var(--spacing-4);
+  border: 8px solid var(--color-text-on-paper);
+  background: var(--color-cream-01);
+  color: var(--color-text-on-paper);
+  padding: var(--spacing-6) var(--spacing-4);
+}
+.answer-frame p {
+  max-width: 38ch;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+</style>

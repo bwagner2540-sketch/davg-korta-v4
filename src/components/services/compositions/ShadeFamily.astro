@@ -1,0 +1,120 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import MediaPlaceholder from '../../MediaPlaceholder.astro';
+
+interface Props {
+  chapter: CollectionEntry<'services'>['data']['chapters'][number];
+}
+const { chapter } = Astro.props;
+const families = [
+  {
+    id: 'triathlon',
+    label: 'Triathlon',
+    thesis: 'Battery and wired-power shade choices for the opening in front of you.',
+    facts: ['Power access and the finished room', 'Mounting and service or battery access', 'Exact model and supported controls'],
+    images: [
+      {
+        src: '/images/davg-triathlon-fascia-boucle-01-800w.webp',
+        alt: 'White Triathlon fascia box mounted on shiplap above a light woven shade',
+        caption: 'Triathlon fascia. Product photograph.',
+      },
+      {
+        src: '/images/davg-triathlon-bedroom-shades-closed-01-800w.webp',
+        alt: 'Bedroom with two white Triathlon shades fully closed across a wide window',
+        caption: 'Triathlon shades closed. Product photograph.',
+      },
+    ],
+  },
+  {
+    id: 'sivoia',
+    label: 'Sivoia',
+    thesis: 'A range of shade applications. Concealed installation can be the more involved architectural solution.',
+    facts: ['Application and opening detail', 'Mounting, dimensions and power or control path', 'Exact shade and processor connection'],
+    images: [
+      {
+        src: '/images/davg-sivoia-living-room-shades-closed-01-1600w.webp',
+        alt: 'Living room with two Sivoia QS woven shades fully closed beside built-in shelves',
+        caption: 'Sivoia QS shades closed. Product photograph.',
+      },
+      {
+        src: '/images/davg-sivoia-sheer-hembar-detail-01-800w.webp',
+        alt: 'Light Sivoia QS sheer fabric, stitched hembar, and gray Lutron end cap against a bright window',
+        caption: 'Sivoia QS sheer, hembar and end cap. Product photograph.',
+      },
+    ],
+  },
+  {
+    id: 'palladiom',
+    label: 'Palladiom',
+    thesis: 'Exposed roller hardware, also available in a wire-free design. It is not the automatic last step in a quality ladder.',
+    facts: ['Visible hardware and finish', 'Bracket placement, hembar and exact power version', 'Exact version and supported system'],
+    images: [
+      {
+        src: '/images/davg-palladiom-exposed-roller-bracket-01-800w.webp',
+        alt: 'Palladiom exposed roller with a fabric-wrapped tube and rounded metal bracket above a night window',
+        caption: 'Palladiom roller hardware. Product photograph. The keypad of the same name is a separate product.',
+      },
+      {
+        src: '/images/davg-palladiom-bathroom-window-shade-01-800w.webp',
+        alt: 'Bathroom with a Palladiom shade lowered partway over a wide black-framed window',
+        caption: 'Palladiom shade at a wide window. Product photograph.',
+      },
+    ],
+  },
+];
+const ledger = {
+  headers: ['Decision', 'Triathlon', 'Sivoia', 'Palladiom'],
+  rows: [
+    ['First design question', 'Power access and the finished room', 'Application and opening detail', 'Visible hardware and finish'],
+    ['Detail to resolve', 'Mounting and service or battery access', 'Mounting, dimensions and power or control path', 'Bracket placement, hembar and exact power version'],
+    ['Verify before ordering', 'Exact model and supported controls', 'Exact shade and processor connection', 'Exact version and supported system'],
+  ],
+};
+---
+<section class="composition family-board" data-surface-role="systems" aria-labelledby={`chapter-${chapter.id}-title`}>
+  <header class="family-head">
+    <div>
+      <p class="section-kicker">Systems</p>
+      <h3 id={`chapter-${chapter.id}-title`}>Three families. One opening schedule.</h3>
+    </div>
+    <p>{chapter.paragraphs[0]}</p>
+  </header>
+  {chapter.paragraphs.slice(1).map((paragraph) => <p class="family-note">{paragraph}</p>)}
+  <div class="family-grid">
+    {families.map((family) => (
+      <article>
+        <figure>
+          <MediaPlaceholder
+            id={`shading-family-${family.id}`}
+            subject={family.images[0].caption}
+            ratio="16 / 10"
+            src={family.images[0].src}
+            alt={family.images[0].alt}
+          />
+          <figcaption>{family.images[0].caption}</figcaption>
+        </figure>
+        <h4>{family.label}</h4>
+        <p>{family.thesis}</p>
+        <ul>
+          {family.facts.map((fact) => <li>{fact}</li>)}
+        </ul>
+      </article>
+    ))}
+  </div>
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Shade family comparison">
+    <table>
+      <caption>Compare the three families</caption>
+      <thead>
+        <tr>{ledger.headers.map((header) => <th scope="col">{header}</th>)}</tr>
+      </thead>
+      <tbody>
+        {ledger.rows.map((row) => (
+          <tr>
+            {row.map((cell, index) => (index === 0 ? <th scope="row">{cell}</th> : <td>{cell}</td>))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p class="ledger-note">These columns explain different selection reasons. They do not rank the families by quality.</p>
+</section>

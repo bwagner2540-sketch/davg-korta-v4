@@ -1,0 +1,38 @@
+---
+import MediaPlaceholder from '../MediaPlaceholder.astro';
+const families = [
+ { id:'triathlon', name:'Triathlon', heading:'A starting point for finished rooms.', body:'A roller design suited to many existing-home openings. Battery-powered configurations can avoid a new power run; supported wired-power options also exist.', detail:'Resolve the fabric, finished opening, top treatment, power and future battery access before ordering.', src:'/images/davg-triathlon-fascia-boucle-01-800w.webp', alt:'White Triathlon fascia mounted on shiplap above a woven roller shade' },
+ { id:'sivoia', name:'Sivoia QS', heading:'Coordinate the assembly with the opening.', body:'A range of shade and treatment options for concealed pockets, layered rollers and more involved opening schedules. The assembly follows the measured window, selected fabric and mounting condition.', detail:'Resolve roller sizing, mounting support, power, control link and service access. A concealed installation can involve more architectural work than an exposed shade.', src:'/images/davg-sivoia-sheer-hembar-detail-01-800w.webp', alt:'Sivoia QS sheer fabric with a stitched hembar and Lutron end cap' },
+ { id:'palladiom', name:'Palladiom', heading:'Let the hardware belong to the room.', body:'An exposed roller design where brackets, finishes and the bottom rail are part of the architecture. Compare the exact wired or wire-free configuration with the opening.', detail:'Resolve finish, alignment, fabric, power and service. Palladiom is a design choice rather than the final step in a quality ladder.', src:'/images/davg-palladiom-exposed-roller-bracket-01-800w.webp', alt:'Palladiom fabric-wrapped roller and exposed metal bracket above a window' },
+];
+---
+<div class="family-study" data-tabs>
+  <div role="tablist" aria-label="Shade hardware families">
+    {families.map((family,i) => <button id={`tab-${family.id}`} type="button" role="tab" aria-selected={i===0 ? 'true':'false'} aria-controls={`panel-${family.id}`} tabindex={i===0 ? 0:-1}>{family.name}</button>)}
+  </div>
+  {families.map((family,i) => <div id={`panel-${family.id}`} role="tabpanel" aria-labelledby={`tab-${family.id}`} hidden={i!==0} tabindex="0">
+    <div class="family-layout"><figure><MediaPlaceholder id={`family-${family.id}`} subject={family.name} src={family.src} alt={family.alt} ratio="4 / 3"/><figcaption>Product illustration. Exact configuration is selected per opening.</figcaption></figure>
+    <div><h3>{family.heading}</h3><p>{family.body}</p><p>{family.detail}</p></div></div>
+  </div>)}
+</div>
+<script>
+ document.querySelectorAll<HTMLElement>('[data-tabs]').forEach(study => {
+   const tabs=[...study.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+   const select=(tab:HTMLButtonElement,focus=false) => {
+     tabs.forEach(item => { const active=item===tab; item.setAttribute('aria-selected',String(active)); item.tabIndex=active?0:-1; const panel=study.querySelector<HTMLElement>(`#${item.getAttribute('aria-controls')}`); if(panel) panel.hidden=!active; });
+     if(focus) tab.focus();
+   };
+   tabs.forEach((tab,index) => { tab.addEventListener('click',()=>select(tab)); tab.addEventListener('keydown',event => {
+     const target=event.key==='ArrowRight'?(index+1)%tabs.length:event.key==='ArrowLeft'?(index+tabs.length-1)%tabs.length:event.key==='Home'?0:event.key==='End'?tabs.length-1:null;
+     if(target!==null) {event.preventDefault();select(tabs[target],true);}
+   }); });
+ });
+</script>
+<style>
+[role="tablist"] { display:flex; flex-wrap:wrap; gap:1.5rem; border-bottom:1px solid var(--surface-border, var(--color-border-paper)); margin:2rem 0; }
+button { background:transparent; border:0; border-bottom:2px solid transparent; color:inherit; padding:.85rem 0; font:500 1rem var(--font-body); cursor:pointer; }
+button[aria-selected="true"] { border-bottom-color:var(--color-accent-signal); }
+.family-layout { display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:center; } figure {margin:0;} figcaption { font-size:.8125rem; color:var(--surface-muted, var(--color-text-muted-paper)); margin-top:.8rem; } h3 {font:400 clamp(1.5rem,2.3vw,2rem)/1.1 var(--font-display); letter-spacing:-.025em; color:inherit;} p {line-height:1.6;}
+:focus-visible {outline:2px solid var(--color-accent-signal);outline-offset:4px;}
+@media(max-width:700px) {.family-layout {grid-template-columns:1fr;}}
+</style>

@@ -1,0 +1,23 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import WindowStudy from './compositions/WindowStudy.astro';
+import FabricAtelier from './compositions/FabricAtelier.astro';
+import SignatureStudy from './compositions/SignatureStudy.astro';
+import ShadeFamily from './compositions/ShadeFamily.astro';
+import ControlComparison from './compositions/ControlComparison.astro';
+import KeypadGallery from './compositions/KeypadGallery.astro';
+import SceneStudy from './compositions/SceneStudy.astro';
+
+interface Props {
+  chapter: CollectionEntry<'services'>['data']['chapters'][number];
+  study?: CollectionEntry<'services'>['data']['signatureStudy'];
+}
+const { chapter, study } = Astro.props;
+---
+{chapter.id === 'windows' && <WindowStudy chapter={chapter} />}
+{chapter.id === 'fabric' && <FabricAtelier chapter={chapter} />}
+{chapter.id === 'coordination' && study && <SignatureStudy chapter={chapter} study={study} />}
+{chapter.id === 'hardware' && <ShadeFamily chapter={chapter} />}
+{chapter.id === 'systems' && <ControlComparison chapter={chapter} />}
+{chapter.id === 'keypads' && <KeypadGallery chapter={chapter} />}
+{chapter.id === 'scenes' && <SceneStudy chapter={chapter} />}

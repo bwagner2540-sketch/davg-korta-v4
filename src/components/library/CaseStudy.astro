@@ -1,0 +1,90 @@
+---
+import MediaPlaceholder from '../MediaPlaceholder.astro';
+interface Props {
+  kicker: string;
+  eyebrow: string;
+  title: string;
+  emphasis?: string;
+  lede: string;
+  meta: { label: string; value: string }[];
+  image: string;
+  alt: string;
+  imageCaption: string;
+  detailImage?: string;
+  detailAlt?: string;
+  detailCaption?: string;
+  quote?: string;
+  quoteBy?: string;
+  chips?: string[];
+}
+const { kicker, eyebrow, title, emphasis, lede, meta, image, alt, imageCaption, detailImage, detailAlt, detailCaption, quote, quoteBy, chips = [] } = Astro.props;
+---
+<article class="case-study">
+  <header class="case-diptych">
+    <figure>
+      <MediaPlaceholder id="case-hero" subject={imageCaption} ratio="4 / 5" src={image} alt={alt} />
+      <figcaption>
+        <span>{eyebrow}</span>
+        <strong>{title}{emphasis ? ` ${emphasis}` : ''}</strong>
+        <span>{imageCaption}</span>
+      </figcaption>
+    </figure>
+    <div class="case-copy">
+      <p class="section-kicker">{kicker}</p>
+      <h1>{title}{emphasis ? ` ${emphasis}` : ''}</h1>
+      <p class="lede">{lede}</p>
+      <dl>
+        {meta.map((item) => (
+          <div>
+            <dt>{item.label}</dt>
+            <dd>{item.value}</dd>
+          </div>
+        ))}
+      </dl>
+      {detailImage && detailAlt && (
+        <figure>
+          <MediaPlaceholder id="case-detail" subject={detailCaption || detailAlt} ratio="16 / 9" src={detailImage} alt={detailAlt} />
+          {detailCaption && <figcaption>{detailCaption}</figcaption>}
+        </figure>
+      )}
+    </div>
+  </header>
+  {(quote || chips.length > 0) && (
+    <footer>
+      {chips.length > 0 && <ul>{chips.map((chip) => <li>{chip}</li>)}</ul>}
+      {quote && <blockquote><p>{quote}</p>{quoteBy && <footer>{quoteBy}</footer>}</blockquote>}
+    </footer>
+  )}
+</article>
+<style>
+.case-study { background: var(--color-surface-ink); color: var(--color-text-on-dark); }
+.case-diptych { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); min-height: 70vh; }
+.case-diptych > figure { position: relative; margin: 0; }
+.case-diptych > figure :global(.media-slot) { height: 100%; min-height: 28rem; border: 0; }
+.case-diptych > figure > figcaption {
+  position: absolute;
+  left: 1.25rem;
+  bottom: 1.25rem;
+  display: grid;
+  gap: 0.25rem;
+  max-width: 18rem;
+  padding: 0.9rem 1rem;
+  background: rgb(9 11 10 / 82%);
+}
+.case-diptych > figure > figcaption span { font-family: var(--font-body); font-size: var(--text-label); font-weight: 500; letter-spacing: var(--text-label--letter-spacing); text-transform: uppercase; color: var(--color-text-muted-dark); }
+.case-diptych > figure > figcaption strong { font-family: var(--font-display); font-size: 1.7rem; font-weight: 400; letter-spacing: -0.025em; }
+.case-copy figure { margin: var(--spacing-2) 0 0; }
+.case-copy figcaption { margin-top: var(--spacing-2); color: var(--color-text-muted-dark); font-size: var(--text-caption); line-height: var(--text-body--line-height); }
+.case-copy { padding: var(--spacing-section) var(--spacing-page-inline); display: grid; align-content: start; gap: var(--spacing-4); }
+.case-copy h1 { font-size: var(--text-h1); font-weight: 400; max-width: 14ch; }
+.lede { font-size: 1.0625rem; line-height: var(--text-body--line-height); max-width: 42ch; margin: 0; }
+.case-copy dl { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-4) var(--spacing-6); margin: var(--spacing-2) 0 0; }
+.case-copy dt { font-family: var(--font-body); font-size: var(--text-label); font-weight: 500; letter-spacing: var(--text-label--letter-spacing); text-transform: uppercase; color: var(--color-accent-signal); }
+.case-copy dd { margin: var(--spacing-2) 0 0; line-height: var(--text-body--line-height); }
+.case-study > footer { display: grid; gap: var(--spacing-6); padding: var(--spacing-8) var(--spacing-page-inline) var(--spacing-12); border-top: 1px solid var(--color-border-dark); }
+.case-study ul { display: flex; flex-wrap: wrap; gap: var(--spacing-2); list-style: none; margin: 0; padding: 0; }
+.case-study li { border: 1px solid var(--color-border-dark); padding: var(--spacing-2) var(--spacing-3); font-family: var(--font-body); font-size: var(--text-label); font-weight: 500; letter-spacing: var(--text-label--letter-spacing); text-transform: uppercase; }
+.case-study blockquote { margin: 0; max-width: 46ch; font-family: var(--font-display); font-size: 1.45rem; font-weight: 400; letter-spacing: -0.025em; line-height: 1.25; }
+.case-study blockquote footer { margin-top: var(--spacing-3); font-family: var(--font-body); font-size: var(--text-label); font-weight: 500; letter-spacing: var(--text-label--letter-spacing); text-transform: uppercase; color: var(--color-text-muted-dark); }
+@media (max-width: 900px) { .case-diptych, .case-copy dl { grid-template-columns: 1fr; } }
+</style>

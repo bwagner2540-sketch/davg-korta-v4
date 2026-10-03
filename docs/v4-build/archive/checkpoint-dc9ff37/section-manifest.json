@@ -1,0 +1,1036 @@
+{
+  "hubs": [
+    {
+      "name": "Home Intelligence",
+      "number": 1,
+      "route": "/solutions/home-intelligence/",
+      "file": "DAVG-V4-Hub-01-Home-Intelligence.md",
+      "word": "CONTROL",
+      "brief": "Choose a focused room, a whole-residence system, or a supported takeover path; choose how the family will control it.",
+      "questions": "What is Control4; what does it control; local vs cloud; Connect versus legacy 4Sight; current controller sizing; Halo vs touchscreen vs keypad; DIY vs integrated; new build vs retrofit; takeover; internet outage; cost drivers",
+      "sections": [
+        {
+          "id": "01",
+          "title": "A residence that responds",
+          "layout": "Editorial hero + room image",
+          "done": "H1, deck, primary action and correct blank media ratio"
+        },
+        {
+          "id": "02",
+          "title": "What does home intelligence actually change?",
+          "layout": "Direct-answer editorial",
+          "done": "Direct answer reads clearly without sales filler"
+        },
+        {
+          "id": "03",
+          "title": "The moments to automate",
+          "layout": "Room examples + wide media",
+          "done": "Specific household examples remain in live text"
+        },
+        {
+          "id": "04",
+          "title": "How the system connects",
+          "layout": "System text + diagram",
+          "done": "System roles explained with a stable diagram slot"
+        },
+        {
+          "id": "05",
+          "title": "Whole-residence state study",
+          "layout": "Large signature study",
+          "done": "Study frame, caption and controls/static state in place"
+        },
+        {
+          "id": "06",
+          "title": "Choose the Control4 system scope",
+          "layout": "Control4 scope + interface comparison",
+          "done": "All source comparisons and meaningful tradeoffs remain"
+        },
+        {
+          "id": "07",
+          "title": "Interfaces and household use cases",
+          "layout": "Applied examples",
+          "done": "Each source scenario has a useful result or choice"
+        },
+        {
+          "id": "08",
+          "title": "What makes everyday control dependable?",
+          "layout": "Detail study + specifications",
+          "done": "Relevant dimensions/details have a readable place"
+        },
+        {
+          "id": "09",
+          "title": "New build, retrofit or system takeover",
+          "layout": "Build-route comparison",
+          "done": "New-build and existing-home paths remain distinct"
+        },
+        {
+          "id": "10",
+          "title": "Prevent frustrating control failures",
+          "layout": "Unboxed pitfalls",
+          "done": "Specific mistakes and consequences remain"
+        },
+        {
+          "id": "11",
+          "title": "Belcaro project: verify the installed scope",
+          "layout": "Project proof reservation",
+          "done": "Preview slot exists; unsupported public claims stay absent"
+        },
+        {
+          "id": "12",
+          "title": "What changes the investment?",
+          "layout": "Scope comparison + cost drivers",
+          "done": "Scopes and cost drivers work without invented prices"
+        },
+        {
+          "id": "13",
+          "title": "Commissioning, service and ownership",
+          "layout": "Ownership / handoff sequence",
+          "done": "Commissioning and ownership steps remain legible"
+        },
+        {
+          "id": "14",
+          "title": "Denver use cases and late questions",
+          "layout": "Local context + FAQ",
+          "done": "Local questions and supplied FAQ work on mobile"
+        },
+        {
+          "id": "15",
+          "title": "Related pages and project inquiry",
+          "layout": "Related links + shared inquiry",
+          "done": "Related links and service-prefilled inquiry work"
+        }
+      ]
+    },
+    {
+      "name": "Architectural Lighting",
+      "number": 2,
+      "route": "/solutions/architectural-lighting/",
+      "file": "DAVG-V4-Hub-02-Architectural-Lighting.md",
+      "word": "LIGHTING",
+      "brief": "Choose lighting layers, a Lutron platform and keypad approach, and a construction route that matches the fixtures and rooms.",
+      "questions": "Caséta vs RadioRA 3 vs HomeWorks; Alisse vs Palladiom vs Sunnata keypad; fixture/driver compatibility; warm dim vs tunable; scene and load schedule; retrofit vs panel work; exterior lighting; cost drivers",
+      "sections": [
+        {
+          "id": "01",
+          "title": "Light that belongs to the architecture",
+          "layout": "Editorial hero + room image",
+          "done": "H1, deck, primary action and correct blank media ratio"
+        },
+        {
+          "id": "02",
+          "title": "What is architectural lighting control?",
+          "layout": "Direct-answer editorial",
+          "done": "Direct answer reads clearly without sales filler"
+        },
+        {
+          "id": "03",
+          "title": "The room through the day",
+          "layout": "Room examples + wide media",
+          "done": "Specific household examples remain in live text"
+        },
+        {
+          "id": "04",
+          "title": "Fixtures, loads, scenes and control",
+          "layout": "System text + diagram",
+          "done": "System roles explained with a stable diagram slot"
+        },
+        {
+          "id": "05",
+          "title": "Wall clutter and layered light study",
+          "layout": "Large signature study",
+          "done": "Study frame, caption and controls/static state in place"
+        },
+        {
+          "id": "06",
+          "title": "Choose a Lutron platform and keypad",
+          "layout": "Lutron platform + keypad comparison",
+          "done": "All source comparisons and meaningful tradeoffs remain"
+        },
+        {
+          "id": "07",
+          "title": "Three rooms, three scene briefs",
+          "layout": "Applied examples",
+          "done": "Each source scenario has a useful result or choice"
+        },
+        {
+          "id": "08",
+          "title": "Fixture, driver and dimmer compatibility",
+          "layout": "Detail study + specifications",
+          "done": "Relevant dimensions/details have a readable place"
+        },
+        {
+          "id": "09",
+          "title": "New construction, renovation or retrofit",
+          "layout": "Build-route comparison",
+          "done": "New-build and existing-home paths remain distinct"
+        },
+        {
+          "id": "10",
+          "title": "Prevent dimming and scene mistakes",
+          "layout": "Unboxed pitfalls",
+          "done": "Specific mistakes and consequences remain"
+        },
+        {
+          "id": "11",
+          "title": "Lighting project: confirm scope and image rights",
+          "layout": "Project proof reservation",
+          "done": "Preview slot exists; unsupported public claims stay absent"
+        },
+        {
+          "id": "12",
+          "title": "What changes lighting investment?",
+          "layout": "Scope comparison + cost drivers",
+          "done": "Scopes and cost drivers work without invented prices"
+        },
+        {
+          "id": "13",
+          "title": "Scene commissioning and adjustment",
+          "layout": "Ownership / handoff sequence",
+          "done": "Commissioning and ownership steps remain legible"
+        },
+        {
+          "id": "14",
+          "title": "Denver light and homeowner questions",
+          "layout": "Local context + FAQ",
+          "done": "Local questions and supplied FAQ work on mobile"
+        },
+        {
+          "id": "15",
+          "title": "Related pages and lighting inquiry",
+          "layout": "Related links + shared inquiry",
+          "done": "Related links and service-prefilled inquiry work"
+        }
+      ]
+    },
+    {
+      "name": "Motorized Shading",
+      "number": 3,
+      "route": "/solutions/motorized-shades/",
+      "file": "DAVG-V4-Hub-03-Motorized-Shading.md",
+      "word": "SHADES",
+      "brief": "Choose fabric and privacy needs per opening, then compare Lutron hardware, size and power paths, and exposed versus concealed details.",
+      "questions": "Solar/privacy/blackout choice; treatment style; Triathlon vs Sivoia vs Palladiom with design-led Good/Better/Best; exact size examples and limits; exposed vs concealed; battery power vs wireless communication; single vs dual; pocket/blocking; retrofit; Lutron integrator work; cost drivers",
+      "sections": [
+        {
+          "id": "01",
+          "title": "Daylight shaped around the room",
+          "layout": "Editorial hero + room image",
+          "done": "H1, deck, primary action and correct blank media ratio"
+        },
+        {
+          "id": "02",
+          "title": "What must each shade accomplish?",
+          "layout": "Direct-answer editorial",
+          "done": "Direct answer reads clearly without sales filler"
+        },
+        {
+          "id": "03",
+          "title": "Light, privacy and the view",
+          "layout": "Room examples + wide media",
+          "done": "Specific household examples remain in live text"
+        },
+        {
+          "id": "04",
+          "title": "Fabric, hardware, power and control",
+          "layout": "System text + diagram",
+          "done": "System roles explained with a stable diagram slot"
+        },
+        {
+          "id": "05",
+          "title": "Solar geometry and glare study",
+          "layout": "Large signature study",
+          "done": "Study frame, caption and controls/static state in place"
+        },
+        {
+          "id": "06",
+          "title": "Choose fabric, form and Lutron family",
+          "layout": "Fabric → form → family → power guide",
+          "done": "All source comparisons and meaningful tradeoffs remain"
+        },
+        {
+          "id": "07",
+          "title": "Four opening studies",
+          "layout": "Applied examples",
+          "done": "Each source scenario has a useful result or choice"
+        },
+        {
+          "id": "08",
+          "title": "Pocket, clearance, blocking and power",
+          "layout": "Detail study + specifications",
+          "done": "Relevant dimensions/details have a readable place"
+        },
+        {
+          "id": "09",
+          "title": "New build or finished-home installation",
+          "layout": "Build-route comparison",
+          "done": "New-build and existing-home paths remain distinct"
+        },
+        {
+          "id": "10",
+          "title": "Prevent fit and mounting problems",
+          "layout": "Unboxed pitfalls",
+          "done": "Specific mistakes and consequences remain"
+        },
+        {
+          "id": "11",
+          "title": "Shading project: proof still to verify",
+          "layout": "Project proof reservation",
+          "done": "Preview slot exists; unsupported public claims stay absent"
+        },
+        {
+          "id": "12",
+          "title": "What changes shade investment?",
+          "layout": "Scope comparison + cost drivers",
+          "done": "Scopes and cost drivers work without invented prices"
+        },
+        {
+          "id": "13",
+          "title": "Measure, commission and maintain",
+          "layout": "Ownership / handoff sequence",
+          "done": "Commissioning and ownership steps remain legible"
+        },
+        {
+          "id": "14",
+          "title": "Denver sun and homeowner questions",
+          "layout": "Local context + FAQ",
+          "done": "Local questions and supplied FAQ work on mobile"
+        },
+        {
+          "id": "15",
+          "title": "Related pages and shading inquiry",
+          "layout": "Related links + shared inquiry",
+          "done": "Related links and service-prefilled inquiry work"
+        }
+      ]
+    },
+    {
+      "name": "Media & Audio",
+      "number": 4,
+      "route": "/solutions/media-audio/",
+      "file": "DAVG-V4-Hub-04-Media-and-Audio.md",
+      "word": "MEDIA",
+      "brief": "Shortlist speakers and counts by room, a TV by light and seats, a media-room audio layout, and the Control4 actions the family will use.",
+      "questions": "How many speakers per room; Sonance VX/Invisible/SST vs Triad front stage/sub/distribution; OLED vs Mini LED vs LED/QLED vs Frame; 4K vs 8K; screen size/daylight; 3.1/5.1/5.1.2/5.1.4 and Atmos; Control4 Watch/Listen/groups; retrofit, proof and cost drivers",
+      "sections": [
+        {
+          "id": "01",
+          "title": "Every room tuned to its use",
+          "layout": "Editorial hero + room image",
+          "done": "H1, deck, primary action and correct blank media ratio"
+        },
+        {
+          "id": "02",
+          "title": "What belongs in a whole-home audio plan?",
+          "layout": "Direct-answer editorial",
+          "done": "Direct answer reads clearly without sales filler"
+        },
+        {
+          "id": "03",
+          "title": "Listening and viewing moments",
+          "layout": "Room examples + wide media",
+          "done": "Specific household examples remain in live text"
+        },
+        {
+          "id": "04",
+          "title": "What connects to what?",
+          "layout": "System text + diagram",
+          "done": "System roles explained with a stable diagram slot"
+        },
+        {
+          "id": "05",
+          "title": "Multi-zone sound map",
+          "layout": "Large signature study",
+          "done": "Study frame, caption and controls/static state in place"
+        },
+        {
+          "id": "06",
+          "title": "Which speaker type, and why Sonance or Triad?",
+          "layout": "Sonance / Triad selection table",
+          "done": "All source comparisons and meaningful tradeoffs remain"
+        },
+        {
+          "id": "07",
+          "title": "How many speakers per room?",
+          "layout": "Room speaker-count guide",
+          "done": "Physical speakers, zones and channels stay distinct"
+        },
+        {
+          "id": "08",
+          "title": "Which TV belongs in this room?",
+          "layout": "TV technology + room comparison",
+          "done": "OLED/LCD/Frame, size, daylight and 4K/8K choices retained"
+        },
+        {
+          "id": "09",
+          "title": "What does Dolby Atmos change?",
+          "layout": "Channel plan + Atmos diagram",
+          "done": "Atmos layouts and speaker positions have a diagram slot"
+        },
+        {
+          "id": "10",
+          "title": "What does Control4 do for TV and music?",
+          "layout": "Control4 Watch / Listen study",
+          "done": "Watch/Listen/groups explained as actual household actions"
+        },
+        {
+          "id": "11",
+          "title": "Media project: proof still to verify",
+          "layout": "Project proof reservation",
+          "done": "Preview slot exists; unsupported public claims stay absent"
+        },
+        {
+          "id": "12",
+          "title": "What changes the investment?",
+          "layout": "Scope comparison + cost drivers",
+          "done": "Scopes and cost drivers work without invented prices"
+        },
+        {
+          "id": "13",
+          "title": "Build route, testing and handoff",
+          "layout": "Build route + test / handoff",
+          "done": "Commissioning and ownership steps remain legible"
+        },
+        {
+          "id": "14",
+          "title": "Denver rooms and late questions",
+          "layout": "Local context + FAQ",
+          "done": "Local questions and supplied FAQ work on mobile"
+        },
+        {
+          "id": "15",
+          "title": "Related pages and media inquiry",
+          "layout": "Related links + shared inquiry",
+          "done": "Related links and service-prefilled inquiry work"
+        }
+      ]
+    },
+    {
+      "name": "Private Cinemas",
+      "number": 5,
+      "route": "/solutions/private-cinemas/",
+      "file": "DAVG-V4-Hub-05-Private-Cinemas.md",
+      "word": "CINEMA",
+      "brief": "Decide whether a dedicated room is justified, then settle seating, image, speaker geometry, acoustic work and construction scope.",
+      "questions": "Cinema vs media room; room size; projection vs direct view; acoustically transparent screen; 7.2.4 meaning; treatment/isolation; sightlines; basement constraints; cost drivers",
+      "sections": [
+        {
+          "id": "01",
+          "title": "A room designed around picture and sound",
+          "layout": "Editorial hero + room image",
+          "done": "H1, deck, primary action and correct blank media ratio"
+        },
+        {
+          "id": "02",
+          "title": "When is a private cinema worth it?",
+          "layout": "Direct-answer editorial",
+          "done": "Direct answer reads clearly without sales filler"
+        },
+        {
+          "id": "03",
+          "title": "What every seat should experience",
+          "layout": "Room examples + wide media",
+          "done": "Specific household examples remain in live text"
+        },
+        {
+          "id": "04",
+          "title": "Room, image and audio architecture",
+          "layout": "System text + diagram",
+          "done": "System roles explained with a stable diagram slot"
+        },
+        {
+          "id": "05",
+          "title": "Sightline and isolation study",
+          "layout": "Large signature study",
+          "done": "Study frame, caption and controls/static state in place"
+        },
+        {
+          "id": "06",
+          "title": "Choose seats, screen and sound field",
+          "layout": "Screen / seating / sound comparison",
+          "done": "All source comparisons and meaningful tradeoffs remain"
+        },
+        {
+          "id": "07",
+          "title": "Cinema capabilities by room brief",
+          "layout": "Applied examples",
+          "done": "Each source scenario has a useful result or choice"
+        },
+        {
+          "id": "08",
+          "title": "Acoustics, screen wall and ventilation",
+          "layout": "Detail study + specifications",
+          "done": "Relevant dimensions/details have a readable place"
+        },
+        {
+          "id": "09",
+          "title": "Build or retrofit the enclosure",
+          "layout": "Build-route comparison",
+          "done": "New-build and existing-home paths remain distinct"
+        },
+        {
+          "id": "10",
+          "title": "Prevent geometry and treatment mistakes",
+          "layout": "Unboxed pitfalls",
+          "done": "Specific mistakes and consequences remain"
+        },
+        {
+          "id": "11",
+          "title": "Castle Rock: verify the published project facts",
+          "layout": "Project proof reservation",
+          "done": "Preview slot exists; unsupported public claims stay absent"
+        },
+        {
+          "id": "12",
+          "title": "What changes cinema investment?",
+          "layout": "Scope comparison + cost drivers",
+          "done": "Scopes and cost drivers work without invented prices"
+        },
+        {
+          "id": "13",
+          "title": "Calibration and household handoff",
+          "layout": "Ownership / handoff sequence",
+          "done": "Commissioning and ownership steps remain legible"
+        },
+        {
+          "id": "14",
+          "title": "Basement constraints and late questions",
+          "layout": "Local context + FAQ",
+          "done": "Local questions and supplied FAQ work on mobile"
+        },
+        {
+          "id": "15",
+          "title": "Related pages and cinema inquiry",
+          "layout": "Related links + shared inquiry",
+          "done": "Related links and service-prefilled inquiry work"
+        }
+      ]
+    },
+    {
+      "name": "Security Cameras & Access Control",
+      "number": 6,
+      "route": "/solutions/security-access/",
+      "file": "DAVG-V4-Hub-06-Security-and-Access.md",
+      "word": "SECURITY",
+      "brief": "Set the events to observe and privacy exclusions, then choose camera detail, storage and entry permissions.",
+      "questions": "Local vs cloud storage; camera detail and low light; detection; doorbell vs access; temporary credentials; network isolation; outage behavior; privacy; cost drivers",
+      "sections": [
+        {
+          "id": "01",
+          "title": "See what matters; control who enters",
+          "layout": "Editorial hero + room image",
+          "done": "H1, deck, primary action and correct blank media ratio"
+        },
+        {
+          "id": "02",
+          "title": "What should security actually cover?",
+          "layout": "Direct-answer editorial",
+          "done": "Direct answer reads clearly without sales filler"
+        },
+        {
+          "id": "03",
+          "title": "Alerts, visitors and privacy",
+          "layout": "Room examples + wide media",
+          "done": "Specific household examples remain in live text"
+        },
+        {
+          "id": "04",
+          "title": "Property, storage and access architecture",
+          "layout": "System text + diagram",
+          "done": "System roles explained with a stable diagram slot"
+        },
+        {
+          "id": "05",
+          "title": "Perimeter and data-custody study",
+          "layout": "Large signature study",
+          "done": "Study frame, caption and controls/static state in place"
+        },
+        {
+          "id": "06",
+          "title": "Choose events, cameras and credentials",
+          "layout": "Camera / storage / entry comparison",
+          "done": "All source comparisons and meaningful tradeoffs remain"
+        },
+        {
+          "id": "07",
+          "title": "Property-specific coverage examples",
+          "layout": "Applied examples",
+          "done": "Each source scenario has a useful result or choice"
+        },
+        {
+          "id": "08",
+          "title": "Field of view, retention and power",
+          "layout": "Detail study + specifications",
+          "done": "Relevant dimensions/details have a readable place"
+        },
+        {
+          "id": "09",
+          "title": "Entry, gate and retrofit routes",
+          "layout": "Build-route comparison",
+          "done": "New-build and existing-home paths remain distinct"
+        },
+        {
+          "id": "10",
+          "title": "Prevent blind spots and nuisance alerts",
+          "layout": "Unboxed pitfalls",
+          "done": "Specific mistakes and consequences remain"
+        },
+        {
+          "id": "11",
+          "title": "Security project: proof still to verify",
+          "layout": "Project proof reservation",
+          "done": "Preview slot exists; unsupported public claims stay absent"
+        },
+        {
+          "id": "12",
+          "title": "What changes security investment?",
+          "layout": "Scope comparison + cost drivers",
+          "done": "Scopes and cost drivers work without invented prices"
+        },
+        {
+          "id": "13",
+          "title": "Roles, updates and owner handoff",
+          "layout": "Ownership / handoff sequence",
+          "done": "Commissioning and ownership steps remain legible"
+        },
+        {
+          "id": "14",
+          "title": "Denver property conditions and questions",
+          "layout": "Local context + FAQ",
+          "done": "Local questions and supplied FAQ work on mobile"
+        },
+        {
+          "id": "15",
+          "title": "Related pages and security inquiry",
+          "layout": "Related links + shared inquiry",
+          "done": "Related links and service-prefilled inquiry work"
+        }
+      ]
+    },
+    {
+      "name": "Digital Infrastructure & Privacy",
+      "number": 7,
+      "route": "/solutions/infrastructure-privacy/",
+      "file": "DAVG-V4-Hub-07-Infrastructure-and-Privacy.md",
+      "word": "NETWORK",
+      "brief": "Distinguish internet service from in-home coverage, then plan wired backhaul, Wi-Fi, network separation and serviceable equipment.",
+      "questions": "ISP router vs professional network; mesh limitations; wired backhaul; VLANs; material-aware coverage; rack/power; concurrent load; outdoor Wi-Fi; privacy; cost drivers",
+      "sections": [
+        {
+          "id": "01",
+          "title": "The foundation behind daily use",
+          "layout": "Editorial hero + room image",
+          "done": "H1, deck, primary action and correct blank media ratio"
+        },
+        {
+          "id": "02",
+          "title": "What is the home network responsible for?",
+          "layout": "Direct-answer editorial",
+          "done": "Direct answer reads clearly without sales filler"
+        },
+        {
+          "id": "03",
+          "title": "Stable work, streaming and control",
+          "layout": "Room examples + wide media",
+          "done": "Specific household examples remain in live text"
+        },
+        {
+          "id": "04",
+          "title": "Internet handoff, switching and Wi-Fi",
+          "layout": "System text + diagram",
+          "done": "System roles explained with a stable diagram slot"
+        },
+        {
+          "id": "05",
+          "title": "Rack and power study",
+          "layout": "Large signature study",
+          "done": "Study frame, caption and controls/static state in place"
+        },
+        {
+          "id": "06",
+          "title": "Plan coverage and network separation",
+          "layout": "Coverage / backhaul / privacy guide",
+          "done": "All source comparisons and meaningful tradeoffs remain"
+        },
+        {
+          "id": "07",
+          "title": "What a serviceable network provides",
+          "layout": "Applied examples",
+          "done": "Each source scenario has a useful result or choice"
+        },
+        {
+          "id": "08",
+          "title": "RF in the actual building materials",
+          "layout": "Detail study + specifications",
+          "done": "Relevant dimensions/details have a readable place"
+        },
+        {
+          "id": "09",
+          "title": "New wiring, retrofit or takeover",
+          "layout": "Build-route comparison",
+          "done": "New-build and existing-home paths remain distinct"
+        },
+        {
+          "id": "10",
+          "title": "Why more internet speed may not fix Wi-Fi",
+          "layout": "Unboxed pitfalls",
+          "done": "Specific mistakes and consequences remain"
+        },
+        {
+          "id": "11",
+          "title": "Infrastructure project: verify and redact proof",
+          "layout": "Project proof reservation",
+          "done": "Preview slot exists; unsupported public claims stay absent"
+        },
+        {
+          "id": "12",
+          "title": "What changes network investment?",
+          "layout": "Scope comparison + cost drivers",
+          "done": "Scopes and cost drivers work without invented prices"
+        },
+        {
+          "id": "13",
+          "title": "Testing and owner documentation",
+          "layout": "Ownership / handoff sequence",
+          "done": "Commissioning and ownership steps remain legible"
+        },
+        {
+          "id": "14",
+          "title": "Denver construction materials and questions",
+          "layout": "Local context + FAQ",
+          "done": "Local questions and supplied FAQ work on mobile"
+        },
+        {
+          "id": "15",
+          "title": "Related pages and network inquiry",
+          "layout": "Related links + shared inquiry",
+          "done": "Related links and service-prefilled inquiry work"
+        }
+      ]
+    },
+    {
+      "name": "Outdoor Entertainment",
+      "number": 8,
+      "route": "/solutions/outdoor-entertainment/",
+      "file": "DAVG-V4-Hub-08-Outdoor-Entertainment.md",
+      "word": "OUTDOOR",
+      "brief": "Map listening and viewing zones, then select appropriate outdoor speakers, display exposure, control and weather-safe routes.",
+      "questions": "Landscape vs surface speakers; subwoofer paths; direct-sun display; zones and boundaries; Colorado weather; Wi-Fi; lighting; existing patio retrofit; cost drivers",
+      "sections": [
+        {
+          "id": "01",
+          "title": "Living beyond the walls",
+          "layout": "Editorial hero + room image",
+          "done": "H1, deck, primary action and correct blank media ratio"
+        },
+        {
+          "id": "02",
+          "title": "What belongs in an outdoor system?",
+          "layout": "Direct-answer editorial",
+          "done": "Direct answer reads clearly without sales filler"
+        },
+        {
+          "id": "03",
+          "title": "How the property is used",
+          "layout": "Room examples + wide media",
+          "done": "Specific household examples remain in live text"
+        },
+        {
+          "id": "04",
+          "title": "Zones, exposure and control architecture",
+          "layout": "System text + diagram",
+          "done": "System roles explained with a stable diagram slot"
+        },
+        {
+          "id": "05",
+          "title": "Landscape sound and weather study",
+          "layout": "Large signature study",
+          "done": "Study frame, caption and controls/static state in place"
+        },
+        {
+          "id": "06",
+          "title": "Choose speakers, display and lighting",
+          "layout": "Outdoor speaker / TV exposure guide",
+          "done": "All source comparisons and meaningful tradeoffs remain"
+        },
+        {
+          "id": "07",
+          "title": "Patio, pool and garden examples",
+          "layout": "Applied examples",
+          "done": "Each source scenario has a useful result or choice"
+        },
+        {
+          "id": "08",
+          "title": "Weather-safe pathways and access",
+          "layout": "Detail study + specifications",
+          "done": "Relevant dimensions/details have a readable place"
+        },
+        {
+          "id": "09",
+          "title": "Install before or after hardscape",
+          "layout": "Build-route comparison",
+          "done": "New-build and existing-home paths remain distinct"
+        },
+        {
+          "id": "10",
+          "title": "Prevent loud corners and unsuitable displays",
+          "layout": "Unboxed pitfalls",
+          "done": "Specific mistakes and consequences remain"
+        },
+        {
+          "id": "11",
+          "title": "Outdoor project: proof still to verify",
+          "layout": "Project proof reservation",
+          "done": "Preview slot exists; unsupported public claims stay absent"
+        },
+        {
+          "id": "12",
+          "title": "What changes outdoor investment?",
+          "layout": "Scope comparison + cost drivers",
+          "done": "Scopes and cost drivers work without invented prices"
+        },
+        {
+          "id": "13",
+          "title": "Seasonal care and system handoff",
+          "layout": "Ownership / handoff sequence",
+          "done": "Commissioning and ownership steps remain legible"
+        },
+        {
+          "id": "14",
+          "title": "Colorado exposure and late questions",
+          "layout": "Local context + FAQ",
+          "done": "Local questions and supplied FAQ work on mobile"
+        },
+        {
+          "id": "15",
+          "title": "Related pages and outdoor inquiry",
+          "layout": "Related links + shared inquiry",
+          "done": "Related links and service-prefilled inquiry work"
+        }
+      ]
+    }
+  ],
+  "pages": [
+    [
+      "/",
+      "Homepage",
+      "Hero; DAVG approach; living/system overview; eight service links; support; territory; selected work; project inquiry. Use current local copy first. Horizontal magazine direction can follow."
+    ],
+    [
+      "/solutions/",
+      "Solutions index",
+      "Clear introduction and eight service entries with real labels and links; editorial rows rather than a forced card grid."
+    ],
+    [
+      "/solutions/home-intelligence/",
+      "Home Intelligence",
+      "Use the 25/75 shell and its own hub master."
+    ],
+    [
+      "/solutions/architectural-lighting/",
+      "Architectural Lighting",
+      "Use the 25/75 shell and its own hub master."
+    ],
+    [
+      "/solutions/motorized-shades/",
+      "Motorized Shading",
+      "Use the 25/75 shell and its own hub master."
+    ],
+    [
+      "/solutions/media-audio/",
+      "Media & Audio",
+      "Use the 25/75 shell and its own hub master."
+    ],
+    [
+      "/solutions/private-cinemas/",
+      "Private Cinemas",
+      "Use the 25/75 shell and its own hub master."
+    ],
+    [
+      "/solutions/security-access/",
+      "Security Cameras & Access Control",
+      "Use the 25/75 shell and its own hub master."
+    ],
+    [
+      "/solutions/infrastructure-privacy/",
+      "Digital Infrastructure & Privacy",
+      "Use the 25/75 shell and its own hub master."
+    ],
+    [
+      "/solutions/outdoor-entertainment/",
+      "Outdoor Entertainment",
+      "Use the 25/75 shell and its own hub master."
+    ],
+    [
+      "/contact/",
+      "Begin a project",
+      "Form above the fold; project type, location, rooms/services, timeframe, message and optional plans if supported. Test destination and confirmation."
+    ],
+    [
+      "/support/",
+      "Service and support",
+      "Separate current-system support from new-project inquiry; address, system and issue details; working service request form. Preserve or redirect /service-support/ if already used."
+    ],
+    [
+      "/about/",
+      "About DAVG",
+      "Company, 2013 history, role and supplied credentials. No invented biography or required byline."
+    ],
+    [
+      "/projects/",
+      "Selected work",
+      "Belcaro and Castle Rock only to the extent current records and photos support. Hide empty public proof."
+    ],
+    [
+      "/trade-partners/",
+      "Trade partners",
+      "Builder/architect/designer coordination; planning inputs, drawings, prewire and handoff. Reuse current copy before expanding."
+    ],
+    [
+      "/design-build/",
+      "Design and build",
+      "Project stages, decisions before framing, responsibilities, next step and a way to provide plans."
+    ],
+    [
+      "/service-areas/",
+      "Areas served",
+      "Genuine territory list, including Parker and Castle Rock. Map can be added after layout."
+    ],
+    [
+      "/privacy-policy/",
+      "Privacy",
+      "Current form data handling and contact path; use actual business practice."
+    ],
+    [
+      "/thank-you/",
+      "Confirmation",
+      "Real submission confirmation; noindex."
+    ],
+    [
+      "404",
+      "Not found",
+      "Real 404 response with useful navigation."
+    ]
+  ],
+  "order": [
+    [
+      "01",
+      "First hour",
+      "Inspect local project; add pack; build shell and Shading 01–05",
+      "Desktop rail stays put; real opening copy and blank media render"
+    ],
+    [
+      "02",
+      "Shading middle",
+      "Build Shading 06–10",
+      "Lutron/fabric/hardware/power guide and opening examples are complete"
+    ],
+    [
+      "03",
+      "Shading finish",
+      "Build Shading 11–15 and mobile pass",
+      "Proof slot, scope, FAQ and inquiry exist; mobile reads cleanly"
+    ],
+    [
+      "04",
+      "Architectural Lighting",
+      "Build 01–05, 06–10, 11–15 in separate batches",
+      "Lutron platforms/keypads/layers/compatibility retained"
+    ],
+    [
+      "05",
+      "Media & Audio",
+      "Build its distinct product-led flow",
+      "Speaker counts, Sonance/Triad, TV, Atmos and Control4 retained"
+    ],
+    [
+      "06",
+      "Home Intelligence",
+      "Use the shell; keep the control education",
+      "Scope, local/cloud, interfaces and takeover route retained"
+    ],
+    [
+      "07",
+      "Private Cinemas",
+      "Build dedicated-room decisions and geometry",
+      "Screen, seating, sound, treatment and Castle Rock record retained"
+    ],
+    [
+      "08",
+      "Digital Infrastructure",
+      "Build network diagnosis and coverage",
+      "ISP/Wi-Fi distinction, backhaul, rack/power and privacy retained"
+    ],
+    [
+      "09",
+      "Security & Access",
+      "Build coverage, storage and entry decisions",
+      "Privacy exclusions and permissions remain explicit"
+    ],
+    [
+      "10",
+      "Outdoor Entertainment",
+      "Build property-zone decisions",
+      "Sound, TV exposure, light, weather and pathways retained"
+    ],
+    [
+      "11",
+      "Remaining pages",
+      "Finish the non-service routes in the Pages tab",
+      "Every visible navigation link has a useful destination"
+    ],
+    [
+      "12",
+      "Private preview",
+      "Run project checks/build and preview deployment",
+      "Routes, mobile, forms and stable media slots work"
+    ],
+    [
+      "13",
+      "Release pass",
+      "Add/hide media; confirm claims/contact; test production",
+      "No empty public proof, failed forms or false claims"
+    ]
+  ],
+  "deferred": [
+    [
+      "Photography",
+      "Source/crop actual room and product assets after each layout is stable",
+      "Before public release for visible media"
+    ],
+    [
+      "Technical studies",
+      "Finish cutaways and interactive study states after static content",
+      "Enhancement; release static first if useful"
+    ],
+    [
+      "Background words",
+      "Select remaining page-specific words against the prototype",
+      "Enhancement; omit undecided words"
+    ],
+    [
+      "Horizontal editorial motion",
+      "Refine homepage/About/Projects magazine treatment",
+      "Enhancement; no service-page blocker"
+    ],
+    [
+      "Exact light font asset",
+      "Check actual Schibsted outline versus 300 visual target",
+      "Visual refinement; continue layout now"
+    ],
+    [
+      "Advanced SEO content",
+      "City pages, spokes, articles and expanded AEO research",
+      "After core launch"
+    ],
+    [
+      "CMS and automation",
+      "TinaCMS, extended analytics and operational workflow",
+      "After actual editing need is clear"
+    ],
+    [
+      "Extra legal/resource pages",
+      "Terms, accessibility statement, brands/resource archive if needed",
+      "Add when needed; not automatic 29-page scope"
+    ]
+  ]
+}

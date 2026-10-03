@@ -1,0 +1,70 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import MediaPlaceholder from '../../MediaPlaceholder.astro';
+
+interface Props {
+  chapter: CollectionEntry<'services'>['data']['chapters'][number];
+}
+const { chapter } = Astro.props;
+const scenes = [
+  {
+    id: 'daylight',
+    label: 'Daylight',
+    text: 'Living room: a daytime scene can lower the view-through layer to reduce glare. Bedroom: the result still depends on the fabric and gaps already chosen.',
+  },
+  {
+    id: 'evening',
+    label: 'Evening',
+    text: 'Living room: an evening scene can lower the privacy layer and adjust the room’s light. These photographs do not change, and they are not a recorded DAVG program.',
+  },
+  {
+    id: 'sleep',
+    label: 'Sleep',
+    text: 'Bedroom: a sleep scene can lower the blackout layer. Edges, mounting and the window detail still decide how dark the room gets.',
+  },
+];
+---
+<section class="composition" data-surface-role="systems" aria-labelledby={`chapter-${chapter.id}-title`}>
+  <span id="scenes" class="alias"></span>
+  <span id="solar" class="alias"></span>
+  <h3 id={`chapter-${chapter.id}-title`}>{chapter.title}</h3>
+  <p>{chapter.paragraphs[0]}</p>
+  <p>{chapter.paragraphs[1]}</p>
+  <div class="scene-layout">
+    <div class="tabset" data-tabset>
+      <div class="tabset-bar">
+        <div role="tablist" aria-label="Room through the day">
+          {scenes.map((scene, index) => (
+            <button
+              type="button"
+              role="tab"
+              id={`scene-tab-${scene.id}`}
+              aria-controls={`scene-panel-${scene.id}`}
+              aria-selected={index === 0 ? 'true' : 'false'}
+              tabindex={index === 0 ? 0 : -1}
+            >
+              {scene.label}
+            </button>
+          ))}
+        </div>
+        <button type="button" data-show-all>Show all</button>
+      </div>
+      {scenes.map((scene, index) => (
+        <div role="tabpanel" class:list={['tab-panel', { 'is-selected': index === 0 }]} id={`scene-panel-${scene.id}`} aria-labelledby={`scene-tab-${scene.id}`}>
+          <p>{scene.text}</p>
+        </div>
+      ))}
+    </div>
+    <div class="scene-images">
+      <figure>
+        <MediaPlaceholder id="shading-07-living-scene" subject="Illustrative living room" ratio="16 / 9" src="/images/davg-living-room-sheer-roller-shades-sun-01-1600w.webp" alt="Floor-to-ceiling sheer roller shades on a living-room glass wall, with the sun still visible through the fabric" />
+        <figcaption>Living room used through the scenes. Product photograph, labeled illustrative. It does not change with the selector.</figcaption>
+      </figure>
+      <figure>
+        <MediaPlaceholder id="shading-05-solar" subject="Bedroom window wall" ratio="16 / 9" src="/images/davg-bedroom-window-wall-roller-shades-01-1600w.webp" alt="Bedroom window wall with black roller shades held at different heights above a view of trees" />
+        <figcaption>Bedroom window wall. Product photograph. The heights illustrate positions, not a validated glare study.</figcaption>
+      </figure>
+    </div>
+  </div>
+  <p>{chapter.paragraphs[2]}</p>
+</section>

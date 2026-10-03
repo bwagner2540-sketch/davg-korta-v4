@@ -1,0 +1,39 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import MediaPlaceholder from '../../MediaPlaceholder.astro';
+
+interface Props {
+  chapter: CollectionEntry<'services'>['data']['chapters'][number];
+}
+const { chapter } = Astro.props;
+const pending = [
+  ['shading-06-pico', 'Pico shade remote, photograph pending', 'Pico. Photograph of the exact shade or scene remote is pending.'],
+  ['shading-06-sunnata', 'Sunnata RadioRA 3 keypad, photograph pending', 'Sunnata. Front views of the supported RadioRA 3 layouts are pending.'],
+  ['shading-06-seetouch', 'seeTouch keypad, photograph pending', 'seeTouch. Photograph of the exact residential model is pending.'],
+  ['shading-06-alisse', 'Alisse keypad, photograph pending', 'Alisse. Photograph pending. It requires HomeWorks QSX and a wired QS link.'],
+];
+---
+<section class="composition keypad-atelier" data-surface-role="systems" aria-labelledby={`chapter-${chapter.id}-title`}>
+  <span id="controls" class="alias"></span>
+  <h3 id={`chapter-${chapter.id}-title`}>{chapter.title}</h3>
+  {chapter.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+  <div class="keypad-grid">
+    <figure>
+      <MediaPlaceholder
+        id="shading-06-control"
+        subject="Palladiom keypad beside a lowered shade"
+        ratio="4 / 3"
+        position="left center"
+        src="/images/davg-palladiom-keypad-with-shade-01-800w.webp"
+        alt="Brushed-metal keypad engraved Entertain, Relax, and Dine, with a lowered shade behind the seating"
+      />
+      <figcaption>Palladiom keypad with a lowered shade beside it. Lutron product photograph, not a DAVG job record. This is the keypad, not the Palladiom roller bracket.</figcaption>
+    </figure>
+    {pending.map(([id, subject, caption]) => (
+      <figure>
+        <MediaPlaceholder id={id} subject={subject} ratio="4 / 3" />
+        <figcaption>{caption}</figcaption>
+      </figure>
+    ))}
+  </div>
+</section>

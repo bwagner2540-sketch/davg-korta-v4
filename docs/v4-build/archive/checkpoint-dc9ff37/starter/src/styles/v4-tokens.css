@@ -1,0 +1,38 @@
+@theme {
+  --color-surface-ink: #090B0A;
+  --color-surface-forest: #183B31;
+  --color-surface-paper: #EDE9E0;
+  --color-cream-01: #F2EFE7;
+  --color-cream-02: #EBE7DC;
+  --color-cream-03: #E2DDCE;
+  --color-text-on-dark: #F1F0EB;
+  --color-text-muted-dark: #A7AAA5;
+  --color-text-quiet-dark: #7F847E;
+  --color-text-on-paper: #0B0D0C;
+  --color-text-muted-paper: #51544F;
+  --color-accent-signal: #1A8F6E;
+  --color-border-dark: rgb(241 240 235 / 16%);
+  --color-border-paper: rgb(11 13 12 / 14%);
+  --color-spatial-dark: rgb(241 240 235 / 10%);
+  --color-spatial-forest: rgb(241 240 235 / 12%);
+  --font-display: "Schibsted Grotesk";
+  --font-body: "Instrument Sans";
+  --font-mono: "IBM Plex Mono";
+  --text-h1: clamp(2.5rem, 4.5vw, 4rem);
+  --text-h1--line-height: 0.98;
+  --text-h1--letter-spacing: -0.035em;
+  --text-h2: clamp(2rem, 3vw, 2.75rem);
+  --text-h2--line-height: 1.02;
+  --text-h2--letter-spacing: -0.025em;
+  --text-body: 1rem;
+  --text-body--line-height: 1.5;
+  --text-caption: .8125rem;
+  --text-caption--line-height: 1.35;
+  --text-label: .6875rem;
+  --text-label--letter-spacing: .1em;
+  --spacing-page-inline: clamp(1.25rem, 3vw, 4rem);
+  --spacing-section: clamp(3rem, 6vw, 6rem);
+  --radius-control: 2px;
+}
+
+

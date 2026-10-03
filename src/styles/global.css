@@ -1,12 +1,15 @@
 @import "tailwindcss";
 @import "@fontsource-variable/schibsted-grotesk";
 @import "@fontsource-variable/instrument-sans";
-@import "@fontsource-variable/jetbrains-mono";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
 @theme {
-  /* Four-surface system */
+  /* Surface system. Ink, Forest, Paper and Signal stay at these values. */
   --color-surface-ink: #090B0A;
   --color-surface-forest: #183B31;
   --color-surface-paper: #EDE9E0;
+  --color-surface-charcoal: #0F1310;
+  --color-surface-stone: var(--color-cream-03);
   /* Approved V4 cream-family variants */
   --color-cream-01: #F2EFE7;
   --color-cream-02: #EBE7DC;
@@ -56,20 +59,131 @@
   --text-label--letter-spacing: .1em;
   --spacing-page-inline: clamp(1.25rem, 3vw, 4rem);
   --spacing-section: clamp(3rem, 6vw, 6rem);
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-12: 48px;
+  --spacing-16: 64px;
+  --spacing-20: 80px;
+  --spacing-24: 96px;
+  --spacing-32: 128px;
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 1.45;
+  --text-mono: 11px;
+  --text-mono--line-height: 1.35;
+  --text-mono--letter-spacing: 0.12em;
+  /* Interpolated type steps named by the reference spec. Not in the locked token block. */
+  --text-h5: 24px;
+  --text-h5--letter-spacing: -0.01em;
+  --text-h6: 20px;
+  --text-h6--line-height: 1.2;
+  --text-h6--letter-spacing: -0.005em;
   --radius-control: 2px;
-  /* Fonts. Mono stays the installed self-hosted JetBrains face. */
-  --font-display: "Schibsted Grotesk", sans-serif;
-  --font-body: "Instrument Sans", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+  /* Approved self-hosted typography. IBM Mono is reserved for factual labels. */
+  --font-display: "Schibsted Grotesk Variable", sans-serif;
+  --font-body: "Instrument Sans Variable", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+/* Local surface variables. A section role sets them; children inherit. */
+[data-surface-role="hero"],
+[data-surface-role="inquiry"] {
+  --surface-bg: var(--color-surface-ink);
+  --surface-fg: var(--color-text-on-dark);
+  --surface-muted: var(--color-text-muted-dark);
+  --surface-quiet: var(--color-text-quiet-dark);
+  --surface-border: var(--color-border-dark);
+  --surface-spatial: var(--color-spatial-dark);
+}
+[data-surface-role="answer"],
+[data-surface-role="editorial"],
+[data-surface-role="questions"] {
+  --surface-bg: var(--color-surface-paper);
+  --surface-fg: var(--color-text-on-paper);
+  --surface-muted: var(--color-text-muted-paper);
+  --surface-quiet: var(--color-text-muted-paper);
+  --surface-border: var(--color-border-paper);
+  --surface-spatial: rgb(11 13 12 / 8%);
+}
+[data-surface-role="systems"] {
+  --surface-bg: var(--color-surface-charcoal);
+  --surface-fg: var(--color-text-on-dark);
+  --surface-muted: var(--color-text-muted-dark);
+  --surface-quiet: var(--color-text-quiet-dark);
+  --surface-border: var(--color-border-dark);
+  --surface-spatial: var(--color-spatial-dark);
+}
+[data-surface-role="investment"] {
+  --surface-bg: var(--color-surface-stone);
+  --surface-fg: var(--color-text-on-paper);
+  --surface-muted: var(--color-text-muted-paper);
+  --surface-quiet: var(--color-text-muted-paper);
+  --surface-border: var(--color-border-paper);
+  --surface-spatial: rgb(11 13 12 / 8%);
+}
+[data-surface-role="signature-study"] {
+  --surface-bg: var(--color-surface-forest);
+  --surface-fg: var(--color-text-on-dark);
+  --surface-muted: var(--color-text-muted-dark);
+  --surface-quiet: var(--color-text-quiet-dark);
+  --surface-border: var(--color-border-dark);
+  --surface-spatial: var(--color-spatial-forest);
+}
+[data-surface-role] {
+  background: var(--surface-bg);
+  color: var(--surface-fg);
+}
+[data-surface-role="signature-study"] {
+  background: linear-gradient(145deg, var(--color-surface-forest) 0%, var(--color-surface-ink) 72%);
 }
 /* Base resets matching Korta V4 */
 html, body {
   background-color: var(--color-surface-ink);
   color: var(--color-text-primary-dark);
   font-family: var(--font-body);
+  font-weight: 400;
+  line-height: var(--text-body--line-height);
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
+}
+
+p, ul, ol, li, h1, h2, h3, h4, h5, h6, figure, figcaption {
+  margin: 0;
+}
+
+/* Shared editorial type. Headings stay upright Schibsted. Body and labels stay Instrument Sans. */
+:where(h1, h2, h3, h4) {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+:where(h1, h2, h3, h4) em {
+  color: inherit;
+  font-style: normal;
+  font-weight: inherit;
+}
+
+.section-kicker { color: var(--color-accent-signal); }
+.section-kicker,
+.rail-kicker,
+.tier-kicker,
+.tier-scale,
+.mono-label {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  font-weight: 400;
+  letter-spacing: var(--text-mono--letter-spacing);
+  line-height: var(--text-mono--line-height);
+  text-transform: uppercase;
 }
 /* Locked Architectural Background Typography */
 .architectural-background-section {

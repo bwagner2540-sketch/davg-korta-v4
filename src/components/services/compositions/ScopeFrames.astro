@@ -1,0 +1,47 @@
+---
+import MediaPlaceholder from '../../MediaPlaceholder.astro';
+const frames = [
+  {
+    id: 'shading-scope-living',
+    src: '/images/davg-living-room-sheer-roller-shades-sun-01-1600w.webp',
+    alt: 'Floor-to-ceiling sheer roller shades on a living-room glass wall, with the sun still visible through the fabric',
+    title: 'Living room glass',
+    meta: 'sheer roller · daylight',
+  },
+  {
+    id: 'shading-scope-bedroom',
+    src: '/images/davg-bedroom-motorized-shades-01-1600w.webp',
+    alt: 'Bedroom with motorized roller shades at a window',
+    title: 'Bedroom window',
+    meta: 'roller shade · darkness is separate',
+  },
+];
+const questions = [
+  'Which openings need glare control, view, privacy, or darkness?',
+  'Where should the mechanism live: a ceiling pocket, a fascia, or an exposed roller?',
+  'Which rooms need a local control when the plan changes?',
+  'What should be wired now so the shade schedule can change later?',
+];
+---
+<section class="scope-frames" data-surface-role="editorial" aria-labelledby="scope-frames-title">
+  <p class="section-kicker">Design</p>
+  <h3 id="scope-frames-title">Choose the shade by the opening.</h3>
+  <div class="scope-frame-grid">
+    {frames.map((frame) => (
+      <figure>
+        <MediaPlaceholder id={frame.id} subject={frame.title} ratio="4 / 5" src={frame.src} alt={frame.alt} />
+        <figcaption>
+          <strong>{frame.title}</strong>
+          <span>{frame.meta}</span>
+        </figcaption>
+      </figure>
+    ))}
+  </div>
+  <p class="scope-lead">Answer four questions before choosing hardware:</p>
+  <ol class="scope-questions">
+    {questions.map((question, index) => (
+      <li><span>{index + 1}</span> {question}</li>
+    ))}
+  </ol>
+  <p class="scope-close">The right scope may be a few important rooms or a whole-residence shade schedule. Coherence matters more than device count.</p>
+</section>
