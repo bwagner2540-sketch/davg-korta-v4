@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import SiteIndex from '../components/SiteIndex.astro';
 interface Props {
   title?: string;
 }
@@ -13,6 +14,7 @@ const { title = "Denver AV Group" } = Astro.props;
     <title>{title}</title>
   </head>
   <body class="bg-surface-ink text-text-primary-dark antialiased">
+    <SiteIndex current={Astro.url.pathname} variant="bar" />
     <slot />
   </body>
 </html>

@@ -1,0 +1,25 @@
+---
+import inventory from '../data/page-inventory.json';
+
+interface Props {
+  current: string;
+  variant?: 'bar' | 'rail';
+}
+
+const { current, variant = 'bar' } = Astro.props;
+const path = current.endsWith('/') ? current : `${current}/`;
+---
+
+<nav class:list={['site-index', `site-index--${variant}`]} aria-label="Pages" data-site-index>
+  <p class="site-index__kicker">Pages</p>
+  <ol>
+    {inventory.pages.map((page, index) => (
+      <li>
+        <a href={page.href} aria-current={page.href === path ? 'page' : undefined}>
+          <span class="site-index__num">{String(index).padStart(2, '0')}</span>
+          <span>{page.label}</span>
+        </a>
+      </li>
+    ))}
+  </ol>
+</nav>

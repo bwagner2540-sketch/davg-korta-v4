@@ -4,7 +4,7 @@ Service layouts come first. The eight core hubs remain launch scope; you can pre
 
 | Route | Page | What to implement |
 |---|---|---|
-| / | Homepage | Hero; DAVG approach; living/system overview; eight service links; support; territory; selected work; project inquiry. Use current local copy first. Horizontal magazine direction can follow. |
+| / | Homepage | Firm index: tagline, the eight hubs, territory, and the owner's contact lines. Constant page index in the forest rail. Not a shades mockup. |
 | /solutions/ | Solutions index | Clear introduction and eight service entries with real labels and links; editorial rows rather than a forced card grid. |
 | /solutions/home-intelligence/ | Home Intelligence | Use the 25/75 shell and its own hub master. |
 | /solutions/architectural-lighting/ | Architectural Lighting | Use the 25/75 shell and its own hub master. |
@@ -24,6 +24,16 @@ Service layouts come first. The eight core hubs remain launch scope; you can pre
 | /privacy-policy/ | Privacy | Current form data handling and contact path; use actual business practice. |
 | /thank-you/ | Confirmation | Real submission confirmation; noindex. |
 | 404 | Not found | Real 404 response with useful navigation. |
+
+## Constant page index
+
+Adopted 3 October 2026. Every public page renders `SiteIndex` (`data-site-index`) with Home and all eight hubs. The inventory is `src/data/page-inventory.json`. A layout change that omits the index is incomplete.
+
+Do not delete a page, hub, route, or section unless the request names that removal. Record a named removal in `docs/v4-build/named-removals.md` and take it out of the inventory in the same change. `/solutions/motorized-shades/` is the live shading hub. The retired specimen route `/_old/motorized-shades/` stays unpublished.
+
+## Deployment
+
+`davg.ai` is the Cloudflare production domain for this repository. It currently serves the coming-soon page. Do not deploy this site there, and do not treat davg.ai as a different project. Brandon will remove coming soon and point Cloudflare at this site only after he says a page is structurally, design, and technically ready. Until then, review happens on a preview URL.
 
 Do not create the future spoke/city/resource set now. Keep the original /solutions/motorized-shades/, /media-audio/, /security-access/ and /infrastructure-privacy/ route names from the recovered master unless the local project already has a deliberate redirect plan. /support/ follows Brandon’s recent QR destination; reconcile an existing /service-support/ route without breaking links.
 

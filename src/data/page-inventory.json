@@ -1,0 +1,67 @@
+{
+  "pages": [
+    {
+      "href": "/",
+      "label": "Home",
+      "kind": "home",
+      "source": "src/pages/index.astro"
+    },
+    {
+      "href": "/solutions/motorized-shades/",
+      "label": "Motorized Shading",
+      "kind": "hub",
+      "dedicated": true,
+      "source": "src/pages/solutions/motorized-shades.astro",
+      "decision": "Choose fabric and privacy needs per opening, then compare Lutron hardware, size and power paths, and exposed versus concealed details."
+    },
+    {
+      "href": "/solutions/home-intelligence/",
+      "label": "Home Intelligence",
+      "kind": "hub",
+      "source": "docs/v4-build/hubs/DAVG-V4-Hub-01-Home-Intelligence.md",
+      "decision": "Choose a focused room, a whole-residence system, or a supported takeover path; choose how the family will control it."
+    },
+    {
+      "href": "/solutions/architectural-lighting/",
+      "label": "Architectural Lighting",
+      "kind": "hub",
+      "source": "docs/v4-build/hubs/DAVG-V4-Hub-02-Architectural-Lighting.md",
+      "decision": "Choose lighting layers, a Lutron platform and keypad approach, and a construction route that matches the fixtures and rooms."
+    },
+    {
+      "href": "/solutions/media-audio/",
+      "label": "Media & Audio",
+      "kind": "hub",
+      "source": "docs/v4-build/hubs/DAVG-V4-Hub-04-Media-and-Audio.md",
+      "decision": "Shortlist speakers and counts by room, a TV by light and seats, a media-room audio layout, and the Control4 actions the family will use."
+    },
+    {
+      "href": "/solutions/private-cinemas/",
+      "label": "Private Cinemas",
+      "kind": "hub",
+      "source": "docs/v4-build/hubs/DAVG-V4-Hub-05-Private-Cinemas.md",
+      "decision": "Decide whether a dedicated room is justified, then settle seating, image, speaker geometry, acoustic work and construction scope."
+    },
+    {
+      "href": "/solutions/security-access/",
+      "label": "Security Cameras & Access Control",
+      "kind": "hub",
+      "source": "docs/v4-build/hubs/DAVG-V4-Hub-06-Security-and-Access.md",
+      "decision": "Set the events to observe and privacy exclusions, then choose camera detail, storage and entry permissions."
+    },
+    {
+      "href": "/solutions/infrastructure-privacy/",
+      "label": "Digital Infrastructure & Privacy",
+      "kind": "hub",
+      "source": "docs/v4-build/hubs/DAVG-V4-Hub-07-Infrastructure-and-Privacy.md",
+      "decision": "Distinguish internet service from in-home coverage, then plan wired backhaul, Wi-Fi, network separation and serviceable equipment."
+    },
+    {
+      "href": "/solutions/outdoor-entertainment/",
+      "label": "Outdoor Entertainment",
+      "kind": "hub",
+      "source": "docs/v4-build/hubs/DAVG-V4-Hub-08-Outdoor-Entertainment.md",
+      "decision": "Map listening and viewing zones, then select appropriate outdoor speakers, display exposure, control and weather-safe routes."
+    }
+  ]
+}
