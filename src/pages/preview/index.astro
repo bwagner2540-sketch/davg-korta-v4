@@ -22,8 +22,9 @@ const pages = [
       <select id="preview-page">
         {pages.map((page) => <option value={page.href} selected={page.href === services[0].href}>{page.label}</option>)}
       </select>
+      <p class="phone-review-status" role="status" />
       <div class="phone-review-frame">
-        <iframe title="Mobile site preview" src={services[0].href} width="390" height="844" loading="lazy" />
+        <iframe title="Mobile site preview" width="390" height="844" />
       </div>
     </details>
   </main>
@@ -31,8 +32,48 @@ const pages = [
 <script>
   const picker = document.querySelector<HTMLSelectElement>('#preview-page');
   const frame = document.querySelector<HTMLIFrameElement>('.phone-review iframe');
-  picker?.addEventListener('change', () => {
-    if (frame) frame.src = picker.value;
+  const review = document.querySelector<HTMLDetailsElement>('.phone-review');
+  const status = document.querySelector<HTMLElement>('.phone-review-status');
+  let request = 0;
+  let currentPage = '';
+  async function loadPhoneReview() {
+    if (!picker || !frame || !status) return;
+    const page = new URL(picker.value, window.location.origin);
+    if (page.origin !== window.location.origin) return;
+    const activeRequest = ++request;
+    status.textContent = 'Loading page…';
+    try {
+      const response = await fetch(page.href);
+      if (!response.ok) throw new Error('Page unavailable');
+      const html = await response.text();
+      if (activeRequest !== request) return;
+      // Display this build's HTML without changing the site's anti-framing headers.
+      currentPage = page.pathname;
+      frame.srcdoc = html.replace(/<head(?:\s[^>]*)?>/i, (head) => `${head}<base href="${page.href}">`);
+      status.textContent = '390px page width';
+    } catch {
+      if (activeRequest === request) status.textContent = 'Could not load this page. Use its review link above.';
+    }
+  }
+  review?.addEventListener('toggle', () => {
+    if (review.open && !frame?.srcdoc) void loadPhoneReview();
+  });
+  picker?.addEventListener('change', () => { void loadPhoneReview(); });
+  frame?.addEventListener('load', () => {
+    frame.contentDocument?.addEventListener('click', (event) => {
+      const link = (event.target as Element)?.closest('a[href]');
+      if (!link) return;
+      const destination = new URL(link.getAttribute('href') || '', new URL(currentPage, window.location.origin));
+      if (destination.origin !== window.location.origin) return;
+      if (destination.pathname === currentPage && destination.hash) {
+        event.preventDefault();
+        frame.contentDocument?.getElementById(destination.hash.slice(1))?.scrollIntoView();
+      } else if (picker && [...picker.options].some(option => option.value === destination.pathname)) {
+        event.preventDefault();
+        picker.value = destination.pathname;
+        void loadPhoneReview();
+      }
+    });
   });
 </script>
 <style>

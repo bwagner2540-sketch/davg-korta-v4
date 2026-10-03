@@ -53,6 +53,12 @@ test('internal notes and publication holds stay out of visitor HTML', () => {
   assert.doesNotMatch(home.sections.find((section) => section.id === '08').html, /Home control mock/);
   assert.doesNotMatch(shades.sections.map((section) => section.html).join('\n'), /IBM Plex|palladiom mock/);
   assert.match(home.sections[1].html, /control layer that lets a residence behave like one system/);
+  for (const hub of loadGitHubs()) {
+    assert.doesNotMatch(hub.sections[4].html, /Avoid a blanket claim|Do not (?:label|promise|claim)|verify .*public|The output must|\*\*Image:/);
+    assert.match(hub.sections[4].html, /<p>/, `${hub.slug} retains the public study explanation`);
+  }
+  assert.match(loadGitHub('security-access').sections[4].html, /configuration-specific/);
+  assert.match(home.sections[4].html, /representative hardware example only/);
 });
 
 test('composition maps each hub section by purpose', () => {

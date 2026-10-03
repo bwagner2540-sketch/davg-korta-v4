@@ -11,7 +11,7 @@ function readHubFilesFromDisk() {
     .sort()
     .map((file) => readFileSync(join(dir, file), 'utf8'));
 }
-const NOTE_LABEL = /^(Visual|Study|Interaction|Required interaction|Decision reached|Status|Reviewer|Source check|Publish hold|Project module|Editorial use|Builder credit|Verified project facts|Caption)\b/i;
+const NOTE_LABEL = /^(Visual|Image|Study|Interaction|Required interaction|Decision reached|Status|Reviewer|Source check|Publish hold|Project module|Editorial use|Builder credit|Verified project facts|Caption)\b/i;
 const INSTRUCTION_LINE = /^(Use `|Use verified |Use a permission-cleared |Use a verified DAVG |Use only these facts |Preferred proof is |The page should |The finished module should |The primary technical study must |Rebuild labels |Pair a daylight |`rack build 1\.png`)/;
 
 function escapeHtml(value) {
@@ -42,10 +42,12 @@ function isInstruction(line) {
 function publicText(value) {
   return value
     .split(/(?<=[.!])\s+/)
+    .map(sentence => sentence.replace(/;\s*(?:verify\b|do not claim\b).*/i, '').replace(/^\*\*Decision demonstrated:\*\*\s*/i, ''))
     .filter((sentence) => {
       const plain = sentence.replace(/\*\*/g, '').trim();
       return plain.length > 0 && !/^In Phase Two,/i.test(plain) && !/^Phase-Two local pages/i.test(plain)
-        && !/^This table should (become|remain)/i.test(plain);
+        && !/^This table should (become|remain)/i.test(plain)
+        && !/^(Avoid a blanket claim|Do not (?:label|promise|claim)|The output must|Model-specific acoustic design is reviewed before publication)\b/i.test(plain);
     })
     .join(' ')
     .trim();
