@@ -50,9 +50,11 @@ const overrides = {
     '08': { study: null },
   },
   'architectural-lighting': {
-    '06': { products: true, photo: 'Installed interface / service detail' },
+    '06': { products: true },
   },
   'motorized-shades': {
+    '07': { photo: 'Opening study / bedroom' },
+    '09': { photo: 'Installed interface / service detail' },
     '06': { study: 'technical' },
     '08': { study: null },
   },
@@ -92,11 +94,11 @@ const frameByPurpose = {
   examples: 'reading',
   interfaces: 'interfaces',
   detail: 'detail',
-  installation: 'reading',
-  pitfalls: 'reading',
+  installation: 'process',
+  pitfalls: 'pitfalls',
   proof: 'quiet',
   investment: 'investment',
-  handoff: 'reading',
+  handoff: 'handoff',
   questions: 'questions',
   inquiry: 'inquiry',
 };
@@ -141,7 +143,7 @@ export function bodyPhoto(slug, purpose) {
 
 export function productsFor(slug) {
   return (catalog[slug]?.products ?? [])
-    .filter((product) => product.status === 'placed')
+    .filter((product) => product.status === 'placed' && !(slug === 'home-intelligence' && product.id === 'asset-8b8986fe09f4'))
     .map((product) => asFigure(product))
     .filter(Boolean);
 }
@@ -154,9 +156,7 @@ export function studyPhotosFor(slug) {
     if (figure) photos[slot.number] = figure;
   }
   const products = Object.fromEntries((catalog[slug]?.products ?? []).map((product) => [product.id, product]));
-  const halo = asFigure(products['asset-421bb68c4038']);
-  const haloTouch = asFigure(products['asset-87c26824f722']);
-  if (halo) photos.halo = halo;
-  if (haloTouch) photos.haloTouch = haloTouch;
+  const touchscreen = asFigure(products['asset-8b8986fe09f4']);
+  if (touchscreen) photos.touchscreen = touchscreen;
   return photos;
 }

@@ -80,7 +80,7 @@ test('composition maps each hub section by purpose', () => {
   const homeRoom = bodyPhoto('home-intelligence', 'Distinct finished room / experience');
   assert.equal(homeRoom?.src, '/images/home-intelligence-asset-fb06409d0dde.webp');
   assert.ok(homeRoom?.alt && homeRoom.title && homeRoom.caption);
-  assert.equal(bodyPhoto('motorized-shades', 'Distinct finished room / experience'), null);
+  assert.match(bodyPhoto('motorized-shades', 'Distinct finished room / experience')?.src, /davg-living-room-sheer/);
   assert.equal(bodyPhoto('home-intelligence', 'Installed interface / service detail'), null);
   assert.ok(productsFor('home-intelligence').length >= 2);
   assert.equal(productsFor('motorized-shades').length, 0);

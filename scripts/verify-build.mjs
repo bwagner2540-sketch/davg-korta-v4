@@ -2,6 +2,7 @@ import { readFile, readdir, access } from 'node:fs/promises';
 import { join } from 'node:path';
 import assert from 'node:assert/strict';
 import { parse } from 'parse5';
+import { hasPublicSection } from '../src/lib/hub-presentation.mjs';
 import { bodyPhoto, productsFor, sectionRole, spatialWords } from '../src/lib/hub-composition.mjs';
 const root='dist-sandbox';
 const attrs=node=>Object.fromEntries((node.attrs||[]).map(a=>[a.name,a.value]));
@@ -36,13 +37,14 @@ for(const file of files){
   const frame=nodes(main,n=>'data-service-frame' in attrs(n))[0];
   assert(frame,`Sticky shell missing in ${file}`);
   assert(nodes(frame,n=>n.tagName==='h1').length===1,`H1 must sit inside the 25/75 shell in ${file}`);
+  const publicSections=hub.sections.filter(section=>{const role=sectionRole(slug,section.id);return hasPublicSection(section,role,role.photo?bodyPhoto(slug,role.photo):null,role.products?productsFor(slug):[]);});
   const groups=nodes(frame,n=>'data-chapter-group' in attrs(n));
-  assert.deepEqual(groups.map(n=>attrs(n).id),hub.sections.map(section=>`s${section.id}`),`Section order ${file}`);
+  assert.deepEqual(groups.map(n=>attrs(n).id),publicSections.map(section=>`s${section.id}`),`Section order ${file}`);
   const aside=nodes(frame,n=>n.tagName==='aside')[0];
   const current=nodes(aside,n=>n.tagName==='a'&&attrs(n)['aria-current']==='page')[0];
   assert(current);const siblings=current.parentNode.childNodes.filter(n=>n.tagName);
   assert.equal(siblings[1].tagName,'ul','Chapter links must be nested beneath the active service');
-  assert.deepEqual(nodes(siblings[1],n=>n.tagName==='a').map(n=>text(n).trim()),hub.sections.map(section=>section.title));
+  assert.deepEqual(nodes(siblings[1],n=>n.tagName==='a').map(n=>text(n).trim()),publicSections.map(section=>section.title));
   for(const img of nodes(main,n=>n.tagName==='img'&&!String(attrs(n).src||'').startsWith('/brand/'))){
    const a=attrs(img);assert(a.alt&&a.width&&a.height&&a.srcset&&a.sizes,`Incomplete responsive image ${a.src}`);assert(await exists(join(root,a.src)));images++;
   }
@@ -52,7 +54,7 @@ for(const file of files){
   assert.equal(words.length,1,`Spatial word count ${file}`);
   assert.equal(text(words[0]).trim(),spatialWords[slug],`Spatial word ${file}`);
   assert.equal(nodes(main,n=>attrs(n)['data-signature-study']==='true').length,1,`Signature study ${file}`);
-  for(const section of hub.sections){
+  for(const section of publicSections){
    const role=sectionRole(slug,section.id);
    const group=groups.find(n=>attrs(n).id===`s${section.id}`);
    assert.equal(attrs(group)['data-surface-role'],role.surface,`Surface ${slug} ${section.id}`);
@@ -69,6 +71,15 @@ for(const file of files){
   assert(frames.has('study')&&frames.has('inquiry')&&frames.has('system')&&frames.has('answer'),`Missing editorial frames in ${file}`);
   assert.equal(nodes(groups[0],n=>attrs(n)['data-hero-bleed']==='true').length,1,`Opening photograph must share the field in ${file}`);
   assert.equal(nodes(main,n=>attrs(n)['data-study-compose']==='split').length,1,`Signature study composition ${file}`);
+  assert(nodes(main,n=>attrs(n)['data-composed-copy']!==undefined).length,`Composed copy missing ${file}`);
+  assert(!text(main).includes('rights unconfirmed'),`Asset review notes visible ${file}`);
+  assert(!text(main).includes('Core lesson:'),`Production label visible ${file}`);
+  assert(!nodes(main,n=>n.tagName==='h2').some(n=>text(n).includes('verify the installed scope')),`Empty proof heading ${file}`);
+  for(const section of publicSections){
+   for(const cell of nodes(parse(section.html),n=>n.tagName==='td'||n.tagName==='th')){
+    assert(text(main).includes(text(cell)),`Lost comparison content ${slug} ${section.id}: ${text(cell)}`);
+   }
+  }
   const ledger=nodes(main,n=>n.tagName==='table');
   if(ledger.length)assert(nodes(main,n=>String(attrs(n).class||'').includes('hub-table')).length>=1,`Ledger wrapper ${file}`);
  }
@@ -83,7 +94,7 @@ const css=await readFile('src/styles/global.css','utf8');assert.match(css,/Schib
 const hubPage=await readFile('src/components/services/hubs/HubPage.astro','utf8');
 assert.doesNotMatch(hubPage,/\.hub-section\s*\{\s*padding:\s*var\(--spacing-section\)/);
 assert.match(hubPage,/hub-frame-opening/);
-assert.match(hubPage,/hub-frame-system :global\(thead th\)/);
+assert.match(await readFile('src/components/services/hubs/SectionBody.astro','utf8'),/data-technical-detail/);
 const metadata=JSON.parse(await readFile('node_modules/@fontsource-variable/schibsted-grotesk/metadata.json','utf8'));
 console.log(`PASS: ${files.length} HTML routes, ${links} local links, ${images} responsive image instances, git-hub copy inside the sticky 25/75 shell, draft SEO exclusion and registered fonts.`);
 console.log(`REMAINING FONT GAP: Schibsted installed range ${metadata.variable.wght.min}–${metadata.variable.wght.max}; true 300 is unavailable.`);

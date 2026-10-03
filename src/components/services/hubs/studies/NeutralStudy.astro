@@ -30,7 +30,7 @@ const { slotId, kicker, heading, lede } = Astro.props;
   font-weight: 400;
   color: var(--color-text-on-paper);
 }
-.neutral-lede { max-width: 62ch; line-height: 1.55; color: var(--color-text-muted-paper); }
-.neutral-visual { min-width: 0; }
-.neutral-visual :global(svg) { display: block; width: 100%; height: auto; }
+.neutral-lede { max-width: 62ch; line-height: 1.55; color: var(--color-text-secondary-paper); }
+.neutral-visual { min-width: 0; overflow-x: auto; }
+.neutral-visual :global(svg) { display: block; width: 100%; min-width: 36rem; height: auto; }
 </style>

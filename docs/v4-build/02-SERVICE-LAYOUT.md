@@ -59,3 +59,16 @@ Surfaces follow `13-SURFACE-COLOR-SYSTEM.md`: hero and inquiry stay Ink, the ope
 Body photographs come from `src/data/hubs/catalog.json` only when `src/data/images.json` has the file and the slot is a selected illustration. Hero slot 01 stays the opening photograph. Missing, withheld, and not-yet-substituted assets are not painted into the body. Studies reuse `HubStudies.astro`, including the shading specimen plates. A section without a matching photograph or study stays editorial type on its own frame. Do not put `--spacing-section` back on every `hub-section`.
 
 The site header is `SiteNav`, from `src/config/navigation.ts`. Home Solutions items are `services` in the order above. Chapter links stay in the rail. The footer service list is `ServiceLinks`, from the same array.
+
+## Visual repair — 3 October 2026
+
+The source index above remains the shell contract. The rendering details below supersede the earlier frame descriptions where they differ:
+
+- `HubPage.astro` keeps the one sticky frame and Git section order. The opening uses its existing photograph across the entire right-column field, with a contrast scrim and a wider headline measure. Answer and moments use opposing text columns; the room image bleeds across the field.
+- `SectionBody.astro` and `src/lib/hub-presentation.mjs` present the existing Git HTML without rewriting its content. A section's primary comparison uses named editorial rows. Additional comparison matrices and long technical explanations are native details disclosures. Their entire contents and links remain in the built HTML. FAQ questions become individually operable disclosures. Installation, pitfalls and handoff use distinct step/list compositions.
+- Section padding follows the composition, rather than reusing the text-gap token for every outside edge. Investment and detail use Stone; the remaining editorial passages remain Paper.
+- A section with only internal project instructions has a hidden reserved anchor, no visible empty heading, and no chapter-menu item. Its source remains in Git for later verified project content.
+- Home Intelligence's study uses the selected wall touchscreen once. The two remotes appear once in the product rail. Lighting uses its installed interface once in the signature study, rather than repeating the opening and room photographs.
+- Shading restores existing solar-fabric and bedroom photographs to sections 03 and 07, plus the manufacturer fascia detail in section 09. The previous `available-not-substituted` state is not used to hide those restored selections. This does not add them as DAVG project proof.
+- Figure captions use the asset title and a short manufacturer/conceptual attribution. Original review notes and rights status remain in the catalog, not visitor copy. The existing publication policy still applies.
+- Global fonts, logo files, routes, copy source and hosting project are unchanged. The old mockups remain exploratory references; this repair does not declare their signature studies accepted.

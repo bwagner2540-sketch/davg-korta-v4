@@ -16,18 +16,18 @@ interface Props {
   placement?: 'inline' | 'bleed' | 'wide' | 'stage' | 'product';
 }
 const { photo, ratio = '16 / 10', loading = 'lazy', sizes = '(min-width: 1024px) 42vw, 100vw', placement = 'inline' } = Astro.props;
+const kind = /conceptual/i.test(photo.caption) ? 'Conceptual study' : 'Manufacturer image';
 ---
 <figure class:list={['hub-figure', `hub-figure-${placement}`]} data-photo-slot={photo.id} data-slot-status="placed" data-hero-bleed={placement === 'bleed' ? 'true' : undefined}>
   <MediaPlaceholder id={photo.id} subject={photo.title} ratio={ratio} src={photo.src} alt={photo.alt} loading={loading} sizes={sizes} fit={photo.fit ?? 'cover'} frame={placement === 'inline' ? undefined : placement} />
   <figcaption>
     <strong>{photo.title}</strong>
-    <span>{photo.caption}</span>
-    <span class="mono-label">Illustration · rights unconfirmed</span>
+    <span>{kind}</span>
   </figcaption>
 </figure>
 <style>
 .hub-figure { display: grid; gap: 0.75rem; margin: 0; min-width: 0; }
-.hub-figure figcaption { display: grid; gap: 0.35rem; max-width: 62ch; color: var(--surface-muted, var(--color-text-muted-dark)); font-size: 0.9375rem; line-height: 1.45; }
+.hub-figure figcaption { display: grid; gap: 0.35rem; max-width: 62ch; color: var(--surface-muted, var(--color-text-muted-dark)); font-size: 0.8125rem; line-height: 1.45; }
 .hub-figure strong { color: var(--surface-fg, inherit); font-weight: 500; }
 .hub-figure-bleed { position: relative; height: 100%; min-height: 22rem; }
 .hub-figure-bleed figcaption {

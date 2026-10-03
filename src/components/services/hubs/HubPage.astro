@@ -3,6 +3,8 @@ import Layout from '../../../layouts/Layout.astro';
 import ServicePageShell from '../../ServicePageShell.astro';
 import InquiryForm from '../../InquiryForm.astro';
 import HubFigure from './HubFigure.astro';
+import SectionBody from './SectionBody.astro';
+import { hasPublicSection } from '../../../lib/hub-presentation.mjs';
 import HubStudies from './studies/HubStudies.astro';
 import { serviceSchema } from '../../../config/schema';
 import { loadGitHub } from '../../../lib/git-hubs.mjs';
@@ -13,7 +15,11 @@ import images from '../../../data/images.json';
 interface Props { slug: string }
 const { slug } = Astro.props;
 const hub = loadGitHub(slug);
-const chapters = hub.sections.map((section) => ({ id: `s${section.id}`, label: section.title }));
+const sectionIsPublic = (section: typeof hub.sections[number]) => {
+  const role = sectionRole(slug, section.id);
+  return hasPublicSection(section, role, role.photo ? bodyPhoto(slug, role.photo) : null, role.products ? productsFor(slug) : []);
+};
+const chapters = hub.sections.filter(sectionIsPublic).map((section) => ({ id: `s${section.id}`, label: section.title }));
 const opening = hub.sections[0];
 const studyPhotos = studyPhotosFor(slug);
 const word = spatialWords[slug];
@@ -36,6 +42,7 @@ const heroReady = Boolean(heroSlot?.src && (images as Record<string, { width: nu
   <main id="service-content" tabindex="-1" data-git-hub={hub.slug} data-design-sandbox={hub.slug}>
     <ServicePageShell currentPath={hub.route} chapters={chapters}>
       {hub.sections.map((section) => {
+        if (!sectionIsPublic(section)) return <span id={`s${section.id}`} hidden data-section-reserved />;
         const role = sectionRole(slug, section.id);
         const photo = role.photo ? bodyPhoto(slug, role.photo) : null;
         const products = role.products ? productsFor(slug) : [];
@@ -60,11 +67,12 @@ const heroReady = Boolean(heroSlot?.src && (images as Record<string, { width: nu
             <h2>{section.headline || section.title}</h2>
             {section.deck && <p class="deck">{section.deck}</p>}
           </header>}
-          {section.html && <div class="hub-prose" set:html={section.html} />}
+          {products.length > 0 && role.frame === 'products' && <div class="product-rail product-opening" data-product-rail><div class="product-grid">{products.map((product) => <HubFigure photo={product} placement="product" sizes="(min-width: 1024px) 28vw, 86vw" />)}</div></div>}
+          {section.html && <div class="hub-prose"><SectionBody html={section.html} frame={role.frame} sectionId={section.id} /></div>}
           {section.support && <p class="deck">{section.support}</p>}
           {photo && <HubFigure photo={photo} sizes="(min-width: 1024px) 70vw, 100vw" placement={photoPlacement} />}
           {role.study && <HubStudies slug={slug} photos={studyPhotos} part={role.study} word={word} />}
-          {products.length > 0 && <div class="product-rail" data-product-rail>
+          {products.length > 0 && role.frame !== 'products' && <div class="product-rail" data-product-rail>
             <p class="section-kicker">Product views</p>
             <div class="product-grid">
               {products.map((product) => <HubFigure photo={product} placement="product" sizes="(min-width: 1024px) 28vw, 86vw" />)}
@@ -79,265 +87,71 @@ const heroReady = Boolean(heroSlot?.src && (images as Record<string, { width: nu
   </main>
 </Layout>
 <style>
-.hub-section { padding: 0; }
-.hub-frame-opening { padding: 0; }
-.hub-frame-answer { padding: var(--spacing-text) var(--page-gutter); }
-.hub-frame-moments { padding: var(--spacing-component) 0 0; }
-.hub-frame-system { padding: var(--spacing-component) var(--page-gutter) 0; }
-.hub-frame-study { padding: 0; }
-.hub-frame-ledger,
-.hub-frame-reading,
-.hub-frame-detail { padding: var(--spacing-text) var(--page-gutter); }
-.hub-frame-quiet { padding: var(--spacing-micro) var(--page-gutter) var(--spacing-text); }
-.hub-frame-comparison,
-.hub-frame-interfaces,
-.hub-frame-products { padding: var(--spacing-component) var(--page-gutter) var(--spacing-text); }
-.hub-frame-investment { padding: clamp(2rem, 4vw, 3.25rem) var(--page-gutter); }
-.hub-frame-questions { padding: var(--spacing-text) var(--page-gutter) var(--spacing-component); }
-.hub-frame-inquiry {
-  padding: clamp(4.5rem, 9vh, 7.25rem) var(--page-gutter) clamp(3rem, 6vh, 5rem);
-}
-.hub-frame-reading + .hub-frame-reading,
-.hub-frame-answer + .hub-frame-moments,
-.hub-frame-ledger + .hub-frame-reading,
-.hub-frame-reading + .hub-frame-questions { border-top: 1px solid var(--color-border-paper); }
-.hub-open {
-  display: grid;
-  grid-template-columns: minmax(16rem, 0.78fr) minmax(0, 1.22fr);
-  gap: 0;
-  align-items: stretch;
-  min-height: min(78vh, 44rem);
-}
-.hub-frame-opening .hub-copy {
-  padding: clamp(2rem, 5vh, 4rem) var(--page-gutter);
-  align-content: center;
-  max-width: 34rem;
-}
-.hub-copy { display: grid; gap: var(--spacing-text); align-content: start; }
-.hub-section h1 {
-  font-size: var(--text-h1);
-  line-height: var(--text-h1--line-height);
-  letter-spacing: var(--text-h1--letter-spacing);
-  font-weight: 400;
-}
-.hub-section h2 {
-  font-size: var(--text-h2);
-  line-height: var(--text-h2--line-height);
-  letter-spacing: var(--text-h2--letter-spacing);
-  font-weight: 400;
-}
-.deck {
-  max-width: var(--measure-body);
-  font-size: var(--text-body-lg);
-  line-height: var(--text-body-lg--line-height);
-  color: var(--surface-muted, var(--color-text-secondary-dark));
-}
-.hub-actions { display: flex; flex-wrap: wrap; gap: var(--spacing-6); margin: 0; }
-.hub-actions a {
-  color: inherit;
-  text-decoration: none;
-  border-bottom: 1px solid var(--surface-border, var(--color-border-dark));
-  padding-bottom: 0.2rem;
-}
-.hub-frame-answer .hub-copy,
-.hub-frame-answer .hub-prose,
-.hub-frame-answer > .deck,
-.hub-frame-moments .hub-copy,
-.hub-frame-moments .hub-prose,
-.hub-frame-moments > .deck,
-.hub-frame-reading .hub-copy,
-.hub-frame-reading .hub-prose,
-.hub-frame-quiet .hub-copy,
-.hub-frame-quiet .hub-prose,
-.hub-frame-study .hub-copy,
-.hub-frame-study .hub-prose { max-width: var(--measure-body); }
-.hub-frame-quiet .hub-copy,
-.hub-frame-quiet .hub-prose { max-width: var(--measure-narrow); }
-.hub-frame-moments .hub-copy,
-.hub-frame-moments .hub-prose,
-.hub-frame-moments > .deck { margin-inline: var(--page-gutter); }
-.hub-frame-study .hub-copy,
-.hub-frame-study .hub-prose,
-.hub-frame-study > .deck {
-  margin-inline: var(--page-gutter);
-  padding-top: var(--spacing-text);
-}
-.hub-frame-study .hub-prose { padding-top: 0; padding-bottom: var(--spacing-text); }
-.hub-frame-system .hub-copy,
-.hub-frame-system .hub-prose :global(p),
-.hub-frame-system .hub-prose :global(h3),
-.hub-frame-system .hub-prose :global(ul),
-.hub-frame-system .hub-prose :global(ol),
-.hub-frame-ledger .hub-copy,
-.hub-frame-ledger .hub-prose :global(p),
-.hub-frame-ledger .hub-prose :global(h3),
-.hub-frame-ledger .hub-prose :global(ul),
-.hub-frame-ledger .hub-prose :global(ol),
-.hub-frame-comparison .hub-prose :global(p),
-.hub-frame-comparison .hub-prose :global(h3) { max-width: var(--measure-body); }
-.hub-frame-system .hub-prose,
-.hub-frame-ledger .hub-prose,
-.hub-frame-comparison .hub-prose { max-width: none; }
-.hub-frame-investment {
-  display: grid;
-  grid-template-columns: minmax(14rem, 0.7fr) minmax(0, 1.3fr);
-  column-gap: var(--spacing-component);
-  align-items: start;
-}
-.hub-frame-investment .hub-copy { grid-column: 1; }
-.hub-frame-investment .hub-prose,
-.hub-frame-investment > .deck { grid-column: 2; max-width: none; }
-.hub-frame-investment .hub-prose :global(p),
-.hub-frame-investment .hub-prose :global(li) { max-width: var(--measure-wide); }
-.hub-frame-inquiry {
-  display: grid;
-  grid-template-columns: minmax(0, 0.82fr) minmax(18rem, 1.18fr);
-  column-gap: clamp(1.5rem, 3vw, 3.5rem);
-  align-items: end;
-}
-.hub-frame-inquiry .hub-copy,
-.hub-frame-inquiry .hub-prose,
-.hub-frame-inquiry > .deck { grid-column: 1; max-width: 28rem; }
-.hub-frame-inquiry h2 { max-width: 14ch; font-size: clamp(2.4rem, 3.4vw, 3.5rem); }
-.hub-frame-inquiry .hub-inquiry { grid-column: 2; grid-row: 1 / span 4; margin-top: 0; align-self: end; }
-.hub-frame-inquiry :global(.inquiry) { max-width: none; margin-top: 0; }
-.hub-frame-interfaces[data-stage],
-.hub-frame-comparison[data-stage] {
-  display: grid;
-  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
-  column-gap: var(--spacing-component);
-  align-items: end;
-}
-.hub-frame-interfaces .hub-copy,
-.hub-frame-comparison .hub-copy { grid-column: 1; max-width: 22rem; }
-.hub-frame-interfaces .hub-prose,
-.hub-frame-comparison .hub-prose,
-.hub-frame-interfaces .product-rail,
-.hub-frame-comparison .product-rail { grid-column: 1 / -1; }
-.hub-frame-interfaces :global(.hub-figure-stage),
-.hub-frame-comparison :global(.hub-figure-stage) { grid-column: 2; grid-row: 1 / span 2; margin: 0; align-self: stretch; }
-.hub-prose { max-width: var(--measure-wide); margin-top: var(--spacing-text); }
-.hub-prose :global(p),
-.hub-prose :global(li) {
-  max-width: var(--measure-body);
-  font-size: var(--text-body);
-  line-height: var(--text-body--line-height);
-}
-.hub-prose :global(p + p),
-.hub-prose :global(h3),
-.hub-prose :global(ul),
-.hub-prose :global(ol),
-.hub-prose :global(.hub-table) { margin-top: var(--spacing-text); }
-.hub-prose :global(h3) {
-  max-width: 28ch;
-  font-size: var(--text-h3);
-  line-height: var(--text-h3--line-height);
-  letter-spacing: var(--text-h3--letter-spacing);
-  font-weight: 400;
-}
-.hub-prose :global(a) { color: inherit; text-underline-offset: 0.18em; }
-.hub-prose :global(ul),
-.hub-prose :global(ol) { padding-left: 1.2rem; }
-.hub-prose :global(li + li) { margin-top: 0.45rem; }
-.hub-prose :global(.hub-table) { overflow-x: auto; max-width: 100%; }
-.hub-prose :global(table) { border-collapse: collapse; width: 100%; min-width: 0; text-align: left; }
-.hub-prose :global(th),
-.hub-prose :global(td) {
-  padding: 0.85rem 1.1rem 0.85rem 0;
-  border-bottom: 1px solid var(--surface-border, var(--color-border-dark));
-  vertical-align: top;
-  line-height: 1.4;
-  font-size: 0.875rem;
-}
-.hub-frame-system :global(.hub-table),
-.hub-frame-ledger :global(.hub-table),
-.hub-frame-comparison :global(.hub-table) {
-  overflow-x: auto;
-  max-width: none;
-  margin-inline: calc(var(--page-gutter) * -1);
-  padding-inline: var(--page-gutter);
-}
-.hub-frame-system :global(table),
-.hub-frame-ledger :global(table),
-.hub-frame-comparison :global(table) {
-  width: max(100%, 44rem);
-  min-width: 44rem;
-}
-.hub-frame-system :global(thead th),
-.hub-frame-ledger :global(thead th),
-.hub-frame-comparison :global(thead th) {
-  padding: 0.7rem 1.25rem 0.65rem 0;
-  border-bottom: 1px solid var(--color-rule-accent);
-  font-family: var(--font-mono);
-  font-size: var(--text-mono);
-  font-weight: 500;
-  letter-spacing: var(--text-mono--letter-spacing);
-  line-height: var(--text-mono--line-height);
-  text-transform: uppercase;
-  color: var(--color-text-tertiary-dark);
-}
-.hub-frame-ledger :global(thead th),
-.hub-frame-comparison :global(thead th) { color: var(--color-text-secondary-paper); }
-.hub-frame-system :global(tbody th),
-.hub-frame-ledger :global(tbody th),
-.hub-frame-comparison :global(tbody th) {
-  font-family: var(--font-body);
-  font-size: 0.9375rem;
-  font-weight: 500;
-  letter-spacing: 0;
-  text-transform: none;
-  color: var(--surface-fg);
-}
-.hub-frame-questions .hub-prose :global(h3) {
-  max-width: none;
-  margin-top: var(--spacing-text);
-  padding-top: var(--spacing-text);
-  border-top: 1px solid var(--color-border-paper);
-}
-.hub-frame-moments :global(.hub-figure-wide) { margin: var(--spacing-text) 0 0; }
-.product-rail { margin-top: var(--spacing-component); display: grid; gap: var(--spacing-text); }
-.product-grid {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  gap: var(--spacing-text) var(--spacing-component);
-}
-.product-grid :global(.hub-figure) { flex: 1 1 14rem; }
-.product-grid :global(.hub-figure:first-child) { flex: 1.45 1 18rem; }
-.hub-inquiry { margin-top: var(--spacing-component); }
-.skip-link {
-  position: fixed;
-  top: 0.75rem;
-  left: 0.75rem;
-  z-index: 100;
-  padding: 0.8rem;
-  background: var(--color-surface-paper);
-  color: var(--color-text-on-paper);
-  transform: translateY(-150%);
-}
+.hub-section { min-width: 0; padding: 0; scroll-margin-top: 1rem; }
+.hub-copy { display: grid; gap: 1rem; align-content: start; min-width: 0; }
+.hub-section h1 { font-size: var(--text-h1); line-height: var(--text-h1--line-height); letter-spacing: var(--text-h1--letter-spacing); font-weight: 400; }
+.hub-section h2 { font-size: var(--text-h2); line-height: var(--text-h2--line-height); letter-spacing: var(--text-h2--letter-spacing); font-weight: 400; max-width: 25ch; }
+.deck { max-width: 54ch; font-size: var(--text-body-lg); line-height: 1.55; color: var(--surface-muted); }
+.hub-prose { min-width: 0; }
+.hub-open { position: relative; isolation: isolate; display: grid; align-items: end; min-height: clamp(36rem, 78vh, 48rem); background: var(--color-surface-ink); }
+.hub-open::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgb(9 11 10 / 92%) 0%, rgb(9 11 10 / 76%) 38%, rgb(9 11 10 / 15%) 80%), linear-gradient(0deg, rgb(9 11 10 / 55%), transparent 40%); pointer-events: none; }
+.hub-open :global(.hub-figure-bleed) { position: absolute; inset: 0; z-index: -2; }
+.hub-frame-opening .hub-copy { width: min(100%, 40rem); box-sizing: border-box; padding: 5rem var(--page-gutter) 5rem; gap: 1.75rem; }
+.hub-frame-opening h1 { max-width: 13ch; }
+.hub-frame-opening .deck { max-width: 34ch; color: var(--color-text-primary-dark); }
+.hub-open :global(.hub-figure-bleed figcaption) { left: auto; width: min(28%, 17rem); background: none; font-size: .75rem; padding: 1rem; }
+.hub-actions { display: flex; flex-wrap: wrap; gap: 1.25rem 2rem; }
+.hub-actions a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--surface-border); padding-bottom: .4rem; }
+.hub-frame-answer { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 3rem; padding: clamp(3rem, 5vw, 5rem) var(--page-gutter); }
+.hub-frame-answer .hub-prose { padding-top: 1.8rem; }
+.hub-frame-moments { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 2rem 3rem; padding-top: clamp(3rem, 5vw, 5rem); }
+.hub-frame-moments .hub-copy { margin-left: var(--page-gutter); }
+.hub-frame-moments .hub-prose { margin-right: var(--page-gutter); }
+.hub-frame-moments :global(.hub-figure-wide) { grid-column: 1 / -1; margin: 1rem 0 0; }
+.hub-frame-moments :global(figcaption) { padding: 0 var(--page-gutter) 1.5rem; }
+.hub-frame-system { display: grid; gap: 2.5rem; padding: clamp(3rem, 5vw, 5rem) var(--page-gutter) 0; }
+.hub-frame-system .hub-copy { max-width: 36rem; }
+.hub-frame-system :global(.neutral-study) { margin-top: 0; }
+.hub-frame-study > .hub-copy { padding: 3rem var(--page-gutter) 0; }
+.hub-frame-study > .hub-prose { padding: 1.5rem var(--page-gutter) 3rem; max-width: 64ch; }
+.hub-frame-ledger, .hub-frame-comparison, .hub-frame-products, .hub-frame-interfaces { display: grid; gap: 2.5rem; padding: clamp(3.5rem, 6vw, 6rem) var(--page-gutter); }
+.hub-frame-comparison[data-stage], .hub-frame-interfaces[data-stage] { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 2.5rem; }
+.hub-frame-comparison[data-stage] > .hub-copy, .hub-frame-interfaces[data-stage] > .hub-copy { align-self: center; }
+.hub-frame-comparison[data-stage] > .hub-prose, .hub-frame-interfaces[data-stage] > .hub-prose { grid-column: 1 / -1; }
+.hub-frame-comparison :global(.hub-figure-stage), .hub-frame-interfaces :global(.hub-figure-stage) { grid-column: 2; grid-row: 1; }
+.hub-frame-detail { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2rem 3rem; padding: 3.5rem var(--page-gutter); border-top: 1px solid var(--color-border-paper); background: var(--color-surface-stone); }
+.hub-frame-detail :global(.neutral-study) { grid-column: 1 / -1; margin-top: 0; }
+.hub-frame-process, .hub-frame-pitfalls, .hub-frame-handoff, .hub-frame-reading, .hub-frame-quiet { display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); gap: 2rem 3rem; padding: clamp(3rem, 5vw, 5rem) var(--page-gutter); border-top: 1px solid var(--color-border-paper); }
+.hub-frame-process:has(.hub-figure) { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.hub-frame-process:has(.hub-figure) .hub-prose { grid-column: 1 / -1; }
+.hub-frame-process :global(.hub-figure) { grid-column: 2; grid-row: 1; }
+.hub-frame-process .hub-copy, .hub-frame-pitfalls .hub-copy, .hub-frame-handoff .hub-copy { align-self: start; }
+.hub-frame-investment { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 3rem; padding: clamp(3rem, 5vw, 5rem) var(--page-gutter); }
+.hub-frame-questions { display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); gap: 3rem; padding: clamp(3rem, 5vw, 5rem) var(--page-gutter); border-top: 1px solid var(--color-border-paper); }
+.hub-frame-inquiry { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); gap: 2rem 3rem; padding: clamp(4.5rem, 9vh, 7.25rem) var(--page-gutter); }
+.hub-frame-inquiry .hub-copy, .hub-frame-inquiry .hub-prose, .hub-frame-inquiry > .deck { grid-column: 1; }
+.hub-frame-inquiry .hub-inquiry { grid-column: 2; grid-row: 1 / span 3; }
+.hub-frame-inquiry :global(.inquiry) { margin: 0; max-width: none; }
+.product-rail { min-width: 0; display: grid; gap: 1rem; }
+.product-opening { grid-row: 2; }
+.product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: 1.5rem; align-items: end; }
+.product-grid :global(.hub-figure) { min-width: 0; }
+.product-grid :global(.media-slot[data-frame="product"]) { aspect-ratio: 4/3; max-height: 22rem; }
+.skip-link { position: fixed; top: .75rem; left: .75rem; z-index: 100; padding: .8rem; background: var(--color-surface-paper); color: var(--color-text-on-paper); transform: translateY(-150%); }
 .skip-link:focus { transform: none; }
 :focus-visible { outline: 2px solid var(--color-accent-signal); outline-offset: 4px; }
-@media (max-width: 1023px) {
-  .hub-open,
-  .product-grid,
-  .hub-frame-investment,
-  .hub-frame-inquiry,
-  .hub-frame-interfaces,
-  .hub-frame-comparison { grid-template-columns: 1fr; }
-  .hub-open { min-height: 0; }
-  .hub-frame-opening .hub-copy { padding: var(--spacing-component) var(--page-gutter); }
-  .hub-frame-opening :global(.hub-figure-bleed) { min-height: 16rem; height: 68vw; }
-  .hub-frame-inquiry .hub-copy,
-  .hub-frame-inquiry .hub-prose,
-  .hub-frame-inquiry > .deck,
-  .hub-frame-inquiry .hub-inquiry,
-  .hub-frame-investment .hub-copy,
-  .hub-frame-investment .hub-prose,
-  .hub-frame-interfaces :global(.hub-figure-stage),
-  .hub-frame-comparison :global(.hub-figure-stage) { grid-column: 1; grid-row: auto; }
-  .hub-frame-inquiry { padding: var(--spacing-component) var(--page-gutter) var(--spacing-text); }
-  .product-grid { display: grid; }
-  .product-grid :global(.hub-figure),
-  .product-grid :global(.hub-figure:first-child) { flex: none; }
+@media (max-width: 1100px) {
+ .hub-frame-process, .hub-frame-pitfalls, .hub-frame-handoff, .hub-frame-questions { grid-template-columns: 1fr; }
+}
+@media (max-width: 700px) {
+ .hub-open { min-height: 38rem; }
+ .hub-frame-opening .hub-copy { width: 100%; padding: 4rem var(--page-gutter); }
+ .hub-open :global(.hub-figure-bleed figcaption) { display: none; }
+ .hub-open::after { background: linear-gradient(90deg, rgb(9 11 10 / 90%), rgb(9 11 10 / 48%)); }
+ .hub-frame-answer, .hub-frame-moments, .hub-frame-investment, .hub-frame-detail, .hub-frame-inquiry, .hub-frame-comparison[data-stage], .hub-frame-interfaces[data-stage], .hub-frame-process:has(.hub-figure) { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; }
+ .hub-frame-moments .hub-copy, .hub-frame-moments .hub-prose { margin-inline: var(--page-gutter); }
+ .hub-frame-answer .hub-prose { padding-top: 0; }
+ .hub-frame-inquiry .hub-copy, .hub-frame-inquiry .hub-prose, .hub-frame-inquiry > .deck, .hub-frame-inquiry .hub-inquiry, .hub-frame-comparison :global(.hub-figure-stage), .hub-frame-interfaces :global(.hub-figure-stage), .hub-frame-process :global(.hub-figure) { grid-column: 1; grid-row: auto; }
+ .hub-frame-comparison :global(.hub-figure-stage), .hub-frame-interfaces :global(.hub-figure-stage) { grid-row: 2; }
 }
 </style>
