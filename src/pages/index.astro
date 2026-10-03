@@ -1,14 +1,17 @@
 ---
+import process from 'node:process';
 import '../styles/global.css';
 import SeoHead from '../components/SeoHead.astro';
 import SiteNav from '../components/SiteNav.astro';
 import ServiceLinks from '../components/ServiceLinks.astro';
+const revision = process.env.DAVG_REVISION || '';
 ---
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {revision && <meta name="davg-revision" content={revision} />}
   <title>DAVG — Architectural AV and Home Intelligence, Colorado</title>
   <meta name="description" content="DAVG is a residential integration firm designing architectural AV, lighting, shade, and home intelligence across South Metro Denver. Lutron Certified HomeWorks Integrator. Control4 Platinum Dealer. CEDIA Member. Since 2013." />
 

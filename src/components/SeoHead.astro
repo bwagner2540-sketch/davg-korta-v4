@@ -13,6 +13,7 @@ const json = JSON.stringify({ '@context': 'https://schema.org', '@graph': schema
 <title>{title}</title>
 <meta name="description" content={description} />
 <meta name="robots" content={published ? 'index, follow, max-image-preview:large' : 'noindex, nofollow'} />
+{process.env.DAVG_REVISION && <meta name="davg-revision" content={process.env.DAVG_REVISION} />}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 {published && <>
   <link rel="canonical" href={canonical} />
