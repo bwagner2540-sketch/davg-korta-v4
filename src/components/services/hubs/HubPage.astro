@@ -42,7 +42,8 @@ const heroReady = Boolean(heroSlot?.src && (images as Record<string, { width: nu
         const tone = paperSurfaces.has(role.surface)
           ? '--surface-fg: var(--color-text-on-paper); --surface-muted: var(--color-text-secondary-paper); --surface-border: var(--color-border-paper);'
           : '--surface-fg: var(--color-text-on-dark); --surface-muted: var(--color-text-secondary-dark); --surface-border: var(--color-border-dark);';
-        return <section id={`s${section.id}`} data-chapter-group data-surface-role={role.surface} data-section-purpose={role.purpose} class:list={['hub-section', surfaceClass[role.surface], { 'hub-section-open': section.id === '01' }]} style={tone}>
+        const photoPlacement = role.frame === 'moments' ? 'wide' : role.frame === 'interfaces' || role.frame === 'comparison' ? 'stage' : 'inline';
+        return <section id={`s${section.id}`} data-chapter-group data-surface-role={role.surface} data-section-purpose={role.purpose} data-section-frame={role.frame} data-stage={photo && photoPlacement === 'stage' ? 'true' : undefined} class:list={['hub-section', `hub-frame-${role.frame}`, surfaceClass[role.surface]]} style={tone}>
           {section.id === '01' ? <div class="hub-open">
             <div class="hub-copy">
               <p class="section-kicker">{hub.name}</p>
@@ -53,7 +54,7 @@ const heroReady = Boolean(heroSlot?.src && (images as Record<string, { width: nu
                 {opening.secondary && <a href="#s02">{opening.secondary}</a>}
               </p>
             </div>
-            {heroReady && heroSlot?.src && <HubFigure photo={{ id: heroSlot.id, src: heroSlot.src, alt: heroSlot.alt as string, title: heroSlot.title as string, caption: heroSlot.caption as string, fit: heroSlot.fit }} loading="eager" sizes="(min-width: 1024px) 42vw, 100vw" />}
+            {heroReady && heroSlot?.src && <HubFigure photo={{ id: heroSlot.id, src: heroSlot.src, alt: heroSlot.alt as string, title: heroSlot.title as string, caption: heroSlot.caption as string, fit: heroSlot.fit }} loading="eager" sizes="(min-width: 1024px) 58vw, 100vw" placement="bleed" />}
           </div> : <header class="hub-copy">
             <p class="section-kicker">{section.id}</p>
             <h2>{section.headline || section.title}</h2>
@@ -61,12 +62,12 @@ const heroReady = Boolean(heroSlot?.src && (images as Record<string, { width: nu
           </header>}
           {section.html && <div class="hub-prose" set:html={section.html} />}
           {section.support && <p class="deck">{section.support}</p>}
-          {photo && <HubFigure photo={photo} sizes="(min-width: 1024px) 60vw, 100vw" />}
+          {photo && <HubFigure photo={photo} sizes="(min-width: 1024px) 70vw, 100vw" placement={photoPlacement} />}
           {role.study && <HubStudies slug={slug} photos={studyPhotos} part={role.study} word={word} />}
           {products.length > 0 && <div class="product-rail" data-product-rail>
-            <h3>Product views</h3>
+            <p class="section-kicker">Product views</p>
             <div class="product-grid">
-              {products.map((product) => <HubFigure photo={product} ratio={product.fit === 'contain' ? '1 / 1' : '16 / 10'} sizes="(min-width: 1024px) 18vw, 80vw" />)}
+              {products.map((product) => <HubFigure photo={product} placement="product" sizes="(min-width: 1024px) 28vw, 86vw" />)}
             </div>
           </div>}
           {section.id === '15' && <div class="hub-inquiry" id="inquiry">
@@ -78,19 +79,41 @@ const heroReady = Boolean(heroSlot?.src && (images as Record<string, { width: nu
   </main>
 </Layout>
 <style>
-.hub-section {
-  padding: var(--spacing-section) var(--page-gutter);
+.hub-section { padding: 0; }
+.hub-frame-opening { padding: 0; }
+.hub-frame-answer { padding: var(--spacing-text) var(--page-gutter); }
+.hub-frame-moments { padding: var(--spacing-component) 0 0; }
+.hub-frame-system { padding: var(--spacing-component) var(--page-gutter) 0; }
+.hub-frame-study { padding: 0; }
+.hub-frame-ledger,
+.hub-frame-reading,
+.hub-frame-detail { padding: var(--spacing-text) var(--page-gutter); }
+.hub-frame-quiet { padding: var(--spacing-micro) var(--page-gutter) var(--spacing-text); }
+.hub-frame-comparison,
+.hub-frame-interfaces,
+.hub-frame-products { padding: var(--spacing-component) var(--page-gutter) var(--spacing-text); }
+.hub-frame-investment { padding: clamp(2rem, 4vw, 3.25rem) var(--page-gutter); }
+.hub-frame-questions { padding: var(--spacing-text) var(--page-gutter) var(--spacing-component); }
+.hub-frame-inquiry {
+  padding: clamp(4.5rem, 9vh, 7.25rem) var(--page-gutter) clamp(3rem, 6vh, 5rem);
 }
-.hub-section + .hub-section {
-  border-top: 1px solid var(--surface-border, var(--color-border-dark));
-}
+.hub-frame-reading + .hub-frame-reading,
+.hub-frame-answer + .hub-frame-moments,
+.hub-frame-ledger + .hub-frame-reading,
+.hub-frame-reading + .hub-frame-questions { border-top: 1px solid var(--color-border-paper); }
 .hub-open {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
-  gap: var(--spacing-component);
-  align-items: end;
+  grid-template-columns: minmax(16rem, 0.78fr) minmax(0, 1.22fr);
+  gap: 0;
+  align-items: stretch;
+  min-height: min(78vh, 44rem);
 }
-.hub-copy { display: grid; gap: var(--spacing-text); align-content: end; }
+.hub-frame-opening .hub-copy {
+  padding: clamp(2rem, 5vh, 4rem) var(--page-gutter);
+  align-content: center;
+  max-width: 34rem;
+}
+.hub-copy { display: grid; gap: var(--spacing-text); align-content: start; }
 .hub-section h1 {
   font-size: var(--text-h1);
   line-height: var(--text-h1--line-height);
@@ -116,6 +139,83 @@ const heroReady = Boolean(heroSlot?.src && (images as Record<string, { width: nu
   border-bottom: 1px solid var(--surface-border, var(--color-border-dark));
   padding-bottom: 0.2rem;
 }
+.hub-frame-answer .hub-copy,
+.hub-frame-answer .hub-prose,
+.hub-frame-answer > .deck,
+.hub-frame-moments .hub-copy,
+.hub-frame-moments .hub-prose,
+.hub-frame-moments > .deck,
+.hub-frame-reading .hub-copy,
+.hub-frame-reading .hub-prose,
+.hub-frame-quiet .hub-copy,
+.hub-frame-quiet .hub-prose,
+.hub-frame-study .hub-copy,
+.hub-frame-study .hub-prose { max-width: var(--measure-body); }
+.hub-frame-quiet .hub-copy,
+.hub-frame-quiet .hub-prose { max-width: var(--measure-narrow); }
+.hub-frame-moments .hub-copy,
+.hub-frame-moments .hub-prose,
+.hub-frame-moments > .deck { margin-inline: var(--page-gutter); }
+.hub-frame-study .hub-copy,
+.hub-frame-study .hub-prose,
+.hub-frame-study > .deck {
+  margin-inline: var(--page-gutter);
+  padding-top: var(--spacing-text);
+}
+.hub-frame-study .hub-prose { padding-top: 0; padding-bottom: var(--spacing-text); }
+.hub-frame-system .hub-copy,
+.hub-frame-system .hub-prose :global(p),
+.hub-frame-system .hub-prose :global(h3),
+.hub-frame-system .hub-prose :global(ul),
+.hub-frame-system .hub-prose :global(ol),
+.hub-frame-ledger .hub-copy,
+.hub-frame-ledger .hub-prose :global(p),
+.hub-frame-ledger .hub-prose :global(h3),
+.hub-frame-ledger .hub-prose :global(ul),
+.hub-frame-ledger .hub-prose :global(ol),
+.hub-frame-comparison .hub-prose :global(p),
+.hub-frame-comparison .hub-prose :global(h3) { max-width: var(--measure-body); }
+.hub-frame-system .hub-prose,
+.hub-frame-ledger .hub-prose,
+.hub-frame-comparison .hub-prose { max-width: none; }
+.hub-frame-investment {
+  display: grid;
+  grid-template-columns: minmax(14rem, 0.7fr) minmax(0, 1.3fr);
+  column-gap: var(--spacing-component);
+  align-items: start;
+}
+.hub-frame-investment .hub-copy { grid-column: 1; }
+.hub-frame-investment .hub-prose,
+.hub-frame-investment > .deck { grid-column: 2; max-width: none; }
+.hub-frame-investment .hub-prose :global(p),
+.hub-frame-investment .hub-prose :global(li) { max-width: var(--measure-wide); }
+.hub-frame-inquiry {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(18rem, 1.18fr);
+  column-gap: clamp(1.5rem, 3vw, 3.5rem);
+  align-items: end;
+}
+.hub-frame-inquiry .hub-copy,
+.hub-frame-inquiry .hub-prose,
+.hub-frame-inquiry > .deck { grid-column: 1; max-width: 28rem; }
+.hub-frame-inquiry h2 { max-width: 14ch; font-size: clamp(2.4rem, 3.4vw, 3.5rem); }
+.hub-frame-inquiry .hub-inquiry { grid-column: 2; grid-row: 1 / span 4; margin-top: 0; align-self: end; }
+.hub-frame-inquiry :global(.inquiry) { max-width: none; margin-top: 0; }
+.hub-frame-interfaces[data-stage],
+.hub-frame-comparison[data-stage] {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  column-gap: var(--spacing-component);
+  align-items: end;
+}
+.hub-frame-interfaces .hub-copy,
+.hub-frame-comparison .hub-copy { grid-column: 1; max-width: 22rem; }
+.hub-frame-interfaces .hub-prose,
+.hub-frame-comparison .hub-prose,
+.hub-frame-interfaces .product-rail,
+.hub-frame-comparison .product-rail { grid-column: 1 / -1; }
+.hub-frame-interfaces :global(.hub-figure-stage),
+.hub-frame-comparison :global(.hub-figure-stage) { grid-column: 2; grid-row: 1 / span 2; margin: 0; align-self: stretch; }
 .hub-prose { max-width: var(--measure-wide); margin-top: var(--spacing-text); }
 .hub-prose :global(p),
 .hub-prose :global(li) {
@@ -140,24 +240,70 @@ const heroReady = Boolean(heroSlot?.src && (images as Record<string, { width: nu
 .hub-prose :global(ol) { padding-left: 1.2rem; }
 .hub-prose :global(li + li) { margin-top: 0.45rem; }
 .hub-prose :global(.hub-table) { overflow-x: auto; max-width: 100%; }
-.hub-prose :global(table) { border-collapse: collapse; width: 100%; min-width: 36rem; text-align: left; }
+.hub-prose :global(table) { border-collapse: collapse; width: 100%; min-width: 0; text-align: left; }
 .hub-prose :global(th),
 .hub-prose :global(td) {
-  padding: 0.9rem 0.8rem;
+  padding: 0.85rem 1.1rem 0.85rem 0;
   border-bottom: 1px solid var(--surface-border, var(--color-border-dark));
   vertical-align: top;
-  line-height: 1.45;
+  line-height: 1.4;
+  font-size: 0.875rem;
+}
+.hub-frame-system :global(.hub-table),
+.hub-frame-ledger :global(.hub-table),
+.hub-frame-comparison :global(.hub-table) {
+  overflow-x: auto;
+  max-width: none;
+  margin-inline: calc(var(--page-gutter) * -1);
+  padding-inline: var(--page-gutter);
+}
+.hub-frame-system :global(table),
+.hub-frame-ledger :global(table),
+.hub-frame-comparison :global(table) {
+  width: max(100%, 44rem);
+  min-width: 44rem;
+}
+.hub-frame-system :global(thead th),
+.hub-frame-ledger :global(thead th),
+.hub-frame-comparison :global(thead th) {
+  padding: 0.7rem 1.25rem 0.65rem 0;
+  border-bottom: 1px solid var(--color-rule-accent);
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  font-weight: 500;
+  letter-spacing: var(--text-mono--letter-spacing);
+  line-height: var(--text-mono--line-height);
+  text-transform: uppercase;
+  color: var(--color-text-tertiary-dark);
+}
+.hub-frame-ledger :global(thead th),
+.hub-frame-comparison :global(thead th) { color: var(--color-text-secondary-paper); }
+.hub-frame-system :global(tbody th),
+.hub-frame-ledger :global(tbody th),
+.hub-frame-comparison :global(tbody th) {
+  font-family: var(--font-body);
   font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--surface-fg);
 }
-.hub-section :global(.hub-figure) { margin-top: var(--spacing-component); }
+.hub-frame-questions .hub-prose :global(h3) {
+  max-width: none;
+  margin-top: var(--spacing-text);
+  padding-top: var(--spacing-text);
+  border-top: 1px solid var(--color-border-paper);
+}
+.hub-frame-moments :global(.hub-figure-wide) { margin: var(--spacing-text) 0 0; }
 .product-rail { margin-top: var(--spacing-component); display: grid; gap: var(--spacing-text); }
-.product-rail h3 {
-  font-size: var(--text-h3);
-  line-height: var(--text-h3--line-height);
-  letter-spacing: var(--text-h3--letter-spacing);
-  font-weight: 400;
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--spacing-text) var(--spacing-component);
 }
-.product-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--spacing-text); }
+.product-grid :global(.hub-figure) { flex: 1 1 14rem; }
+.product-grid :global(.hub-figure:first-child) { flex: 1.45 1 18rem; }
 .hub-inquiry { margin-top: var(--spacing-component); }
 .skip-link {
   position: fixed;
@@ -172,6 +318,26 @@ const heroReady = Boolean(heroSlot?.src && (images as Record<string, { width: nu
 .skip-link:focus { transform: none; }
 :focus-visible { outline: 2px solid var(--color-accent-signal); outline-offset: 4px; }
 @media (max-width: 1023px) {
-  .hub-open, .product-grid { grid-template-columns: 1fr; }
+  .hub-open,
+  .product-grid,
+  .hub-frame-investment,
+  .hub-frame-inquiry,
+  .hub-frame-interfaces,
+  .hub-frame-comparison { grid-template-columns: 1fr; }
+  .hub-open { min-height: 0; }
+  .hub-frame-opening .hub-copy { padding: var(--spacing-component) var(--page-gutter); }
+  .hub-frame-opening :global(.hub-figure-bleed) { min-height: 16rem; height: 68vw; }
+  .hub-frame-inquiry .hub-copy,
+  .hub-frame-inquiry .hub-prose,
+  .hub-frame-inquiry > .deck,
+  .hub-frame-inquiry .hub-inquiry,
+  .hub-frame-investment .hub-copy,
+  .hub-frame-investment .hub-prose,
+  .hub-frame-interfaces :global(.hub-figure-stage),
+  .hub-frame-comparison :global(.hub-figure-stage) { grid-column: 1; grid-row: auto; }
+  .hub-frame-inquiry { padding: var(--spacing-component) var(--page-gutter) var(--spacing-text); }
+  .product-grid { display: grid; }
+  .product-grid :global(.hub-figure),
+  .product-grid :global(.hub-figure:first-child) { flex: none; }
 }
 </style>

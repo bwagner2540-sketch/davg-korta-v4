@@ -7,7 +7,7 @@ This section is the current record. The logs below it are history from earlier p
 - Source index: `docs/v4-build/00-START-HERE.md`. Contract: `11-SYNC-CONTRACT.md`.
 - Public copy: `docs/v4-build/hubs/DAVG-V4-Hub-*.md`, loaded only by `src/lib/git-hubs.mjs`.
 - Frame: `src/components/ServicePageShell.astro`. Renderer: `src/components/services/hubs/HubPage.astro`. Section presentation: `src/lib/hub-composition.mjs` (surfaces, studies, catalog photographs, product rows). Routes: `/solutions/<slug>/` and the `/systems/<slug>/` alias.
-- Tokens: `src/styles/global.css`. Fonts implemented: Schibsted Grotesk 400–900, Instrument Sans, JetBrains Mono. Live gutter implemented: `--page-gutter` 1.5rem / 3rem / 4rem. `--spacing-page-inline` aliases `--page-gutter`.
+- Tokens: `src/styles/global.css`. Fonts implemented: Schibsted Grotesk 400–900, Instrument Sans, JetBrains Mono. Live gutter implemented: `--page-gutter` 1.5rem / 3rem / 4rem. `--spacing-page-inline` aliases `--page-gutter`. Section rhythm is role-based. `--spacing-section` is one step on the scale, not the padding of every hub section.
 - Historical packs: `archive/davg-history/`. Not implementation authority. See that README for original paths.
 - Deployment configuration: `wrangler.toml` name `davg-korta-v4`, assets `./dist`, build command `node scripts/assert-production.mjs`. Production domain `davg.ai` is the existing coming-soon target. This file does not claim a production deploy.
 - Publication: `src/config/publication.json` `approvedPages` is empty. `npm run build` is expected to stop. Sandbox output is `dist-sandbox/` via `npm run build:sandbox`.
@@ -16,16 +16,24 @@ This section is the current record. The logs below it are history from earlier p
 | Topic | Status |
 |---|---|
 | Git hubs as public copy, sticky Forest 25/75 shell, `/solutions/` routes | Implemented. Verified on the local server before this cleanup. |
-| Layout tokens (H1 64px at 1440 and 40px at 390, gutters 64px and 24px, section padding 86.4px and 48px) | Implemented in `src/styles/global.css` and the hub/home styles. Re-checked after this cleanup in the task log below. |
+| Layout tokens (H1 64px at 1440 and 40px at 390, gutters 64px and 24px) | Implemented in `src/styles/global.css`. The spacing tokens are a scale. Identical section padding is not the layout. |
 | Collections, MDX, and JSON as the public copy (`10`) | Proposed. Do not migrate. |
 | Shading briefs 08 and 09 chapter maps | Historical. Not applied over the git hub. |
 | GBB additions | Pending. Not applied by this cleanup. Wording already in a git hub stays there. |
 | Surface roles in `13` beyond the Forest rail | Implemented on the eight hubs. Paper for the opening answer and ordinary reading, Charcoal for system layers, Stone for investment, Ink for hero and inquiry. The signature study is the Forest-to-Ink passage. |
+| Editorial frames (opening bleed, answer measure, system ledger, signature study, product scale, inquiry close) | Implemented in `hub-composition.mjs` and `HubPage.astro`. See the task log for what was verified. |
 | Public phone, cleared project proof, inquiry destination | Pending in `05-BUSINESS-FACTS.md`. |
 | Production release | Not authorized. `approvedPages` is empty. |
 | Workers branch preview for `cursor/git-hub-source-13db` | See the latest task log. A push is not a verified preview. |
 
 The September and early October logs below recorded older owners (JSON drafts, document 09 as the shading map, IBM Plex as an open font question, branch `main`). Those statements are superseded by this section.
+
+## Task log — 3 October 2026 editorial frames
+- Date/task: Replace the repeated hub-section padding with a frame per section role. Copy stays in the git hubs. The uniform loop from `080a0b3` is not the layout.
+- Decision: implemented. `sectionRole()` now returns `frame`. `HubPage.astro` renders `data-section-frame` and `hub-frame-*`. Opening padding is 0 and the hero photograph bleeds to the right edge of the field. Answer, reading, and quiet bands use the text and micro steps. System and ledger tables use a mono header, hairline rows, and a horizontal scroller. The signature study is a full-width Forest-to-Ink split plate. Product photographs sit on the field. Inquiry is a two-column close with more air than the chapters.
+- Specification: `02-SERVICE-LAYOUT.md` presentation table. `01-DESIGN-SYSTEM.md` spacing paragraph. `00-START-HERE.md` names the scale instead of one section padding.
+- Verification, this environment: `npm test` 18 passed. `npm run build:sandbox` wrote 35 pages. `npm run verify` passed: 35 HTML routes, 2725 local links, 90 responsive images, distinct frames, hero bleed, split signature study, git H1, IBM Plex absent, Schibsted 400–900. `npm run build` remains the blocked public build. Full-page Chrome comparisons are in the same task’s artifact set. Production `davg.ai` was not deployed.
+- Still different from the September plates: opening captions stay on the photograph; Halo photographs knock out a white studio ground and their screens go dark; system tables are the git multi-column ledgers, not a two-column specification beside a cutaway; comparison photographs are the catalog rooms, not the reference’s conventional/architectural pair.
 
 ## Task log — 3 October 2026 hub presentation
 - Date/task: Restore the hub presentation layer on top of the git-hub renderer. Copy stays in `docs/v4-build/hubs/DAVG-V4-Hub-*.md`. No return to `src/data/services/*.json` or `archive/davg-history/`.

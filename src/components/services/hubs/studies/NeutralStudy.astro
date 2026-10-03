@@ -2,20 +2,21 @@
 interface Props { slotId: string; kicker: string; heading: string; lede: string; }
 const { slotId, kicker, heading, lede } = Astro.props;
 ---
-<section class="neutral-study" id={slotId} data-study-slot={slotId} data-study-built="true" data-surface-role="editorial" aria-labelledby={`${slotId}-title`}>
+<div class="neutral-study" id={slotId} data-study-slot={slotId} data-study-built="true" data-surface-role="editorial" role="region" aria-labelledby={`${slotId}-title`}>
   <p class="section-kicker">{kicker}</p>
   <h3 id={`${slotId}-title`}>{heading}</h3>
   <p class="neutral-lede">{lede}</p>
   <div class="neutral-visual"><slot /></div>
-</section>
+</div>
 <style>
 .neutral-study {
   display: grid;
-  gap: 0.9rem;
-  margin-top: var(--spacing-component);
-  padding: var(--spacing-component);
-  border: 1px solid var(--color-border-paper);
-  background: var(--color-surface-paper);
+  gap: 0.75rem;
+  margin: var(--spacing-component) calc(var(--page-gutter) * -1) 0;
+  padding: var(--spacing-component) var(--page-gutter) var(--spacing-text);
+  border: 0;
+  border-top: 1px solid var(--color-rule-accent);
+  background: var(--color-surface-stone);
   color: var(--color-text-on-paper);
   --surface-fg: var(--color-text-on-paper);
   --surface-muted: var(--color-text-secondary-paper);

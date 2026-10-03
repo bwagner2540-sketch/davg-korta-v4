@@ -44,8 +44,8 @@ const placed = (photo?: Photo): photo is Photo & { src: string; alt: string; tit
 {slug === 'home-intelligence' && part === 'signature' && (
     <SignatureFolio slotId="home-intelligence-04" kicker="Home intelligence / device study" heading="One operating layer. The architecture stays quiet." lede="Lighting, shades, climate and access are planned together. This is a product photograph of a Halo remote, not a measured interface and not a temperature claim." word={word}>
       <div class="device-row">
-        {placed(photos.halo) && <HubFigure photo={photos.halo} ratio="1 / 1" sizes="(min-width: 1024px) 22vw, 70vw" />}
-        {placed(photos.haloTouch) && <HubFigure photo={photos.haloTouch} ratio="1 / 1" sizes="(min-width: 1024px) 22vw, 70vw" />}
+        {placed(photos.halo) && <HubFigure photo={photos.halo} placement="product" sizes="(min-width: 1024px) 24vw, 70vw" />}
+        {placed(photos.haloTouch) && <HubFigure photo={photos.haloTouch} placement="product" sizes="(min-width: 1024px) 20vw, 70vw" />}
         <ul class="folio-points">
           <li>Arrival, evening and away are one residence, not three houses.</li>
           <li>The wall touchscreen in Systems shows lighting loads. The selected lifestyle screen was withheld because it shows personal names.</li>
@@ -266,11 +266,48 @@ const placed = (photo?: Photo): photo is Photo & { src: string; alt: string; tit
     </NeutralStudy>
 )}
 <style>
-.shade-study { display: grid; gap: 1rem; }
-.pair, .device-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; align-items: start; }
-.device-row { grid-template-columns: minmax(0, 0.8fr) minmax(0, 0.8fr) minmax(0, 1.1fr); }
-.folio-points { margin: 0; padding-left: 1.1rem; display: grid; gap: 0.75rem; color: var(--surface-muted); line-height: 1.45; }
+.shade-study { display: grid; gap: 0.35rem; height: 100%; align-content: stretch; }
+.shade-study :global(.hub-figure:first-child .media-slot) { aspect-ratio: 16 / 10; min-height: 18rem; }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0.35rem; height: 100%; align-items: stretch; }
+.pair :global(.hub-figure) { position: relative; height: 100%; }
+.pair :global(.media-slot) { aspect-ratio: auto; height: 100%; min-height: 26rem; }
+.pair :global(figcaption) {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  max-width: none;
+  padding: 2.4rem 1rem 0.9rem;
+  background: linear-gradient(transparent, rgb(9 11 10 / 78%));
+  color: var(--color-text-secondary-dark);
+}
+.pair :global(figcaption strong) { color: var(--color-text-primary-dark); }
+.device-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  align-items: end;
+  height: 100%;
+  min-height: 32rem;
+  padding: 2.5rem 1.25rem 5.5rem;
+  gap: 0.5rem 1.25rem;
+}
+.device-row :global(.media-slot) { aspect-ratio: 3 / 4; max-height: 30rem; background: transparent; }
+.device-row :global(figcaption) { color: var(--color-text-secondary-dark); }
+.device-row :global(figcaption strong) { color: var(--color-text-primary-dark); }
+.folio-points {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 0.25rem 0 0;
+  display: grid;
+  gap: 0.75rem;
+  color: var(--color-text-secondary-dark);
+  line-height: 1.45;
+  list-style: none;
+}
+.folio-points li { padding-top: 0.65rem; border-top: 1px solid var(--color-border-dark); }
 @media (max-width: 800px) {
-  .pair, .device-row { grid-template-columns: 1fr; }
+  .pair, .device-row { grid-template-columns: 1fr; min-height: 0; padding: 1rem 0 2rem; }
+  .device-row :global(.hub-figure:first-child) { grid-row: auto; }
+  .pair :global(.media-slot) { min-height: 14rem; aspect-ratio: 4 / 5; height: auto; }
 }
 </style>

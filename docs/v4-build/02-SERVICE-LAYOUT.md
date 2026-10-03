@@ -8,7 +8,7 @@ Desktop frame, under the existing site header:
 3. The document is the only vertical scroller. The right column is not a second scroll pane.
 4. Below 1024px the rail becomes the shell's disclosure menu.
 
-Use `grid-template-columns: minmax(0, 1fr) minmax(0, 3fr)` before internal padding. Spacing inside the right column uses `--page-gutter` and `--spacing-section` from `src/styles/global.css`.
+Use `grid-template-columns: minmax(0, 1fr) minmax(0, 3fr)` before internal padding. The right column uses the spacing scale in `src/styles/global.css` (`--page-gutter`, `--spacing-micro`, `--spacing-text`, `--spacing-component`, `--spacing-section`, and the measures). Those tokens are a scale. They are not a rule that every section receives the same padding.
 
 Public words, section order, and the `/solutions/<slug>/` route come from `docs/v4-build/hubs/DAVG-V4-Hub-*.md`, rendered only by `HubPage.astro`. `/systems/<slug>/` is the same page. Do not render `archive/davg-history/src-data-services/` or `src/content/services/*.json`.
 
@@ -35,10 +35,27 @@ All eight hubs, including shading, use `HubPage.astro` and the git hub file. `Se
 
 ## Presentation inside the field
 
-`src/lib/hub-composition.mjs` tells `HubPage.astro` which surface, study, catalog photograph, and product row belong to each section. It does not store a second copy of the prose. The git hub file still owns the words and the section order.
+`src/lib/hub-composition.mjs` tells `HubPage.astro` which surface, frame, study, catalog photograph, and product row belong to each section. It does not store a second copy of the prose. The git hub file still owns the words and the section order.
 
-Surfaces follow `13-SURFACE-COLOR-SYSTEM.md`: hero and inquiry stay Ink, the opening answer and ordinary reading stay Paper, systems stay Charcoal, investment stays Stone, and the sticky rail stays Forest. The signature study is the only Forest-to-Ink passage, and it carries that hub’s spatial word (`CONTROL`, `LIGHTING`, `SHADES`, `MEDIA`, `CINEMA`, `SECURITY`, `NETWORK`, `OUTDOOR`) with the existing `.architectural-background-title` treatment.
+The frame is the composition, not a second copy of the chapter. A uniform Markdown loop — the same `hub-section` padding on every chapter — is rejected. `080a0b3` flattened the hubs into that loop. Surfaces and studies were added later, and the pages still read as repeated document sections. The frames below are the layout that replaces it.
 
-Body photographs come from `src/data/hubs/catalog.json` only when `src/data/images.json` has the file and the slot is a selected illustration. Hero slot 01 stays the opening photograph. Missing, withheld, and not-yet-substituted assets are not painted into the body. Studies reuse `HubStudies.astro`, including the shading specimen plates. A section without a matching photograph or study stays editorial type.
+| Frame | Where it applies | Composition |
+|---|---|---|
+| `opening` | Section 01 | No section padding. The git H1 and the hero photograph share one field. Type sits in a narrow column. The photograph bleeds to the right and bottom edges of the right column and carries its caption on the image. |
+| `answer` | Section 02 | Quiet Paper band. Vertical padding is `--spacing-text`, not `--spacing-section`. Prose stays on the standard measure. |
+| `moments` | Section 03 | Short reading measure, then a full-bleed room photograph when the catalog has one. Side inset is removed from the photograph. |
+| `system` | Section 04 | Charcoal. The explanation stays on a readable measure. Tables break out to the column width as a ledger: mono header, hairline rows, horizontal scroll only when the table is wider than the field. A technical study, when present, is a Stone band under the ledger, not a card inside the same padding. |
+| `study` | Section 05 | The git introduction is a short Paper measure. The signature study then changes surface: Forest-to-Ink, split plate, spatial word, annotated photograph or diagram at study scale. It is not an inset card under another padded heading. |
+| `ledger` | Comparison sections whose content is the table | Same ledger treatment as system layers, on the section’s own surface. |
+| `comparison` | Comparison sections that also have a photograph or product row | Headline column beside a large photograph, then the ledger and product row at field width. |
+| `products` / `interfaces` | Interface and product sections | Product photographs align on a baseline. The first is larger. Contain-fit product shots sit on the field without a thumbnail border. An interface photograph, when that is the section image, occupies the opposite column from the headline. |
+| `reading` / `quiet` / `detail` | Installation, pitfalls, handoff, proof, and detail | Tighter than a document section. Proof uses the narrow measure. A detail study is the Stone band, full width of the column. |
+| `investment` | Section 12 | Stone. Headline and scope sit in two columns. |
+| `questions` | Section 14 | Paper. Question headings are separated by hairlines. |
+| `inquiry` | Section 15 | Ink, with more air than the chapters above it. The git close sits in one column and the inquiry form in the other. |
+
+Surfaces follow `13-SURFACE-COLOR-SYSTEM.md`: hero and inquiry stay Ink, the opening answer and ordinary reading stay Paper, systems stay Charcoal, investment stays Stone, and the sticky rail stays Forest. The signature study is the only Forest-to-Ink passage, and it carries that hub’s spatial word (`CONTROL`, `LIGHTING`, `SHADES`, `MEDIA`, `CINEMA`, `SECURITY`, `NETWORK`, `OUTDOOR`) with the existing `.architectural-background-title` treatment. The parent chapter is not repainted Forest. The study plate is.
+
+Body photographs come from `src/data/hubs/catalog.json` only when `src/data/images.json` has the file and the slot is a selected illustration. Hero slot 01 stays the opening photograph. Missing, withheld, and not-yet-substituted assets are not painted into the body. Studies reuse `HubStudies.astro`, including the shading specimen plates. A section without a matching photograph or study stays editorial type on its own frame. Do not put `--spacing-section` back on every `hub-section`.
 
 The site header is `SiteNav`, from `src/config/navigation.ts`. Home Solutions items are `services` in the order above. Chapter links stay in the rail. The footer service list is `ServiceLinks`, from the same array.

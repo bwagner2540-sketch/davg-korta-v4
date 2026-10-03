@@ -64,10 +64,18 @@ test('composition maps each hub section by purpose', () => {
       assert.ok(role.purpose);
       assert.ok(role.surface);
     }
+    assert.equal(sectionRole(slug, '01').frame, 'opening');
     assert.equal(sectionRole(slug, '02').surface, 'answer');
+    assert.equal(sectionRole(slug, '02').frame, 'answer');
+    assert.equal(sectionRole(slug, '04').frame, 'system');
     assert.equal(sectionRole(slug, '05').study, 'signature');
+    assert.equal(sectionRole(slug, '05').frame, 'study');
     assert.equal(sectionRole(slug, '12').surface, 'investment');
+    assert.equal(sectionRole(slug, '12').frame, 'investment');
     assert.equal(sectionRole(slug, '15').surface, 'inquiry');
+    assert.equal(sectionRole(slug, '15').frame, 'inquiry');
+    const frames = new Set(Array.from({ length: 15 }, (_, index) => sectionRole(slug, String(index + 1).padStart(2, '0')).frame));
+    assert.ok(frames.size >= 6, `${slug} should use distinct section frames`);
   }
   const homeRoom = bodyPhoto('home-intelligence', 'Distinct finished room / experience');
   assert.equal(homeRoom?.src, '/images/home-intelligence-asset-fb06409d0dde.webp');
@@ -77,6 +85,10 @@ test('composition maps each hub section by purpose', () => {
   assert.ok(productsFor('home-intelligence').length >= 2);
   assert.equal(productsFor('motorized-shades').length, 0);
   assert.equal(sectionRole('home-intelligence', '04').study, 'technical');
+  assert.equal(sectionRole('home-intelligence', '07').frame, 'products');
+  assert.equal(sectionRole('architectural-lighting', '06').frame, 'comparison');
+  assert.equal(sectionRole('motorized-shades', '06').frame, 'ledger');
+  assert.equal(sectionRole('motorized-shades', '08').frame, 'detail');
   assert.equal(sectionRole('architectural-lighting', '08').study, 'technical');
   assert.equal(sectionRole('media-audio', '04').study, 'technical');
   assert.equal(sectionRole('media-audio', '10').photo, 'Installed interface / service detail');
@@ -90,4 +102,11 @@ test('retired JSON drafts are not the page renderer', () => {
     assert.doesNotMatch(source, /data\/services\//);
     assert.match(source, /git-hubs/);
   }
+  assert.match(page, /data-section-frame=\{role\.frame\}/);
+  assert.match(page, /hub-frame-opening/);
+  assert.match(page, /hub-frame-answer/);
+  assert.match(page, /hub-frame-system/);
+  assert.match(page, /hub-frame-study/);
+  assert.match(page, /hub-frame-inquiry/);
+  assert.doesNotMatch(page, /\.hub-section\s*\{\s*padding:\s*var\(--spacing-section\)/);
 });

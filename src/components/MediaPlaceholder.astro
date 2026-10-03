@@ -1,12 +1,12 @@
 ---
 import images from '../data/images.json';
-interface Props { id:string; subject:string; ratio?:string; src?:string; alt?:string; loading?:'lazy'|'eager'; position?:string; sizes?:string; fit?:'cover'|'contain'; }
-const { id, subject, ratio='16 / 9', src, alt=subject, loading='lazy', position='center', sizes='(min-width: 1024px) 75vw, 100vw', fit='cover' } = Astro.props;
+interface Props { id:string; subject:string; ratio?:string; src?:string; alt?:string; loading?:'lazy'|'eager'; position?:string; sizes?:string; fit?:'cover'|'contain'; frame?:string; }
+const { id, subject, ratio='16 / 9', src, alt=subject, loading='lazy', position='center', sizes='(min-width: 1024px) 75vw, 100vw', fit='cover', frame } = Astro.props;
 const record = src ? (images as Record<string, {width:number;height:number;variants:{src:string;width:number}[]}>)[src] : undefined;
 ---
-<div class="media-slot" data-media-slot={id} style={`--media-ratio: ${ratio}`}>
+<div class="media-slot" data-media-slot={id} data-frame={frame} style={`--media-ratio: ${ratio}`}>
 {src ? <img src={src} alt={alt} width={record?.width} height={record?.height} srcset={record?.variants.map(v=>`${v.src} ${v.width}w`).join(', ')} sizes={record ? sizes : undefined} loading={loading} fetchpriority={loading==='eager' ? 'high' : undefined} decoding="async" data-fit={fit} style={`object-position: ${position}`} /> : <span class="sr-only">Image planned: {subject}</span>}
 </div>
 <style>
-.media-slot{position:relative;width:100%;aspect-ratio:var(--media-ratio);overflow:hidden;border:1px solid var(--surface-border, var(--color-border-paper));border-radius:0;background:transparent;color:var(--surface-muted, var(--color-text-muted-paper));}img{display:block;width:100%;height:100%;object-fit:cover;}img[data-fit="contain"]{object-fit:contain;}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0;}
+.media-slot{position:relative;width:100%;aspect-ratio:var(--media-ratio);overflow:hidden;border:1px solid var(--surface-border, var(--color-border-paper));border-radius:0;background:transparent;color:var(--surface-muted, var(--color-text-muted-paper));}img{display:block;width:100%;height:100%;object-fit:cover;}img[data-fit="contain"]{object-fit:contain;}.media-slot[data-frame="bleed"]{aspect-ratio:auto;height:100%;min-height:100%;border:0;}.media-slot[data-frame="wide"]{aspect-ratio:16/8;border:0;}.media-slot[data-frame="stage"]{aspect-ratio:4/5;border:0;}.media-slot[data-frame="product"]{aspect-ratio:3/4;border:0;background:transparent;overflow:visible;}.media-slot[data-frame="product"]:has(img[data-fit="contain"]){position:relative;z-index:1;mix-blend-mode:multiply;}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0;}
 </style>

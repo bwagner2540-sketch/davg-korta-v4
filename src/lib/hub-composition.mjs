@@ -82,6 +82,31 @@ const overrides = {
   },
 };
 
+const frameByPurpose = {
+  opening: 'opening',
+  answer: 'answer',
+  moments: 'moments',
+  'system-layers': 'system',
+  studies: 'study',
+  comparison: 'ledger',
+  examples: 'reading',
+  interfaces: 'interfaces',
+  detail: 'detail',
+  installation: 'reading',
+  pitfalls: 'reading',
+  proof: 'quiet',
+  investment: 'investment',
+  handoff: 'reading',
+  questions: 'questions',
+  inquiry: 'inquiry',
+};
+
+function frameFor(role) {
+  if (role.purpose === 'comparison' && (role.products || role.photo)) return 'comparison';
+  if ((role.purpose === 'interfaces' || role.purpose === 'examples') && role.products) return 'products';
+  return frameByPurpose[role.purpose] || 'reading';
+}
+
 function asFigure(record) {
   if (!record?.src || !record.alt || !record.title || !record.caption) return null;
   if (!images[record.src]) return null;
@@ -100,7 +125,8 @@ function asFigure(record) {
 export function sectionRole(slug, id) {
   if (!spatialWords[slug] || !overrides[slug]) throw new Error(`No hub composition for "${slug}".`);
   if (!shared[id]) throw new Error(`No section composition for "${id}".`);
-  return { ...shared[id], ...(overrides[slug][id] || {}) };
+  const role = { ...shared[id], ...(overrides[slug][id] || {}) };
+  return { ...role, frame: frameFor(role) };
 }
 
 export function bodyPhoto(slug, purpose) {

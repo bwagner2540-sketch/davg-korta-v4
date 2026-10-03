@@ -61,7 +61,16 @@ for(const file of files){
    if(photo)assert(nodes(group,n=>n.tagName==='img'&&attrs(n).src===photo.src).length>=1,`Missing ${photo.src} in ${file} ${section.id}`);
    if(role.study)assert(nodes(group,n=>attrs(n)['data-study-built']==='true').length>=1,`Missing ${role.study} study in ${file} ${section.id}`);
    if(role.products&&productsFor(slug).length)assert(nodes(group,n=>attrs(n)['data-product-rail']!==undefined).length===1,`Missing product rail in ${file} ${section.id}`);
+   assert.equal(attrs(group)['data-section-frame'],role.frame,`Frame ${slug} ${section.id}`);
   }
+  const frames=new Set(groups.map(n=>attrs(n)['data-section-frame']));
+  assert.ok(frames.size>=6,`Repeated section frame in ${file}`);
+  assert.equal(attrs(groups[0])['data-section-frame'],'opening',`Opening frame ${file}`);
+  assert(frames.has('study')&&frames.has('inquiry')&&frames.has('system')&&frames.has('answer'),`Missing editorial frames in ${file}`);
+  assert.equal(nodes(groups[0],n=>attrs(n)['data-hero-bleed']==='true').length,1,`Opening photograph must share the field in ${file}`);
+  assert.equal(nodes(main,n=>attrs(n)['data-study-compose']==='split').length,1,`Signature study composition ${file}`);
+  const ledger=nodes(main,n=>n.tagName==='table');
+  if(ledger.length)assert(nodes(main,n=>String(attrs(n).class||'').includes('hub-table')).length>=1,`Ledger wrapper ${file}`);
  }
 }
 assert.equal((await readFile(root+'/robots.txt','utf8')).trim(),'User-agent: *\nDisallow: /');
@@ -71,6 +80,10 @@ const shell=await readFile('src/components/ServicePageShell.astro','utf8');
 assert.match(shell,/position:\s*sticky/);
 assert.match(shell,/minmax\(0,\s*1fr\)\s*minmax\(0,\s*3fr\)/);
 const css=await readFile('src/styles/global.css','utf8');assert.match(css,/Schibsted Grotesk Variable/);assert.match(css,/Instrument Sans Variable/);assert.match(css,/JetBrains Mono/);assert.doesNotMatch(css,/IBM Plex Mono/);
+const hubPage=await readFile('src/components/services/hubs/HubPage.astro','utf8');
+assert.doesNotMatch(hubPage,/\.hub-section\s*\{\s*padding:\s*var\(--spacing-section\)/);
+assert.match(hubPage,/hub-frame-opening/);
+assert.match(hubPage,/hub-frame-system :global\(thead th\)/);
 const metadata=JSON.parse(await readFile('node_modules/@fontsource-variable/schibsted-grotesk/metadata.json','utf8'));
 console.log(`PASS: ${files.length} HTML routes, ${links} local links, ${images} responsive image instances, git-hub copy inside the sticky 25/75 shell, draft SEO exclusion and registered fonts.`);
 console.log(`REMAINING FONT GAP: Schibsted installed range ${metadata.variable.wght.min}–${metadata.variable.wght.max}; true 300 is unavailable.`);

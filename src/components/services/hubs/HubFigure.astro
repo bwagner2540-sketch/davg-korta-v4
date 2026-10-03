@@ -13,11 +13,12 @@ interface Props {
   ratio?: string;
   loading?: 'lazy' | 'eager';
   sizes?: string;
+  placement?: 'inline' | 'bleed' | 'wide' | 'stage' | 'product';
 }
-const { photo, ratio = '16 / 10', loading = 'lazy', sizes = '(min-width: 1024px) 42vw, 100vw' } = Astro.props;
+const { photo, ratio = '16 / 10', loading = 'lazy', sizes = '(min-width: 1024px) 42vw, 100vw', placement = 'inline' } = Astro.props;
 ---
-<figure class="hub-figure" data-photo-slot={photo.id} data-slot-status="placed">
-  <MediaPlaceholder id={photo.id} subject={photo.title} ratio={ratio} src={photo.src} alt={photo.alt} loading={loading} sizes={sizes} fit={photo.fit ?? 'cover'} />
+<figure class:list={['hub-figure', `hub-figure-${placement}`]} data-photo-slot={photo.id} data-slot-status="placed" data-hero-bleed={placement === 'bleed' ? 'true' : undefined}>
+  <MediaPlaceholder id={photo.id} subject={photo.title} ratio={ratio} src={photo.src} alt={photo.alt} loading={loading} sizes={sizes} fit={photo.fit ?? 'cover'} frame={placement === 'inline' ? undefined : placement} />
   <figcaption>
     <strong>{photo.title}</strong>
     <span>{photo.caption}</span>
@@ -25,7 +26,32 @@ const { photo, ratio = '16 / 10', loading = 'lazy', sizes = '(min-width: 1024px)
   </figcaption>
 </figure>
 <style>
-.hub-figure { display: grid; gap: 0.75rem; margin: 0; }
+.hub-figure { display: grid; gap: 0.75rem; margin: 0; min-width: 0; }
 .hub-figure figcaption { display: grid; gap: 0.35rem; max-width: 62ch; color: var(--surface-muted, var(--color-text-muted-dark)); font-size: 0.9375rem; line-height: 1.45; }
 .hub-figure strong { color: var(--surface-fg, inherit); font-weight: 500; }
+.hub-figure-bleed { position: relative; height: 100%; min-height: 22rem; }
+.hub-figure-bleed figcaption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  max-width: none;
+  padding: 2.5rem 1.25rem 1rem;
+  background: linear-gradient(transparent, rgb(9 11 10 / 78%));
+  color: var(--color-text-secondary-dark);
+}
+.hub-figure-bleed strong { color: var(--color-text-primary-dark); }
+@media (max-width: 1023px) {
+  .hub-figure-bleed figcaption {
+    position: static;
+    max-width: none;
+    padding: 0.75rem var(--page-gutter) 0.25rem;
+    background: none;
+    color: var(--surface-muted, var(--color-text-secondary-dark));
+  }
+}
+.hub-figure-wide,
+.hub-figure-stage,
+.hub-figure-product { gap: 0.65rem; }
+.hub-figure-product figcaption { max-width: 36ch; }
 </style>

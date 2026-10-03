@@ -16,7 +16,7 @@ Work in `bwagner2540-sketch/davg-korta-v4` on the branch already open. Read this
 | Homepage composition | `src/pages/index.astro` (uses `.folio`) |
 | Ordered service list | `src/config/site.ts` |
 
-Live gutter is `--page-gutter`: 1.5rem below 768px, 3rem from 768px, 4rem from 1280px. `--spacing-page-inline` is an alias of `--page-gutter`. It is not a clamp. Section padding is `--spacing-section`. Headings use `--text-h1`, `--text-h2`, and `--text-h3`.
+Live gutter is `--page-gutter`: 1.5rem below 768px, 3rem from 768px, 4rem from 1280px. `--spacing-page-inline` is an alias of `--page-gutter`. It is not a clamp. Spacing tokens are a scale. Hub chapters do not share one section padding; the frame for each role is in `02-SERVICE-LAYOUT.md`. Headings use `--text-h1`, `--text-h2`, and `--text-h3`.
 
 Fonts in `src/styles/global.css`: Schibsted Grotesk (headings, installed 400–900), Instrument Sans (body and UI), JetBrains Mono (technical metadata). Do not install a 300-weight Schibsted file or IBM Plex Mono.
 
