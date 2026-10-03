@@ -36,7 +36,8 @@ The September and early October logs below recorded older owners (JSON drafts, d
 - Ink chapter on every hub: section 06, the comparison chapter.
 - Further tables collapsed into `.k-more`: Home Intelligence 04 (2) and 06 (2); Architectural Lighting 06 (1); Motorized Shading 06 (4); Private Cinemas 06 (2); Security 06 (2); Infrastructure 06 (2); Outdoor 06 (1).
 - Authoring notes are collected on each section as `notes` and written into the page as HTML comments. `Caption:` becomes the figure caption. `Core lesson:` becomes the first paragraph. Layout briefs such as the Architectural Lighting "30/70 sticky explanatory" gallery note are not visible text.
-- Checks are recorded with the commit. The preview URL stays `https://cursor-git-hub-source-13db-davg-korta-v4.brandon-763.workers.dev/`.
+- Local checks before `9ddf1e0`: `npm run check` (0 errors, the existing homepage unused-import hint), `npm test` 22 passed, `npm run build:sandbox` 35 routes, `npm run verify` passed. Chrome at 1440×900 and 390×844: one shared chapter padding, one ink chapter, one visible table per chapter, no authoring-note leaks, no caption overlays, no gradients, no rail image, no horizontal overflow. Architectural Lighting rail width was 257px and rail scrollHeight 832. The spatial word `LIGHTING` is static 64px type.
+- Preview confirmed: `https://cursor-git-hub-source-13db-davg-korta-v4.brandon-763.workers.dev/` served `davg-revision` `9ddf1e05a951f8e02a3d48582455aad6c945cc4e` on `/`, `/solutions/architectural-lighting/`, `/systems/architectural-lighting/`, and `/solutions/home-intelligence/`. Production was not deployed.
 
 ## Task log — 3 October 2026 editorial frames
 - Date/task: Replace the repeated hub-section padding with a frame per section role. Copy stays in the git hubs. The uniform loop from `080a0b3` is not the layout.
