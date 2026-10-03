@@ -2,7 +2,7 @@
 import process from 'node:process';
 import '../styles/global.css';
 import SeoHead from '../components/SeoHead.astro';
-import SiteNav from '../components/SiteNav.astro';
+import TopNav from '../components/korta/TopNav.astro';
 import ServiceLinks from '../components/ServiceLinks.astro';
 const revision = process.env.DAVG_REVISION || '';
 ---
@@ -99,7 +99,7 @@ const revision = process.env.DAVG_REVISION || '';
 
   <a href="#answer" class="sr-only focus:not-sr-only focus:absolute focus:left-6 focus:top-6 focus:z-[80] focus:bg-surface-paper focus:px-4 focus:py-2 focus:text-text-primary-paper">Skip to content</a>
 
-  <SiteNav />
+  <TopNav />
 
   <main>
     <!-- Phase 1 — Definitive Answer -->

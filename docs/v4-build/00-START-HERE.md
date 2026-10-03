@@ -8,10 +8,11 @@ Work in `bwagner2540-sketch/davg-korta-v4` on the branch already open. Read this
 
 | Piece | Path |
 |---|---|
-| Sticky 25/75 service frame | `src/components/ServicePageShell.astro` |
+| Service frame: ink chapter rail and main column | `src/components/ServicePageShell.astro` |
+| Masthead | `src/components/korta/TopNav.astro` |
+| Chapter frame | `src/components/korta/Chapter.astro` and `src/styles/motion.css` |
 | Global CSS, fonts, type scale, gutters, `.folio` | `src/styles/global.css` |
 | Document shell for hub and interior pages | `src/layouts/Layout.astro` |
-| Header | `src/components/SiteNav.astro` |
 | Footer service list | `src/components/ServiceLinks.astro` |
 | Homepage composition | `src/pages/index.astro` (uses `.folio`) |
 | Ordered service list | `src/config/site.ts` |
@@ -20,7 +21,7 @@ Live gutter is `--page-gutter`: 1.5rem below 768px, 3rem from 768px, 4rem from 1
 
 Fonts in `src/styles/global.css`: Schibsted Grotesk (headings, installed 400–900), Instrument Sans (body and UI), JetBrains Mono (technical metadata). Do not install a 300-weight Schibsted file or IBM Plex Mono.
 
-The rail is Forest `#183B31`. Logos stay the files in `public/brand/`.
+The service rail is ink, `minmax(240px, 18%)`, and lists this page's chapters. Logos stay the files in `public/brand/`.
 
 ## Eight hubs
 

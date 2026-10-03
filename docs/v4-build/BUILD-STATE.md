@@ -3,10 +3,13 @@
 ## Current ownership — 3 October 2026
 This section is the current record. The logs below it are history from earlier passes. Do not treat those logs as the live source map.
 
-- Repository: `bwagner2540-sketch/davg-korta-v4`. Branch: `cursor/git-hub-source-13db`. Repair commits still in ancestry: `080a0b3` (git hubs and layout tokens) and `e35d1bd` (local preview note).
+- Repository: `bwagner2540-sketch/davg-korta-v4`. Branch: `cursor/git-hub-source-13db`. Repair checkpoint `66d916d` remains an ancestor. Earlier repair commits `080a0b3` and `e35d1bd` remain in ancestry.
 - Source index: `docs/v4-build/00-START-HERE.md`. Contract: `11-SYNC-CONTRACT.md`.
-- Public copy: `docs/v4-build/hubs/DAVG-V4-Hub-*.md`, loaded only by `src/lib/git-hubs.mjs`.
-- Frame: `src/components/ServicePageShell.astro`. Renderer: `src/components/services/hubs/HubPage.astro`. Section presentation: `src/lib/hub-composition.mjs` (surfaces, studies, catalog photographs, product rows). Routes: `/solutions/<slug>/` and the `/systems/<slug>/` alias.
+- Public copy: `docs/v4-build/hubs/DAVG-V4-Hub-*.md`, loaded only by `src/lib/git-hubs.mjs`. Copy is unchanged. Authoring notes render as HTML comments.
+- Frame: `src/components/ServicePageShell.astro` with `src/components/korta/TopNav.astro`, `ServiceRail.astro`, and `Chapter.astro`. Styles: `src/styles/motion.css`. Renderer: `src/components/services/hubs/HubPage.astro`. Routes: `/solutions/<slug>/` and the `/systems/<slug>/` alias.
+- Chapter grammar: one `.k-ch` padding. Hero and inquiry are ink. Section 06 is the one ink chapter on every hub (the comparison chapter). Other chapters are paper. One visible table per chapter; further tables use `.k-more`. Portrait-or-square single images use the aside slot. Other photographs are figures or pairs inside the chapter. The hero is the only bleed. Captions sit under images.
+- Rail: ink, `--rail-width: minmax(240px, 18%)`, chapter index, services behind a closed switcher. No rail logo and no certification footnote.
+- Token maps, because the named steps were missing: `--k-s20` → `--spacing-16` (4rem); `--text-body-sm` → `--text-body` (16px; `--text-caption` is 13px); `--text-h5` → `--text-h3`; `--text-h6` → `--text-body-lg`; `--k-radius` → `--radius-control`; `--k-hairline` is the existing 1px rule. Figcaptions use `--text-body` so body text stays at least 14px.
 - Tokens: `src/styles/global.css`. Fonts implemented: Schibsted Grotesk 400–900, Instrument Sans, JetBrains Mono. Live gutter implemented: `--page-gutter` 1.5rem / 3rem / 4rem. `--spacing-page-inline` aliases `--page-gutter`. Section rhythm is role-based. `--spacing-section` is one step on the scale, not the padding of every hub section.
 - Historical packs: `archive/davg-history/`. Not implementation authority. See that README for original paths.
 - Deployment configuration: `wrangler.toml` name `davg-korta-v4`, assets `./dist`, build command `node scripts/assert-production.mjs`. Production domain `davg.ai` is the existing coming-soon target. This file does not claim a production deploy.
@@ -15,7 +18,7 @@ This section is the current record. The logs below it are history from earlier p
 ### Status of decisions
 | Topic | Status |
 |---|---|
-| Git hubs as public copy, sticky Forest 25/75 shell, `/solutions/` routes | Implemented. Verified on the local server before this cleanup. |
+| Git hubs as public copy, `/solutions/` routes, chapter grammar (ink rail, one chapter frame, one ink comparison chapter) | Implemented. See the chapter-grammar task log. The Forest 25/75 shell is the earlier repair and is no longer the live frame. |
 | Layout tokens (H1 64px at 1440 and 40px at 390, gutters 64px and 24px) | Implemented in `src/styles/global.css`. The spacing tokens are a scale. Identical section padding is not the layout. |
 | Collections, MDX, and JSON as the public copy (`10`) | Proposed. Do not migrate. |
 | Shading briefs 08 and 09 chapter maps | Historical. Not applied over the git hub. |
@@ -27,6 +30,13 @@ This section is the current record. The logs below it are history from earlier p
 | Workers branch preview for `cursor/git-hub-source-13db` | See the latest task log. A push is not a verified preview. |
 
 The September and early October logs below recorded older owners (JSON drafts, document 09 as the shading map, IBM Plex as an open font question, branch `main`). Those statements are superseded by this section.
+
+## Task log — 3 October 2026 chapter grammar
+- Decision: implemented from the layout request. `korta-v4-motion` does not exist on origin, and `src/styles/motion.css` was not in the repair checkpoint. The nav, rail, and chapter grammar were added on `cursor/git-hub-source-13db` so the existing Workers preview keeps building this branch. Production was not deployed.
+- Ink chapter on every hub: section 06, the comparison chapter.
+- Further tables collapsed into `.k-more`: Home Intelligence 04 (2) and 06 (2); Architectural Lighting 06 (1); Motorized Shading 06 (4); Private Cinemas 06 (2); Security 06 (2); Infrastructure 06 (2); Outdoor 06 (1).
+- Authoring notes are collected on each section as `notes` and written into the page as HTML comments. `Caption:` becomes the figure caption. `Core lesson:` becomes the first paragraph. Layout briefs such as the Architectural Lighting "30/70 sticky explanatory" gallery note are not visible text.
+- Checks are recorded with the commit. The preview URL stays `https://cursor-git-hub-source-13db-davg-korta-v4.brandon-763.workers.dev/`.
 
 ## Task log — 3 October 2026 editorial frames
 - Date/task: Replace the repeated hub-section padding with a frame per section role. Copy stays in the git hubs. The uniform loop from `080a0b3` is not the layout.

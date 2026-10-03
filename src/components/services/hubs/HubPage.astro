@@ -2,156 +2,94 @@
 import Layout from '../../../layouts/Layout.astro';
 import ServicePageShell from '../../ServicePageShell.astro';
 import InquiryForm from '../../InquiryForm.astro';
-import HubFigure from './HubFigure.astro';
-import SectionBody from './SectionBody.astro';
+import Chapter from '../../korta/Chapter.astro';
 import { hasPublicSection } from '../../../lib/hub-presentation.mjs';
-import HubStudies from './studies/HubStudies.astro';
 import { serviceSchema } from '../../../config/schema';
 import { loadGitHub } from '../../../lib/git-hubs.mjs';
-import { bodyPhoto, productsFor, sectionRole, spatialWords, studyPhotosFor } from '../../../lib/hub-composition.mjs';
+import { bodyPhoto, productsFor, sectionRole, spatialWords } from '../../../lib/hub-composition.mjs';
+import { composeChapterHtml, escapeHtml, insertAfterLead, noteComments } from '../../../lib/chapter-markup.mjs';
+import { asideFigure, chapterLayout, figuresFor, heroFigure, inlineFigures } from '../../../lib/chapter-figures.mjs';
 import catalog from '../../../data/hubs/catalog.json';
 import images from '../../../data/images.json';
 
 interface Props { slug: string }
 const { slug } = Astro.props;
 const hub = loadGitHub(slug);
+const dev = import.meta.env.DEV;
 const sectionIsPublic = (section: typeof hub.sections[number]) => {
   const role = sectionRole(slug, section.id);
   return hasPublicSection(section, role, role.photo ? bodyPhoto(slug, role.photo) : null, role.products ? productsFor(slug) : []);
 };
-const chapters = hub.sections.filter(sectionIsPublic).map((section) => ({ id: `s${section.id}`, label: section.title }));
+const publicSections = hub.sections.filter(sectionIsPublic);
+const chapterSections = publicSections.filter((section) => section.id !== '01' && section.id !== '15');
+const chapters = chapterSections.map((section) => ({ id: `s${section.id}`, label: section.title }));
 const opening = hub.sections[0];
-const studyPhotos = studyPhotosFor(slug);
 const word = spatialWords[slug];
-const surfaceClass = {
-  hero: 'bg-surface-ink text-text-primary-dark',
-  answer: 'bg-surface-paper text-text-primary-paper',
-  editorial: 'bg-surface-paper text-text-primary-paper',
-  questions: 'bg-surface-paper text-text-primary-paper',
-  investment: 'bg-surface-stone text-text-primary-paper',
-  systems: 'bg-surface-charcoal text-text-primary-dark',
-  inquiry: 'bg-surface-ink text-text-primary-dark',
-};
-const paperSurfaces = new Set(['answer', 'editorial', 'questions', 'investment']);
 const heroSlot = (catalog as Record<string, { slots?: { number: string; id: string; src?: string | null; alt?: string; title?: string; caption?: string; fit?: 'cover' | 'contain' }[] }>)[slug]
   ?.slots?.find((slot) => slot.number === '01' && slot.src && slot.alt && slot.title && slot.caption);
 const heroReady = Boolean(heroSlot?.src && (images as Record<string, { width: number }>)[heroSlot.src]);
+const inkId = publicSections.find((section) => section.id !== '01' && section.id !== '15' && sectionRole(slug, section.id).purpose === 'comparison')?.id;
+
+function chapterBody(section: typeof hub.sections[number]) {
+  let body = composeChapterHtml(section.html);
+  if (section.deck && section.lead) body = insertAfterLead(body, `<p>${escapeHtml(section.deck)}</p>`);
+  else if (section.deck) body = `<p>${escapeHtml(section.deck)}</p>${body}`;
+  if (section.support) body += `<p>${escapeHtml(section.support)}</p>`;
+  const figures = figuresFor(slug, section.id);
+  const options = { dev, caption: section.figureCaption || '' };
+  if (chapterLayout(figures) === 'single') body = insertAfterLead(body, inlineFigures(figures, options));
+  if (section.id === '05') {
+    body = `<div class="architectural-background-title k-spatial" data-surface="ink" data-study-built="true">${escapeHtml(word)}</div>${body}`;
+  }
+  return body + noteComments(section.notes);
+}
 ---
 <Layout title={hub.seoTitle} description={hub.description} schema={serviceSchema(hub.name, hub.description, hub.route)}>
   <a class="skip-link" href="#service-content">Skip to content</a>
-  <main id="service-content" tabindex="-1" data-git-hub={hub.slug} data-design-sandbox={hub.slug}>
-    <ServicePageShell currentPath={hub.route} chapters={chapters}>
+  <ServicePageShell currentPath={hub.route} chapters={chapters} slug={slug}>
+    <main id="service-content" tabindex="-1">
       {hub.sections.map((section) => {
         if (!sectionIsPublic(section)) return <span id={`s${section.id}`} hidden data-section-reserved />;
-        const role = sectionRole(slug, section.id);
-        const photo = role.photo ? bodyPhoto(slug, role.photo) : null;
-        const products = role.products ? productsFor(slug) : [];
-        const tone = paperSurfaces.has(role.surface)
-          ? '--surface-fg: var(--color-text-on-paper); --surface-muted: var(--color-text-secondary-paper); --surface-border: var(--color-border-paper);'
-          : '--surface-fg: var(--color-text-on-dark); --surface-muted: var(--color-text-secondary-dark); --surface-border: var(--color-border-dark);';
-        const photoPlacement = role.frame === 'moments' ? 'wide' : role.frame === 'interfaces' || role.frame === 'comparison' ? 'stage' : 'inline';
-        return <section id={`s${section.id}`} data-chapter-group data-surface-role={role.surface} data-section-purpose={role.purpose} data-section-frame={role.frame} data-stage={photo && photoPlacement === 'stage' ? 'true' : undefined} class:list={['hub-section', `hub-frame-${role.frame}`, surfaceClass[role.surface]]} style={tone}>
-          {section.id === '01' ? <div class="hub-open">
-            <div class="hub-copy">
-              <p class="section-kicker">{hub.name}</p>
-              <h1>{opening.headline || hub.h1}</h1>
-              {opening.deck && <p class="deck">{opening.deck}</p>}
-              <p class="hub-actions">
-                {opening.cta && <a href="#inquiry">{opening.cta}</a>}
-                {opening.secondary && <a href="#s02">{opening.secondary}</a>}
-              </p>
-            </div>
-            {heroReady && heroSlot?.src && <HubFigure photo={{ id: heroSlot.id, src: heroSlot.src, alt: heroSlot.alt as string, title: heroSlot.title as string, caption: heroSlot.caption as string, fit: heroSlot.fit }} loading="eager" sizes="(min-width: 1024px) 58vw, 100vw" placement="bleed" />}
-          </div> : <header class="hub-copy">
-            <p class="section-kicker">{section.id}</p>
-            <h2>{section.headline || section.title}</h2>
-            {section.deck && <p class="deck">{section.deck}</p>}
-          </header>}
-          {products.length > 0 && role.frame === 'products' && <div class="product-rail product-opening" data-product-rail><div class="product-grid">{products.map((product) => <HubFigure photo={product} placement="product" sizes="(min-width: 1024px) 28vw, 86vw" />)}</div></div>}
-          {section.html && <div class="hub-prose"><SectionBody html={section.html} frame={role.frame} sectionId={section.id} /></div>}
-          {section.support && <p class="deck">{section.support}</p>}
-          {photo && <HubFigure photo={photo} sizes="(min-width: 1024px) 70vw, 100vw" placement={photoPlacement} />}
-          {role.study && <HubStudies slug={slug} photos={studyPhotos} part={role.study} word={word} />}
-          {products.length > 0 && role.frame !== 'products' && <div class="product-rail" data-product-rail>
-            <p class="section-kicker">Product views</p>
-            <div class="product-grid">
-              {products.map((product) => <HubFigure photo={product} placement="product" sizes="(min-width: 1024px) 28vw, 86vw" />)}
-            </div>
-          </div>}
-          {section.id === '15' && <div class="hub-inquiry" id="inquiry">
-            <InquiryForm service={hub.name} serviceSlug={hub.slug} />
-          </div>}
+        if (section.id === '01') return <section id="s01" data-chapter-group data-surface-role="hero" class="k-hero">
+          <div class="k-hero__copy">
+            <span class="mono-label section-kicker">{hub.name}</span>
+            <h1>{opening.headline || hub.h1}</h1>
+            {opening.deck && <p>{opening.deck}</p>}
+            <p class="k-hero__actions">
+              {opening.cta && <a href="#inquiry">{opening.cta}</a>}
+              {opening.secondary && <a href="#s02">{opening.secondary}</a>}
+            </p>
+          </div>
+          {heroReady && heroSlot?.src && <div class="k-hero__media" set:html={heroFigure({ id: heroSlot.id, src: heroSlot.src, alt: heroSlot.alt as string, title: heroSlot.title as string, caption: heroSlot.caption as string }, { dev })} />}
         </section>;
+        if (section.id === '15') return <section id="s15" class="k-ch k-ch--ink k-ch--single" data-chapter-group data-surface-role="inquiry">
+          <div class="k-ch__in">
+            <header class="k-ch__head">
+              <span class="mono-label k-ch__nn">15</span>
+              <h2 class="k-ch__title">{section.headline || section.title}</h2>
+            </header>
+            <div class="k-ch__body" data-composed-copy set:html={chapterBody(section)} />
+            <div class="hub-inquiry" id="inquiry"><InquiryForm service={hub.name} serviceSlug={hub.slug} /></div>
+          </div>
+        </section>;
+        const figures = figuresFor(slug, section.id);
+        const layout = chapterLayout(figures);
+        const options = { dev, caption: section.figureCaption || '' };
+        return <Chapter
+          id={`s${section.id}`}
+          index={chapterSections.findIndex((item) => item.id === section.id) + 1}
+          title={section.headline || section.title}
+          surface={section.id === inkId ? 'ink' : 'paper'}
+          layout={layout}
+          body={chapterBody(section)}
+          media={layout === 'aside' ? asideFigure(figures, options) : ''}
+          signature={section.id === '05'}
+        />;
       })}
-    </ServicePageShell>
-  </main>
+    </main>
+  </ServicePageShell>
 </Layout>
 <style>
-.hub-section { min-width: 0; padding: 0; scroll-margin-top: 1rem; }
-.hub-copy { display: grid; gap: 1rem; align-content: start; min-width: 0; }
-.hub-section h1 { font-size: var(--text-h1); line-height: var(--text-h1--line-height); letter-spacing: var(--text-h1--letter-spacing); font-weight: 400; }
-.hub-section h2 { font-size: var(--text-h2); line-height: var(--text-h2--line-height); letter-spacing: var(--text-h2--letter-spacing); font-weight: 400; max-width: 25ch; }
-.deck { max-width: 54ch; font-size: var(--text-body-lg); line-height: 1.55; color: var(--surface-muted); }
-.hub-prose { min-width: 0; }
-.hub-open { position: relative; isolation: isolate; display: grid; align-items: end; min-height: clamp(36rem, 78vh, 48rem); background: var(--color-surface-ink); }
-.hub-open::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgb(9 11 10 / 92%) 0%, rgb(9 11 10 / 76%) 38%, rgb(9 11 10 / 15%) 80%), linear-gradient(0deg, rgb(9 11 10 / 55%), transparent 40%); pointer-events: none; }
-.hub-open :global(.hub-figure-bleed) { position: absolute; inset: 0; z-index: -2; }
-.hub-frame-opening .hub-copy { width: min(100%, 40rem); box-sizing: border-box; padding: 5rem var(--page-gutter) 5rem; gap: 1.75rem; }
-.hub-frame-opening h1 { max-width: 13ch; }
-.hub-frame-opening .deck { max-width: 34ch; color: var(--color-text-primary-dark); }
-.hub-open :global(.hub-figure-bleed figcaption) { left: auto; width: min(28%, 17rem); background: none; font-size: .75rem; padding: 1rem; }
-.hub-actions { display: flex; flex-wrap: wrap; gap: 1.25rem 2rem; }
-.hub-actions a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--surface-border); padding-bottom: .4rem; }
-.hub-frame-answer { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 3rem; padding: clamp(3rem, 5vw, 5rem) var(--page-gutter); }
-.hub-frame-answer .hub-prose { padding-top: 1.8rem; }
-.hub-frame-moments { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 2rem 3rem; padding-top: clamp(3rem, 5vw, 5rem); }
-.hub-frame-moments .hub-copy { margin-left: var(--page-gutter); }
-.hub-frame-moments .hub-prose { margin-right: var(--page-gutter); }
-.hub-frame-moments :global(.hub-figure-wide) { grid-column: 1 / -1; margin: 1rem 0 0; }
-.hub-frame-moments :global(figcaption) { padding: 0 var(--page-gutter) 1.5rem; }
-.hub-frame-system { display: grid; gap: 2.5rem; padding: clamp(3rem, 5vw, 5rem) var(--page-gutter) 0; }
-.hub-frame-system .hub-copy { max-width: 36rem; }
-.hub-frame-system :global(.neutral-study) { margin-top: 0; }
-.hub-frame-study > .hub-copy { padding: 3rem var(--page-gutter) 0; }
-.hub-frame-study > .hub-prose { padding: 1.5rem var(--page-gutter) 3rem; max-width: 64ch; }
-.hub-frame-ledger, .hub-frame-comparison, .hub-frame-products, .hub-frame-interfaces { display: grid; gap: 2.5rem; padding: clamp(3.5rem, 6vw, 6rem) var(--page-gutter); }
-.hub-frame-comparison[data-stage], .hub-frame-interfaces[data-stage] { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 2.5rem; }
-.hub-frame-comparison[data-stage] > .hub-copy, .hub-frame-interfaces[data-stage] > .hub-copy { align-self: center; }
-.hub-frame-comparison[data-stage] > .hub-prose, .hub-frame-interfaces[data-stage] > .hub-prose { grid-column: 1 / -1; }
-.hub-frame-comparison :global(.hub-figure-stage), .hub-frame-interfaces :global(.hub-figure-stage) { grid-column: 2; grid-row: 1; }
-.hub-frame-detail { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2rem 3rem; padding: 3.5rem var(--page-gutter); border-top: 1px solid var(--color-border-paper); background: var(--color-surface-stone); }
-.hub-frame-detail :global(.neutral-study) { grid-column: 1 / -1; margin-top: 0; }
-.hub-frame-process, .hub-frame-pitfalls, .hub-frame-handoff, .hub-frame-reading, .hub-frame-quiet { display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); gap: 2rem 3rem; padding: clamp(3rem, 5vw, 5rem) var(--page-gutter); border-top: 1px solid var(--color-border-paper); }
-.hub-frame-process:has(.hub-figure) { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-.hub-frame-process:has(.hub-figure) .hub-prose { grid-column: 1 / -1; }
-.hub-frame-process :global(.hub-figure) { grid-column: 2; grid-row: 1; }
-.hub-frame-process .hub-copy, .hub-frame-pitfalls .hub-copy, .hub-frame-handoff .hub-copy { align-self: start; }
-.hub-frame-investment { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 3rem; padding: clamp(3rem, 5vw, 5rem) var(--page-gutter); }
-.hub-frame-questions { display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); gap: 3rem; padding: clamp(3rem, 5vw, 5rem) var(--page-gutter); border-top: 1px solid var(--color-border-paper); }
-.hub-frame-inquiry { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); gap: 2rem 3rem; padding: clamp(4.5rem, 9vh, 7.25rem) var(--page-gutter); }
-.hub-frame-inquiry .hub-copy, .hub-frame-inquiry .hub-prose, .hub-frame-inquiry > .deck { grid-column: 1; }
-.hub-frame-inquiry .hub-inquiry { grid-column: 2; grid-row: 1 / span 3; }
-.hub-frame-inquiry :global(.inquiry) { margin: 0; max-width: none; }
-.product-rail { min-width: 0; display: grid; gap: 1rem; }
-.product-opening { grid-row: 2; }
-.product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: 1.5rem; align-items: end; }
-.product-grid :global(.hub-figure) { min-width: 0; }
-.product-grid :global(.media-slot[data-frame="product"]) { aspect-ratio: 4/3; max-height: 22rem; }
-.skip-link { position: fixed; top: .75rem; left: .75rem; z-index: 100; padding: .8rem; background: var(--color-surface-paper); color: var(--color-text-on-paper); transform: translateY(-150%); }
+.skip-link { position: fixed; top: var(--k-s3); left: var(--k-s3); z-index: 80; padding: var(--k-s3); background: var(--color-surface-paper); color: var(--color-text-primary-paper); transform: translateY(-150%); }
 .skip-link:focus { transform: none; }
-:focus-visible { outline: 2px solid var(--color-accent-signal); outline-offset: 4px; }
-@media (max-width: 1100px) {
- .hub-frame-process, .hub-frame-pitfalls, .hub-frame-handoff, .hub-frame-questions { grid-template-columns: 1fr; }
-}
-@media (max-width: 700px) {
- .hub-open { min-height: 38rem; }
- .hub-frame-opening .hub-copy { width: 100%; padding: 4rem var(--page-gutter); }
- .hub-open :global(.hub-figure-bleed figcaption) { display: none; }
- .hub-open::after { background: linear-gradient(90deg, rgb(9 11 10 / 90%), rgb(9 11 10 / 48%)); }
- .hub-frame-answer, .hub-frame-moments, .hub-frame-investment, .hub-frame-detail, .hub-frame-inquiry, .hub-frame-comparison[data-stage], .hub-frame-interfaces[data-stage], .hub-frame-process:has(.hub-figure) { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; }
- .hub-frame-moments .hub-copy, .hub-frame-moments .hub-prose { margin-inline: var(--page-gutter); }
- .hub-frame-answer .hub-prose { padding-top: 0; }
- .hub-frame-inquiry .hub-copy, .hub-frame-inquiry .hub-prose, .hub-frame-inquiry > .deck, .hub-frame-inquiry .hub-inquiry, .hub-frame-comparison :global(.hub-figure-stage), .hub-frame-interfaces :global(.hub-figure-stage), .hub-frame-process :global(.hub-figure) { grid-column: 1; grid-row: auto; }
- .hub-frame-comparison :global(.hub-figure-stage), .hub-frame-interfaces :global(.hub-figure-stage) { grid-row: 2; }
-}
 </style>

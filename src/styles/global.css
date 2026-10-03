@@ -5,6 +5,7 @@
 @import "@fontsource/jetbrains-mono/latin-400.css";
 @import "@fontsource/jetbrains-mono/latin-500.css";
 @import "@fontsource/jetbrains-mono/latin-600.css";
+@import "./motion.css";
 
 @theme {
   /* Surface system. Ink, Forest, Paper and Signal stay at these values. */
@@ -109,6 +110,25 @@
   --radius-control: 2px;
   --text-label: 0.8125rem;
   --text-label--letter-spacing: 0.08em;
+  /* Korta spacing aliases. Missing steps map to the nearest existing token. */
+  --k-s1: var(--spacing-1);
+  --k-s2: var(--spacing-2);
+  --k-s3: var(--spacing-3);
+  --k-s4: var(--spacing-4);
+  --k-s5: var(--spacing-5);
+  --k-s6: var(--spacing-6);
+  --k-s8: var(--spacing-8);
+  --k-s12: var(--spacing-12);
+  --k-s16: var(--spacing-16);
+  --k-s20: var(--spacing-16);
+  --k-hairline: 1px;
+  --k-radius: var(--radius-control);
+  --nav-logo: 36px;
+  --rail-top: calc(var(--nav-logo) + (2 * var(--k-s4)));
+  --rail-width: minmax(240px, 18%);
+  --text-body-sm: var(--text-body);
+  --text-h5: var(--text-h3);
+  --text-h6: var(--text-body-lg);
 }
 
 @media (min-width: 768px) {

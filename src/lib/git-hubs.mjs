@@ -12,7 +12,9 @@ function readHubFilesFromDisk() {
     .map((file) => readFileSync(join(dir, file), 'utf8'));
 }
 const NOTE_LABEL = /^(Visual|Image|Study|Interaction|Required interaction|Decision reached|Status|Reviewer|Source check|Publish hold|Project module|Editorial use|Builder credit|Verified project facts|Caption)\b/i;
-const INSTRUCTION_LINE = /^(Use `|Use verified |Use a permission-cleared |Use a verified DAVG |Use only these facts |Preferred proof is |The page should |The finished module should |The primary technical study must |Rebuild labels |Pair a daylight |`rack build 1\.png`)/;
+const INSTRUCTION_LINE = /^(Use `|Use verified |Use a permission-cleared |Use a verified DAVG |Use only these facts |Preferred proof is |The page should |The finished module should |The primary technical study must |Rebuild labels |Pair a daylight |`rack build 1\.png`|Use the 30\/70\b|Use blank dimensioned rectangles\b)/i;
+const LAYOUT_HEADING = /^### Section \d{2}\b/i;
+const FIELD_LABEL = /^\*\*(Headline|Deck|CTA|Secondary|Eyebrow|Final headline|Support line|H1|SEO title|Meta description):\*\*/;
 
 function escapeHtml(value) {
   return value
@@ -36,7 +38,12 @@ function isNote(line) {
 }
 
 function isInstruction(line) {
-  return INSTRUCTION_LINE.test(line.replace(/\*\*/g, '').trim());
+  const plain = line.replace(/\*\*/g, '').trim();
+  return INSTRUCTION_LINE.test(plain) || /sticky explanatory|sticky education\/gallery/i.test(plain);
+}
+
+function isLayoutHeading(line) {
+  return LAYOUT_HEADING.test(line.trim());
 }
 
 function publicText(value) {
@@ -74,6 +81,9 @@ function renderTable(rows) {
 function renderBlocks(body) {
   const lines = body.replace(/\r\n/g, '\n').split('\n');
   const out = [];
+  const notes = [];
+  let figureCaption = '';
+  let lead = '';
   let paragraph = [];
   let index = 0;
 
@@ -84,6 +94,12 @@ function renderBlocks(body) {
     paragraph = [];
   };
 
+  const hide = (line) => {
+    flush();
+    notes.push(line.trim());
+    index += 1;
+  };
+
   while (index < lines.length) {
     const trimmed = lines[index].trim();
     if (!trimmed || trimmed === '---') {
@@ -91,9 +107,26 @@ function renderBlocks(body) {
       index += 1;
       continue;
     }
-    if (isNote(trimmed) || isInstruction(trimmed) || /^\*\*(Headline|Deck|CTA|Secondary|Eyebrow|Final headline|Support line|H1|SEO title|Meta description):\*\*/.test(trimmed)) {
+    if (/^\*\*Caption:\*\*/i.test(trimmed)) {
       flush();
+      figureCaption = trimmed.replace(/^\*\*Caption:\*\*\s*/i, '').trim();
+      notes.push(trimmed);
       index += 1;
+      continue;
+    }
+    if (/^\*\*Core lesson:\*\*/i.test(trimmed)) {
+      flush();
+      lead = publicText(trimmed.replace(/^\*\*Core lesson:\*\*\s*/i, ''));
+      notes.push(trimmed);
+      index += 1;
+      continue;
+    }
+    if (isNote(trimmed) || isInstruction(trimmed) || isLayoutHeading(trimmed) || FIELD_LABEL.test(trimmed)) {
+      if (!FIELD_LABEL.test(trimmed)) hide(trimmed);
+      else {
+        flush();
+        index += 1;
+      }
       continue;
     }
     if (trimmed.startsWith('|')) {
@@ -137,7 +170,8 @@ function renderBlocks(body) {
   }
 
   flush();
-  return out.join('\n');
+  if (lead) out.unshift(`<p>${inline(lead)}</p>`);
+  return { html: out.join('\n'), notes, figureCaption, lead };
 }
 
 export function parseHubMarkdown(markdown) {
@@ -149,6 +183,7 @@ export function parseHubMarkdown(markdown) {
   const sections = chunks.map((chunk) => {
     const heading = chunk.match(/^## (\d{2}) — (.+)\n/);
     const body = chunk.replace(/^## \d{2} — .+\n/, '');
+    const blocks = renderBlocks(body);
     return {
       id: heading?.[1] ?? '00',
       title: heading?.[2]?.trim() ?? name,
@@ -157,7 +192,10 @@ export function parseHubMarkdown(markdown) {
       cta: grab(body, 'CTA'),
       secondary: grab(body, 'Secondary'),
       support: grab(body, 'Support line'),
-      html: renderBlocks(body),
+      html: blocks.html,
+      notes: blocks.notes,
+      figureCaption: blocks.figureCaption,
+      lead: blocks.lead,
     };
   });
   return {

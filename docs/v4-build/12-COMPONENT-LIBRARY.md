@@ -4,7 +4,7 @@ Revision: 30 September 2026. These sections are shared. A service page passes it
 
 | Component | File | Use |
 | --- | --- | --- |
-| Site header | `src/components/SiteNav.astro` | Green utility bar, centered lockup, Company / Home Solutions / Resources / Support. Home Solutions is the `services` order in `src/config/site.ts`. Other menus stay in `src/config/navigation.ts`. |
+| Site header | `src/components/korta/TopNav.astro` and `MenuPanel.astro` | Logo left. Phone and the Company / Home Solutions / Resources / Support links live in the menu. Home Solutions is the `services` order in `src/config/site.ts`. |
 | Site footer | `src/components/ServiceLinks.astro` | The eight services, same order as the rail. |
 | Chapter rail | `src/components/ServicePageShell.astro` | Sticky 25% Forest rail. Eight services from `services`. Chapter links are the git hub section titles for the active service. |
 | Answer frame | `src/components/library/AnswerFrame.astro` | Thick black frame around a direct answer. Used in Questions. |

@@ -1,7 +1,20 @@
 # DAVG V4 — Active service-page layout
 Revision: 3 October 2026. One shell. The git hub is the page. The source index is `00-START-HERE.md`.
 
-Desktop frame, under the existing site header:
+## Current frame — chapter grammar
+
+This section is the live frame. The 25/75 Forest rail and the per-role padding below are the earlier repair. They are not the current paint.
+
+1. Masthead: `src/components/korta/TopNav.astro`. Logo left, 36px. The phone number is the nav CTA and is repeated in `MenuPanel`. There is no utility bar above the masthead.
+2. Rail: ink, `minmax(240px, 18%)`, sticky under the masthead. It is this page's chapter index. The eight services stay in a switcher that is closed until opened. Chapter labels are one line. The foot is `Chapter NN / NN` and one button. Certification lines are not in the rail.
+3. Hero (section 01): ink. One H1 at `--text-h1`, max-width 14ch, caption under the photograph. The hero is the only bleeding photograph.
+4. Chapters: `src/components/korta/Chapter.astro`. Same padding. Paper, except section 06 on each hub, which is the comparison chapter and is the one ink chapter. A chapter with one portrait or square image uses the aside slot. Other images sit in the chapter as one figure or a pair. Captions sit under the image.
+5. One table is visible in a chapter. Any further table in that chapter is inside `details.k-more`, using its existing heading. Lists use `.k-list`.
+6. FAQ (section 14) is a paper chapter. The inquiry (section 15) is ink and is not a second ink chapter.
+7. Below 900px the rail is hidden and the chapter list is the disclosure in the main column.
+8. Authoring notes (layout briefs, photo direction, rights, sourcing, `Caption:` and `Core lesson:` labels) stay in the hub markdown. The page renders `Caption` as the figure caption and `Core lesson` as the first paragraph, without those labels. Other notes are HTML comments.
+
+Desktop frame that this grammar replaces:
 
 1. Left column, 25%: Forest rail in `ServicePageShell.astro`. It is sticky for the whole service page. It lists the eight services. The current service is emphasized. Its chapter links are the `## 01 —` titles from that service's git hub, nested under the service. The rail menu scrolls when the list is taller than the viewport.
 2. Right column, 75%: the git hub, in file order. Section 01, including the H1 and the hero media, is the first block in this column. Later sections follow. The inquiry form is inside section 15.

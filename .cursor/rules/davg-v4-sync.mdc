@@ -5,7 +5,7 @@ alwaysApply: true
 
 Read `docs/v4-build/00-START-HERE.md`, `docs/v4-build/11-SYNC-CONTRACT.md`, and `docs/v4-build/BUILD-STATE.md` before editing. Use only the sources that task touches.
 
-Public copy for the eight services is `docs/v4-build/hubs/DAVG-V4-Hub-*.md`, rendered only by `HubPage.astro` inside the sticky 25/75 `ServicePageShell.astro`. See `.cursor/rules/git-hubs-source.mdc`. Each hub may keep its own section order inside that shell. Do not render `src/content/services/*.json` or `archive/davg-history/`. Do not put a full-width hero outside the rail. Do not invent a second chapter list or a second page frame.
+Public copy for the eight services is `docs/v4-build/hubs/DAVG-V4-Hub-*.md`, rendered only by `HubPage.astro` inside `ServicePageShell.astro`. See `.cursor/rules/git-hubs-source.mdc`. Each hub may keep its own section order inside that shell. The shell is TopNav plus the ink chapter rail and one chapter frame. Do not render `src/content/services/*.json` or `archive/davg-history/`. Do not invent a second chapter list or a second page frame.
 
 Fonts in `src/styles/global.css` are Schibsted Grotesk (400–900), Instrument Sans, and JetBrains Mono. The live gutter is `--page-gutter` (1.5rem / 3rem / 4rem). `--spacing-page-inline` aliases that token. It is not a clamp.
 

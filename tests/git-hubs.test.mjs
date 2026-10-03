@@ -44,21 +44,30 @@ test('the hub loader reads only the live git hub directory', () => {
   assert.doesNotMatch(source, /davg-history|hub-production-kit|DAVG-ALL-EIGHT|content-additions|src\/data\/services/);
 });
 
+const visibleHtml = (html) => html.replace(/<!--[\s\S]*?-->/g, '');
+
 test('internal notes and publication holds stay out of visitor HTML', () => {
   const home = loadGitHub('home-intelligence');
   const shades = loadGitHub('motorized-shades');
   const proof = home.sections.find((section) => section.id === '11');
-  assert.doesNotMatch(proof.html, /Publish hold|Project module|Editorial use|Builder credit/);
-  assert.doesNotMatch(home.sections.map((section) => section.html).join('\n'), /In Phase Two,/);
-  assert.doesNotMatch(home.sections.find((section) => section.id === '08').html, /Home control mock/);
-  assert.doesNotMatch(shades.sections.map((section) => section.html).join('\n'), /IBM Plex|palladiom mock/);
+  assert.doesNotMatch(visibleHtml(proof.html), /Publish hold|Project module|Editorial use|Builder credit/);
+  assert.match(proof.notes.join('\n'), /Publish hold/);
+  assert.doesNotMatch(visibleHtml(home.sections.map((section) => section.html).join('\n')), /In Phase Two,/);
+  assert.doesNotMatch(visibleHtml(home.sections.find((section) => section.id === '08').html), /Home control mock/);
+  assert.match(home.sections.find((section) => section.id === '08').notes.join('\n'), /Home control mock/);
+  assert.doesNotMatch(visibleHtml(shades.sections.map((section) => section.html).join('\n')), /IBM Plex|palladiom mock/);
   assert.match(home.sections[1].html, /control layer that lets a residence behave like one system/);
   for (const hub of loadGitHubs()) {
-    assert.doesNotMatch(hub.sections[4].html, /Avoid a blanket claim|Do not (?:label|promise|claim)|verify .*public|The output must|\*\*Image:/);
-    assert.match(hub.sections[4].html, /<p>/, `${hub.slug} retains the public study explanation`);
+    assert.doesNotMatch(visibleHtml(hub.sections[4].html), /Avoid a blanket claim|Do not (?:label|promise|claim)|verify .*public|The output must|\*\*Image:/);
+    assert.match(visibleHtml(hub.sections[4].html), /<p>/, `${hub.slug} retains the public study explanation`);
   }
-  assert.match(loadGitHub('security-access').sections[4].html, /configuration-specific/);
-  assert.match(home.sections[4].html, /representative hardware example only/);
+  assert.match(visibleHtml(loadGitHub('security-access').sections[4].html), /configuration-specific/);
+  assert.match(visibleHtml(home.sections[4].html), /representative hardware example only/);
+  const lighting = loadGitHub('architectural-lighting');
+  assert.doesNotMatch(visibleHtml(lighting.sections[5].html), /sticky explanatory|Caption:|Core lesson:/);
+  assert.match(lighting.sections[5].notes.join('\n'), /sticky explanatory/);
+  assert.match(lighting.sections[4].figureCaption, /Fewer controls on the wall/);
+  assert.match(visibleHtml(lighting.sections[4].html), /^<p>Architectural lighting simplifies/);
 });
 
 test('composition maps each hub section by purpose', () => {
@@ -108,11 +117,8 @@ test('retired JSON drafts are not the page renderer', () => {
     assert.doesNotMatch(source, /data\/services\//);
     assert.match(source, /git-hubs/);
   }
-  assert.match(page, /data-section-frame=\{role\.frame\}/);
-  assert.match(page, /hub-frame-opening/);
-  assert.match(page, /hub-frame-answer/);
-  assert.match(page, /hub-frame-system/);
-  assert.match(page, /hub-frame-study/);
-  assert.match(page, /hub-frame-inquiry/);
-  assert.doesNotMatch(page, /\.hub-section\s*\{\s*padding:\s*var\(--spacing-section\)/);
+  assert.match(page, /k-ch/);
+  assert.match(page, /data-chapter/);
+  assert.match(page, /Chapter/);
+  assert.doesNotMatch(page, /hub-frame-opening|linear-gradient/);
 });
