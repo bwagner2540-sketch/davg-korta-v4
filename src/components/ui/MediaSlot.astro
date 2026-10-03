@@ -1,0 +1,17 @@
+---
+/** Square-edged media at a fixed ratio with a stable slot ID. Shows a labelled placeholder until src is set. */
+interface Props { slotId: string; src?: string; alt?: string; ratio?: string; subject?: string; tone?: 'dark' | 'paper'; fit?: 'cover' | 'contain'; eager?: boolean; class?: string }
+const { slotId, src, alt = '', ratio = '16 / 9', subject, tone = 'dark', fit = 'cover', eager = false, class: cls } = Astro.props;
+const paper = tone === 'paper';
+---
+<figure data-slot-id={slotId} data-subject={subject} style={`aspect-ratio:${ratio}`} class:list={[
+  'relative m-0 w-full overflow-hidden',
+  !src && (paper ? 'bg-cream-03 outline outline-1 -outline-offset-1 outline-line-paper' : 'bg-transparent outline outline-1 -outline-offset-1 outline-line-dark'), cls,
+]}>
+  {src
+    ? <img src={src} alt={alt} loading={eager ? 'eager' : 'lazy'} decoding="async" class:list={['absolute inset-0 block h-full w-full', fit === 'contain' ? 'object-contain' : 'object-cover']} />
+    : <figcaption class="absolute inset-0 flex flex-col items-center justify-center gap-1.5 p-4 text-center">
+        {subject && <span class:list={['text-caption', paper ? 'text-on-paper' : 'text-muted-dark']}>{subject}</span>}
+        <span class:list={['font-mono text-[11px] tracking-[0.1em]', paper ? 'text-muted-paper' : 'text-quiet-dark']}>{slotId} · {ratio.replace(/\s/g, '')}</span>
+      </figcaption>}
+</figure>

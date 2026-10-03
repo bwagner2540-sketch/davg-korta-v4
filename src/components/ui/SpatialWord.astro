@@ -1,0 +1,31 @@
+---
+/** Spatial band: the last row of a section. The word is fitted to the band's width (long words run edge to edge, short words stop at --spatial-max).
+ *  1–14 characters; longer words are not drawn. surface "image" is for the service hero only. The parent section needs class "has-spatial-band". */
+interface Props { word: string; surface?: 'ink' | 'forest' | 'paper' | 'image'; class?: string }
+const { word, surface = 'ink', class: cls } = Astro.props;
+const w = String(word ?? '').trim().toUpperCase();
+if (w.length > 14) console.warn(`SpatialWord: "${w}" is longer than 14 characters and was not drawn.`);
+---
+{w && w.length <= 14 && <div aria-hidden="true" class:list={['spatial-band', cls]} data-surface={surface} data-spatial-fit><span>{w}</span></div>}
+<script is:inline>
+(() => {
+  if (window.__spatialFit) return; window.__spatialFit = true;
+  const fit = (el) => {
+    const s = el.firstElementChild; if (!s) return;
+    el.style.setProperty('--spatial-size', '100px');
+    const cs = getComputedStyle(el), sw = s.getBoundingClientRect().width;
+    const cw = el.clientWidth - parseFloat(cs.paddingLeft || 0) - parseFloat(cs.paddingRight || 0);
+    if (!sw || !cw) return;
+    const px = Math.min(100 * cw / sw, parseFloat(cs.getPropertyValue('--spatial-max')) || 260);
+    if (isFinite(px)) el.style.setProperty('--spatial-size', px + 'px');
+  };
+  const all = () => document.querySelectorAll('[data-spatial-fit]').forEach(fit);
+  const start = () => {
+    all();
+    const ro = new ResizeObserver((es) => es.forEach((e) => fit(e.target)));
+    document.querySelectorAll('[data-spatial-fit]').forEach((el) => ro.observe(el));
+    document.fonts && document.fonts.ready.then(all);
+  };
+  document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', start) : start();
+})();
+</script>

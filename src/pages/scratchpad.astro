@@ -1,0 +1,13 @@
+---
+/** Component bench for new sections. Guided brief uses Button, Heading, Eyebrow, and TextLink. */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GuidedBrief from '../components/service/GuidedBrief.astro';
+---
+<BaseLayout title="Scratchpad | DAVG">
+  <main>
+    <GuidedBrief continueHref="#contact-close" skipHref="#contact-close" />
+    <section id="contact-close" class="scroll-mt-16 bg-paper px-page py-section">
+      <p class="mono-label m-0 text-muted-paper">Inquiry close</p>
+    </section>
+  </main>
+</BaseLayout>
