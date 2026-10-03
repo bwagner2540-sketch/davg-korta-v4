@@ -1,9 +1,9 @@
 # Live preview
 
-Current review URL: http://127.0.0.1:4321/
+Current review URL: https://cursor-git-hub-source-13db-davg-korta-v4.brandon-763.workers.dev/
 
-That server is this branch, `cursor/git-hub-source-13db`, at commit `080a0b3`. The homepage and `/solutions/home-intelligence/` serve the git hub copy with the 2 October type, gutter, and section-spacing lock.
+That address is the Workers branch preview for `cursor/git-hub-source-13db`. Workers Builds updates it when this branch is pushed. The deployed commit is the `davg-revision` meta on the homepage and on each hub. Affected pages include `/` and `/solutions/<slug>/` (the `/systems/<slug>/` alias is the same page).
 
-`https://cursor-eight-hubs-homepage-c8d7-davg-korta-v4.brandon-763.workers.dev` is the Workers preview for `cursor/eight-hubs-homepage-c8d7`. It is a different branch. Do not review this lock there.
+`https://cursor-eight-hubs-homepage-c8d7-davg-korta-v4.brandon-763.workers.dev` is a different branch. Do not review this work there.
 
-`davg.ai` is the Cloudflare production domain. It still serves the coming-soon page. Do not deploy there until Brandon says a page is ready.
+`https://davg-korta-v4.brandon-763.workers.dev/` is the Worker production host. It is not this branch preview. `davg.ai` is the coming-soon site. Do not deploy either from a page edit.
