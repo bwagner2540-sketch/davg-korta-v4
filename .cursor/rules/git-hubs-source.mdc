@@ -3,10 +3,10 @@ description: Git hub files are the only public copy for the eight service pages
 alwaysApply: true
 ---
 
-Cloudflare builds a git commit. The Mac folder and Dropbox are working copies. They change the site only after the same change is committed and pushed to the branch that deploys. Do not keep a second master on the Mac and expect the live site to match.
+Cloudflare builds a git commit. A file changes the site only after that change is committed and pushed to the branch that deploys.
 
 The only public words for the eight services are `docs/v4-build/hubs/DAVG-V4-Hub-*.md`. `HubPage.astro` reads those files. The routes are the `Route` in each file, under `/solutions/<slug>/`. `/systems/<slug>/` renders that same page.
 
 One frame for every hub: `ServicePageShell.astro`, a sticky 25/75 rail around the whole service page. Section 01, including its headline and media, sits in the right column. Do not add a full-width hero outside the rail. Do not invent another page frame, another chapter list, or another copy in JSON, MDX, or a new markdown tree.
 
-`src/data/services/*.json`, `DAVG-ALL-EIGHT-SERVICE-PAGES/`, and `hub-production-kit/` are not public copy. Do not render them. Spacing comes from the tokens in `src/styles/global.css`. Do not restyle one hub on its own.
+`archive/davg-history/`, including the old JSON drafts and service-page packs, is not public copy. Do not render it. Spacing comes from the tokens in `src/styles/global.css`. The live gutter is `--page-gutter`.

@@ -1,5 +1,34 @@
 # DAVG V4 — Build state
-Updated 29 September 2026 during the one-time source sync. This replaces the remote-audit unknowns with the local project that was actually open.
+
+## Current ownership — 3 October 2026
+This section is the current record. The logs below it are history from earlier passes. Do not treat those logs as the live source map.
+
+- Repository: `bwagner2540-sketch/davg-korta-v4`. Branch: `cursor/git-hub-source-13db`. Repair commits still in ancestry: `080a0b3` (git hubs and layout tokens) and `e35d1bd` (local preview note).
+- Source index: `docs/v4-build/00-START-HERE.md`. Contract: `11-SYNC-CONTRACT.md`.
+- Public copy: `docs/v4-build/hubs/DAVG-V4-Hub-*.md`, loaded only by `src/lib/git-hubs.mjs`.
+- Frame: `src/components/ServicePageShell.astro`. Renderer: `src/components/services/hubs/HubPage.astro`. Routes: `/solutions/<slug>/` and the `/systems/<slug>/` alias.
+- Tokens: `src/styles/global.css`. Fonts implemented: Schibsted Grotesk 400–900, Instrument Sans, JetBrains Mono. Live gutter implemented: `--page-gutter` 1.5rem / 3rem / 4rem. `--spacing-page-inline` aliases `--page-gutter`.
+- Historical packs: `archive/davg-history/`. Not implementation authority. See that README for original paths.
+- Deployment configuration: `wrangler.toml` name `davg-korta-v4`, assets `./dist`, build command `node scripts/assert-production.mjs`. Production domain `davg.ai` is the existing coming-soon target. This file does not claim a production deploy.
+- Publication: `src/config/publication.json` `approvedPages` is empty. `npm run build` is expected to stop. Sandbox output is `dist-sandbox/` via `npm run build:sandbox`.
+
+### Status of decisions
+| Topic | Status |
+|---|---|
+| Git hubs as public copy, sticky Forest 25/75 shell, `/solutions/` routes | Implemented. Verified on the local server before this cleanup. |
+| Layout tokens (H1 64px at 1440 and 40px at 390, gutters 64px and 24px, section padding 86.4px and 48px) | Implemented in `src/styles/global.css` and the hub/home styles. Re-checked after this cleanup in the task log below. |
+| Collections, MDX, and JSON as the public copy (`10`) | Proposed. Do not migrate. |
+| Shading briefs 08 and 09 chapter maps | Historical. Not applied over the git hub. |
+| GBB additions | Pending. Not applied by this cleanup. Wording already in a git hub stays there. |
+| Surface roles in `13` beyond the Forest rail | Documented. The live hub field sits on the ink frame. Not a command to repaint. |
+| Public phone, cleared project proof, inquiry destination | Pending in `05-BUSINESS-FACTS.md`. |
+| Production release | Not authorized. `approvedPages` is empty. |
+| Workers branch preview for `cursor/git-hub-source-13db` | See the latest task log. A push is not a verified preview. |
+
+The September and early October logs below recorded older owners (JSON drafts, document 09 as the shading map, IBM Plex as an open font question, branch `main`). Those statements are superseded by this section.
+
+## Earlier record — 29 September 2026 source sync
+Updated 29 September 2026 during the one-time source sync. This replaces the remote-audit unknowns with the local project that was actually open. The ownership notes in that pass are historical.
 
 ## Shared checkpoint
 - Repository: `bwagner2540-sketch/davg-korta-v4` (`origin` `https://github.com/bwagner2540-sketch/davg-korta-v4.git`). Matches the expected remote. No branch switch or reset.
@@ -86,3 +115,12 @@ Do not publish this internal record on the public website.
 - Implementation: `src/lib/git-hubs.mjs`, `src/components/services/hubs/HubPage.astro`, `src/pages/solutions/[slug].astro`, `src/pages/systems/[slug].astro`. The 2 October layout lock is applied on the live pages: `.folio` and `--page-gutter` (1.5rem / 3rem / 4rem), `--spacing-section`, `--text-h1` / `--text-h2` / `--text-h3`, `--text-body`, `--text-body-lg`, and JetBrains Mono at `--text-mono`. Homepage no longer hardcodes 24/48/64 or clamp heading sizes. Hub headings and body use those same tokens. Shell spacing aliases (`--spacing-8`, `--spacing-12`, `--color-text-on-dark`) stay defined so the rail padding resolves.
 - Verification: pass on the dev server, 3 October 2026. `npm test` 15 passed. `npm run build:sandbox` wrote 35 pages. `npm run verify` passed: git-hub copy inside the sticky 25/75 shell, JetBrains Mono registered, IBM Plex Mono absent. Chrome measured `/`, `/solutions/home-intelligence/`, and `/solutions/motorized-shades/` at 1440, 1000, 768, and 390. H1 is Schibsted Grotesk, weight 400, 64px / −2.24px at 1440, 45px / −1.575px at 1000, 40px / −1.4px at 390. Homepage folio gutters are 64px, 48px, 48px, and 24px at those widths. Hub section padding is the section token (86.4px at 1440, 48px at 390) with the same gutter. Rail is Forest `rgb(24, 59, 49)`, sticky, 356/1425 at 1440, hidden below 1024px. No document overflow. Not a production deploy. `davg.ai` stays on its current target.
 - Cloudflare publishes the git commit on the connected branch. A Mac-only or Dropbox-only edit is not the site.
+
+## Task log — 3 October 2026 source-map cleanup
+- Date/task: One current source index, archive of superseded packs, and the normal task workflow. No hub-copy rewrite, no route migration, no framework upgrade, no visual redesign.
+- Decision: documented and implemented. `00-START-HERE.md` is the source index. `archive/davg-history/` holds the moved packs and is marked historical. GBB and shading briefs 08/09 stay pending or historical and were not applied to pages. Collections/MDX stay proposed.
+- Specification: `00-START-HERE.md`, `11-SYNC-CONTRACT.md`, `01-DESIGN-SYSTEM.md`, `02-SERVICE-LAYOUT.md`, `03`, `04`, `05`, `06`, `07`, `08`, `09`, `10`, `12`, `hubs/README.md`, `AGENTS.md`, `.cursor/rules/davg-v4-sync.mdc`, `.cursor/rules/git-hubs-source.mdc`, `.cursor/rules/live-preview.mdc`.
+- Code paths: archive moves only, plus `src/components/services/hubs/studies/HubStudies.astro` (unmounted SVG label face set to JetBrains Mono) and `tests/git-hubs.test.mjs` (loader path guard). Routed pages were not restyled.
+- Preserved repair commits: `080a0b3`, `e35d1bd`. This cleanup is a later commit on `cursor/git-hub-source-13db`.
+- Checks: recorded at the end of this entry after `npm test`, `npm run build`, `npm run build:sandbox`, and `npm run verify`.
+- Preview/production: production not deployed. Preview address is recorded in `docs/live-previews.md` only when that URL serves this commit.

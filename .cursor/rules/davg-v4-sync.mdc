@@ -1,11 +1,26 @@
 ---
-description: Active DAVG V4 source, layout, and verification
+description: Active DAVG V4 source, layout, and task workflow
 alwaysApply: true
 ---
 
-Read `docs/v4-build/11-SYNC-CONTRACT.md` and `docs/v4-build/BUILD-STATE.md` before editing.
-Public copy for the eight services is `docs/v4-build/hubs/DAVG-V4-Hub-*.md`, rendered only by `HubPage.astro` inside the sticky 25/75 `ServicePageShell.astro`. See `.cursor/rules/git-hubs-source.mdc`.
-Do not render `src/data/services/*.json`. Do not put a full-width hero outside the rail. Do not invent a second chapter list or a second page frame.
-Fonts in `src/styles/global.css` are Schibsted Grotesk, Instrument Sans, and JetBrains Mono. Spacing uses the tokens in that file.
-`davg.ai` production stays on its current target until the owner approves a release. Preserve local work. No reset or force-push.
-Update the affected spec and `BUILD-STATE.md` with the code. Report branch, commit, checks, and preview or production status.
+Read `docs/v4-build/00-START-HERE.md`, `docs/v4-build/11-SYNC-CONTRACT.md`, and `docs/v4-build/BUILD-STATE.md` before editing. Use only the sources that task touches.
+
+Public copy for the eight services is `docs/v4-build/hubs/DAVG-V4-Hub-*.md`, rendered only by `HubPage.astro` inside the sticky 25/75 `ServicePageShell.astro`. See `.cursor/rules/git-hubs-source.mdc`. Each hub may keep its own section order inside that shell. Do not render `src/content/services/*.json` or `archive/davg-history/`. Do not put a full-width hero outside the rail. Do not invent a second chapter list or a second page frame.
+
+Fonts in `src/styles/global.css` are Schibsted Grotesk (400–900), Instrument Sans, and JetBrains Mono. The live gutter is `--page-gutter` (1.5rem / 3rem / 4rem). `--spacing-page-inline` aliases that token. It is not a clamp.
+
+`archive/davg-history/` is historical. It is not an active instruction and not a second master.
+
+## Task workflow
+- Inspect the current branch and status, then read only the relevant active sources.
+- Implement the requested page, section, or content change in the existing build.
+- Keep page-specific changes scoped. When shared code changes, check the other consumers.
+- Update only the affected authoritative specification, plus `BUILD-STATE.md` when the change is substantive.
+- Run the relevant checks, commit the intended changes, and push.
+- Wait for the automatic preview and verify it. Return the same stable preview address with the affected page path and the deployed commit.
+- If publication fails, report the preview as stale and identify the blocker. Do not leave `docs/live-previews.md` pointing at a URL that does not serve this commit.
+- Preview deployments of the working branch are authorized. Production release of `davg.ai` stays separate.
+- Use one writer per checkout. Do not launch concurrent editing agents.
+- Preserve local work. No reset or force-push.
+
+Record proposed architecture as proposed. Do not migrate routes, content collections, or chapter maps unless the current task says to.

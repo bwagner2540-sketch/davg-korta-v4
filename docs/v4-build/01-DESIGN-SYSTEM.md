@@ -7,7 +7,7 @@ Self-hosted display: Schibsted Grotesk Variable. Body, controls and navigation: 
 
 Display headings use upright sentence case at weight 400, −.035em for H1 and −.025em for H2. Background words still request Schibsted 300. The installed Schibsted package declares an actual wght range of 400–900, so that 300 request renders as 400. Do not describe that as a verified weight match. The registered font-family names include Variable; active tokens must match them exactly.
 
-The names and values in `src/styles/global.css` are canonical. Do not replace them with a clamped `--spacing-page-inline`. IBM Plex Mono stays retired.
+The names and values in `src/styles/global.css` are canonical. The live page gutter is `--page-gutter`: 1.5rem below 768px, 3rem from 768px, and 4rem from 1280px. `--spacing-page-inline` is an alias of `--page-gutter`. It is not a separate clamp.
 
 ```css
 @theme {
@@ -88,7 +88,7 @@ Foundation tokens, applied on the homepage and on every git hub:
 
 ## 3. Spacing, radius and borders
 
-Work on a 4/8px rhythm: 4, 8, 12, 16, 24, 32, 48, 64, 80, 96, 128. Desktop content insets typically 48–64px; mobile 20–24px. Headline/body gaps 20–32px. Technical rows 14–18px. Use 1px hairlines and 0–2px corners. Adjust these for the 75% content field; do not copy full-page padding blindly.
+Work on a 4/8px rhythm: 4, 8, 12, 16, 24, 32, 48, 64, 80, 96, 128. The live page gutter is 24px below 768px, 48px from 768px, and 64px from 1280px. Headline/body gaps 20–32px. Technical rows 14–18px. Use 1px hairlines and 0–2px corners. Adjust these for the 75% content field; do not copy full-page padding blindly.
 
 Allow long selection guides to breathe across multiple viewports. Dense chapters do not have to fit one screen. Background words should match the same light, filled, cropped treatment on Paper and green fields. Keep them away from readable text and controls. Scale them to the available field, not automatically the whole browser width.
 

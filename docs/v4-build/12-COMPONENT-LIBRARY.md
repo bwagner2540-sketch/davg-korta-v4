@@ -6,12 +6,12 @@ Revision: 30 September 2026. These sections are shared. A service page passes it
 | --- | --- | --- |
 | Site header | `src/components/SiteNav.astro` | Green utility bar, centered lockup, Company / Home Solutions / Resources / Support. Home Solutions is the `services` order in `src/config/site.ts`. Other menus stay in `src/config/navigation.ts`. |
 | Site footer | `src/components/ServiceLinks.astro` | The eight services, same order as the rail. |
-| Chapter rail | `src/components/ServicePageShell.astro` | Sticky 25% forest rail. Eight services from `services`, five chapters under the active one. |
+| Chapter rail | `src/components/ServicePageShell.astro` | Sticky 25% Forest rail. Eight services from `services`. Chapter links are the git hub section titles for the active service. |
 | Answer frame | `src/components/library/AnswerFrame.astro` | Thick black frame around a direct answer. Used in Questions. |
 | Hover-card CTA | `src/components/library/HoverCardCta.astro` | Black squares at the end of a service page. The photograph appears on hover. Each card can set the inquiry path. |
 | Comparison | `src/components/library/ComparisonSplit.astro` | Two-column before/after. Shading uses view-through against darkness. |
 | Case study | `src/components/library/CaseStudy.astro` | Diptych study page. Specimen: `/company/our-work/`. Product photographs stay labeled as illustrations until a project record is cleared. |
-| Hub page | `src/components/services/hubs/HubPage.astro` | Draft service frame with placed photographs, honest missing slots, a Forest signature study and a neutral technical study. |
+| Hub page | `src/components/services/hubs/HubPage.astro` | Routed renderer for all eight git hubs inside `ServicePageShell.astro`. `HubStudies.astro` is not mounted by this route. |
 
 Home Solutions, the footer, and the left rail list all eight services from `services` in `src/config/site.ts`. The order is written in `02-SERVICE-LAYOUT.md`.
 

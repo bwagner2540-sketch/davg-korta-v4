@@ -36,6 +36,13 @@ test('home intelligence renders the git headline, not a rewritten draft', () => 
   assert.doesNotMatch(`${hub.h1} ${hub.sections[0].headline} ${hub.sections[0].deck}`, /One command/);
 });
 
+test('the hub loader reads only the live git hub directory', () => {
+  const source = readFileSync('src/lib/git-hubs.mjs', 'utf8');
+  assert.match(source, /docs\/v4-build\/hubs\/DAVG-V4-Hub-\*\.md/);
+  assert.match(source, /docs\/v4-build\/hubs/);
+  assert.doesNotMatch(source, /davg-history|hub-production-kit|DAVG-ALL-EIGHT|content-additions|src\/data\/services/);
+});
+
 test('retired JSON drafts are not the page renderer', () => {
   const page = readFileSync('src/components/services/hubs/HubPage.astro', 'utf8');
   const solutions = readFileSync('src/pages/solutions/[slug].astro', 'utf8');

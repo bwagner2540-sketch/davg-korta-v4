@@ -1,20 +1,24 @@
 # DAVG V4 — Shared build contract
-Revision: 3 October 2026. Owner instruction: one shell, and the git hubs are the public copy.
+Revision: 3 October 2026. The source index is `00-START-HERE.md`.
 
-The site Cloudflare serves is a git commit on the branch connected to that deploy. A file that exists only on a Mac, in Dropbox, or in an uncommitted checkout is not on the site. Commit and push the same branch the deploy builds.
+The site Cloudflare serves is a git commit on the branch connected to that deploy. A file that exists only on a machine, in Dropbox, or in an uncommitted checkout is not on the site. Commit and push the same branch the deploy builds.
 
 ## Source order
 1. Current explicit user instructions.
-2. This contract and `BUILD-STATE.md`.
+2. `00-START-HERE.md`, this contract, and `BUILD-STATE.md`.
 3. `docs/v4-build/hubs/DAVG-V4-Hub-*.md` for the words, section order, and route of each service page.
-4. `02-SERVICE-LAYOUT.md` and `ServicePageShell.astro` for the one page frame.
-5. `01-DESIGN-SYSTEM.md` and `src/styles/global.css` for type, color, and spacing tokens.
-6. `05-BUSINESS-FACTS.md` for unresolved business facts. `archive/`, `v4-gpt-original-design/`, `DAVG-ALL-EIGHT-SERVICE-PAGES/`, `hub-production-kit/`, and `src/data/services/*.json` are reference. They do not supply public copy and they do not replace the shell.
+4. `02-SERVICE-LAYOUT.md` and `src/components/ServicePageShell.astro` for the one page frame. `src/components/services/hubs/HubPage.astro` is the renderer. Each hub keeps its own section order inside that frame.
+5. `01-DESIGN-SYSTEM.md` and `src/styles/global.css` for type, color, and spacing. Live gutter is `--page-gutter`. Fonts are Schibsted Grotesk, Instrument Sans, and JetBrains Mono.
+6. `05-BUSINESS-FACTS.md` for unresolved business facts.
+
+`archive/davg-history/` is historical. It does not supply public copy and it does not replace the shell. `src/content/services/*.json` is loaded by `src/content.config.ts` and is not a routed page.
 
 ## The page
-All eight services use `src/components/services/hubs/HubPage.astro`. It reads the git hub file at build time. The frame is the sticky 25/75 rail in `ServicePageShell.astro`, around the whole page, under the site header. Section 01 is the first block in the right column. `/solutions/<slug>/` is the route written in the hub file. `/systems/<slug>/` renders the same component so older links still open it.
+All eight services use `HubPage.astro`. It reads the git hub file at build time. The frame is the sticky 25/75 rail in `ServicePageShell.astro`, around the whole page, under the site header. Section 01 is the first block in the right column. `/solutions/<slug>/` is the route written in the hub file. `/systems/<slug>/` renders the same component so older links still open it.
 
-Do not add a second renderer, a full-width hero outside the rail, or a rewritten JSON draft. A change to a service page is a change to its git hub file, or a change to the shared shell. It is not a new page design.
+Do not add a second renderer, a full-width hero outside the rail, or a rewritten JSON draft. A change to a service page is a change to its git hub file, or a change to the shared shell when the frame itself changes.
 
 ## Working rules
-Inspect branch, head, and status before editing. Update this contract or `02-SERVICE-LAYOUT.md` when the frame or the copy source changes, and record the result in `BUILD-STATE.md`. Do not reset, force-push, or treat a passing build as a production deploy. `davg.ai` stays on its current production target until the owner says a page is ready to replace it.
+Inspect branch, head, and status before editing. Update this contract, `00-START-HERE.md`, or `02-SERVICE-LAYOUT.md` when the frame or the copy source changes, and record the result in `BUILD-STATE.md`. The task steps are in `.cursor/rules/davg-v4-sync.mdc`. One writer per checkout. Do not reset or force-push. A passing build is not a production deploy. Preview deploys of the working branch are authorized. `davg.ai` stays on its current production target until the owner says a page is ready to replace it.
+
+`10-ASTRO-ARCHITECTURE-AND-PREBUILD-AUDIT.md` describes a collections and MDX architecture. That remains proposed. Do not migrate to it from this contract.

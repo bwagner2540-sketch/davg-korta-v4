@@ -1,5 +1,5 @@
 # DAVG V4 — Active service-page layout
-Revision: 3 October 2026. One shell. The git hub is the page.
+Revision: 3 October 2026. One shell. The git hub is the page. The source index is `00-START-HERE.md`.
 
 Desktop frame, under the existing site header:
 
@@ -10,7 +10,7 @@ Desktop frame, under the existing site header:
 
 Use `grid-template-columns: minmax(0, 1fr) minmax(0, 3fr)` before internal padding. Spacing inside the right column uses `--page-gutter` and `--spacing-section` from `src/styles/global.css`.
 
-Public words, section order, and the `/solutions/<slug>/` route come from `docs/v4-build/hubs/DAVG-V4-Hub-*.md`, rendered only by `HubPage.astro`. `/systems/<slug>/` is the same page. Do not render `src/data/services/*.json`.
+Public words, section order, and the `/solutions/<slug>/` route come from `docs/v4-build/hubs/DAVG-V4-Hub-*.md`, rendered only by `HubPage.astro`. `/systems/<slug>/` is the same page. Do not render `archive/davg-history/src-data-services/` or `src/content/services/*.json`.
 
 This replaces the 30 September frame that put a full-width hero and a full-width answer outside a five-chapter middle.
 
@@ -31,6 +31,6 @@ Wide comparison tables stay in a horizontal scroller on small screens. Do not sh
 
 The rail stays Forest on every chapter. Do not invent installed prices. Hardware families, control platforms, and Good/Better/Best scopes stay separate comparisons. Palladiom is not an automatic quality or price endpoint. Photographs stay captioned as illustrations unless a project record is cleared. The shading story in the git hub is the shading page.
 
-All eight hubs, including shading, use `HubPage.astro` and the git hub file. `ServicePage.astro` and `src/data/services/*.json` are not routed. No public release is implied. The production allowlist stays empty until the owner approves a page.
+All eight hubs, including shading, use `HubPage.astro` and the git hub file. `ServicePage.astro` is not routed. The old JSON drafts are in `archive/davg-history/src-data-services/`. No public release is implied. The production allowlist stays empty until the owner approves a page.
 
 The site header is `SiteNav`, from `src/config/navigation.ts`. Home Solutions items are `services` in the order above. Chapter links stay in the rail. The footer service list is `ServiceLinks`, from the same array.

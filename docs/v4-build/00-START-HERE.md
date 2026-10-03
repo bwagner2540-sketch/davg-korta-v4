@@ -1,21 +1,66 @@
-# DAVG V4 — Current build entry point
-Revision: 30 September 2026 · repair based on checkpoint dc9ff37.
+# DAVG V4 — Current source index
 
-Work in the existing `bwagner2540-sketch/davg-korta-v4` checkout. Read `11-SYNC-CONTRACT.md`, `02-SERVICE-LAYOUT.md` and `BUILD-STATE.md`. Use `npm run dev` for local review and `npm run build:sandbox` for the local static check. `npm run build` is a public-release build and deliberately stops while no pages are approved.
+Revision: 3 October 2026. This is the map of what the checkout renders. Historical packs are in `archive/davg-history/` and are not instructions.
 
-The stable local review URL is http://127.0.0.1:4321/preview/. Refresh it after each local change. It is noindex and stays off the publication allowlist.
+Work in `bwagner2540-sketch/davg-korta-v4` on the branch already open. Read this index, `11-SYNC-CONTRACT.md`, and `BUILD-STATE.md`. Local review is `npm run dev` at http://127.0.0.1:4321/. `npm run build:sandbox` writes `dist-sandbox/`. `npm run build` is the public-release build and stops while `src/config/publication.json` `approvedPages` is empty.
 
-All eight service pages, including Motorized Shading, are one implementation. `HubPage.astro` reads `docs/v4-build/hubs/DAVG-V4-Hub-*.md` and places it in `ServicePageShell.astro`. `/solutions/<slug>/` is the git route. `/systems/<slug>/` renders the same page. None of these routes are on the production allowlist until the owner approves a release.
+## Shared shell, CSS, and layout primitives
 
-Active ownership:
-- `docs/v4-build/hubs/DAVG-V4-Hub-*.md`: the only public words, section order, and routes.
-- `02-SERVICE-LAYOUT.md` and `src/components/ServicePageShell.astro`: the one sticky 25/75 frame.
-- `01-DESIGN-SYSTEM.md` and `src/styles/global.css`: visual tokens and typography.
-- `13-SURFACE-COLOR-SYSTEM.md`: service-page surface roles.
-- `src/config/site.ts`: the only ordered service list. Header, footer, and the rail read `services`.
-- `src/config/publication.json`: explicit page-release allowlist.
-- `11-SYNC-CONTRACT.md` / `BUILD-STATE.md`: source precedence and actual verification.
+| Piece | Path |
+|---|---|
+| Sticky 25/75 service frame | `src/components/ServicePageShell.astro` |
+| Global CSS, fonts, type scale, gutters, `.folio` | `src/styles/global.css` |
+| Document shell for hub and interior pages | `src/layouts/Layout.astro` |
+| Header | `src/components/SiteNav.astro` |
+| Footer service list | `src/components/ServiceLinks.astro` |
+| Homepage composition | `src/pages/index.astro` (uses `.folio`) |
+| Ordered service list | `src/config/site.ts` |
 
-Everything under `archive/` and `v4-gpt-original-design/` is reference. Old 15-section maps, document 09's eleven labels and the nine-label starter cannot override these active files. Archived PDFs and spreadsheets are not current completion reports. Reference artwork does not establish dimensions, measured outcomes or project proof.
+Live gutter is `--page-gutter`: 1.5rem below 768px, 3rem from 768px, 4rem from 1280px. `--spacing-page-inline` is an alias of `--page-gutter`. It is not a clamp. Section padding is `--spacing-section`. Headings use `--text-h1`, `--text-h2`, and `--text-h3`.
 
-No push, merge or deployment is part of this repair. Workers Builds preview settings were not changed. Apply the patch locally first; report the resulting commit and verify it before claiming Cursor is synced.
+Fonts in `src/styles/global.css`: Schibsted Grotesk (headings, installed 400–900), Instrument Sans (body and UI), JetBrains Mono (technical metadata). Do not install a 300-weight Schibsted file or IBM Plex Mono.
+
+The rail is Forest `#183B31`. Logos stay the files in `public/brand/`.
+
+## Eight hubs
+
+Each hub is the same shell and the same renderer. The copy and section order are that hub’s own markdown file. There is no second layout file per hub. `/systems/<slug>/` renders the same page as `/solutions/<slug>/`.
+
+| Hub | Public route | Rendered copy | Layout owner |
+|---|---|---|---|
+| Home Intelligence | `/solutions/home-intelligence/` | `docs/v4-build/hubs/DAVG-V4-Hub-01-Home-Intelligence.md` | `src/components/services/hubs/HubPage.astro` inside `ServicePageShell.astro` |
+| Architectural Lighting | `/solutions/architectural-lighting/` | `docs/v4-build/hubs/DAVG-V4-Hub-02-Architectural-Lighting.md` | `HubPage.astro` inside `ServicePageShell.astro` |
+| Motorized Shading | `/solutions/motorized-shades/` | `docs/v4-build/hubs/DAVG-V4-Hub-03-Motorized-Shading.md` | `HubPage.astro` inside `ServicePageShell.astro` |
+| Media & Audio | `/solutions/media-audio/` | `docs/v4-build/hubs/DAVG-V4-Hub-04-Media-and-Audio.md` | `HubPage.astro` inside `ServicePageShell.astro` |
+| Private Cinemas | `/solutions/private-cinemas/` | `docs/v4-build/hubs/DAVG-V4-Hub-05-Private-Cinemas.md` | `HubPage.astro` inside `ServicePageShell.astro` |
+| Security & Access | `/solutions/security-access/` | `docs/v4-build/hubs/DAVG-V4-Hub-06-Security-and-Access.md` | `HubPage.astro` inside `ServicePageShell.astro` |
+| Infrastructure & Privacy | `/solutions/infrastructure-privacy/` | `docs/v4-build/hubs/DAVG-V4-Hub-07-Infrastructure-and-Privacy.md` | `HubPage.astro` inside `ServicePageShell.astro` |
+| Outdoor Entertainment | `/solutions/outdoor-entertainment/` | `docs/v4-build/hubs/DAVG-V4-Hub-08-Outdoor-Entertainment.md` | `HubPage.astro` inside `ServicePageShell.astro` |
+
+Routes are generated by `src/pages/solutions/[slug].astro` and `src/pages/systems/[slug].astro`. The loader is `src/lib/git-hubs.mjs`. It reads only `docs/v4-build/hubs/DAVG-V4-Hub-*.md`.
+
+`src/components/services/ServicePage.astro`, `ServiceDraft.astro`, and `src/components/services/hubs/studies/HubStudies.astro` are not mounted by those routes. `src/content/services/motorized-shades.json` is loaded by `src/content.config.ts` and is not public copy.
+
+## Design system, facts, build state, deployment
+
+| Topic | Path | Status |
+|---|---|---|
+| Design system | `docs/v4-build/01-DESIGN-SYSTEM.md` with `src/styles/global.css` | Implemented tokens. See that file for type and gutter. |
+| Service frame | `docs/v4-build/02-SERVICE-LAYOUT.md` | Implemented by `ServicePageShell.astro` and `HubPage.astro`. |
+| Surface roles | `docs/v4-build/13-SURFACE-COLOR-SYSTEM.md` | Documented. The live rail is Forest. The hub field currently sits on the ink frame. Do not repaint sections from this note alone. |
+| Business facts | `docs/v4-build/05-BUSINESS-FACTS.md` | Phone, proof, and form destination are unresolved. |
+| Build state | `docs/v4-build/BUILD-STATE.md` | What was checked, and what is still open. |
+| Sync contract | `docs/v4-build/11-SYNC-CONTRACT.md` | Source order. |
+| Local workflow | `docs/v4-build/06-CURSOR-LOCAL-WORKFLOW.md` | How to change, check, and preview. |
+| Component inventory | `docs/v4-build/12-COMPONENT-LIBRARY.md` | File map. Routed hubs use `HubPage.astro`. |
+| Publication allowlist | `src/config/publication.json` | `approvedPages` is empty. Production build stops. |
+| Site Worker | `wrangler.toml` | Name `davg-korta-v4`, assets `./dist`, build command `node scripts/assert-production.mjs`. |
+| Astro config | `astro.config.mjs` | Static output. Sandbox writes `dist-sandbox/`. |
+| Inquiry Worker | `worker/wrangler.toml` and `worker/inquiry.mjs` | Separate Worker. Not the site host. Not connected. |
+| Live preview record | `docs/live-previews.md` | The URL that should be reviewed. |
+
+`docs/v4-build/10-ASTRO-ARCHITECTURE-AND-PREBUILD-AUDIT.md` records a proposed collections and MDX migration. That migration is not authorized. `docs/v4-build/03-PAGES-AND-BUILD-ORDER.md`, `04-RECONCILIATION.md`, `07-GBB-SECTION-MAP.md`, `08-SHADING-PAGE-EDITORIAL-REDESIGN.md`, and `09-SHADING-STORY-SYSTEMS-AND-PROJECT-PATHS.md` are status notes. They do not replace the hub files.
+
+`docs/v4-build/references/` holds visual reference images. They do not set copy, type size, or gutters. `docs/v4-build/DAVG-V4-Start-Building.pdf` and `docs/v4-build/DAVG-V4-Build-Checklist.xlsx` are handoff artifacts, not this index.
+
+Preview deploys of this working branch are allowed. Production `davg.ai` stays on its current target until the owner approves a release. One writer per checkout.

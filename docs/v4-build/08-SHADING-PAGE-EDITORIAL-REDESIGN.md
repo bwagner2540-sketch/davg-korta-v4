@@ -1,3 +1,5 @@
-# Superseded shading brief
+# Shading brief 08 — not the live chapter map
 
-Historical copy is preserved at `archive/checkpoint-dc9ff37/08-SHADING-PAGE-EDITORIAL-REDESIGN.md`. Active structure is `02-SERVICE-LAYOUT.md`. Current source is `src/pages/solutions/motorized-shades.astro`; current grouping/content records are `src/data/services/motorized-shades.json`. Do not restore this brief's older rail sequence.
+Status: historical. Do not replay this brief’s chapter order.
+
+The Motorized Shading page is `docs/v4-build/hubs/DAVG-V4-Hub-03-Motorized-Shading.md`, rendered by `HubPage.astro` inside `ServicePageShell.astro` at `/solutions/motorized-shades/`. The full brief is `archive/davg-history/docs-v4-build-archive/checkpoint-dc9ff37/08-SHADING-PAGE-EDITORIAL-REDESIGN.md`.
