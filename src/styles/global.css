@@ -1,8 +1,10 @@
 @import "tailwindcss";
-@import "@fontsource-variable/schibsted-grotesk";
-@import "@fontsource-variable/instrument-sans";
-@import "@fontsource/ibm-plex-mono/400.css";
-@import "@fontsource/ibm-plex-mono/500.css";
+@import "@fontsource-variable/schibsted-grotesk/wght.css";
+@import "@fontsource-variable/instrument-sans/wght.css";
+@import "@fontsource/jetbrains-mono/latin-400.css";
+@import "@fontsource/jetbrains-mono/latin-500.css";
+@import "@fontsource/jetbrains-mono/latin-600.css";
+
 @theme {
   /* Surface system. Ink, Forest, Paper and Signal stay at these values. */
   --color-surface-ink: #090B0A;
@@ -34,121 +36,127 @@
   /* Spatial typography */
   --color-spatial-word-dark: rgb(241 240 235 / 12%);
   --color-spatial-word-forest: rgb(241 240 235 / 14%);
-  /* Pack aliases used by the service shell. Existing names above stay in place. */
-  --color-text-on-dark: #F1F0EB;
-  --color-text-muted-dark: #A7AAA5;
-  --color-text-quiet-dark: #7F847E;
-  --color-text-on-paper: #0B0D0C;
-  --color-text-muted-paper: #51544F;
-  --color-spatial-dark: rgb(241 240 235 / 10%);
-  --color-spatial-forest: rgb(241 240 235 / 12%);
+  /* Fonts — family names match the self-hosted @font-face rules */
+  --font-sans: "Instrument Sans Variable", "Instrument Sans", sans-serif;
+  --font-display: "Schibsted Grotesk Variable", "Schibsted Grotesk", sans-serif;
+  --font-body: "Instrument Sans Variable", "Instrument Sans", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Type scale recovered from the pre-IBM handoff tokens. Utilities only; composed headings keep their own classes. */
   --text-h1: clamp(2.5rem, 4.5vw, 4rem);
   --text-h1--line-height: 0.98;
   --text-h1--letter-spacing: -0.035em;
+  --text-h1--font-weight: 400;
   --text-h2: clamp(2rem, 3vw, 2.75rem);
   --text-h2--line-height: 1.02;
   --text-h2--letter-spacing: -0.025em;
-  --text-h3: clamp(1.5rem, 2vw, 2.25rem);
+  --text-h2--font-weight: 400;
+  --text-h3: clamp(1.5rem, 2.2vw, 2.25rem);
   --text-h3--line-height: 1.08;
   --text-h3--letter-spacing: -0.02em;
+  --text-h3--font-weight: 400;
   --text-body: 1rem;
   --text-body--line-height: 1.5;
-  --text-caption: .8125rem;
+  --text-caption: 0.8125rem;
   --text-caption--line-height: 1.35;
-  --text-label: .6875rem;
-  --text-label--letter-spacing: .1em;
-  --spacing-page-inline: clamp(1.25rem, 3vw, 4rem);
-  --spacing-section: clamp(3rem, 6vw, 6rem);
-  --spacing-1: 4px;
-  --spacing-2: 8px;
-  --spacing-3: 12px;
-  --spacing-4: 16px;
-  --spacing-6: 24px;
-  --spacing-8: 32px;
-  --spacing-12: 48px;
-  --spacing-16: 64px;
-  --spacing-20: 80px;
-  --spacing-24: 96px;
-  --spacing-32: 128px;
-  --text-body-lg: 18px;
-  --text-body-lg--line-height: 1.45;
-  --text-mono: 11px;
+  --text-mono: 0.6875rem;
   --text-mono--line-height: 1.35;
-  --text-mono--letter-spacing: 0.12em;
-  /* Interpolated type steps named by the reference spec. Not in the locked token block. */
-  --text-h5: 24px;
-  --text-h5--letter-spacing: -0.01em;
-  --text-h6: 20px;
-  --text-h6--line-height: 1.2;
-  --text-h6--letter-spacing: -0.005em;
-  --radius-control: 2px;
-  /* Approved self-hosted typography. IBM Mono is reserved for factual labels. */
-  --font-display: "Schibsted Grotesk Variable", sans-serif;
-  --font-body: "Instrument Sans Variable", sans-serif;
-  --font-mono: "IBM Plex Mono", monospace;
+  --text-mono--letter-spacing: 0.1em;
+
+  /* Measure: 42ch and 62ch are the live editorial widths. 72ch is the wider foundation step. */
+  --container-measure-narrow: 42ch;
+  --container-measure: 62ch;
+  --container-measure-wide: 72ch;
+  --container-content: 90rem;
+
+  /* Spacing family for the next phase. Not applied to existing sections. */
+  --spacing-micro: 0.5rem;
+  --spacing-text: clamp(1.25rem, 2vw, 2rem);
+  --spacing-component: clamp(1.5rem, 2.5vw, 2.5rem);
+  --spacing-section: clamp(3rem, 6vw, 6rem);
+  --spacing-gutter: var(--page-gutter);
 }
 
-/* Local surface variables. A section role sets them; children inherit. */
-[data-surface-role="hero"],
-[data-surface-role="inquiry"] {
-  --surface-bg: var(--color-surface-ink);
-  --surface-fg: var(--color-text-on-dark);
-  --surface-muted: var(--color-text-muted-dark);
-  --surface-quiet: var(--color-text-quiet-dark);
-  --surface-border: var(--color-border-dark);
-  --surface-spatial: var(--color-spatial-dark);
+/* Page gutters follow the homepage folio: 24px, 48px, 64px.
+   Spacing tokens live here so they stay available even when no utility uses them yet. */
+:root {
+  --page-gutter: 1.5rem;
+  --spacing-micro: 0.5rem;
+  --spacing-text: clamp(1.25rem, 2vw, 2rem);
+  --spacing-component: clamp(1.5rem, 2.5vw, 2.5rem);
+  --spacing-section: clamp(3rem, 6vw, 6rem);
+  --measure-narrow: var(--container-measure-narrow);
+  --measure-body: var(--container-measure);
+  --measure-wide: var(--container-measure-wide);
+  --content-width: var(--container-content);
 }
-[data-surface-role="answer"],
-[data-surface-role="editorial"],
-[data-surface-role="questions"] {
-  --surface-bg: var(--color-surface-paper);
-  --surface-fg: var(--color-text-on-paper);
-  --surface-muted: var(--color-text-muted-paper);
-  --surface-quiet: var(--color-text-muted-paper);
-  --surface-border: var(--color-border-paper);
-  --surface-spatial: rgb(11 13 12 / 8%);
+
+@media (min-width: 768px) {
+  :root {
+    --page-gutter: 3rem;
+  }
 }
-[data-surface-role="systems"] {
-  --surface-bg: var(--color-surface-charcoal);
-  --surface-fg: var(--color-text-on-dark);
-  --surface-muted: var(--color-text-muted-dark);
-  --surface-quiet: var(--color-text-quiet-dark);
-  --surface-border: var(--color-border-dark);
-  --surface-spatial: var(--color-spatial-dark);
-}
-[data-surface-role="investment"] {
-  --surface-bg: var(--color-surface-stone);
-  --surface-fg: var(--color-text-on-paper);
-  --surface-muted: var(--color-text-muted-paper);
-  --surface-quiet: var(--color-text-muted-paper);
-  --surface-border: var(--color-border-paper);
-  --surface-spatial: rgb(11 13 12 / 8%);
-}
-[data-surface-role="signature-study"] {
-  --surface-bg: var(--color-surface-forest);
-  --surface-fg: var(--color-text-on-dark);
-  --surface-muted: var(--color-text-muted-dark);
-  --surface-quiet: var(--color-text-quiet-dark);
-  --surface-border: var(--color-border-dark);
-  --surface-spatial: var(--color-spatial-forest);
-}
-[data-surface-role] {
-  background: var(--surface-bg);
-  color: var(--surface-fg);
-}
-[data-surface-role="signature-study"] {
-  background: linear-gradient(145deg, var(--color-surface-forest) 0%, var(--color-surface-ink) 72%);
+
+@media (min-width: 1280px) {
+  :root {
+    --page-gutter: 4rem;
+  }
 }
 /* Base resets matching Korta V4 */
 html, body {
   background-color: var(--color-surface-ink);
   color: var(--color-text-primary-dark);
   font-family: var(--font-body);
+  font-size: 1rem;
   font-weight: 400;
-  line-height: var(--text-body--line-height);
+  line-height: 1.5;
+  letter-spacing: normal;
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Fallback hierarchy only. Page utilities still set the composed heading sizes. */
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-transform: none;
+  }
+
+  h1 {
+    font-size: var(--text-h1);
+    line-height: var(--text-h1--line-height);
+    letter-spacing: var(--text-h1--letter-spacing);
+  }
+
+  h2 {
+    font-size: var(--text-h2);
+    line-height: var(--text-h2--line-height);
+    letter-spacing: var(--text-h2--letter-spacing);
+  }
+
+  h3 {
+    font-size: var(--text-h3);
+    line-height: var(--text-h3--line-height);
+    letter-spacing: var(--text-h3--letter-spacing);
+  }
+}
+
+/* Selective mono for eyebrows and metadata. Not used as a global text style. */
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  font-weight: 500;
+  line-height: var(--text-mono--line-height);
+  letter-spacing: var(--text-mono--letter-spacing);
+  text-transform: uppercase;
 }
 
 p, ul, ol, li, h1, h2, h3, h4, h5, h6, figure, figcaption {

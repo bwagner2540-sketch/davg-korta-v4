@@ -1,76 +1,80 @@
-# DAVG V4 — repair state, 30 September 2026
+# DAVG V4 — Build state
+Updated 29 September 2026 during the one-time source sync. This replaces the remote-audit unknowns with the local project that was actually open.
 
-## Service order and local preview — 1 October 2026
-Uncommitted local work on branch `checkpoint/davg-local-2026-09-30`, HEAD `c20e3736e431e7996ac4ec601d3558cd08929ff7`. `services` in `src/config/site.ts` is now the only ordered list. Header Home Solutions, the footer, the rail, `/systems/`, and `/preview/` read it. Confirmed order: Home Intelligence, Media & Audio, Private Cinemas, Architectural Lighting, Motorized Shading, Outdoor Entertainment, Infrastructure & Privacy, Security & Access. Position 2 stays Media & Audio. Position 5 stays the motorized-shades sandbox; the list label stays Motorized Shading and the page title stays Motorized Shades. Position 7 stays Infrastructure & Privacy in lists and Digital Infrastructure & Privacy as the page name. Position 8 stays Security & Access in lists and Security Cameras & Access Control as the page name. `/preview/` is noindex and is not in `publication.json` or the sitemap.
+## Shared checkpoint
+- Repository: `bwagner2540-sketch/davg-korta-v4` (`origin` `https://github.com/bwagner2540-sketch/davg-korta-v4.git`). Matches the expected remote. No branch switch or reset.
+- Branch: `main`, tracking `origin/main`.
+- Head inspected before this import commit: `462c90a7b49719efacd607fc22390d61b15a6953` (10 September 2026). The audit used this same committed snapshot and did not see newer uncommitted Cursor work.
+- Local path: `/Users/brandon-davg/Desktop/DAVG Korta V4`.
+- Sync-kit import: applied 29 September 2026 from `DAVG-V4-Sync-Update-2026-09-29.zip`. Payload text copied into `docs/v4-build/`. Existing reference screenshots, PDF, spreadsheet, manifests and starter README kept.
+- Active specification after import: `docs/v4-build/`. Shading authority is `09-SHADING-STORY-SYSTEMS-AND-PROJECT-PATHS.md`, which supersedes `08`'s chapter map. `08` supersedes the original shading hub's rendered order where the two still agree. Other hubs use their own file in `hubs/` plus `content-additions/gbb/`. `v4-gpt-original-design/` stays historical.
+- Import commit: `b71bf120fc1bc3573a57333c051cc15b3c345c72` on `main` (`docs: import the 29 September V4 source sync`). This note was added after that commit, so the follow-up SHA is the handoff head.
+- Cloudflare project/environment/deployment: not deployed by this task. `wrangler.toml` still only names `davg-korta-v4`, compatibility date `2026-09-10`, and `assets.directory = "./dist"`. No production deploy was run.
 
-Checked on the existing dev server at http://127.0.0.1:4321/. All eight `/systems/{slug}/` routes returned 200. Desktop 1440: Home Solutions dropdown, Forest rail, and footer showed that order; activating Motorized Shading opened `/systems/motorized-shades/` with its existing shade page. Mobile 390: desktop rail hidden, no horizontal overflow, the Menu list used the same order. `/preview/` listed Home plus the eight hubs and opened Private Cinemas. Sitemap had no URLs. `approvedPages` stayed empty. Nothing was committed, pushed, or deployed.
+## Adopted architecture
+Decision: **adopted for the current build** — static Astro file routes, shared components, CSS-first Tailwind. Content Collections + MDX in `10-ASTRO-ARCHITECTURE-AND-PREBUILD-AUDIT.md` stay **proposed**. This sync did not migrate hubs.
 
-## Hub production — Motorized Shading consistency
-Implemented on the existing `ServicePage`, not `HubPage`. `motorized-shades-04` is the recessed Forest signature study. `motorized-shades-05` is the existing paper comparison of solar fabric and darkness. Kit photographs were not substituted. Slots 06–08 stay missing. Desktop 1440 and mobile 390 checked on `/systems/motorized-shades/`. `/solutions/motorized-shades/` serves the same studies. Not added to `approvedPages`. Not deployed.
+| Piece | Adopted now | Difference from the audit snapshot or the proposed target |
+|---|---|---|
+| Output | `output: 'static'`, `site: 'https://davg.ai'`, `@astrojs/cloudflare` | Matches the audit. No runtime POST routes. |
+| Versions | Astro 7.3.2, Tailwind 4.3.3, `@tailwindcss/vite` 4.3.3, Cloudflare adapter 14.3.1, Node v24.18.0 | Lockfile matches the audit. Node meets `>=22.12.0`. |
+| Routes | `src/pages/index.astro`, `src/pages/solutions/motorized-shades.astro` | No `src/content.config.ts`, no MDX, no `solutions/[slug].astro`. Other seven service URLs are linked and not built. |
+| Shell | `src/components/ServicePageShell.astro` and `src/components/MediaPlaceholder.astro` | Present locally. The audit only saw the Dropbox starter. Working files were not replaced by `docs/v4-build/starter/`. |
+| Rail | 25/75 frame. Rail background is Ink (`--color-surface-ink`), not Forest | `01` and `09` now ask for a Forest sticky rail. That visual change is not applied in this sync. |
+| Tokens | `src/styles/global.css` `@theme` block, including pack aliases such as `--color-text-on-dark` | Local uncommitted token work kept. Starter `v4-tokens.css` remains a reference under `docs/`. |
+| Fonts | Self-hosted Schibsted Grotesk (display), Instrument Sans (body/UI) and JetBrains Mono (technical metadata) from `global.css` | IBM Plex Mono is retired and not installed. Homepage no longer loads Google Fonts. Variable Schibsted covers 400–900, so a CSS weight of 300 renders at 400. |
+| SEO | Shared `Layout.astro` accepts an optional `description` and emits it when passed. Homepage keeps its own description and LocalBusiness/FAQPage JSON-LD | No canonical, social image, sitemap, robots, or 404 source. Shading does not pass a description into the layout. |
+| Shading page | Working specimen at `/solutions/motorized-shades/`. Section IDs exist. Fourteen shade photographs are placed. `shading-11-proof` stays a blank reservation | Chapter order is the earlier editorial sequence (daylight through inquiry), not the 11-chapter map in `09`. Photographs and structure were preserved on purpose. |
+| Forms | Shading inquiry form posts nowhere (`action="#"`) and states that no destination is connected. Homepage uses mailto and visible phone/email | No Worker endpoint, Turnstile, or HubSpot mapping. |
+| Checks | `package.json` scripts are `dev`, `build`, and `preview` only | No `astro check` script and no CI workflow. |
 
-## Hub production — Outdoor Entertainment
-Draft at `/systems/outdoor-entertainment/` via `HubPage`. Three photographs and the Episode ES-LS-2 pair are placed. Captions identify Episode and SunBrite, not Sonance. Sonance Landscape/Garden is still missing. Slots 06–08 missing. Sandbox build at 14:41 passed, 26 pages. Desktop 1440 and mobile 390 checked. Not deployed.
+## Current work record
+| Area | Decision / specification | Implementation | Verification / next action |
+|---|---|---|---|
+| Visual design | Adopted: `01-DESIGN-SYSTEM.md` (Forest called out as the sidebar primary on 29 Sep). `02-SERVICE-LAYOUT.md` | Partial. Tokens and 25/75 shell exist. Rail is Ink | Do not restyle the rail until a shading task explicitly applies `01`/`09` |
+| Shading story | Adopted spec: `09` supersedes `08` chapter map. Page code not migrated in this sync | Partial. Local page is the pre-09 specimen with real media slots filled except proof | Next shading task may reconcile chapters to `09` without dropping the 14 photographs or the blank proof slot |
+| GBB additions | Proposed refinement. `07-GBB-SECTION-MAP.md` and `content-additions/gbb/` | Pending. Not applied to page copy | Use when refining the current shading page; no new product pages |
+| Content routing | Proposed in `10`: collections + MDX + `[slug]` | Pending. Standalone static routes remain the adopted path | Migrate shading first only in a later task, after this import |
+| SEO | Proposed shared head/sitemap/robots in `10` | Partial. Homepage metadata and optional layout description only | Add one metadata owner before indexing |
+| Forms / backend | Proposed Worker POST contract in `10` | Pending. Explicit non-sending form | Confirm phone, email, and destination before any success state |
+| Security | Proposed headers and runtime controls in `10` | Not implemented in source. `.gitignore` excludes `.env` and `.env.*` | No security pass claimed |
+| Contact and proof | `05-BUSINESS-FACTS.md`. Conflicting phones remain unresolved: fact file cites 720-327-7337 and 303-914-2700; homepage also shows 720.638.1603 and 720.327.7337, plus `info@davg.ai` | Homepage keeps the owner's current contact block. Proof slot stays empty | Confirm one public phone and cleared project proof before release |
+| Checks / deployment | Local `npm run build` is the existing check | See task log | Not deployed |
 
-## Hub production — Security
-Draft at `/systems/security-access/` via `HubPage`. Three camera photographs and the Luma rack are placed. The plan study is labelled fictitious. Entry hardware is missing. Slots 06–08 missing. Desktop 1440 and mobile 390 checked. Not deployed.
+## Left uncommitted on purpose
+These files were already dirty local work. This sync did not overwrite them and did not include them in the source checkpoint:
 
-## Hub production — Infrastructure
-Draft at `/systems/infrastructure-privacy/` via `HubPage`. Hero and ceiling photograph placed. `Rack_cables-1.jpg` withheld because it shows switch name SW03 and port labels. Slots 06–08 missing. Studies state no bandwidth figures. Desktop 1440 and mobile 390 checked. Not deployed.
+- `src/pages/solutions/motorized-shades.astro`
+- `src/components/ServicePageShell.astro`
+- `src/components/MediaPlaceholder.astro`
+- `src/styles/global.css`
+- `src/layouts/Layout.astro`
+- `src/pages/index.astro`
+- `package.json` and `package-lock.json` (fontsource dependencies)
+- `public/images/` shade photographs added for the shading page
+- `v4-gpt-original-design/DAVG-Korta-Design-System-V4-CURRENT.md`
+- `v4-gpt-original-design/DAVG-Korta-V4-IMPLEMENTATION-NOTES-2026-09-12.md`
 
-## Hub production — Private Cinemas
-Draft at `/systems/private-cinemas/` via `HubPage`. Three manufacturer photographs placed. The rack stays off the hero. Both studies are derived diagrams and say so. Slots 06–08, screen/projector and isolation photographs are missing. Desktop 1440 and mobile 390 checked. Sandbox build passed with the later hubs also wired locally. Not deployed.
+A dev server was already listening on port 4321. This task did not start another one.
 
-## Hub production — Media & Audio
-Draft at `/systems/media-audio/` via `HubPage`. Slots 01–03 placed. Slots 06–08 missing. The Forest study is a conceptual invisible-speaker section. The PDX photograph is captioned as a visible loudspeaker. Desktop 1440 and mobile 390 checked: images decoded, no overflow, no Vite overlay. Not deployed.
+## Task log
+- Date/task: 29 September 2026 — one-time source and status sync from `DAVG-V4-Sync-Update-2026-09-29.zip`.
+- Decision changed: imported current briefs, GBB additions, audit `10`, sync contract `11`, and this state file. Collections/MDX remain proposed. Shading page code was not redesigned.
+- Current specification path: `docs/v4-build/` after import. Authority notes above.
+- Code paths: none edited. Cursor rule `.cursor/rules/davg-v4-sync.mdc` and `AGENTS.md` added.
+- Checks and results: `npm run build` on 29 September 2026 passed. Static output, two pages: `/` and `/solutions/motorized-shades/`. No `astro check` script exists. Dev server on port 4321 was already running and was not restarted. The Cloudflare adapter logged that it enables an `IMAGES` binding and a `SESSION` KV binding during this static build; those bindings are not configured in `wrangler.toml`. No deploy.
+- Remaining items: Forest rail vs current Ink rail; `09` chapter map vs the live shading sequence; IBM Plex Mono vs installed JetBrains Mono; seven unbuilt service routes; sitemap/robots/canonical; form destination and conflicting phone numbers; empty project-proof slot.
+- Commit/branch: import commit `b71bf120fc1bc3573a57333c051cc15b3c345c72` on `main`. Unrelated local files stay uncommitted.
+- Preview/production status: not deployed. Local preview may already be served by the existing process on port 4321.
 
-## Hub production — Home Intelligence
-Draft rendered by `HubPage` at `/systems/home-intelligence/`. Slots 01 and 03 placed. Slot 02 withheld because the touchscreen shows personal names. Slots 06–08 missing. Halo and Halo Touch product photographs are placed. Studies are conceptual. Desktop 1440 and mobile 390 checked in the browser: no overflow, no Vite overlay, Forest only on the rail and the signature study. Not deployed.
+## Task log — 2 October 2026
+- Date/task: 2 October 2026 — Phase 1 only: restore DAVG typography and add layout-foundation tokens. No page redesign. No deploy. No Phase 2.
+- Decision changed: active fonts are Schibsted Grotesk (display), Instrument Sans (body/UI), JetBrains Mono (technical metadata). IBM Plex Mono is retired.
+- Current specification path: typography and foundation tokens in `docs/v4-build/01-DESIGN-SYSTEM.md`. `11-SYNC-CONTRACT.md` still names IBM Plex Mono in its technical-target sentence; that file was outside this task's documentation scope.
+- Code paths: `src/styles/global.css`, `src/pages/index.astro` (Google Fonts links removed so the self-hosted stack is the one that loads), `package.json`, `package-lock.json`.
+- Checks and results: `npm run build` passed. Static output remains two pages: `/` and `/solutions/motorized-shades/`. Home Intelligence and Architectural Lighting are not built on this branch. Browser check at 1440, 1728, and 390 confirmed the three self-hosted families render and IBM Plex Mono is not a loaded face. No hero, nav, or document-level horizontal overflow regression from this change. Not deployed.
+- Remaining items: Phase 2 layout work (measure, gutters, spatial-word placement, service compositions). Schibsted has no weight below 400. The sync contract's IBM Plex sentence is still the older wording.
+- Commit/branch: parent inspected before this commit was `d00f5e23cc8422a0dcaaba9f8cd323a0983f3659` on `main`. The working tree was clean, so no checkpoint commit was created. This file cannot store its own commit SHA.
+- Preview/production status: not deployed.
 
-## Hub production — Architectural Lighting
-Implemented on branch `checkpoint/davg-local-2026-09-30`. Handoff installed from `/Users/brandon-davg/Documents/DAVG-HUB-BUILD-QUEUE.md` and `DAVG-HUB-PRODUCTION-KIT.zip`. The Dropbox copies are byte-identical (`a79a2e170d0ddaf2a6cb42767f2d680b14acb9379bc980e4f1072a1fce29c7af` and `52ed83075466579d020038f0fea19b5904781e7d12353e8ea7dfffa5f17e6c4b`). Kit path: `docs/v4-build/hub-production-kit/`. Progress: `docs/v4-build/HUB-PROGRESS.md`.
-
-Architectural Lighting is rendered by `HubPage`. Slots 01–03 are placed manufacturer illustrations. Slots 06–08 are missing. Both studies are built as labelled conceptual compositions, not measured artwork. Sunnata and driver photographs are missing. `publication.json` is unchanged and empty. Sandbox build passed, 26 pages. `npm run verify` still fails on the existing rail lockup `/brand/davg-lockup-on-black.png`, which has no srcset. Public `npm run build` was not used. Nothing was pushed. Deploy was not run: the only remote path is a GitHub push, and Workers Builds is still connected.
-
-Desktop check at 1440px: hero is two columns, Forest rail visible, no horizontal overflow, no Vite overlay, photographs decoded. Mobile check at 390px: rail hidden, chapter menu present, hero one column, no overflow, no overlay. A mobile screenshot timed out; the measurements above are from the page at that width.
-
-## This session — surface roles
-Uncommitted local work on branch `checkpoint/davg-local-2026-09-30`, HEAD `dc9ff37a34bd65c9c7ad6fefe8f998bc524c0031`. Service pages use the 30 September surface map. The Forest rail is constant. Hero and inquiry are Ink. The opening answer, Overview, ordinary Design, Installation and Questions are Paper. Systems is Charcoal. Investment is Stone. Forest-to-Ink is only `#signature-study`. Draft services have no filler study. Nothing was pushed or deployed.
-
-Preview on the running dev server, 30 September 2026: desktop 1920px at `/systems/motorized-shades/`. Rail 480/1920, Forest, with a 1px hairline. Computed fills matched the map. Forest appeared only on the rail and the signature study. Privacy tab selected with a Signal underline. Installation stayed the active chapter after its link. The remodel path set the inquiry stage to `remodel`. Questions measured full width after the rail had scrolled away. Mobile emulation at 390px: desktop rail hidden, Forest chapter menu closed after Investment, no horizontal overflow, same surface order. `/solutions/motorized-shades/` returned the same specimen markup. `/systems/home-intelligence/` used the draft roles and had no signature study.
-
-Checks this session: `npm run check` passed, 0 errors. `npm test` passed, 12. `npm run build:sandbox` passed, 26 pages. `npm run verify` failed on the existing rail lockup `/brand/davg-lockup-on-black.png`, which has alt, width and height but no srcset. That image was not part of this surface change. Public `npm run build` was not re-run. Nothing was pushed or deployed.
-
-## Prior session
-Uncommitted local work on the shading sandbox. Global element margins and the 1.6 body line-height were removed. The rail, chapter lists, and Good/Better/Best block now use the locked spacing tokens and IBM Plex Mono labels. `--text-h5` and `--text-h6` are interpolated sizes, not locked tokens. Nothing was pushed or deployed.
-
-## Scope and location
-This repair was made against checkpoint dc9ff37a34bd65c9c7ad6fefe8f998bc524c0031 and imported into `/Users/brandon-davg/Desktop/DAVG Korta V4` on 30 September 2026. Branch `checkpoint/davg-local-2026-09-30`, HEAD `dc9ff37a34bd65c9c7ad6fefe8f998bc524c0031`. The import is uncommitted. Nothing was pushed, merged, or deployed.
-
-`git apply` failed because newer uncommitted shading work had already changed the same files. The repair was reconciled into that work. The live shading page stayed the content-collection specimen. The patch’s second monolithic `solutions/motorized-shades.astro` was not installed over it.
-
-The prior checkpoint state is preserved at archive/checkpoint-dc9ff37/BUILD-STATE.md. Its document-09 authority, eleven-chapter rail and JetBrains font notes are retired.
-
-## Current implementation
-- Full-width hero and direct answer precede the bounded 25/75 frame. Full-width Questions and Inquiry follow it.
-- Exactly five middle chapter groups: Overview, Design, Systems, Installation, Investment. Links are nested under Motorized Shading in the eight-service navigation. The rail starts and stops with the middle frame.
-- Decision: adopted for the shading sandbox. `/systems/motorized-shades/` comes from `src/pages/systems/[slug].astro`. `/solutions/motorized-shades/` renders the same `ServicePage`. Both are sandbox-only in `src/config/publication.json`. Specification: `02-SERVICE-LAYOUT.md`.
-- The shading specimen keeps the content-collection compositions and the checkpoint photographs. Design shows the labelled conceptual RECESSED diagram from `ShadingStudy.astro` in the recessed mounting tab. Fascia and exposed tabs keep their product photographs. Product family tabs, control-platform distinctions and project-scope copy stay separate.
-- The seven other `/systems/` routes are noindex drafts from `src/data/services/*.json` and `ServiceDraft.astro`. They were not added to the services collection. The homepage is the repair draft, not an approved redesign.
-- Font families match installed Fontsource names: Schibsted Grotesk Variable and Instrument Sans Variable. IBM Plex Mono replaces JetBrains for factual labels. The installed Schibsted asset supports 400–900; a true 300-weight display asset remains missing. CSS requesting 300 does not make that asset exist.
-- Images have intrinsic dimensions, responsive sources and sizes, lazy loading except the eager hero. npm scripts generate variants from originals without upscaling.
-- Shared metadata, conditional canonical/social/schema, robots/sitemap, 404 and security headers are implemented. All current pages are drafts/noindex. No fabricated business phone/address, project outcome or price is published.
-- Inquiry works as an email-draft fallback. The separate Worker has server-side Turnstile, origin/rate/body checks and HubSpot mapping, with mocked tests. It is not deployed or connected to real form delivery. Confirmation of destination, legal consent, field mapping and live delivery remains required.
-- npm run build:sandbox creates local dist-sandbox. Default public build fails while approvedPages is empty. Production builds stage only approved page files and reject either shading alias. The deploy guard rejects sandbox output. Cloudflare account-level branch preview triggers have not been changed; do not push this sandbox branch.
-
-## Verification and evidence
-The separate repair workspace had already passed its own checks. This Mac import was checked again on 30 September 2026. See the import record below. A passing local sandbox build is not deployment and is not owner visual approval.
-
-## Remaining gaps
-True 300-weight display font; approved authentic brand assets; final architectural study artwork; keypad images; cleared DAVG project proof; verified public phone; approved social image; homepage design; visual studies for seven other services; live inquiry destination and delivery; Cloudflare preview-trigger exclusion; owner visual approval. These are gaps, not completed work.
-
-## Cursor import record — 30 September 2026
-- Decision: adopted repair, reconciled with the newer content-collection shading page. Specification: `02-SERVICE-LAYOUT.md`, `00-START-HERE.md`, this file.
-- Implementation: repair infrastructure, draft service routes, IBM Plex Mono, publication guard, and the recessed schematic. Live shading copy remains `src/content/services/motorized-shades.json`.
-- Not overwritten: `docs/v4-build/DAVG-ALL-EIGHT-SERVICE-PAGES/`, the services collection schema, and the shading compositions. `src/pages/systems/motorized-shades.astro` was not added, because `[slug].astro` already owns that URL. The 58 KB monolithic shading page from the zip was not copied over the live page.
-- Checks: `python3 scripts/validate-service-content.py` passed (1 live page). `npm run check` passed, 0 errors. `npm test` passed, 12. `npm run build:sandbox` passed, 13 pages. `npm run verify` passed: 13 HTML routes, 326 local links, 40 responsive images, nested five-chapter rail, draft noindex. `npm run test:publication` passed. Public `npm run build` stays blocked.
-- Preview: dev server left running at http://127.0.0.1:4321/ from this repository. Desktop at 1613px: recessed diagram rendered at 649×450 in Design, rail 403/1613, Design and Installation active states, highlight cleared after the split, Fascia photograph loaded, Sivoia tab selected, Remodel path set the inquiry stage. Mobile at 390px: one column, desktop rail hidden, chapter menu closed after Investment, diagram 350×243, no horizontal overflow. Not deployed.
+Do not publish this internal record on the public website.
