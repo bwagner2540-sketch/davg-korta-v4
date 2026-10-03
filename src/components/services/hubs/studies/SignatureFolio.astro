@@ -33,8 +33,10 @@ const { slotId, kicker, heading, lede, word } = Astro.props;
   top: auto;
   bottom: -0.14em;
   left: -0.04em;
-  font-size: clamp(6.5rem, 11vw, 12.5rem);
+  font-size: clamp(8rem, 17vw, 17.5rem);
   line-height: 0.78;
+  z-index: 1;
+  pointer-events: none;
 }
 .study-visual {
   position: static;
