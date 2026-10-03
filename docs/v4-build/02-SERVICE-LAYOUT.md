@@ -33,4 +33,12 @@ The rail stays Forest on every chapter. Do not invent installed prices. Hardware
 
 All eight hubs, including shading, use `HubPage.astro` and the git hub file. `ServicePage.astro` is not routed. The old JSON drafts are in `archive/davg-history/src-data-services/`. No public release is implied. The production allowlist stays empty until the owner approves a page.
 
+## Presentation inside the field
+
+`src/lib/hub-composition.mjs` tells `HubPage.astro` which surface, study, catalog photograph, and product row belong to each section. It does not store a second copy of the prose. The git hub file still owns the words and the section order.
+
+Surfaces follow `13-SURFACE-COLOR-SYSTEM.md`: hero and inquiry stay Ink, the opening answer and ordinary reading stay Paper, systems stay Charcoal, investment stays Stone, and the sticky rail stays Forest. The signature study is the only Forest-to-Ink passage, and it carries that hub’s spatial word (`CONTROL`, `LIGHTING`, `SHADES`, `MEDIA`, `CINEMA`, `SECURITY`, `NETWORK`, `OUTDOOR`) with the existing `.architectural-background-title` treatment.
+
+Body photographs come from `src/data/hubs/catalog.json` only when `src/data/images.json` has the file and the slot is a selected illustration. Hero slot 01 stays the opening photograph. Missing, withheld, and not-yet-substituted assets are not painted into the body. Studies reuse `HubStudies.astro`, including the shading specimen plates. A section without a matching photograph or study stays editorial type.
+
 The site header is `SiteNav`, from `src/config/navigation.ts`. Home Solutions items are `services` in the order above. Chapter links stay in the rail. The footer service list is `ServiceLinks`, from the same array.

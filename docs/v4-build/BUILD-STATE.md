@@ -6,7 +6,7 @@ This section is the current record. The logs below it are history from earlier p
 - Repository: `bwagner2540-sketch/davg-korta-v4`. Branch: `cursor/git-hub-source-13db`. Repair commits still in ancestry: `080a0b3` (git hubs and layout tokens) and `e35d1bd` (local preview note).
 - Source index: `docs/v4-build/00-START-HERE.md`. Contract: `11-SYNC-CONTRACT.md`.
 - Public copy: `docs/v4-build/hubs/DAVG-V4-Hub-*.md`, loaded only by `src/lib/git-hubs.mjs`.
-- Frame: `src/components/ServicePageShell.astro`. Renderer: `src/components/services/hubs/HubPage.astro`. Routes: `/solutions/<slug>/` and the `/systems/<slug>/` alias.
+- Frame: `src/components/ServicePageShell.astro`. Renderer: `src/components/services/hubs/HubPage.astro`. Section presentation: `src/lib/hub-composition.mjs` (surfaces, studies, catalog photographs, product rows). Routes: `/solutions/<slug>/` and the `/systems/<slug>/` alias.
 - Tokens: `src/styles/global.css`. Fonts implemented: Schibsted Grotesk 400–900, Instrument Sans, JetBrains Mono. Live gutter implemented: `--page-gutter` 1.5rem / 3rem / 4rem. `--spacing-page-inline` aliases `--page-gutter`.
 - Historical packs: `archive/davg-history/`. Not implementation authority. See that README for original paths.
 - Deployment configuration: `wrangler.toml` name `davg-korta-v4`, assets `./dist`, build command `node scripts/assert-production.mjs`. Production domain `davg.ai` is the existing coming-soon target. This file does not claim a production deploy.
@@ -20,12 +20,30 @@ This section is the current record. The logs below it are history from earlier p
 | Collections, MDX, and JSON as the public copy (`10`) | Proposed. Do not migrate. |
 | Shading briefs 08 and 09 chapter maps | Historical. Not applied over the git hub. |
 | GBB additions | Pending. Not applied by this cleanup. Wording already in a git hub stays there. |
-| Surface roles in `13` beyond the Forest rail | Documented. The live hub field sits on the ink frame. Not a command to repaint. |
+| Surface roles in `13` beyond the Forest rail | Implemented on the eight hubs. Paper for the opening answer and ordinary reading, Charcoal for system layers, Stone for investment, Ink for hero and inquiry. The signature study is the Forest-to-Ink passage. |
 | Public phone, cleared project proof, inquiry destination | Pending in `05-BUSINESS-FACTS.md`. |
 | Production release | Not authorized. `approvedPages` is empty. |
 | Workers branch preview for `cursor/git-hub-source-13db` | See the latest task log. A push is not a verified preview. |
 
 The September and early October logs below recorded older owners (JSON drafts, document 09 as the shading map, IBM Plex as an open font question, branch `main`). Those statements are superseded by this section.
+
+## Task log — 3 October 2026 hub presentation
+- Date/task: Restore the hub presentation layer on top of the git-hub renderer. Copy stays in `docs/v4-build/hubs/DAVG-V4-Hub-*.md`. No return to `src/data/services/*.json` or `archive/davg-history/`.
+- Decision: implemented. `src/lib/hub-composition.mjs` maps each of the fifteen sections by purpose. `HubPage.astro` reads that map.
+- Specification: `02-SERVICE-LAYOUT.md` presentation section. `00-START-HERE.md` names the composition module. `13-SURFACE-COLOR-SYSTEM.md` remains the surface source.
+- Per hub, section purpose to composition:
+  - Shared: 01 opening on Ink with the existing hero photograph; 02 answer on Paper; 03 moments on Paper with the catalog room photograph when that illustration is selected; 12 investment on Stone; 14 questions on Paper; 15 inquiry on Ink.
+  - Home Intelligence: 04 system layers on Charcoal with the command-path study; 05 signature study, word CONTROL, Halo photographs; 07 interfaces with the placed product photographs.
+  - Architectural Lighting: 05 signature study, word LIGHTING, two room photographs; 06 keypad comparison with the interface photograph and placed keypads; 08 compatibility study.
+  - Motorized Shading: 05 signature study, word SHADES, the existing recessed/fascia/exposed specimen; 06 fabric study with the sheer and closed specimen photographs. Body slots marked not-yet-substituted stay off the page. Hero slot 01 is unchanged.
+  - Media & Audio: 04 connection diagram; 05 signature study, word MEDIA; 06 speaker product; 10 Control4 section with the interface photograph.
+  - Private Cinemas: 04 rack photograph; 05 signature study, word CINEMA; 08 room-section study.
+  - Security & Access: 04 recorder product; 05 signature study, word SECURITY; 06 camera photograph; 09 entry-sequence study.
+  - Infrastructure & Privacy: 04 placed equipment photographs; 05 signature study, word NETWORK; 06 coverage study.
+  - Outdoor Entertainment: 05 signature study, word OUTDOOR; 06 speaker photograph and product; 08 pathway study.
+- Parser: visitor HTML no longer prints Publish hold, Project module, Editorial use, Builder credit, Verified project facts, or `Use \`filename\`` instruction lines. The shading Interaction note that names IBM Plex stays in the markdown file and is not rendered. IBM Plex is not loaded.
+- Verification, this environment: `npm test` 18 passed. `npm run build:sandbox` wrote 35 pages. `npm run verify` passed: 35 HTML routes, 2725 local links, 90 responsive images, one git H1 inside the sticky shell, spatial word and signature study on each hub, IBM Plex absent from CSS, Schibsted range 400–900. `npm run build` exited 1 with `PUBLIC BUILD BLOCKED`. Chrome on the dev server: all eight `/solutions/` hubs at 1440 have Paper `rgb(237, 233, 224)` on section 02, Charcoal `rgb(15, 19, 16)` on section 04, Stone `rgb(226, 221, 206)` on section 12, Ink on section 15, Forest rail `rgb(24, 59, 49)`, columns 360/1080, no document overflow. Home Intelligence H1 is Schibsted Grotesk, 64px, weight 400, tracking -2.24px, line-height 62.72px. At 390, Home Intelligence and Motorized Shading H1 is 40px, the desktop rail is `display: none`, and the disclosure menu is visible.
+- Preview/production: production `davg.ai` was not deployed. The branch preview is recorded after the push that carries this restoration. A push alone is not a verified preview.
 
 ## Earlier record — 29 September 2026 source sync
 Updated 29 September 2026 during the one-time source sync. This replaces the remote-audit unknowns with the local project that was actually open. The ownership notes in that pass are historical.

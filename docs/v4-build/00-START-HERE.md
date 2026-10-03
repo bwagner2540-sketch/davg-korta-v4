@@ -28,7 +28,7 @@ Each hub is the same shell and the same renderer. The copy and section order are
 
 | Hub | Public route | Rendered copy | Layout owner |
 |---|---|---|---|
-| Home Intelligence | `/solutions/home-intelligence/` | `docs/v4-build/hubs/DAVG-V4-Hub-01-Home-Intelligence.md` | `src/components/services/hubs/HubPage.astro` inside `ServicePageShell.astro` |
+| Home Intelligence | `/solutions/home-intelligence/` | `docs/v4-build/hubs/DAVG-V4-Hub-01-Home-Intelligence.md` | `HubPage.astro` inside `ServicePageShell.astro`. Section surfaces, studies, and catalog photographs come from `src/lib/hub-composition.mjs`. |
 | Architectural Lighting | `/solutions/architectural-lighting/` | `docs/v4-build/hubs/DAVG-V4-Hub-02-Architectural-Lighting.md` | `HubPage.astro` inside `ServicePageShell.astro` |
 | Motorized Shading | `/solutions/motorized-shades/` | `docs/v4-build/hubs/DAVG-V4-Hub-03-Motorized-Shading.md` | `HubPage.astro` inside `ServicePageShell.astro` |
 | Media & Audio | `/solutions/media-audio/` | `docs/v4-build/hubs/DAVG-V4-Hub-04-Media-and-Audio.md` | `HubPage.astro` inside `ServicePageShell.astro` |

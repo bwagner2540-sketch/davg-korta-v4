@@ -4,12 +4,12 @@ import NeutralStudy from './NeutralStudy.astro';
 import HubFigure from '../HubFigure.astro';
 
 interface Photo { id: string; src?: string | null; alt?: string; title?: string; caption?: string; fit?: 'cover' | 'contain'; status: string; purpose: string; reason?: string; }
-interface Props { slug: string; photos: Record<string, Photo | undefined>; part: 'signature' | 'technical'; }
-const { slug, photos, part } = Astro.props;
+interface Props { slug: string; photos: Record<string, Photo | undefined>; part: 'signature' | 'technical'; word?: string; }
+const { slug, photos, part, word = '' } = Astro.props;
 const placed = (photo?: Photo): photo is Photo & { src: string; alt: string; title: string; caption: string } => Boolean(photo?.src && photo.alt && photo.title && photo.caption);
 ---
 {slug === 'architectural-lighting' && part === 'signature' && (
-    <SignatureFolio slotId="architectural-lighting-04" kicker="Architectural lighting / comparison" heading="Two rooms. Not one comparison." lede="These photographs show different spaces. They are not a same-room before and after, and they do not measure switches, zones or scenes." word="Light">
+    <SignatureFolio slotId="architectural-lighting-04" kicker="Architectural lighting / comparison" heading="Two rooms. Not one comparison." lede="These photographs show different spaces. They are not a same-room before and after, and they do not measure switches, zones or scenes." word={word}>
       <div class="pair">
         {placed(photos['03']) && <HubFigure photo={photos['03']} ratio="4 / 5" sizes="(min-width: 1024px) 28vw, 100vw" />}
         {placed(photos['01']) && <HubFigure photo={photos['01']} ratio="4 / 5" sizes="(min-width: 1024px) 28vw, 100vw" />}
@@ -42,7 +42,7 @@ const placed = (photo?: Photo): photo is Photo & { src: string; alt: string; tit
 )}
 
 {slug === 'home-intelligence' && part === 'signature' && (
-    <SignatureFolio slotId="home-intelligence-04" kicker="Home intelligence / device study" heading="One operating layer. The architecture stays quiet." lede="Lighting, shades, climate and access are planned together. This is a product photograph of a Halo remote, not a measured interface and not a temperature claim." word="Intelligence">
+    <SignatureFolio slotId="home-intelligence-04" kicker="Home intelligence / device study" heading="One operating layer. The architecture stays quiet." lede="Lighting, shades, climate and access are planned together. This is a product photograph of a Halo remote, not a measured interface and not a temperature claim." word={word}>
       <div class="device-row">
         {placed(photos.halo) && <HubFigure photo={photos.halo} ratio="1 / 1" sizes="(min-width: 1024px) 22vw, 70vw" />}
         {placed(photos.haloTouch) && <HubFigure photo={photos.haloTouch} ratio="1 / 1" sizes="(min-width: 1024px) 22vw, 70vw" />}
@@ -70,7 +70,7 @@ const placed = (photo?: Photo): photo is Photo & { src: string; alt: string; tit
 )}
 
 {slug === 'media-audio' && part === 'signature' && (
-    <SignatureFolio slotId="media-audio-04" kicker="Media and audio / speaker study" heading="Heard in the room. The assembly stays described, not measured." lede="Conceptual section for an invisible speaker. It is not a verified Sonance Invisible or VX assembly. The PDX photograph elsewhere is a visible loudspeaker." word="Invisible">
+    <SignatureFolio slotId="media-audio-04" kicker="Media and audio / speaker study" heading="Heard in the room. The assembly stays described, not measured." lede="Conceptual section for an invisible speaker. It is not a verified Sonance Invisible or VX assembly. The PDX photograph elsewhere is a visible loudspeaker." word={word}>
       <svg viewBox="0 0 760 420" role="img" aria-labelledby="ma-cut-title ma-cut-desc">
         <title id="ma-cut-title">Conceptual invisible speaker section</title>
         <desc id="ma-cut-desc">Finish layer, radiator and enclosure in section. No dimensions, decibels or frequency range.</desc>
@@ -110,7 +110,7 @@ const placed = (photo?: Photo): photo is Photo & { src: string; alt: string; tit
 )}
 
 {slug === 'private-cinemas' && part === 'signature' && (
-    <SignatureFolio slotId="private-cinemas-04" kicker="Private cinema / sightline" heading="One room, seen in section." lede="Derived from the approved cutaway anatomy. No dedicated cinema mockup was supplied. This is not a shade diagram and not a measured room." word="Cinema">
+    <SignatureFolio slotId="private-cinemas-04" kicker="Private cinema / sightline" heading="One room, seen in section." lede="Derived from the approved cutaway anatomy. No dedicated cinema mockup was supplied. This is not a shade diagram and not a measured room." word={word}>
       <svg viewBox="0 0 760 360" role="img" aria-labelledby="pc-sight-title pc-sight-desc">
         <title id="pc-sight-title">Conceptual cinema sightline</title>
         <desc id="pc-sight-desc">Screen, seating row and rear of the room. No throw distance or seat count.</desc>
@@ -144,7 +144,7 @@ const placed = (photo?: Photo): photo is Photo & { src: string; alt: string; tit
 )}
 
 {slug === 'infrastructure-privacy' && part === 'signature' && (
-    <SignatureFolio slotId="infrastructure-privacy-04" kicker="Infrastructure / core" heading="Equipment stays in one service core." lede="Conceptual cutaway. Living rooms stay clear of racks. No bandwidth, channel count or coverage radius is stated. The selected cable photograph was withheld because it shows a switch name and port labels." word="Core">
+    <SignatureFolio slotId="infrastructure-privacy-04" kicker="Infrastructure / core" heading="Equipment stays in one service core." lede="Conceptual cutaway. Living rooms stay clear of racks. No bandwidth, channel count or coverage radius is stated. The selected cable photograph was withheld because it shows a switch name and port labels." word={word}>
       <svg viewBox="0 0 760 420" role="img" aria-labelledby="ip-core-title ip-core-desc">
         <title id="ip-core-title">Conceptual house and service core</title>
         <desc id="ip-core-desc">Living level and a separate utility core. Routes are unlabeled.</desc>
@@ -176,7 +176,7 @@ const placed = (photo?: Photo): photo is Photo & { src: string; alt: string; tit
 )}
 
 {slug === 'security-access' && part === 'signature' && (
-    <SignatureFolio slotId="security-access-04" kicker="Security / plan" heading="A fictitious perimeter, with rooms left out." lede="Annotated plan for explanation. Not a client property. Cameras watch the approach. Bedroom windows and the neighbor’s yard stay outside the recording purpose." word="Plan">
+    <SignatureFolio slotId="security-access-04" kicker="Security / plan" heading="A fictitious perimeter, with rooms left out." lede="Annotated plan for explanation. Not a client property. Cameras watch the approach. Bedroom windows and the neighbor’s yard stay outside the recording purpose." word={word}>
       <svg viewBox="0 0 760 420" role="img" aria-labelledby="sa-plan-title sa-plan-desc">
         <title id="sa-plan-title">Fictitious security plan</title>
         <desc id="sa-plan-desc">House, approach, two camera marks, and privacy exclusions for bedrooms and the neighbor.</desc>
@@ -212,7 +212,7 @@ const placed = (photo?: Photo): photo is Photo & { src: string; alt: string; tit
 )}
 
 {slug === 'outdoor-entertainment' && part === 'signature' && (
-    <SignatureFolio slotId="outdoor-entertainment-04" kicker="Outdoor / zones" heading="Sound, exposure, and the neighbor’s edge." lede="Derived from the annotated-plan anatomy. No dedicated outdoor mockup was supplied. The speaker photographs on this page are Episode, not Sonance." word="Outside">
+    <SignatureFolio slotId="outdoor-entertainment-04" kicker="Outdoor / zones" heading="Sound, exposure, and the neighbor’s edge." lede="Derived from the annotated-plan anatomy. No dedicated outdoor mockup was supplied. The speaker photographs on this page are Episode, not Sonance." word={word}>
       <svg viewBox="0 0 760 400" role="img" aria-labelledby="oe-plan-title oe-plan-desc">
         <title id="oe-plan-title">Conceptual outdoor zones</title>
         <desc id="oe-plan-desc">Terrace, landscape bed, sun exposure and a neighbor boundary. No speaker count.</desc>
@@ -245,7 +245,28 @@ const placed = (photo?: Photo): photo is Photo & { src: string; alt: string; tit
       </svg>
     </NeutralStudy>
 )}
+
+{slug === 'motorized-shades' && part === 'signature' && (
+    <SignatureFolio slotId="motorized-shades-04" kicker="Motorized shading / pocket" heading="The shade disappears, or the hardware stays visible." lede="Conceptual coordination study from the shading specimen. Pocket size, drive, hembar finish and solar logic come from the approved drawing for each opening. This plate is not a measured specification or a completed DAVG project." word={word}>
+      <div class="shade-study">
+        <HubFigure photo={{ id: 'shading-recessed-study', src: '/images/davg-recessed-shade-study-01.jpg', alt: 'Conceptual detail study of a recessed dual roller disappearing into a ceiling pocket. Callouts mark the paired fabrics, flush closure, concealed hembar and drive. The word RECESSED sits across the drawing. Illustration, not a shop drawing or a completed project.', title: 'Recessed dual-roller study', caption: 'Conceptual coordination study. Pocket size, drive, hembar finish and solar logic are set from the approved drawing for each opening. This plate is not a measured specification or a completed DAVG project.', fit: 'cover' }} ratio="16 / 9" sizes="(min-width: 1024px) 50vw, 100vw" />
+        <div class="pair">
+          <HubFigure photo={{ id: 'shading-mount-fascia', src: '/images/davg-triathlon-fascia-boucle-01-800w.webp', alt: 'White Triathlon fascia box mounted on shiplap above a light woven shade', title: 'Fascia', caption: 'Triathlon fascia above a woven shade. Product photograph. A fascia conceals the roller without a ceiling pocket.', fit: 'cover' }} ratio="16 / 10" sizes="(min-width: 1024px) 24vw, 100vw" />
+          <HubFigure photo={{ id: 'shading-mount-exposed', src: '/images/davg-palladiom-exposed-roller-bracket-01-800w.webp', alt: 'Palladiom exposed roller with a fabric-wrapped tube and rounded metal bracket above a night window', title: 'Exposed', caption: 'Palladiom exposed roller and bracket. Product photograph. Exposed hardware is a design choice, not a quality rank.', fit: 'cover' }} ratio="16 / 10" sizes="(min-width: 1024px) 24vw, 100vw" />
+        </div>
+      </div>
+    </SignatureFolio>
+)}
+{slug === 'motorized-shades' && part === 'technical' && (
+    <NeutralStudy slotId="motorized-shades-05" kicker="Fabric" heading="View-through and darkness are separate checks." lede="A solar fabric can keep a view while a room-darkening fabric closes the material. Night privacy and edge light are separate checks. These are product photographs, not a same-window before and after.">
+      <div class="pair">
+        <HubFigure photo={{ id: 'shading-compare-sheer', src: '/images/davg-living-room-sheer-roller-shades-sun-01-1600w.webp', alt: 'Floor-to-ceiling sheer roller shades on a living-room glass wall, with the sun still visible through the fabric', title: 'Keep the view', caption: 'Sheer roller shades with the sun still visible through the fabric. Product photograph. Night privacy is a separate check.', fit: 'cover' }} ratio="16 / 10" sizes="(min-width: 1024px) 28vw, 100vw" />
+        <HubFigure photo={{ id: 'shading-compare-closed', src: '/images/davg-triathlon-bedroom-shades-closed-01-800w.webp', alt: 'Bedroom with two white Triathlon shades fully closed across a wide window', title: 'Close the room', caption: 'Closed Triathlon shades. Product photograph. Light can still enter at the edges unless the mounting addresses those gaps.', fit: 'cover' }} ratio="16 / 10" sizes="(min-width: 1024px) 28vw, 100vw" />
+      </div>
+    </NeutralStudy>
+)}
 <style>
+.shade-study { display: grid; gap: 1rem; }
 .pair, .device-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; align-items: start; }
 .device-row { grid-template-columns: minmax(0, 0.8fr) minmax(0, 0.8fr) minmax(0, 1.1fr); }
 .folio-points { margin: 0; padding-left: 1.1rem; display: grid; gap: 0.75rem; color: var(--surface-muted); line-height: 1.45; }

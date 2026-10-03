@@ -12,11 +12,23 @@ const { slotId, kicker, heading, lede } = Astro.props;
 .neutral-study {
   display: grid;
   gap: 0.9rem;
-  margin-top: 2.5rem;
-  padding: clamp(1.25rem, 2.5vw, 2rem);
+  margin-top: var(--spacing-component);
+  padding: var(--spacing-component);
   border: 1px solid var(--color-border-paper);
+  background: var(--color-surface-paper);
+  color: var(--color-text-on-paper);
+  --surface-fg: var(--color-text-on-paper);
+  --surface-muted: var(--color-text-secondary-paper);
+  --surface-border: var(--color-border-paper);
 }
-.neutral-study h3 { font-size: clamp(1.7rem, 2.6vw, 2.4rem); max-width: 22ch; color: var(--color-text-on-paper); }
+.neutral-study h3 {
+  max-width: 22ch;
+  font-size: var(--text-h3);
+  line-height: var(--text-h3--line-height);
+  letter-spacing: var(--text-h3--letter-spacing);
+  font-weight: 400;
+  color: var(--color-text-on-paper);
+}
 .neutral-lede { max-width: 62ch; line-height: 1.55; color: var(--color-text-muted-paper); }
 .neutral-visual { min-width: 0; }
 .neutral-visual :global(svg) { display: block; width: 100%; height: auto; }

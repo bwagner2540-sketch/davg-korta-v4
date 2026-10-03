@@ -2,6 +2,7 @@ import { readFile, readdir, access } from 'node:fs/promises';
 import { join } from 'node:path';
 import assert from 'node:assert/strict';
 import { parse } from 'parse5';
+import { bodyPhoto, productsFor, sectionRole, spatialWords } from '../src/lib/hub-composition.mjs';
 const root='dist-sandbox';
 const attrs=node=>Object.fromEntries((node.attrs||[]).map(a=>[a.name,a.value]));
 const nodes=(node,predicate)=>[...(predicate(node)?[node]:[]),...(node.childNodes||[]).flatMap(n=>nodes(n,predicate))];
@@ -44,6 +45,22 @@ for(const file of files){
   assert.deepEqual(nodes(siblings[1],n=>n.tagName==='a').map(n=>text(n).trim()),hub.sections.map(section=>section.title));
   for(const img of nodes(main,n=>n.tagName==='img'&&!String(attrs(n).src||'').startsWith('/brand/'))){
    const a=attrs(img);assert(a.alt&&a.width&&a.height&&a.srcset&&a.sizes,`Incomplete responsive image ${a.src}`);assert(await exists(join(root,a.src)));images++;
+  }
+  assert(!text(main).includes('Publish hold'),`Publication hold visible in ${file}`);
+  assert(!text(main).includes('IBM Plex'),`Retired face named in ${file}`);
+  const words=nodes(main,n=>String(attrs(n).class||'').split(/\s+/).includes('architectural-background-title'));
+  assert.equal(words.length,1,`Spatial word count ${file}`);
+  assert.equal(text(words[0]).trim(),spatialWords[slug],`Spatial word ${file}`);
+  assert.equal(nodes(main,n=>attrs(n)['data-signature-study']==='true').length,1,`Signature study ${file}`);
+  for(const section of hub.sections){
+   const role=sectionRole(slug,section.id);
+   const group=groups.find(n=>attrs(n).id===`s${section.id}`);
+   assert.equal(attrs(group)['data-surface-role'],role.surface,`Surface ${slug} ${section.id}`);
+   assert.equal(attrs(group)['data-section-purpose'],role.purpose,`Purpose ${slug} ${section.id}`);
+   const photo=role.photo?bodyPhoto(slug,role.photo):null;
+   if(photo)assert(nodes(group,n=>n.tagName==='img'&&attrs(n).src===photo.src).length>=1,`Missing ${photo.src} in ${file} ${section.id}`);
+   if(role.study)assert(nodes(group,n=>attrs(n)['data-study-built']==='true').length>=1,`Missing ${role.study} study in ${file} ${section.id}`);
+   if(role.products&&productsFor(slug).length)assert(nodes(group,n=>attrs(n)['data-product-rail']!==undefined).length===1,`Missing product rail in ${file} ${section.id}`);
   }
  }
 }

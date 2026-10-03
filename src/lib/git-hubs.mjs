@@ -11,7 +11,8 @@ function readHubFilesFromDisk() {
     .sort()
     .map((file) => readFileSync(join(dir, file), 'utf8'));
 }
-const NOTE_LABEL = /^(Visual|Study|Interaction|Decision reached|Status|Reviewer|Source check)\b/i;
+const NOTE_LABEL = /^(Visual|Study|Interaction|Required interaction|Decision reached|Status|Reviewer|Source check|Publish hold|Project module|Editorial use|Builder credit|Verified project facts)\b/i;
+const INSTRUCTION_LINE = /^(Use `|Use verified |The page should |The finished module should |The primary technical study must |Rebuild labels |Pair a daylight )/;
 
 function escapeHtml(value) {
   return value
@@ -32,6 +33,21 @@ function inline(value) {
 function isNote(line) {
   const plain = line.replace(/^\*\*/, '').replace(/\*\*$/, '');
   return NOTE_LABEL.test(plain);
+}
+
+function isInstruction(line) {
+  return INSTRUCTION_LINE.test(line.replace(/\*\*/g, '').trim());
+}
+
+function publicText(value) {
+  return value
+    .split(/(?<=[.!])\s+/)
+    .filter((sentence) => {
+      const plain = sentence.replace(/\*\*/g, '').trim();
+      return plain.length > 0 && !/^In Phase Two,/i.test(plain) && !/^Phase-Two local pages/i.test(plain);
+    })
+    .join(' ')
+    .trim();
 }
 
 function grab(body, label) {
@@ -60,7 +76,8 @@ function renderBlocks(body) {
 
   const flush = () => {
     if (paragraph.length === 0) return;
-    out.push(`<p>${inline(paragraph.join(' '))}</p>`);
+    const text = publicText(paragraph.join(' '));
+    if (text) out.push(`<p>${inline(text)}</p>`);
     paragraph = [];
   };
 
@@ -71,7 +88,7 @@ function renderBlocks(body) {
       index += 1;
       continue;
     }
-    if (isNote(trimmed) || /^\*\*(Headline|Deck|CTA|Secondary|Eyebrow|Final headline|Support line|H1|SEO title|Meta description):\*\*/.test(trimmed)) {
+    if (isNote(trimmed) || isInstruction(trimmed) || /^\*\*(Headline|Deck|CTA|Secondary|Eyebrow|Final headline|Support line|H1|SEO title|Meta description):\*\*/.test(trimmed)) {
       flush();
       index += 1;
       continue;
