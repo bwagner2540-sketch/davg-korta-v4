@@ -42,7 +42,7 @@ function isInstruction(line) {
 function publicText(value) {
   return value
     .split(/(?<=[.!])\s+/)
-    .map(sentence => sentence.replace(/;\s*(?:verify\b|do not claim\b).*/i, '').replace(/^\*\*Decision demonstrated:\*\*\s*/i, ''))
+    .map(sentence => sentence.replace(/;\s*(?:verify\b|do not claim\b).*/i, '.').replace(/^\*\*Decision demonstrated:\*\*\s*/i, ''))
     .filter((sentence) => {
       const plain = sentence.replace(/\*\*/g, '').trim();
       return plain.length > 0 && !/^In Phase Two,/i.test(plain) && !/^Phase-Two local pages/i.test(plain)

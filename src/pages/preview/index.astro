@@ -50,7 +50,7 @@ const pages = [
       // Display this build's HTML without changing the site's anti-framing headers.
       currentPage = page.pathname;
       frame.srcdoc = html.replace(/<head(?:\s[^>]*)?>/i, (head) => `${head}<base href="${page.href}">`);
-      status.textContent = '390px page width';
+      status.textContent = '390px review frame';
     } catch {
       if (activeRequest === request) status.textContent = 'Could not load this page. Use its review link above.';
     }

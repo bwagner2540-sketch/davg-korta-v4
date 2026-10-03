@@ -25,9 +25,10 @@ const groups = presentationGroups(html, frame);
   })}
 </div>
 <style>
-.section-body { min-width: 0; display: grid; gap: var(--spacing-component); color: var(--surface-fg); }
-.content-blocks { display: grid; gap: 1.25rem; min-width: 0; }
-.body-group { display: grid; gap: 1.5rem; min-width: 0; }
+.section-body { min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--spacing-component); color: var(--surface-fg); }
+.content-blocks { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; min-width: 0; }
+.body-group { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.5rem; min-width: 0; }
+.copy-block, .technical-detail { min-width: 0; }
 .body-group > h3 { max-width: 30ch; font-size: var(--text-h3); line-height: 1.12; font-weight: 400; letter-spacing: -0.02em; }
 .copy-block :global(p), .copy-block :global(li), .answer { font: 400 var(--text-body)/1.6 var(--font-body); }
 .copy-block :global(p) { max-width: 62ch; }
@@ -62,7 +63,7 @@ summary::after { content: '+'; position: absolute; right: .25rem; top: 1.25rem; 
 details[open] > summary::after { content: '−'; }
 .technical-detail > .content-blocks, .answer { padding: .5rem 0 2rem; }
 .question .answer { max-width: 62ch; }
-.copy-block :global(.hub-table) { overflow-x: auto; overscroll-behavior-inline: contain; }
+.copy-block :global(.hub-table) { max-width: 100%; overflow-x: auto; overscroll-behavior-inline: contain; }
 .copy-block :global(table) { width: 100%; min-width: 38rem; border-collapse: collapse; text-align: left; }
 .copy-block :global(th), .copy-block :global(td) { padding: .85rem 1.25rem .85rem 0; border-bottom: 1px solid var(--surface-border); vertical-align: top; font-size: .875rem; line-height: 1.5; }
 .copy-block :global(thead th) { color: var(--surface-muted); font-weight: 500; }
