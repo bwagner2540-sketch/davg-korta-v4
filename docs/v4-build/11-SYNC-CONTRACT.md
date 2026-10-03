@@ -24,7 +24,7 @@ Do not create another design master. A new numbered supplemental brief may expla
 ## Technical target
 Build-time Content Collections with MDX for rich service content; shared Astro components; static service HTML; shared SEO and business configuration. Preserve individual hub stories and the 25/75 desktop shell. Runtime inquiry/support POST endpoints use Workers without making all editorial pages SSR. This target is proposed in the audit; Cursor must record the adopted architecture after inspecting its actual code.
 
-Native CSS is the interaction baseline. No mandatory CMS, motion library, city expansion, fixed screen count or new design approval process. Fonts are self-hosted Schibsted Grotesk, Instrument Sans and selective IBM Plex Mono.
+Native CSS is the interaction baseline. No mandatory CMS, motion library, city expansion, fixed screen count or new design approval process. Fonts are self-hosted Schibsted Grotesk, Instrument Sans, and JetBrains Mono. IBM Plex Mono is explicitly retired and must not be loaded or copied back from historical files.
 
 ## Status vocabulary
 Every substantive change records four separate fields:

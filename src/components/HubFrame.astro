@@ -1,0 +1,77 @@
+---
+import type { HubDocument } from '../lib/hub-markdown';
+import SiteIndex from './SiteIndex.astro';
+
+interface Props {
+  hub: HubDocument;
+}
+
+const { hub } = Astro.props;
+const opening = hub.sections[0];
+const chapters = hub.sections.slice(1);
+---
+
+<div class="hub-frame">
+  <aside class="hub-rail">
+    <a class="hub-mark" href="/">DAVG</a>
+    <p class="hub-mark__meta">Est. 2013 · South Metro Denver</p>
+    <SiteIndex current={hub.route} variant="rail" />
+    <nav class="hub-chapters" aria-label="Chapters">
+      <p class="site-index__kicker">This page</p>
+      <ol>
+        {hub.sections.map((section) => (
+          <li>
+            <a href={`#s${section.id}`}>
+              <span class="site-index__num">{section.id}</span>
+              <span>{section.title}</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+  </aside>
+
+  <article class="hub-field">
+    {opening && (
+      <header class="hub-open" id={`s${opening.id}`}>
+        <p class="hub-open__index">{opening.id} / {hub.name}</p>
+        <h1>{opening.headline || opening.title}</h1>
+        {opening.deck && <p class="hub-deck">{opening.deck}</p>}
+        <div class="hub-open__actions">
+          {opening.cta && <a class="hub-action" href="#inquiry">{opening.cta}</a>}
+          {opening.secondary && <a class="hub-quiet" href="#s02">{opening.secondary}</a>}
+        </div>
+        <div class="hub-media" data-slot={`${hub.slug}-01`}></div>
+        {opening.html && <div class="hub-prose hub-prose--on-ink" set:html={opening.html} />}
+      </header>
+    )}
+
+    <div class="hub-document">
+      {chapters.map((section) => (
+        <section class="hub-chapter" id={`s${section.id}`}>
+          <header class="hub-chapter__head">
+            <p class="site-index__num">{section.id}</p>
+            <h2>{section.headline || section.title}</h2>
+          </header>
+          {section.deck && <p class="hub-deck">{section.deck}</p>}
+          <div class="hub-prose" set:html={section.html} />
+          {section.support && <p class="hub-support">{section.support}</p>}
+          {section.cta && section.id === '15' && <a class="hub-action hub-action--paper" href="#inquiry">{section.cta}</a>}
+        </section>
+      ))}
+
+      <section class="hub-chapter" id="inquiry">
+        <header class="hub-chapter__head">
+          <p class="site-index__num">Contact</p>
+          <h2>Begin a project</h2>
+        </header>
+        <p class="hub-deck">No form destination is connected. Email or call and name {hub.name}.</p>
+        <p class="hub-contact">
+          <a href={`mailto:info@davg.ai?subject=${encodeURIComponent(hub.name)}`}>info@davg.ai</a>
+          <a href="tel:7206381603">720.638.1603</a>
+          <a href="tel:7203277337">720.327.7337</a>
+        </p>
+      </section>
+    </div>
+  </article>
+</div>

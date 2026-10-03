@@ -16,9 +16,9 @@ If your local project already has `docs/v4-build/`, replace only the correspondi
 
 Then tell the running Cursor Agent to read `docs/v4-build/01-DESIGN-SYSTEM.md`, `02-SERVICE-LAYOUT.md` and the selected `hubs/` file, and continue the current build. Use the provided latest copy and screenshot references without discarding existing layout experiments. The September 28 rail references set the 25% sticky left / 75% vertically scrolling right service-page layout. The September 3 images guide the Korta visual language. Images can remain blank dimensioned rectangles.
 
-## Motorized Shading is the test page
+## Motorized Shading is the live hub
 
-Use `/solutions/motorized-shades/` on your existing localhost server to test design, layout and implementation. The current content master provides the fifteen-section sequence. Implement it in useful small batches while keeping good work from the prototype. Cursor may continue creating the pages already underway; no new Claude or component approval process is required.
+The earlier “test page” role is retired. `/solutions/motorized-shades/` is the live Motorized Shading hub. Keep that route. Do not republish a second shades mockup, including `/_old/motorized-shades/`. The current content master still provides the fifteen-section sequence for later reconciliation. Implement further shading edits on the live hub in small batches. Cursor may continue creating the pages already underway; no new Claude or component approval process is required.
 
 You do not need to pull GitHub just to get this content pack. Push code through your existing workflow when you are ready to deploy. Do not paste the first-hour prompt if it would restart work Cursor is already doing.
 

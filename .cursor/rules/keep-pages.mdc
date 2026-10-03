@@ -1,0 +1,16 @@
+---
+description: Keep every public page reachable from a constant page index. Do not drop routes unless the request names the removal.
+alwaysApply: true
+---
+
+# Pages stay, and the index stays
+
+Every design or layout update includes the constant page index (`SiteIndex`, `data-site-index`) so the homepage and every hub remain one click away. The index is the mini homepage. A page that does not render it is unfinished.
+
+Do not delete pages, hubs, routes, or sections unless the request names the removal. A redesign is not a request to drop a route. If a removal is named, record the route and the request in `docs/v4-build/named-removals.md` in the same change, and remove that route from `src/data/page-inventory.json`.
+
+`/solutions/motorized-shades/` is the live Motorized Shading hub. Do not republish the retired specimen at `/_old/motorized-shades/` or any other shades mockup route.
+
+`npm run build` runs `scripts/check-pages.mjs`. The check fails when an inventory page is missing, a built page has no index, or the retired shades mockup is emitted.
+
+davg.ai is the Cloudflare production domain for this repository. It still serves the coming-soon page. Do not deploy this work there. Preview only, until Brandon says a page is structurally, design, and technically ready.

@@ -1,6 +1,6 @@
 # DAVG — Website facts and configuration
 
-Use Denver AV Group / DAVG on davg.ai. Denver AV Guy is the legacy bridge identity, not the primary V4 service brand. Established in 2013. Tagline: Your Home, Automated by Design. Do not recolor, invert or alter the DAVG logo without an explicit instruction.
+Use Denver AV Group / DAVG on davg.ai. That domain is the Cloudflare production host for this repository. It currently serves only the coming-soon page. Do not deploy preview work there, and do not describe davg.ai as a separate project. Brandon will remove coming soon and point Cloudflare at this site only after he says a page is structurally, design, and technically ready. Denver AV Guy is the legacy bridge identity, not the primary V4 service brand. Established in 2013. Tagline: Your Home, Automated by Design. Do not recolor, invert or alter the DAVG logo without an explicit instruction.
 
 Current approved service names are the eight names in the hub files. Architectural Integration & Concealment is a cross-cutting principle, not a ninth hub. DAVG Concierge is support, not an additional service hub in this current taxonomy.
 
