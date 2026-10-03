@@ -3,28 +3,27 @@ Revision: 30 September 2026.
 
 Current tokens live in `src/styles/global.css`, with CSS-first Tailwind 4 `@theme`. Ink #090B0A; Forest #183B31; Paper #EDE9E0; signal #1A8F6E. Preserve the cream variants and existing text/rule aliases. No Tailwind config migration or framework upgrade is required.
 
-Self-hosted display: Schibsted Grotesk Variable. Body, controls and navigation: Instrument Sans Variable. Selective factual labels: IBM Plex Mono 400/500 through `@fontsource/ibm-plex-mono`. The prior JetBrains import and dependency are removed. IBM is not a mandatory eyebrow on every section. Do not typeset the navigation like a terminal.
+Self-hosted display: Schibsted Grotesk Variable. Body, controls and navigation: Instrument Sans Variable. Selective factual labels: JetBrains Mono. IBM Plex Mono is retired and is not installed. Mono is not a mandatory eyebrow on every section. Do not typeset the navigation like a terminal.
 
-Display headings use upright sentence case, 300/400, −.035em for display and −.025em for H2. Background words use Schibsted 300, filled glyphs, large scale and intentional cropping. The installed Schibsted package declares an actual wght range of 400–900. The CSS 300 target therefore renders its minimum outline; a true 300 asset remains missing. Do not describe that as a verified weight match. The registered font-family names include Variable; active tokens must match them exactly.
+Display headings use upright sentence case at weight 400, −.035em for H1 and −.025em for H2. Background words still request Schibsted 300. The installed Schibsted package declares an actual wght range of 400–900, so that 300 request renders as 400. Do not describe that as a verified weight match. The registered font-family names include Variable; active tokens must match them exactly.
+
+The names and values in `src/styles/global.css` are canonical. Do not replace them with a clamped `--spacing-page-inline`. IBM Plex Mono stays retired.
 
 ```css
 @theme {
   --color-surface-ink: #090B0A;
   --color-surface-forest: #183B31;
   --color-surface-paper: #EDE9E0;
-  --color-cream-01: #F2EFE7;
-  --color-cream-02: #EBE7DC;
-  --color-cream-03: #E2DDCE;
-  --color-text-on-dark: #F1F0EB;
-  --color-text-muted-dark: #A7AAA5;
-  --color-text-quiet-dark: #7F847E;
-  --color-text-on-paper: #0B0D0C;
-  --color-text-muted-paper: #51544F;
+  --color-text-primary-dark: #F1F0EB;
+  --color-text-secondary-dark: #A7AAA5;
+  --color-text-tertiary-dark: #7F847E;
+  --color-text-primary-paper: #0B0D0C;
+  --color-text-secondary-paper: #51544F;
   --color-accent-signal: #1A8F6E;
-  --color-border-dark: rgb(241 240 235 / 16%);
-  --color-border-paper: rgb(11 13 12 / 14%);
-  --color-spatial-dark: rgb(241 240 235 / 10%);
-  --color-spatial-forest: rgb(241 240 235 / 12%);
+  --color-border-dark: rgb(241 240 235 / 18%);
+  --color-border-paper: rgb(11 13 12 / 16%);
+  --color-spatial-word-dark: rgb(241 240 235 / 12%);
+  --color-spatial-word-forest: rgb(241 240 235 / 14%);
   --font-display: "Schibsted Grotesk Variable", "Schibsted Grotesk", sans-serif;
   --font-sans: "Instrument Sans Variable", "Instrument Sans", sans-serif;
   --font-body: "Instrument Sans Variable", "Instrument Sans", sans-serif;
@@ -32,19 +31,27 @@ Display headings use upright sentence case, 300/400, −.035em for display and �
   --text-h1: clamp(2.5rem, 4.5vw, 4rem);
   --text-h1--line-height: 0.98;
   --text-h1--letter-spacing: -0.035em;
+  --text-h1--font-weight: 400;
   --text-h2: clamp(2rem, 3vw, 2.75rem);
   --text-h2--line-height: 1.02;
   --text-h2--letter-spacing: -0.025em;
+  --text-h2--font-weight: 400;
+  --text-h3: clamp(1.5rem, 2.2vw, 2.25rem);
+  --text-h3--line-height: 1.08;
+  --text-h3--letter-spacing: -0.02em;
   --text-body: 1rem;
   --text-body--line-height: 1.5;
-  --text-caption: .8125rem;
-  --text-caption--line-height: 1.35;
-  --text-label: .6875rem;
-  --text-label--letter-spacing: .1em;
-  --spacing-page-inline: clamp(1.25rem, 3vw, 4rem);
+  --text-body-lg: 1.125rem;
+  --text-body-lg--line-height: 1.45;
+  --text-mono: 0.6875rem;
+  --text-mono--line-height: 1.35;
+  --text-mono--letter-spacing: 0.1em;
   --spacing-section: clamp(3rem, 6vw, 6rem);
-  --radius-control: 2px;
+  --spacing-gutter: var(--page-gutter);
 }
+:root { --page-gutter: 1.5rem; }          /* below 768px */
+/* 768px */  :root { --page-gutter: 3rem; }
+/* 1280px */ :root { --page-gutter: 4rem; }
 ```
 
 Surface roles are in `13-SURFACE-COLOR-SYSTEM.md`. Ink #090B0A, Forest #183B31, Paper #EDE9E0 and signal #1A8F6E stay as they are. Charcoal #0F1310 is the Systems field. Stone is the existing cream-03, `#E2DDCE`, for Investment. Do not return Ink or Paper to `#0A0C0B` or `#F2EFE7`.
@@ -68,7 +75,7 @@ Do not typeset navigation, body copy or section titles like a terminal. Keep hea
 
 The installed Schibsted variable file covers weights 400–900 only. Instrument Sans variable covers 400–700. A `font-weight: 300` declaration therefore resolves to 400. The 300 target stays in the spatial-word rules. No separate 300 cut exists in the self-hosted files or in the earlier Google Fonts stylesheet. No `font-feature-settings` were present in the recovered CSS.
 
-Foundation tokens, defined and not forced onto existing sections:
+Foundation tokens, applied on the homepage and on every git hub:
 
 | Token | Value |
 |---|---|
@@ -109,4 +116,4 @@ Raster mockups cannot establish font-file identity or exact product dimensions. 
 
 The two supplied lockups are the only logo artwork. `davg-lockup-on-black.png` is the green mark with the cream Denver AV Group line, used on Ink, Forest, and the black header. `davg-lockup-on-cream.png` is the same mark with the black line, used on Paper. Do not redraw or recolor them.
 
-Spacing uses the locked scale in `src/styles/global.css`: `--spacing-1` 4px through `--spacing-32` 128px, plus `--spacing-section` and `--spacing-page-inline`. Stacks use the parent `gap`. Element margins start at 0. Eyebrows, rail numbers, and tier labels use IBM Plex Mono at `--text-mono`. Headings are upright Schibsted Grotesk. See `02-SERVICE-LAYOUT.md` for the page width contract.
+Spacing uses the locked scale in `src/styles/global.css`. Page gutters are `--page-gutter`: 1.5rem, then 3rem from 768px, then 4rem from 1280px. `.folio` is the shared content frame. Section padding is `--spacing-section`. Body is `--text-body`; emphasized body is `--text-body-lg` (1.125rem / 1.45). Headings use `--text-h1`, `--text-h2`, and `--text-h3`. Eyebrows and rail numbers use JetBrains Mono at `--text-mono`. Headings are upright Schibsted Grotesk. See `02-SERVICE-LAYOUT.md` for the page width contract.

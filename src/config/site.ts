@@ -25,4 +25,4 @@ export const services = [
   { label: 'Outdoor Entertainment', railLabel: 'Outdoor Entertainment', slug: 'outdoor-entertainment' },
   { label: 'Digital Infrastructure & Privacy', railLabel: 'Infrastructure & Privacy', slug: 'infrastructure-privacy' },
   { label: 'Security Cameras & Access Control', railLabel: 'Security & Access', slug: 'security-access' },
-].map(service => ({ ...service, href: `/systems/${service.slug}/` }));
+].map(service => ({ ...service, href: `/solutions/${service.slug}/` }));

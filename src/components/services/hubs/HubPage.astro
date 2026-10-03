@@ -2,142 +2,137 @@
 import Layout from '../../../layouts/Layout.astro';
 import ServicePageShell from '../../ServicePageShell.astro';
 import InquiryForm from '../../InquiryForm.astro';
-import { chapterNavigation } from '../../../config/site';
-import { serviceSchema } from '../../../config/schema';
-import catalog from '../../../data/hubs/catalog.json';
 import HubFigure from './HubFigure.astro';
-import MissingSlot from './MissingSlot.astro';
-import HubStudies from './studies/HubStudies.astro';
+import { serviceSchema } from '../../../config/schema';
+import { loadGitHub } from '../../../lib/git-hubs.mjs';
+import catalog from '../../../data/hubs/catalog.json';
+import images from '../../../data/images.json';
 
-interface Chapter { id: string; title: string; paragraphs: string[]; layout: string; table?: { headers: string[]; rows: string[][] } | null; }
-interface Service {
-  slug: string;
-  name: string;
-  seo: { title: string; description: string; canonicalPath: string };
-  hero: { heading: string; deck: string; ctaLabel: string; ctaHref: string };
-  openingQA: { question: string; answer: string[] };
-  chapters: Chapter[];
-  groups: { id: string; label: string; chapterIds: string[] }[];
-  projectPaths: { title: string; body: string }[];
-  scopeOptions: { label: string; scope: string; dependencies: string }[];
-  faqs: { question: string; answer: string }[];
-  inquiry: { heading: string; body: string };
-}
-interface Slot {
-  id: string; number: string; kind: string; chapter: string; purpose: string; status: string; reason?: string;
-  src?: string | null; alt?: string; title?: string; caption?: string; fit?: 'cover' | 'contain';
-}
-interface Product { id: string; status: string; src?: string | null; alt?: string; title?: string; caption?: string; fit?: 'cover' | 'contain'; originalName?: string; }
-const { service: s } = Astro.props as { service: Service };
-const hub = (catalog as Record<string, { slots: Slot[]; products: Product[]; missingProducts: string[] }>)[s.slug];
-const lookup = new Map(s.chapters.map((chapter) => [chapter.id, chapter]));
-const slots = hub?.slots ?? [];
-const byNumber = Object.fromEntries(slots.map((slot) => [slot.number, slot]));
-const surfaceRole = (id: string) => id === 'systems' ? 'systems' : id === 'investment' ? 'investment' : 'editorial';
-const placed = (slot?: Slot) => Boolean(slot?.src && slot.alt && slot.title && slot.caption);
-const chapterPhotos = (chapter: string) => slots.filter((slot) => slot.kind === 'photo' && slot.chapter === chapter && slot.number !== '01');
-const productPhoto = (id: string) => {
-  const product = hub?.products.find((item) => item.id === id && item.src && item.alt && item.title && item.caption);
-  return product ? { ...product, status: 'placed', purpose: 'Product view', src: product.src as string, alt: product.alt as string, title: product.title as string, caption: product.caption as string } : undefined;
-};
-const studyPhotos = {
-  ...byNumber,
-  halo: productPhoto('asset-421bb68c4038'),
-  haloTouch: productPhoto('asset-87c26824f722'),
-};
-const visibleProducts = (hub?.products ?? []).filter((product) => product.status === 'placed' && product.src);
+interface Props { slug: string }
+const { slug } = Astro.props;
+const hub = loadGitHub(slug);
+const chapters = hub.sections.map((section) => ({ id: `s${section.id}`, label: section.title }));
+const opening = hub.sections[0];
+const heroSlot = (catalog as Record<string, { slots?: { number: string; id: string; src?: string | null; alt?: string; title?: string; caption?: string; fit?: 'cover' | 'contain' }[] }>)[slug]
+  ?.slots?.find((slot) => slot.number === '01' && slot.src && slot.alt && slot.title && slot.caption);
+const heroReady = Boolean(heroSlot?.src && (images as Record<string, { width: number }>)[heroSlot.src]);
 ---
-<Layout title={s.seo.title} description={s.seo.description} schema={serviceSchema(s.name, s.seo.description, s.seo.canonicalPath)}>
+<Layout title={hub.seoTitle} description={hub.description} schema={serviceSchema(hub.name, hub.description, hub.route)}>
   <a class="skip-link" href="#service-content">Skip to content</a>
-  <main id="service-content" tabindex="-1" data-design-sandbox={s.slug}>
-    <section class="hub-hero" data-opening-section="hero" data-surface-role="hero">
-      <div class="hero-copy">
-        <p class="section-kicker">{s.name}</p>
-        <h1>{s.hero.heading}</h1>
-        <p class="deck">{s.hero.deck}</p>
-        <a class="hero-action" href={s.hero.ctaHref}>{s.hero.ctaLabel}</a>
-      </div>
-      {placed(byNumber['01']) ? <HubFigure photo={byNumber['01'] as Slot & { src: string; alt: string; title: string; caption: string }} loading="eager" sizes="(min-width: 1024px) 56vw, 100vw" /> : byNumber['01'] && <MissingSlot id={byNumber['01'].id} purpose={byNumber['01'].purpose} reason={byNumber['01'].reason || 'Hero photograph missing.'} status={byNumber['01'].status} />}
-    </section>
-
-    <section class="hub-answer" data-opening-section="answer" data-surface-role="answer">
-      <p class="section-kicker">Opening</p>
-      <div>
-        <h2>{s.openingQA.question}</h2>
-        {s.openingQA.answer.map((paragraph) => <p>{paragraph}</p>)}
-      </div>
-    </section>
-
-    <ServicePageShell currentPath={`/systems/${s.slug}/`} chapters={chapterNavigation}>
-      {s.groups.map((group) => <section id={group.id} data-chapter-group class="hub-group" data-surface-role={surfaceRole(group.id)} aria-labelledby={`${group.id}-heading`}>
-        <h2 id={`${group.id}-heading`}>{group.label}</h2>
-        {chapterPhotos(group.id).map((slot) => placed(slot)
-          ? <HubFigure photo={slot as Slot & { src: string; alt: string; title: string; caption: string }} />
-          : <MissingSlot id={slot.id} purpose={slot.purpose} reason={slot.reason || 'This photograph is not available.'} status={slot.status} />)}
-        {group.chapterIds.map((id) => {
-          const chapter = lookup.get(id);
-          return chapter && <article id={`chapter-${chapter.id}`}>
-            <h3>{chapter.title}</h3>
-            <div class:list={['reading-copy', { 'comparison-copy': chapter.layout === 'comparison' }]}>{chapter.paragraphs.map((paragraph) => <p>{paragraph}</p>)}</div>
-            {chapter.table && <div class="table-scroll" tabindex="0" role="region" aria-label={`${chapter.title} comparison`}><table><thead><tr>{chapter.table.headers.map((header) => <th scope="col">{header}</th>)}</tr></thead><tbody>{chapter.table.rows.map((row) => <tr>{row.map((cell, index) => index === 0 ? <th scope="row">{cell}</th> : <td>{cell}</td>)}</tr>)}</tbody></table></div>}
-          </article>;
-        })}
-        {group.id === 'design' && <HubStudies slug={s.slug} photos={studyPhotos} part="signature" />}
-        {group.id === 'systems' && <HubStudies slug={s.slug} photos={studyPhotos} part="technical" />}
-        {group.id === 'systems' && visibleProducts.length > 0 && <div class="product-rail">
-          <h3>Product views</h3>
-          <p class="product-note">These are manufacturer or dealer photographs. They do not replace the missing project-proof slots.</p>
-          <div class="product-grid">
-            {visibleProducts.map((product) => <HubFigure photo={{ id: product.id, src: product.src as string, alt: product.alt as string, title: product.title as string, caption: product.caption as string, fit: product.fit }} ratio={product.fit === 'contain' ? '1 / 1' : '16 / 10'} sizes="(min-width: 1024px) 22vw, 80vw" />)}
+  <main id="service-content" tabindex="-1" data-git-hub={hub.slug} data-design-sandbox={hub.slug}>
+    <ServicePageShell currentPath={hub.route} chapters={chapters}>
+      {hub.sections.map((section) => <section id={`s${section.id}`} data-chapter-group class:list={['hub-section', { 'hub-section-open': section.id === '01' }]}>
+        {section.id === '01' ? <div class="hub-open">
+          <div class="hub-copy">
+            <p class="section-kicker">{hub.name}</p>
+            <h1>{opening.headline || hub.h1}</h1>
+            {opening.deck && <p class="deck">{opening.deck}</p>}
+            <p class="hub-actions">
+              {opening.cta && <a href="#inquiry">{opening.cta}</a>}
+              {opening.secondary && <a href="#s02">{opening.secondary}</a>}
+            </p>
           </div>
-          {hub.missingProducts.length > 0 && <ul class="gap-list">{hub.missingProducts.map((gap) => <li>{gap}</li>)}</ul>}
+          {heroReady && heroSlot?.src && <HubFigure photo={{ id: heroSlot.id, src: heroSlot.src, alt: heroSlot.alt as string, title: heroSlot.title as string, caption: heroSlot.caption as string, fit: heroSlot.fit }} loading="eager" sizes="(min-width: 1024px) 42vw, 100vw" />}
+        </div> : <header class="hub-copy">
+          <p class="section-kicker">{section.id}</p>
+          <h2>{section.headline || section.title}</h2>
+          {section.deck && <p class="deck">{section.deck}</p>}
+        </header>}
+        {section.html && <div class="hub-prose" set:html={section.html} />}
+        {section.support && <p class="deck">{section.support}</p>}
+        {section.id === '15' && <div class="hub-inquiry" id="inquiry">
+          <InquiryForm service={hub.name} serviceSlug={hub.slug} />
         </div>}
-        {group.id === 'installation' && s.projectPaths.map((path) => <article><h3>{path.title}</h3><p>{path.body}</p></article>)}
-        {group.id === 'investment' && <div class="table-scroll" tabindex="0" role="region" aria-label="Project scopes"><table><thead><tr><th scope="col">Scope</th><th scope="col">Included work</th><th scope="col">Dependencies</th></tr></thead><tbody>{s.scopeOptions.map((option) => <tr><th scope="row">{option.label}</th><td>{option.scope}</td><td>{option.dependencies}</td></tr>)}</tbody></table></div>}
       </section>)}
     </ServicePageShell>
-
-    <section class="hub-questions" id="questions" data-closing-section="questions" data-surface-role="questions">
-      <h2>Questions</h2>
-      {s.faqs.map((item) => <details><summary>{item.question}</summary><p>{item.answer}</p></details>)}
-    </section>
-    <section class="hub-inquiry" id="project-inquiry" data-closing-section="inquiry" data-surface-role="inquiry">
-      <span id="inquiry" class="alias"></span>
-      <h2>{s.inquiry.heading}</h2>
-      <p class="deck">{s.inquiry.body}</p>
-      <InquiryForm service={s.name} serviceSlug={s.slug} />
-    </section>
   </main>
 </Layout>
 <style>
-.hub-hero, .hub-answer, .hub-questions, .hub-inquiry { padding: var(--spacing-section) var(--spacing-page-inline); }
-.hub-hero { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(1.5rem, 4vw, 4rem); align-items: end; padding-top: clamp(6rem, 12vw, 9rem); }
-.hero-copy { display: grid; gap: 1rem; align-content: end; }
-.hub-hero h1 { max-width: 14ch; font-size: clamp(2.75rem, 5.4vw, 5.5rem); font-weight: 400; }
-.deck { max-width: 38rem; font-size: 1.125rem; line-height: 1.5; color: var(--surface-muted); }
-.hero-action { width: max-content; color: inherit; text-decoration: none; border-bottom: 1px solid var(--surface-border); padding-bottom: 0.35rem; }
-.hub-answer { display: grid; grid-template-columns: minmax(8rem, 0.4fr) minmax(0, 1.6fr); gap: 2rem; }
-.hub-answer h2, .hub-questions h2, .hub-inquiry h2 { font-size: clamp(2rem, 3vw, 3rem); max-width: 22ch; }
-.hub-answer p, .hub-group p, .hub-questions p { max-width: 68ch; line-height: 1.6; }
-.hub-group { padding: var(--spacing-section) var(--spacing-page-inline); }
-.hub-group h2 { font-size: clamp(2rem, 3vw, 2.75rem); }
-.hub-group h3 { margin-top: 2.5rem; font-size: clamp(1.5rem, 2.2vw, 2rem); }
-.reading-copy, .comparison-copy { display: grid; gap: 1rem; margin-top: 1rem; }
-.comparison-copy { grid-template-columns: 1fr 1fr; gap: 0 2rem; }
-.table-scroll { overflow-x: auto; margin: 1.5rem 0 0; }
-table { border-collapse: collapse; width: 100%; min-width: 36rem; text-align: left; }
-th, td { padding: 1rem 0.8rem; border-bottom: 1px solid var(--surface-border); vertical-align: top; line-height: 1.45; font-size: 0.9375rem; }
-.product-rail { margin-top: 3rem; display: grid; gap: 1rem; }
-.product-note { color: var(--surface-muted); }
-.product-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
-.gap-list { margin: 0; padding-left: 1.1rem; color: var(--surface-muted); display: grid; gap: 0.4rem; }
-.hub-questions details { border-top: 1px solid var(--surface-border); padding: 1.1rem 0; max-width: 68rem; }
-.hub-questions summary { cursor: pointer; font-size: 1.125rem; }
-.alias { position: absolute; }
-.skip-link { position: fixed; transform: translateY(-200%); z-index: 100; padding: 0.8rem; background: var(--color-surface-paper); color: var(--color-text-on-paper); }
+.hub-section {
+  padding: var(--spacing-section) var(--page-gutter);
+}
+.hub-section + .hub-section {
+  border-top: 1px solid var(--color-border-dark);
+}
+.hub-open {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: var(--spacing-component);
+  align-items: end;
+}
+.hub-copy { display: grid; gap: var(--spacing-text); align-content: end; }
+.hub-section h1 {
+  font-size: var(--text-h1);
+  line-height: var(--text-h1--line-height);
+  letter-spacing: var(--text-h1--letter-spacing);
+  font-weight: 400;
+}
+.hub-section h2 {
+  font-size: var(--text-h2);
+  line-height: var(--text-h2--line-height);
+  letter-spacing: var(--text-h2--letter-spacing);
+  font-weight: 400;
+}
+.deck {
+  max-width: var(--measure-body);
+  font-size: var(--text-body-lg);
+  line-height: var(--text-body-lg--line-height);
+  color: var(--color-text-secondary-dark);
+}
+.hub-actions { display: flex; flex-wrap: wrap; gap: var(--spacing-6); margin: 0; }
+.hub-actions a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-border-dark);
+  padding-bottom: 0.2rem;
+}
+.hub-prose { max-width: var(--measure-wide); margin-top: var(--spacing-text); }
+.hub-prose :global(p),
+.hub-prose :global(li) {
+  max-width: var(--measure-body);
+  font-size: var(--text-body);
+  line-height: var(--text-body--line-height);
+}
+.hub-prose :global(p + p),
+.hub-prose :global(h3),
+.hub-prose :global(ul),
+.hub-prose :global(ol),
+.hub-prose :global(.hub-table) { margin-top: var(--spacing-text); }
+.hub-prose :global(h3) {
+  max-width: 28ch;
+  font-size: var(--text-h3);
+  line-height: var(--text-h3--line-height);
+  letter-spacing: var(--text-h3--letter-spacing);
+  font-weight: 400;
+}
+.hub-prose :global(a) { color: inherit; text-underline-offset: 0.18em; }
+.hub-prose :global(ul),
+.hub-prose :global(ol) { padding-left: 1.2rem; }
+.hub-prose :global(li + li) { margin-top: 0.45rem; }
+.hub-prose :global(.hub-table) { overflow-x: auto; max-width: 100%; }
+.hub-prose :global(table) { border-collapse: collapse; width: 100%; min-width: 36rem; text-align: left; }
+.hub-prose :global(th),
+.hub-prose :global(td) {
+  padding: 0.9rem 0.8rem;
+  border-bottom: 1px solid var(--color-border-dark);
+  vertical-align: top;
+  line-height: 1.45;
+  font-size: 0.9375rem;
+}
+.hub-inquiry { margin-top: var(--spacing-component); }
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  padding: 0.8rem;
+  background: var(--color-surface-paper);
+  color: var(--color-text-on-paper);
+  transform: translateY(-150%);
+}
 .skip-link:focus { transform: none; }
 :focus-visible { outline: 2px solid var(--color-accent-signal); outline-offset: 4px; }
-@media (max-width: 900px) {
-  .hub-hero, .hub-answer, .comparison-copy, .product-grid { grid-template-columns: 1fr; }
+@media (max-width: 1023px) {
+  .hub-open { grid-template-columns: 1fr; }
 }
 </style>

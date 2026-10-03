@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Areas served | DAVG" description="DAVG designs residential systems for Denver and South Metro Colorado, including Parker and Castle Rock.">
+  <main class="areas">
+    <p class="section-kicker">Denver and South Metro</p>
+    <h1>Areas served</h1>
+    <p>DAVG designs residential lighting, shading, and home systems for Denver and South Metro Colorado, including Parker and Castle Rock.</p>
+    <p><a href="/systems/">View the eight home systems</a></p>
+  </main>
+</Layout>
+<style>
+.areas {
+  padding: var(--spacing-section) var(--page-gutter);
+  display: grid;
+  gap: var(--spacing-text);
+  max-width: 70rem;
+}
+.areas p { max-width: var(--measure-body); line-height: 1.6; }
+.areas a { color: inherit; }
+</style>

@@ -5,18 +5,15 @@ Work in the existing `bwagner2540-sketch/davg-korta-v4` checkout. Read `11-SYNC-
 
 The stable local review URL is http://127.0.0.1:4321/preview/. Refresh it after each local change. It is noindex and stays off the publication allowlist.
 
-The Motorized Shading sandbox is one implementation rendered at both `/systems/motorized-shades/` and `/solutions/motorized-shades/`. The live copy is `src/content/services/motorized-shades.json` with `src/components/services/ServicePage.astro`. Neither route may be published, including a Cloudflare preview. Keep the specimen current with approved decisions; do not replace it with an archived starter.
-
-The seven draft service hubs are rendered by `HubPage`. They are not collection entries and they are not approved for release. Motorized Shading stays on `ServicePage` and off the publication allowlist. A route existing is not a finished page.
+All eight service pages, including Motorized Shading, are one implementation. `HubPage.astro` reads `docs/v4-build/hubs/DAVG-V4-Hub-*.md` and places it in `ServicePageShell.astro`. `/solutions/<slug>/` is the git route. `/systems/<slug>/` renders the same page. None of these routes are on the production allowlist until the owner approves a release.
 
 Active ownership:
-- `01-DESIGN-SYSTEM.md`: visual tokens and typography.
-- `13-SURFACE-COLOR-SYSTEM.md`: service-page surface roles. It replaces the previous two-surface addendum, including any forced dark/cream ratio, consecutive-cream limit, brass accent or conversion claim.
-- `02-SERVICE-LAYOUT.md`: full-width openings/closings, five chapters and nested navigation.
-- `src/content/services/motorized-shades.json`: live shading copy. The other seven services stay in `src/data/services/*.json` as drafts, not collection entries. Architectural Lighting is rendered by `HubPage`; progress is `HUB-PROGRESS.md`.
-- `src/config/site.ts`: the only ordered service list, plus names, URLs and contact configuration. Header, footer, and the rail read `services`.
-- `src/config/publication.json`: explicit page-release allowlist, empty today.
-- `src/components/services/ServicePage.astro`: integrated shading specimen, used by both shading routes.
+- `docs/v4-build/hubs/DAVG-V4-Hub-*.md`: the only public words, section order, and routes.
+- `02-SERVICE-LAYOUT.md` and `src/components/ServicePageShell.astro`: the one sticky 25/75 frame.
+- `01-DESIGN-SYSTEM.md` and `src/styles/global.css`: visual tokens and typography.
+- `13-SURFACE-COLOR-SYSTEM.md`: service-page surface roles.
+- `src/config/site.ts`: the only ordered service list. Header, footer, and the rail read `services`.
+- `src/config/publication.json`: explicit page-release allowlist.
 - `11-SYNC-CONTRACT.md` / `BUILD-STATE.md`: source precedence and actual verification.
 
 Everything under `archive/` and `v4-gpt-original-design/` is reference. Old 15-section maps, document 09's eleven labels and the nine-label starter cannot override these active files. Archived PDFs and spreadsheets are not current completion reports. Reference artwork does not establish dimensions, measured outcomes or project proof.

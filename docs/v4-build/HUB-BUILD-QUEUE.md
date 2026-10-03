@@ -1,4 +1,8 @@
-# DAVG — Build the eight hubs from the screenshot component system
+# DAVG — Build queue
+
+**Page frame and public copy in this file were superseded on 3 October 2026.** The rendered page is `docs/v4-build/hubs/DAVG-V4-Hub-*.md` inside `ServicePageShell.astro`. Do not rebuild a hub from `src/data/services/*.json`, and do not put a full-width hero outside the rail. Image notes below are reference only.
+
+# Earlier queue — screenshot component system
 Updated 30 September 2026. Execution handoff, not a new visual design or a replacement repository.
 
 ## Paste this into Cursor
