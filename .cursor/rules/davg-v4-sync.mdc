@@ -16,9 +16,8 @@ Fonts in `src/styles/global.css` are Schibsted Grotesk (400–900), Instrument S
 - Implement the requested page, section, or content change in the existing build.
 - Keep page-specific changes scoped. When shared code changes, check the other consumers.
 - Update only the affected authoritative specification, plus `BUILD-STATE.md` when the change is substantive.
-- Run the relevant checks, commit the intended changes, and push.
-- Wait for the automatic preview and verify it. Return the same stable preview address with the affected page path and the deployed commit.
-- If publication fails, report the preview as stale and identify the blocker. Do not leave `docs/live-previews.md` pointing at a URL that does not serve this commit.
+- Run the relevant checks and commit the intended changes. Run `npm run preview:deliver -- /actual/affected/route/` for every affected page. The command pushes, waits for deployment, and checks the public revision against the commit.
+- Begin the final response with each printed live page URL and the verified commit. If the command fails, report the preview as stale and include the failure instead of calling the task delivered.
 - Preview deployments of the working branch are authorized. Production release of `davg.ai` stays separate.
 - Use one writer per checkout. Do not launch concurrent editing agents.
 - Preserve local work. No reset or force-push.

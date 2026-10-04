@@ -32,6 +32,10 @@ This section is the current record. The logs below it are history from earlier p
 
 The September and early October logs below recorded older owners (JSON drafts, document 09 as the shading map, IBM Plex as an open font question, branch `main`). Those statements are superseded by this section.
 
+## Task log — 4 October 2026 preview delivery workflow
+- Added `npm run preview:deliver -- /actual/route/` to push the connected branch and wait for each affected public route's `davg-revision` to equal the exact commit. It prints live URLs only on success and exits nonzero for uncommitted files, wrong branch, diverged remote, push failure, or stale/unavailable preview. `npm run preview:verify -- /actual/route/` checks an existing published revision without pushing.
+- The always-on Cursor rules and `AGENTS.md` now require the command and the page link as the first item in the final response. The preview source remains the existing Workers branch; production remains separate.
+
 ## Task log — 4 October 2026 Architectural Lighting composition
 - Decision: the shared chapter grammar stays on the other seven hubs. Architectural Lighting is a separate composition so the page can be reviewed before any other hub changes.
 - Implemented: `src/components/services/hubs/LightingField.astro`, `src/styles/lighting.css`, `src/lib/lighting-media.mjs`. `HubPage.astro` mounts the lighting page only for `architectural-lighting`. `composeChapterHtml` accepts `keepTables` so both lighting comparison tables stay visible. Copy is still the git hub. Section 11 stays reserved.
