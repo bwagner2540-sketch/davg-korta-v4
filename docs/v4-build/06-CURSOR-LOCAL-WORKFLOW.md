@@ -22,4 +22,10 @@ Use `/solutions/motorized-shades/` on your existing localhost server to test des
 
 You do not need to pull GitHub just to get this content pack. Push code through your existing workflow when you are ready to deploy. Do not paste the first-hour prompt if it would restart work Cursor is already doing.
 
+## Live revision check
+
+Decision: adopted. A push to a branch other than `main` runs the GitHub Actions check **Verify live revision** (`.github/workflows/verify-live-revision.yml`).
+
+`npm run build` stamps the git revision into `<meta name="davg-revision">` on the homepage and on pages that use `Layout.astro`. Cloudflare Workers Builds publishes the branch to its preview alias. The check writes that review link in the Actions run summary, then polls `/` and `/solutions/motorized-shades/` until those public pages serve the pushed commit. The current link is the `Current review URL` line in `docs/live-previews.md`. The check reads the preview only. It does not deploy `davg.ai` or `https://davg-korta-v4.brandon-763.workers.dev/`. Branch preview builds add `noindex` and a `robots.txt` disallow. Production builds do not.
+
 

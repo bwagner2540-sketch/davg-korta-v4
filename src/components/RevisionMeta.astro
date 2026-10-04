@@ -1,0 +1,7 @@
+---
+import { preview, revision } from '../generated/revision.js';
+
+const stamp = typeof revision === 'string' && /^[a-f0-9]{40}$/.test(revision) ? revision : '';
+---
+{stamp && <meta name="davg-revision" content={stamp} />}
+{preview && <meta name="robots" content="noindex, nofollow" />}

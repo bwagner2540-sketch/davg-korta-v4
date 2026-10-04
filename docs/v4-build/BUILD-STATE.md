@@ -9,7 +9,7 @@ Updated 29 September 2026 during the one-time source sync. This replaces the rem
 - Sync-kit import: applied 29 September 2026 from `DAVG-V4-Sync-Update-2026-09-29.zip`. Payload text copied into `docs/v4-build/`. Existing reference screenshots, PDF, spreadsheet, manifests and starter README kept.
 - Active specification after import: `docs/v4-build/`. Shading authority is `09-SHADING-STORY-SYSTEMS-AND-PROJECT-PATHS.md`, which supersedes `08`'s chapter map. `08` supersedes the original shading hub's rendered order where the two still agree. Other hubs use their own file in `hubs/` plus `content-additions/gbb/`. `v4-gpt-original-design/` stays historical.
 - Import commit: `b71bf120fc1bc3573a57333c051cc15b3c345c72` on `main` (`docs: import the 29 September V4 source sync`). This note was added after that commit, so the follow-up SHA is the handoff head.
-- Cloudflare project/environment/deployment: not deployed by this task. `wrangler.toml` still only names `davg-korta-v4`, compatibility date `2026-09-10`, and `assets.directory = "./dist"`. No production deploy was run.
+- Cloudflare project/environment/deployment: not deployed by the 29 September sync. `wrangler.toml` names `davg-korta-v4`, compatibility date `2026-09-10`. As of 4 October 2026 the asset directory is `./dist/client`, which is where the Cloudflare adapter writes the static pages, and `[build].command` is `npm run build`. No production deploy was run.
 
 ## Adopted architecture
 Decision: **adopted for the current build** — static Astro file routes, shared components, CSS-first Tailwind. Content Collections + MDX in `10-ASTRO-ARCHITECTURE-AND-PREBUILD-AUDIT.md` stay **proposed**. This sync did not migrate hubs.
@@ -26,7 +26,7 @@ Decision: **adopted for the current build** — static Astro file routes, shared
 | SEO | Shared `Layout.astro` accepts an optional `description` and emits it when passed. Homepage keeps its own description and LocalBusiness/FAQPage JSON-LD | No canonical, social image, sitemap, robots, or 404 source. Shading does not pass a description into the layout. |
 | Shading page | Working specimen at `/solutions/motorized-shades/`. Section IDs exist. Fourteen shade photographs are placed. `shading-11-proof` stays a blank reservation | Chapter order is the earlier editorial sequence (daylight through inquiry), not the 11-chapter map in `09`. Photographs and structure were preserved on purpose. |
 | Forms | Shading inquiry form posts nowhere (`action="#"`) and states that no destination is connected. Homepage uses mailto and visible phone/email | No Worker endpoint, Turnstile, or HubSpot mapping. |
-| Checks | `package.json` scripts are `dev`, `build`, and `preview` only | No `astro check` script and no CI workflow. |
+| Checks | `dev`, `build`, `preview`, `test`, and `preview:verify`. Non-main pushes run **Verify live revision** | No `astro check` script. The live check does not run on `main` and does not deploy production. |
 
 ## Current work record
 | Area | Decision / specification | Implementation | Verification / next action |
@@ -39,7 +39,7 @@ Decision: **adopted for the current build** — static Astro file routes, shared
 | Forms / backend | Proposed Worker POST contract in `10` | Pending. Explicit non-sending form | Confirm phone, email, and destination before any success state |
 | Security | Proposed headers and runtime controls in `10` | Not implemented in source. `.gitignore` excludes `.env` and `.env.*` | No security pass claimed |
 | Contact and proof | `05-BUSINESS-FACTS.md`. Conflicting phones remain unresolved: fact file cites 720-327-7337 and 303-914-2700; homepage also shows 720.638.1603 and 720.327.7337, plus `info@davg.ai` | Homepage keeps the owner's current contact block. Proof slot stays empty | Confirm one public phone and cleared project proof before release |
-| Checks / deployment | Local `npm run build` is the existing check | See task log | Not deployed |
+| Checks / deployment | Adopted: `06-CURSOR-LOCAL-WORKFLOW.md` live revision check. `docs/live-previews.md` holds the current review URL | Implemented. `npm run build` stamps `davg-revision`. `.github/workflows/verify-live-revision.yml` waits for the branch preview and writes the review link to the Actions summary | `npm test` and `npm run build` passed 4 October 2026. Actions run [37172434410](https://github.com/bwagner2540-sketch/davg-korta-v4/actions/runs/37172434410) passed: the public preview served `3938d4b34999f810c2ee17fd3ac55e5b3c09e366` on `/` and `/solutions/motorized-shades/`. Production was not deployed |
 
 ## Left uncommitted on purpose
 These files were already dirty local work. This sync did not overwrite them and did not include them in the source checkpoint:
@@ -76,5 +76,15 @@ A dev server was already listening on port 4321. This task did not start another
 - Remaining items: Phase 2 layout work (measure, gutters, spatial-word placement, service compositions). Schibsted has no weight below 400. The sync contract's IBM Plex sentence is still the older wording.
 - Commit/branch: parent inspected before this commit was `d00f5e23cc8422a0dcaaba9f8cd323a0983f3659` on `main`. The working tree was clean, so no checkpoint commit was created. This file cannot store its own commit SHA.
 - Preview/production status: not deployed.
+
+## Task log — 4 October 2026
+- Date/task: 4 October 2026 — add the check that waits for Cloudflare, verifies the live page revision, and puts the review link in the GitHub Actions run summary.
+- Decision changed: adopted the branch-preview revision check in `06-CURSOR-LOCAL-WORKFLOW.md`. `main` is not a review preview. Production hosts `davg.ai` and `davg-korta-v4.brandon-763.workers.dev` are refused.
+- Current specification path: `docs/v4-build/06-CURSOR-LOCAL-WORKFLOW.md`. The review URL for this branch is `docs/live-previews.md`.
+- Code paths: `scripts/build.mjs`, `scripts/revision-module.mjs`, `scripts/write-revision.mjs`, `scripts/verify-live-revision.mjs`, `src/components/RevisionMeta.astro`, `src/layouts/Layout.astro`, `src/pages/index.astro`, `tests/verify-live-revision.test.mjs`, `.github/workflows/verify-live-revision.yml`, `package.json`, `wrangler.toml`, `.gitignore`.
+- Checks and results: `npm test` passed (5 tests). `npm run build` passed and stamped `davg-revision` on `dist/client/index.html` and `dist/client/solutions/motorized-shades/index.html`. Actions run `37172434410` passed on 4 October 2026. The public preview served revision `3938d4b34999f810c2ee17fd3ac55e5b3c09e366` on `/` and `/solutions/motorized-shades/`, with preview `noindex`. Not a production deploy.
+- Remaining items: Workers Builds must publish this branch to the preview alias. The Vite plugin warns that `wrangler.toml` `[build]` is ignored during `astro build`; Workers Builds still needs to run `npm run build` so the revision is stamped. Forest rail, chapter map, unbuilt routes, forms, and phone confirmation are unchanged.
+- Commit/branch: parent inspected before this commit was `95978978351bb70500bbb658884ed6ca42d9bde4` on `cursor/cloudflare-verification-and-review-link-966f`.
+- Preview/production status: branch preview verified at `https://cursor-cloudflare-verification-and-review-li-1120-davg-korta-v4.brandon-763.workers.dev/` for commit `3938d4b34999f810c2ee17fd3ac55e5b3c09e366`. Production was not deployed.
 
 Do not publish this internal record on the public website.
