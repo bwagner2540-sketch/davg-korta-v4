@@ -16,6 +16,10 @@ Ink `#090B0A`, Forest `#183B31`, Paper `#EDE9E0` and signal `#1A8F6E` stay uncha
 
 Other cream tokens remain for component details. They are not page bands. Photography keeps its original colors.
 
+## Chapter grammar — 3 October 2026
+
+The service pages now use one chapter frame. Hero and the inquiry close are Ink. Chapters are Paper. One comparison chapter per hub (section 06) is Ink. The rail is Ink, not Forest. Forest remains a token. It is no longer the service-rail fill. The table below is the earlier role map and is not the live service-page paint.
+
 ## Service-page map
 
 Roles live on the section: `hero`, `answer`, `editorial`, `systems`, `investment`, `questions`, `inquiry`, `signature-study`. They are independent of chapter ids. A chapter may contain more than one role.

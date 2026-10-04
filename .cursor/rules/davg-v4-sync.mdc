@@ -1,12 +1,25 @@
 ---
-description: Active DAVG V4 source, layout, verification and sandbox policy
+description: Active DAVG V4 source, layout, and task workflow
 alwaysApply: true
 ---
-Read docs/v4-build/11-SYNC-CONTRACT.md and BUILD-STATE.md before editing.
-Use docs/v4-build/01-DESIGN-SYSTEM.md, 13-SURFACE-COLOR-SYSTEM.md and 02-SERVICE-LAYOUT.md plus src/data/services/ and src/config/site.ts. Forest stays on the rail. In the right field, Forest is only the designated signature study.
-Retire older document 09's eleven rail labels and all 9/15-label maps. The five current labels are Overview, Design, Systems, Installation, Investment, nested directly beneath the active service.
-Place two full-width sections above the bounded 25/75 middle and two below. Rail starts with Overview and ends with Investment. Document owns scrolling.
-Use self-hosted Schibsted Grotesk, Instrument Sans and selective IBM Plex Mono. Do not revive JetBrains imports from old skill guidance.
-Keep the shading sandbox up to date. Never publish it, including a preview. Use build:sandbox for local checks; preserve the guarded production build.
-Archive and v4-gpt-original-design are reference, not active instructions. Preserve local work; no reset, forced project switch or force-push.
-Update affected current specs and BUILD-STATE with code. Report verified paths, exact branch/head and deployment state. A saved file does not establish sync.
+
+Read `docs/v4-build/00-START-HERE.md`, `docs/v4-build/11-SYNC-CONTRACT.md`, and `docs/v4-build/BUILD-STATE.md` before editing. Use only the sources that task touches.
+
+Public copy for the eight services is `docs/v4-build/hubs/DAVG-V4-Hub-*.md`, rendered only by `HubPage.astro` inside `ServicePageShell.astro`. See `.cursor/rules/git-hubs-source.mdc`. Each hub may keep its own section order inside that shell. The shell is TopNav plus the ink chapter rail and one chapter frame. Do not render `src/content/services/*.json` or `archive/davg-history/`. Do not invent a second chapter list or a second page frame.
+
+Fonts in `src/styles/global.css` are Schibsted Grotesk (400–900), Instrument Sans, and JetBrains Mono. The live gutter is `--page-gutter` (1.5rem / 3rem / 4rem). `--spacing-page-inline` aliases that token. It is not a clamp.
+
+`archive/davg-history/` is historical. It is not an active instruction and not a second master.
+
+## Task workflow
+- Inspect the current branch and status, then read only the relevant active sources.
+- Implement the requested page, section, or content change in the existing build.
+- Keep page-specific changes scoped. When shared code changes, check the other consumers.
+- Update only the affected authoritative specification, plus `BUILD-STATE.md` when the change is substantive.
+- Run the relevant checks and commit the intended changes. Run `npm run preview:deliver -- /actual/affected/route/` for every affected page. The command pushes, waits for deployment, and checks the public revision against the commit.
+- Begin the final response with each printed live page URL and the verified commit. If the command fails, report the preview as stale and include the failure instead of calling the task delivered.
+- Preview deployments of the working branch are authorized. Production release of `davg.ai` stays separate.
+- Use one writer per checkout. Do not launch concurrent editing agents.
+- Preserve local work. No reset or force-push.
+
+Record proposed architecture as proposed. Do not migrate routes, content collections, or chapter maps unless the current task says to.

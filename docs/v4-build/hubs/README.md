@@ -1,3 +1,5 @@
-# Superseded hubs
+# Git hubs — public copy
 
-Original files are preserved at ../archive/checkpoint-dc9ff37/hubs/. Active content is src/data/services/, active layout is ../02-SERVICE-LAYOUT.md and current workflow is ../06-CURSOR-LOCAL-WORKFLOW.md. Do not copy an archived starter over the integrated page.
+These eight files are the public words, section order, and routes for the service pages. `src/components/services/hubs/HubPage.astro` reads them at build time. The page frame is `src/components/ServicePageShell.astro`.
+
+`archive/davg-history/` is not rendered. Edit the service in the hub file, then commit and push the branch that deploys.

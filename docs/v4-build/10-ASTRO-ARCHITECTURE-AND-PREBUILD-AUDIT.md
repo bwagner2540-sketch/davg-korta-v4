@@ -1,5 +1,9 @@
 # Technical foundation — implementation and limits
 
+Status, 3 October 2026: the adopted site is static Astro routes, `HubPage.astro`, and the git hubs in `00-START-HERE.md`. Content Collections, MDX, and JSON-as-public-copy in this audit are proposed. They are not a command to migrate. The paragraphs below are the 30 September audit record.
+
+
+
 Adopted: standalone static Astro routes; shared components; CSS-first Tailwind 4; build-time JSON content records; no CMS or mandatory MDX migration. Dependency major versions are preserved. The Cloudflare SSR adapter is no longer invoked for a static asset site; the installed adapter package is retained for future evaluation. The inquiry Worker is separate from static editorial output.
 
 Implemented foundations: shared SeoHead (title/description, draft indexing control, public canonical/Open Graph/Twitter slots); conditional Organization/Service/BreadcrumbList generator using verified config; source 404; `/systems/` index and eight draft service routes; robots and sitemap endpoints filtered by release state; self-hosted approved fonts; image dimensions/srcset/sizes and generated WebP sizes; asset headers; guarded production builds; inquiry email composer plus tested server-delivery Worker.

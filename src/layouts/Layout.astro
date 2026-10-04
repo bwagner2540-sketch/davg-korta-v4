@@ -2,14 +2,14 @@
 import process from 'node:process';
 import '../styles/global.css';
 import SeoHead from '../components/SeoHead.astro';
-import SiteNav from '../components/SiteNav.astro';
+import TopNav from '../components/korta/TopNav.astro';
 import ServiceLinks from '../components/ServiceLinks.astro';
 interface Props { title?: string; description?: string; published?: boolean; schema?: Record<string, unknown>[]; }
 const { title = 'Denver AV Group', description = 'Residential lighting, shading and home systems designed around the way you live.', published = process.env.DAVG_BUILD_MODE === 'production', schema = [] } = Astro.props;
 ---
 <!doctype html>
 <html lang="en"><head><SeoHead {title} {description} {published} {schema} /></head>
-<body class="bg-surface-ink text-text-primary-dark antialiased"><SiteNav /><slot /><footer class="site-footer"><ServiceLinks /></footer></body></html>
+<body class="bg-surface-ink text-text-primary-dark antialiased"><TopNav /><slot /><footer class="site-footer"><ServiceLinks /></footer></body></html>
 <style>
 .site-footer {
   border-top: 1px solid var(--color-border-dark);

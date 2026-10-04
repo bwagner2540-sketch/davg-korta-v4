@@ -4,20 +4,19 @@ import NeutralStudy from './NeutralStudy.astro';
 import HubFigure from '../HubFigure.astro';
 
 interface Photo { id: string; src?: string | null; alt?: string; title?: string; caption?: string; fit?: 'cover' | 'contain'; status: string; purpose: string; reason?: string; }
-interface Props { slug: string; photos: Record<string, Photo | undefined>; part: 'signature' | 'technical'; }
-const { slug, photos, part } = Astro.props;
+interface Props { slug: string; photos: Record<string, Photo | undefined>; part: 'signature' | 'technical'; word?: string; }
+const { slug, photos, part, word = '' } = Astro.props;
 const placed = (photo?: Photo): photo is Photo & { src: string; alt: string; title: string; caption: string } => Boolean(photo?.src && photo.alt && photo.title && photo.caption);
 ---
 {slug === 'architectural-lighting' && part === 'signature' && (
-    <SignatureFolio slotId="architectural-lighting-04" kicker="Architectural lighting / comparison" heading="Two rooms. Not one comparison." lede="These photographs show different spaces. They are not a same-room before and after, and they do not measure switches, zones or scenes." word="Light">
-      <div class="pair">
-        {placed(photos['03']) && <HubFigure photo={photos['03']} ratio="4 / 5" sizes="(min-width: 1024px) 28vw, 100vw" />}
-        {placed(photos['01']) && <HubFigure photo={photos['01']} ratio="4 / 5" sizes="(min-width: 1024px) 28vw, 100vw" />}
+    <SignatureFolio slotId="architectural-lighting-04" kicker="Architectural lighting / comparison" heading="Lighting layers. One considered interface." lede="Room scenes bring the lighting layers together. Keypad placement and the actions it exposes belong in the architectural plan." word={word}>
+      <div class="interface-study">
+        {placed(photos['02']) && <HubFigure photo={photos['02']} placement="stage" sizes="(min-width: 1024px) 45vw, 100vw" />}
       </div>
     </SignatureFolio>
 )}
 {slug === 'architectural-lighting' && part === 'technical' && (
-    <NeutralStudy slotId="architectural-lighting-05" kicker="Compatibility" heading="Fixture, driver, dimmer, control." lede="A dimmable label is not a test. The chain has to work together at the low end you actually use. Exact Sunnata and driver photographs are still missing.">
+    <NeutralStudy slotId="architectural-lighting-05" kicker="Compatibility" heading="Fixture, driver, dimmer, control." lede="A dimmable label is not a test. The chain has to work together at the low end you actually use.">
       <svg viewBox="0 0 880 210" role="img" aria-labelledby="al-chain-title al-chain-desc">
         <title id="al-chain-title">Conceptual lighting compatibility chain</title>
         <desc id="al-chain-desc">Four linked stages: fixture, driver, dimmer and control. No electrical values are shown.</desc>
@@ -28,7 +27,7 @@ const placed = (photo?: Photo): photo is Photo & { src: string; alt: string; tit
           <rect x="684" y="48" width="170" height="88" />
           <path d="M194 92H244M414 92H464M634 92H684" />
         </g>
-        <g fill="#183B31" font-family="IBM Plex Mono, monospace" font-size="13">
+        <g fill="#183B31" font-family="JetBrains Mono, ui-monospace, monospace" font-size="13">
           <text x="40" y="36">01</text><text x="260" y="36">02</text><text x="480" y="36">03</text><text x="700" y="36">04</text>
         </g>
         <g fill="#090B0A" font-family="Schibsted Grotesk Variable, sans-serif" font-size="22">
@@ -42,14 +41,9 @@ const placed = (photo?: Photo): photo is Photo & { src: string; alt: string; tit
 )}
 
 {slug === 'home-intelligence' && part === 'signature' && (
-    <SignatureFolio slotId="home-intelligence-04" kicker="Home intelligence / device study" heading="One operating layer. The architecture stays quiet." lede="Lighting, shades, climate and access are planned together. This is a product photograph of a Halo remote, not a measured interface and not a temperature claim." word="Intelligence">
-      <div class="device-row">
-        {placed(photos.halo) && <HubFigure photo={photos.halo} ratio="1 / 1" sizes="(min-width: 1024px) 22vw, 70vw" />}
-        {placed(photos.haloTouch) && <HubFigure photo={photos.haloTouch} ratio="1 / 1" sizes="(min-width: 1024px) 22vw, 70vw" />}
-        <ul class="folio-points">
-          <li>Arrival, evening and away are one residence, not three houses.</li>
-          <li>The wall touchscreen in Systems shows lighting loads. The selected lifestyle screen was withheld because it shows personal names.</li>
-        </ul>
+    <SignatureFolio slotId="home-intelligence-04" kicker="Home intelligence / device study" heading="One operating layer. The architecture stays quiet." lede="Lighting, shades, climate and access are planned together. Shared interfaces make those decisions available to the household." word={word}>
+      <div class="interface-study">
+        {placed(photos.touchscreen) && <HubFigure photo={photos.touchscreen} placement="stage" sizes="(min-width: 1024px) 45vw, 100vw" />}
       </div>
     </SignatureFolio>
 )}
@@ -70,7 +64,7 @@ const placed = (photo?: Photo): photo is Photo & { src: string; alt: string; tit
 )}
 
 {slug === 'media-audio' && part === 'signature' && (
-    <SignatureFolio slotId="media-audio-04" kicker="Media and audio / speaker study" heading="Heard in the room. The assembly stays described, not measured." lede="Conceptual section for an invisible speaker. It is not a verified Sonance Invisible or VX assembly. The PDX photograph elsewhere is a visible loudspeaker." word="Invisible">
+    <SignatureFolio slotId="media-audio-04" kicker="Media and audio / speaker study" heading="Sound within the architecture." lede="Conceptual invisible-speaker section: finish, radiator and enclosure are coordinated as one assembly." word={word}>
       <svg viewBox="0 0 760 420" role="img" aria-labelledby="ma-cut-title ma-cut-desc">
         <title id="ma-cut-title">Conceptual invisible speaker section</title>
         <desc id="ma-cut-desc">Finish layer, radiator and enclosure in section. No dimensions, decibels or frequency range.</desc>
@@ -110,7 +104,7 @@ const placed = (photo?: Photo): photo is Photo & { src: string; alt: string; tit
 )}
 
 {slug === 'private-cinemas' && part === 'signature' && (
-    <SignatureFolio slotId="private-cinemas-04" kicker="Private cinema / sightline" heading="One room, seen in section." lede="Derived from the approved cutaway anatomy. No dedicated cinema mockup was supplied. This is not a shade diagram and not a measured room." word="Cinema">
+    <SignatureFolio slotId="private-cinemas-04" kicker="Private cinema / sightline" heading="One room, seen in section." lede="Conceptual sightline study. Screen position, seating and the enclosure are considered together." word={word}>
       <svg viewBox="0 0 760 360" role="img" aria-labelledby="pc-sight-title pc-sight-desc">
         <title id="pc-sight-title">Conceptual cinema sightline</title>
         <desc id="pc-sight-desc">Screen, seating row and rear of the room. No throw distance or seat count.</desc>
@@ -144,7 +138,7 @@ const placed = (photo?: Photo): photo is Photo & { src: string; alt: string; tit
 )}
 
 {slug === 'infrastructure-privacy' && part === 'signature' && (
-    <SignatureFolio slotId="infrastructure-privacy-04" kicker="Infrastructure / core" heading="Equipment stays in one service core." lede="Conceptual cutaway. Living rooms stay clear of racks. No bandwidth, channel count or coverage radius is stated. The selected cable photograph was withheld because it shows a switch name and port labels." word="Core">
+    <SignatureFolio slotId="infrastructure-privacy-04" kicker="Infrastructure / core" heading="Equipment stays in one service core." lede="Conceptual cutaway. Living rooms stay clear of racks, with equipment and service routes coordinated in a separate core." word={word}>
       <svg viewBox="0 0 760 420" role="img" aria-labelledby="ip-core-title ip-core-desc">
         <title id="ip-core-title">Conceptual house and service core</title>
         <desc id="ip-core-desc">Living level and a separate utility core. Routes are unlabeled.</desc>
@@ -176,7 +170,7 @@ const placed = (photo?: Photo): photo is Photo & { src: string; alt: string; tit
 )}
 
 {slug === 'security-access' && part === 'signature' && (
-    <SignatureFolio slotId="security-access-04" kicker="Security / plan" heading="A fictitious perimeter, with rooms left out." lede="Annotated plan for explanation. Not a client property. Cameras watch the approach. Bedroom windows and the neighbor’s yard stay outside the recording purpose." word="Plan">
+    <SignatureFolio slotId="security-access-04" kicker="Security / plan" heading="A fictitious perimeter, with rooms left out." lede="Annotated plan for explanation. Not a client property. Cameras watch the approach. Bedroom windows and the neighbor’s yard stay outside the recording purpose." word={word}>
       <svg viewBox="0 0 760 420" role="img" aria-labelledby="sa-plan-title sa-plan-desc">
         <title id="sa-plan-title">Fictitious security plan</title>
         <desc id="sa-plan-desc">House, approach, two camera marks, and privacy exclusions for bedrooms and the neighbor.</desc>
@@ -196,7 +190,7 @@ const placed = (photo?: Photo): photo is Photo & { src: string; alt: string; tit
     </SignatureFolio>
 )}
 {slug === 'security-access' && part === 'technical' && (
-    <NeutralStudy slotId="security-access-05" kicker="Entry event" heading="Door, decision, recording." lede="A neutral sequence. It does not name a lock, an intercom or a retention period. Those product fronts are still missing.">
+    <NeutralStudy slotId="security-access-05" kicker="Entry event" heading="Door, decision, recording." lede="Conceptual entry sequence. The event, access decision and recording purpose are separate parts of the brief.">
       <svg viewBox="0 0 880 200" role="img" aria-labelledby="sa-seq-title sa-seq-desc">
         <title id="sa-seq-title">Conceptual entry sequence</title>
         <desc id="sa-seq-desc">An entry event, an access decision, then recording. No product models.</desc>
@@ -212,7 +206,7 @@ const placed = (photo?: Photo): photo is Photo & { src: string; alt: string; tit
 )}
 
 {slug === 'outdoor-entertainment' && part === 'signature' && (
-    <SignatureFolio slotId="outdoor-entertainment-04" kicker="Outdoor / zones" heading="Sound, exposure, and the neighbor’s edge." lede="Derived from the annotated-plan anatomy. No dedicated outdoor mockup was supplied. The speaker photographs on this page are Episode, not Sonance." word="Outside">
+    <SignatureFolio slotId="outdoor-entertainment-04" kicker="Outdoor / zones" heading="Sound, exposure, and the neighbor’s edge." lede="Conceptual outdoor plan. Listening areas, exposure and the neighboring property shape the layout." word={word}>
       <svg viewBox="0 0 760 400" role="img" aria-labelledby="oe-plan-title oe-plan-desc">
         <title id="oe-plan-title">Conceptual outdoor zones</title>
         <desc id="oe-plan-desc">Terrace, landscape bed, sun exposure and a neighbor boundary. No speaker count.</desc>
@@ -245,11 +239,74 @@ const placed = (photo?: Photo): photo is Photo & { src: string; alt: string; tit
       </svg>
     </NeutralStudy>
 )}
+
+{slug === 'motorized-shades' && part === 'signature' && (
+    <SignatureFolio slotId="motorized-shades-04" kicker="Motorized shading / pocket" heading="The shade disappears, or the hardware stays visible." lede="Conceptual coordination study from the shading specimen. Pocket size, drive, hembar finish and solar logic come from the approved drawing for each opening. This plate is not a measured specification or a completed DAVG project." word={word}>
+      <div class="shade-study">
+        <HubFigure photo={{ id: 'shading-recessed-study', src: '/images/davg-recessed-shade-study-01.jpg', alt: 'Conceptual detail study of a recessed dual roller disappearing into a ceiling pocket. Callouts mark the paired fabrics, flush closure, concealed hembar and drive. The word RECESSED sits across the drawing. Illustration, not a shop drawing or a completed project.', title: 'Recessed dual-roller study', caption: 'Conceptual coordination study. Pocket size, drive, hembar finish and solar logic are set from the approved drawing for each opening. This plate is not a measured specification or a completed DAVG project.', fit: 'cover' }} ratio="16 / 9" sizes="(min-width: 1024px) 50vw, 100vw" />
+        <div class="pair">
+          <HubFigure photo={{ id: 'shading-mount-fascia', src: '/images/davg-triathlon-fascia-boucle-01-800w.webp', alt: 'White Triathlon fascia box mounted on shiplap above a light woven shade', title: 'Fascia', caption: 'Triathlon fascia above a woven shade. Product photograph. A fascia conceals the roller without a ceiling pocket.', fit: 'cover' }} ratio="16 / 10" sizes="(min-width: 1024px) 24vw, 100vw" />
+          <HubFigure photo={{ id: 'shading-mount-exposed', src: '/images/davg-palladiom-exposed-roller-bracket-01-800w.webp', alt: 'Palladiom exposed roller with a fabric-wrapped tube and rounded metal bracket above a night window', title: 'Exposed', caption: 'Palladiom exposed roller and bracket. Product photograph. Exposed hardware is a design choice, not a quality rank.', fit: 'cover' }} ratio="16 / 10" sizes="(min-width: 1024px) 24vw, 100vw" />
+        </div>
+      </div>
+    </SignatureFolio>
+)}
+{slug === 'motorized-shades' && part === 'technical' && (
+    <NeutralStudy slotId="motorized-shades-05" kicker="Fabric" heading="View-through and darkness are separate checks." lede="A solar fabric can keep a view while a room-darkening fabric closes the material. Night privacy and edge light are separate checks. These are product photographs, not a same-window before and after.">
+      <div class="pair">
+        <HubFigure photo={{ id: 'shading-compare-sheer', src: '/images/davg-living-room-sheer-roller-shades-sun-01-1600w.webp', alt: 'Floor-to-ceiling sheer roller shades on a living-room glass wall, with the sun still visible through the fabric', title: 'Keep the view', caption: 'Sheer roller shades with the sun still visible through the fabric. Product photograph. Night privacy is a separate check.', fit: 'cover' }} ratio="16 / 10" sizes="(min-width: 1024px) 28vw, 100vw" />
+        <HubFigure photo={{ id: 'shading-compare-closed', src: '/images/davg-triathlon-bedroom-shades-closed-01-800w.webp', alt: 'Bedroom with two white Triathlon shades fully closed across a wide window', title: 'Close the room', caption: 'Closed Triathlon shades. Product photograph. Light can still enter at the edges unless the mounting addresses those gaps.', fit: 'cover' }} ratio="16 / 10" sizes="(min-width: 1024px) 28vw, 100vw" />
+      </div>
+    </NeutralStudy>
+)}
 <style>
-.pair, .device-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; align-items: start; }
-.device-row { grid-template-columns: minmax(0, 0.8fr) minmax(0, 0.8fr) minmax(0, 1.1fr); }
-.folio-points { margin: 0; padding-left: 1.1rem; display: grid; gap: 0.75rem; color: var(--surface-muted); line-height: 1.45; }
+.interface-study { height: 100%; }
+.interface-study :global(.hub-figure) { height: 100%; }
+.interface-study :global(.media-slot) { height: 100%; aspect-ratio: auto; min-height: 30rem; }
+.interface-study :global(figcaption) { position: absolute; bottom: 1rem; left: 1rem; padding: .65rem; background: rgb(9 11 10 / 72%); color: var(--color-text-primary-dark); }
+.interface-study :global(figcaption strong) { color: inherit; }
+.shade-study { display: grid; gap: 0.35rem; height: 100%; align-content: stretch; }
+.shade-study :global(.hub-figure:first-child .media-slot) { aspect-ratio: 16 / 10; min-height: 18rem; }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0.35rem; height: 100%; align-items: stretch; }
+.pair :global(.hub-figure) { position: relative; height: 100%; }
+.pair :global(.media-slot) { aspect-ratio: auto; height: 100%; min-height: 26rem; }
+.pair :global(figcaption) {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  max-width: none;
+  padding: 2.4rem 1rem 0.9rem;
+  background: linear-gradient(transparent, rgb(9 11 10 / 78%));
+  color: var(--color-text-secondary-dark);
+}
+.pair :global(figcaption strong) { color: var(--color-text-primary-dark); }
+.device-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  align-items: end;
+  height: 100%;
+  min-height: 32rem;
+  padding: 2.5rem 1.25rem 5.5rem;
+  gap: 0.5rem 1.25rem;
+}
+.device-row :global(.media-slot) { aspect-ratio: 3 / 4; max-height: 30rem; background: transparent; }
+.device-row :global(figcaption) { color: var(--color-text-secondary-dark); }
+.device-row :global(figcaption strong) { color: var(--color-text-primary-dark); }
+.folio-points {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 0.25rem 0 0;
+  display: grid;
+  gap: 0.75rem;
+  color: var(--color-text-secondary-dark);
+  line-height: 1.45;
+  list-style: none;
+}
+.folio-points li { padding-top: 0.65rem; border-top: 1px solid var(--color-border-dark); }
 @media (max-width: 800px) {
-  .pair, .device-row { grid-template-columns: 1fr; }
+  .pair, .device-row { grid-template-columns: 1fr; min-height: 0; padding: 1rem 0 2rem; }
+  .device-row :global(.hub-figure:first-child) { grid-row: auto; }
+  .pair :global(.media-slot) { min-height: 14rem; aspect-ratio: 4 / 5; height: auto; }
 }
 </style>

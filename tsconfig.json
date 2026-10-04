@@ -7,9 +7,11 @@
     ]
   },
   "exclude": [
+    "archive/davg-history",
     "docs/v4-build/archive",
     "dist",
     "dist-sandbox",
+    "e2e",
     "node_modules",
     "v4-gpt-original-design"
   ]

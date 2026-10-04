@@ -1,13 +1,18 @@
 # Local development and handoff
 
-Keep the existing local repo. Apply the supplied patch only after `git apply --check` succeeds; preserve unpublished work. Run `npm ci`, `npm run dev`, `npm run build:sandbox`, `npm run verify`, `npm run check` and `npm test` as applicable. The repair adds no production deploy script.
+Keep the existing checkout. Inspect branch and status before editing. Read `00-START-HERE.md` for the files that own the change. Do not restart from `main` or from `archive/davg-history/`.
 
-`build:sandbox` writes `dist-sandbox/`, adds noindex headers and disallows crawling. `build` uses a release allowlist and stages only approved page source files into an isolated build input; it cannot include a sandbox-only source. It currently fails before writing deployable output because no pages are approved. `wrangler.toml` still deploys only `dist/` and runs an output-policy check. Noindex is an additional draft signal, not the deployment safeguard.
+## Checks
+`npm run dev` serves http://127.0.0.1:4321/ and hot-reloads. `npm run build:sandbox` writes `dist-sandbox/` with noindex headers. `npm run verify` checks the sandbox output. `npm test` runs `tests/*.test.mjs`. `npm run check` is available. `npm run build` is the public-release build. It stops while `src/config/publication.json` `approvedPages` is empty, and it does not write a deployable `dist/`. The one exception is a CI build of a branch other than `main`: that run writes the same sandbox site into `dist/` so a branch preview can upload. `wrangler.toml` names `davg-korta-v4`, assets `./dist`, and its build command is `node scripts/worker-build.mjs`. That command runs `scripts/assert-production.mjs` for `wrangler deploy`. It accepts preview output only when Wrangler’s command is not `deploy`. A local `npm run build` still stops while the allowlist is empty.
 
-Workers Builds remains connected. This patch does not change its dashboard settings. Keep the checkpoint local and do not push until the preview triggers are disabled/excluded as already required by the checkpoint handoff. Do not merge into main or publish a preview just to share source.
+## After a change
+Commit the intended change on the working branch and push it. Wait for the automatic Workers preview of that branch, then open the affected page and confirm the deployed commit. Record the URL in `docs/live-previews.md`. Return that same preview address on the next change.
 
-At handoff report the actual branch/head, uncommitted paths, rendered/build checks and deployment state. Do not call files synced based on a ZIP being saved or on a report from another environment.
+If the preview does not publish, say it is stale and name the blocker. Do not point `docs/live-previews.md` at an older branch.
 
-## Local review surface
+Preview deployments of this working branch are authorized. Production `davg.ai` is a separate release. Do not run `wrangler deploy` to production or to `davg.ai` unless the owner approves that release. Do not merge into `main` as part of a page edit.
 
-The stable review URL is http://127.0.0.1:4321/preview/. It lists the homepage and the eight hubs in the `services` order from `src/config/site.ts`. The page is noindex. It is not in `src/config/publication.json` and it is not in the sitemap. After each local change, the dev server (`astro dev --host 127.0.0.1 --port 4321`) hot-reloads; refresh that index. There is no public deploy of this page.
+## Local index
+http://127.0.0.1:4321/preview/ lists the homepage and the eight hubs in the `services` order from `src/config/site.ts`. The page is noindex. It is not in `publication.json` and it is not in the sitemap.
+
+At handoff report the branch, commit, uncommitted paths, checks, and whether the preview or production deploy actually happened.

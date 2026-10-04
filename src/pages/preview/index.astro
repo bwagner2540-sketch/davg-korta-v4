@@ -2,23 +2,80 @@
 import Layout from '../../layouts/Layout.astro';
 import { services } from '../../config/site';
 
-const origin = 'http://127.0.0.1:4321';
 const pages = [
-  { label: 'Home', href: `${origin}/` },
-  ...services.map((service) => ({ label: service.railLabel, href: `${origin}${service.href}` })),
+  { label: 'Home', href: '/' },
+  ...services.map((service) => ({ label: service.railLabel, href: service.href })),
 ];
 ---
-<Layout published={false} title="Local preview" description="Local review index for the DAVG site. Not for publication.">
+<Layout published={false} title="Site preview" description="Review index for the DAVG site. Not for publication.">
   <main class="preview-index">
-    <h1>Local preview</h1>
-    <p>Refresh <a href={`${origin}/preview/`}>{origin}/preview/</a> after each local change.</p>
+    <h1>Site preview</h1>
+    <p>These links open the pages on this same preview. Refresh after the latest build has completed.</p>
     <ol>
       {pages.map((page) => (
         <li><a href={page.href}>{page.label}</a></li>
       ))}
     </ol>
+    <details class="phone-review">
+      <summary>Review at phone width</summary>
+      <label for="preview-page">Page</label>
+      <select id="preview-page">
+        {pages.map((page) => <option value={page.href} selected={page.href === services[0].href}>{page.label}</option>)}
+      </select>
+      <p class="phone-review-status" role="status" />
+      <div class="phone-review-frame">
+        <iframe title="Mobile site preview" width="390" height="844" />
+      </div>
+    </details>
   </main>
 </Layout>
+<script>
+  const picker = document.querySelector<HTMLSelectElement>('#preview-page');
+  const frame = document.querySelector<HTMLIFrameElement>('.phone-review iframe');
+  const review = document.querySelector<HTMLDetailsElement>('.phone-review');
+  const status = document.querySelector<HTMLElement>('.phone-review-status');
+  let request = 0;
+  let currentPage = '';
+  async function loadPhoneReview() {
+    if (!picker || !frame || !status) return;
+    const page = new URL(picker.value, window.location.origin);
+    if (page.origin !== window.location.origin) return;
+    const activeRequest = ++request;
+    status.textContent = 'Loading page…';
+    try {
+      const response = await fetch(page.href);
+      if (!response.ok) throw new Error('Page unavailable');
+      const html = await response.text();
+      if (activeRequest !== request) return;
+      // Display this build's HTML without changing the site's anti-framing headers.
+      currentPage = page.pathname;
+      frame.srcdoc = html.replace(/<head(?:\s[^>]*)?>/i, (head) => `${head}<base href="${page.href}">`);
+      status.textContent = '390px review frame';
+    } catch {
+      if (activeRequest === request) status.textContent = 'Could not load this page. Use its review link above.';
+    }
+  }
+  review?.addEventListener('toggle', () => {
+    if (review.open && !frame?.srcdoc) void loadPhoneReview();
+  });
+  picker?.addEventListener('change', () => { void loadPhoneReview(); });
+  frame?.addEventListener('load', () => {
+    frame.contentDocument?.addEventListener('click', (event) => {
+      const link = (event.target as Element)?.closest('a[href]');
+      if (!link) return;
+      const destination = new URL(link.getAttribute('href') || '', new URL(currentPage, window.location.origin));
+      if (destination.origin !== window.location.origin) return;
+      if (destination.pathname === currentPage && destination.hash) {
+        event.preventDefault();
+        frame.contentDocument?.getElementById(destination.hash.slice(1))?.scrollIntoView();
+      } else if (picker && [...picker.options].some(option => option.value === destination.pathname)) {
+        event.preventDefault();
+        picker.value = destination.pathname;
+        void loadPhoneReview();
+      }
+    });
+  });
+</script>
 <style>
 .preview-index {
   padding: var(--spacing-16) var(--spacing-page-inline) var(--spacing-12);
@@ -41,4 +98,10 @@ const pages = [
 }
 .preview-index a { color: inherit; text-decoration: none; }
 .preview-index a:hover { color: var(--color-accent-signal); }
+.phone-review { margin-top: 3rem; font-family: var(--font-body); }
+.phone-review summary { cursor: pointer; margin-bottom: 1.5rem; }
+.phone-review label { display: block; margin-bottom: 0.5rem; }
+.phone-review select { width: 100%; padding: 0.75rem; font: inherit; margin-bottom: 1.5rem; }
+.phone-review-frame { max-width: 100%; overflow: auto; }
+.phone-review iframe { display: block; width: 390px; min-width: 390px; height: 844px; border: 1px solid var(--color-ink); background: var(--color-paper); }
 </style>

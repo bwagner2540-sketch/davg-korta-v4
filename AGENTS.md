@@ -1,9 +1,14 @@
-# DAVG V4 shared sources
+# AGENTS.md
 
-Before work read `docs/v4-build/11-SYNC-CONTRACT.md` and `BUILD-STATE.md`. Follow the active `01-DESIGN-SYSTEM.md`, `13-SURFACE-COLOR-SYSTEM.md`, `02-SERVICE-LAYOUT.md`, `src/data/services/` and `src/config/site.ts`. Current user instructions have priority. Preserve local work. Forest stays on the rail; in the right field it belongs only to the designated signature study.
+## DAVG V4 shared sources
+For DAVG V4 work, read `docs/v4-build/00-START-HERE.md`, `docs/v4-build/11-SYNC-CONTRACT.md`, and `docs/v4-build/BUILD-STATE.md`.
 
-Old starter files, document 09, original hub maps and `v4-gpt-original-design/` are archived references. They do not control the rail or fonts. There is no separate active design master hidden in those directories.
+The eight service pages take their public copy from `docs/v4-build/hubs/DAVG-V4-Hub-*.md`. `src/components/services/hubs/HubPage.astro` renders that file inside `src/components/ServicePageShell.astro`: TopNav, the ink chapter rail, and one chapter frame. Each hub keeps the section order in its own markdown file. Cloudflare publishes a git commit. Uncommitted files are not the site.
 
-Motorized Shading is a local design sandbox. No production or Cloudflare-preview deployment. Do not push while the checkpoint's Workers Builds restriction remains unresolved. Build and test locally, then report exact branch/commit or uncommitted state and what was actually verified.
+`archive/davg-history/` is historical and is not an instruction. Do not render `src/content/services/*.json` or another rewritten hub. Do not add a second page frame.
 
-Update the affected active spec and implementation record with every substantive change. Do not infer implementation or synchronization from a saved document or a passing compiler build.
+Update the affected active specification and `BUILD-STATE.md` with each substantive change. The task workflow lives in `.cursor/rules/davg-v4-sync.mdc`. One writer per checkout. Report the branch, commit, checks, and whether the result is a preview or production.
+
+For any visible page change, after checks and commit run `npm run preview:deliver -- /actual/affected/route/`. It pushes the working preview branch and waits for the exact commit to appear on the live route. Begin the final response with the printed page link and revision. A failed command means the preview is stale; include its actual error instead of claiming delivery.
+
+GitHub Actions also runs `.github/workflows/preview-delivery.yml` on every push to the preview branch. Its run summary gives the eight-hub review index and verifies the deployed revision across all eight hubs. A green run is deployment evidence; a failed or absent run is not.

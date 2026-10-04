@@ -2,27 +2,90 @@
 interface Props { slotId: string; kicker: string; heading: string; lede: string; word: string; }
 const { slotId, kicker, heading, lede, word } = Astro.props;
 ---
-<section class="folio architectural-background-section" id={slotId} data-study-slot={slotId} data-study-built="true" data-surface-role="signature-study" data-signature-study="true" aria-labelledby={`${slotId}-title`}>
+<div class="study-plate architectural-background-section" id={slotId} data-study-slot={slotId} data-study-built="true" data-study-compose="split" data-surface-role="signature-study" data-signature-study="true" role="region" aria-labelledby={`${slotId}-title`}>
   <p class="architectural-background-title" data-surface="juniper" aria-hidden="true">{word}</p>
-  <div class="folio-copy section-content">
+  <div class="study-visual section-visual">
+    <slot />
+  </div>
+  <div class="study-copy section-content">
     <p class="section-kicker">{kicker}</p>
     <h3 id={`${slotId}-title`}>{heading}</h3>
     <p>{lede}</p>
   </div>
-  <div class="folio-visual section-visual">
-    <slot />
-  </div>
-</section>
+</div>
 <style>
-.folio {
+.study-plate {
   display: grid;
-  gap: clamp(1.5rem, 3vw, 2.5rem);
-  margin-top: 2.5rem;
-  padding: clamp(1.5rem, 3vw, 2.75rem);
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 0;
+  align-items: stretch;
+  min-height: 30rem;
+  margin: 0;
+  padding: 0;
   overflow: hidden;
+  background: linear-gradient(155deg, var(--color-surface-forest) 0%, #102820 46%, var(--color-surface-ink) 100%);
+  color: var(--color-text-on-dark);
+  --surface-fg: var(--color-text-on-dark);
+  --surface-muted: var(--color-text-secondary-dark);
+  --surface-border: var(--color-border-dark);
 }
-.folio-copy { display: grid; gap: 0.85rem; max-width: 38rem; }
-.folio h3 { font-size: clamp(2rem, 3.4vw, 3.4rem); max-width: 16ch; }
-.folio-copy p { max-width: 46ch; line-height: 1.5; color: var(--surface-muted); }
-.folio-visual { min-width: 0; }
+.study-plate .architectural-background-title {
+  top: auto;
+  bottom: -0.14em;
+  left: -0.04em;
+  font-size: clamp(8rem, 17vw, 17.5rem);
+  line-height: 0.78;
+  z-index: 1;
+  pointer-events: none;
+}
+.study-visual {
+  position: static;
+  z-index: auto;
+  min-width: 0;
+  min-height: 28rem;
+}
+.study-copy {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  align-content: end;
+  gap: 0.9rem;
+  max-width: none;
+  padding: clamp(2rem, 4vw, 3.25rem) clamp(1.5rem, 3vw, 3rem) clamp(7rem, 13vw, 11rem) clamp(1.25rem, 2vw, 2rem);
+}
+.study-copy h3 {
+  max-width: 18ch;
+  font-size: var(--text-h2);
+  line-height: var(--text-h2--line-height);
+  letter-spacing: var(--text-h2--letter-spacing);
+  font-weight: 400;
+}
+.study-copy p { max-width: 34ch; line-height: 1.5; color: var(--surface-muted); }
+.study-plate:has(.pair) {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto minmax(22rem, 1fr);
+  min-height: 0;
+}
+.study-plate:has(.pair) .study-copy {
+  max-width: 40rem;
+  padding-bottom: var(--spacing-text);
+  align-content: start;
+}
+.study-plate:has(.pair) .study-visual { min-height: 24rem; }
+.study-plate:has(.pair) .architectural-background-title {
+  top: -0.18em;
+  right: -0.06em;
+  bottom: auto;
+  left: auto;
+  font-size: clamp(5rem, 9vw, 9rem);
+}
+.study-visual :global(svg) { display: block; width: 100%; height: auto; min-height: 20rem; padding: clamp(1.5rem, 3vw, 2.5rem); }
+.study-visual :global(.media-slot) { border: 0; background: transparent; overflow: visible; }
+@media (max-width: 1023px) {
+  .study-plate,
+  .study-plate:has(.pair) { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto; min-height: 0; }
+  .study-visual { min-height: 18rem; grid-row: 2; }
+  .study-copy { grid-row: 1; padding: var(--spacing-component) var(--page-gutter) var(--spacing-text); }
+  .study-plate .architectural-background-title { font-size: clamp(4.5rem, 22vw, 7rem); }
+}
 </style>

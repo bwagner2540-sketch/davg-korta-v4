@@ -1,0 +1,80 @@
+---
+import { presentationGroups } from '../../../lib/hub-presentation.mjs';
+interface Props { html: string; frame: string; sectionId: string; }
+const { html, frame, sectionId } = Astro.props;
+const groups = presentationGroups(html, frame);
+---
+<div class:list={['section-body', `body-${frame}`]} data-composed-copy>
+  {groups.map((group, groupIndex) => {
+    const content = <div class="content-blocks">
+      {group.blocks.map((block) => block.kind === 'question' ?
+        <details class="question"><summary set:html={block.title} /><div class="answer" set:html={block.html} /></details>
+      : block.kind === 'steps' ?
+        <ol class="editorial-steps">{block.items.map((item, index) => <li><span class="step-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span><div set:html={item} /></li>)}</ol>
+      : block.kind === 'matrix' && group.primary ?
+        <div class:list={['comparison-rows', frame === 'system' ? 'layer-rows' : 'decision-rows']} data-comparison={sectionId}>
+          <p class="comparison-label" set:html={block.headers[0]} />
+          {block.rows.map((row) => <article class="comparison-row"><h4 set:html={row[0]} /><dl>{row.slice(1).map((cell, index) => <div><dt set:html={block.headers[index + 1]} /><dd set:html={cell} /></div>)}</dl></article>)}
+        </div>
+      : <div class="copy-block" set:html={block.html} />)}
+    </div>;
+    return group.expandable ? <details class="technical-detail" data-technical-detail><summary><span set:html={group.heading} /></summary>{content}</details>
+      : <div class:list={['body-group', { 'body-lead': groupIndex === 0, 'body-comparison': group.primary }]}>
+          {group.heading && <h3 set:html={group.heading} />}{content}
+        </div>;
+  })}
+</div>
+<style>
+.section-body { min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--spacing-component); color: var(--surface-fg); }
+.content-blocks { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; min-width: 0; }
+.body-group { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.5rem; min-width: 0; }
+.copy-block, .technical-detail { min-width: 0; }
+.body-group > h3 { max-width: 30ch; font-size: var(--text-h3); line-height: 1.12; font-weight: 400; letter-spacing: -0.02em; }
+.copy-block :global(p), .copy-block :global(li), .answer { font: 400 var(--text-body)/1.6 var(--font-body); }
+.copy-block :global(p) { max-width: 62ch; }
+.copy-block :global(a), .answer :global(a), dd :global(a) { color: inherit; text-underline-offset: .2em; }
+.copy-block :global(ul), .copy-block :global(ol) { padding-left: 1.2rem; max-width: 62ch; }
+.copy-block :global(li + li) { margin-top: .65rem; }
+.body-answer .content-blocks { gap: 1.75rem; }
+.body-answer .copy-block:first-child :global(p) { font-size: var(--text-body-lg); line-height: 1.55; }
+.body-system .body-lead .content-blocks { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 3rem; }
+.body-system .copy-block :global(p) { color: var(--surface-muted); }
+.comparison-rows { border-top: 1px solid var(--surface-border); }
+.comparison-label { padding-top: 1rem; font: 500 .75rem/1.4 var(--font-body); color: var(--surface-muted); }
+.comparison-row { display: grid; grid-template-columns: minmax(9rem, .6fr) minmax(0, 1.4fr); gap: 2rem; padding: 1.5rem 0; border-bottom: 1px solid var(--surface-border); }
+.comparison-row h4 { font: 400 1.25rem/1.2 var(--font-display); letter-spacing: -.02em; }
+.comparison-row dl { margin: 0; display: grid; gap: 1rem 1.5rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.comparison-row dl > div:first-child { grid-column: 1 / -1; }
+.comparison-row dt { font: 500 .75rem/1.4 var(--font-body); color: var(--surface-muted); margin-bottom: .35rem; }
+.comparison-row dd { margin: 0; font: 400 .9375rem/1.5 var(--font-body); }
+.layer-rows .comparison-row { grid-template-columns: minmax(8rem, .5fr) minmax(0, 1.5fr); }
+.layer-rows .comparison-row dl { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.layer-rows .comparison-row dl > div:first-child { grid-column: auto; }
+.editorial-steps { display: grid; gap: 0 2rem; grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 0; margin: 0; list-style: none; }
+.editorial-steps li { display: grid; grid-template-columns: 1.5rem minmax(0, 1fr); gap: .85rem; border-top: 1px solid var(--surface-border); padding: 1.5rem 0 2rem; font: 400 1rem/1.6 var(--font-body); }
+.step-number { color: var(--color-accent-signal); font: 400 var(--text-mono)/1.5 var(--font-mono); padding-top: .2rem; }
+.editorial-steps :global(strong) { display: block; margin-bottom: .75rem; font: 400 1.3rem/1.25 var(--font-display); letter-spacing: -.02em; }
+.body-pitfalls .editorial-steps :global(strong) { font-size: 1.125rem; }
+.technical-detail, .question { border-top: 1px solid var(--surface-border); }
+.technical-detail:last-child, .question:last-child { border-bottom: 1px solid var(--surface-border); }
+summary { position: relative; padding: 1.25rem 2.5rem 1.25rem 0; cursor: pointer; list-style: none; font: 400 1.125rem/1.4 var(--font-display); }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: '+'; position: absolute; right: .25rem; top: 1.25rem; color: var(--color-accent-signal); }
+details[open] > summary::after { content: '−'; }
+.technical-detail > .content-blocks, .answer { padding: .5rem 0 2rem; }
+.question .answer { max-width: 62ch; }
+.copy-block :global(.hub-table) { max-width: 100%; overflow-x: auto; overscroll-behavior-inline: contain; }
+.copy-block :global(table) { width: 100%; min-width: 38rem; border-collapse: collapse; text-align: left; }
+.copy-block :global(th), .copy-block :global(td) { padding: .85rem 1.25rem .85rem 0; border-bottom: 1px solid var(--surface-border); vertical-align: top; font-size: .875rem; line-height: 1.5; }
+.copy-block :global(thead th) { color: var(--surface-muted); font-weight: 500; }
+.copy-block :global(tbody th) { font-weight: 500; }
+summary:focus-visible { outline: 2px solid var(--color-accent-signal); outline-offset: 4px; }
+@media (max-width: 700px) {
+ .body-system .body-lead .content-blocks, .editorial-steps { grid-template-columns: 1fr; }
+ .comparison-row, .layer-rows .comparison-row { grid-template-columns: 1fr; gap: 1rem; }
+ .comparison-row dl, .layer-rows .comparison-row dl { grid-template-columns: 1fr; gap: 1rem; }
+ .comparison-row dl > div:first-child { grid-column: auto; }
+ .comparison-row { padding: 1.5rem 0; }
+ .editorial-steps li { padding-bottom: 1.5rem; }
+}
+</style>

@@ -1,0 +1,28 @@
+---
+import { utilityBar } from '../../config/navigation';
+import MenuPanel from './MenuPanel.astro';
+---
+<header class="k-nav" data-nav>
+  <a class="k-nav__logo" href="/">
+    <img src="/brand/davg-lockup-on-black.png" alt="DAVG, Denver AV Group" width="1024" height="384" />
+  </a>
+  <div class="k-nav__actions">
+    <a class="k-nav__cta" href={utilityBar.phoneHref}>{utilityBar.phoneDisplay}</a>
+    <button class="k-nav__menu" type="button" aria-expanded="false" aria-controls="k-menu">Menu</button>
+  </div>
+  <MenuPanel />
+</header>
+<script>
+  const nav = document.querySelector('[data-nav]');
+  const button = nav?.querySelector<HTMLButtonElement>('.k-nav__menu');
+  const panel = nav?.querySelector<HTMLElement>('[data-menu-panel]');
+  const setOpen = (open: boolean) => {
+    button?.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (panel) panel.hidden = !open;
+  };
+  button?.addEventListener('click', () => setOpen(button.getAttribute('aria-expanded') !== 'true'));
+  panel?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setOpen(false)));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') setOpen(false);
+  });
+</script>

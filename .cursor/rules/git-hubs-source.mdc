@@ -1,0 +1,12 @@
+---
+description: Git hub files are the only public copy for the eight service pages
+alwaysApply: true
+---
+
+Cloudflare builds a git commit. A file changes the site only after that change is committed and pushed to the branch that deploys.
+
+The only public words for the eight services are `docs/v4-build/hubs/DAVG-V4-Hub-*.md`. `HubPage.astro` reads those files. The routes are the `Route` in each file, under `/solutions/<slug>/`. `/systems/<slug>/` renders that same page.
+
+One frame for every hub: `ServicePageShell.astro`. The masthead is `TopNav`. The rail is the ink chapter index (`minmax(240px, 18%)`), not a second site map. Section 01 is the ink hero in the main column. Every later reading section uses `Chapter.astro` (`.k-ch`). The hero is the only full-bleed photograph. Do not invent another page frame or another copy in JSON, MDX, or a new markdown tree.
+
+`archive/davg-history/`, including the old JSON drafts and service-page packs, is not public copy. Do not render it. Spacing comes from the tokens in `src/styles/global.css`. The live gutter is `--page-gutter`.
