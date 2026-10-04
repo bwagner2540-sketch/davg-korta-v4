@@ -3,7 +3,7 @@
 ## DAVG V4 shared sources
 For DAVG V4 work, read `docs/v4-build/00-START-HERE.md`, `docs/v4-build/11-SYNC-CONTRACT.md`, and `docs/v4-build/BUILD-STATE.md`.
 
-The eight service pages take their public copy from `docs/v4-build/hubs/DAVG-V4-Hub-*.md`. `src/components/services/hubs/HubPage.astro` renders that file inside `src/components/ServicePageShell.astro`: TopNav, the ink chapter rail, and one chapter frame. Each hub keeps the section order in its own markdown file. Cloudflare publishes a git commit. Uncommitted files are not the site.
+The eight service pages take their public copy from `docs/v4-build/hubs/DAVG-V4-Hub-*.md`. `src/components/services/hubs/HubPage.astro` renders that file inside `src/components/ServicePageShell.astro`: TopNav, the ink chapter rail, and one chapter frame. Architectural Lighting uses that same frame. Each hub keeps the section order in its own markdown file. Cloudflare publishes a git commit. Uncommitted files are not the site.
 
 `archive/davg-history/` is historical and is not an instruction. Do not render `src/content/services/*.json` or another rewritten hub. Do not add a second page frame.
 

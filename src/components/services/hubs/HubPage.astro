@@ -3,7 +3,6 @@ import Layout from '../../../layouts/Layout.astro';
 import ServicePageShell from '../../ServicePageShell.astro';
 import InquiryForm from '../../InquiryForm.astro';
 import Chapter from '../../korta/Chapter.astro';
-import LightingField from './LightingField.astro';
 import { hasPublicSection } from '../../../lib/hub-presentation.mjs';
 import { serviceSchema } from '../../../config/schema';
 import { loadGitHub } from '../../../lib/git-hubs.mjs';
@@ -45,7 +44,7 @@ function chapterBody(section: typeof hub.sections[number]) {
   return body + noteComments(section.notes);
 }
 ---
-{slug === 'architectural-lighting' ? <LightingField /> : <Layout title={hub.seoTitle} description={hub.description} schema={serviceSchema(hub.name, hub.description, hub.route)}>
+<Layout title={hub.seoTitle} description={hub.description} schema={serviceSchema(hub.name, hub.description, hub.route)}>
   <a class="skip-link" href="#service-content">Skip to content</a>
   <ServicePageShell currentPath={hub.route} chapters={chapters} slug={slug}>
     <main id="service-content" tabindex="-1">
@@ -89,7 +88,7 @@ function chapterBody(section: typeof hub.sections[number]) {
       })}
     </main>
   </ServicePageShell>
-</Layout>}
+</Layout>
 <style>
 .skip-link { position: fixed; top: var(--k-s3); left: var(--k-s3); z-index: 80; padding: var(--k-s3); background: var(--color-surface-paper); color: var(--color-text-primary-paper); transform: translateY(-150%); }
 .skip-link:focus { transform: none; }

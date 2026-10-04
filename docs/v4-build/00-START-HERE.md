@@ -17,7 +17,7 @@ Work in `bwagner2540-sketch/davg-korta-v4` on the branch already open. Read this
 | Homepage composition | `src/pages/index.astro` (uses `.folio`) |
 | Ordered service list | `src/config/site.ts` |
 
-Live gutter is `--page-gutter`: 1.5rem below 768px, 3rem from 768px, 4rem from 1280px. `--spacing-page-inline` is an alias of `--page-gutter`. It is not a clamp. Spacing tokens are a scale. Hub chapters do not share one section padding; the frame for each role is in `02-SERVICE-LAYOUT.md`. Headings use `--text-h1`, `--text-h2`, and `--text-h3`.
+Live gutter is `--page-gutter`: 1.5rem below 768px, 3rem from 768px, 4rem from 1280px. `--spacing-page-inline` is an alias of `--page-gutter`. It is not a clamp. Spacing tokens are a scale. Hub chapters share one `.k-ch` frame from `02-SERVICE-LAYOUT.md`. Headings use `--text-h1`, `--text-h2`, and `--text-h3`.
 
 Fonts in `src/styles/global.css`: Schibsted Grotesk (headings, installed 400–900), Instrument Sans (body and UI), JetBrains Mono (technical metadata). Do not install a 300-weight Schibsted file or IBM Plex Mono.
 
@@ -25,12 +25,12 @@ The service rail is ink, `minmax(240px, 18%)`, and lists this page's chapters. L
 
 ## Eight hubs
 
-Each hub uses the same shell. The copy and section order are that hub’s own markdown file. `/systems/<slug>/` renders the same page as `/solutions/<slug>/`. Architectural Lighting is the current review composition in `LightingField.astro`. The other seven hubs share `Chapter.astro`.
+Each hub uses the same shell and the same `Chapter.astro` frame, including Architectural Lighting. The copy and section order are that hub’s own markdown file. `/systems/<slug>/` renders the same page as `/solutions/<slug>/`.
 
 | Hub | Public route | Rendered copy | Layout owner |
 |---|---|---|---|
 | Home Intelligence | `/solutions/home-intelligence/` | `docs/v4-build/hubs/DAVG-V4-Hub-01-Home-Intelligence.md` | `HubPage.astro` inside `ServicePageShell.astro`. Section surfaces, studies, and catalog photographs come from `src/lib/hub-composition.mjs`. |
-| Architectural Lighting | `/solutions/architectural-lighting/` | `docs/v4-build/hubs/DAVG-V4-Hub-02-Architectural-Lighting.md` | `HubPage.astro` mounts `LightingField.astro` for this slug only. The other hubs stay on `Chapter.astro`. |
+| Architectural Lighting | `/solutions/architectural-lighting/` | `docs/v4-build/hubs/DAVG-V4-Hub-02-Architectural-Lighting.md` | `HubPage.astro` inside `ServicePageShell.astro`, same `Chapter.astro` frame as the other hubs |
 | Motorized Shading | `/solutions/motorized-shades/` | `docs/v4-build/hubs/DAVG-V4-Hub-03-Motorized-Shading.md` | `HubPage.astro` inside `ServicePageShell.astro` |
 | Media & Audio | `/solutions/media-audio/` | `docs/v4-build/hubs/DAVG-V4-Hub-04-Media-and-Audio.md` | `HubPage.astro` inside `ServicePageShell.astro` |
 | Private Cinemas | `/solutions/private-cinemas/` | `docs/v4-build/hubs/DAVG-V4-Hub-05-Private-Cinemas.md` | `HubPage.astro` inside `ServicePageShell.astro` |

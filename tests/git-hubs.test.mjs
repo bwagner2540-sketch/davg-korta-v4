@@ -120,5 +120,6 @@ test('retired JSON drafts are not the page renderer', () => {
   assert.match(page, /k-ch/);
   assert.match(page, /data-chapter/);
   assert.match(page, /Chapter/);
+  assert.doesNotMatch(page, /LightingField|lighting\.css|keepTables/);
   assert.doesNotMatch(page, /hub-frame-opening|linear-gradient/);
 });

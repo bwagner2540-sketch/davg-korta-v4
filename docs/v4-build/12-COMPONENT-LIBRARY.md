@@ -6,12 +6,12 @@ Revision: 30 September 2026. These sections are shared. A service page passes it
 | --- | --- | --- |
 | Site header | `src/components/korta/TopNav.astro` and `MenuPanel.astro` | Logo left. Phone and the Company / Home Solutions / Resources / Support links live in the menu. Home Solutions is the `services` order in `src/config/site.ts`. |
 | Site footer | `src/components/ServiceLinks.astro` | The eight services, same order as the rail. |
-| Chapter rail | `src/components/ServicePageShell.astro` | Sticky 25% Forest rail. Eight services from `services`. Chapter links are the git hub section titles for the active service. |
+| Chapter rail | `src/components/ServicePageShell.astro` and `src/components/korta/ServiceRail.astro` | Sticky ink chapter index, `minmax(240px, 18%)`. Services stay in a closed switcher. Chapter links are this page's git hub titles. |
 | Answer frame | `src/components/library/AnswerFrame.astro` | Thick black frame around a direct answer. Used in Questions. |
 | Hover-card CTA | `src/components/library/HoverCardCta.astro` | Black squares at the end of a service page. The photograph appears on hover. Each card can set the inquiry path. |
 | Comparison | `src/components/library/ComparisonSplit.astro` | Two-column before/after. Shading uses view-through against darkness. |
 | Case study | `src/components/library/CaseStudy.astro` | Diptych study page. Specimen: `/company/our-work/`. Product photographs stay labeled as illustrations until a project record is cleared. |
-| Hub page | `src/components/services/hubs/HubPage.astro` | Routed renderer for the eight git hubs inside `ServicePageShell.astro`. Architectural Lighting uses `LightingField.astro` and `src/styles/lighting.css`. The other hubs use `Chapter.astro`. `HubStudies.astro` is not mounted by this route. |
+| Hub page | `src/components/services/hubs/HubPage.astro` | Routed renderer for all eight git hubs inside `ServicePageShell.astro`. Every hub, including Architectural Lighting, uses `Chapter.astro`. `HubStudies.astro` is not mounted by this route. |
 
 Home Solutions, the footer, and the left rail list all eight services from `services` in `src/config/site.ts`. The order is written in `02-SERVICE-LAYOUT.md`.
 
