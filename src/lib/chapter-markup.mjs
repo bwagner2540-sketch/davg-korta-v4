@@ -88,7 +88,7 @@ function nextHeading(nodes, start) {
 }
 
 /** One visible table per chapter. Further tables keep their heading inside `.k-more`. */
-export function composeChapterHtml(html) {
+export function composeChapterHtml(html, options = {}) {
   const source = String(html || '').replace(/<!--[\s\S]*?-->/g, '');
   const fragment = parseFragment(`<div id="chapter-root">${source}</div>`);
   const root = fragment.childNodes.find((node) => node.tagName === 'div');
@@ -102,7 +102,7 @@ export function composeChapterHtml(html) {
       const end = nextHeading(nodes, index + 1);
       const group = nodes.slice(index, end);
       const tabular = group.some(containsTable);
-      if (tabular && seenTable) out.push(more(group));
+      if (tabular && seenTable && !options.keepTables) out.push(more(group));
       else {
         group.forEach((item) => out.push(transform(item)));
         if (tabular) seenTable = true;
@@ -111,7 +111,7 @@ export function composeChapterHtml(html) {
       continue;
     }
     if (containsTable(node)) {
-      if (seenTable) out.push(more([node]));
+      if (seenTable && !options.keepTables) out.push(more([node]));
       else {
         out.push(transform(node));
         seenTable = true;

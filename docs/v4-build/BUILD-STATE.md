@@ -7,7 +7,8 @@ This section is the current record. The logs below it are history from earlier p
 - Source index: `docs/v4-build/00-START-HERE.md`. Contract: `11-SYNC-CONTRACT.md`.
 - Public copy: `docs/v4-build/hubs/DAVG-V4-Hub-*.md`, loaded only by `src/lib/git-hubs.mjs`. Copy is unchanged. Authoring notes render as HTML comments.
 - Frame: `src/components/ServicePageShell.astro` with `src/components/korta/TopNav.astro`, `ServiceRail.astro`, and `Chapter.astro`. Styles: `src/styles/motion.css`. Renderer: `src/components/services/hubs/HubPage.astro`. Routes: `/solutions/<slug>/` and the `/systems/<slug>/` alias.
-- Chapter grammar: one `.k-ch` padding. Hero and inquiry are ink. Section 06 is the one ink chapter on every hub (the comparison chapter). Other chapters are paper. One visible table per chapter; further tables use `.k-more`. Portrait-or-square single images use the aside slot. Other photographs are figures or pairs inside the chapter. The hero is the only bleed. Captions sit under images.
+- Chapter grammar, seven hubs: one `.k-ch` padding. Hero and inquiry are ink. Section 06 is the one ink chapter. Other chapters are paper. One visible table per chapter; further tables use `.k-more`. Architectural Lighting is the review exception below. The hero is the only bleed on the shared grammar. Captions sit under images.
+- Architectural Lighting review composition: `LightingField.astro` and `src/styles/lighting.css`, mounted only for that slug. See `02-SERVICE-LAYOUT.md`. The other hubs are unchanged.
 - Rail: ink, `--rail-width: minmax(240px, 18%)`, chapter index, services behind a closed switcher. No rail logo and no certification footnote.
 - Token maps, because the named steps were missing: `--k-s20` → `--spacing-16` (4rem); `--text-body-sm` → `--text-body` (16px; `--text-caption` is 13px); `--text-h5` → `--text-h3`; `--text-h6` → `--text-body-lg`; `--k-radius` → `--radius-control`; `--k-hairline` is the existing 1px rule. Figcaptions use `--text-body` so body text stays at least 14px.
 - Tokens: `src/styles/global.css`. Fonts implemented: Schibsted Grotesk 400–900, Instrument Sans, JetBrains Mono. Live gutter implemented: `--page-gutter` 1.5rem / 3rem / 4rem. `--spacing-page-inline` aliases `--page-gutter`. Section rhythm is role-based. `--spacing-section` is one step on the scale, not the padding of every hub section.
@@ -18,7 +19,7 @@ This section is the current record. The logs below it are history from earlier p
 ### Status of decisions
 | Topic | Status |
 |---|---|
-| Git hubs as public copy, `/solutions/` routes, chapter grammar (ink rail, one chapter frame, one ink comparison chapter) | Implemented. See the chapter-grammar task log. The Forest 25/75 shell is the earlier repair and is no longer the live frame. |
+| Git hubs as public copy, `/solutions/` routes, chapter grammar on seven hubs | Implemented. Architectural Lighting uses the review composition in `LightingField.astro`. The Forest 25/75 shell is the earlier repair and is no longer the live frame. |
 | Layout tokens (H1 64px at 1440 and 40px at 390, gutters 64px and 24px) | Implemented in `src/styles/global.css`. The spacing tokens are a scale. Identical section padding is not the layout. |
 | Collections, MDX, and JSON as the public copy (`10`) | Proposed. Do not migrate. |
 | Shading briefs 08 and 09 chapter maps | Historical. Not applied over the git hub. |
@@ -30,6 +31,13 @@ This section is the current record. The logs below it are history from earlier p
 | Workers branch preview for `cursor/git-hub-source-13db` | See the latest task log. A push is not a verified preview. |
 
 The September and early October logs below recorded older owners (JSON drafts, document 09 as the shading map, IBM Plex as an open font question, branch `main`). Those statements are superseded by this section.
+
+## Task log — 4 October 2026 Architectural Lighting composition
+- Decision: the shared chapter grammar stays on the other seven hubs. Architectural Lighting is a separate composition so the page can be reviewed before any other hub changes.
+- Implemented: `src/components/services/hubs/LightingField.astro`, `src/styles/lighting.css`, `src/lib/lighting-media.mjs`. `HubPage.astro` mounts the lighting page only for `architectural-lighting`. `composeChapterHtml` accepts `keepTables` so both lighting comparison tables stay visible. Copy is still the git hub. Section 11 stays reserved.
+- No scratchpad file was in the repo. Inspiration, work in progress, and the implemented map are recorded in `02-SERVICE-LAYOUT.md`. That file is not rendered.
+- Local checks: `npm run check` (0 errors, existing homepage unused-import hint), `npm test` 22 passed, `npm run build:sandbox` 35 routes, `npm run verify` passed. Chrome at 1440 and 390: section surfaces are ink, paper, cream, forest, and stone; page overflow is 0; the rail counts 12 chapters; `LIGHTING` stays in the study text column; product plates scroll inside the comparison. Production was not deployed.
+- Preview: not confirmed for this commit until `davg-revision` on `https://cursor-git-hub-source-13db-davg-korta-v4.brandon-763.workers.dev/solutions/architectural-lighting/` matches the pushed SHA. The previous confirmed revision remains `9ddf1e05a951f8e02a3d48582455aad6c945cc4e`.
 
 ## Task log — 3 October 2026 chapter grammar
 - Decision: implemented from the layout request. `korta-v4-motion` does not exist on origin, and `src/styles/motion.css` was not in the repair checkpoint. The nav, rail, and chapter grammar were added on `cursor/git-hub-source-13db` so the existing Workers preview keeps building this branch. Production was not deployed.

@@ -25,12 +25,12 @@ The service rail is ink, `minmax(240px, 18%)`, and lists this page's chapters. L
 
 ## Eight hubs
 
-Each hub is the same shell and the same renderer. The copy and section order are that hub’s own markdown file. There is no second layout file per hub. `/systems/<slug>/` renders the same page as `/solutions/<slug>/`.
+Each hub uses the same shell. The copy and section order are that hub’s own markdown file. `/systems/<slug>/` renders the same page as `/solutions/<slug>/`. Architectural Lighting is the current review composition in `LightingField.astro`. The other seven hubs share `Chapter.astro`.
 
 | Hub | Public route | Rendered copy | Layout owner |
 |---|---|---|---|
 | Home Intelligence | `/solutions/home-intelligence/` | `docs/v4-build/hubs/DAVG-V4-Hub-01-Home-Intelligence.md` | `HubPage.astro` inside `ServicePageShell.astro`. Section surfaces, studies, and catalog photographs come from `src/lib/hub-composition.mjs`. |
-| Architectural Lighting | `/solutions/architectural-lighting/` | `docs/v4-build/hubs/DAVG-V4-Hub-02-Architectural-Lighting.md` | `HubPage.astro` inside `ServicePageShell.astro` |
+| Architectural Lighting | `/solutions/architectural-lighting/` | `docs/v4-build/hubs/DAVG-V4-Hub-02-Architectural-Lighting.md` | `HubPage.astro` mounts `LightingField.astro` for this slug only. The other hubs stay on `Chapter.astro`. |
 | Motorized Shading | `/solutions/motorized-shades/` | `docs/v4-build/hubs/DAVG-V4-Hub-03-Motorized-Shading.md` | `HubPage.astro` inside `ServicePageShell.astro` |
 | Media & Audio | `/solutions/media-audio/` | `docs/v4-build/hubs/DAVG-V4-Hub-04-Media-and-Audio.md` | `HubPage.astro` inside `ServicePageShell.astro` |
 | Private Cinemas | `/solutions/private-cinemas/` | `docs/v4-build/hubs/DAVG-V4-Hub-05-Private-Cinemas.md` | `HubPage.astro` inside `ServicePageShell.astro` |

@@ -11,7 +11,7 @@ Revision: 30 September 2026. These sections are shared. A service page passes it
 | Hover-card CTA | `src/components/library/HoverCardCta.astro` | Black squares at the end of a service page. The photograph appears on hover. Each card can set the inquiry path. |
 | Comparison | `src/components/library/ComparisonSplit.astro` | Two-column before/after. Shading uses view-through against darkness. |
 | Case study | `src/components/library/CaseStudy.astro` | Diptych study page. Specimen: `/company/our-work/`. Product photographs stay labeled as illustrations until a project record is cleared. |
-| Hub page | `src/components/services/hubs/HubPage.astro` | Routed renderer for all eight git hubs inside `ServicePageShell.astro`. `HubStudies.astro` is not mounted by this route. |
+| Hub page | `src/components/services/hubs/HubPage.astro` | Routed renderer for the eight git hubs inside `ServicePageShell.astro`. Architectural Lighting uses `LightingField.astro` and `src/styles/lighting.css`. The other hubs use `Chapter.astro`. `HubStudies.astro` is not mounted by this route. |
 
 Home Solutions, the footer, and the left rail list all eight services from `services` in `src/config/site.ts`. The order is written in `02-SERVICE-LAYOUT.md`.
 

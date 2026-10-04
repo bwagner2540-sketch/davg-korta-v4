@@ -3,7 +3,7 @@ Revision: 3 October 2026. One shell. The git hub is the page. The source index i
 
 ## Current frame — chapter grammar
 
-This section is the live frame. The 25/75 Forest rail and the per-role padding below are the earlier repair. They are not the current paint.
+This section is the live frame for seven hubs. Architectural Lighting is the review exception in the next section. The 25/75 Forest rail and the per-role padding below are the earlier repair. They are not the current paint.
 
 1. Masthead: `src/components/korta/TopNav.astro`. Logo left, 36px. The phone number is the nav CTA and is repeated in `MenuPanel`. There is no utility bar above the masthead.
 2. Rail: ink, `minmax(240px, 18%)`, sticky under the masthead. It is this page's chapter index. The eight services stay in a switcher that is closed until opened. Chapter labels are one line. The foot is `Chapter NN / NN` and one button. Certification lines are not in the rail.
@@ -45,6 +45,38 @@ Wide comparison tables stay in a horizontal scroller on small screens. Do not sh
 The rail stays Forest on every chapter. Do not invent installed prices. Hardware families, control platforms, and Good/Better/Best scopes stay separate comparisons. Palladiom is not an automatic quality or price endpoint. Photographs stay captioned as illustrations unless a project record is cleared. The shading story in the git hub is the shading page.
 
 All eight hubs, including shading, use `HubPage.astro` and the git hub file. `ServicePage.astro` is not routed. The old JSON drafts are in `archive/davg-history/src-data-services/`. No public release is implied. The production allowlist stays empty until the owner approves a page.
+
+## Architectural Lighting review composition
+
+This section supersedes the shared chapter grammar for `/solutions/architectural-lighting/` and the `/systems/architectural-lighting/` alias only. The other seven hubs stay on `Chapter.astro`.
+
+No scratchpad file exists in this checkout. The notes below are the reference record. They are not a second design master, and the site does not import them.
+
+### Inspiration
+The September images in `docs/v4-build/references/` and the older frame table in this file. They are exploratory. They do not set type, gutters, or copy. This task did not include a component screenshot.
+
+### Work in progress
+Do not copy these compositions onto the other hubs before the lighting page is reviewed.
+
+### Implemented
+`src/components/services/hubs/HubPage.astro` mounts `LightingField.astro` for this slug. `src/styles/lighting.css` is imported only there. `src/lib/lighting-media.mjs` places the catalog photographs and product plates. The words stay in `docs/v4-build/hubs/DAVG-V4-Hub-02-Architectural-Lighting.md`.
+
+- 01 ink split: the git headline beside the dusk kitchen.
+- 02 paper reading column, with the second paragraph on a shorter measure.
+- 03 cream field: the bright kitchen leads, and the explanation sits beside it.
+- 04 forest band for fixtures, loads, scenes, and control.
+- 05 paper study. The word LIGHTING sits in the text column. The installed keypad is the opposite photograph.
+- 06 ink comparison: keypad plates, the decision list, the platform table, the ceiling-to-platform steps, and the keypad-family bands. Both tables stay visible.
+- 07 three room columns.
+- 08 stone compatibility line.
+- 09 construction paths as rows.
+- 10 two-column pitfalls, then a forest distinction.
+- 12 stone investment.
+- 13 commissioning.
+- 14 cream questions.
+- 15 ink inquiry.
+
+Section 11 stays a reserved anchor. Product captions drop filing notes. Plate and portrait products use contain so the control stays in frame. The landscape Alisse photograph stays a 3:2 cover.
 
 ## Presentation inside the field
 
