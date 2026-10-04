@@ -7,7 +7,7 @@ This section is the current record. The logs below it are history from earlier p
 - Source index: `docs/v4-build/00-START-HERE.md`. Contract: `11-SYNC-CONTRACT.md`.
 - Public copy: `docs/v4-build/hubs/DAVG-V4-Hub-*.md`, loaded only by `src/lib/git-hubs.mjs`. Copy is unchanged. Authoring notes render as HTML comments.
 - Frame: `src/components/ServicePageShell.astro` with `src/components/korta/TopNav.astro`, `ServiceRail.astro`, and `Chapter.astro`. Styles: `src/styles/motion.css`. Renderer: `src/components/services/hubs/HubPage.astro`. Routes: `/solutions/<slug>/` and the `/systems/<slug>/` alias.
-- Chapter grammar, all eight hubs: one `.k-ch` padding. Hero and inquiry are ink. Section 06 is the one ink chapter. Other chapters are paper. One visible table per chapter; further tables use `.k-more`. The hero is the only bleed. Captions sit under images. Architectural Lighting uses this same frame. `LightingField.astro` is removed.
+- Chapter grammar, all eight hubs: one `.k-ch` padding. Hero and inquiry are ink. Section 06 is the one ink chapter. Other chapters are paper. One visible table per chapter; further tables use `.k-more`. The hero is the only bleed. Captions sit under images. Filing notes stay out of those captions. A `contain` photograph keeps its proportion. Section 05's spatial word is static H1 type in signal green. Architectural Lighting uses this same frame. `LightingField.astro` is removed.
 - Rail: ink, `--rail-width: minmax(240px, 18%)`, chapter index, services behind a closed switcher. No rail logo and no certification footnote.
 - Token maps, because the named steps were missing: `--k-s20` → `--spacing-16` (4rem); `--text-body-sm` → `--text-body` (16px; `--text-caption` is 13px); `--text-h5` → `--text-h3`; `--text-h6` → `--text-body-lg`; `--k-radius` → `--radius-control`; `--k-hairline` is the existing 1px rule. Figcaptions use `--text-body` so body text stays at least 14px.
 - Tokens: `src/styles/global.css`. Fonts implemented: Schibsted Grotesk 400–900, Instrument Sans, JetBrains Mono. Live gutter implemented: `--page-gutter` 1.5rem / 3rem / 4rem. `--spacing-page-inline` aliases `--page-gutter`. Hub chapters share `.k-ch` padding. `--spacing-section` remains one step on the scale for other surfaces.
@@ -30,6 +30,10 @@ This section is the current record. The logs below it are history from earlier p
 | Workers branch preview for `cursor/git-hub-source-13db` | See the latest task log. A push is not a verified preview. |
 
 The September and early October logs below recorded older owners (JSON drafts, document 09 as the shading map, IBM Plex as an open font question, branch `main`). Those statements are superseded by this section.
+
+## Task log — 4 October 2026 shared-frame visual repair
+- Live review of Architectural Lighting at `ced9fd4` found two shared-frame defects. The section 05 word was 12% white on paper, so `LIGHTING` did not read. Comparison captions showed filing notes (`filed as`, `Cutout preserved`), and `contain` product photographs were cropped by the 16/10 cover frame.
+- The chapter rule now outranks the homepage watermark color. `visibleCaption` drops those filing sentences. `k-fig--contain` keeps the catalog proportion. This stays on `HubPage` and `Chapter`. LightingField stays removed.
 
 ## Task log — 4 October 2026 one chapter grammar
 - Decision: the layout prompt requires one chapter frame on all eight hubs. It outranks the Architectural Lighting review composition. `korta-v4-motion` does not exist; the work stays on `cursor/git-hub-source-13db`.

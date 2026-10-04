@@ -13,7 +13,7 @@ function readImages() {
 
 const images = readImages();
 
-const PROVENANCE = /manufacturer|source filename|source file identifies|filename|not verified DAVG|not a before state|rights unconfirmed|product photograph|illustration\s*·|not a rack or wiring photograph|laboratory confirmation/i;
+const PROVENANCE = /manufacturer|source filename|source file identifies|filename|not verified DAVG|not a before state|rights unconfirmed|product photograph|illustration\s*·|not a rack or wiring photograph|laboratory confirmation|filed as|cutout preserved|not a confirmed|model identity|not substituted onto/i;
 
 export function visibleCaption(value) {
   return String(value || '')
@@ -110,9 +110,9 @@ function figureMarkup(photo, { dev = false, caption = '', wide = false, eager = 
   if (!record) return '';
   const rights = rightsUnconfirmed(photo);
   const shown = caption || visibleCaption(photo.caption || '') || visibleCaption(photo.title || '');
-  const alt = visibleCaption(photo.alt || photo.title || '');
+  const alt = visibleCaption(photo.alt || photo.title || '') || 'Product photograph';
   const srcset = (record.variants || []).map((item) => `${item.src} ${item.width}w`).join(', ');
-  const classes = ['k-fig', wide ? 'k-wide' : '', bleed ? 'k-hero__fig' : ''].filter(Boolean).join(' ');
+  const classes = ['k-fig', photo.fit === 'contain' ? 'k-fig--contain' : '', wide ? 'k-wide' : '', bleed ? 'k-hero__fig' : ''].filter(Boolean).join(' ');
   const sizes = bleed ? '(min-width: 900px) 82vw, 100vw' : '(min-width: 900px) 36vw, 100vw';
   return `<figure class="${classes}" data-photo-slot="${escapeHtml(photo.id)}"${bleed ? ' data-hero-bleed="true"' : ''}${rights ? ' data-rights="unconfirmed"' : ''}>
 <img src="${escapeHtml(photo.src)}" alt="${escapeHtml(alt)}" width="${record.width}" height="${record.height}" srcset="${escapeHtml(srcset)}" sizes="${sizes}" loading="${eager ? 'eager' : 'lazy'}"${eager ? ' fetchpriority="high"' : ''} decoding="async" />
@@ -133,7 +133,7 @@ export function inlineFigures(figures, options = {}) {
   for (let index = 0; index < items.length; index += 2) {
     const pair = items.slice(index, index + 2);
     if (pair.length === 2) chunks.push(`<div class="k-pair k-wide">${pair.join('')}</div>`);
-    else chunks.push(pair[0].replace('class="k-fig"', 'class="k-fig k-wide"'));
+    else chunks.push(pair[0].replace('class="k-fig', 'class="k-fig k-wide'));
   }
   return chunks.join('');
 }

@@ -317,7 +317,9 @@
 
 .k-fig { display: flex; flex-direction: column; gap: var(--k-s3); position: relative; margin: 0; }
 .k-fig img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; border-radius: var(--k-radius); }
+.k-fig--contain img { width: auto; max-width: 100%; height: auto; max-height: 32rem; aspect-ratio: auto; object-fit: contain; margin-inline: auto; }
 .k-ch__media .k-fig img { aspect-ratio: 4 / 5; max-height: 70vh; }
+.k-ch__media .k-fig--contain img { width: auto; max-width: 100%; height: auto; aspect-ratio: auto; object-fit: contain; margin-inline: auto; }
 .k-fig figcaption { font-size: var(--text-body); line-height: 1.4; color: var(--k-muted, var(--color-text-secondary-paper)); max-width: 60ch; }
 .k-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--k-s4); }
 .k-rights {
@@ -346,7 +348,7 @@
 .k-more[open] > summary::after { content: "–"; }
 .k-more > :not(summary) { padding-bottom: var(--k-s6); }
 
-.k-ch .architectural-background-title {
+.k-ch .architectural-background-title[data-surface] {
   position: static;
   inset: auto;
   z-index: auto;
