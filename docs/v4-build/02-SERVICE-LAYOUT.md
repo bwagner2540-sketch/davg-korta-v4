@@ -1,46 +1,119 @@
-# Eight service pages — 25/75 layout
+# DAVG V4 — Active service-page layout
+Revision: 3 October 2026. One shell. The git hub is the page. The source index is `00-START-HERE.md`.
 
-## Page frame
+## Current frame — chapter grammar
 
-Desktop: left rail is exactly one quarter of the page frame; right field is three quarters. Use `grid-template-columns: minmax(0,1fr) minmax(0,3fr)`. These are frame proportions before internal padding. Keep the document as the vertical scroller. Make the rail sticky below the existing masthead; do not make the 75% column a second wheel-scroll pane.
+This section is the live frame for seven hubs. Architectural Lighting is the review exception in the next section. The 25/75 Forest rail and the per-role padding below are the earlier repair. They are not the current paint.
 
-Rail: original DAVG mark, service navigation with current service emphasized, and a small set of chapter anchors relevant to that page. Use the source-copy groups to keep the navigation short. Do not cram fifteen labels beside the page. If the rail exceeds the available viewport, only its menu may overflow. No portrait or required staff title.
+1. Masthead: `src/components/korta/TopNav.astro`. Logo left, 36px. The phone number is the nav CTA and is repeated in `MenuPanel`. There is no utility bar above the masthead.
+2. Rail: ink, `minmax(240px, 18%)`, sticky under the masthead. It is this page's chapter index. The eight services stay in a switcher that is closed until opened. Chapter labels are one line. The foot is `Chapter NN / NN` and one button. Certification lines are not in the rail.
+3. Hero (section 01): ink. One H1 at `--text-h1`, max-width 14ch, caption under the photograph. The hero is the only bleeding photograph.
+4. Chapters: `src/components/korta/Chapter.astro`. Same padding. Paper, except section 06 on each hub, which is the comparison chapter and is the one ink chapter. A chapter with one portrait or square image uses the aside slot. Other images sit in the chapter as one figure or a pair. Captions sit under the image.
+5. One table is visible in a chapter. Any further table in that chapter is inside `details.k-more`, using its existing heading. Lists use `.k-list`.
+6. FAQ (section 14) is a paper chapter. The inquiry (section 15) is ink and is not a second ink chapter.
+7. Below 900px the rail is hidden and the chapter list is the disclosure in the main column.
+8. Authoring notes (layout briefs, photo direction, rights, sourcing, `Caption:` and `Core lesson:` labels) stay in the hub markdown. The page renders `Caption` as the figure caption and `Core lesson` as the first paragraph, without those labels. Other notes are HTML comments.
 
-Right: actual service headline, opening explanation and primary action, followed by the hub's ordered chapters. Use the full right field for media/studies. Readable body copy has a comfortable measure around 55–70 characters. A comparison can divide the field 50/50. A technical study can divide image/text around 60/40. These are local section choices inside the 75% field.
+Desktop frame that this grammar replaces:
 
-Mobile starting breakpoint: 1024px; adjust if the actual navigation becomes cramped. Replace the desktop rail with a compact native disclosure menu or reuse the existing mobile navigation. Keep the source-copy order, full-width media, anchor offsets and readable tables. Selection tables can become stacked rows or a deliberate horizontal table scroll. Do not shrink text to fit all columns.
+1. Left column, 25%: Forest rail in `ServicePageShell.astro`. It is sticky for the whole service page. It lists the eight services. The current service is emphasized. Its chapter links are the `## 01 —` titles from that service's git hub, nested under the service. The rail menu scrolls when the list is taller than the viewport.
+2. Right column, 75%: the git hub, in file order. Section 01, including the H1 and the hero media, is the first block in this column. Later sections follow. The inquiry form is inside section 15.
+3. The document is the only vertical scroller. The right column is not a second scroll pane.
+4. Below 1024px the rail becomes the shell's disclosure menu.
 
-## Working section anatomy
+Use `grid-template-columns: minmax(0, 1fr) minmax(0, 3fr)` before internal padding. The right column uses the spacing scale in `src/styles/global.css` (`--page-gutter`, `--spacing-micro`, `--spacing-text`, `--spacing-component`, `--spacing-section`, and the measures). Those tokens are a scale. They are not a rule that every section receives the same padding.
 
-| Pattern | Build it this way |
-|---|---|
-| Editorial hero | Headline, short deck, one primary action, broad blank media field. Put category context in ordinary text if no eyebrow is needed. |
-| Direct answer | Short lead and meaningful explanation, with a service identifier only if the composition has room. |
-| Room experience | Wide image slot plus a few useful room/time examples. |
-| System architecture | Unboxed text/specification split or diagram slot with a plain system explanation. |
-| Signature study | Large diagram/comparison slot, live headline and caption; static state first. |
-| Selection guide | Several purposeful modules: decision tables, best-fit/tradeoff text and associated product/photo slots. Do not collapse the deep education into three marketing cards. |
-| Applied examples | Actual source-copy scenarios with a matched slot per example where useful. |
-| Technical detail | Large cutaway/detail rectangle and adjacent leader-label/specification text. |
-| Build route / pitfalls | Short construction/retrofit branches and useful mistakes to avoid. |
-| Project proof | Reserved image/caption structure in preview. Hide it publicly until real evidence is available. |
-| Investment | Scope comparison and cost drivers. No invented installed prices. |
-| Ownership | Steps for measure/install/program/test/handoff in an unboxed sequence. |
-| FAQ | Native `details/summary` or existing accessible accordion; preserve the supplied questions/answers. |
-| Inquiry | Shared working form, with service preselected and the page-specific brief fields from the hub. A direct contact route remains available. |
+Public words, section order, and the `/solutions/<slug>/` route come from `docs/v4-build/hubs/DAVG-V4-Hub-*.md`, rendered only by `HubPage.astro`. `/systems/<slug>/` is the same page. Do not render `archive/davg-history/src-data-services/` or `src/content/services/*.json`.
 
-## Blank media now; images later
+This replaces the 30 September frame that put a full-width hero and a full-width answer outside a five-chapter middle.
 
-Use simple square-edged blank rectangles at the intended aspect ratio. A 16:9 room slot, 4:3 rack/detail slot and 1:1 product slot are starting choices; change them to fit the exact screenshot composition. Every slot has a stable ID such as `shading-06-palladiom`, subject and ratio in the content manifest. The visible placeholder can be blank; its purpose remains documented outside public copy. Do not require one literal square aspect ratio for every image.
+`services` in `src/config/site.ts` is the only ordered list of the eight services. The header Home Solutions menu, the site footer, the sticky rail, `/systems/`, and the local preview index all read that array. Each `href` is `/solutions/<slug>/`. Confirmed order, with the public list label (`railLabel`) and the full record name (`label`):
 
-Replace a slot by changing its source, not rebuilding the section. Keep final images from moving the text after loading. Empty filenames should render a placeholder rather than a broken `<img>`. Concept studies can explain systems; they do not become completed-project claims.
+1. Home Intelligence — `home-intelligence`. List label and page name: Home Intelligence.
+2. Media & Audio — `media-audio`. This is the media and entertainment hub. The public label stays Media & Audio.
+3. Private Cinemas — `private-cinemas`.
+4. Architectural Lighting — `architectural-lighting`.
+5. Motorized Shading — `motorized-shades`. Same shell and git hub as the other seven. The list label stays Motorized Shading. Not on the production allowlist.
+6. Outdoor Entertainment — `outdoor-entertainment`.
+7. Infrastructure & Privacy — `infrastructure-privacy`. This is the networking and Wi-Fi hub. The list label stays Infrastructure & Privacy. The page name stays Digital Infrastructure & Privacy.
+8. Security & Access — `security-access`. The list label stays Security & Access. The page name stays Security Cameras & Access Control.
 
-## Section maps
+Header, footer, and rail show `railLabel` in that order. `/systems/` shows `label` from the same records.
 
-Each hub begins with an ordered 01–15 checklist containing a layout and visible completion criterion. It continues with the substantive copy recovered on September 28. Build from that copy; do not rewrite the full service to fit a generic template. The common shell does not make the topics or section layouts identical.
+Wide comparison tables stay in a horizontal scroller on small screens. Do not shrink the type to fit every column.
 
-## Starter code
+The rail stays Forest on every chapter. Do not invent installed prices. Hardware families, control platforms, and Good/Better/Best scopes stay separate comparisons. Palladiom is not an automatic quality or price endpoint. Photographs stay captioned as illustrations unless a project record is cleared. The shading story in the git hub is the shading page.
 
-`starter/` contains small portable components and the CSS token block. They are optional implementation starters, not a replacement Astro project. Cursor should adapt them to existing layout, navigation, assets and imports. Set the sticky offset to the actual masthead height. The snippets still need integration and browser checking inside your project.
+All eight hubs, including shading, use `HubPage.astro` and the git hub file. `ServicePage.astro` is not routed. The old JSON drafts are in `archive/davg-history/src-data-services/`. No public release is implied. The production allowlist stays empty until the owner approves a page.
 
+## Architectural Lighting review composition
 
+This section supersedes the shared chapter grammar for `/solutions/architectural-lighting/` and the `/systems/architectural-lighting/` alias only. The other seven hubs stay on `Chapter.astro`.
+
+No scratchpad file exists in this checkout. The notes below are the reference record. They are not a second design master, and the site does not import them.
+
+### Inspiration
+The September images in `docs/v4-build/references/` and the older frame table in this file. They are exploratory. They do not set type, gutters, or copy. This task did not include a component screenshot.
+
+### Work in progress
+Do not copy these compositions onto the other hubs before the lighting page is reviewed.
+
+### Implemented
+`src/components/services/hubs/HubPage.astro` mounts `LightingField.astro` for this slug. `src/styles/lighting.css` is imported only there. `src/lib/lighting-media.mjs` places the catalog photographs and product plates. The words stay in `docs/v4-build/hubs/DAVG-V4-Hub-02-Architectural-Lighting.md`.
+
+- 01 ink split: the git headline beside the dusk kitchen.
+- 02 paper reading column, with the second paragraph on a shorter measure.
+- 03 cream field: the bright kitchen leads, and the explanation sits beside it.
+- 04 forest band for fixtures, loads, scenes, and control.
+- 05 paper study. The word LIGHTING sits in the text column. The installed keypad is the opposite photograph.
+- 06 ink comparison: keypad plates, the decision list, the platform table, the ceiling-to-platform steps, and the keypad-family bands. Both tables stay visible.
+- 07 three room columns.
+- 08 stone compatibility line.
+- 09 construction paths as rows.
+- 10 two-column pitfalls, then a forest distinction.
+- 12 stone investment.
+- 13 commissioning.
+- 14 cream questions.
+- 15 ink inquiry.
+
+Section 11 stays a reserved anchor. Product captions drop filing notes. Plate and portrait products use contain so the control stays in frame. The landscape Alisse photograph stays a 3:2 cover.
+
+## Presentation inside the field
+
+`src/lib/hub-composition.mjs` tells `HubPage.astro` which surface, frame, study, catalog photograph, and product row belong to each section. It does not store a second copy of the prose. The git hub file still owns the words and the section order.
+
+The frame is the composition, not a second copy of the chapter. A uniform Markdown loop — the same `hub-section` padding on every chapter — is rejected. `080a0b3` flattened the hubs into that loop. Surfaces and studies were added later, and the pages still read as repeated document sections. The frames below are the layout that replaces it.
+
+| Frame | Where it applies | Composition |
+|---|---|---|
+| `opening` | Section 01 | No section padding. The git H1 and the hero photograph share one field. Type sits in a narrow column. The photograph bleeds to the right and bottom edges of the right column and carries its caption on the image. |
+| `answer` | Section 02 | Quiet Paper band. Vertical padding is `--spacing-text`, not `--spacing-section`. Prose stays on the standard measure. |
+| `moments` | Section 03 | Short reading measure, then a full-bleed room photograph when the catalog has one. Side inset is removed from the photograph. |
+| `system` | Section 04 | Charcoal. The explanation stays on a readable measure. Tables break out to the column width as a ledger: mono header, hairline rows, horizontal scroll only when the table is wider than the field. A technical study, when present, is a Stone band under the ledger, not a card inside the same padding. |
+| `study` | Section 05 | The git introduction is a short Paper measure. The signature study then changes surface: Forest-to-Ink, split plate, spatial word, annotated photograph or diagram at study scale. It is not an inset card under another padded heading. |
+| `ledger` | Comparison sections whose content is the table | Same ledger treatment as system layers, on the section’s own surface. |
+| `comparison` | Comparison sections that also have a photograph or product row | Headline column beside a large photograph, then the ledger and product row at field width. |
+| `products` / `interfaces` | Interface and product sections | Product photographs align on a baseline. The first is larger. Contain-fit product shots sit on the field without a thumbnail border. An interface photograph, when that is the section image, occupies the opposite column from the headline. |
+| `reading` / `quiet` / `detail` | Installation, pitfalls, handoff, proof, and detail | Tighter than a document section. Proof uses the narrow measure. A detail study is the Stone band, full width of the column. |
+| `investment` | Section 12 | Stone. Headline and scope sit in two columns. |
+| `questions` | Section 14 | Paper. Question headings are separated by hairlines. |
+| `inquiry` | Section 15 | Ink, with more air than the chapters above it. The git close sits in one column and the inquiry form in the other. |
+
+Surfaces follow `13-SURFACE-COLOR-SYSTEM.md`: hero and inquiry stay Ink, the opening answer and ordinary reading stay Paper, systems stay Charcoal, investment stays Stone, and the sticky rail stays Forest. The signature study is the only Forest-to-Ink passage, and it carries that hub’s spatial word (`CONTROL`, `LIGHTING`, `SHADES`, `MEDIA`, `CINEMA`, `SECURITY`, `NETWORK`, `OUTDOOR`) with the existing `.architectural-background-title` treatment. The parent chapter is not repainted Forest. The study plate is.
+
+Body photographs come from `src/data/hubs/catalog.json` only when `src/data/images.json` has the file and the slot is a selected illustration. Hero slot 01 stays the opening photograph. Missing, withheld, and not-yet-substituted assets are not painted into the body. Studies reuse `HubStudies.astro`, including the shading specimen plates. A section without a matching photograph or study stays editorial type on its own frame. Do not put `--spacing-section` back on every `hub-section`.
+
+The site header is `SiteNav`, from `src/config/navigation.ts`. Home Solutions items are `services` in the order above. Chapter links stay in the rail. The footer service list is `ServiceLinks`, from the same array.
+
+## Visual repair — 3 October 2026
+
+The source index above remains the shell contract. The rendering details below supersede the earlier frame descriptions where they differ:
+
+- `HubPage.astro` keeps the one sticky frame and Git section order. The opening uses its existing photograph across the entire right-column field, with a contrast scrim and a wider headline measure. Answer and moments use opposing text columns; the room image bleeds across the field.
+- `SectionBody.astro` and `src/lib/hub-presentation.mjs` present the existing Git HTML without rewriting its content. A section's primary comparison uses named editorial rows. Additional comparison matrices and long technical explanations are native details disclosures. Their entire contents and links remain in the built HTML. FAQ questions become individually operable disclosures. Installation, pitfalls and handoff use distinct step/list compositions.
+- Section padding follows the composition, rather than reusing the text-gap token for every outside edge. Investment and detail use Stone; the remaining editorial passages remain Paper.
+- A section with only internal project instructions has a hidden reserved anchor, no visible empty heading, and no chapter-menu item. Its source remains in Git for later verified project content.
+- Home Intelligence's study uses the selected wall touchscreen once. The two remotes appear once in the product rail. Lighting uses its installed interface once in the signature study, rather than repeating the opening and room photographs.
+- Shading restores existing solar-fabric and bedroom photographs to sections 03 and 07, plus the manufacturer fascia detail in section 09. The previous `available-not-substituted` state is not used to hide those restored selections. This does not add them as DAVG project proof.
+- Figure captions use the asset title and a short manufacturer/conceptual attribution. Original review notes and rights status remain in the catalog, not visitor copy. The existing publication policy still applies.
+- Global fonts, logo files, routes, copy source and hosting project are unchanged. The old mockups remain exploratory references; this repair does not declare their signature studies accepted.

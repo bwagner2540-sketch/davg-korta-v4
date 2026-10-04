@@ -1,0 +1,62 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Chapter from './Chapter.astro';
+import './service-page.css';
+type Props = { service: CollectionEntry<'services'>['data'] };
+const { service: s } = Astro.props;
+const canonical = Astro.site ? new URL(s.seo.canonicalPath, Astro.site).href : undefined;
+const chapters = new Map(s.chapters.map(c => [c.id, c]));
+// Merge this structure with the existing site chrome and original brand artwork.
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{s.seo.title}</title><meta name="description" content={s.seo.description} />
+  {canonical && <link rel="canonical" href={canonical} />}
+</head>
+<body>
+<a href="#main">Skip to content</a>
+<main id="main" class="service-page" data-service={s.slug}>
+  <header class="service-full service-hero">
+    {s.spatialWords.opening && <span class="service-spatial" aria-hidden="true">{s.spatialWords.opening}</span>}
+    <div class="service-measure"><p>{s.name}</p><h1>{s.hero.heading}</h1><p>{s.hero.deck}</p><a href={s.hero.ctaHref}>{s.hero.ctaLabel}</a></div>
+    <!-- Insert the approved architectural hero via the existing media component. -->
+  </header>
+  <section class="service-full service-paper" aria-labelledby="opening-question">
+    <div class="service-measure"><h2 id="opening-question">{s.openingQA.question}</h2>{s.openingQA.answer.map(p => <p>{p}</p>)}</div>
+  </section>
+  <div class="service-middle">
+    <aside class="service-rail"><nav aria-label={`${s.name} chapters`}>
+      <p class="service-rail-name">{s.name}</p>
+      <ol>{s.navigation.map(n => <li><a href={n.href}>{n.label}</a></li>)}</ol>
+    </nav></aside>
+    <div class="service-reading-field">
+      {s.groups.map(g => <section class="service-group" id={g.id} aria-labelledby={`${g.id}-title`}>
+        <h2 id={`${g.id}-title`}>{g.label}</h2>
+        {g.chapterIds.map(id => { const c = chapters.get(id); return c && <Chapter chapter={c} />; })}
+        {g.id === 'design' && <section class="service-study" aria-label={`${s.name} architectural system study`}>
+          {s.signatureStudy.src && s.signatureStudy.status === 'approved' ? <img src={s.signatureStudy.src} alt={s.signatureStudy.alt ?? ''} loading="lazy" /> : <div class="service-study-slot" aria-hidden="true"></div>}
+          {s.signatureStudy.spatialWord && <span class="service-spatial" aria-hidden="true">{s.signatureStudy.spatialWord}</span>}
+          <!-- Add approved artwork, live mechanism text/callouts and a verified ledger.
+               JSON study descriptions are internal direction and are not public copy. -->
+        </section>}
+        {g.id === 'installation' && <div class="service-project-paths">
+          {s.projectPaths.map(p => <article><h3>{p.title}</h3><p>{p.body}</p></article>)}
+          <article><h3>Buying or preparing to sell an existing home</h3><p>Review equipment, account ownership and documentation before assuming a system transfers intact. Prepare an inventory and clear handover; upgrades do not come with a resale-value promise.</p></article>
+        </div>}
+        {g.id === 'investment' && <div class="service-scopes">{s.scopeOptions.map(o => <article><h3>{o.label}</h3><p>{o.scope}</p><p>{o.dependencies}</p></article>)}</div>}
+      </section>)}
+    </div>
+  </div>
+  <section class="service-full service-paper" id="questions" aria-labelledby="questions-title">
+    <div class="service-measure"><h2 id="questions-title">Questions</h2>{s.faqs.map(f => <details><summary>{f.question}</summary><p>{f.answer}</p></details>)}</div>
+  </section>
+  <section class="service-full service-inquiry" id="project-inquiry">
+    <div class="service-measure"><h2>{s.inquiry.heading}</h2><p>{s.inquiry.body}</p>
+      <!-- Insert the existing working inquiry component; preserve selected service/path. -->
+    </div>
+  </section>
+</main>
+</body>
+</html>

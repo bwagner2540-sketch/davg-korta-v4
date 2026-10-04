@@ -1,0 +1,50 @@
+---
+import MediaPlaceholder from '../MediaPlaceholder.astro';
+interface Side {
+  eyebrow: string;
+  title: string;
+  body: string;
+  image: string;
+  alt: string;
+  facts?: { value: string; label: string }[];
+}
+interface Props {
+  kicker: string;
+  heading: string;
+  emphasis?: string;
+  left: Side;
+  right: Side;
+  studySlot?: string;
+}
+const { kicker, heading, emphasis, left, right, studySlot } = Astro.props;
+---
+<section class="compare-split" data-surface-role="editorial" data-study-slot={studySlot} data-study-built={studySlot ? 'true' : undefined} id={studySlot}>
+  <p class="section-kicker">{kicker}</p>
+  <h2>{heading}{emphasis ? ` ${emphasis}` : ''}</h2>
+  <div class="compare-grid">
+    <article>
+      <p>{left.eyebrow}</p>
+      <MediaPlaceholder id="compare-left" subject={left.title} ratio="16 / 10" src={left.image} alt={left.alt} />
+      <h3>{left.title}</h3>
+      <p>{left.body}</p>
+    </article>
+    <article class="is-recommended">
+      <p>{right.eyebrow}</p>
+      <MediaPlaceholder id="compare-right" subject={right.title} ratio="16 / 10" src={right.image} alt={right.alt} />
+      <h3>{right.title}</h3>
+      <p>{right.body}</p>
+    </article>
+  </div>
+</section>
+<style>
+.compare-split { background: var(--color-surface-paper); color: var(--color-text-on-paper); padding: var(--spacing-section) var(--spacing-page-inline); }
+.compare-split h2 { max-width: 18ch; font-size: var(--text-h2); font-weight: 400; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-8); margin-top: var(--spacing-12); }
+.compare-split article { display: grid; gap: var(--spacing-4); align-content: start; }
+.compare-split article > p { margin: 0; max-width: 42ch; line-height: var(--text-body--line-height); }
+.compare-split article > p:first-child { font-family: var(--font-body); font-size: var(--text-label); font-weight: 500; letter-spacing: var(--text-label--letter-spacing); text-transform: uppercase; color: var(--surface-muted, var(--color-text-muted-paper)); }
+.is-recommended > p:first-child { color: var(--color-accent-signal); }
+.compare-split h3 { font-size: var(--text-h3); font-weight: 400; max-width: 28ch; }
+.compare-split :global(.media-slot) { border: 0; }
+@media (max-width: 800px) { .compare-grid { grid-template-columns: 1fr; } }
+</style>

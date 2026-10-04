@@ -1,60 +1,67 @@
-# DAVG V4 — Start building in Cursor
+# DAVG V4 — Current source index
 
-29 September 2026. This is the active build pack. It replaces the earlier pre-build, Claude reconciliation and fixed motion directives. The Relume chat is excluded.
+Revision: 3 October 2026. This is the map of what the checkout renders. Historical packs are in `archive/davg-history/` and are not instructions.
 
-## Cursor already building?
+Work in `bwagner2540-sketch/davg-korta-v4` on the branch already open. Read this index, `11-SYNC-CONTRACT.md`, and `BUILD-STATE.md`. Local review is `npm run dev` at http://127.0.0.1:4321/. `npm run build:sandbox` writes `dist-sandbox/`. `npm run build` is the public-release build and stops while `src/config/publication.json` `approvedPages` is empty.
 
-Keep working in the existing local Cursor project. Read `06-CURSOR-LOCAL-WORKFLOW.md` first. Add this pack only as reference files at `docs/v4-build/`; do not replace working website code or restart the build.
+## Shared shell, CSS, and layout primitives
 
-## Your first hour
-
-1. Copy this folder into the existing Cursor project as `docs/v4-build/`. Keep your local code and assets.
-2. Open `prompts/01-FIRST-HOUR.md` and paste its prompt into Cursor Agent. Attach the supplied layout screenshots and `07-motorized-shades-green.jpeg`.
-3. Build the 25% sticky left / 75% scrolling right shell and the first five Motorized Shading sections with the actual copy and blank media rectangles.
-4. Open the preview. Check desktop proportions, mobile order and text. Save this small win. The rest of the page can follow in the next batch.
-
-The hour is a work target, not a promise to deploy the whole site. If the shell takes longer, finish it and the hero before adding another task.
-
-## What stays fixed
-
-DAVG's voice, the Korta visual direction, its logo treatment, the eight service names, the requested 25/75 service-page shell, and each service's detailed educational content. Read `01-DESIGN-SYSTEM.md` once. Then use only the hub you are building.
-
-## What can wait
-
-Photo sourcing, finished cutaways, advanced interaction, final background-word selection, named bylines, future city/spoke/resource pages, CMS, and old component-library paperwork. A blank image slot is enough to build and review a section. No Claude approval, component reconciliation, research dossier, or architectural-technician wording is required to start or finish a page layout.
-
-## Finish pages in small wins
-
-Recommended order: Motorized Shading → Architectural Lighting → Media & Audio → Home Intelligence → Private Cinemas → Digital Infrastructure & Privacy → Security Cameras & Access Control → Outdoor Entertainment. This order reuses the Lutron selection components first. It is a practical recommendation, not a requirement.
-
-For each service: build 01–05, then 06–10, then 11–15; do a mobile pass; save. The IDs locate content. They do not require fifteen full-height screens. Section 06 can contain several scrollable selection modules without becoming five new pages.
-
-The spreadsheet has one service tab at a time. Mark Content and Layout separately. Leave Media pending until the section is ready for imagery.
-
-## Open only these files
-
-| Job | File |
+| Piece | Path |
 |---|---|
-| Visual decisions | `01-DESIGN-SYSTEM.md` |
-| Service shell and section anatomy | `02-SERVICE-LAYOUT.md` |
-| Build order and remaining pages | `03-PAGES-AND-BUILD-ORDER.md` |
-| Paste-ready Cursor tasks | `prompts/` |
-| Copy, topics and exact section order | The selected file in `hubs/` |
-| Decisions recovered, actual gaps, archive history | `04-RECONCILIATION.md` |
-| Brand and contact configuration | `05-BUSINESS-FACTS.md` |
+| Service frame: ink chapter rail and main column | `src/components/ServicePageShell.astro` |
+| Masthead | `src/components/korta/TopNav.astro` |
+| Chapter frame | `src/components/korta/Chapter.astro` and `src/styles/motion.css` |
+| Global CSS, fonts, type scale, gutters, `.folio` | `src/styles/global.css` |
+| Document shell for hub and interior pages | `src/layouts/Layout.astro` |
+| Footer service list | `src/components/ServiceLinks.astro` |
+| Homepage composition | `src/pages/index.astro` (uses `.folio`) |
+| Ordered service list | `src/config/site.ts` |
 
-## Confirmed project and local workflow
+Live gutter is `--page-gutter`: 1.5rem below 768px, 3rem from 768px, 4rem from 1280px. `--spacing-page-inline` is an alias of `--page-gutter`. It is not a clamp. Spacing tokens are a scale. Hub chapters do not share one section padding; the frame for each role is in `02-SERVICE-LAYOUT.md`. Headings use `--text-h1`, `--text-h2`, and `--text-h3`.
 
-Brandon confirmed that `bwagner2540-sketch/davg-korta-v4` is the deployment repository. Cursor edits the local project already open on his computer. GitHub receives committed code for deployment; Dropbox supplies the current reference pack. Motorized Shading on localhost is the design/layout test page before creating the other pages.
+Fonts in `src/styles/global.css`: Schibsted Grotesk (headings, installed 400–900), Instrument Sans (body and UI), JetBrains Mono (technical metadata). Do not install a 300-weight Schibsted file or IBM Plex Mono.
 
-Preserve Cursor's current files and unpublished experiments. Do not change projects, reset work, fetch another implementation, or treat the earlier `davg-ai` typography PR as a prerequisite. Read the local `docs/v4-build/` files for brand, layout, exact section order and copy. A separate agent checkout is not the running Cursor project.
+The service rail is ink, `minmax(240px, 18%)`, and lists this page's chapters. Logos stay the files in `public/brand/`.
 
-## Build complete versus public release
+## Eight hubs
 
-A page layout is complete when its real text, tables, section order, blank image dimensions, links and mobile behavior work. Missing images do not stop that milestone. Before a public release, replace or hide empty proof modules, test the form end-to-end, and remove unresolved factual claims from public copy. Test the existing project's normal production build. A working preview can be deployed earlier with indexing disabled.
+Each hub uses the same shell. The copy and section order are that hub’s own markdown file. `/systems/<slug>/` renders the same page as `/solutions/<slug>/`. Architectural Lighting is the current review composition in `LightingField.astro`. The other seven hubs share `Chapter.astro`.
 
-## New: cleaned GBB comparisons
+| Hub | Public route | Rendered copy | Layout owner |
+|---|---|---|---|
+| Home Intelligence | `/solutions/home-intelligence/` | `docs/v4-build/hubs/DAVG-V4-Hub-01-Home-Intelligence.md` | `HubPage.astro` inside `ServicePageShell.astro`. Section surfaces, studies, and catalog photographs come from `src/lib/hub-composition.mjs`. |
+| Architectural Lighting | `/solutions/architectural-lighting/` | `docs/v4-build/hubs/DAVG-V4-Hub-02-Architectural-Lighting.md` | `HubPage.astro` mounts `LightingField.astro` for this slug only. The other hubs stay on `Chapter.astro`. |
+| Motorized Shading | `/solutions/motorized-shades/` | `docs/v4-build/hubs/DAVG-V4-Hub-03-Motorized-Shading.md` | `HubPage.astro` inside `ServicePageShell.astro` |
+| Media & Audio | `/solutions/media-audio/` | `docs/v4-build/hubs/DAVG-V4-Hub-04-Media-and-Audio.md` | `HubPage.astro` inside `ServicePageShell.astro` |
+| Private Cinemas | `/solutions/private-cinemas/` | `docs/v4-build/hubs/DAVG-V4-Hub-05-Private-Cinemas.md` | `HubPage.astro` inside `ServicePageShell.astro` |
+| Security & Access | `/solutions/security-access/` | `docs/v4-build/hubs/DAVG-V4-Hub-06-Security-and-Access.md` | `HubPage.astro` inside `ServicePageShell.astro` |
+| Infrastructure & Privacy | `/solutions/infrastructure-privacy/` | `docs/v4-build/hubs/DAVG-V4-Hub-07-Infrastructure-and-Privacy.md` | `HubPage.astro` inside `ServicePageShell.astro` |
+| Outdoor Entertainment | `/solutions/outdoor-entertainment/` | `docs/v4-build/hubs/DAVG-V4-Hub-08-Outdoor-Entertainment.md` | `HubPage.astro` inside `ServicePageShell.astro` |
 
-Read `07-GBB-SECTION-MAP.md` for the content adapted from Claude GBB Refined 6.7.pdf. Section-ready copy and JSON are in `content-additions/gbb/`. Use them to refine the existing service chapters, beginning with the current Motorized Shading test page. No new product pages or process gates are required.
+Routes are generated by `src/pages/solutions/[slug].astro` and `src/pages/systems/[slug].astro`. The loader is `src/lib/git-hubs.mjs`. It reads only `docs/v4-build/hubs/DAVG-V4-Hub-*.md`.
 
+`src/components/services/ServicePage.astro` and `ServiceDraft.astro` are not mounted by those routes. `src/components/services/hubs/studies/HubStudies.astro` is mounted by `HubPage.astro`. `SectionBody.astro` composes parsed Git copy into primary comparisons, optional technical detail, process steps and FAQ disclosures. `src/content/services/motorized-shades.json` is loaded by `src/content.config.ts` and is not public copy.
 
+## Design system, facts, build state, deployment
+
+| Topic | Path | Status |
+|---|---|---|
+| Design system | `docs/v4-build/01-DESIGN-SYSTEM.md` with `src/styles/global.css` | Implemented tokens. See that file for type and gutter. |
+| Service frame | `docs/v4-build/02-SERVICE-LAYOUT.md` | Implemented by `ServicePageShell.astro` and `HubPage.astro`. |
+| Surface roles | `docs/v4-build/13-SURFACE-COLOR-SYSTEM.md` | Implemented by the hub composition map: Ink opening/inquiry, Paper editorial, Charcoal systems, Stone technical/investment, Forest signature study and rail. |
+| Business facts | `docs/v4-build/05-BUSINESS-FACTS.md` | Phone, proof, and form destination are unresolved. |
+| Build state | `docs/v4-build/BUILD-STATE.md` | What was checked, and what is still open. |
+| Sync contract | `docs/v4-build/11-SYNC-CONTRACT.md` | Source order. |
+| Local workflow | `docs/v4-build/06-CURSOR-LOCAL-WORKFLOW.md` | How to change, check, and preview. |
+| Component inventory | `docs/v4-build/12-COMPONENT-LIBRARY.md` | File map. Routed hubs use `HubPage.astro`. |
+| Publication allowlist | `src/config/publication.json` | `approvedPages` is empty. Production build stops. |
+| Site Worker | `wrangler.toml` | Name `davg-korta-v4`, assets `./dist`, build command `node scripts/worker-build.mjs` (which enforces the production assertion for production deploys). |
+| Astro config | `astro.config.mjs` | Static output. Sandbox writes `dist-sandbox/`. |
+| Inquiry Worker | `worker/wrangler.toml` and `worker/inquiry.mjs` | Separate Worker. Not the site host. Not connected. |
+| Live preview record | `docs/live-previews.md` | The URL that should be reviewed. |
+
+`docs/v4-build/10-ASTRO-ARCHITECTURE-AND-PREBUILD-AUDIT.md` records a proposed collections and MDX migration. That migration is not authorized. `docs/v4-build/03-PAGES-AND-BUILD-ORDER.md`, `04-RECONCILIATION.md`, `07-GBB-SECTION-MAP.md`, `08-SHADING-PAGE-EDITORIAL-REDESIGN.md`, and `09-SHADING-STORY-SYSTEMS-AND-PROJECT-PATHS.md` are status notes. They do not replace the hub files.
+
+`docs/v4-build/references/` holds visual reference images. They do not set copy, type size, or gutters. `docs/v4-build/DAVG-V4-Start-Building.pdf` and `docs/v4-build/DAVG-V4-Build-Checklist.xlsx` are handoff artifacts, not this index.
+
+Preview deploys of this working branch are allowed. Production `davg.ai` stays on its current target until the owner approves a release. One writer per checkout.

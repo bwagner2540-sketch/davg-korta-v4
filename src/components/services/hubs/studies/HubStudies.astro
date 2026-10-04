@@ -1,0 +1,312 @@
+---
+import SignatureFolio from './SignatureFolio.astro';
+import NeutralStudy from './NeutralStudy.astro';
+import HubFigure from '../HubFigure.astro';
+
+interface Photo { id: string; src?: string | null; alt?: string; title?: string; caption?: string; fit?: 'cover' | 'contain'; status: string; purpose: string; reason?: string; }
+interface Props { slug: string; photos: Record<string, Photo | undefined>; part: 'signature' | 'technical'; word?: string; }
+const { slug, photos, part, word = '' } = Astro.props;
+const placed = (photo?: Photo): photo is Photo & { src: string; alt: string; title: string; caption: string } => Boolean(photo?.src && photo.alt && photo.title && photo.caption);
+---
+{slug === 'architectural-lighting' && part === 'signature' && (
+    <SignatureFolio slotId="architectural-lighting-04" kicker="Architectural lighting / comparison" heading="Lighting layers. One considered interface." lede="Room scenes bring the lighting layers together. Keypad placement and the actions it exposes belong in the architectural plan." word={word}>
+      <div class="interface-study">
+        {placed(photos['02']) && <HubFigure photo={photos['02']} placement="stage" sizes="(min-width: 1024px) 45vw, 100vw" />}
+      </div>
+    </SignatureFolio>
+)}
+{slug === 'architectural-lighting' && part === 'technical' && (
+    <NeutralStudy slotId="architectural-lighting-05" kicker="Compatibility" heading="Fixture, driver, dimmer, control." lede="A dimmable label is not a test. The chain has to work together at the low end you actually use.">
+      <svg viewBox="0 0 880 210" role="img" aria-labelledby="al-chain-title al-chain-desc">
+        <title id="al-chain-title">Conceptual lighting compatibility chain</title>
+        <desc id="al-chain-desc">Four linked stages: fixture, driver, dimmer and control. No electrical values are shown.</desc>
+        <g fill="none" stroke="#183B31" stroke-width="2">
+          <rect x="24" y="48" width="170" height="88" />
+          <rect x="244" y="48" width="170" height="88" />
+          <rect x="464" y="48" width="170" height="88" />
+          <rect x="684" y="48" width="170" height="88" />
+          <path d="M194 92H244M414 92H464M634 92H684" />
+        </g>
+        <g fill="#183B31" font-family="JetBrains Mono, ui-monospace, monospace" font-size="13">
+          <text x="40" y="36">01</text><text x="260" y="36">02</text><text x="480" y="36">03</text><text x="700" y="36">04</text>
+        </g>
+        <g fill="#090B0A" font-family="Schibsted Grotesk Variable, sans-serif" font-size="22">
+          <text x="40" y="100">Fixture</text>
+          <text x="260" y="100">Driver</text>
+          <text x="480" y="100">Dimmer</text>
+          <text x="700" y="100">Control</text>
+        </g>
+      </svg>
+    </NeutralStudy>
+)}
+
+{slug === 'home-intelligence' && part === 'signature' && (
+    <SignatureFolio slotId="home-intelligence-04" kicker="Home intelligence / device study" heading="One operating layer. The architecture stays quiet." lede="Lighting, shades, climate and access are planned together. Shared interfaces make those decisions available to the household." word={word}>
+      <div class="interface-study">
+        {placed(photos.touchscreen) && <HubFigure photo={photos.touchscreen} placement="stage" sizes="(min-width: 1024px) 45vw, 100vw" />}
+      </div>
+    </SignatureFolio>
+)}
+{slug === 'home-intelligence' && part === 'technical' && (
+    <NeutralStudy slotId="home-intelligence-05" kicker="Command path" heading="Interface, controller, driver, network." lede="A conceptual path for one command. It is not a trace from a named house, and it does not state a response time.">
+      <svg viewBox="0 0 880 210" role="img" aria-labelledby="hi-chain-title hi-chain-desc">
+        <title id="hi-chain-title">Conceptual command path</title>
+        <desc id="hi-chain-desc">Interface to controller, then driver, then network. No timing or coverage figures.</desc>
+        <g fill="none" stroke="#183B31" stroke-width="2">
+          <rect x="24" y="48" width="170" height="88" /><rect x="244" y="48" width="170" height="88" /><rect x="464" y="48" width="170" height="88" /><rect x="684" y="48" width="170" height="88" />
+          <path d="M194 92H244M414 92H464M634 92H684" />
+        </g>
+        <g fill="#090B0A" font-family="Schibsted Grotesk Variable, sans-serif" font-size="22">
+          <text x="40" y="100">Interface</text><text x="260" y="100">Controller</text><text x="480" y="100">Driver</text><text x="700" y="100">Network</text>
+        </g>
+      </svg>
+    </NeutralStudy>
+)}
+
+{slug === 'media-audio' && part === 'signature' && (
+    <SignatureFolio slotId="media-audio-04" kicker="Media and audio / speaker study" heading="Sound within the architecture." lede="Conceptual invisible-speaker section: finish, radiator and enclosure are coordinated as one assembly." word={word}>
+      <svg viewBox="0 0 760 420" role="img" aria-labelledby="ma-cut-title ma-cut-desc">
+        <title id="ma-cut-title">Conceptual invisible speaker section</title>
+        <desc id="ma-cut-desc">Finish layer, radiator and enclosure in section. No dimensions, decibels or frequency range.</desc>
+        <g fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M40 80H520V300H40Z" />
+          <path d="M40 80H520" stroke-width="8" />
+          <rect x="110" y="120" width="280" height="140" />
+          <ellipse cx="250" cy="190" rx="70" ry="48" />
+          <path d="M180 190H320" />
+        </g>
+        <g fill="#1A8F6E">
+          <circle cx="520" cy="80" r="5" /><circle cx="250" cy="120" r="5" /><circle cx="390" cy="190" r="5" />
+        </g>
+        <g fill="currentColor" font-family="Instrument Sans Variable, sans-serif" font-size="16">
+          <text x="536" y="76">Finish layer</text>
+          <text x="536" y="126">Enclosure</text>
+          <text x="410" y="194">Radiator</text>
+        </g>
+      </svg>
+    </SignatureFolio>
+)}
+{slug === 'media-audio' && part === 'technical' && (
+    <NeutralStudy slotId="media-audio-05" kicker="Sound map" heading="Rooms share a source. The zone count is still a decision." lede="A neutral map of uses, not a claim about how many zones this house has.">
+      <svg viewBox="0 0 880 280" role="img" aria-labelledby="ma-map-title ma-map-desc">
+        <title id="ma-map-title">Conceptual multi-room sound map</title>
+        <desc id="ma-map-desc">Living, kitchen, bedroom and terrace connected to one equipment location. No zone count.</desc>
+        <g fill="none" stroke="#183B31" stroke-width="2">
+          <rect x="40" y="36" width="180" height="72" /><rect x="250" y="36" width="180" height="72" /><rect x="40" y="150" width="180" height="72" /><rect x="250" y="150" width="180" height="72" />
+          <rect x="560" y="90" width="250" height="90" />
+          <path d="M220 72H250M430 72H560M220 186H250M430 186H490V135H560" />
+        </g>
+        <g fill="#090B0A" font-family="Schibsted Grotesk Variable, sans-serif" font-size="20">
+          <text x="56" y="80">Living</text><text x="266" y="80">Kitchen</text><text x="56" y="194">Bedroom</text><text x="266" y="194">Terrace</text><text x="580" y="142">Equipment</text>
+        </g>
+      </svg>
+    </NeutralStudy>
+)}
+
+{slug === 'private-cinemas' && part === 'signature' && (
+    <SignatureFolio slotId="private-cinemas-04" kicker="Private cinema / sightline" heading="One room, seen in section." lede="Conceptual sightline study. Screen position, seating and the enclosure are considered together." word={word}>
+      <svg viewBox="0 0 760 360" role="img" aria-labelledby="pc-sight-title pc-sight-desc">
+        <title id="pc-sight-title">Conceptual cinema sightline</title>
+        <desc id="pc-sight-desc">Screen, seating row and rear of the room. No throw distance or seat count.</desc>
+        <g fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M48 40H700V300H48Z" />
+          <path d="M90 70V250" stroke-width="6" />
+          <path d="M210 210H360V250H210Z" /><path d="M400 190H560V250H400Z" />
+          <path d="M180 78H520" stroke-dasharray="6 6" />
+        </g>
+        <g fill="#1A8F6E"><circle cx="90" cy="160" r="5" /><circle cx="280" cy="210" r="5" /><circle cx="480" cy="190" r="5" /></g>
+        <g fill="currentColor" font-family="Instrument Sans Variable, sans-serif" font-size="16">
+          <text x="108" y="164">Screen</text><text x="230" y="200">Front row</text><text x="490" y="180">Rear row</text>
+        </g>
+      </svg>
+    </SignatureFolio>
+)}
+{slug === 'private-cinemas' && part === 'technical' && (
+    <NeutralStudy slotId="private-cinemas-05" kicker="Room section" heading="Wall, sound treatment, air path." lede="A neutral section. Isolation, treatment and airflow are separate decisions. No STC rating or noise figure is shown.">
+      <svg viewBox="0 0 880 240" role="img" aria-labelledby="pc-wall-title pc-wall-desc">
+        <title id="pc-wall-title">Conceptual cinema wall section</title>
+        <desc id="pc-wall-desc">Finish, acoustic layer and an air path. No performance numbers.</desc>
+        <g fill="none" stroke="#183B31" stroke-width="2">
+          <rect x="40" y="40" width="120" height="160" /><rect x="180" y="40" width="160" height="160" /><rect x="360" y="40" width="160" height="160" />
+          <path d="M560 60H820V180H560Z" /><path d="M600 100H780" stroke-dasharray="7 5" />
+        </g>
+        <g fill="#090B0A" font-family="Schibsted Grotesk Variable, sans-serif" font-size="18">
+          <text x="56" y="130">Finish</text><text x="196" y="130">Treatment</text><text x="390" y="130">Structure</text><text x="580" y="92">Air path</text>
+        </g>
+      </svg>
+    </NeutralStudy>
+)}
+
+{slug === 'infrastructure-privacy' && part === 'signature' && (
+    <SignatureFolio slotId="infrastructure-privacy-04" kicker="Infrastructure / core" heading="Equipment stays in one service core." lede="Conceptual cutaway. Living rooms stay clear of racks, with equipment and service routes coordinated in a separate core." word={word}>
+      <svg viewBox="0 0 760 420" role="img" aria-labelledby="ip-core-title ip-core-desc">
+        <title id="ip-core-title">Conceptual house and service core</title>
+        <desc id="ip-core-desc">Living level and a separate utility core. Routes are unlabeled.</desc>
+        <g fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M40 80H470V250H40Z" /><path d="M40 250H470V360H40Z" />
+          <rect x="500" y="180" width="200" height="180" />
+          <path d="M250 160V250M250 250V320" stroke="#1A8F6E" />
+        </g>
+        <g fill="#1A8F6E"><circle cx="250" cy="160" r="5" /><circle cx="560" cy="220" r="5" /></g>
+        <g fill="currentColor" font-family="Instrument Sans Variable, sans-serif" font-size="16">
+          <text x="56" y="140">Living level</text><text x="56" y="300">Entry</text><text x="520" y="210">Service core</text>
+        </g>
+      </svg>
+    </SignatureFolio>
+)}
+{slug === 'infrastructure-privacy' && part === 'technical' && (
+    <NeutralStudy slotId="infrastructure-privacy-05" kicker="Boundaries" heading="Coverage, backhaul, guest edge." lede="Three decisions drawn as regions. This is not a measured heatmap and not a client floor plan.">
+      <svg viewBox="0 0 880 220" role="img" aria-labelledby="ip-bound-title ip-bound-desc">
+        <title id="ip-bound-title">Conceptual network boundaries</title>
+        <desc id="ip-bound-desc">Radio coverage, backhaul and a guest boundary. No speeds.</desc>
+        <g fill="none" stroke="#183B31" stroke-width="2">
+          <rect x="30" y="40" width="250" height="140" /><rect x="310" y="40" width="250" height="140" /><rect x="590" y="40" width="250" height="140" stroke-dasharray="7 5" />
+        </g>
+        <g fill="#090B0A" font-family="Schibsted Grotesk Variable, sans-serif" font-size="22">
+          <text x="48" y="120">Coverage</text><text x="328" y="120">Backhaul</text><text x="608" y="120">Guest edge</text>
+        </g>
+      </svg>
+    </NeutralStudy>
+)}
+
+{slug === 'security-access' && part === 'signature' && (
+    <SignatureFolio slotId="security-access-04" kicker="Security / plan" heading="A fictitious perimeter, with rooms left out." lede="Annotated plan for explanation. Not a client property. Cameras watch the approach. Bedroom windows and the neighbor’s yard stay outside the recording purpose." word={word}>
+      <svg viewBox="0 0 760 420" role="img" aria-labelledby="sa-plan-title sa-plan-desc">
+        <title id="sa-plan-title">Fictitious security plan</title>
+        <desc id="sa-plan-desc">House, approach, two camera marks, and privacy exclusions for bedrooms and the neighbor.</desc>
+        <g fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="180" y="90" width="360" height="220" />
+          <path d="M180 200H80V300" /><rect x="560" y="40" width="160" height="120" stroke-dasharray="6 6" />
+          <rect x="220" y="110" width="120" height="70" stroke-dasharray="6 6" />
+        </g>
+        <g fill="#1A8F6E"><circle cx="180" cy="200" r="6" /><circle cx="420" cy="310" r="6" /></g>
+        <g fill="currentColor" font-family="Instrument Sans Variable, sans-serif" font-size="16">
+          <text x="200" y="80">Fictitious house</text>
+          <text x="200" y="150">Bedrooms excluded</text>
+          <text x="570" y="80">Neighbor excluded</text>
+          <text x="90" y="190">Approach</text>
+        </g>
+      </svg>
+    </SignatureFolio>
+)}
+{slug === 'security-access' && part === 'technical' && (
+    <NeutralStudy slotId="security-access-05" kicker="Entry event" heading="Door, decision, recording." lede="Conceptual entry sequence. The event, access decision and recording purpose are separate parts of the brief.">
+      <svg viewBox="0 0 880 200" role="img" aria-labelledby="sa-seq-title sa-seq-desc">
+        <title id="sa-seq-title">Conceptual entry sequence</title>
+        <desc id="sa-seq-desc">An entry event, an access decision, then recording. No product models.</desc>
+        <g fill="none" stroke="#183B31" stroke-width="2">
+          <rect x="30" y="50" width="220" height="90" /><rect x="320" y="50" width="220" height="90" /><rect x="610" y="50" width="220" height="90" />
+          <path d="M250 95H320M540 95H610" />
+        </g>
+        <g fill="#090B0A" font-family="Schibsted Grotesk Variable, sans-serif" font-size="22">
+          <text x="50" y="104">Entry event</text><text x="340" y="104">Decision</text><text x="630" y="104">Recording</text>
+        </g>
+      </svg>
+    </NeutralStudy>
+)}
+
+{slug === 'outdoor-entertainment' && part === 'signature' && (
+    <SignatureFolio slotId="outdoor-entertainment-04" kicker="Outdoor / zones" heading="Sound, exposure, and the neighbor’s edge." lede="Conceptual outdoor plan. Listening areas, exposure and the neighboring property shape the layout." word={word}>
+      <svg viewBox="0 0 760 400" role="img" aria-labelledby="oe-plan-title oe-plan-desc">
+        <title id="oe-plan-title">Conceptual outdoor zones</title>
+        <desc id="oe-plan-desc">Terrace, landscape bed, sun exposure and a neighbor boundary. No speaker count.</desc>
+        <g fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="60" y="70" width="300" height="180" />
+          <path d="M60 250H640V340H60Z" />
+          <path d="M500 40V250" stroke-dasharray="6 6" />
+          <circle cx="160" cy="300" r="16" /><circle cx="280" cy="300" r="16" />
+        </g>
+        <g fill="currentColor" font-family="Instrument Sans Variable, sans-serif" font-size="16">
+          <text x="76" y="120">Terrace</text>
+          <text x="76" y="240">Landscape</text>
+          <text x="510" y="80">Neighbor edge</text>
+          <text x="400" y="110">Afternoon exposure</text>
+        </g>
+      </svg>
+    </SignatureFolio>
+)}
+{slug === 'outdoor-entertainment' && part === 'technical' && (
+    <NeutralStudy slotId="outdoor-entertainment-05" kicker="Installation section" heading="Mount, conduit, drainage." lede="A neutral section for equipment that lives outside. No burial depth or weather rating is stated.">
+      <svg viewBox="0 0 880 240" role="img" aria-labelledby="oe-sec-title oe-sec-desc">
+        <title id="oe-sec-title">Conceptual outdoor installation section</title>
+        <desc id="oe-sec-desc">Mount, conduit and drainage. No dimensions.</desc>
+        <g fill="none" stroke="#183B31" stroke-width="2">
+          <path d="M40 80H840" /><rect x="120" y="40" width="80" height="40" /><path d="M160 80V160H420" /><path d="M520 120H760V180H520Z" />
+        </g>
+        <g fill="#090B0A" font-family="Schibsted Grotesk Variable, sans-serif" font-size="18">
+          <text x="120" y="32">Mount</text><text x="180" y="150">Conduit</text><text x="540" y="112">Drainage</text>
+        </g>
+      </svg>
+    </NeutralStudy>
+)}
+
+{slug === 'motorized-shades' && part === 'signature' && (
+    <SignatureFolio slotId="motorized-shades-04" kicker="Motorized shading / pocket" heading="The shade disappears, or the hardware stays visible." lede="Conceptual coordination study from the shading specimen. Pocket size, drive, hembar finish and solar logic come from the approved drawing for each opening. This plate is not a measured specification or a completed DAVG project." word={word}>
+      <div class="shade-study">
+        <HubFigure photo={{ id: 'shading-recessed-study', src: '/images/davg-recessed-shade-study-01.jpg', alt: 'Conceptual detail study of a recessed dual roller disappearing into a ceiling pocket. Callouts mark the paired fabrics, flush closure, concealed hembar and drive. The word RECESSED sits across the drawing. Illustration, not a shop drawing or a completed project.', title: 'Recessed dual-roller study', caption: 'Conceptual coordination study. Pocket size, drive, hembar finish and solar logic are set from the approved drawing for each opening. This plate is not a measured specification or a completed DAVG project.', fit: 'cover' }} ratio="16 / 9" sizes="(min-width: 1024px) 50vw, 100vw" />
+        <div class="pair">
+          <HubFigure photo={{ id: 'shading-mount-fascia', src: '/images/davg-triathlon-fascia-boucle-01-800w.webp', alt: 'White Triathlon fascia box mounted on shiplap above a light woven shade', title: 'Fascia', caption: 'Triathlon fascia above a woven shade. Product photograph. A fascia conceals the roller without a ceiling pocket.', fit: 'cover' }} ratio="16 / 10" sizes="(min-width: 1024px) 24vw, 100vw" />
+          <HubFigure photo={{ id: 'shading-mount-exposed', src: '/images/davg-palladiom-exposed-roller-bracket-01-800w.webp', alt: 'Palladiom exposed roller with a fabric-wrapped tube and rounded metal bracket above a night window', title: 'Exposed', caption: 'Palladiom exposed roller and bracket. Product photograph. Exposed hardware is a design choice, not a quality rank.', fit: 'cover' }} ratio="16 / 10" sizes="(min-width: 1024px) 24vw, 100vw" />
+        </div>
+      </div>
+    </SignatureFolio>
+)}
+{slug === 'motorized-shades' && part === 'technical' && (
+    <NeutralStudy slotId="motorized-shades-05" kicker="Fabric" heading="View-through and darkness are separate checks." lede="A solar fabric can keep a view while a room-darkening fabric closes the material. Night privacy and edge light are separate checks. These are product photographs, not a same-window before and after.">
+      <div class="pair">
+        <HubFigure photo={{ id: 'shading-compare-sheer', src: '/images/davg-living-room-sheer-roller-shades-sun-01-1600w.webp', alt: 'Floor-to-ceiling sheer roller shades on a living-room glass wall, with the sun still visible through the fabric', title: 'Keep the view', caption: 'Sheer roller shades with the sun still visible through the fabric. Product photograph. Night privacy is a separate check.', fit: 'cover' }} ratio="16 / 10" sizes="(min-width: 1024px) 28vw, 100vw" />
+        <HubFigure photo={{ id: 'shading-compare-closed', src: '/images/davg-triathlon-bedroom-shades-closed-01-800w.webp', alt: 'Bedroom with two white Triathlon shades fully closed across a wide window', title: 'Close the room', caption: 'Closed Triathlon shades. Product photograph. Light can still enter at the edges unless the mounting addresses those gaps.', fit: 'cover' }} ratio="16 / 10" sizes="(min-width: 1024px) 28vw, 100vw" />
+      </div>
+    </NeutralStudy>
+)}
+<style>
+.interface-study { height: 100%; }
+.interface-study :global(.hub-figure) { height: 100%; }
+.interface-study :global(.media-slot) { height: 100%; aspect-ratio: auto; min-height: 30rem; }
+.interface-study :global(figcaption) { position: absolute; bottom: 1rem; left: 1rem; padding: .65rem; background: rgb(9 11 10 / 72%); color: var(--color-text-primary-dark); }
+.interface-study :global(figcaption strong) { color: inherit; }
+.shade-study { display: grid; gap: 0.35rem; height: 100%; align-content: stretch; }
+.shade-study :global(.hub-figure:first-child .media-slot) { aspect-ratio: 16 / 10; min-height: 18rem; }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0.35rem; height: 100%; align-items: stretch; }
+.pair :global(.hub-figure) { position: relative; height: 100%; }
+.pair :global(.media-slot) { aspect-ratio: auto; height: 100%; min-height: 26rem; }
+.pair :global(figcaption) {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  max-width: none;
+  padding: 2.4rem 1rem 0.9rem;
+  background: linear-gradient(transparent, rgb(9 11 10 / 78%));
+  color: var(--color-text-secondary-dark);
+}
+.pair :global(figcaption strong) { color: var(--color-text-primary-dark); }
+.device-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  align-items: end;
+  height: 100%;
+  min-height: 32rem;
+  padding: 2.5rem 1.25rem 5.5rem;
+  gap: 0.5rem 1.25rem;
+}
+.device-row :global(.media-slot) { aspect-ratio: 3 / 4; max-height: 30rem; background: transparent; }
+.device-row :global(figcaption) { color: var(--color-text-secondary-dark); }
+.device-row :global(figcaption strong) { color: var(--color-text-primary-dark); }
+.folio-points {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 0.25rem 0 0;
+  display: grid;
+  gap: 0.75rem;
+  color: var(--color-text-secondary-dark);
+  line-height: 1.45;
+  list-style: none;
+}
+.folio-points li { padding-top: 0.65rem; border-top: 1px solid var(--color-border-dark); }
+@media (max-width: 800px) {
+  .pair, .device-row { grid-template-columns: 1fr; min-height: 0; padding: 1rem 0 2rem; }
+  .device-row :global(.hub-figure:first-child) { grid-row: auto; }
+  .pair :global(.media-slot) { min-height: 14rem; aspect-ratio: 4 / 5; height: auto; }
+}
+</style>

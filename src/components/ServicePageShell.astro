@@ -1,0 +1,26 @@
+---
+import ServiceRail from './korta/ServiceRail.astro';
+interface Props { currentPath: string; chapters?: { id: string; label: string }[]; slug?: string }
+const { currentPath, chapters = [], slug = '' } = Astro.props;
+---
+<div class="k-shell" data-shell data-service-frame data-git-hub={slug || undefined}>
+  <ServiceRail currentPath={currentPath} chapters={chapters} />
+  <div class="k-main">
+    <details class="k-mobile">
+      <summary>Chapters</summary>
+      <nav aria-label="Mobile chapters">
+        <ol>
+          {chapters.map((chapter, index) => <li>
+            <a href={`#${chapter.id}`} data-chapter-link={chapter.id}>{String(index + 1).padStart(2, '0')} {chapter.label}</a>
+          </li>)}
+        </ol>
+      </nav>
+    </details>
+    <slot />
+  </div>
+</div>
+<script>
+  document.querySelectorAll('details.k-mobile').forEach((menu) => {
+    menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => { menu.removeAttribute('open'); }));
+  });
+</script>

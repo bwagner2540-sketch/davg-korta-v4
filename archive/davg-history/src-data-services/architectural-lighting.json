@@ -1,0 +1,358 @@
+{
+  "slug": "architectural-lighting",
+  "name": "Architectural Lighting",
+  "seo": {
+    "title": "Architectural Lighting | DAVG",
+    "description": "Fixture position, beam shape, driver behavior, and control all affect how a room feels. We plan those decisions together.",
+    "canonicalPath": "/systems/architectural-lighting/"
+  },
+  "hero": {
+    "heading": "Design the light before you choose the keypad.",
+    "deck": "Fixture position, beam shape, driver behavior, and control all affect how a room feels. We plan those decisions together.",
+    "ctaLabel": "Discuss your project",
+    "ctaHref": "#project-inquiry"
+  },
+  "study": "Two different finished rooms sit in the comparison. A separate diagram follows fixture, driver, dimmer and control. Neither is a measured same-room study.",
+  "chapters": [
+    {
+      "id": "layers",
+      "title": "What should the room illuminate?",
+      "layout": "layer-study",
+      "paragraphs": [
+        "A bright ceiling does not guarantee a comfortable room. Light aimed at a work surface serves a different job from light on a painting or a quiet path to the kitchen.",
+        "Ambient light sets the room. Task light puts light where work happens; accent light gives materials and objects shape.",
+        "We map those layers against furniture, finishes, sightlines, and daily use. Then we group the fixtures into circuits that can be adjusted independently."
+      ],
+      "visual": "Use the same room photograph for ambient, task and accent states. Annotate actual fixture locations rather than decorative glowing lines.",
+      "sources": [],
+      "table": null,
+      "detail": null
+    },
+    {
+      "id": "dimming",
+      "title": "A dimmer is only one part of the chain.",
+      "layout": "detail-study",
+      "paragraphs": [
+        "An LED driver converts power for the light source. The dimmer and driver must work together across the brightness range you expect to use.",
+        "A mismatch can produce flicker, audible noise, abrupt shutoff, or a low setting that is still too bright. A compatibility check and a representative installed test reveal more than a dimmable label.",
+        "Low-end adjustment is part of commissioning. We test the selected fixture, driver, load and control together before repeating that combination throughout the house."
+      ],
+      "visual": "Exploded fixture \u2192 driver \u2192 dimming method \u2192 control diagram with a low-end test photograph.",
+      "sources": [
+        "drivers"
+      ],
+      "table": null,
+      "detail": null
+    },
+    {
+      "id": "color",
+      "title": "Dimming and changing color are different decisions.",
+      "layout": "comparison",
+      "paragraphs": [
+        "Warm-dim light gets warmer as brightness falls. Tunable-white light allows color temperature to change separately from brightness, within the selected product\u2019s range.",
+        "Neither approach fixes poor fixture placement or glare. Matching products also requires checking their color behavior together; equal numbers on two specifications do not guarantee an identical appearance.",
+        "Choose the behavior by room. An evening living room and a detailed work area may need different control ranges and scene settings."
+      ],
+      "visual": "Three labeled sample states, photographed with consistent exposure and white balance. Include actual product range only after selection.",
+      "sources": [
+        "lumaris"
+      ],
+      "table": {
+        "headers": [
+          "Behavior",
+          "What changes",
+          "Good reason to select it"
+        ],
+        "rows": [
+          [
+            "Fixed white",
+            "Brightness; color temperature is nominally fixed",
+            "A consistent light character"
+          ],
+          [
+            "Warm dim",
+            "Brightness and warmth move together",
+            "A warmer evening atmosphere"
+          ],
+          [
+            "Tunable white",
+            "Brightness and color temperature can be set separately",
+            "Different tasks or times of day"
+          ]
+        ]
+      },
+      "detail": null
+    },
+    {
+      "id": "platform",
+      "title": "Choose the Lutron system around the design.",
+      "layout": "comparison",
+      "paragraphs": [
+        "Cas\u00e9ta can suit focused connected-lighting projects. RadioRA 3 extends the residential system with its supported controls and integrations; HomeWorks supports a broader custom design with additional control and wiring choices.",
+        "Centralized dimming moves selected load-control equipment into panels. Local dimming keeps the control at the room; either approach has wiring, service-access and architectural implications.",
+        "The right system follows the load schedule, fixtures, interfaces, shades and construction plan. HomeWorks is not required just because a house is expensive."
+      ],
+      "visual": "Compare local wall controls and a centralized panel using actual wiring roles. Keep system capacities in current project specifications.",
+      "sources": [
+        "ra3",
+        "homeworks",
+        "drivers"
+      ],
+      "table": {
+        "headers": [
+          "Platform",
+          "Decision it helps answer",
+          "Check before selection"
+        ],
+        "rows": [
+          [
+            "Cas\u00e9ta",
+            "Can a focused project use its supported devices and app control?",
+            "Current device support, limits and requested scenes"
+          ],
+          [
+            "RadioRA 3",
+            "Does the residence fit its supported lighting, shade and interface design?",
+            "Loads, RF layout, integrations and selected keypad families"
+          ],
+          [
+            "HomeWorks",
+            "Does the architecture need custom interfaces, panelized loads or broader system design?",
+            "Processor generation, link type, load modules and wiring"
+          ]
+        ]
+      },
+      "detail": null
+    },
+    {
+      "id": "keypads",
+      "title": "The wall should explain the room.",
+      "layout": "product-gallery",
+      "paragraphs": [
+        "A dimmer directly controls a compatible load. A scene keypad sends instructions to the system, so one button can adjust several lighting layers and supported shades.",
+        "Sunnata offers a contemporary control language. HomeWorks designs can also use interfaces such as Palladiom, seeTouch and Alisse where the selected system supports them.",
+        "Alisse belongs to HomeWorks QSX and uses a wired QS connection. A RadioRA 3 Sunnata RF keypad uses radio for communication but still requires its specified electrical supply; RF does not mean battery-powered."
+      ],
+      "visual": "Front, wall-installed and material-close-up images for Sunnata, seeTouch, Palladiom and Alisse. Caption exact system, model, finish and button configuration.",
+      "sources": [
+        "sunnata",
+        "alisse",
+        "keypads"
+      ],
+      "table": null,
+      "detail": null
+    },
+    {
+      "id": "scenes",
+      "title": "Keep the same room. Change the occasion.",
+      "layout": "scene-study",
+      "paragraphs": [
+        "Cooking brings the work surfaces forward. Dinner reduces task light and puts more emphasis on the table and surrounding walls.",
+        "An evening scene can lower light and close selected shades. A late-night path can light circulation without waking the whole room.",
+        "Scene levels are set in the finished space. Stone, timber, fabrics and wall color all change what a percentage setting looks like."
+      ],
+      "visual": "Repeat the opening room in Cooking, Dinner and Late Night states. Beside it, show one short keypad label list.",
+      "sources": [
+        "ra3",
+        "homeworks"
+      ],
+      "table": null,
+      "detail": null
+    }
+  ],
+  "projectPaths": [
+    {
+      "type": "retrofit",
+      "title": "Work with the existing circuits",
+      "body": "Check box wiring, drivers, fixtures and circuit groups before selecting replacements. Keep the plan honest about what can change without opening walls."
+    },
+    {
+      "type": "remodel",
+      "title": "Use the open walls well",
+      "body": "Coordinate circuit separation, driver locations, wall elevations and new fixtures before electrical rough-in. Test a fixture-and-driver sample before bulk purchase."
+    },
+    {
+      "type": "custom-build",
+      "title": "Coordinate light with architecture",
+      "body": "Develop fixture locations, beam intent, load schedule, panel space and keypad elevations with the architect, lighting designer and electrician. Reserve access for future service."
+    }
+  ],
+  "scopeOptions": [
+    {
+      "label": "Good \u2014 room-led scenes",
+      "scope": "Selected rooms, compatible dimming, clear everyday controls and commissioned scene levels.",
+      "dependencies": "Existing circuit groups may limit independent layers; fixture replacement is explicitly itemized."
+    },
+    {
+      "label": "Better \u2014 coordinated lighting",
+      "scope": "Multiple rooms, a lighting-layer plan, interface schedule and coordinated shade scenes.",
+      "dependencies": "Platform choice follows load and interface requirements, not the tier label."
+    },
+    {
+      "label": "Best \u2014 architectural lighting design",
+      "scope": "Whole-residence planning, detailed fixture/driver review, architectural keypad coordination and full commissioning.",
+      "dependencies": "Panelized loads and tunable light are selected only where the design benefits from them."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Can existing LEDs stay?",
+      "answer": "Only after the fixture and driver combination is checked with the proposed control. Some replacements may be needed for the requested dimming behavior."
+    },
+    {
+      "question": "Is a keypad just a more expensive switch?",
+      "answer": "A switch operates a circuit. A scene keypad can instruct several loads and systems, which changes both the wiring plan and the way the room is used."
+    },
+    {
+      "question": "Does HomeWorks replace the lighting designer?",
+      "answer": "No. Fixture placement, optics and light quality still need design; the control system manages the agreed loads and scenes."
+    },
+    {
+      "question": "What drives cost?",
+      "answer": "Fixture and driver choices, circuit count, wiring access, panel work, interfaces, tunable lighting and commissioning depth."
+    }
+  ],
+  "media": [
+    {
+      "id": "al-hero",
+      "subject": "One architectural room with layered light",
+      "view": "Finished architectural illustration. Same-room ambient, task and accent states are still missing.",
+      "status": "needed",
+      "src": "/images/architectural-lighting-asset-a0ff46a2d28b.webp",
+      "alt": "Kitchen at dusk with pendant and recessed lights. Manufacturer library photograph, not a same-room layer study and not verified DAVG project proof.",
+      "sourceKey": "homeworks",
+      "rightsStatus": "unconfirmed"
+    },
+    {
+      "id": "al-keypads",
+      "subject": "Sunnata, seeTouch, Palladiom, Alisse",
+      "view": "Alisse, Palladiom and RadioRA product views are placed. Exact Sunnata front is still missing.",
+      "status": "needed",
+      "src": "/images/architectural-lighting-asset-23a21615837d.webp",
+      "alt": "Alisse keypad labeled Energize and Relax on dark tile, plus separate Palladiom and RadioRA product photographs.",
+      "sourceKey": "keypads",
+      "rightsStatus": "unconfirmed"
+    },
+    {
+      "id": "al-driver",
+      "subject": "Selected LED fixture and driver",
+      "view": "Real component and accessible installation detail",
+      "status": "needed",
+      "src": null,
+      "alt": null,
+      "sourceKey": "drivers",
+      "rightsStatus": "unconfirmed"
+    }
+  ],
+  "sources": [
+    "ra3",
+    "homeworks",
+    "keypads",
+    "sunnata",
+    "alisse",
+    "drivers",
+    "lumaris"
+  ],
+  "inquiry": {
+    "heading": "Start with the project you have.",
+    "body": "Tell us which rooms matter, what already exists, and when construction starts. Share plans or photographs if you have them.",
+    "fields": [
+      "Project path",
+      "Rooms or zones",
+      "Existing systems",
+      "Construction timing",
+      "Contact details"
+    ],
+    "endpointStatus": "requires existing site form integration"
+  },
+  "navigation": [
+    {
+      "label": "Overview",
+      "href": "#overview"
+    },
+    {
+      "label": "Design",
+      "href": "#design"
+    },
+    {
+      "label": "Systems",
+      "href": "#systems"
+    },
+    {
+      "label": "Installation",
+      "href": "#installation"
+    },
+    {
+      "label": "Investment",
+      "href": "#investment"
+    }
+  ],
+  "openingQA": {
+    "question": "Why design the light and its controls together?",
+    "answer": [
+      "Fixture positions and beam shapes determine where light goes. Drivers and compatible controls determine how that light dims and changes.",
+      "Planning both lets you create distinct task, ambient and accent layers, then adjust them together for the way the room is used."
+    ]
+  },
+  "groups": [
+    {
+      "id": "overview",
+      "label": "Overview",
+      "chapterIds": [
+        "layers"
+      ]
+    },
+    {
+      "id": "design",
+      "label": "Design",
+      "chapterIds": [
+        "dimming",
+        "color"
+      ]
+    },
+    {
+      "id": "systems",
+      "label": "Systems",
+      "chapterIds": [
+        "platform",
+        "keypads",
+        "scenes"
+      ]
+    },
+    {
+      "id": "installation",
+      "label": "Installation",
+      "chapterIds": []
+    },
+    {
+      "id": "investment",
+      "label": "Investment",
+      "chapterIds": []
+    }
+  ],
+  "signatureStudy": {
+    "group": "design",
+    "heading": "How the design fits together.",
+    "description": "Paired manufacturer photographs of two different rooms, with a neutral fixture, driver, dimmer and control diagram. Not a measured comparison.",
+    "status": "conceptual-built",
+    "src": null,
+    "alt": null,
+    "spatialWord": null
+  },
+  "layoutContract": {
+    "opening": "full-width",
+    "splitStart": "overview",
+    "splitEnd": "investment",
+    "desktopColumns": [
+      1,
+      3
+    ],
+    "closing": "full-width",
+    "scrollOwner": "document"
+  },
+  "spatialWords": {
+    "opening": null,
+    "study": null,
+    "note": "Other final word choices remain unresolved; do not invent a universal set."
+  }
+}

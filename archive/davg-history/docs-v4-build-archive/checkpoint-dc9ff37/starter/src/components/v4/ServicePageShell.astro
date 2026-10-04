@@ -1,0 +1,167 @@
+---
+interface Chapter { id: string; label: string }
+interface Props {
+  currentPath: string;
+  chapters?: Chapter[];
+  headerOffset?: string;
+  menuLabel?: string;
+  contactHref?: string;
+  contactLabel?: string;
+}
+const {
+  currentPath,
+  chapters = [],
+  headerOffset = '0px',
+  menuLabel = 'Solutions and page chapters',
+  contactHref = '/contact/',
+  contactLabel = 'Begin a project',
+} = Astro.props;
+const services = [
+  ['Home Intelligence', '/solutions/home-intelligence/'],
+  ['Architectural Lighting', '/solutions/architectural-lighting/'],
+  ['Motorized Shading', '/solutions/motorized-shades/'],
+  ['Media & Audio', '/solutions/media-audio/'],
+  ['Private Cinemas', '/solutions/private-cinemas/'],
+  ['Security Cameras & Access Control', '/solutions/security-access/'],
+  ['Digital Infrastructure & Privacy', '/solutions/infrastructure-privacy/'],
+  ['Outdoor Entertainment', '/solutions/outdoor-entertainment/'],
+];
+const normalize = (path: string) => path.replace(/\/$/, '');
+const isCurrent = (href: string) => normalize(currentPath) === normalize(href);
+---
+<a class="skip-link" href="#service-content">Skip to content</a>
+<div class="service-frame" style={`--header-offset: ${headerOffset}`}>
+  <aside class="service-rail" aria-label="Service navigation">
+    <div class="brand"><slot name="brand"><a href="/">DAVG</a></slot></div>
+    <div class="rail-menu">
+      <nav aria-label="Solutions">
+        {services.map(([label, href]) => <a href={href} aria-current={isCurrent(href) ? 'page' : undefined}>{label}</a>)}
+      </nav>
+      {chapters.length > 0 && <nav class="chapter-nav" aria-label="On this page">
+        {chapters.map(({ id, label }) => <a href={`#${id}`}>{label}</a>)}
+      </nav>}
+    </div>
+    <a class="rail-contact" href={contactHref}>{contactLabel}</a>
+  </aside>
+  <div class="service-right">
+    <details class="mobile-service-menu">
+      <summary>{menuLabel}</summary>
+      <nav aria-label="Mobile solutions">
+        {services.map(([label, href]) => <a href={href} aria-current={isCurrent(href) ? 'page' : undefined}>{label}</a>)}
+      </nav>
+      {chapters.length > 0 && <nav aria-label="Mobile page chapters">
+        {chapters.map(({ id, label }) => <a href={`#${id}`}>{label}</a>)}
+      </nav>}
+    </details>
+    <main id="service-content" tabindex="-1"><slot /></main>
+  </div>
+</div>
+<script>
+  document.querySelectorAll('.mobile-service-menu a').forEach((link) => {
+    link.addEventListener('click', () => {
+      const menu = link.closest('details');
+      if (menu) menu.open = false;
+    });
+  });
+</script>
+<style>
+  .service-frame {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+    background: var(--color-surface-ink);
+    color: var(--color-text-on-dark);
+    min-height: 100svh;
+  }
+  .service-rail {
+    position: sticky;
+    top: var(--header-offset);
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    height: calc(100svh - var(--header-offset));
+    overflow: hidden;
+    padding: clamp(1.25rem, 2vw, 2rem);
+    background: var(--color-surface-forest);
+    color: var(--color-text-on-dark);
+    border-right: 1px solid var(--color-spatial-forest);
+  }
+  .service-right { min-width: 0; }
+  .brand { margin-bottom: 1.5rem; }
+  .brand :global(a) {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.25rem;
+    letter-spacing: -0.03em;
+    color: var(--color-text-on-dark);
+    text-decoration: none;
+  }
+  .rail-menu { min-height: 0; flex: 1; overflow-y: auto; }
+  nav { display: grid; gap: 0.65rem; }
+  nav a, .rail-contact {
+    font-family: var(--font-body);
+    color: var(--color-text-muted-dark);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.35;
+  }
+  nav a[aria-current="page"] {
+    color: var(--color-text-on-dark);
+    box-shadow: inset 2px 0 0 var(--color-accent-signal);
+    padding-left: 0.7rem;
+  }
+  nav a:hover { color: var(--color-text-on-dark); }
+  .chapter-nav {
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-spatial-forest);
+  }
+  .rail-contact {
+    display: inline-block;
+    margin-top: 1.25rem;
+    color: var(--color-text-on-dark);
+    border-bottom: 1px solid var(--color-accent-signal);
+    width: fit-content;
+  }
+  .mobile-service-menu { display: none; }
+  .skip-link {
+    position: fixed;
+    inset: 0.5rem auto auto 0.5rem;
+    transform: translateY(-200%);
+    z-index: 100;
+    padding: 0.75rem 1rem;
+    background: var(--color-surface-paper);
+    color: var(--color-text-on-paper);
+    font-family: var(--font-body);
+  }
+  .skip-link:focus { transform: translateY(0); }
+  :global(.service-frame section[id]) { scroll-margin-top: calc(var(--header-offset) + 4.5rem); }
+  :global(.service-frame a:focus-visible),
+  summary:focus-visible {
+    outline: 2px solid var(--color-accent-signal);
+    outline-offset: 4px;
+  }
+  @media (max-width: 1023px) {
+    .service-frame { grid-template-columns: minmax(0, 1fr); }
+    .service-rail { display: none; }
+    .mobile-service-menu {
+      display: block;
+      position: sticky;
+      top: var(--header-offset);
+      z-index: 30;
+      padding: 1rem 1.25rem;
+      background: var(--color-surface-forest);
+      border-bottom: 1px solid var(--color-spatial-forest);
+      font-family: var(--font-body);
+      color: var(--color-text-on-dark);
+    }
+    .mobile-service-menu nav { margin-top: 1.25rem; }
+    .mobile-service-menu a { color: var(--color-text-on-dark); }
+    summary { cursor: pointer; font-weight: 500; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    :global(html:has(.service-frame)) { scroll-behavior: smooth; }
+  }
+</style>
+
+

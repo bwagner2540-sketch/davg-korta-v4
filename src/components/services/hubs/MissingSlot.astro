@@ -1,0 +1,21 @@
+---
+interface Props { id: string; purpose: string; reason: string; status?: string; }
+const { id, purpose, reason, status = 'missing' } = Astro.props;
+---
+<div class="missing-slot" data-photo-slot={id} data-slot-status={status} role="note">
+  <p class="mono-label">{status === 'withheld' ? 'Withheld' : 'Photograph missing'}</p>
+  <p class="missing-purpose">{purpose}</p>
+  <p>{reason}</p>
+</div>
+<style>
+.missing-slot {
+  display: grid;
+  gap: 0.5rem;
+  padding: 1.25rem 1.35rem;
+  border: 1px dashed var(--surface-border, var(--color-border-paper));
+  background: transparent;
+  color: var(--surface-muted, var(--color-text-muted-paper));
+}
+.missing-purpose { margin: 0; color: var(--surface-fg, inherit); font-family: var(--font-display); font-size: 1.35rem; letter-spacing: -0.02em; }
+.missing-slot p { margin: 0; max-width: 62ch; line-height: 1.5; }
+</style>

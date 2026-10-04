@@ -1,0 +1,167 @@
+{
+  "control4": {
+    "title": "Control4 controllers",
+    "url": "https://www.control4.com/solutions/products/controllers",
+    "checkedAt": "2026-09-30"
+  },
+  "connect": {
+    "title": "Control4 services; confirm terms for installed system",
+    "url": "https://www.control4.com/services",
+    "checkedAt": "2026-09-30"
+  },
+  "ra3": {
+    "title": "Lutron RadioRA 3",
+    "url": "https://www.lutron.com/us/en/controls/systems/radiora3",
+    "checkedAt": "2026-09-30"
+  },
+  "homeworks": {
+    "title": "Lutron HomeWorks",
+    "url": "https://www.lutron.com/us/en/controls/systems/homeworks",
+    "checkedAt": "2026-09-30"
+  },
+  "keypads": {
+    "title": "Lutron keypads and remotes",
+    "url": "https://www.lutron.com/us/en/controls/keypads-remotes",
+    "checkedAt": "2026-09-30"
+  },
+  "alisse": {
+    "title": "Alisse specification; HomeWorks QSX",
+    "url": "https://assets.lutron.com/a/documents/3691154_eng.pdf",
+    "checkedAt": "2026-09-30"
+  },
+  "sunnata": {
+    "title": "Sunnata RF keypad specification",
+    "url": "https://assets.lutron.com/a/documents/3691168_eng.pdf",
+    "checkedAt": "2026-09-30"
+  },
+  "drivers": {
+    "title": "Lutron dimmer and LED compatibility tool",
+    "url": "https://webtools.lutron.com/compatibility/us/en/dimmers",
+    "checkedAt": "2026-09-30"
+  },
+  "lumaris": {
+    "title": "Lumaris downlight specification",
+    "url": "https://assets.lutron.com/a/documents/3691335_eng.pdf",
+    "checkedAt": "2026-09-30"
+  },
+  "triathlon": {
+    "title": "Lutron Triathlon shades",
+    "url": "https://www.lutron.com/us/en/window-treatments/triathlon-shades",
+    "checkedAt": "2026-09-30"
+  },
+  "sivoia": {
+    "title": "Lutron Sivoia shades",
+    "url": "https://www.lutron.com/us/en/window-treatments/sivoia-shades",
+    "checkedAt": "2026-09-30"
+  },
+  "palladiom": {
+    "title": "Lutron Palladiom roller shades",
+    "url": "https://www.lutron.com/us/en/window-treatments/shades/palladiom-roller-shades",
+    "checkedAt": "2026-09-30"
+  },
+  "fabric": {
+    "title": "Lutron fabric FAQs",
+    "url": "https://www.lutronfabrics.com/us/en/resources/faq",
+    "checkedAt": "2026-09-30"
+  },
+  "blackout": {
+    "title": "Lutron application note 736; blackout detailing",
+    "url": "https://www.lutron.com/TechnicalDocumentLibrary/048736.pdf",
+    "checkedAt": "2026-09-30"
+  },
+  "dolby": {
+    "title": "Dolby home speaker setup guidance",
+    "url": "https://www.dolby.com/about/support/guide/speaker-setup-guides/5.1.4-overhead-speaker-setup-guide/",
+    "checkedAt": "2026-09-30"
+  },
+  "sonance": {
+    "title": "Sonance architectural sound",
+    "url": "https://sonance.com/pages/designed-to-disappear",
+    "checkedAt": "2026-09-30"
+  },
+  "invisible": {
+    "title": "Sonance Invisible installation manual",
+    "url": "https://www.sonance.com/assets/media/files/downloads/IS_InstallationManual_Reduced.pdf",
+    "checkedAt": "2026-09-30"
+  },
+  "triad": {
+    "title": "Triad collection",
+    "url": "https://www.triadspeakers.com/the-triad-collection",
+    "checkedAt": "2026-09-30"
+  },
+  "display": {
+    "title": "Samsung OLED and Mini LED explanation",
+    "url": "https://www.samsung.com/us/tvs/tv-buying-guide/mini-led-vs-oled/",
+    "checkedAt": "2026-09-30"
+  },
+  "screens": {
+    "title": "Screen Innovations material selection",
+    "url": "https://www.screeninnovations.com/materials/",
+    "checkedAt": "2026-09-30"
+  },
+  "unity": {
+    "title": "Screen Innovations Unity AT",
+    "url": "https://www.screeninnovations.com/materials/unity-at/",
+    "checkedAt": "2026-09-30"
+  },
+  "pixels": {
+    "title": "Axis pixel density engineering guide",
+    "url": "https://whitepapers.axis.com/en-us/pixel-density-based-on-iec-62676-4-2014",
+    "checkedAt": "2026-09-30"
+  },
+  "privacy": {
+    "title": "Axis privacy in surveillance engineering guide",
+    "url": "https://whitepapers.axis.com/en-us/privacy-in-surveillance",
+    "checkedAt": "2026-09-30"
+  },
+  "luma": {
+    "title": "Luma x20 camera configuration and privacy masks",
+    "url": "https://help.snapone.com/luma-x20-guide/Content/Topic-NVRUI/Fxn-Camera.htm",
+    "checkedAt": "2026-09-30"
+  },
+  "luma-nvr": {
+    "title": "Luma 220 NVR product information",
+    "url": "https://www.snapav.com/shop/en/snapav/luma-surveillance%E2%84%A2-220-series-nvr-lum-220-nvr-a",
+    "checkedAt": "2026-09-30"
+  },
+  "mesh": {
+    "title": "Ubiquiti wireless mesh considerations",
+    "url": "https://help.ui.com/hc/en-us/articles/115002262328-Considerations-for-Optimal-Wireless-Mesh-Networks",
+    "checkedAt": "2026-09-30"
+  },
+  "isolation": {
+    "title": "Ubiquiti network and client isolation",
+    "url": "https://help.ui.com/hc/en-us/articles/18965560820247-Implementing-Network-and-Client-Isolation-in-UniFi",
+    "checkedAt": "2026-09-30"
+  },
+  "mdns": {
+    "title": "Ubiquiti multicast DNS proxy",
+    "url": "https://help.ui.com/hc/en-us/articles/12648701398807-UniFi-Gateway-Multicast-DNS-mDNS-Proxy",
+    "checkedAt": "2026-09-30"
+  },
+  "terrace": {
+    "title": "Samsung The Terrace; model-specific exposure",
+    "url": "https://www.samsung.com/us/lifestyle-tvs/the-terrace/",
+    "checkedAt": "2026-09-30"
+  },
+  "landscape": {
+    "title": "Sonance Landscape Series",
+    "url": "https://sonance.com/collections/sonance-landscape-series",
+    "checkedAt": "2026-09-30"
+  },
+  "garden": {
+    "title": "Sonance Garden Series",
+    "url": "https://sonance.com/collections/sonance-garden-series",
+    "checkedAt": "2026-09-30"
+  },
+  "astro": {
+    "title": "Astro content collections",
+    "url": "https://docs.astro.build/en/guides/content-collections/",
+    "checkedAt": "2026-09-30"
+  },
+  "routing": {
+    "title": "Astro routing reference",
+    "url": "https://docs.astro.build/en/reference/routing-reference/",
+    "checkedAt": "2026-09-30"
+  }
+}

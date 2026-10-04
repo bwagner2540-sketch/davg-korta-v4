@@ -1,0 +1,76 @@
+---
+import { services } from '../../config/site';
+interface Chapter { id: string; label: string }
+interface Props { currentPath: string; chapters?: Chapter[] }
+const { currentPath, chapters = [] } = Astro.props;
+const currentSlug = currentPath.split('/').filter(Boolean).at(-1);
+const currentIndex = Math.max(0, services.findIndex((service) => service.slug === currentSlug));
+const current = services[currentIndex];
+const indexLabel = (index: number) => String(index + 1).padStart(2, '0');
+const total = String(chapters.length).padStart(2, '0');
+---
+<aside class="k-rail" data-rail aria-label="Chapter index">
+  <div class="k-sw">
+    <button class="k-sw__btn" type="button" aria-expanded="false" aria-controls="k-sw-list">
+      <span class="mono-label">{indexLabel(currentIndex)} / {String(services.length).padStart(2, '0')}</span>
+      <span class="k-sw__name">{current?.railLabel}</span>
+    </button>
+    <ul id="k-sw-list" class="k-sw__list" hidden>
+      {services.map((service, index) => <li>
+        <a href={service.slug === currentSlug ? currentPath : service.href} aria-current={service.slug === currentSlug ? 'page' : undefined}>
+          <span class="mono-label">{indexLabel(index)}</span>
+          <span>{service.railLabel}</span>
+        </a>
+      </li>)}
+    </ul>
+  </div>
+  <nav class="k-index" aria-label="Chapters">
+    <ol>
+      {chapters.map((chapter, index) => <li>
+        <a href={`#${chapter.id}`} data-chapter-link={chapter.id}>
+          <span class="mono-label">{indexLabel(index)}</span>
+          <span class="k-index__label">{chapter.label}</span>
+        </a>
+      </li>)}
+    </ol>
+  </nav>
+  <div class="k-rail__foot">
+    <p class="k-rail__count" data-chapter-count>Chapter 01 / {total}</p>
+    <a class="k-rail__cta" href="#inquiry">Begin a project</a>
+  </div>
+</aside>
+<script>
+  const rail = document.querySelector('[data-rail]');
+  const switcher = rail?.querySelector<HTMLButtonElement>('.k-sw__btn');
+  const list = rail?.querySelector<HTMLElement>('.k-sw__list');
+  switcher?.addEventListener('click', () => {
+    const open = switcher.getAttribute('aria-expanded') !== 'true';
+    switcher.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (list) list.hidden = !open;
+  });
+  const chapters = [...document.querySelectorAll<HTMLElement>('[data-chapter]')];
+  const count = document.querySelector<HTMLElement>('[data-chapter-count]');
+  const links = [...document.querySelectorAll<HTMLAnchorElement>('[data-chapter-link]')];
+  const update = () => {
+    const line = Math.min(window.innerHeight * 0.28, 180);
+    let active = 0;
+    chapters.forEach((chapter, index) => {
+      if (chapter.getBoundingClientRect().top <= line) active = index;
+    });
+    links.forEach((link) => {
+      const on = chapters[active] && link.getAttribute('data-chapter-link') === chapters[active].id;
+      if (on) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+    if (count) count.textContent = `Chapter ${String(active + 1).padStart(2, '0')} / ${String(chapters.length).padStart(2, '0')}`;
+  };
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(() => { update(); ticking = false; });
+    }
+  }, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+</script>

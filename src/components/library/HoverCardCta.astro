@@ -1,0 +1,88 @@
+---
+import MediaPlaceholder from '../MediaPlaceholder.astro';
+interface Card {
+  kicker: string;
+  title: string;
+  note: string;
+  href: string;
+  stage?: string;
+  image: string;
+  alt: string;
+}
+interface Props { cards: Card[]; prompt?: string; }
+const { cards, prompt = 'Choose a path. The photograph appears when you hover.' } = Astro.props;
+---
+<section class="hover-cta" aria-label="Project paths">
+  <div class="hover-cta-grid">
+    {cards.map((card) => (
+      <a class="hover-card" href={card.href} data-set-stage={card.stage}>
+        <MediaPlaceholder id={`cta-${card.stage || card.title}`} subject={card.title} ratio="1 / 1" src={card.image} alt={card.alt} />
+        <span class="hover-card-copy">
+          <span class="hover-kicker">{card.kicker}</span>
+          <strong>{card.title}</strong>
+          <span>{card.note}</span>
+        </span>
+      </a>
+    ))}
+  </div>
+  <p>{prompt}</p>
+</section>
+<style>
+.hover-cta { display: grid; gap: var(--spacing-4); }
+.hover-cta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--spacing-3);
+}
+.hover-card {
+  position: relative;
+  display: grid;
+  align-items: end;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 1px solid var(--color-border-dark);
+  background: var(--color-surface-ink);
+  color: var(--color-text-on-dark);
+  text-decoration: none;
+}
+.hover-card :global(.media-slot) {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  opacity: 0;
+  transition: opacity 280ms ease;
+  background: transparent;
+}
+.hover-card:hover :global(.media-slot),
+.hover-card:focus-visible :global(.media-slot) { opacity: 1; }
+.hover-card-copy {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: var(--spacing-2);
+  padding: var(--spacing-4);
+  background: linear-gradient(transparent, var(--color-scrim-ink-strong));
+}
+.hover-kicker {
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: 500;
+  letter-spacing: var(--text-label--letter-spacing);
+  text-transform: uppercase;
+  color: var(--color-accent-signal);
+}
+.hover-card strong {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+.hover-card-copy span:last-child { font-family: var(--font-body); font-size: 0.9375rem; line-height: var(--text-body--line-height); max-width: 28ch; }
+.hover-cta > p { margin: 0; color: var(--color-text-muted-dark); font-family: var(--font-body); font-size: var(--text-label); font-weight: 500; letter-spacing: var(--text-label--letter-spacing); text-transform: uppercase; }
+@media (max-width: 800px) {
+  .hover-cta-grid { grid-template-columns: 1fr; }
+  .hover-card { aspect-ratio: 16 / 10; }
+  .hover-card :global(.media-slot) { opacity: 1; }
+}
+</style>

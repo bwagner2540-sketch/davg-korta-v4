@@ -1,0 +1,60 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import MediaPlaceholder from '../../MediaPlaceholder.astro';
+
+interface Props {
+  chapter: CollectionEntry<'services'>['data']['chapters'][number];
+  study: CollectionEntry<'services'>['data']['signatureStudy'];
+}
+const { chapter, study } = Astro.props;
+const alternates = [
+  {
+    id: 'fascia',
+    label: 'Fascia',
+    src: '/images/davg-triathlon-fascia-boucle-01-800w.webp',
+    alt: 'White Triathlon fascia box mounted on shiplap above a light woven shade',
+    caption: 'Triathlon fascia above a woven shade. Product photograph. A fascia conceals the roller without a ceiling pocket.',
+  },
+  {
+    id: 'exposed',
+    label: 'Exposed',
+    src: '/images/davg-palladiom-exposed-roller-bracket-01-800w.webp',
+    alt: 'Palladiom exposed roller with a fabric-wrapped tube and rounded metal bracket above a night window',
+    caption: 'Palladiom exposed roller and bracket. Product photograph. Exposed hardware is a design choice, not a quality rank.',
+  },
+];
+---
+<section class="composition detail-study" id="signature-study" data-study-slot="motorized-shades-04" data-study-built="true" data-surface-role="signature-study" data-signature-study="true" aria-labelledby={`chapter-${chapter.id}-title`}>
+  <span id="architecture" class="alias"></span>
+  <span id="selection" class="alias"></span>
+  <span id="details" class="alias"></span>
+  <span id="coordinate" class="alias"></span>
+  <figure class="detail-study-plate">
+    <MediaPlaceholder
+      id="shading-recessed-study"
+      subject="Recessed dual-roller coordination study"
+      ratio="16 / 9"
+      src="/images/davg-recessed-shade-study-01.jpg"
+      alt="Conceptual detail study of a recessed dual roller disappearing into a ceiling pocket. Callouts mark the paired fabrics, flush closure, concealed hembar and drive. The word RECESSED sits across the drawing. Illustration, not a shop drawing or a completed project."
+    />
+    <figcaption>
+      <h3 id={`chapter-${chapter.id}-title`}>{chapter.title}</h3>
+      <p>{study.heading} {study.description}</p>
+      <p>Conceptual coordination study. Pocket size, drive, hembar finish and solar logic are set from the approved drawing for each opening. This plate is not a measured specification or a completed DAVG project.</p>
+    </figcaption>
+  </figure>
+  <div class="detail-study-notes">
+    {chapter.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+  </div>
+  <div class="mount-alternates">
+    <p class="section-kicker">Other mounting conditions</p>
+    <div class="mount-grid">
+      {alternates.map((mount) => (
+        <figure>
+          <MediaPlaceholder id={`shading-mount-${mount.id}`} subject={mount.caption} ratio="16 / 10" src={mount.src} alt={mount.alt} />
+          <figcaption><strong>{mount.label}</strong> {mount.caption}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

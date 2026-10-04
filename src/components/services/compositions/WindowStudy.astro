@@ -1,0 +1,52 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import MediaPlaceholder from '../../MediaPlaceholder.astro';
+import ComparisonTable from './ComparisonTable.astro';
+
+interface Props {
+  chapter: CollectionEntry<'services'>['data']['chapters'][number];
+}
+const { chapter } = Astro.props;
+const openings = [
+  {
+    id: 'shading-07-west',
+    src: '/images/davg-living-room-vaulted-roller-shades-01-800w.webp',
+    alt: 'Vaulted living room with light roller shades on several windows and daylight still in the room',
+    caption: 'Wide glass. Product photograph, not a DAVG project record.',
+  },
+  {
+    id: 'shading-07-glazing',
+    src: '/images/davg-loft-tall-roller-shades-01-800w.webp',
+    alt: 'Tall glazed wall with translucent roller shades closed, tree shadows falling across the fabric',
+    caption: 'Tall opening. Product photograph. Service access is part of the decision.',
+  },
+  {
+    id: 'shading-02-standard',
+    src: '/images/davg-bedroom-motorized-shades-01-1600w.webp',
+    alt: 'Bedroom with motorized roller shades at a window',
+    caption: 'Bedroom window. Product photograph. Darkness is a separate decision from the room name.',
+  },
+  {
+    id: 'shading-07-bedroom',
+    src: '/images/davg-triathlon-bedroom-shades-closed-01-800w.webp',
+    alt: 'Bedroom with two white Triathlon shades fully closed across a wide window',
+    caption: 'Closed bedroom shades. Product photograph. Edge gaps still matter.',
+  },
+];
+---
+<section class="composition" data-surface-role="editorial" aria-labelledby={`chapter-${chapter.id}-title`}>
+  <span id="window" class="alias"></span>
+  <span id="purpose" class="alias"></span>
+  <span id="openings" class="alias"></span>
+  <h3 id={`chapter-${chapter.id}-title`}>{chapter.title}</h3>
+  {chapter.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+  <div class="opening-strip">
+    {openings.map((opening) => (
+      <figure>
+        <MediaPlaceholder id={opening.id} subject={opening.caption} ratio="4 / 3" src={opening.src} alt={opening.alt} />
+        <figcaption>{opening.caption}</figcaption>
+      </figure>
+    ))}
+  </div>
+  {chapter.table && <ComparisonTable title={chapter.title} table={chapter.table} />}
+</section>

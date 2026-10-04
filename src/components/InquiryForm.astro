@@ -1,0 +1,55 @@
+---
+import { site } from '../config/site';
+interface Props { service?:string; serviceSlug?:string; }
+const { service='Residential systems', serviceSlug='home-intelligence' } = Astro.props;
+const connected = Boolean(site.inquiryEndpoint && site.turnstileSiteKey);
+---
+<form class="inquiry" data-inquiry-form data-endpoint={connected ? site.inquiryEndpoint : ''} data-email={site.email} action={connected ? site.inquiryEndpoint : `mailto:${site.email}`} method="post">
+  <p class="form-note">{connected ? 'Tell us about the rooms, existing systems and construction timing.' : 'Use this brief to open an email draft to DAVG. Your mail app completes the send.'}</p>
+  <div class="form-grid">
+    <label>Name<input name="name" type="text" autocomplete="name" required maxlength="100" /></label>
+    <label>Email<input name="email" type="email" autocomplete="email" required maxlength="254" /></label>
+    <label>City or ZIP<input name="location" autocomplete="postal-code" maxlength="100" /></label>
+    <label>Project stage<select id="project-stage" name="projectStage"><option value="">Not selected</option><option value="retrofit">Existing home / Retrofit</option><option value="remodel">Remodel</option><option value="custom-build">Custom build</option></select></label>
+    <label>Existing controls<input name="controls" maxlength="300" /></label>
+    <label>Service<input type="text" value={service} readonly /></label>
+  </div>
+  <input type="hidden" name="service" value={serviceSlug} />
+  <label>Rooms and priorities<textarea name="rooms" rows="4" maxlength="1500" required></textarea></label>
+  <label>Construction timing, window schedule or photograph notes<textarea name="windows" rows="3" maxlength="1500"></textarea></label>
+  <div class="honeypot" aria-hidden="true"><label>Leave this field empty<input name="website" tabindex="-1" autocomplete="off" /></label></div>
+  {connected && <div class="cf-turnstile" data-sitekey={site.turnstileSiteKey} data-action="inquiry" />}
+  <button type="submit">{connected ? 'Send project inquiry' : 'Open email draft'}</button>
+  <p class="form-status" role="status" aria-live="polite"></p>
+</form>
+{connected && <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}
+<script>
+ document.querySelectorAll<HTMLFormElement>('[data-inquiry-form]').forEach(form=>{
+  const status=form.querySelector<HTMLElement>('[role="status"]');
+  const button=form.querySelector<HTMLButtonElement>('button[type="submit"]');
+  form.addEventListener('submit',async event=>{
+   event.preventDefault(); if(!form.reportValidity()) return;
+   const data=Object.fromEntries(new FormData(form));
+   if(data.website) return;
+   if(!form.dataset.endpoint){
+    const body=`Name: ${data.name}\nEmail: ${data.email}\nCity/ZIP: ${data.location}\nProject stage: ${data.projectStage}\nExisting controls: ${data.controls}\n\nRooms and priorities:\n${data.rooms}\n\nTiming / window notes:\n${data.windows}`;
+    if(status)status.textContent='Email draft requested. Complete the send in your mail app. If no app opens, email info@davg.ai directly.';
+    window.location.href=`mailto:${form.dataset.email}?subject=${encodeURIComponent('DAVG project inquiry — '+String(data.service))}&body=${encodeURIComponent(body)}`;
+    return;
+   }
+   if(button)button.disabled=true;
+   if(status)status.textContent='Sending…';
+   try{
+    const response=await fetch(form.dataset.endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data),signal:AbortSignal.timeout(15000)});
+    const result=await response.json();
+    if(!response.ok||result.status!=='accepted')throw new Error('Delivery could not be confirmed.');
+    if(status)status.textContent='Your inquiry was received.';
+    form.reset();
+   }catch{if(status)status.textContent='Delivery could not be confirmed. Please email info@davg.ai. Your brief remains in the form.';}
+   finally{if(button)button.disabled=false;const turnstile=(window as Window & {turnstile?:{reset:()=>void}}).turnstile;turnstile?.reset();}
+  });
+ });
+</script>
+<style>
+.inquiry{max-width:58rem;margin-top:2rem;}.form-note,.form-status{font-size:.875rem;line-height:1.5;color:var(--color-text-muted-dark);}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}label{display:grid;gap:.6rem;font:400 .875rem var(--font-body);margin-bottom:1.25rem;}input,textarea,select{box-sizing:border-box;width:100%;padding:.9rem;border:1px solid var(--color-border-dark);border-radius:2px;background:var(--color-surface-ink);color:var(--color-text-on-dark);font:400 1rem var(--font-body);}button{background:var(--color-surface-paper);color:var(--color-text-on-paper);padding:.95rem 1.2rem;border:0;font:500 .9375rem var(--font-body);cursor:pointer;}button:disabled{opacity:.6;cursor:wait;}.honeypot{position:absolute;left:-9999px;}input:focus-visible,textarea:focus-visible,select:focus-visible,button:focus-visible{outline:2px solid var(--color-accent-signal);outline-offset:3px;}@media(max-width:640px){.form-grid{grid-template-columns:1fr;}}
+</style>

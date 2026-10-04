@@ -1,0 +1,38 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ServicePageShell from '../ServicePageShell.astro';
+import InquiryForm from '../InquiryForm.astro';
+import { chapterNavigation } from '../../config/site';
+import { serviceSchema } from '../../config/schema';
+interface Chapter { id:string; title:string; paragraphs:string[]; layout:string; table?:{headers:string[];rows:string[][]}|null; }
+interface Service {slug:string;name:string;seo:{title:string;description:string;canonicalPath:string};hero:{heading:string;deck:string;ctaLabel:string};spatialWords:{opening:string};openingQA:{question:string;answer:string[]};chapters:Chapter[];groups:{id:string;label:string;chapterIds:string[]}[];projectPaths:{title:string;body:string}[];scopeOptions:{label:string;scope:string;dependencies:string}[];faqs:{question:string;answer:string}[];inquiry:{heading:string;body:string};}
+const { service:s }=Astro.props as {service:Service};
+const lookup=new Map(s.chapters.map(c=>[c.id,c]));
+const surfaceRole = (id: string) => id === 'systems' ? 'systems' : id === 'investment' ? 'investment' : 'editorial';
+---
+<Layout title={s.seo.title} description={s.seo.description} schema={serviceSchema(s.name,s.seo.description,s.seo.canonicalPath)}>
+  <a class="skip-link" href="#service-content">Skip to content</a>
+  <main id="service-content" tabindex="-1" data-design-sandbox={s.slug}>
+    <section class="band ink hero architectural-background-section" data-opening-section="hero" data-surface-role="hero">
+      {s.spatialWords.opening && <span class="architectural-background-title" data-surface="ink" aria-hidden="true">{s.spatialWords.opening}</span>}
+      <div class="section-content"><p>{s.name}</p><h1>{s.hero.heading}</h1><p class="deck">{s.hero.deck}</p><a class="action" href="#inquiry">{s.hero.ctaLabel}</a></div>
+    </section>
+    <section class="band answer" data-opening-section="answer" data-surface-role="answer"><h2>{s.openingQA.question}</h2><div>{s.openingQA.answer.map(p=><p>{p}</p>)}</div></section>
+    <ServicePageShell currentPath={`/systems/${s.slug}/`} chapters={chapterNavigation}>
+      {s.groups.map(g=><section id={g.id} data-chapter-group class="band group" data-surface-role={surfaceRole(g.id)} aria-labelledby={`${g.id}-heading`}>
+        <h2 id={`${g.id}-heading`}>{g.label}</h2>
+        {g.chapterIds.map(id=>{const c=lookup.get(id);return c && <article id={`chapter-${c.id}`} data-layout={c.layout}>
+          <h3>{c.title}</h3><div class:list={['reading-copy',{'comparison-copy':c.layout==='comparison'}]}>{c.paragraphs.map(p=><p>{p}</p>)}</div>
+          {c.table && <div class="table-scroll" tabindex="0" role="region" aria-label={`${c.title} comparison`}><table><thead><tr>{c.table.headers.map(h=><th scope="col">{h}</th>)}</tr></thead><tbody>{c.table.rows.map(row=><tr>{row.map((cell,i)=>i===0?<th scope="row">{cell}</th>:<td>{cell}</td>)}</tr>)}</tbody></table></div>}
+        </article>;})}
+        {g.id==='installation' && s.projectPaths.map(p=><article><h3>{p.title}</h3><p>{p.body}</p></article>)}
+        {g.id==='investment' && <div class="table-scroll" tabindex="0" role="region" aria-label="Project scopes"><table><thead><tr><th scope="col">Scope</th><th scope="col">Included work</th><th scope="col">Dependencies</th></tr></thead><tbody>{s.scopeOptions.map(o=><tr><th scope="row">{o.label}</th><td>{o.scope}</td><td>{o.dependencies}</td></tr>)}</tbody></table></div>}
+      </section>)}
+    </ServicePageShell>
+    <section class="band" id="questions" data-closing-section="questions" data-surface-role="questions"><h2>Questions</h2>{s.faqs.map(f=><details><summary>{f.question}</summary><p>{f.answer}</p></details>)}</section>
+    <section class="band ink" id="inquiry" data-closing-section="inquiry" data-surface-role="inquiry"><h2>{s.inquiry.heading}</h2><p class="deck">{s.inquiry.body}</p><InquiryForm service={s.name} serviceSlug={s.slug} /></section>
+  </main>
+</Layout>
+<style>
+.band{padding:var(--spacing-section) var(--spacing-page-inline);} .ink{background:var(--color-surface-ink);color:var(--color-text-on-dark);}.hero{padding-top:clamp(7rem,14vw,12rem);}.hero h1{max-width:18ch;font-size:clamp(2.75rem,5.8vw,6rem);}h1,h2,h3{font-family:var(--font-display);font-weight:300;letter-spacing:-.025em;line-height:1.05;}h2{font-size:clamp(2rem,3vw,2.75rem);}h3{font-size:clamp(1.5rem,2.4vw,2rem);}p{line-height:1.6;max-width:65ch;} .deck{font-size:1.125rem;max-width:45rem;}.action{display:inline-block;margin-top:1rem;color:inherit;padding-bottom:.4rem;border-bottom:1px solid var(--color-border-dark);text-decoration:none;}.answer{display:grid;grid-template-columns:1fr 1fr;gap:4rem;}.group{border-bottom:1px solid var(--surface-border, var(--color-border-paper));}article{margin-top:3rem;}.comparison-copy{display:grid;grid-template-columns:1fr 1fr;gap:0 2rem;}.table-scroll{overflow-x:auto;margin:2rem 0;}table{border-collapse:collapse;width:100%;min-width:36rem;text-align:left;}th,td{padding:1rem;border-bottom:1px solid var(--surface-border, var(--color-border-paper));vertical-align:top;line-height:1.5;font-size:.9375rem;}th{font-weight:500;}details{border-top:1px solid var(--surface-border, var(--color-border-paper));padding:1.25rem 0;max-width:65rem;}summary{cursor:pointer;font-size:1.125rem;}.masthead{display:flex;justify-content:space-between;padding:1.25rem var(--spacing-page-inline);border-bottom:1px solid var(--color-border-dark);}.masthead a{color:inherit;text-decoration:none;}.skip-link{position:fixed;transform:translateY(-200%);z-index:100;padding:.8rem;background:var(--color-surface-paper);color:var(--color-text-on-paper);}.skip-link:focus{transform:none;}:focus-visible{outline:2px solid var(--color-accent-signal);outline-offset:4px;}@media(max-width:700px){.answer,.comparison-copy{grid-template-columns:1fr;gap:1rem;}}
+</style>

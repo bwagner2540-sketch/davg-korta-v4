@@ -1,0 +1,1 @@
+These older documents preserve technical source history. Their whole-page rail, fifteen-section map and /solutions/ instructions are superseded by ../00-START-HERE.md. They are not implementation authority.

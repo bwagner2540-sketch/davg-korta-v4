@@ -1,0 +1,96 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import ServicePageShell from '../../ServicePageShell.astro';
+import InquiryForm from '../../InquiryForm.astro';
+import Chapter from '../../korta/Chapter.astro';
+import LightingField from './LightingField.astro';
+import { hasPublicSection } from '../../../lib/hub-presentation.mjs';
+import { serviceSchema } from '../../../config/schema';
+import { loadGitHub } from '../../../lib/git-hubs.mjs';
+import { bodyPhoto, productsFor, sectionRole, spatialWords } from '../../../lib/hub-composition.mjs';
+import { composeChapterHtml, escapeHtml, insertAfterLead, noteComments } from '../../../lib/chapter-markup.mjs';
+import { asideFigure, chapterLayout, figuresFor, heroFigure, inlineFigures } from '../../../lib/chapter-figures.mjs';
+import catalog from '../../../data/hubs/catalog.json';
+import images from '../../../data/images.json';
+
+interface Props { slug: string }
+const { slug } = Astro.props;
+const hub = loadGitHub(slug);
+const dev = import.meta.env.DEV;
+const sectionIsPublic = (section: typeof hub.sections[number]) => {
+  const role = sectionRole(slug, section.id);
+  return hasPublicSection(section, role, role.photo ? bodyPhoto(slug, role.photo) : null, role.products ? productsFor(slug) : []);
+};
+const publicSections = hub.sections.filter(sectionIsPublic);
+const chapterSections = publicSections.filter((section) => section.id !== '01' && section.id !== '15');
+const chapters = chapterSections.map((section) => ({ id: `s${section.id}`, label: section.title }));
+const opening = hub.sections[0];
+const word = spatialWords[slug];
+const heroSlot = (catalog as Record<string, { slots?: { number: string; id: string; src?: string | null; alt?: string; title?: string; caption?: string; fit?: 'cover' | 'contain' }[] }>)[slug]
+  ?.slots?.find((slot) => slot.number === '01' && slot.src && slot.alt && slot.title && slot.caption);
+const heroReady = Boolean(heroSlot?.src && (images as Record<string, { width: number }>)[heroSlot.src]);
+const inkId = publicSections.find((section) => section.id !== '01' && section.id !== '15' && sectionRole(slug, section.id).purpose === 'comparison')?.id;
+
+function chapterBody(section: typeof hub.sections[number]) {
+  let body = composeChapterHtml(section.html);
+  if (section.deck && section.lead) body = insertAfterLead(body, `<p>${escapeHtml(section.deck)}</p>`);
+  else if (section.deck) body = `<p>${escapeHtml(section.deck)}</p>${body}`;
+  if (section.support) body += `<p>${escapeHtml(section.support)}</p>`;
+  const figures = figuresFor(slug, section.id);
+  const options = { dev, caption: section.figureCaption || '' };
+  if (chapterLayout(figures) === 'single') body = insertAfterLead(body, inlineFigures(figures, options));
+  if (section.id === '05') {
+    body = `<div class="architectural-background-title k-spatial" data-surface="ink" data-study-built="true">${escapeHtml(word)}</div>${body}`;
+  }
+  return body + noteComments(section.notes);
+}
+---
+{slug === 'architectural-lighting' ? <LightingField /> : <Layout title={hub.seoTitle} description={hub.description} schema={serviceSchema(hub.name, hub.description, hub.route)}>
+  <a class="skip-link" href="#service-content">Skip to content</a>
+  <ServicePageShell currentPath={hub.route} chapters={chapters} slug={slug}>
+    <main id="service-content" tabindex="-1">
+      {hub.sections.map((section) => {
+        if (!sectionIsPublic(section)) return <span id={`s${section.id}`} hidden data-section-reserved />;
+        if (section.id === '01') return <section id="s01" data-chapter-group data-surface-role="hero" class="k-hero">
+          <div class="k-hero__copy">
+            <span class="mono-label section-kicker">{hub.name}</span>
+            <h1>{opening.headline || hub.h1}</h1>
+            {opening.deck && <p>{opening.deck}</p>}
+            <p class="k-hero__actions">
+              {opening.cta && <a href="#inquiry">{opening.cta}</a>}
+              {opening.secondary && <a href="#s02">{opening.secondary}</a>}
+            </p>
+          </div>
+          {heroReady && heroSlot?.src && <div class="k-hero__media" set:html={heroFigure({ id: heroSlot.id, src: heroSlot.src, alt: heroSlot.alt as string, title: heroSlot.title as string, caption: heroSlot.caption as string }, { dev })} />}
+        </section>;
+        if (section.id === '15') return <section id="s15" class="k-ch k-ch--ink k-ch--single" data-chapter-group data-surface-role="inquiry">
+          <div class="k-ch__in">
+            <header class="k-ch__head">
+              <span class="mono-label k-ch__nn">15</span>
+              <h2 class="k-ch__title">{section.headline || section.title}</h2>
+            </header>
+            <div class="k-ch__body" data-composed-copy set:html={chapterBody(section)} />
+            <div class="hub-inquiry" id="inquiry"><InquiryForm service={hub.name} serviceSlug={hub.slug} /></div>
+          </div>
+        </section>;
+        const figures = figuresFor(slug, section.id);
+        const layout = chapterLayout(figures);
+        const options = { dev, caption: section.figureCaption || '' };
+        return <Chapter
+          id={`s${section.id}`}
+          index={chapterSections.findIndex((item) => item.id === section.id) + 1}
+          title={section.headline || section.title}
+          surface={section.id === inkId ? 'ink' : 'paper'}
+          layout={layout}
+          body={chapterBody(section)}
+          media={layout === 'aside' ? asideFigure(figures, options) : ''}
+          signature={section.id === '05'}
+        />;
+      })}
+    </main>
+  </ServicePageShell>
+</Layout>}
+<style>
+.skip-link { position: fixed; top: var(--k-s3); left: var(--k-s3); z-index: 80; padding: var(--k-s3); background: var(--color-surface-paper); color: var(--color-text-primary-paper); transform: translateY(-150%); }
+.skip-link:focus { transform: none; }
+</style>

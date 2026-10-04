@@ -1,0 +1,729 @@
+{
+  "schema_version": 1,
+  "project": "DAVG Korta V4",
+  "updated": "2026-09-29",
+  "source": "Claude GBB Refined 6.7.pdf",
+  "purpose": "Section-ready public copy plus explicit placement metadata; no new routes required.",
+  "modules": [
+    {
+      "id": "lutron-connected-light-and-shade",
+      "hub": 2,
+      "route": "/solutions/architectural-lighting/",
+      "section_id": "04",
+      "section_title": "Fixtures, loads, scenes and control",
+      "source_topics": [
+        "Lutron Ecosystem Hub"
+      ],
+      "placement": "Add a short closing module after the existing fixtures/load/scene explanation; use links instead of creating a Lutron hub page.",
+      "mode": "text",
+      "public": {
+        "title": "Light and shade, considered together",
+        "intro": "Electric light and daylight shape the same rooms. Lutron lighting and shading can be planned together, with the control platform selected around the fixtures, openings and way the home will be used.",
+        "paths": [],
+        "closing": "Lighting begins with the room and its layers. Shading begins with the opening, fabric and mounting detail. Coordinated control brings those decisions together.",
+        "related_links": [
+          {
+            "label": "Explore motorized shading",
+            "href": "/solutions/motorized-shades/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lutron-platforms",
+      "hub": 2,
+      "route": "/solutions/architectural-lighting/",
+      "section_id": "06",
+      "section_title": "Choose a Lutron platform and keypad",
+      "source_topics": [
+        "Lutron Lighting"
+      ],
+      "placement": "Replace the existing Caséta / RadioRA 3 / HomeWorks summary with this comparison. Retain the detailed keypad, fixture, driver and tunable-light guidance below it.",
+      "mode": "comparison",
+      "public": {
+        "title": "Choose the platform around the home",
+        "intro": "The right Lutron system follows the scope of the residence, the lighting requirements and the work already underway.",
+        "paths": [
+          {
+            "title": "Focused lighting control",
+            "description": "Caséta is a starting point for selected rooms and compatible existing loads.",
+            "details": [
+              "Add practical dimming and repeatable scenes.",
+              "Keep the scope focused on the spaces that need it.",
+              "Check the chosen fixtures, controls and integrations together."
+            ]
+          },
+          {
+            "title": "Whole-home wireless control",
+            "description": "RadioRA 3 suits a broader lighting and shading plan with coordinated rooms and controls.",
+            "details": [
+              "Organize scenes around daily routines.",
+              "Plan device placement and communication across the home.",
+              "Select supported keypad and shade combinations."
+            ]
+          },
+          {
+            "title": "Architectural lighting system",
+            "description": "HomeWorks supports a more extensively designed lighting and control architecture.",
+            "details": [
+              "Coordinate panels, local controls or a hybrid arrangement.",
+              "Plan keypad locations and finish details early.",
+              "Include compatible tunable light where the lighting brief calls for it."
+            ]
+          }
+        ],
+        "closing": "Keypad style is a separate design choice. Sunnata, Palladiom and Alisse are not interchangeable across every platform; match the selected control to the system and the room.",
+        "related_links": []
+      }
+    },
+    {
+      "id": "lighting-control-architectures",
+      "hub": 2,
+      "route": "/solutions/architectural-lighting/",
+      "section_id": "06",
+      "section_title": "Choose a Lutron platform and keypad",
+      "source_topics": [
+        "Control4 Lighting"
+      ],
+      "placement": "Add after the Lutron platform/keypad comparison as a compact architecture explanation. Do not present Control4 and Lutron as a mandatory upgrade ladder.",
+      "mode": "comparison",
+      "public": {
+        "title": "How lighting fits into whole-home control",
+        "intro": "Whole-home control and the lighting system have different jobs. Control4 can coordinate supported lighting with media, shades and other systems; the lighting architecture still needs to suit the loads and construction.",
+        "paths": [
+          {
+            "title": "Local dimming",
+            "description": "Compatible dimmers control loads near the room, with scenes coordinated through the selected system.",
+            "details": [
+              "Useful when adapting existing wallboxes.",
+              "Confirm load and dimmer compatibility."
+            ]
+          },
+          {
+            "title": "Scene keypads",
+            "description": "A keypad gives the household a simple way to call several lighting actions together.",
+            "details": [
+              "Name buttons for familiar routines.",
+              "Choose a control that belongs to the selected lighting platform."
+            ]
+          },
+          {
+            "title": "Centralized or integrated lighting",
+            "description": "A larger project may use panelized Control4 lighting or a compatible Lutron system integrated with Control4.",
+            "details": [
+              "Coordinate wiring and panel access early.",
+              "Keep local lighting operation and household override clear."
+            ]
+          }
+        ],
+        "closing": "These approaches can coexist. A keypad is an interface, not a substitute for the load-control design.",
+        "related_links": []
+      }
+    },
+    {
+      "id": "homeworks-project-scopes",
+      "hub": 2,
+      "route": "/solutions/architectural-lighting/",
+      "section_id": "12",
+      "section_title": "What changes lighting investment?",
+      "source_topics": [
+        "HomeWorks QSX"
+      ],
+      "placement": "Add after the existing cost-driver paragraph; replace any duplicate HomeWorks package cards. Retain the general lighting cost explanation.",
+      "mode": "comparison",
+      "public": {
+        "title": "Three ways a HomeWorks brief can grow",
+        "intro": "HomeWorks scope is shaped by the lighting design and installation conditions, rather than a fixed processor count or a house-size label.",
+        "paths": [
+          {
+            "title": "Selected architectural spaces",
+            "description": "Concentrate coordinated control where the lighting detail matters most.",
+            "details": [
+              "Define the rooms, loads and scene requirements.",
+              "Resolve control locations and access to equipment."
+            ]
+          },
+          {
+            "title": "Whole-residence lighting",
+            "description": "Bring the residence into one planned lighting and shading experience.",
+            "details": [
+              "Coordinate floors, exterior zones and daily scenes.",
+              "Plan wiring, panels, controls and commissioning together."
+            ]
+          },
+          {
+            "title": "Expanded tunable-light design",
+            "description": "Add compatible tunable light, such as Ketra, where color and quality of light form part of the brief.",
+            "details": [
+              "Design the fixtures and control system as one package.",
+              "Agree the scenes and schedules the household will actually use."
+            ]
+          }
+        ],
+        "closing": "The proposal separates lighting equipment, fixtures, controls, electrical coordination and commissioning so the investment is understandable.",
+        "related_links": []
+      }
+    },
+    {
+      "id": "shade-design-paths",
+      "hub": 3,
+      "route": "/solutions/motorized-shades/",
+      "section_id": "06",
+      "section_title": "Choose fabric, form and Lutron family",
+      "source_topics": [
+        "Motorized Shading"
+      ],
+      "placement": "Replace only the existing Good / Better / Best shade-family submodule (Step 3). Keep the goal, fabric, treatment, dimensions, pocket/light-gap, power, gallery and measurement sequence.",
+      "mode": "comparison",
+      "public": {
+        "title": "Three shading paths",
+        "intro": "Start with the opening and the effect you want from the fabric. Then choose the treatment, mounting detail, power and control path.",
+        "paths": [
+          {
+            "title": "Finished-home simplicity",
+            "description": "A battery-powered roller approach can bring shading to selected rooms without running a new power cable to every opening.",
+            "details": [
+              "Consider Triathlon; compare Serena where its system and control options fit.",
+              "Check fabric, opening size, battery access and integration.",
+              "Use a mount that respects the finished room."
+            ]
+          },
+          {
+            "title": "Integrated architectural shading",
+            "description": "A Sivoia QS-based design can support a more coordinated shading plan, with the treatment and power path selected for the project.",
+            "details": [
+              "Coordinate rollers, drapery or other supported treatments.",
+              "Plan pockets, blocking, wiring and service access.",
+              "Choose compatible lighting and whole-home controls."
+            ]
+          },
+          {
+            "title": "Exposed design detail",
+            "description": "Palladiom roller shades make the bracket and finish part of the architecture.",
+            "details": [
+              "Choose visible hardware with intention.",
+              "Select wired or wire-free equipment to suit the opening.",
+              "Coordinate alignment, fabric and neighboring finishes."
+            ]
+          }
+        ],
+        "closing": "A wireless control connection does not necessarily mean battery power. Confirm communication, power and platform compatibility as separate choices.",
+        "related_links": []
+      }
+    },
+    {
+      "id": "control4-project-scopes",
+      "hub": 1,
+      "route": "/solutions/home-intelligence/",
+      "section_id": "06",
+      "section_title": "Choose the Control4 system scope",
+      "source_topics": [
+        "Control4 Hub"
+      ],
+      "placement": "Replace the initial phase/scope summary with these paths. Retain the deeper local/cloud, controller, takeover and expansion explanations.",
+      "mode": "comparison",
+      "public": {
+        "title": "Choose how much of the home to bring together",
+        "intro": "A good control system makes the household easier to run. Begin with the daily actions that deserve one clear command.",
+        "paths": [
+          {
+            "title": "A focused start",
+            "description": "Bring selected rooms or routines into one coordinated experience.",
+            "details": [
+              "Start with a media room, key lighting scenes or another clear priority.",
+              "Choose controls that the household can use immediately.",
+              "Leave an expansion path where it is useful."
+            ]
+          },
+          {
+            "title": "A connected residence",
+            "description": "Coordinate supported lighting, shades, entertainment and climate across the home.",
+            "details": [
+              "Define room and whole-home scenes together.",
+              "Select interfaces around the people who use each space.",
+              "Plan the network, wiring and control system as one design."
+            ]
+          },
+          {
+            "title": "A more extensive property",
+            "description": "Extend the system across a larger or more complex residence and its related spaces.",
+            "details": [
+              "Account for detached buildings, exterior zones and equipment access.",
+              "Size the control architecture around the actual system.",
+              "Document how the home is operated and supported."
+            ]
+          }
+        ],
+        "closing": "Controller selection follows the equipment, integrations and performance brief. It is not a public package label.",
+        "related_links": []
+      }
+    },
+    {
+      "id": "household-interfaces",
+      "hub": 1,
+      "route": "/solutions/home-intelligence/",
+      "section_id": "07",
+      "section_title": "Interfaces and household use cases",
+      "source_topics": [
+        "Control4 Interfaces & Voice"
+      ],
+      "placement": "Add before the household moment / exception table. Replace any remote → touchscreen → voice quality ranking; keep the use-case and manual-route table.",
+      "mode": "comparison",
+      "public": {
+        "title": "Choose the controls people will reach for",
+        "intro": "Remote, touchscreen, keypad, phone and voice can work together. The best mix depends on the room, the task and the person using it.",
+        "paths": [
+          {
+            "title": "In hand",
+            "description": "A remote provides familiar control for everyday viewing and listening.",
+            "details": [
+              "Consider Halo or Halo Touch for a compatible Control4 system.",
+              "Keep common entertainment actions easy to find."
+            ]
+          },
+          {
+            "title": "At the wall or table",
+            "description": "A touchscreen or keypad gives a shared control point that does not depend on someone having a phone.",
+            "details": [
+              "Use a compatible Control4 touchscreen for broader system access.",
+              "Use scene keypads for quick, repeatable actions."
+            ]
+          },
+          {
+            "title": "By voice",
+            "description": "Voice adds another way to call supported actions when speaking is convenient.",
+            "details": [
+              "Consider a compatible Josh.ai integration where it suits the household.",
+              "Keep a physical control available for the same routine."
+            ]
+          }
+        ],
+        "closing": "The goal is a familiar action in each place, rather than a different interface for every system.",
+        "related_links": []
+      }
+    },
+    {
+      "id": "sonos-audio-paths",
+      "hub": 4,
+      "route": "/solutions/media-audio/",
+      "section_id": "06",
+      "section_title": "Which speaker type, and why Sonance or Triad?",
+      "source_topics": [
+        "Sonos Whole-Home Audio"
+      ],
+      "placement": "Add after the existing Sonance / Triad speaker-type guidance. Keep Sonance / Triad, speaker count, TV choice and Atmos content. Sonos does not replace those decisions.",
+      "mode": "comparison",
+      "public": {
+        "title": "Choose how music enters the room",
+        "intro": "Streaming, amplification and speakers form different parts of the audio design. Sonos can support room-based listening or an architectural system; speaker placement still follows the room.",
+        "paths": [
+          {
+            "title": "Room by room",
+            "description": "Standalone Sonos speakers are a simple way to bring streaming music to selected spaces.",
+            "details": [
+              "Place speakers around the listening area.",
+              "Group compatible rooms when shared music is useful."
+            ]
+          },
+          {
+            "title": "Built into the room",
+            "description": "Sonos Amp can drive compatible passive speakers, including Sonos Architectural by Sonance.",
+            "details": [
+              "Choose in-ceiling, in-wall or outdoor speakers for the intended location.",
+              "Plan wiring, amplifier access and speaker coverage."
+            ]
+          },
+          {
+            "title": "Coordinated across the home",
+            "description": "A wider distributed-audio design brings sources, amplification, zones and control into one plan.",
+            "details": [
+              "Choose equipment around the room and zone requirements.",
+              "Coordinate compatible audio with whole-home scenes when useful."
+            ]
+          }
+        ],
+        "closing": "Architectural audio is about coverage and placement as much as concealment. Select the streaming and amplification layer alongside the speaker design.",
+        "related_links": []
+      }
+    },
+    {
+      "id": "control4-entertainment-scenes",
+      "hub": 4,
+      "route": "/solutions/media-audio/",
+      "section_id": "10",
+      "section_title": "What does Control4 do for TV and music?",
+      "source_topics": [
+        "Control4 Audio & Entertainment"
+      ],
+      "placement": "Replace any duplicate one-button entertainment feature list with this scene example. Retain equipment compatibility and signal-path education.",
+      "mode": "comparison",
+      "public": {
+        "title": "Let the room start with one familiar action",
+        "intro": "A supported Control4 scene can coordinate the equipment involved in a routine, so starting a film or listening to music takes fewer separate steps.",
+        "paths": [
+          {
+            "title": "Watch",
+            "description": "Bring the selected display, source and sound system into the right state.",
+            "details": [
+              "Include lighting and shades where the selected integrations support it.",
+              "Leave volume and source changes easy to reach."
+            ]
+          },
+          {
+            "title": "Listen",
+            "description": "Start a chosen source in the rooms that belong in the moment.",
+            "details": [
+              "Keep local volume and grouping understandable.",
+              "Define which zones should stay independent."
+            ]
+          },
+          {
+            "title": "Finish",
+            "description": "Return the room to an agreed state when the activity ends.",
+            "details": [
+              "Turn off the intended equipment.",
+              "Use a clear manual route when the household wants something different."
+            ]
+          }
+        ],
+        "closing": "Cinema design and outdoor coverage have their own room and property requirements. Whole-home control connects them without replacing that work.",
+        "related_links": [
+          {
+            "label": "Explore private cinemas",
+            "href": "/solutions/private-cinemas/"
+          },
+          {
+            "label": "Explore outdoor entertainment",
+            "href": "/solutions/outdoor-entertainment/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "media-room-scopes",
+      "hub": 4,
+      "route": "/solutions/media-audio/",
+      "section_id": "12",
+      "section_title": "What changes the investment?",
+      "source_topics": [
+        "Media Rooms"
+      ],
+      "placement": "Add after the existing media investment introduction. Replace any competing media-room package ladder; keep cost categories and the earlier TV / speaker / Atmos chapters.",
+      "mode": "comparison",
+      "public": {
+        "title": "Choose the room experience",
+        "intro": "A media room can remain a flexible living space or become a more focused place for watching and listening. The scope follows how the room will be used.",
+        "paths": [
+          {
+            "title": "An elevated living room",
+            "description": "Improve the display, sound and everyday operation of a shared space.",
+            "details": [
+              "Match the screen to light and viewing distance.",
+              "Choose a soundbar or speaker layout that fits the room.",
+              "Make daily controls familiar."
+            ]
+          },
+          {
+            "title": "A room built around entertainment",
+            "description": "Give picture and sound a more deliberate place in the architecture.",
+            "details": [
+              "Plan front speakers, surrounds and bass around the seats.",
+              "Consider acoustic treatment and equipment access.",
+              "Coordinate lighting, shades and control."
+            ]
+          },
+          {
+            "title": "Performance with a quieter visual presence",
+            "description": "Integrate the experience with custom joinery, concealment and finish details.",
+            "details": [
+              "Resolve concealed equipment and service access early.",
+              "Coordinate screen, speaker and mounting details with the design team.",
+              "Keep the performance brief clear beneath the finish work."
+            ]
+          }
+        ],
+        "closing": "Concealment adds design and installation scope. It does not automatically make the room sound better.",
+        "related_links": []
+      }
+    },
+    {
+      "id": "cinema-room-scopes",
+      "hub": 5,
+      "route": "/solutions/private-cinemas/",
+      "section_id": "07",
+      "section_title": "Cinema capabilities by room brief",
+      "source_topics": [
+        "Private Cinemas"
+      ],
+      "placement": "Replace only a duplicate capabilities/package summary in Section 07. Keep seats / screen / sound-field selection in Section 06 and cost drivers in Section 12. Do not insert DCI / THX certification claims.",
+      "mode": "comparison",
+      "public": {
+        "title": "Choose the cinema around the seats",
+        "intro": "The cinema brief starts with the people in the room: where they sit, what they watch and how far the experience should reach.",
+        "paths": [
+          {
+            "title": "A dedicated private cinema",
+            "description": "Create a purposeful room with controlled light, an appropriate image and surround sound.",
+            "details": [
+              "Establish seat count and sightlines first.",
+              "Select a display or projection system for the room.",
+              "Address acoustics and simple operation."
+            ]
+          },
+          {
+            "title": "An immersive projection room",
+            "description": "Develop the screen, speaker layout and room treatment around a more demanding brief.",
+            "details": [
+              "Consider an acoustically transparent screen where it fits the design.",
+              "Plan surround and height channels around actual geometry.",
+              "Coordinate bass, ventilation and equipment access."
+            ]
+          },
+          {
+            "title": "A reference-oriented cinema",
+            "description": "Pursue a higher performance target through a more extensive room and system design.",
+            "details": [
+              "Specify image, sound and every-seat goals together.",
+              "Evaluate processing and equipment appropriate to those goals.",
+              "Include measured calibration and detailed construction coordination."
+            ]
+          }
+        ],
+        "closing": "Channel count and equipment price cannot substitute for the room design. The proposal should make the performance goals and construction scope clear.",
+        "related_links": []
+      }
+    },
+    {
+      "id": "security-recording-options",
+      "hub": 6,
+      "route": "/solutions/security-access/",
+      "section_id": "06",
+      "section_title": "Choose events, cameras and credentials",
+      "source_topics": [
+        "Security & Surveillance"
+      ],
+      "placement": "Replace the existing local / cloud / hybrid comparison with this module; keep event, detail, credential and privacy guidance.",
+      "mode": "comparison",
+      "public": {
+        "title": "Choose where recordings live",
+        "intro": "Recording location changes ownership, access and ongoing cost. Choose it alongside the events you need to see and the areas you want to keep private.",
+        "paths": [
+          {
+            "title": "Local recording",
+            "description": "Store footage on a recorder at the property.",
+            "details": [
+              "Plan retention, equipment access and user permissions.",
+              "Separate remote access requirements from local recording behavior."
+            ]
+          },
+          {
+            "title": "Cloud-connected recording",
+            "description": "Use a supported cloud service for the access and management functions the project needs.",
+            "details": [
+              "Understand subscription, retention and export terms.",
+              "Confirm what continues if the internet connection is unavailable."
+            ]
+          },
+          {
+            "title": "A deliberate hybrid",
+            "description": "Combine local and cloud functions where that combination solves a clear requirement.",
+            "details": [
+              "Document what is stored in each place.",
+              "Keep account ownership and access permissions understandable."
+            ]
+          }
+        ],
+        "closing": "Cloud storage is not automatically an upgrade over local storage. The right choice follows the household’s privacy, access and continuity priorities.",
+        "related_links": []
+      }
+    },
+    {
+      "id": "security-property-scopes",
+      "hub": 6,
+      "route": "/solutions/security-access/",
+      "section_id": "12",
+      "section_title": "What changes security investment?",
+      "source_topics": [
+        "Security & Surveillance"
+      ],
+      "placement": "Add after the existing security investment introduction. Replace price/package cards; do not replace the camera coverage and credentials chapters.",
+      "mode": "comparison",
+      "public": {
+        "title": "Choose the property scope",
+        "intro": "Start with the places and events that matter. Add equipment only where it has a defined purpose.",
+        "paths": [
+          {
+            "title": "Entry visibility",
+            "description": "Focus on a main approach, door or other priority entry.",
+            "details": [
+              "Choose the image detail required at that location.",
+              "Set recording, alerts and household access."
+            ]
+          },
+          {
+            "title": "Property coverage",
+            "description": "Coordinate several views and entry points across the residence.",
+            "details": [
+              "Resolve day and night conditions, retention and camera placement.",
+              "Plan network, power, cable routes and privacy exclusions."
+            ]
+          },
+          {
+            "title": "Integrated access and coverage",
+            "description": "Bring selected cameras, doors, gates and supported control responses into one plan.",
+            "details": [
+              "Define credentials and who can change them.",
+              "Coordinate entry hardware, backup behavior and system interfaces."
+            ]
+          }
+        ],
+        "closing": "The proposal separates cameras, recording, door or gate equipment, infrastructure, installation and ongoing service choices.",
+        "related_links": []
+      }
+    },
+    {
+      "id": "network-project-scopes",
+      "hub": 7,
+      "route": "/solutions/infrastructure-privacy/",
+      "section_id": "12",
+      "section_title": "What changes network investment?",
+      "source_topics": [
+        "Networking & Infrastructure"
+      ],
+      "placement": "Add after the existing network investment introduction. Retain the consumer mesh / engineered comparison in Section 06 and support terms in Section 13. Do not rank brands as universal tiers.",
+      "mode": "comparison",
+      "public": {
+        "title": "Build the network around the property",
+        "intro": "Internet service brings a connection to the home. The network determines how that connection and the home’s systems reach the places they are needed.",
+        "paths": [
+          {
+            "title": "Improve the existing network",
+            "description": "Address a focused coverage, placement or configuration problem.",
+            "details": [
+              "Test the connection and the in-home network separately.",
+              "Work with useful existing cabling and equipment."
+            ]
+          },
+          {
+            "title": "A wired, managed foundation",
+            "description": "Plan access points, switching and fixed connections as a coordinated residential network.",
+            "details": [
+              "Use wired backhaul where practical.",
+              "Separate networks where the system and household require it.",
+              "Organize equipment, power and documentation."
+            ]
+          },
+          {
+            "title": "A more extensive property network",
+            "description": "Extend the design across larger areas, exterior spaces or detached buildings.",
+            "details": [
+              "Survey materials, distances and available pathways.",
+              "Plan building-to-building connections and outdoor coverage.",
+              "Test with realistic household traffic."
+            ]
+          }
+        ],
+        "closing": "Equipment is selected after the coverage and capacity brief is clear. Support arrangements can be added to match the household’s needs.",
+        "related_links": []
+      }
+    },
+    {
+      "id": "outdoor-project-scopes",
+      "hub": 8,
+      "route": "/solutions/outdoor-entertainment/",
+      "section_id": "12",
+      "section_title": "What changes outdoor investment?",
+      "source_topics": [
+        "Outdoor Entertainment"
+      ],
+      "placement": "Add after the existing outdoor investment introduction. Keep speaker / display selection in Section 06 and the property examples in Section 07.",
+      "mode": "comparison",
+      "public": {
+        "title": "Choose how the property should gather",
+        "intro": "Outdoor entertainment begins with the places people actually use. Plan sound, viewing and control around those places and their exposure.",
+        "paths": [
+          {
+            "title": "A patio experience",
+            "description": "Create a focused listening or viewing area close to the home.",
+            "details": [
+              "Place suitable outdoor speakers near the listeners.",
+              "Match any display to the actual sun and weather exposure.",
+              "Keep controls within easy reach."
+            ]
+          },
+          {
+            "title": "Connected outdoor spaces",
+            "description": "Coordinate dining, lounge, pool or garden areas with distinct zones.",
+            "details": [
+              "Distribute sound for useful coverage at comfortable levels.",
+              "Plan source grouping, bass and independent volume.",
+              "Coordinate cable routes, power and outdoor network access."
+            ]
+          },
+          {
+            "title": "A property-wide plan",
+            "description": "Bring several outdoor destinations into a coordinated entertainment design.",
+            "details": [
+              "Develop landscape audio and viewing areas around the site.",
+              "Plan conduit and equipment access with hardscape and planting.",
+              "Set sensible boundaries for sound and light."
+            ]
+          }
+        ],
+        "closing": "Weather exposure, trenching, hardscape and service access can shape the scope as much as the equipment.",
+        "related_links": []
+      }
+    },
+    {
+      "id": "trade-coordination-paths",
+      "hub": 0,
+      "route": "/trade-partners/",
+      "section_id": "workflow",
+      "section_title": "Project coordination / ways to work together",
+      "source_topics": [
+        "Trade Partner — Builder & Designer"
+      ],
+      "placement": "Use once on /trade-partners/ under project coordination / ways to work together. /design-build/ may link to it. Do not add three package cards to every service page.",
+      "mode": "comparison",
+      "public": {
+        "title": "Bring technology into the project at the right time",
+        "intro": "The useful starting point depends on whether the home is finished, under construction or still being designed.",
+        "paths": [
+          {
+            "title": "An existing home",
+            "description": "Work from the rooms, equipment and pathways already in place.",
+            "details": [
+              "Identify the changes with the greatest everyday value.",
+              "Plan retrofit access and protect the finished space."
+            ]
+          },
+          {
+            "title": "A build or renovation underway",
+            "description": "Coordinate technology before walls and finishes make changes difficult.",
+            "details": [
+              "Align equipment locations, wiring and mounting requirements.",
+              "Resolve responsibilities with the builder, electrician and relevant trades."
+            ]
+          },
+          {
+            "title": "An early design collaboration",
+            "description": "Bring lighting, shading, media and infrastructure into the architectural conversation.",
+            "details": [
+              "Develop the technology brief alongside the room and property plans.",
+              "Identify visible details, concealed space and service access early."
+            ]
+          }
+        ],
+        "closing": "Start with the plans or the current site conditions. From there, define a clear scope and the next useful step.",
+        "related_links": [
+          {
+            "label": "Discuss design and construction coordination",
+            "href": "/design-build/"
+          }
+        ]
+      }
+    }
+  ]
+}
+
+

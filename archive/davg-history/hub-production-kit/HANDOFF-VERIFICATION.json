@@ -1,0 +1,14 @@
+{
+  "artifactChecks": "passed",
+  "selectedAssets": 44,
+  "visuallyReviewedCandidates": 55,
+  "hubs": 8,
+  "requiredPhotoSlots": 48,
+  "requiredStudySlots": 16,
+  "selectedRequiredPhotoSlots": 24,
+  "pendingProofPhotoSlots": 16,
+  "pendingRegionalPhotoSlots": 8,
+  "studiesToBuild": 16,
+  "duplicateSelectedFiles": 0,
+  "pageBuildOrDeploymentClaim": false
+}

@@ -1,15 +1,19 @@
 @import "tailwindcss";
+@source inline("bg-surface-ink bg-surface-paper bg-surface-charcoal bg-surface-stone bg-surface-forest text-text-primary-dark text-text-primary-paper text-text-secondary-dark text-text-secondary-paper");
 @import "@fontsource-variable/schibsted-grotesk/wght.css";
 @import "@fontsource-variable/instrument-sans/wght.css";
 @import "@fontsource/jetbrains-mono/latin-400.css";
 @import "@fontsource/jetbrains-mono/latin-500.css";
 @import "@fontsource/jetbrains-mono/latin-600.css";
+@import "./motion.css";
 
 @theme {
-  /* Four-surface system */
+  /* Surface system. Ink, Forest, Paper and Signal stay at these values. */
   --color-surface-ink: #090B0A;
   --color-surface-forest: #183B31;
   --color-surface-paper: #EDE9E0;
+  --color-surface-charcoal: #0F1310;
+  --color-surface-stone: var(--color-cream-03);
   /* Approved V4 cream-family variants */
   --color-cream-01: #F2EFE7;
   --color-cream-02: #EBE7DC;
@@ -55,6 +59,8 @@
   --text-h3--font-weight: 400;
   --text-body: 1rem;
   --text-body--line-height: 1.5;
+  --text-body-lg: 1.125rem;
+  --text-body-lg--line-height: 1.45;
   --text-caption: 0.8125rem;
   --text-caption--line-height: 1.35;
   --text-mono: 0.6875rem;
@@ -79,14 +85,50 @@
    Spacing tokens live here so they stay available even when no utility uses them yet. */
 :root {
   --page-gutter: 1.5rem;
+  --spacing-page-inline: var(--page-gutter);
   --spacing-micro: 0.5rem;
   --spacing-text: clamp(1.25rem, 2vw, 2rem);
   --spacing-component: clamp(1.5rem, 2.5vw, 2.5rem);
   --spacing-section: clamp(3rem, 6vw, 6rem);
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
   --measure-narrow: var(--container-measure-narrow);
   --measure-body: var(--container-measure);
   --measure-wide: var(--container-measure-wide);
   --content-width: var(--container-content);
+  --color-text-on-dark: var(--color-text-primary-dark);
+  --color-text-muted-dark: var(--color-text-secondary-dark);
+  --color-text-quiet-dark: var(--color-text-tertiary-dark);
+  --color-text-on-paper: var(--color-text-primary-paper);
+  --radius-control: 2px;
+  --text-label: 0.8125rem;
+  --text-label--letter-spacing: 0.08em;
+  /* Korta spacing aliases. Missing steps map to the nearest existing token. */
+  --k-s1: var(--spacing-1);
+  --k-s2: var(--spacing-2);
+  --k-s3: var(--spacing-3);
+  --k-s4: var(--spacing-4);
+  --k-s5: var(--spacing-5);
+  --k-s6: var(--spacing-6);
+  --k-s8: var(--spacing-8);
+  --k-s12: var(--spacing-12);
+  --k-s16: var(--spacing-16);
+  --k-s20: var(--spacing-16);
+  --k-hairline: 1px;
+  --k-radius: var(--radius-control);
+  --nav-logo: 36px;
+  --rail-top: calc(var(--nav-logo) + (2 * var(--k-s4)));
+  --rail-width: minmax(240px, 18%);
+  --text-body-sm: var(--text-body);
+  --text-h5: var(--text-h3);
+  --text-h6: var(--text-body-lg);
 }
 
 @media (min-width: 768px) {
@@ -154,6 +196,59 @@ html, body {
   font-weight: 500;
   line-height: var(--text-mono--line-height);
   letter-spacing: var(--text-mono--letter-spacing);
+  text-transform: uppercase;
+}
+
+p, ul, ol, li, h1, h2, h3, h4, h5, h6, figure, figcaption {
+  margin: 0;
+}
+
+/* Shared frame. Pages use this gutter instead of a second hardcoded 24/48/64 padding. */
+.folio {
+  width: 100%;
+  max-width: var(--container-content);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--page-gutter);
+  padding-right: var(--page-gutter);
+  min-width: 0;
+}
+
+/* 4px square annotation. Radius stays 0. */
+.annotation-node {
+  width: 4px;
+  height: 4px;
+  border-radius: 0;
+  background: var(--color-accent-signal);
+  box-shadow: 0 0 0 1px rgb(9 11 10 / 40%);
+}
+
+/* Shared editorial type. Size, line-height, and tracking stay on the h1/h2/h3 tokens. */
+:where(h1, h2, h3, h4) {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-style: normal;
+  text-wrap: balance;
+}
+
+:where(h1, h2, h3, h4) em {
+  color: inherit;
+  font-style: normal;
+  font-weight: inherit;
+}
+
+.section-kicker { color: var(--color-accent-signal); }
+.section-kicker,
+.rail-kicker,
+.tier-kicker,
+.tier-scale,
+.mono-label {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  font-weight: 400;
+  letter-spacing: var(--text-mono--letter-spacing);
+  line-height: var(--text-mono--line-height);
   text-transform: uppercase;
 }
 /* Locked Architectural Background Typography */
