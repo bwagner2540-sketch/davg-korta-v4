@@ -10,3 +10,5 @@ The eight service pages take their public copy from `docs/v4-build/hubs/DAVG-V4-
 Update the affected active specification and `BUILD-STATE.md` with each substantive change. The task workflow lives in `.cursor/rules/davg-v4-sync.mdc`. One writer per checkout. Report the branch, commit, checks, and whether the result is a preview or production.
 
 For any visible page change, after checks and commit run `npm run preview:deliver -- /actual/affected/route/`. It pushes the working preview branch and waits for the exact commit to appear on the live route. Begin the final response with the printed page link and revision. A failed command means the preview is stale; include its actual error instead of claiming delivery.
+
+GitHub Actions also runs `.github/workflows/preview-delivery.yml` on every push to the preview branch. Its run summary gives the eight-hub review index and verifies the deployed revision across all eight hubs. A green run is deployment evidence; a failed or absent run is not.
