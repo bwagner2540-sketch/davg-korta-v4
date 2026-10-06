@@ -1,0 +1,74 @@
+---
+/** 25% sticky Forest rail (≥1024px) and sticky disclosure bar (<1024px). Chapters sit directly under the current service. */
+import Button from '../ui/Button.astro';
+import { site } from '../../config/site';
+interface Props {
+  services: { name: string; href: string; current: boolean }[];
+  chapters: { id: string; label: string }[];
+  cta?: { label: string; href: string };
+}
+const { services, chapters, cta } = Astro.props;
+const itemBase = 'flex items-center gap-2.5 no-underline text-muted-dark hover:text-on-dark data-active:text-on-dark';
+---
+<!-- Mobile / tablet -->
+<div class="sticky top-0 z-20 bg-forest text-on-dark lg:hidden">
+  <details class="group">
+    <summary class="flex cursor-pointer items-center justify-between px-page py-3.5">
+      <img src={site.logo.dark} alt={site.name} class="block h-[30px] w-auto" />
+      <span class="text-nav font-medium text-muted-dark">{services.find((s) => s.current)?.name} · Menu</span>
+    </summary>
+    <nav class="max-h-[70vh] overflow-y-auto border-t border-line-dark px-page pt-2 pb-6">
+      <ol class="m-0 flex list-none flex-col gap-3 p-0">
+        {services.map((s, i) => (
+          <li>
+            <a href={s.href} class:list={['flex items-baseline gap-3.5 text-[15px] no-underline', s.current ? 'text-on-dark' : 'text-muted-dark']}>
+              <span class:list={['w-[18px] flex-none font-mono text-[11px] tracking-[0.1em]', s.current ? 'text-signal' : 'text-quiet-dark']}>{String(i + 1).padStart(2, '0')}</span>{s.name}
+            </a>
+            {s.current && chapters.length > 0 && (
+              <ol class="m-0 mt-2.5 ml-8 flex list-none flex-col gap-2 border-l border-line-dark p-0 pl-3.5">
+                {chapters.map((c) => <li><a href={'#' + c.id} data-chapter-link={c.id} class:list={['group/c text-nav', itemBase]}><span class="size-1 flex-none rounded-full group-data-active/c:bg-signal"></span>{c.label}</a></li>)}
+              </ol>
+            )}
+          </li>
+        ))}
+      </ol>
+    </nav>
+  </details>
+</div>
+
+<!-- Desktop -->
+<aside class="sticky top-0 hidden h-screen flex-col bg-forest px-8 pt-12 pb-8 text-on-dark lg:flex">
+  <a href="/" aria-label={`${site.name} — home`} class="flex"><img src={site.logo.dark} alt={site.name} class="block h-auto w-[132px]" /></a>
+  <nav class="mt-12 flex min-h-0 flex-1 flex-col gap-3.5 overflow-y-auto">
+    <span class="mono-label text-quiet-dark">Services</span>
+    <ol class="m-0 flex list-none flex-col gap-[11px] p-0">
+      {services.map((s, i) => (
+        <li>
+          <a href={s.href} aria-current={s.current ? 'page' : undefined} class:list={['flex items-center gap-3.5 text-[15px] no-underline hover:text-on-dark', s.current ? 'text-on-dark' : 'text-muted-dark']}>
+            <span class:list={['w-[18px] flex-none font-mono text-[11px] tracking-[0.1em]', s.current ? 'text-signal' : 'text-quiet-dark']}>{String(i + 1).padStart(2, '0')}</span>
+            <span class:list={['border-b pb-0.5', s.current ? 'border-signal' : 'border-transparent']}>{s.name}</span>
+          </a>
+          {s.current && chapters.length > 0 && (
+            <ol class="m-0 mt-3 mb-1.5 ml-2 flex list-none flex-col gap-2 border-l border-line-dark p-0 pl-6">
+              {chapters.map((c) => <li><a href={'#' + c.id} data-chapter-link={c.id} class:list={['group/c text-nav leading-[1.3]', itemBase]}><span class="size-1 flex-none rounded-full group-data-active/c:bg-signal"></span>{c.label}</a></li>)}
+            </ol>
+          )}
+        </li>
+      ))}
+    </ol>
+  </nav>
+  <div class="flex flex-col gap-4 pt-6">
+    {cta && <div><Button href={cta.href}>{cta.label}</Button></div>}
+    <div class="text-caption text-muted-dark">{site.credentials.join(' · ')}</div>
+  </div>
+</aside>
+
+<script>
+  const links = [...document.querySelectorAll<HTMLElement>('[data-chapter-link]')];
+  const ids = [...new Set(links.map((l) => l.dataset.chapterLink!))];
+  const set = (id: string) => links.forEach((l) => l.toggleAttribute('data-active', l.dataset.chapterLink === id));
+  if (ids.length) set(ids[0]);
+  const io = new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting && set(e.target.id)), { rootMargin: '-35% 0px -60% 0px' });
+  ids.forEach((id) => { const el = document.getElementById(id); if (el) io.observe(el); });
+  links.forEach((l) => l.addEventListener('click', () => l.closest('details')?.removeAttribute('open')));
+</script>
