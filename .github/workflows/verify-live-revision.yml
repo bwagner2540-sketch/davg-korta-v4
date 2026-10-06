@@ -1,0 +1,45 @@
+name: Verify live revision
+
+on:
+  push:
+    branches:
+      - '**'
+      - '!main'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: davg-live-revision-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Put the review link in the run summary
+        run: node scripts/verify-live-revision.mjs --summary-link
+      - name: Install, test, and stamp this commit
+        run: |
+          npm ci
+          npm test
+          npm run build
+          node scripts/verify-live-revision.mjs --check-dist
+      - name: Wait for Cloudflare and verify the live revision
+        run: >-
+          npm run preview:verify --
+          /
+          /solutions/home-intelligence/
+          /solutions/architectural-lighting/
+          /solutions/motorized-shades/
+          /solutions/media-audio/
+          /solutions/private-cinemas/
+          /solutions/security-access/
+          /solutions/infrastructure-privacy/
+          /solutions/outdoor-entertainment/
