@@ -39,7 +39,7 @@ Decision: **adopted for the current build** — static Astro file routes, shared
 | Forms / backend | Proposed Worker POST contract in `10` | Pending. Explicit non-sending form | Confirm phone, email, and destination before any success state |
 | Security | Proposed headers and runtime controls in `10` | Not implemented in source. `.gitignore` excludes `.env` and `.env.*` | No security pass claimed |
 | Contact and proof | `05-BUSINESS-FACTS.md`. Conflicting phones remain unresolved: fact file cites 720-327-7337 and 303-914-2700; homepage also shows 720.638.1603 and 720.327.7337, plus `info@davg.ai` | Homepage keeps the owner's current contact block. Proof slot stays empty | Confirm one public phone and cleared project proof before release |
-| Checks / deployment | Local `npm run build` is the existing check | See task log | Not deployed |
+| Checks / deployment | Adopted: branch preview revision check in `06-CURSOR-LOCAL-WORKFLOW.md` and `docs/live-previews.md` | Implemented: `.github/workflows/verify-live-revision.yml` waits for Cloudflare, checks `davg-revision`, and writes the review link to the Actions run summary | See the 6 October 2026 task log. Production was not deployed |
 
 ## Left uncommitted on purpose
 These files were already dirty local work. This sync did not overwrite them and did not include them in the source checkpoint:
@@ -108,5 +108,15 @@ A dev server was already listening on port 4321. This task did not start another
 - Decision: kept both histories. Mono follows the later `main` decision (self-hosted JetBrains Mono; IBM Plex retired in `01-DESIGN-SYSTEM.md`). Service hubs keep the spatial-band word. The homepage specimen keeps `.architectural-background-title`, including the cream gradient `main` restored, because `index.astro` still uses that class.
 - Code paths: `src/styles/global.css`, `src/layouts/BaseLayout.astro` (Google Fonts link removed so the self-hosted stack is the one that loads), `docs/v4-build/BUILD-STATE.md`.
 - Remaining: `11-SYNC-CONTRACT.md` and `.cursor/rules/korta-v4.mdc` still name IBM Plex Mono. That wording was not rewritten in this merge.
+
+## Task log — 6 October 2026
+- Date/task: 6 October 2026 — add the check that waits for the Cloudflare branch preview, verifies the live page revision, and puts the review link in the GitHub Actions run summary. Triggered by the photo-hero merge to `main` (`09262d5`).
+- Decision: **adopted**. Pushes to a branch other than `main` run **Verify live revision**. `main` is excluded so this check does not treat the production Worker host as a review link.
+- Specification: `docs/v4-build/06-CURSOR-LOCAL-WORKFLOW.md` (Live revision check). Current review URL: `docs/live-previews.md`.
+- Implementation: **implemented** on `cursor/cloudflare-page-revision-link-d2b5`. `scripts/build.mjs` stamps `<meta name="davg-revision">`. `scripts/verify-live-revision.mjs` writes the summary link, then polls `/` and the eight service hubs. Workflow: `.github/workflows/verify-live-revision.yml`. `src/components/RevisionMeta.astro` is rendered from `BaseLayout.astro` and `src/pages/index.astro`. `wrangler.toml` build command is `npm run build`.
+- Verification: local `npm test` and `npm run build` on 6 October 2026. The Actions run is the live Cloudflare result; this file cannot store that later SHA.
+- Remaining: green on the branch preview is the delivery proof. Guided brief steps 2–4, public phone, email, and form destination are unchanged. Production was not updated.
+- Commit/branch: `cursor/cloudflare-page-revision-link-d2b5`. The handoff names the commit after it is created.
+- Preview/production status: branch preview only, at the URL in `docs/live-previews.md`, once Cloudflare serves this commit. Not deployed to `davg.ai` or `https://davg-korta-v4.brandon-763.workers.dev/`.
 
 Do not publish this internal record on the public website.
