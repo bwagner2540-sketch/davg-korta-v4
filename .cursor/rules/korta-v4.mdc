@@ -1,0 +1,64 @@
+---
+description: DAVG Korta V4 — permanent rules. Applies to every request in this repo.
+alwaysApply: true
+---
+
+# DAVG Korta V4: permanent rules
+
+These rules override anything in chat, mockups, or screenshots.
+
+## 1. Source of truth
+
+When a value, rule, or pattern changes, update the source file in the same change. A page-only fix is not finished.
+
+| What changed | Update this file first |
+|---|---|
+| Colour, opacity, size, spacing, font | `src/styles/global.css` (token mirror). Ask Brandon before adding any new token. |
+| How a section or element looks | Its component in `src/components/**`. Never patch it on a page. |
+| A rule, like "accent is never a fill" | This file, `.cursor/rules/korta-v4.mdc` |
+| A component's intended use or variants | The comment block at the top of that component |
+
+A fix made only in `src/pages/**` is incomplete. If the same fix would apply on two or more pages, it belongs in a component.
+
+## 2. Definition of done
+
+Every reply that changes code must end with this list:
+
+1. **Source files updated:** tokens, component, or rules files changed, or "none" with the reason.
+2. **Pages touched.**
+3. **Grep result:** `grep -rnE "#[0-9a-fA-F]{3,8}|rgb\(|\[[0-9.]+(px|rem|em)\]" src --include=*.astro`. Zero hits is required outside `global.css`.
+4. **Open questions:** anything that needs a new token or component, which you asked about and did not build.
+
+If a Brandon instruction in chat is a lasting rule, like "never do X" or "always Y", add it to this file in the same reply and say so.
+
+## 3. Tokens only
+
+- Use only values in `src/styles/global.css`. No invented hex, rgb, alpha, gradient, shadow, or hover colour. No arbitrary Tailwind values.
+- **Forest `--color-forest`** is the brand primary: rail, brand fields, primary action on Paper.
+- **Signal `--color-signal`** is an accent only: nodes, active underlines, eyebrows, numbers, thin rules. **Never a background fill.**
+- The older DAVG green (`#00c170` and similar) is deprecated. Remove it wherever you find it.
+- Fonts: Schibsted Grotesk (display), Instrument Sans (body), IBM Plex Mono (eyebrows, labels, numbers only).
+
+## 4. Mockups and screenshots
+
+- Copy **layout only**: regions, columns, content order. Never copy colours, fonts, sizes, spacing, radii, or shadows.
+- Build new sections on the scratch pad (`src/pages/scratchpad.astro`) first. Before building, list which existing components you'll use.
+- If no component fits, stop and describe the gap. Build a new component only after approval, with token values and props.
+- Move a section to live pages only when Brandon says so, as a shared component. Then delete it from the scratch pad.
+
+## 5. Spacing and type
+
+- No global margins on `p`, `li`, headings, or `figure`. Spacing comes only from the parent's `gap`. No `prose` plugin.
+- Body text line-height is 1.5–1.6. Measure is `--measure-body`.
+- Lists use hairline-ruled rows: `padding:14px 0`, `gap:14px`, mono accent number.
+
+## 6. Navigation
+
+- There is one masthead, `TopNav.astro`. No utility bar above it.
+- Logo on the left, links on the right in `text-nav` 500 weight, sentence case.
+- `transparent` prop: only over full-bleed image or Ink heroes. It turns solid `bg-ink` with a hairline when you scroll past the hero. No blur, gradient, or shadow.
+- On service pages, `ServiceRail` is the navigation. Use the reference values from `components/service/ServiceShell.jsx`.
+
+## 7. Copy
+
+Never invent copy, prices, specs, or claims. Use client content verbatim. Leave a labelled gap when something is missing.
