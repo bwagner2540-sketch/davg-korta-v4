@@ -1,0 +1,114 @@
+---
+/** Full-width service hero. Default 'photo': full-bleed scrimmed photograph, masthead on top, copy left, hairline, fitted word across the bottom.
+ *  'monument': the page word fitted edge to edge with a vertical fade, headline over its faded half, wide image below.
+ *  'stacked' / 'overlay' are the legacy split layouts. */
+import Heading from '../ui/Heading.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+import Button from '../ui/Button.astro';
+import TextLink from '../ui/TextLink.astro';
+import MediaSlot from '../ui/MediaSlot.astro';
+import SpatialWord from '../ui/SpatialWord.astro';
+import TopNav from '../nav/TopNav.astro';
+import { MASTHEAD_LINKS, mastheadActive } from '../../data/services';
+interface Props {
+  id?: string; eyebrow?: string; title: string; deck?: string;
+  primary?: { label: string; href: string }; secondary?: { label: string; href: string };
+  media: { slotId: string; src?: string; alt?: string; subject?: string };
+  word?: string | null; variant?: 'photo' | 'monument' | 'stacked' | 'overlay'; surface?: 'ink' | 'forest';
+  cta?: { label: string; href: string };
+}
+const { id, eyebrow, title, deck, primary, secondary, media, word, variant = 'photo', surface = 'ink' } = Astro.props;
+const active = mastheadActive(Astro.url.pathname);
+const photo = variant === 'photo';
+const bg = surface === 'forest' ? 'bg-forest' : 'bg-ink';
+const overlay = variant === 'overlay';
+const monument = variant === 'monument';
+const w = String(word ?? '').trim().toUpperCase();
+const subject = media.subject ?? 'Hero — finished architectural room';
+---
+{photo ? (
+<section id={id} data-screen-label="01 Hero" data-hero-variant="photo" class="architectural-background-section has-spatial-band relative flex min-h-[min(100vh,960px)] scroll-mt-16 flex-col overflow-hidden bg-ink">
+  <div class="absolute inset-0">
+    {media.src
+      ? <img src={media.src} alt={media.alt ?? ''} loading="eager" decoding="async" class="absolute inset-0 block h-full w-full object-cover" />
+      : <div class="absolute inset-3 flex items-center justify-center border border-dashed border-line-dark p-4 text-center font-mono text-[11px] uppercase tracking-[0.12em] text-quiet-dark">{subject} · {media.slotId}</div>}
+    <div class="absolute inset-0 bg-scrim-strong"></div>
+  </div>
+  <TopNav links={MASTHEAD_LINKS} active={active} overlay />
+  <div class="section-content flex max-w-[760px] flex-1 flex-col justify-center px-page py-section">
+    {eyebrow && <Eyebrow class="mb-6">{eyebrow}</Eyebrow>}
+    <Heading level={1}>{title}</Heading>
+    {deck && <p class="mt-6 mb-0 max-w-[46ch] text-body-lg text-on-dark text-pretty">{deck}</p>}
+    {(primary || secondary) && (
+      <div class="mt-8 flex flex-wrap items-center gap-7">
+        {primary && <Button href={primary.href}>{primary.label}</Button>}
+        {secondary && <TextLink href={secondary.href}>{secondary.label}</TextLink>}
+      </div>
+    )}
+  </div>
+  <div class="section-content mx-page border-t border-line-dark"></div>
+  {w && <div class="relative z-[1] mt-6 px-page"><SpatialWord word={w} surface="image" class="!mt-0" /></div>}
+</section>
+) : monument ? (
+<section id={id} data-screen-label="01 Hero" data-hero-variant="monument" class="architectural-background-section relative scroll-mt-16 overflow-hidden px-page py-section" style={`background:${surface === 'forest' ? 'var(--color-surface-forest)' : 'var(--color-surface-ink)'}`}>
+  <div class="section-content monument-copy grid items-start gap-6 md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] md:gap-16">
+    <div class="min-w-0">
+      {eyebrow && <Eyebrow class="mb-6">{eyebrow}</Eyebrow>}
+      <Heading level={1}>{title}</Heading>
+    </div>
+    <div class:list={['min-w-0', eyebrow && 'md:pt-[calc(1.5rem+20px)]']}>
+      {deck && <p class="m-0 max-w-[46ch] text-body-lg text-muted-dark text-pretty">{deck}</p>}
+      {(primary || secondary) && (
+        <div class="mt-8 flex flex-wrap items-center gap-7">
+          {primary && <Button href={primary.href}>{primary.label}</Button>}
+          {secondary && <TextLink href={secondary.href}>{secondary.label}</TextLink>}
+        </div>
+      )}
+    </div>
+  </div>
+  {w && <div aria-hidden="true" class="monument-word mt-16" data-surface={surface} data-monument style={`--chars:${w.length}`}><span>{w}</span></div>}
+  <div class="section-visual relative z-[2] mt-16" data-monument-visual><MediaSlot {...media} subject={subject} ratio="21 / 9" eager /></div>
+</section>
+) : (
+<section id={id} data-screen-label="01 Hero" data-hero-variant={variant} class:list={[
+  'architectural-background-section relative scroll-mt-16', bg, word && 'has-spatial-band',
+  overlay ? 'md:grid md:min-h-[min(88vh,860px)] md:grid-cols-2' : 'flex flex-col px-page py-section',
+]}>
+  <div class:list={['section-content', overlay ? 'px-page pt-section md:flex md:pb-[calc(var(--spatial-size)*var(--spatial-cap)+var(--spatial-gap))]' : 'grid gap-8 md:grid-cols-2 md:gap-16']}>
+    <div class="flex min-w-0 flex-col justify-center md:py-8">
+      {eyebrow && <Eyebrow class="mb-6">{eyebrow}</Eyebrow>}
+      <Heading level={1}>{title}</Heading>
+      {deck && <p class="mt-6 mb-0 max-w-[46ch] text-body-lg text-muted-dark text-pretty">{deck}</p>}
+      {(primary || secondary) && (
+        <div class="mt-8 flex flex-wrap items-center gap-7">
+          {primary && <Button href={primary.href}>{primary.label}</Button>}
+          {secondary && <TextLink href={secondary.href}>{secondary.label}</TextLink>}
+        </div>
+      )}
+    </div>
+    {!overlay && <MediaSlot {...media} subject={subject} ratio="4 / 3" eager />}
+  </div>
+  {overlay && (
+    <div class="relative mt-8 aspect-[4/3] px-page md:mt-0 md:aspect-auto md:px-0">
+      <MediaSlot {...media} subject={subject} ratio="4 / 3" eager class="md:absolute md:inset-0 md:!aspect-auto md:h-full" />
+    </div>
+  )}
+  {word && (overlay
+    ? <div class="px-page md:absolute md:inset-x-0 md:bottom-0 md:z-[1]"><SpatialWord word={word} surface={surface} /></div>
+    : <SpatialWord word={word} surface={surface} />)}
+</section>
+)}
+{monument && (
+<script is:inline>
+(() => {
+  const fit = () => document.querySelectorAll('[data-monument]').forEach((el) => {
+    const s = el.firstElementChild; const prev = s.style.fontSize; s.style.fontSize = '100px';
+    const sw = s.getBoundingClientRect().width, cw = el.clientWidth;
+    if (!sw || !cw) { s.style.fontSize = prev; return; }
+    const px = Math.min(100 * cw / sw, cw * 0.15, 220); if (!isFinite(px)) return; s.style.fontSize = px + 'px';
+    const vis = el.nextElementSibling; if (vis) vis.style.marginTop = (-0.42 * px) + 'px';
+  });
+  fit(); requestAnimationFrame(fit); addEventListener('resize', fit); document.fonts && document.fonts.ready.then(() => requestAnimationFrame(fit));
+})();
+</script>
+)}

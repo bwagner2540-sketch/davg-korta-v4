@@ -1,0 +1,18 @@
+---
+/** The single boxed action in a composition. Paper fill on dark, Forest fill on Paper. */
+interface Props { href?: string; tone?: 'dark' | 'paper'; variant?: 'primary' | 'outline'; size?: 'md' | 'sm'; type?: 'button' | 'submit'; class?: string }
+const { href, tone = 'dark', variant = 'primary', size = 'md', type = 'button', class: cls } = Astro.props;
+const Tag = href ? 'a' : 'button';
+const look = variant === 'primary'
+  ? tone === 'paper'
+    ? 'bg-forest text-on-dark border-forest hover:border-signal hover:text-on-dark'
+    : 'bg-paper text-on-paper border-paper hover:bg-cream-03 hover:border-cream-03 hover:text-on-paper'
+  : tone === 'paper'
+    ? 'bg-transparent text-on-paper border-line-paper hover:border-on-paper hover:text-on-paper'
+    : 'bg-transparent text-on-dark border-line-dark-strong hover:border-on-dark hover:text-on-dark';
+---
+<Tag href={href} type={href ? undefined : type} class:list={[
+  'inline-flex items-center justify-center gap-2 border rounded-control font-body font-medium text-nav leading-tight no-underline cursor-pointer transition-colors duration-150 active:opacity-80',
+  size === 'sm' ? 'px-4 py-[9px]' : 'px-6 py-3.5',
+  look, cls,
+]}><slot /></Tag>

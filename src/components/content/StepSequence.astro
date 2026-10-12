@@ -1,0 +1,16 @@
+---
+/** Unboxed numbered sequence. Only for true sequences (measure → install → program → test → handoff). */
+interface Props { steps: { label: string; text: string }[]; tone?: 'dark' | 'paper' }
+const { steps, tone = 'dark' } = Astro.props;
+const p = tone === 'paper';
+const rule = p ? 'border-line-paper' : 'border-line-dark';
+---
+<ol class:list={['m-0 list-none border-b p-0', rule]}>
+  {steps.map((s, i) => (
+    <li class:list={['grid grid-cols-[56px_minmax(0,1fr)] items-baseline gap-x-6 gap-y-2 border-t py-[18px] md:grid-cols-[56px_minmax(0,1fr)_minmax(0,2fr)]', rule]}>
+      <span class="mono-label text-signal">{String(i + 1).padStart(2, '0')}</span>
+      <span class:list={['font-display text-h6', p ? 'text-on-paper' : 'text-on-dark']}>{s.label}</span>
+      <span class:list={['col-start-2 max-w-measure text-body md:col-start-auto', p ? 'text-muted-paper' : 'text-muted-dark']}>{s.text}</span>
+    </li>
+  ))}
+</ol>

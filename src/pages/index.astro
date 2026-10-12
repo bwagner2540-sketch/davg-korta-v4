@@ -81,12 +81,6 @@ const revision = process.env.DAVG_REVISION || '';
       border-color: var(--color-rule-accent);
     }
 
-    #mobile-nav { display: none; }
-    #nav-toggle:checked ~ #mobile-nav { display: block; }
-    @media (min-width: 1024px) {
-      #mobile-nav { display: none !important; }
-    }
-
     a:focus-visible,
     button:focus-visible,
     summary:focus-visible {

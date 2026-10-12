@@ -1,0 +1,20 @@
+---
+/** Native details/summary FAQ with hairline rows. Answers accept inline HTML; supplied copy is preserved verbatim. */
+interface Props { items: { q: string; a: string }[]; openFirst?: boolean; tone?: 'dark' | 'paper' }
+const { items, openFirst = false, tone = 'dark' } = Astro.props;
+const p = tone === 'paper';
+const rule = p ? 'border-line-paper' : 'border-line-dark';
+---
+<div class:list={['border-b', rule]}>
+  {items.map((it, i) => (
+    <details open={openFirst && i === 0} class:list={['group border-t', rule]}>
+      <summary class:list={['flex cursor-pointer items-baseline justify-between gap-6 py-5 font-body text-body-lg leading-[1.35]', p ? 'text-on-paper' : 'text-on-dark']}>
+        <span>{it.q}</span>
+        <span aria-hidden="true" class:list={['w-4 flex-none text-center font-mono text-base group-open:text-signal', p ? 'text-muted-paper' : 'text-muted-dark']}>
+          <span class="group-open:hidden">+</span><span class="hidden group-open:inline">−</span>
+        </span>
+      </summary>
+      <div class:list={['max-w-measure pb-6 pr-10 text-body leading-[1.55]', p ? 'text-muted-paper' : 'text-muted-dark']} set:html={it.a} />
+    </details>
+  ))}
+</div>

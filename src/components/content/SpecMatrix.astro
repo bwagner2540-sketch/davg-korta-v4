@@ -1,0 +1,15 @@
+---
+/** Specification ledger: label / value rows on hairlines. */
+interface Props { rows: { label: string; value: string }[]; tone?: 'dark' | 'paper' }
+const { rows, tone = 'dark' } = Astro.props;
+const p = tone === 'paper';
+const rule = p ? 'border-line-paper' : 'border-line-dark';
+---
+<dl class:list={['m-0 border-b', rule]}>
+  {rows.map((r) => (
+    <div class:list={['grid grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-6 border-t py-3.5', rule]}>
+      <dt class:list={['mono-label pt-0.5', p ? 'text-muted-paper' : 'text-quiet-dark']}>{r.label}</dt>
+      <dd class:list={['m-0 text-body leading-[1.45]', p ? 'text-on-paper' : 'text-on-dark']}>{r.value}</dd>
+    </div>
+  ))}
+</dl>

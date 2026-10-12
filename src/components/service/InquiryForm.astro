@@ -1,0 +1,35 @@
+---
+/** Shared inquiry form: service preselected, page-specific brief fields, optional direct contact line. */
+import Button from '../ui/Button.astro';
+import { site } from '../../config/site';
+interface Field { id: string; label: string; type?: 'text' | 'email' | 'tel' | 'select' | 'textarea'; options?: string[] }
+interface Props { services: string[]; service: string; briefFields?: Field[]; submitLabel?: string; tone?: 'dark' | 'paper' }
+const { services, service, briefFields = [], submitLabel = 'Send project brief', tone = 'paper' } = Astro.props;
+const p = tone === 'paper';
+const label = ['flex flex-col gap-1.5 text-caption', p ? 'text-muted-paper' : 'text-muted-dark'];
+const field = ['w-full appearance-none rounded-none border-0 border-b bg-transparent px-0 pt-2.5 pb-3 font-body text-body outline-none transition-colors duration-150 focus:border-signal',
+  p ? 'border-line-paper text-on-paper' : 'border-line-dark text-on-dark'];
+const base: Field[] = [{ id: 'name', label: 'Name' }, { id: 'email', label: 'Email', type: 'email' }, { id: 'phone', label: 'Phone', type: 'tel' }];
+const direct = [site.contact.phone, site.contact.email].filter(Boolean).join(' · ');
+---
+<form method="post" action={site.formAction || undefined} class="flex flex-col gap-8">
+  <div class="grid gap-x-8 gap-y-7 sm:grid-cols-2 xl:grid-cols-3">
+    {base.map((f) => <label class:list={label}>{f.label}<input id={f.id} name={f.id} type={f.type ?? 'text'} required={f.id !== 'phone'} class:list={field} /></label>)}
+    <label class:list={label}>Service
+      <select id="service" name="service" class:list={[field, 'cursor-pointer']}>{services.map((s) => <option class="text-on-paper" selected={s === service}>{s}</option>)}</select>
+    </label>
+    {briefFields.map((f) => (
+      <label class:list={[label, f.type === 'textarea' && 'col-span-full']}>{f.label}
+        {f.type === 'select'
+          ? <select id={f.id} name={f.id} class:list={[field, 'cursor-pointer']}><option value="" selected disabled>Select</option>{f.options?.map((o) => <option class="text-on-paper">{o}</option>)}</select>
+          : f.type === 'textarea'
+            ? <textarea id={f.id} name={f.id} rows="3" class:list={[field, 'resize-y']}></textarea>
+            : <input id={f.id} name={f.id} type={f.type ?? 'text'} class:list={field} />}
+      </label>
+    ))}
+  </div>
+  <div class="flex flex-wrap items-center gap-7">
+    <Button type="submit" tone={tone}>{submitLabel}</Button>
+    {direct && <span class:list={['text-caption', p ? 'text-muted-paper' : 'text-muted-dark']}>Or reach us directly: {direct}</span>}
+  </div>
+</form>

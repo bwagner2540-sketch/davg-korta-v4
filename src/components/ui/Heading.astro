@@ -1,0 +1,8 @@
+---
+/** Schibsted Grotesk display heading. Hierarchy from scale and line breaks, never bold. */
+interface Props { level?: 1 | 2 | 3 | 4 | 5 | 6; as?: string; tone?: 'dark' | 'paper'; light?: boolean; class?: string }
+const { level = 2, as, tone = 'dark', light = false, class: cls } = Astro.props;
+const Tag = (as ?? `h${level}`) as any;
+const size = { 1: 'text-h1', 2: 'text-h2', 3: 'text-h3', 4: 'text-h4', 5: 'text-h5', 6: 'text-h6' }[level];
+---
+<Tag class:list={['m-0 font-display whitespace-pre-line text-balance', size, light ? 'font-light' : 'font-normal', tone === 'paper' ? 'text-on-paper' : 'text-on-dark', cls]}><slot /></Tag>

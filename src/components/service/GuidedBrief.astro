@@ -1,0 +1,47 @@
+---
+/** Guided brief, step 01 only. Questions 2–4 are not specified.
+ *  CONTINUE and SKIP TO CONTACT both move to the existing inquiry close. */
+import Button from '../ui/Button.astro';
+import Heading from '../ui/Heading.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+import TextLink from '../ui/TextLink.astro';
+
+interface Props { continueHref: string; skipHref: string }
+const { continueHref, skipHref } = Astro.props;
+const options = ['New construction', 'Existing residence', 'One-room transformation', 'System takeover'] as const;
+---
+<div data-guided-brief class="flex flex-col gap-12 bg-ink px-page py-section">
+  <div class="flex flex-col gap-6">
+    <Eyebrow>
+      <span aria-hidden="true" class="size-2 flex-none rounded-full border border-signal"></span>
+      Begin a project / Guided brief
+    </Eyebrow>
+    <p class="m-0 font-display text-h4 font-light">
+      <span class="text-signal">01</span><span class="text-quiet-dark"> / 04</span>
+    </p>
+  </div>
+
+  <fieldset class="m-0 grid gap-4 border-0 p-0 sm:grid-cols-2 lg:grid-cols-4">
+    <legend class="sr-only">What are you planning?</legend>
+    {options.map((option) => (
+      <label class="flex cursor-pointer items-center justify-center rounded-control border border-line-dark px-6 py-8 text-center font-body text-body text-on-dark transition-colors duration-150 hover:border-line-dark-strong has-[:checked]:border-signal has-[:checked]:bg-forest has-[:checked]:hover:border-signal has-[:focus-visible]:border-signal">
+        <input class="sr-only" type="radio" name="guided-brief-planning" value={option} checked={option === 'Existing residence'} />
+        {option}
+      </label>
+    ))}
+  </fieldset>
+
+  <div class="grid items-start gap-8 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:items-end lg:gap-16">
+    <Heading level={2} class="max-w-headline">What are you planning?</Heading>
+    <div class="flex flex-col gap-6">
+      <Heading level={4}>Start with the residence.</Heading>
+      <p class="m-0 text-body text-muted-dark">Four focused questions help us understand scope, construction timing, and the systems that matter most.</p>
+      <Button href={continueHref} class="w-full">CONTINUE <span aria-hidden="true">→</span></Button>
+      <TextLink href={skipHref}>SKIP TO CONTACT</TextLink>
+    </div>
+  </div>
+
+  <div class="border-t border-signal pt-6">
+    <p class="mono-label m-0 text-muted-dark">Private project inquiry / Denver AV Group</p>
+  </div>
+</div>
