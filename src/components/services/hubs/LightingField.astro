@@ -1,0 +1,155 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import ServicePageShell from '../../ServicePageShell.astro';
+import InquiryForm from '../../InquiryForm.astro';
+import { hasPublicSection } from '../../../lib/hub-presentation.mjs';
+import { serviceSchema } from '../../../config/schema';
+import { loadGitHub } from '../../../lib/git-hubs.mjs';
+import { sectionRole, spatialWords } from '../../../lib/hub-composition.mjs';
+import { composeChapterHtml, noteComments } from '../../../lib/chapter-markup.mjs';
+import { lightingFigure, lightingPhotos, markLightingCopy, routeRows, splitAtHeading } from '../../../lib/lighting-media.mjs';
+import '../../../styles/lighting.css';
+
+const slug = 'architectural-lighting';
+const hub = loadGitHub(slug);
+const word = spatialWords[slug];
+const photos = lightingPhotos();
+const publicSections = hub.sections.filter((section) => {
+  const role = sectionRole(slug, section.id);
+  return hasPublicSection(section, role, null, []);
+});
+const chapterSections = publicSections.filter((section) => section.id !== '01' && section.id !== '15');
+const chapters = chapterSections.map((section) => ({ id: `s${section.id}`, label: section.title }));
+const opening = hub.sections[0];
+const nn = (id: string) => String(chapterSections.findIndex((section) => section.id === id) + 1).padStart(2, '0');
+
+function bodyFor(section: typeof hub.sections[number]) {
+  const options = section.id === '06' ? { keepTables: true } : {};
+  let html = composeChapterHtml(section.html, options);
+  if (section.id === '06') html = markLightingCopy(html);
+  if (section.id === '09') html = routeRows(html);
+  if (section.id === '14') html = html.replace(/<p><strong>/g, '<p class="lit-q"><strong>');
+  return html + noteComments(section.notes);
+}
+---
+<Layout title={hub.seoTitle} description={hub.description} schema={serviceSchema(hub.name, hub.description, hub.route)}>
+  <a class="lit-skip" href="#service-content">Skip to content</a>
+  <ServicePageShell currentPath={hub.route} chapters={chapters} slug={slug}>
+    <main id="service-content" class="lit" tabindex="-1">
+      {hub.sections.map((section) => {
+        if (!publicSections.some((item) => item.id === section.id)) return <span id={`s${section.id}`} hidden data-section-reserved />;
+        if (section.id === '01') return <section id="s01" class="k-hero lit-open" data-chapter-group data-surface-role="hero">
+          <div class="lit-open__copy">
+            <p class="mono-label">{hub.name}</p>
+            <h1>{opening.headline || hub.h1}</h1>
+            {opening.deck && <p class="lit-deck">{opening.deck}</p>}
+            {opening.cta && <p class="lit-open__actions"><a href="#inquiry">{opening.cta}</a></p>}
+          </div>
+          {photos.hero && <div class="lit-open__media" set:html={lightingFigure(photos.hero, { eager: true, bleed: true })} />}
+        </section>;
+        if (section.id === '02') return <section id="s02" class="k-ch lit-read" data-chapter data-chapter-group data-surface-role="answer">
+          <p class="mono-label">{nn(section.id)}</p>
+          <h2>{section.title}</h2>
+          <div class="lit-read__copy" data-composed-copy set:html={bodyFor(section)} />
+        </section>;
+        if (section.id === '03') return <section id="s03" class="k-ch lit-room" data-chapter data-chapter-group data-surface-role="moments">
+          {photos.room && <div class="lit-room__media" set:html={lightingFigure(photos.room)} />}
+          <div class="lit-room__copy">
+            <p class="mono-label">{nn(section.id)}</p>
+            <h2>{section.title}</h2>
+            <div data-composed-copy set:html={bodyFor(section)} />
+          </div>
+        </section>;
+        if (section.id === '04') return <section id="s04" class="k-ch lit-system" data-chapter data-chapter-group data-surface-role="systems">
+          <div>
+            <p class="mono-label">{nn(section.id)}</p>
+            <h2>{section.title}</h2>
+          </div>
+          <div class="lit-system__copy" data-composed-copy set:html={bodyFor(section)} />
+        </section>;
+        if (section.id === '05') return <section id="s05" class="k-ch lit-study" data-chapter data-chapter-group data-signature-study="true" data-surface-role="study">
+          <div class="lit-study__copy">
+            <p class="architectural-background-title" data-surface="ink" aria-hidden="true">{word}</p>
+            <p class="mono-label">{nn(section.id)}</p>
+            <h2>{section.title}</h2>
+            <div data-composed-copy set:html={bodyFor(section)} />
+          </div>
+          {photos.study && <div class="lit-study__media" set:html={lightingFigure(photos.study, { caption: section.figureCaption || '' })} />}
+        </section>;
+        if (section.id === '06') return <section id="s06" class="k-ch k-ch--ink lit-compare" data-chapter data-chapter-group data-surface-role="comparison">
+          <header class="lit-compare__head">
+            <p class="mono-label">{nn(section.id)}</p>
+            <h2>{section.title}</h2>
+          </header>
+          {photos.products.length > 0 && <div class="lit-products" set:html={photos.products.map((photo) => lightingFigure(photo)).join('')} />}
+          <div class="lit-compare__copy" data-composed-copy set:html={bodyFor(section)} />
+        </section>;
+        if (section.id === '07') return <section id="s07" class="k-ch lit-rooms" data-chapter data-chapter-group data-surface-role="examples">
+          <header>
+            <p class="mono-label">{nn(section.id)}</p>
+            <h2>{section.title}</h2>
+          </header>
+          <div data-composed-copy set:html={bodyFor(section)} />
+        </section>;
+        if (section.id === '08') return <section id="s08" class="k-ch lit-quiet" data-chapter data-chapter-group data-surface-role="detail">
+          <header>
+            <p class="mono-label">{nn(section.id)}</p>
+            <h2>{section.title}</h2>
+          </header>
+          <div class="lit-quiet__copy" data-composed-copy set:html={bodyFor(section)} />
+        </section>;
+        if (section.id === '09') return <section id="s09" class="k-ch lit-paths" data-chapter data-chapter-group data-surface-role="installation">
+          <header>
+            <p class="mono-label">{nn(section.id)}</p>
+            <h2>{section.title}</h2>
+          </header>
+          <div data-composed-copy set:html={bodyFor(section)} />
+        </section>;
+        if (section.id === '10') {
+          const parts = splitAtHeading(bodyFor(section));
+          return <section id="s10" class="k-ch lit-pitfalls" data-chapter data-chapter-group data-surface-role="pitfalls">
+            <header>
+              <p class="mono-label">{nn(section.id)}</p>
+              <h2>{section.title}</h2>
+            </header>
+            <div data-composed-copy set:html={parts.before} />
+            {parts.after && <div class="lit-distinction" set:html={parts.after} />}
+          </section>;
+        }
+        if (section.id === '12') return <section id="s12" class="k-ch lit-invest" data-chapter data-chapter-group data-surface-role="investment">
+          <header>
+            <p class="mono-label">{nn(section.id)}</p>
+            <h2>{section.title}</h2>
+          </header>
+          <div class="lit-invest__copy" data-composed-copy set:html={bodyFor(section)} />
+        </section>;
+        if (section.id === '13') return <section id="s13" class="k-ch lit-handoff" data-chapter data-chapter-group data-surface-role="handoff">
+          <p class="mono-label">{nn(section.id)}</p>
+          <div>
+            <h2>{section.title}</h2>
+            <div data-composed-copy set:html={bodyFor(section)} />
+          </div>
+        </section>;
+        if (section.id === '14') return <section id="s14" class="k-ch lit-faq" data-chapter data-chapter-group data-surface-role="questions">
+          <header>
+            <p class="mono-label">{nn(section.id)}</p>
+            <h2>{section.title}</h2>
+          </header>
+          <div data-composed-copy set:html={bodyFor(section)} />
+        </section>;
+        if (section.id === '15') return <section id="s15" class="lit-close" data-chapter-group data-surface-role="inquiry">
+          <div class="lit-close__intro">
+            <h2>{section.headline || section.title}</h2>
+            <div data-composed-copy set:html={bodyFor(section)} />
+            {section.support && <p class="lit-deck">{section.support}</p>}
+          </div>
+          <div id="inquiry"><InquiryForm service={hub.name} serviceSlug={hub.slug} /></div>
+        </section>;
+        return <section id={`s${section.id}`} class="k-ch lit-quiet" data-chapter data-chapter-group>
+          <h2>{section.title}</h2>
+          <div data-composed-copy set:html={bodyFor(section)} />
+        </section>;
+      })}
+    </main>
+  </ServicePageShell>
+</Layout>

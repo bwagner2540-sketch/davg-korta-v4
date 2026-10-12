@@ -5,6 +5,8 @@ alwaysApply: true
 
 Brandon reviews the site from the live preview, not from a description of the change.
 
-The current URL is in the project file `docs/live-previews.md`. After any change he could see — type, layout, sections, flow, motion, navigation, or copy — rebuild that preview from the latest work and confirm the public URL serves the new result before saying the change is done.
+The current URL is in `docs/live-previews.md`. After any visible change — type, layout, sections, flow, motion, navigation, or copy — run the applicable checks and commit. Then run `npm run preview:deliver -- /solutions/<affected-slug>/` (or the actual affected route). Pass every affected route when shared code changes. This command pushes the branch, waits for the public URL to serve the exact commit, and prints page links. Start the final response with those page links and the verified revision.
 
-Do not leave the preview on an older branch or an older build. If the review site is the hub shell, the preview includes that shell plus every later change. If the URL dies, start a new one and replace the link in `docs/live-previews.md` in the same turn.
+If the command exits nonzero, say the preview is stale and give the actual error. A local build or a successful push alone is not a live update. To check an already published commit without pushing, run `npm run preview:verify -- /solutions/<slug>/`.
+
+Preview deployments of the working branch are authorized. Production release stays separate. If publication fails, report the preview as stale and name the blocker. Do not claim a deployed revision in `docs/live-previews.md` until it has been verified.

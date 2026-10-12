@@ -1,0 +1,28 @@
+---
+interface Props {
+  id: string;
+  index: number;
+  title: string;
+  surface?: 'paper' | 'ink';
+  layout?: 'single' | 'aside';
+  body?: string;
+  media?: string;
+  signature?: boolean;
+}
+const { id, index, title, surface = 'paper', layout = 'single', body = '', media = '', signature = false } = Astro.props;
+const nn = String(index).padStart(2, '0');
+---
+<section class:list={['k-ch', `k-ch--${surface}`, `k-ch--${layout}`]} id={id} data-chapter data-chapter-group data-reveal-scope data-signature-study={signature ? 'true' : undefined} data-surface-role={surface}>
+  <div class="k-ch__in">
+    <header class="k-ch__head">
+      <span class="mono-label k-ch__nn">{nn}</span>
+      <h2 class="k-ch__title" data-split>{title}</h2>
+    </header>
+    {body
+      ? <div class="k-ch__body" data-composed-copy set:html={body} />
+      : <div class="k-ch__body" data-composed-copy><slot /></div>}
+    {layout === 'aside' && (media
+      ? <div class="k-ch__media" set:html={media} />
+      : <div class="k-ch__media"><slot name="media" /></div>)}
+  </div>
+</section>

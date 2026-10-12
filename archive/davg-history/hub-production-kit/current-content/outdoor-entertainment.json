@@ -1,0 +1,341 @@
+{
+  "slug": "outdoor-entertainment",
+  "name": "Outdoor Entertainment",
+  "seo": {
+    "title": "Outdoor Entertainment | DAVG",
+    "description": "A dining terrace, garden, and pool are different zones. Speaker placement, sun, weather, and cable routes shape the outdoor system.",
+    "canonicalPath": "/systems/outdoor-entertainment/"
+  },
+  "hero": {
+    "heading": "Put the sound near the people. Match the screen to the exposure.",
+    "deck": "A dining terrace, garden, and pool are different zones. Speaker placement, sun, weather, and cable routes shape the outdoor system.",
+    "ctaLabel": "Discuss your project",
+    "ctaHref": "#project-inquiry"
+  },
+  "study": "Follow one property from covered dining to open garden. Use daytime/sunset views, listener locations and exposure detail instead of generic pool photography.",
+  "chapters": [
+    {
+      "id": "zones",
+      "title": "Where will people actually spend time?",
+      "layout": "property-map",
+      "paragraphs": [
+        "A table needs comfortable sound around seated conversation. A garden may need several listening pockets; a pool introduces distance, hard surfaces and different activity.",
+        "Map those areas before choosing speakers. Independent zones let a quiet dinner and a more active gathering use different sources or levels where the system supports it.",
+        "Include nearby property boundaries in the design. Distributed sound can reduce the need to turn up one distant speaker, but it does not eliminate sound beyond the listening area."
+      ],
+      "visual": "Illustrative landscape plan with listening areas, seats and boundaries. Show no fabricated sound-pressure contours.",
+      "sources": [
+        "landscape",
+        "garden"
+      ],
+      "table": null,
+      "detail": null
+    },
+    {
+      "id": "speakers",
+      "title": "Landscape and surface speakers solve different placement problems.",
+      "layout": "product-gallery",
+      "paragraphs": [
+        "Surface-mounted speakers can serve a terrace from the building. Landscape speakers can place sound closer to seating and paths without relying on a wall.",
+        "Subwoofers handle lower frequencies and need their own placement and installation detail. A buried design still has specified exposure, drainage and access requirements.",
+        "Select the speaker family, amplification and wiring method together. Sonance Landscape and Garden systems have different configurations; neither is a universal recipe for every property."
+      ],
+      "visual": "Actual surface speaker, landscape satellite and subwoofer, each before and after installation. Caption exact model and installation requirements.",
+      "sources": [
+        "landscape",
+        "garden"
+      ],
+      "table": {
+        "headers": [
+          "Type",
+          "Likely role",
+          "Design check"
+        ],
+        "rows": [
+          [
+            "Surface mounted",
+            "Covered terrace or building-edge seating",
+            "Aiming, structure and view"
+          ],
+          [
+            "Landscape satellite",
+            "Distributed garden listening",
+            "Spacing, landscape growth and routes"
+          ],
+          [
+            "Outdoor subwoofer",
+            "Low-frequency support",
+            "Position, drainage and installation detail"
+          ],
+          [
+            "Separate zones",
+            "Different activities",
+            "Amplification, controls and source behavior"
+          ]
+        ]
+      },
+      "detail": null
+    },
+    {
+      "id": "screen",
+      "title": "Covered does not always mean protected.",
+      "layout": "exposure-study",
+      "paragraphs": [
+        "An indoor television under a roof still encounters outdoor temperature, humidity and wind-driven conditions. The selected outdoor display needs to suit its actual exposure.",
+        "Full-sun and partial-sun models have different installation guidance. Check the exact model against the screen’s orientation and the hours people will watch.",
+        "Brightness alone does not remove reflections or make a poor viewing position comfortable. Review glare, mounting, cable access and the manufacturer’s environmental limits together."
+      ],
+      "visual": "Actual outdoor TV installation at expected viewing times; annotate roof coverage and sun direction. Exact-model product view alongside.",
+      "sources": [
+        "terrace"
+      ],
+      "table": null,
+      "detail": null
+    },
+    {
+      "id": "routes",
+      "title": "The buried work decides how clean the finished space looks.",
+      "layout": "construction-detail",
+      "paragraphs": [
+        "Cable routes must fit the landscape, equipment and installation method. Planting, irrigation, drainage and future digging all affect where those routes should go.",
+        "A new terrace offers an opportunity to plan conduit and service points before hardscape is placed. An existing patio may require a different route or a smaller initial scope.",
+        "Coordinate with the landscape and electrical teams. Exterior lighting circuits, display power and network equipment have different requirements from speaker cable."
+      ],
+      "visual": "Real route, conduit/service point and finished landscape details. No generic burial-depth rules.",
+      "sources": [
+        "landscape",
+        "terrace"
+      ],
+      "table": null,
+      "detail": null
+    },
+    {
+      "id": "control",
+      "title": "The patio should have its own controls.",
+      "layout": "scene-study",
+      "paragraphs": [
+        "A patio scene can select music in the intended zone and adjust supported exterior lighting. A viewing scene can select the TV source and its sound path.",
+        "Wireless control needs coverage where people sit. The network route to an outdoor display or controller matters just as much as the speaker placement.",
+        "Set zone names and volume limits the household understands. Use a quiet-hours routine if requested, without promising that an automated setting can prevent every disturbance."
+      ],
+      "visual": "Dining and Viewing states of the same terrace with a real interface and short action list.",
+      "sources": [
+        "control4",
+        "mesh"
+      ],
+      "table": null,
+      "detail": null
+    },
+    {
+      "id": "season",
+      "title": "Commission it outside.",
+      "layout": "test-sequence",
+      "paragraphs": [
+        "Listen from the seats, walk the paths and check the property edges. Confirm the sound balance and controls at normal use levels rather than only beside the equipment.",
+        "Check the display at the intended viewing time. Document environmental limits, shutdown or storage instructions, and maintenance for the selected equipment.",
+        "Colorado weather makes model-specific temperature and installation limits part of the selection. A weather rating is not permission to ignore the manufacturer’s instructions."
+      ],
+      "visual": "Genuine daytime/sunset viewing and listening checks. Maintenance schedule names the selected products.",
+      "sources": [
+        "terrace",
+        "landscape"
+      ],
+      "table": null,
+      "detail": null
+    }
+  ],
+  "projectPaths": [
+    {
+      "type": "retrofit",
+      "title": "Improve the existing patio",
+      "body": "Survey seating, exposure, power and cable paths. Begin with the zones that can be served cleanly without reopening the whole landscape."
+    },
+    {
+      "type": "remodel",
+      "title": "Coordinate with the outdoor work",
+      "body": "Plan speaker routes, display location, service points and network coverage before hardscape and planting are finished."
+    },
+    {
+      "type": "custom-build",
+      "title": "Design the property as connected zones",
+      "body": "Work with architecture and landscape teams on listening areas, sun, equipment locations and interior/exterior connections. Keep future service access in the plan."
+    }
+  ],
+  "scopeOptions": [
+    {
+      "label": "Good — a defined outdoor area",
+      "scope": "One listening or viewing zone, exposure-appropriate equipment, practical routing and installed checks.",
+      "dependencies": "Power, network and hardscape work are itemized."
+    },
+    {
+      "label": "Better — multiple outdoor zones",
+      "scope": "Dining/garden or pool areas with suitable speaker distribution, source control and planned display exposure.",
+      "dependencies": "Zone boundaries, amplification and routes follow the property."
+    },
+    {
+      "label": "Best — coordinated landscape system",
+      "scope": "Early landscape design, distributed sound, planned viewing, lighting integration and documented seasonal care.",
+      "dependencies": "More coverage does not mean louder operation; every added zone needs a defined use."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Can I put an indoor TV under the patio roof?",
+      "answer": "A roof does not remove all outdoor exposure. Select equipment against actual temperature, moisture, sunlight and manufacturer installation limits."
+    },
+    {
+      "question": "Will landscape speakers disturb neighbors?",
+      "answer": "They can. Placement closer to listeners may reduce required level, but sound still travels; we review boundaries and normal listening levels."
+    },
+    {
+      "question": "Can the patio use the indoor music system?",
+      "answer": "When the sources, amplification, controls and network design support that zone. Outdoor equipment still needs its own suitable installation."
+    },
+    {
+      "question": "What changes cost?",
+      "answer": "Zones, speaker/subwoofer choices, display exposure, power/network work, trenching, hardscape access and landscape coordination."
+    }
+  ],
+  "media": [
+    {
+      "id": "oe-speakers",
+      "subject": "Selected Sonance Landscape/Garden and surface speakers",
+      "view": "Exact product, installation and finished views",
+      "status": "needed",
+      "src": null,
+      "alt": null,
+      "sourceKey": "landscape",
+      "rightsStatus": "unconfirmed"
+    },
+    {
+      "id": "oe-tv",
+      "subject": "Selected outdoor display",
+      "view": "Exact model, mount and daytime installed view",
+      "status": "needed",
+      "src": null,
+      "alt": null,
+      "sourceKey": "terrace",
+      "rightsStatus": "unconfirmed"
+    },
+    {
+      "id": "oe-property",
+      "subject": "One real terrace and garden",
+      "view": "Same property daytime and sunset; anonymized if needed",
+      "status": "needed",
+      "src": null,
+      "alt": null,
+      "sourceKey": null,
+      "rightsStatus": "unconfirmed"
+    }
+  ],
+  "sources": [
+    "landscape",
+    "garden",
+    "terrace",
+    "control4",
+    "mesh"
+  ],
+  "inquiry": {
+    "heading": "Start with the project you have.",
+    "body": "Tell us which rooms matter, what already exists, and when construction starts. Share plans or photographs if you have them.",
+    "fields": [
+      "Project path",
+      "Rooms or zones",
+      "Existing systems",
+      "Construction timing",
+      "Contact details"
+    ],
+    "endpointStatus": "requires existing site form integration"
+  },
+  "navigation": [
+    {
+      "label": "Overview",
+      "href": "#overview"
+    },
+    {
+      "label": "Design",
+      "href": "#design"
+    },
+    {
+      "label": "Systems",
+      "href": "#systems"
+    },
+    {
+      "label": "Installation",
+      "href": "#installation"
+    },
+    {
+      "label": "Investment",
+      "href": "#investment"
+    }
+  ],
+  "openingQA": {
+    "question": "How do you make outdoor sound and viewing comfortable?",
+    "answer": [
+      "Place suitable speakers near the listening areas, and select the display against its actual sun and weather exposure. Then coordinate power, network and cable routes with the landscape.",
+      "That gives each outdoor area a defined role. It does not require one loud speaker or the same equipment across the entire property."
+    ]
+  },
+  "groups": [
+    {
+      "id": "overview",
+      "label": "Overview",
+      "chapterIds": [
+        "zones"
+      ]
+    },
+    {
+      "id": "design",
+      "label": "Design",
+      "chapterIds": [
+        "screen"
+      ]
+    },
+    {
+      "id": "systems",
+      "label": "Systems",
+      "chapterIds": [
+        "speakers",
+        "control"
+      ]
+    },
+    {
+      "id": "installation",
+      "label": "Installation",
+      "chapterIds": [
+        "routes",
+        "season"
+      ]
+    },
+    {
+      "id": "investment",
+      "label": "Investment",
+      "chapterIds": []
+    }
+  ],
+  "signatureStudy": {
+    "group": "design",
+    "heading": "How the design fits together.",
+    "description": "Follow one property from covered dining to open garden. Use daytime/sunset views, listener locations and exposure detail instead of generic pool photography.",
+    "status": "artwork-needed",
+    "src": null,
+    "alt": null,
+    "spatialWord": null
+  },
+  "layoutContract": {
+    "opening": "full-width",
+    "splitStart": "overview",
+    "splitEnd": "investment",
+    "desktopColumns": [
+      1,
+      3
+    ],
+    "closing": "full-width",
+    "scrollOwner": "document"
+  },
+  "spatialWords": {
+    "opening": null,
+    "study": null,
+    "note": "Other final word choices remain unresolved; do not invent a universal set."
+  }
+}

@@ -1,0 +1,337 @@
+{
+  "slug": "infrastructure-privacy",
+  "name": "Digital Infrastructure & Privacy",
+  "seo": {
+    "title": "Digital Infrastructure & Privacy | DAVG",
+    "description": "The provider connection, wired network, Wi-Fi coverage, and device permissions are separate parts of the house. Each needs a clear job.",
+    "canonicalPath": "/systems/infrastructure-privacy/"
+  },
+  "hero": {
+    "heading": "A fast internet plan cannot fix a weak room connection.",
+    "deck": "The provider connection, wired network, Wi-Fi coverage, and device permissions are separate parts of the house. Each needs a clear job.",
+    "ctaLabel": "Discuss your project",
+    "ctaHref": "#project-inquiry"
+  },
+  "study": "A conceptual service core and a neutral boundary diagram. The cable close-up was withheld.",
+  "chapters": [
+    {
+      "id": "chain",
+      "title": "Find the weak part of the connection.",
+      "layout": "system-diagram",
+      "paragraphs": [
+        "Your internet provider brings service to the home. The gateway routes traffic; switches connect wired devices; access points connect wireless devices to that network.",
+        "A problem on any part of that path can affect a call or stream. Buying more provider bandwidth does not move an access point out of a cabinet or repair a weak wireless link.",
+        "We separate provider performance from in-home coverage and device behavior. That gives the diagnosis a place to start."
+      ],
+      "visual": "Provider \u2192 gateway \u2192 switch \u2192 access point/device. Distinguish internet, wired transport and radio coverage.",
+      "sources": [
+        "mesh"
+      ],
+      "table": null,
+      "detail": null
+    },
+    {
+      "id": "coverage",
+      "title": "Plan Wi-Fi around walls and people.",
+      "layout": "coverage-study",
+      "paragraphs": [
+        "Radio coverage changes with distance, materials and placement. Stone, concrete, metal and concealed installations can make a floor-plan-only prediction misleading.",
+        "Access points placed for the occupied rooms reduce the distance the signal must travel. A site survey and installed checks help confirm those locations.",
+        "More access points are not automatically better. Channel use, power and client behavior also affect how devices share the available radio capacity."
+      ],
+      "visual": "Architectural plan with material annotations and proposed AP locations. Only show measured signal heatmaps when actual survey data exists.",
+      "sources": [
+        "mesh"
+      ],
+      "table": null,
+      "detail": null
+    },
+    {
+      "id": "backhaul",
+      "title": "Give the access points a wired path where practical.",
+      "layout": "comparison",
+      "paragraphs": [
+        "A wired access point carries traffic back through cable. A wireless mesh link carries that traffic over radio, sharing a resource with other wireless activity.",
+        "Wireless backhaul can be useful where cable cannot reasonably reach. Its performance depends on the link between mesh nodes as well as the client\u2019s connection.",
+        "Wire fixed high-demand devices where the project allows it. That leaves more wireless capacity for devices that actually need to move."
+      ],
+      "visual": "Same plan with wired and wireless backhaul routes. Explain the extra radio hop without an invented speed percentage.",
+      "sources": [
+        "mesh"
+      ],
+      "table": {
+        "headers": [
+          "Approach",
+          "Useful when",
+          "Tradeoff"
+        ],
+        "rows": [
+          [
+            "Wired AP backhaul",
+            "Cable routes are available",
+            "Requires planned cable and switch capacity"
+          ],
+          [
+            "Wireless mesh backhaul",
+            "A practical cable path is absent",
+            "Radio link quality affects transport"
+          ],
+          [
+            "Wired endpoint",
+            "Device stays in place",
+            "Requires a serviceable cable route"
+          ],
+          [
+            "Provider gateway Wi-Fi",
+            "Small/simple coverage fits its position",
+            "Placement may be fixed by provider handoff"
+          ]
+        ]
+      },
+      "detail": null
+    },
+    {
+      "id": "privacy",
+      "title": "Separate the devices. Then write the rules.",
+      "layout": "permission-matrix",
+      "paragraphs": [
+        "A guest network can keep visitor devices away from private systems. Cameras and connected-home devices can also sit in distinct network segments where the equipment and design support it.",
+        "A segment name does not enforce separation by itself. Firewall and access rules determine what traffic can cross the boundary.",
+        "Some services need discovery across segments, such as supported casting or control. Allow the required paths deliberately; broad exceptions can undo the separation you intended."
+      ],
+      "visual": "A readable household/guest/camera/control boundary matrix. Distinguish discovery from permitted traffic.",
+      "sources": [
+        "isolation",
+        "mdns"
+      ],
+      "table": null,
+      "detail": null
+    },
+    {
+      "id": "rack",
+      "title": "The rack needs air, power and a way to work on it.",
+      "layout": "rack-study",
+      "paragraphs": [
+        "Switches, gateways and controllers need accessible connections and suitable operating conditions. A rack hidden in an unventilated cabinet can create a service problem.",
+        "Power-over-Ethernet switches can power supported access points and cameras through network cable. The switch\u2019s power budget must cover the selected devices.",
+        "Backup power is sized for the equipment and runtime you want. It does not keep the provider\u2019s wider network running, so outage expectations still need a stated boundary."
+      ],
+      "visual": "Actual labeled rack, cable termination, airflow and UPS detail. Keep customer network identifiers out of public images.",
+      "sources": [
+        "mesh",
+        "isolation"
+      ],
+      "table": null,
+      "detail": null
+    },
+    {
+      "id": "verification",
+      "title": "Test where the house is actually used.",
+      "layout": "test-sequence",
+      "paragraphs": [
+        "Check the work area, bedrooms, entertainment spaces and outdoor areas in scope. Test expected simultaneous use as well as a single device beside an access point.",
+        "Record cable results, access-point positions, network boundaries and account ownership. Remote support, if included, should have a defined access method and permission process.",
+        "The result is a documented network that can be serviced. Privacy comes from the selected controls and account practices, not from a label on the equipment."
+      ],
+      "visual": "Anonymized handover map and measured test locations; avoid fictitious throughput results.",
+      "sources": [
+        "mesh",
+        "isolation"
+      ],
+      "table": null,
+      "detail": null
+    }
+  ],
+  "projectPaths": [
+    {
+      "type": "retrofit",
+      "title": "Diagnose before replacing",
+      "body": "Review provider handoff, current routes, wireless conditions and accounts. Use available cable paths and identify where wireless backhaul is a practical compromise."
+    },
+    {
+      "type": "remodel",
+      "title": "Put cable where access exists",
+      "body": "Coordinate AP positions, wired work areas, rack space and outdoor routes before walls close. Label and test the installed cabling."
+    },
+    {
+      "type": "custom-build",
+      "title": "Draw the infrastructure with the house",
+      "body": "Reserve serviceable rack space, power, ventilation and cable pathways with the architect and builder. Coordinate camera, control and entertainment loads on the same network plan."
+    }
+  ],
+  "scopeOptions": [
+    {
+      "label": "Good \u2014 coverage repair",
+      "scope": "Documented diagnosis, targeted access-point/cable work and testing in the rooms in scope.",
+      "dependencies": "Provider faults and inaccessible routes are separated from the in-home work."
+    },
+    {
+      "label": "Better \u2014 planned household network",
+      "scope": "Wired backhaul where practical, network boundaries, equipment/power review and documented handover.",
+      "dependencies": "Discovery exceptions and device compatibility are designed, not assumed."
+    },
+    {
+      "label": "Best \u2014 whole-property infrastructure",
+      "scope": "Early cable/rack coordination, interior/exterior coverage, designed resilience and agreed service access.",
+      "dependencies": "No universal speed or security promise; tests and runtime expectations are project-specific."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Do I need a faster internet package?",
+      "answer": "Only if the provider connection is the constraint. Weak room coverage, client issues and congested radio links need different remedies."
+    },
+    {
+      "question": "Is mesh bad?",
+      "answer": "No. Wireless backhaul is useful when cable cannot reach; it needs a good link between nodes and realistic capacity expectations."
+    },
+    {
+      "question": "Will separate networks break casting?",
+      "answer": "They can if discovery and traffic paths are blocked. We define the supported exceptions while retaining the intended boundaries."
+    },
+    {
+      "question": "What changes cost?",
+      "answer": "Cable access, property size/materials, access-point count, switching/power needs, outdoor buildings, backup runtime and support scope."
+    }
+  ],
+  "media": [
+    {
+      "id": "ip-rack",
+      "subject": "DAVG rack or labeled sample build",
+      "view": "Equipment faces. Not a client network map.",
+      "status": "needed",
+      "src": "/images/infrastructure-privacy-asset-5ca3a2954b9a.webp",
+      "alt": "Rack front with a Control4 controller and a Triad amplifier. The cable photograph with switch name SW03 was withheld.",
+      "sourceKey": null,
+      "rightsStatus": "unconfirmed"
+    },
+    {
+      "id": "ip-ap",
+      "subject": "Selected access points and gateway",
+      "view": "Ceiling device illustration. Exact model front still unconfirmed.",
+      "status": "needed",
+      "src": "/images/infrastructure-privacy-asset-71f477fc1a19.webp",
+      "alt": "Living room with a round white ceiling device. Filename calls it a residential access point. Model not confirmed from the photo alone.",
+      "sourceKey": "mesh",
+      "rightsStatus": "unconfirmed"
+    },
+    {
+      "id": "ip-plan",
+      "subject": "Coverage and boundary studies",
+      "view": "Coverage and boundary studies are drawn components, not measured heatmaps.",
+      "status": "needed",
+      "src": null,
+      "alt": null,
+      "sourceKey": "isolation",
+      "rightsStatus": "unconfirmed"
+    }
+  ],
+  "sources": [
+    "mesh",
+    "isolation",
+    "mdns"
+  ],
+  "inquiry": {
+    "heading": "Start with the project you have.",
+    "body": "Tell us which rooms matter, what already exists, and when construction starts. Share plans or photographs if you have them.",
+    "fields": [
+      "Project path",
+      "Rooms or zones",
+      "Existing systems",
+      "Construction timing",
+      "Contact details"
+    ],
+    "endpointStatus": "requires existing site form integration"
+  },
+  "navigation": [
+    {
+      "label": "Overview",
+      "href": "#overview"
+    },
+    {
+      "label": "Design",
+      "href": "#design"
+    },
+    {
+      "label": "Systems",
+      "href": "#systems"
+    },
+    {
+      "label": "Installation",
+      "href": "#installation"
+    },
+    {
+      "label": "Investment",
+      "href": "#investment"
+    }
+  ],
+  "openingQA": {
+    "question": "Why can a fast internet plan still feel slow at home?",
+    "answer": [
+      "The provider connection is only the first link. Cabling, access-point placement, radio conditions and client devices affect the connection in each room.",
+      "Separating those links lets the work address the actual constraint. Network access rules then define which devices and users can reach private systems."
+    ]
+  },
+  "groups": [
+    {
+      "id": "overview",
+      "label": "Overview",
+      "chapterIds": [
+        "chain"
+      ]
+    },
+    {
+      "id": "design",
+      "label": "Design",
+      "chapterIds": [
+        "coverage"
+      ]
+    },
+    {
+      "id": "systems",
+      "label": "Systems",
+      "chapterIds": [
+        "backhaul",
+        "privacy",
+        "rack"
+      ]
+    },
+    {
+      "id": "installation",
+      "label": "Installation",
+      "chapterIds": [
+        "verification"
+      ]
+    },
+    {
+      "id": "investment",
+      "label": "Investment",
+      "chapterIds": []
+    }
+  ],
+  "signatureStudy": {
+    "group": "design",
+    "heading": "How the design fits together.",
+    "description": "Conceptual house-and-core diagram plus coverage, backhaul and guest-edge regions. No speeds are stated.",
+    "status": "conceptual-built",
+    "src": null,
+    "alt": null,
+    "spatialWord": null
+  },
+  "layoutContract": {
+    "opening": "full-width",
+    "splitStart": "overview",
+    "splitEnd": "investment",
+    "desktopColumns": [
+      1,
+      3
+    ],
+    "closing": "full-width",
+    "scrollOwner": "document"
+  },
+  "spatialWords": {
+    "opening": null,
+    "study": null,
+    "note": "Other final word choices remain unresolved; do not invent a universal set."
+  }
+}

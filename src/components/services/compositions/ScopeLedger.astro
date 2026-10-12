@@ -1,0 +1,37 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  scopes: CollectionEntry<'services'>['data']['scopeOptions'];
+  costDrivers: string;
+}
+const { scopes, costDrivers } = Astro.props;
+const tiers = ['Good', 'Better', 'Best'];
+const splitLabel = (label: string) => {
+  const [tier, name] = label.split('—').map((part) => part.trim());
+  const title = name || label;
+  return { tier, name: title.charAt(0).toUpperCase() + title.slice(1) };
+};
+---
+<section class="composition tier-columns" data-surface-role="investment" aria-labelledby="investment-scope-title">
+  <span id="scope" class="alias"></span>
+  <span id="ownership" class="alias"></span>
+  <header class="tier-head">
+    <h3 id="investment-scope-title">What changes the investment?</h3>
+    <p class="tier-scale">Scope / experience tier</p>
+  </header>
+  <div class="tier-grid">
+    {scopes.map((scope, index) => {
+      const parts = splitLabel(scope.label);
+      return (
+        <article>
+          <p class="tier-kicker">{tiers[index] ?? parts.tier}</p>
+          <p class="tier-sub">{parts.name}</p>
+          <p class="tier-body">{scope.scope}</p>
+          <p class="tier-detail">{scope.dependencies}</p>
+        </article>
+      );
+    })}
+  </div>
+  <p class="tier-note">Cost drivers. {costDrivers} No installed prices are published.</p>
+</section>

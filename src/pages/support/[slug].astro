@@ -1,0 +1,33 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { site } from '../../config/site';
+import { interiorPages, primaryNavigation } from '../../config/navigation';
+export function getStaticPaths() {
+  return interiorPages.filter((item) => item.href.startsWith('/support/')).map((item) => ({
+    params: { slug: item.href.split('/').filter(Boolean).at(-1) },
+    props: { title: item.label, href: item.href },
+  }));
+}
+const { title, href } = Astro.props;
+const menu = primaryNavigation.find((item) => item.id === 'support');
+const note = href.endsWith('/contact/')
+  ? `Write to ${site.email}. A public street address is not published.`
+  : href.endsWith('/locations/')
+    ? 'DAVG works in Denver and South Metro, including Parker and Castle Rock. A storefront address is not published.'
+    : 'Service is scoped with the project. A published plan menu is not on this page yet.';
+---
+<Layout title={`${title} | DAVG`} description={`${title} at Denver AV Group.`}>
+  <main class="interior">
+    <p class="section-kicker">Support</p>
+    <h1>{title}</h1>
+    <p>{note}</p>
+    <nav aria-label="Support">{menu?.items.map((item) => <a href={item.href} aria-current={item.href === href ? 'page' : undefined}>{item.label}</a>)}</nav>
+  </main>
+</Layout>
+<style>
+.interior { padding: clamp(3rem, 7vw, 6rem) var(--spacing-page-inline); }
+.interior h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing: -0.035em; }
+.interior p { max-width: 46ch; line-height: 1.5; }
+.interior nav { display: flex; flex-wrap: wrap; gap: 0.8rem 1.2rem; margin-top: 2rem; }
+.interior nav a { color: inherit; }
+</style>

@@ -1,0 +1,61 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CaseStudy from '../../components/library/CaseStudy.astro';
+import { interiorPages, primaryNavigation } from '../../config/navigation';
+
+export function getStaticPaths() {
+  return interiorPages
+    .filter((item) => item.href.startsWith('/company/'))
+    .map((item) => ({
+      params: { slug: item.href.split('/').filter(Boolean).at(-1) },
+      props: { title: item.label, href: item.href },
+    }));
+}
+const { title, href } = Astro.props;
+const menu = primaryNavigation.find((item) => item.id === 'company');
+---
+<Layout title={`${title} | DAVG`} description={`${title} at Denver AV Group.`}>
+  <main class="interior">
+    {href === '/company/our-work/' ? (
+      <CaseStudy
+        kicker="Selected study"
+        eyebrow="Illustration"
+        title="Glass, planned"
+        emphasis="before the ceiling."
+        lede="This page shows the case-study layout. The photographs are product illustrations, not a cleared DAVG project record. Client name, size, and outcome stay off the page until that record exists."
+        image="/images/davg-living-room-sheer-roller-shades-sun-01-1600w.webp"
+        alt="Floor-to-ceiling sheer roller shades on a living-room glass wall, with the sun still visible through the fabric"
+        imageCaption="Product photograph. Not a completed DAVG project."
+        detailImage="/images/davg-sivoia-living-room-shades-closed-01-1600w.webp"
+        detailAlt="Living room with two Sivoia QS woven shades fully closed beside built-in shelves"
+        detailCaption="The same kind of glass, closed. Product photograph."
+        meta={[
+          { label: 'Subject', value: 'Daylight and privacy' },
+          { label: 'Status', value: 'Layout specimen' },
+          { label: 'Hardware', value: 'Chosen per opening' },
+          { label: 'Proof', value: 'Not yet cleared' },
+        ]}
+        chips={['Lutron shading', 'Fabric schedule', 'Mounting detail']}
+        quote="A case study is published when the project record is cleared. Until then, the rooms on this page are illustrations."
+        quoteBy="DAVG"
+      />
+    ) : (
+      <>
+        <p class="section-kicker">Company</p>
+        <h1>{title}</h1>
+        <p>This page is in the site navigation. Its long-form story is not published yet.</p>
+      </>
+    )}
+    <nav aria-label="Company">
+      {menu?.items.map((item) => <a href={item.href} aria-current={item.href === href ? 'page' : undefined}>{item.label}</a>)}
+    </nav>
+  </main>
+</Layout>
+<style>
+.interior { padding: clamp(2.5rem, 6vw, 5rem) var(--spacing-page-inline) 4rem; }
+.interior h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing: -0.035em; }
+.interior > p { max-width: 46ch; line-height: 1.5; }
+.interior nav { display: flex; flex-wrap: wrap; gap: 0.8rem 1.2rem; margin-top: 2rem; }
+.interior nav a { color: inherit; }
+.case-study + nav, .interior .case-study { margin-inline: calc(var(--spacing-page-inline) * -1); }
+</style>

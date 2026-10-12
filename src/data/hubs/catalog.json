@@ -1,0 +1,1164 @@
+{
+  "architectural-lighting": {
+    "label": "Architectural Lighting",
+    "route": "/systems/architectural-lighting/",
+    "order": 0,
+    "slots": [
+      {
+        "id": "architectural-lighting-01",
+        "number": "01",
+        "kind": "photo",
+        "chapter": "hero",
+        "purpose": "Finished architectural hero",
+        "status": "selected-illustration",
+        "reason": "",
+        "reference": null,
+        "src": "/images/architectural-lighting-asset-a0ff46a2d28b.webp",
+        "alt": "Kitchen at dusk with pendant and recessed lights. Kitchen at dusk, with a linear pendant and recessed ceiling lights. The source filename says Denver Penthouse. Manufacturer or dealer photograph, not verified DAVG project proof.",
+        "title": "Kitchen at dusk with pendant and recessed lights",
+        "caption": "Kitchen at dusk, with a linear pendant and recessed ceiling lights. The source filename says Denver Penthouse. Manufacturer or dealer photograph, not verified DAVG project proof.",
+        "originalName": "Denver-Penthouse_Case-Study-1.jpg",
+        "width": 1600,
+        "height": 1067,
+        "fit": "cover",
+        "rightsStatus": "pipeline README says licensed assets; per-image publication rights not independently confirmed"
+      },
+      {
+        "id": "architectural-lighting-02",
+        "number": "02",
+        "kind": "photo",
+        "chapter": "overview",
+        "purpose": "Installed interface / service detail",
+        "status": "selected-illustration",
+        "reason": "",
+        "reference": null,
+        "src": "/images/architectural-lighting-asset-23a21615837d.webp",
+        "alt": "Two-button keypad on dark tile. Square keypad labeled Energize and Relax, mounted on dark stone tile. Source file identifies it as an Alisse vignette. Product photograph.",
+        "title": "Two-button keypad on dark tile",
+        "caption": "Square keypad labeled Energize and Relax, mounted on dark stone tile. Source file identifies it as an Alisse vignette. Product photograph.",
+        "originalName": "Alisse Vignette_1c2b_GP_Gray Tile_Left.jpg",
+        "width": 1600,
+        "height": 1169,
+        "fit": "cover",
+        "rightsStatus": "pipeline README says licensed assets; per-image publication rights not independently confirmed"
+      },
+      {
+        "id": "architectural-lighting-03",
+        "number": "03",
+        "kind": "photo",
+        "chapter": "design",
+        "purpose": "Distinct finished room / experience",
+        "status": "selected-illustration",
+        "reason": "",
+        "reference": null,
+        "src": "/images/architectural-lighting-asset-e69b4f6ec46e.webp",
+        "alt": "Bright kitchen with layered lighting. Tall kitchen with cove light, sconces, cabinets and a glass pendant. A different room from the hero. Manufacturer library photograph, not a before state.",
+        "title": "Bright kitchen with layered lighting",
+        "caption": "Tall kitchen with cove light, sconces, cabinets and a glass pendant. A different room from the hero. Manufacturer library photograph, not a before state.",
+        "originalName": "Kit_Prv Res_Orlando CH_Dim.jpg",
+        "width": 1600,
+        "height": 1066,
+        "fit": "cover",
+        "rightsStatus": "pipeline README says licensed assets; per-image publication rights not independently confirmed"
+      },
+      {
+        "id": "architectural-lighting-04",
+        "number": "04",
+        "kind": "study",
+        "chapter": "design",
+        "purpose": "Designated signature folio",
+        "status": "composition-to-build",
+        "reason": "",
+        "reference": "references/04-Screenshot-2026-09-03-at-3.29.27-AM.jpeg"
+      },
+      {
+        "id": "architectural-lighting-05",
+        "number": "05",
+        "kind": "study",
+        "chapter": "systems",
+        "purpose": "Technical study / cutaway",
+        "status": "composition-to-build",
+        "reason": "",
+        "reference": null
+      },
+      {
+        "id": "architectural-lighting-06",
+        "number": "06",
+        "kind": "photo",
+        "chapter": "installation",
+        "purpose": "Verified DAVG project wide",
+        "status": "missing",
+        "reason": "Permission-cleared DAVG project wide view is not in the reviewed manufacturer library.",
+        "reference": null
+      },
+      {
+        "id": "architectural-lighting-07",
+        "number": "07",
+        "kind": "photo",
+        "chapter": "installation",
+        "purpose": "Same verified DAVG project detail",
+        "status": "missing",
+        "reason": "A second, different detail of that same verified DAVG project is not available.",
+        "reference": null
+      },
+      {
+        "id": "architectural-lighting-08",
+        "number": "08",
+        "kind": "photo",
+        "chapter": "overview",
+        "purpose": "Verified regional architecture / conditions",
+        "status": "missing",
+        "reason": "A regional photograph with confirmed Front Range provenance was not in the reviewed set. A filename is not location proof.",
+        "reference": null
+      }
+    ],
+    "products": [
+      {
+        "id": "asset-ec8a93982ea4",
+        "src": "/images/architectural-lighting-asset-ec8a93982ea4.webp",
+        "alt": "Alisse keypad on woven wallpaper. Product photograph filed as an Alisse keypad on woven wallpaper. Shown as a finish reference, not a completed project.",
+        "title": "Alisse keypad on woven wallpaper",
+        "caption": "Product photograph filed as an Alisse keypad on woven wallpaper. Shown as a finish reference, not a completed project.",
+        "originalName": "Alisse_Woven Wallpaper_1c3b_AB_Engraved.jpg",
+        "fit": "cover",
+        "status": "placed"
+      },
+      {
+        "id": "asset-7556f4e9b550",
+        "src": "/images/architectural-lighting-asset-7556f4e9b550.webp",
+        "alt": "Palladiom QS keypad. Product photograph filed as a Lutron Palladiom QS keypad. Cutout preserved.",
+        "title": "Palladiom QS keypad",
+        "caption": "Product photograph filed as a Lutron Palladiom QS keypad. Cutout preserved.",
+        "originalName": "lutron_palladiom-qs-keypad.jpg",
+        "fit": "contain",
+        "status": "placed"
+      },
+      {
+        "id": "asset-6595d925aa5e",
+        "src": "/images/architectural-lighting-asset-6595d925aa5e.webp",
+        "alt": "Keypad filed as RRD-W7B-WH. Product photograph filed as RRD-W7B-WH. Model identity is the filename, not a separate laboratory confirmation.",
+        "title": "Keypad filed as RRD-W7B-WH",
+        "caption": "Product photograph filed as RRD-W7B-WH. Model identity is the filename, not a separate laboratory confirmation.",
+        "originalName": "RRD-W7B-WH.jpg",
+        "fit": "contain",
+        "status": "placed"
+      },
+      {
+        "id": "asset-966ac6823c29",
+        "src": "/images/architectural-lighting-asset-966ac6823c29.webp",
+        "alt": "Keypad filed as RRD-H6BRL-MN. Product photograph filed as RRD-H6BRL-MN. Model identity is the filename, not a separate laboratory confirmation.",
+        "title": "Keypad filed as RRD-H6BRL-MN",
+        "caption": "Product photograph filed as RRD-H6BRL-MN. Model identity is the filename, not a separate laboratory confirmation.",
+        "originalName": "RRD-H6BRL-MN.jpg",
+        "fit": "contain",
+        "status": "placed"
+      },
+      {
+        "id": "asset-5f1e461dbfc3",
+        "src": "/images/architectural-lighting-asset-5f1e461dbfc3.webp",
+        "alt": "Keypad filed as RR-T10RL-SW. Product photograph filed as RR-T10RL-SW. Model identity is the filename, not a separate laboratory confirmation.",
+        "title": "Keypad filed as RR-T10RL-SW",
+        "caption": "Product photograph filed as RR-T10RL-SW. Model identity is the filename, not a separate laboratory confirmation.",
+        "originalName": "RR-T10RL-SW.jpg",
+        "fit": "cover",
+        "status": "placed"
+      },
+      {
+        "id": "asset-5a9cf3797141",
+        "src": "/images/architectural-lighting-asset-5a9cf3797141.webp",
+        "alt": "Fixture filed as Vibrant AZ-43. Product photograph filed as Vibrant AZ-43. Not a confirmed installed driver or Sunnata keypad.",
+        "title": "Fixture filed as Vibrant AZ-43",
+        "caption": "Product photograph filed as Vibrant AZ-43. Not a confirmed installed driver or Sunnata keypad.",
+        "originalName": "Vibrant_AZ-43.jpg",
+        "fit": "contain",
+        "status": "placed"
+      }
+    ],
+    "missingProducts": [
+      "Exact Sunnata keypad front",
+      "LED driver photograph",
+      "Same-room ambient, task and accent photograph"
+    ]
+  },
+  "home-intelligence": {
+    "label": "Home Intelligence",
+    "route": "/systems/home-intelligence/",
+    "order": 1,
+    "slots": [
+      {
+        "id": "home-intelligence-01",
+        "number": "01",
+        "kind": "photo",
+        "chapter": "hero",
+        "purpose": "Finished architectural hero",
+        "status": "selected-illustration",
+        "reason": "",
+        "reference": null,
+        "src": "/images/home-intelligence-asset-967ad568c106.webp",
+        "alt": "House exterior at dusk. Two-story house exterior at dusk with interior lights on. The filename references an Orlando private residence. Not verified DAVG project proof.",
+        "title": "House exterior at dusk",
+        "caption": "Two-story house exterior at dusk with interior lights on. The filename references an Orlando private residence. Not verified DAVG project proof.",
+        "originalName": "Ext_Prv Res_Orlando F_Dusk_Front.jpg",
+        "width": 1600,
+        "height": 1067,
+        "fit": "cover",
+        "rightsStatus": "pipeline README says licensed assets; per-image publication rights not independently confirmed"
+      },
+      {
+        "id": "home-intelligence-02",
+        "number": "02",
+        "kind": "photo",
+        "chapter": "overview",
+        "purpose": "Installed interface / service detail",
+        "status": "withheld",
+        "reason": "Wall touchscreen and a small keypad beside a planted court. The screen shows personal names, so this file is withheld from the page.",
+        "reference": null,
+        "originalName": "Lux-Lighting-Lifestyle-Avalon-Beach_21.jpg",
+        "src": null
+      },
+      {
+        "id": "home-intelligence-03",
+        "number": "03",
+        "kind": "photo",
+        "chapter": "design",
+        "purpose": "Distinct finished room / experience",
+        "status": "selected-illustration",
+        "reason": "",
+        "reference": null,
+        "src": "/images/home-intelligence-asset-fb06409d0dde.webp",
+        "alt": "Living room with a television menu. Living room with a television showing a control menu over a fireplace. Halo lifestyle photograph. Not a Halo product-front and not verified project proof.",
+        "title": "Living room with a television menu",
+        "caption": "Living room with a television showing a control menu over a fireplace. Halo lifestyle photograph. Not a Halo product-front and not verified project proof.",
+        "originalName": "HaloLifestyle_Alpine-5.jpg",
+        "width": 1600,
+        "height": 1067,
+        "fit": "cover",
+        "rightsStatus": "pipeline README says licensed assets; per-image publication rights not independently confirmed"
+      },
+      {
+        "id": "home-intelligence-04",
+        "number": "04",
+        "kind": "study",
+        "chapter": "design",
+        "purpose": "Designated signature folio",
+        "status": "composition-to-build",
+        "reason": "",
+        "reference": "references/02-Screenshot-2026-09-03-at-3.29.15-AM.jpeg"
+      },
+      {
+        "id": "home-intelligence-05",
+        "number": "05",
+        "kind": "study",
+        "chapter": "systems",
+        "purpose": "Technical study / cutaway",
+        "status": "composition-to-build",
+        "reason": "",
+        "reference": "references/01-Screenshot-2026-09-03-at-3.29.34-AM.jpeg"
+      },
+      {
+        "id": "home-intelligence-06",
+        "number": "06",
+        "kind": "photo",
+        "chapter": "installation",
+        "purpose": "Verified DAVG project wide",
+        "status": "missing",
+        "reason": "Permission-cleared DAVG project wide view is not in the reviewed manufacturer library.",
+        "reference": null
+      },
+      {
+        "id": "home-intelligence-07",
+        "number": "07",
+        "kind": "photo",
+        "chapter": "installation",
+        "purpose": "Same verified DAVG project detail",
+        "status": "missing",
+        "reason": "A second, different detail of that same verified DAVG project is not available.",
+        "reference": null
+      },
+      {
+        "id": "home-intelligence-08",
+        "number": "08",
+        "kind": "photo",
+        "chapter": "overview",
+        "purpose": "Verified regional architecture / conditions",
+        "status": "missing",
+        "reason": "A regional photograph with confirmed Front Range provenance was not in the reviewed set. A filename is not location proof.",
+        "reference": null
+      }
+    ],
+    "products": [
+      {
+        "id": "asset-421bb68c4038",
+        "src": "/images/home-intelligence-asset-421bb68c4038.webp",
+        "alt": "Control4 Halo remote on a dock. Product photograph filed as a Control4 Halo remote on its dock.",
+        "title": "Control4 Halo remote on a dock",
+        "caption": "Product photograph filed as a Control4 Halo remote on its dock.",
+        "originalName": "C4-HALO-BL_6_DemiRightDock_Z.jpg",
+        "fit": "contain",
+        "status": "placed"
+      },
+      {
+        "id": "asset-87c26824f722",
+        "src": "/images/home-intelligence-asset-87c26824f722.webp",
+        "alt": "Control4 Halo Touch on a dock. Product photograph filed as a Control4 Halo Touch on its dock.",
+        "title": "Control4 Halo Touch on a dock",
+        "caption": "Product photograph filed as a Control4 Halo Touch on its dock.",
+        "originalName": "C4-HALO-TS-AS_6_DemiRightDock_Z.jpg",
+        "fit": "contain",
+        "status": "placed"
+      },
+      {
+        "id": "asset-8b8986fe09f4",
+        "src": "/images/home-intelligence-asset-8b8986fe09f4.webp",
+        "alt": "Wall touchscreen showing lighting loads. In-wall touchscreen open to a lighting page with load names such as Overhead North and Chandelier. No personal names are visible.",
+        "title": "Wall touchscreen showing lighting loads",
+        "caption": "In-wall touchscreen open to a lighting page with load names such as Overhead North and Chandelier. No personal names are visible.",
+        "originalName": "MediaInnovations-14.jpg",
+        "fit": "cover",
+        "status": "placed"
+      }
+    ],
+    "missingProducts": [
+      "Selected interface photograph withheld because personal names are on screen",
+      "Verified residence proof"
+    ]
+  },
+  "media-audio": {
+    "label": "Media & Audio",
+    "route": "/systems/media-audio/",
+    "order": 2,
+    "slots": [
+      {
+        "id": "media-audio-01",
+        "number": "01",
+        "kind": "photo",
+        "chapter": "hero",
+        "purpose": "Finished architectural hero",
+        "status": "selected-illustration",
+        "reason": "",
+        "reference": null,
+        "src": "/images/media-audio-asset-883219e614ca.webp",
+        "alt": "Living room with a television and in-wall speakers. Living room with a television centered between two vertical in-wall speakers. Manufacturer library photograph, not verified DAVG project proof.",
+        "title": "Living room with a television and in-wall speakers",
+        "caption": "Living room with a television centered between two vertical in-wall speakers. Manufacturer library photograph, not verified DAVG project proof.",
+        "originalName": "MediaInnovations-1.jpg",
+        "width": 1600,
+        "height": 900,
+        "fit": "cover",
+        "rightsStatus": "pipeline README says licensed assets; per-image publication rights not independently confirmed"
+      },
+      {
+        "id": "media-audio-02",
+        "number": "02",
+        "kind": "photo",
+        "chapter": "overview",
+        "purpose": "Installed interface / service detail",
+        "status": "selected-illustration",
+        "reason": "",
+        "reference": null,
+        "src": "/images/media-audio-asset-af788a98a8e9.webp",
+        "alt": "Wall keypad with music and lighting buttons. Square wall keypad with buttons for lights, music and shades. Installed-interface photograph from the manufacturer library.",
+        "title": "Wall keypad with music and lighting buttons",
+        "caption": "Square wall keypad with buttons for lights, music and shades. Installed-interface photograph from the manufacturer library.",
+        "originalName": "MediaInnovations-2.jpg",
+        "width": 1600,
+        "height": 900,
+        "fit": "cover",
+        "rightsStatus": "pipeline README says licensed assets; per-image publication rights not independently confirmed"
+      },
+      {
+        "id": "media-audio-03",
+        "number": "03",
+        "kind": "photo",
+        "chapter": "design",
+        "purpose": "Distinct finished room / experience",
+        "status": "selected-illustration",
+        "reason": "",
+        "reference": null,
+        "src": "/images/media-audio-asset-626933a0799d.webp",
+        "alt": "Bright kitchen interior. Finished kitchen with a chandelier and recessed lights. The filename is C4-VBTX17; the photograph does not show that product.",
+        "title": "Bright kitchen interior",
+        "caption": "Finished kitchen with a chandelier and recessed lights. The filename is C4-VBTX17; the photograph does not show that product.",
+        "originalName": "C4-VBTX17.jpg",
+        "width": 1600,
+        "height": 1067,
+        "fit": "cover",
+        "rightsStatus": "pipeline README says licensed assets; per-image publication rights not independently confirmed"
+      },
+      {
+        "id": "media-audio-04",
+        "number": "04",
+        "kind": "study",
+        "chapter": "design",
+        "purpose": "Designated signature folio",
+        "status": "composition-to-build",
+        "reason": "",
+        "reference": "references/06-invisible-design.jpeg"
+      },
+      {
+        "id": "media-audio-05",
+        "number": "05",
+        "kind": "study",
+        "chapter": "systems",
+        "purpose": "Technical study / cutaway",
+        "status": "composition-to-build",
+        "reason": "",
+        "reference": null
+      },
+      {
+        "id": "media-audio-06",
+        "number": "06",
+        "kind": "photo",
+        "chapter": "installation",
+        "purpose": "Verified DAVG project wide",
+        "status": "missing",
+        "reason": "Permission-cleared DAVG project wide view is not in the reviewed manufacturer library.",
+        "reference": null
+      },
+      {
+        "id": "media-audio-07",
+        "number": "07",
+        "kind": "photo",
+        "chapter": "installation",
+        "purpose": "Same verified DAVG project detail",
+        "status": "missing",
+        "reason": "A second, different detail of that same verified DAVG project is not available.",
+        "reference": null
+      },
+      {
+        "id": "media-audio-08",
+        "number": "08",
+        "kind": "photo",
+        "chapter": "overview",
+        "purpose": "Verified regional architecture / conditions",
+        "status": "missing",
+        "reason": "A regional photograph with confirmed Front Range provenance was not in the reviewed set. A filename is not location proof.",
+        "reference": null
+      }
+    ],
+    "products": [
+      {
+        "id": "asset-d37937341113",
+        "src": "/images/media-audio-asset-d37937341113.webp",
+        "alt": "Visible loudspeaker drivers. Close view of exposed woofers and a center tweeter. A visible loudspeaker detail. It does not show a Sonance Invisible or VX assembly.",
+        "title": "Visible loudspeaker drivers",
+        "caption": "Close view of exposed woofers and a center tweeter. A visible loudspeaker detail. It does not show a Sonance Invisible or VX assembly.",
+        "originalName": "PDX_Callouts-LCR_Tweeter.jpg",
+        "fit": "cover",
+        "status": "placed"
+      }
+    ],
+    "missingProducts": [
+      "Sonance Invisible, VX or verified invisible assembly",
+      "Selected OLED, Mini LED or art-display photograph"
+    ]
+  },
+  "private-cinemas": {
+    "label": "Private Cinemas",
+    "route": "/systems/private-cinemas/",
+    "order": 3,
+    "slots": [
+      {
+        "id": "private-cinemas-01",
+        "number": "01",
+        "kind": "photo",
+        "chapter": "hero",
+        "purpose": "Finished architectural hero",
+        "status": "selected-illustration",
+        "reason": "",
+        "reference": null,
+        "src": "/images/private-cinemas-asset-d4ea83ac798a.webp",
+        "alt": "Cinema with a menu on the screen. Home cinema with a Kaleidescape menu on the screen and a bar counter in front. Manufacturer library photograph, not verified DAVG project proof.",
+        "title": "Cinema with a menu on the screen",
+        "caption": "Home cinema with a Kaleidescape menu on the screen and a bar counter in front. Manufacturer library photograph, not verified DAVG project proof.",
+        "originalName": "MediaInnovations-10.jpg",
+        "width": 1600,
+        "height": 900,
+        "fit": "cover",
+        "rightsStatus": "pipeline README says licensed assets; per-image publication rights not independently confirmed"
+      },
+      {
+        "id": "private-cinemas-02",
+        "number": "02",
+        "kind": "photo",
+        "chapter": "overview",
+        "purpose": "Installed interface / service detail",
+        "status": "selected-illustration",
+        "reason": "",
+        "reference": null,
+        "src": "/images/private-cinemas-asset-123516146620.webp",
+        "alt": "Equipment rack with Control4 faces. Close view of racked equipment, including Control4 faces. Service-access photograph. Not the cinema hero.",
+        "title": "Equipment rack with Control4 faces",
+        "caption": "Close view of racked equipment, including Control4 faces. Service-access photograph. Not the cinema hero.",
+        "originalName": "MediaInnovations-22.jpg",
+        "width": 1600,
+        "height": 1069,
+        "fit": "cover",
+        "rightsStatus": "pipeline README says licensed assets; per-image publication rights not independently confirmed"
+      },
+      {
+        "id": "private-cinemas-03",
+        "number": "03",
+        "kind": "photo",
+        "chapter": "design",
+        "purpose": "Distinct finished room / experience",
+        "status": "selected-illustration",
+        "reason": "",
+        "reference": null,
+        "src": "/images/private-cinemas-asset-9bd3ce26469a.webp",
+        "alt": "Cinema seating facing a menu. Another cinema view, with theater seats facing a Kaleidescape menu. A different photograph from the bar-counter view.",
+        "title": "Cinema seating facing a menu",
+        "caption": "Another cinema view, with theater seats facing a Kaleidescape menu. A different photograph from the bar-counter view.",
+        "originalName": "MediaInnovations-11.jpg",
+        "width": 1600,
+        "height": 900,
+        "fit": "cover",
+        "rightsStatus": "pipeline README says licensed assets; per-image publication rights not independently confirmed"
+      },
+      {
+        "id": "private-cinemas-04",
+        "number": "04",
+        "kind": "study",
+        "chapter": "design",
+        "purpose": "Designated signature folio",
+        "status": "composition-to-build",
+        "reason": "",
+        "reference": null
+      },
+      {
+        "id": "private-cinemas-05",
+        "number": "05",
+        "kind": "study",
+        "chapter": "systems",
+        "purpose": "Technical study / cutaway",
+        "status": "composition-to-build",
+        "reason": "",
+        "reference": null
+      },
+      {
+        "id": "private-cinemas-06",
+        "number": "06",
+        "kind": "photo",
+        "chapter": "installation",
+        "purpose": "Verified DAVG project wide",
+        "status": "missing",
+        "reason": "Permission-cleared DAVG project wide view is not in the reviewed manufacturer library.",
+        "reference": null
+      },
+      {
+        "id": "private-cinemas-07",
+        "number": "07",
+        "kind": "photo",
+        "chapter": "installation",
+        "purpose": "Same verified DAVG project detail",
+        "status": "missing",
+        "reason": "A second, different detail of that same verified DAVG project is not available.",
+        "reference": null
+      },
+      {
+        "id": "private-cinemas-08",
+        "number": "08",
+        "kind": "photo",
+        "chapter": "overview",
+        "purpose": "Verified regional architecture / conditions",
+        "status": "missing",
+        "reason": "A regional photograph with confirmed Front Range provenance was not in the reviewed set. A filename is not location proof.",
+        "reference": null
+      }
+    ],
+    "products": [],
+    "missingProducts": [
+      "Selected screen material and projector",
+      "Isolation and treatment assembly photograph",
+      "Dedicated cinema mockup was not in the supplied references"
+    ]
+  },
+  "infrastructure-privacy": {
+    "label": "Digital Infrastructure & Privacy",
+    "route": "/systems/infrastructure-privacy/",
+    "order": 4,
+    "slots": [
+      {
+        "id": "infrastructure-privacy-01",
+        "number": "01",
+        "kind": "photo",
+        "chapter": "hero",
+        "purpose": "Finished architectural hero",
+        "status": "selected-illustration",
+        "reason": "",
+        "reference": null,
+        "src": "/images/infrastructure-privacy-asset-e05b60da87ac.webp",
+        "alt": "Living and dining room in daylight. Open living and dining room with glass doors. Clean finished interior. Not a rack or wiring photograph, and not verified DAVG project proof.",
+        "title": "Living and dining room in daylight",
+        "caption": "Open living and dining room with glass doors. Clean finished interior. Not a rack or wiring photograph, and not verified DAVG project proof.",
+        "originalName": "ANU-A670-US00-LIfestyleResidentialOption2v3.jpg",
+        "width": 1600,
+        "height": 1066,
+        "fit": "cover",
+        "rightsStatus": "pipeline README says licensed assets; per-image publication rights not independently confirmed"
+      },
+      {
+        "id": "infrastructure-privacy-02",
+        "number": "02",
+        "kind": "photo",
+        "chapter": "overview",
+        "purpose": "Installed interface / service detail",
+        "status": "withheld",
+        "reason": "Close view of patch cables and a switch labeled SW03. Withheld from the page because network names and port labels are visible.",
+        "reference": null,
+        "originalName": "Rack_cables-1.jpg",
+        "src": null
+      },
+      {
+        "id": "infrastructure-privacy-03",
+        "number": "03",
+        "kind": "photo",
+        "chapter": "design",
+        "purpose": "Distinct finished room / experience",
+        "status": "selected-illustration",
+        "reason": "",
+        "reference": null,
+        "src": "/images/infrastructure-privacy-asset-71f477fc1a19.webp",
+        "alt": "Living room with a ceiling device. Living room with a round white ceiling device and a ceiling fan. The filename calls it a residential access point. The model is not confirmed from the photograph alone.",
+        "title": "Living room with a ceiling device",
+        "caption": "Living room with a round white ceiling device and a ceiling fan. The filename calls it a residential access point. The model is not confirmed from the photograph alone.",
+        "originalName": "AN-530-AP-Residential.jpg",
+        "width": 1600,
+        "height": 1067,
+        "fit": "cover",
+        "rightsStatus": "pipeline README says licensed assets; per-image publication rights not independently confirmed"
+      },
+      {
+        "id": "infrastructure-privacy-04",
+        "number": "04",
+        "kind": "study",
+        "chapter": "design",
+        "purpose": "Designated signature folio",
+        "status": "composition-to-build",
+        "reason": "",
+        "reference": "references/08-home-infrastructure-clean.jpeg"
+      },
+      {
+        "id": "infrastructure-privacy-05",
+        "number": "05",
+        "kind": "study",
+        "chapter": "systems",
+        "purpose": "Technical study / cutaway",
+        "status": "composition-to-build",
+        "reason": "",
+        "reference": null
+      },
+      {
+        "id": "infrastructure-privacy-06",
+        "number": "06",
+        "kind": "photo",
+        "chapter": "installation",
+        "purpose": "Verified DAVG project wide",
+        "status": "missing",
+        "reason": "Permission-cleared DAVG project wide view is not in the reviewed manufacturer library.",
+        "reference": null
+      },
+      {
+        "id": "infrastructure-privacy-07",
+        "number": "07",
+        "kind": "photo",
+        "chapter": "installation",
+        "purpose": "Same verified DAVG project detail",
+        "status": "missing",
+        "reason": "A second, different detail of that same verified DAVG project is not available.",
+        "reference": null
+      },
+      {
+        "id": "infrastructure-privacy-08",
+        "number": "08",
+        "kind": "photo",
+        "chapter": "overview",
+        "purpose": "Verified regional architecture / conditions",
+        "status": "missing",
+        "reason": "A regional photograph with confirmed Front Range provenance was not in the reviewed set. A filename is not location proof.",
+        "reference": null
+      }
+    ],
+    "products": [
+      {
+        "id": "asset-9ec3c359bfd7",
+        "src": "/images/infrastructure-privacy-asset-9ec3c359bfd7.webp",
+        "alt": "Round white ceiling device. Round white device on a ceiling beside wood slats. Filename says an in-ceiling access-point install. Model not confirmed from the photograph alone.",
+        "title": "Round white ceiling device",
+        "caption": "Round white device on a ceiling beside wood slats. Filename says an in-ceiling access-point install. Model not confirmed from the photograph alone.",
+        "originalName": "AN-830_AP_InCeiling_Install.jpg",
+        "fit": "cover",
+        "status": "placed"
+      },
+      {
+        "id": "asset-c8be7164d85a",
+        "src": "/images/infrastructure-privacy-asset-c8be7164d85a.webp",
+        "alt": "Amplifier face in a rack. Rack-mounted amplifier face with channel indicators. Filename Rack-2. Product photograph, not a client network map.",
+        "title": "Amplifier face in a rack",
+        "caption": "Rack-mounted amplifier face with channel indicators. Filename Rack-2. Product photograph, not a client network map.",
+        "originalName": "Rack-2.jpg",
+        "fit": "cover",
+        "status": "placed"
+      },
+      {
+        "id": "asset-5ca3a2954b9a",
+        "src": "/images/infrastructure-privacy-asset-5ca3a2954b9a.webp",
+        "alt": "Control4 controller and Triad amplifier. Rack front showing a Control4 Core controller and a Triad SubAmp 2400. Product faces, not a client hostname.",
+        "title": "Control4 controller and Triad amplifier",
+        "caption": "Rack front showing a Control4 Core controller and a Triad SubAmp 2400. Product faces, not a client hostname.",
+        "originalName": "Rack_Front.jpg",
+        "fit": "cover",
+        "status": "placed"
+      },
+      {
+        "id": "asset-127d9f4852e0",
+        "src": "/images/infrastructure-privacy-asset-127d9f4852e0.webp",
+        "alt": "WattBox power rear. Rear of a WattBox power unit in an open rack. Product photograph filed as WB-820-12.",
+        "title": "WattBox power rear",
+        "caption": "Rear of a WattBox power unit in an open rack. Product photograph filed as WB-820-12.",
+        "originalName": "WB-820-12-Front.jpg",
+        "fit": "cover",
+        "status": "placed"
+      }
+    ],
+    "missingProducts": [
+      "Rack_cables-1.jpg withheld because switch name SW03 and port labels are visible",
+      "Confirmed access-point model front"
+    ]
+  },
+  "security-access": {
+    "label": "Security Cameras & Access Control",
+    "route": "/systems/security-access/",
+    "order": 5,
+    "slots": [
+      {
+        "id": "security-access-01",
+        "number": "01",
+        "kind": "photo",
+        "chapter": "hero",
+        "purpose": "Finished architectural hero",
+        "status": "selected-illustration",
+        "reason": "",
+        "reference": null,
+        "src": "/images/security-access-asset-884802d05a8f.webp",
+        "alt": "Exterior corner with a camera and speaker. House corner at dusk with a small camera under the eave and a speaker above a sconce. Filename references Avalon Beach. Not verified DAVG project proof.",
+        "title": "Exterior corner with a camera and speaker",
+        "caption": "House corner at dusk with a small camera under the eave and a speaker above a sconce. Filename references Avalon Beach. Not verified DAVG project proof.",
+        "originalName": "Avalon Beach-Lifestyle_11.jpg",
+        "width": 1600,
+        "height": 1058,
+        "fit": "cover",
+        "rightsStatus": "pipeline README says licensed assets; per-image publication rights not independently confirmed"
+      },
+      {
+        "id": "security-access-02",
+        "number": "02",
+        "kind": "photo",
+        "chapter": "overview",
+        "purpose": "Installed interface / service detail",
+        "status": "selected-illustration",
+        "reason": "",
+        "reference": null,
+        "src": "/images/security-access-asset-8633411287bb.webp",
+        "alt": "Dome camera under an eave. Dome camera mounted under a soffit on a brick house. Luma outdoor photograph. Not paired with the hero as one verified project.",
+        "title": "Dome camera under an eave",
+        "caption": "Dome camera mounted under a soffit on a brick house. Luma outdoor photograph. Not paired with the hero as one verified project.",
+        "originalName": "Outdoor-2024-Luma-6.jpg",
+        "width": 1600,
+        "height": 1067,
+        "fit": "cover",
+        "rightsStatus": "pipeline README says licensed assets; per-image publication rights not independently confirmed"
+      },
+      {
+        "id": "security-access-03",
+        "number": "03",
+        "kind": "photo",
+        "chapter": "design",
+        "purpose": "Distinct finished room / experience",
+        "status": "selected-illustration",
+        "reason": "",
+        "reference": null,
+        "src": "/images/security-access-asset-920db91036f0.webp",
+        "alt": "Small camera on a brick eave. Small bullet-style camera on a brick eave, partly framed by a tree. A different house from the dome-camera photograph.",
+        "title": "Small camera on a brick eave",
+        "caption": "Small bullet-style camera on a brick eave, partly framed by a tree. A different house from the dome-camera photograph.",
+        "originalName": "Outdoor-2024-Luma-3.jpg",
+        "width": 1600,
+        "height": 1067,
+        "fit": "cover",
+        "rightsStatus": "pipeline README says licensed assets; per-image publication rights not independently confirmed"
+      },
+      {
+        "id": "security-access-04",
+        "number": "04",
+        "kind": "study",
+        "chapter": "design",
+        "purpose": "Designated signature folio",
+        "status": "composition-to-build",
+        "reason": "",
+        "reference": null
+      },
+      {
+        "id": "security-access-05",
+        "number": "05",
+        "kind": "study",
+        "chapter": "systems",
+        "purpose": "Technical study / cutaway",
+        "status": "composition-to-build",
+        "reason": "",
+        "reference": null
+      },
+      {
+        "id": "security-access-06",
+        "number": "06",
+        "kind": "photo",
+        "chapter": "installation",
+        "purpose": "Verified DAVG project wide",
+        "status": "missing",
+        "reason": "Permission-cleared DAVG project wide view is not in the reviewed manufacturer library.",
+        "reference": null
+      },
+      {
+        "id": "security-access-07",
+        "number": "07",
+        "kind": "photo",
+        "chapter": "installation",
+        "purpose": "Same verified DAVG project detail",
+        "status": "missing",
+        "reason": "A second, different detail of that same verified DAVG project is not available.",
+        "reference": null
+      },
+      {
+        "id": "security-access-08",
+        "number": "08",
+        "kind": "photo",
+        "chapter": "overview",
+        "purpose": "Verified regional architecture / conditions",
+        "status": "missing",
+        "reason": "A regional photograph with confirmed Front Range provenance was not in the reviewed set. A filename is not location proof.",
+        "reference": null
+      }
+    ],
+    "products": [
+      {
+        "id": "asset-992c7624b463",
+        "src": "/images/security-access-asset-992c7624b463.webp",
+        "alt": "Rack with a Luma recorder. Rack being assembled, with a Luma face, an Araknis switch, Control4 and a WattBox. Recorder photograph, not the hero.",
+        "title": "Rack with a Luma recorder",
+        "caption": "Rack being assembled, with a Luma face, an Araknis switch, Control4 and a WattBox. Recorder photograph, not the hero.",
+        "originalName": "Luma-X20-Residential-Install-47.jpg",
+        "fit": "cover",
+        "status": "placed"
+      }
+    ],
+    "missingProducts": [
+      "Entry hardware: intercom, lock or gate front",
+      "Exact Luma camera model-front studio view"
+    ]
+  },
+  "outdoor-entertainment": {
+    "label": "Outdoor Entertainment",
+    "route": "/systems/outdoor-entertainment/",
+    "order": 6,
+    "slots": [
+      {
+        "id": "outdoor-entertainment-01",
+        "number": "01",
+        "kind": "photo",
+        "chapter": "hero",
+        "purpose": "Finished architectural hero",
+        "status": "selected-illustration",
+        "reason": "",
+        "reference": null,
+        "src": "/images/outdoor-entertainment-asset-96dbf5d296a8.webp",
+        "alt": "Pool pavilion with an outdoor screen. Poolside pavilion with a large outdoor screen at dusk. Manufacturer library photograph, not verified DAVG project proof.",
+        "title": "Pool pavilion with an outdoor screen",
+        "caption": "Poolside pavilion with a large outdoor screen at dusk. Manufacturer library photograph, not verified DAVG project proof.",
+        "originalName": "MediaInnovations-18.jpg",
+        "width": 1600,
+        "height": 900,
+        "fit": "cover",
+        "rightsStatus": "pipeline README says licensed assets; per-image publication rights not independently confirmed"
+      },
+      {
+        "id": "outdoor-entertainment-02",
+        "number": "02",
+        "kind": "photo",
+        "chapter": "overview",
+        "purpose": "Installed interface / service detail",
+        "status": "selected-illustration",
+        "reason": "",
+        "reference": null,
+        "src": "/images/outdoor-entertainment-asset-38bf64fe7ec9.webp",
+        "alt": "Landscape satellite speaker in planting. Brown landscape satellite speaker in wet planting. Filename identifies it as an Episode speaker, not Sonance.",
+        "title": "Landscape satellite speaker in planting",
+        "caption": "Brown landscape satellite speaker in wet planting. Filename identifies it as an Episode speaker, not Sonance.",
+        "originalName": "Episode Landscape Satellite Speaker 6.jpg",
+        "width": 1600,
+        "height": 1067,
+        "fit": "cover",
+        "rightsStatus": "pipeline README says licensed assets; per-image publication rights not independently confirmed"
+      },
+      {
+        "id": "outdoor-entertainment-03",
+        "number": "03",
+        "kind": "photo",
+        "chapter": "design",
+        "purpose": "Distinct finished room / experience",
+        "status": "selected-illustration",
+        "reason": "",
+        "reference": null,
+        "src": "/images/outdoor-entertainment-asset-c48189cdd782.webp",
+        "alt": "Outdoor television on a brick wall. Outdoor television mounted on a brick patio wall. Filename identifies a SunBrite display. Not a Sonance product.",
+        "title": "Outdoor television on a brick wall",
+        "caption": "Outdoor television mounted on a brick patio wall. Filename identifies a SunBrite display. Not a Sonance product.",
+        "originalName": "SunBriteTVSignatureProLowRes.jpg",
+        "width": 1600,
+        "height": 1066,
+        "fit": "cover",
+        "rightsStatus": "pipeline README says licensed assets; per-image publication rights not independently confirmed"
+      },
+      {
+        "id": "outdoor-entertainment-04",
+        "number": "04",
+        "kind": "study",
+        "chapter": "design",
+        "purpose": "Designated signature folio",
+        "status": "composition-to-build",
+        "reason": "",
+        "reference": null
+      },
+      {
+        "id": "outdoor-entertainment-05",
+        "number": "05",
+        "kind": "study",
+        "chapter": "systems",
+        "purpose": "Technical study / cutaway",
+        "status": "composition-to-build",
+        "reason": "",
+        "reference": null
+      },
+      {
+        "id": "outdoor-entertainment-06",
+        "number": "06",
+        "kind": "photo",
+        "chapter": "installation",
+        "purpose": "Verified DAVG project wide",
+        "status": "missing",
+        "reason": "Permission-cleared DAVG project wide view is not in the reviewed manufacturer library.",
+        "reference": null
+      },
+      {
+        "id": "outdoor-entertainment-07",
+        "number": "07",
+        "kind": "photo",
+        "chapter": "installation",
+        "purpose": "Same verified DAVG project detail",
+        "status": "missing",
+        "reason": "A second, different detail of that same verified DAVG project is not available.",
+        "reference": null
+      },
+      {
+        "id": "outdoor-entertainment-08",
+        "number": "08",
+        "kind": "photo",
+        "chapter": "overview",
+        "purpose": "Verified regional architecture / conditions",
+        "status": "missing",
+        "reason": "A regional photograph with confirmed Front Range provenance was not in the reviewed set. A filename is not location proof.",
+        "reference": null
+      }
+    ],
+    "products": [
+      {
+        "id": "asset-ea4dad52aadc",
+        "src": "/images/outdoor-entertainment-asset-ea4dad52aadc.webp",
+        "alt": "Two landscape speakers in a bed. Two dark landscape speakers in a planted bed. Filename ES-LS-2. Episode family, not a confirmed Sonance landscape speaker.",
+        "title": "Two landscape speakers in a bed",
+        "caption": "Two dark landscape speakers in a planted bed. Filename ES-LS-2. Episode family, not a confirmed Sonance landscape speaker.",
+        "originalName": "ES-LS-2.jpg",
+        "fit": "cover",
+        "status": "placed"
+      }
+    ],
+    "missingProducts": [
+      "Sonance Landscape or Garden speaker. Included speakers are Episode.",
+      "One real terrace and garden with confirmed project rights"
+    ]
+  },
+  "motorized-shades": {
+    "label": "Motorized Shading",
+    "route": "/systems/motorized-shades/",
+    "order": 7,
+    "slots": [
+      {
+        "id": "motorized-shades-01",
+        "number": "01",
+        "kind": "photo",
+        "chapter": "hero",
+        "purpose": "Finished architectural hero",
+        "status": "available-not-substituted",
+        "reason": "Kit living-room photograph was not swapped onto the specimen hero.",
+        "reference": null,
+        "src": "/images/motorized-shades-asset-05664ebea9d8.webp",
+        "alt": "Living room with shades. Living room with shades, from the manufacturer library. Not substituted for the shading specimen's existing photographs.",
+        "title": "Living room with shades",
+        "caption": "Living room with shades, from the manufacturer library. Not substituted for the shading specimen's existing photographs.",
+        "originalName": "LivRm_Prv Res_Orlando CH_Angle_with Shade.jpg",
+        "width": 1600,
+        "height": 1066,
+        "fit": "cover",
+        "rightsStatus": "pipeline README says licensed assets; per-image publication rights not independently confirmed"
+      },
+      {
+        "id": "motorized-shades-02",
+        "number": "02",
+        "kind": "photo",
+        "chapter": "overview",
+        "purpose": "Installed interface / service detail",
+        "status": "selected-illustration",
+        "reason": "Existing manufacturer fascia detail placed in the installation section.",
+        "reference": null,
+        "src": "/images/motorized-shades-asset-c67b89430c99.webp",
+        "alt": "Close view of a Triathlon shade fascia above a bedroom window.",
+        "title": "Triathlon fascia detail",
+        "caption": "Triathlon fascia detail. Manufacturer photograph.",
+        "originalName": "BedRm_Atelier_Triathlon_Hachure_PewterBO_det1 fascia.png",
+        "width": 1600,
+        "height": 1600,
+        "fit": "cover",
+        "rightsStatus": "pipeline README says licensed assets; per-image publication rights not independently confirmed"
+      },
+      {
+        "id": "motorized-shades-03",
+        "number": "03",
+        "kind": "photo",
+        "chapter": "design",
+        "purpose": "Distinct finished room / experience",
+        "status": "selected-illustration",
+        "reason": "Existing shading specimen photograph restored to the active hub.",
+        "reference": null,
+        "src": "/images/davg-living-room-sheer-roller-shades-sun-01-1600w.webp",
+        "alt": "Living room with roller shades filtering direct sunlight across a wide window.",
+        "title": "Daylight through a solar fabric",
+        "caption": "Living room with solar roller shades. Manufacturer illustration.",
+        "originalName": "BedRm_Atelier_Palladiom_Stria_SilverBO_pre ang.jpg",
+        "width": 1600,
+        "height": 1066,
+        "fit": "cover",
+        "rightsStatus": "pipeline README says licensed assets; per-image publication rights not independently confirmed"
+      },
+      {
+        "id": "motorized-shades-04",
+        "number": "04",
+        "kind": "study",
+        "chapter": "design",
+        "purpose": "Designated signature folio",
+        "status": "built-on-specimen",
+        "reason": "Existing recessed signature study on ServicePage. Kit photograph was not substituted.",
+        "reference": "references/07-motorized-shades-green.jpeg"
+      },
+      {
+        "id": "motorized-shades-05",
+        "number": "05",
+        "kind": "study",
+        "chapter": "systems",
+        "purpose": "Technical study / cutaway",
+        "status": "built-on-specimen",
+        "reason": "Existing ComparisonSplit is the neutral solar-versus-darkness study. It stays on paper, not Forest.",
+        "reference": null
+      },
+      {
+        "id": "motorized-shades-06",
+        "number": "06",
+        "kind": "photo",
+        "chapter": "installation",
+        "purpose": "Verified DAVG project wide",
+        "status": "missing",
+        "reason": "Permission-cleared DAVG project wide view is not in the reviewed manufacturer library.",
+        "reference": null
+      },
+      {
+        "id": "motorized-shades-07",
+        "number": "07",
+        "kind": "photo",
+        "chapter": "installation",
+        "purpose": "Same verified DAVG project detail",
+        "status": "missing",
+        "reason": "A second, different detail of that same verified DAVG project is not available.",
+        "reference": null
+      },
+      {
+        "id": "motorized-shades-08",
+        "number": "08",
+        "kind": "photo",
+        "chapter": "overview",
+        "purpose": "Verified regional architecture / conditions",
+        "status": "missing",
+        "reason": "A regional photograph with confirmed Front Range provenance was not in the reviewed set. A filename is not location proof.",
+        "reference": null
+      },
+      {
+        "id": "motorized-shades-opening-bedroom",
+        "number": "09",
+        "kind": "photo",
+        "chapter": "systems",
+        "purpose": "Opening study / bedroom",
+        "status": "selected-illustration",
+        "src": "/images/davg-palladiom-bedroom-shades-partial-01-1600w.webp",
+        "alt": "Bedroom with roller shades partly lowered across the windows.",
+        "title": "Privacy around the sleeping space",
+        "caption": "Bedroom with partly lowered Palladiom shades. Manufacturer photograph.",
+        "fit": "cover",
+        "reason": "Existing shading specimen photograph restored to the opening examples."
+      }
+    ],
+    "products": [
+      {
+        "id": "asset-188ad59dc5ea",
+        "src": "/images/motorized-shades-asset-188ad59dc5ea.webp",
+        "alt": "Sivoia QS shade. Bedroom Sivoia QS shade photograph. Not substituted onto the existing shading page.",
+        "title": "Sivoia QS shade",
+        "caption": "Bedroom Sivoia QS shade photograph. Not substituted onto the existing shading page.",
+        "originalName": "BedRm_Atelier_Sivoia QS_Boucle_MinkBO_pre ang.jpg",
+        "fit": "cover",
+        "status": "available-not-substituted"
+      },
+      {
+        "id": "asset-fbf46a6a93a1",
+        "src": "/images/motorized-shades-asset-fbf46a6a93a1.webp",
+        "alt": "Closed shades in a loft kitchen. Loft kitchen with closed shades. Not substituted onto the existing shading page.",
+        "title": "Closed shades in a loft kitchen",
+        "caption": "Loft kitchen with closed shades. Not substituted onto the existing shading page.",
+        "originalName": "Kit_NY Loft_Shades Closed.png",
+        "fit": "cover",
+        "status": "available-not-substituted"
+      },
+      {
+        "id": "asset-5347174d5774",
+        "src": "/images/motorized-shades-asset-5347174d5774.webp",
+        "alt": "Pico keypad. Product photograph filed as PJ2-3BRL. Not substituted onto the existing shading page.",
+        "title": "Pico keypad",
+        "caption": "Product photograph filed as PJ2-3BRL. Not substituted onto the existing shading page.",
+        "originalName": "PJ2-3BRL-TMN-A02.jpg",
+        "fit": "contain",
+        "status": "available-not-substituted"
+      },
+      {
+        "id": "asset-235742865b29",
+        "src": "/images/motorized-shades-asset-235742865b29.webp",
+        "alt": "Pico on a pedestal. Product photograph of a Pico keypad on a pedestal. Not substituted onto the existing shading page.",
+        "title": "Pico on a pedestal",
+        "caption": "Product photograph of a Pico keypad on a pedestal. Not substituted onto the existing shading page.",
+        "originalName": "PJ2-4B-GWH-P01_Family Room_Pedestal_Left.jpg",
+        "fit": "contain",
+        "status": "available-not-substituted"
+      }
+    ],
+    "missingProducts": [
+      "Kit photographs were not substituted over the existing specimen",
+      "Permission-cleared DAVG project wide and detail",
+      "Verified regional architecture"
+    ]
+  }
+}

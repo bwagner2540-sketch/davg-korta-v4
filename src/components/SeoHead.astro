@@ -1,0 +1,26 @@
+---
+import process from 'node:process';
+import { site } from '../config/site';
+interface Props { title: string; description: string; published?: boolean; image?: string; schema?: Record<string, unknown>[]; }
+const { title, description, published = process.env.DAVG_BUILD_MODE === 'production', image, schema = [] } = Astro.props;
+const canonical = new URL(Astro.url.pathname, site.origin).href;
+const socialImage = image || site.socialImage;
+// A draft has no public canonical, social graph or business claims in JSON-LD.
+const json = JSON.stringify({ '@context': 'https://schema.org', '@graph': schema }).replace(/</g, '\\u003c');
+---
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="robots" content={published ? 'index, follow, max-image-preview:large' : 'noindex, nofollow'} />
+{process.env.DAVG_REVISION && <meta name="davg-revision" content={process.env.DAVG_REVISION} />}
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+{published && <>
+  <link rel="canonical" href={canonical} />
+  <meta property="og:type" content="website" /><meta property="og:site_name" content={site.name} />
+  <meta property="og:title" content={title} /><meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} /><meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content={socialImage ? 'summary_large_image' : 'summary'} />
+  {socialImage && <><meta property="og:image" content={new URL(socialImage, site.origin).href} /><meta name="twitter:image" content={new URL(socialImage, site.origin).href} /></>}
+  {schema.length > 0 && <script type="application/ld+json" set:html={json} />}
+</>}

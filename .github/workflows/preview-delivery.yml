@@ -1,0 +1,52 @@
+name: Verify live design preview
+
+on:
+  push:
+    branches:
+      - cursor/git-hub-source-13db
+
+permissions:
+  contents: read
+
+concurrency:
+  group: davg-preview-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Review links
+        run: |
+          {
+            echo '## DAVG branch preview'
+            echo 'Commit: `${{ github.sha }}`'
+            echo '[Open the eight-hub review index](https://cursor-git-hub-source-13db-davg-korta-v4.brandon-763.workers.dev/preview/)'
+            echo 'This run turns green only after the public pages serve this commit.'
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Install and check
+        run: |
+          npm ci
+          npm run check
+          npm test
+          npm run build:sandbox
+          npm run verify
+      - name: Wait for Cloudflare branch preview
+        run: >-
+          npm run preview:verify --
+          /
+          /preview/
+          /solutions/home-intelligence/
+          /solutions/architectural-lighting/
+          /solutions/motorized-shades/
+          /solutions/media-audio/
+          /solutions/private-cinemas/
+          /solutions/security-access/
+          /solutions/infrastructure-privacy/
+          /solutions/outdoor-entertainment/

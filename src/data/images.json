@@ -1,0 +1,1231 @@
+{
+  "/images/architectural-lighting-asset-23a21615837d.webp": {
+    "width": 1600,
+    "height": 1169,
+    "fingerprint": "2c6a7c16adb067ad5e83701bad6bc415c83b2c57c5a18ba31e70eceefc4ae25e",
+    "variants": [
+      {
+        "src": "/images/responsive/architectural-lighting-asset-23a21615837d-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/architectural-lighting-asset-23a21615837d-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/architectural-lighting-asset-23a21615837d-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/architectural-lighting-asset-23a21615837d-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/architectural-lighting-asset-5a9cf3797141.webp": {
+    "width": 1600,
+    "height": 2400,
+    "fingerprint": "030e346d65cb87b7dfa0cdb36cc49f633c4581263c23c84de8a5795bbc76da75",
+    "variants": [
+      {
+        "src": "/images/responsive/architectural-lighting-asset-5a9cf3797141-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/architectural-lighting-asset-5a9cf3797141-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/architectural-lighting-asset-5a9cf3797141-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/architectural-lighting-asset-5a9cf3797141-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/architectural-lighting-asset-5f1e461dbfc3.webp": {
+    "width": 1600,
+    "height": 1469,
+    "fingerprint": "f52b06346ef927842223aa6b8744ae14c62111c8c39991c77cb270205ac53fa2",
+    "variants": [
+      {
+        "src": "/images/responsive/architectural-lighting-asset-5f1e461dbfc3-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/architectural-lighting-asset-5f1e461dbfc3-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/architectural-lighting-asset-5f1e461dbfc3-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/architectural-lighting-asset-5f1e461dbfc3-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/architectural-lighting-asset-6595d925aa5e.webp": {
+    "width": 1353,
+    "height": 2048,
+    "fingerprint": "f1a62ef9f1033016cb99ba5a2f2f7e73c77f3a752d3878226ebb891464ef2c96",
+    "variants": [
+      {
+        "src": "/images/responsive/architectural-lighting-asset-6595d925aa5e-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/architectural-lighting-asset-6595d925aa5e-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/architectural-lighting-asset-6595d925aa5e-1200.webp",
+        "width": 1200
+      }
+    ]
+  },
+  "/images/architectural-lighting-asset-7556f4e9b550.webp": {
+    "width": 864,
+    "height": 1381,
+    "fingerprint": "ca1e923fe71cdc4a1693206a8a6b1d7b4581eb5150c58126a7f9846a7285725f",
+    "variants": [
+      {
+        "src": "/images/responsive/architectural-lighting-asset-7556f4e9b550-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/architectural-lighting-asset-7556f4e9b550-800.webp",
+        "width": 800
+      }
+    ]
+  },
+  "/images/architectural-lighting-asset-966ac6823c29.webp": {
+    "width": 1353,
+    "height": 2048,
+    "fingerprint": "b3a7a40d5b3ea4628841815e1c3d02b8ecf1e5677d67bcfff42d43d30dc81d08",
+    "variants": [
+      {
+        "src": "/images/responsive/architectural-lighting-asset-966ac6823c29-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/architectural-lighting-asset-966ac6823c29-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/architectural-lighting-asset-966ac6823c29-1200.webp",
+        "width": 1200
+      }
+    ]
+  },
+  "/images/architectural-lighting-asset-a0ff46a2d28b.webp": {
+    "width": 1600,
+    "height": 1067,
+    "fingerprint": "95227eda89317d5a052a3e7b1a02a9311d3e52a35f1ad202516393c524bce4b8",
+    "variants": [
+      {
+        "src": "/images/responsive/architectural-lighting-asset-a0ff46a2d28b-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/architectural-lighting-asset-a0ff46a2d28b-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/architectural-lighting-asset-a0ff46a2d28b-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/architectural-lighting-asset-a0ff46a2d28b-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/architectural-lighting-asset-e69b4f6ec46e.webp": {
+    "width": 1600,
+    "height": 1066,
+    "fingerprint": "03df201a105a0be8c1fd79b1fcde112023108b57ece2b7c302c1d23db759f514",
+    "variants": [
+      {
+        "src": "/images/responsive/architectural-lighting-asset-e69b4f6ec46e-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/architectural-lighting-asset-e69b4f6ec46e-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/architectural-lighting-asset-e69b4f6ec46e-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/architectural-lighting-asset-e69b4f6ec46e-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/architectural-lighting-asset-ec8a93982ea4.webp": {
+    "width": 1600,
+    "height": 1067,
+    "fingerprint": "7c43e8d341e9dfebd4378eb1c86b2c3a30ef786574a09df443459354ecc479d5",
+    "variants": [
+      {
+        "src": "/images/responsive/architectural-lighting-asset-ec8a93982ea4-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/architectural-lighting-asset-ec8a93982ea4-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/architectural-lighting-asset-ec8a93982ea4-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/architectural-lighting-asset-ec8a93982ea4-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/davg-bedroom-motorized-shades-01-1600w.webp": {
+    "width": 1600,
+    "height": 914,
+    "fingerprint": "df333c53a2f13bdcf68c11a9962e180bde8455f9cc1e5bb1f3d2a7c7d718ee9c",
+    "variants": [
+      {
+        "src": "/images/responsive/davg-bedroom-motorized-shades-01-1600w-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/davg-bedroom-motorized-shades-01-1600w-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/davg-bedroom-motorized-shades-01-1600w-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/davg-bedroom-motorized-shades-01-1600w-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/davg-bedroom-shade-fascia-detail-01-800w.webp": {
+    "width": 800,
+    "height": 800,
+    "fingerprint": "1d4926922d93df45514d83e6472c426fa6f1af5c579f6b642b1734f5deb6cf9d",
+    "variants": [
+      {
+        "src": "/images/responsive/davg-bedroom-shade-fascia-detail-01-800w-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/davg-bedroom-shade-fascia-detail-01-800w-800.webp",
+        "width": 800
+      }
+    ]
+  },
+  "/images/davg-bedroom-window-wall-roller-shades-01-1600w.webp": {
+    "width": 1600,
+    "height": 914,
+    "fingerprint": "646610214cf6ec2c07c77ca5964169839ef737c9cb282be9434adb87d90962a0",
+    "variants": [
+      {
+        "src": "/images/responsive/davg-bedroom-window-wall-roller-shades-01-1600w-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/davg-bedroom-window-wall-roller-shades-01-1600w-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/davg-bedroom-window-wall-roller-shades-01-1600w-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/davg-bedroom-window-wall-roller-shades-01-1600w-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/davg-living-room-lutron-shades-orlando-01-1600w.webp": {
+    "width": 1600,
+    "height": 1066,
+    "fingerprint": "a2e34fcc139d52e833e3cb0eb975bba2e95483f3095dc395e6d4c4f0c845839e",
+    "variants": [
+      {
+        "src": "/images/responsive/davg-living-room-lutron-shades-orlando-01-1600w-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/davg-living-room-lutron-shades-orlando-01-1600w-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/davg-living-room-lutron-shades-orlando-01-1600w-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/davg-living-room-lutron-shades-orlando-01-1600w-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/davg-living-room-sheer-roller-shades-sun-01-1600w.webp": {
+    "width": 1360,
+    "height": 768,
+    "fingerprint": "22c51f5eb8d45e9acd38b8535b8ff83ac3d4829e438c16df64101db40bfea800",
+    "variants": [
+      {
+        "src": "/images/responsive/davg-living-room-sheer-roller-shades-sun-01-1600w-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/davg-living-room-sheer-roller-shades-sun-01-1600w-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/davg-living-room-sheer-roller-shades-sun-01-1600w-1200.webp",
+        "width": 1200
+      }
+    ]
+  },
+  "/images/davg-living-room-vaulted-roller-shades-01-800w.webp": {
+    "width": 800,
+    "height": 597,
+    "fingerprint": "2e9e8a8b94641654f3f0853107fdf9c1cfea4075d5f2f810ca82dd8d9d66a011",
+    "variants": [
+      {
+        "src": "/images/responsive/davg-living-room-vaulted-roller-shades-01-800w-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/davg-living-room-vaulted-roller-shades-01-800w-800.webp",
+        "width": 800
+      }
+    ]
+  },
+  "/images/davg-loft-tall-roller-shades-01-800w.webp": {
+    "width": 800,
+    "height": 1074,
+    "fingerprint": "33b5046aa70dfa428d92cfd3b05562878503cc7da410139598b9a870881ab4a9",
+    "variants": [
+      {
+        "src": "/images/responsive/davg-loft-tall-roller-shades-01-800w-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/davg-loft-tall-roller-shades-01-800w-800.webp",
+        "width": 800
+      }
+    ]
+  },
+  "/images/davg-palladiom-bathroom-window-shade-01-800w.webp": {
+    "width": 800,
+    "height": 754,
+    "fingerprint": "57c677b4013ac910f6ef6d5878d1e46d474fd16eb0efdd44c90efc54f74c9806",
+    "variants": [
+      {
+        "src": "/images/responsive/davg-palladiom-bathroom-window-shade-01-800w-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/davg-palladiom-bathroom-window-shade-01-800w-800.webp",
+        "width": 800
+      }
+    ]
+  },
+  "/images/davg-palladiom-bedroom-shades-partial-01-1600w.webp": {
+    "width": 1600,
+    "height": 1066,
+    "fingerprint": "52502e65472fc447beee97e8c0711e1344f691658d1fdb81c19d58f6d2bb114e",
+    "variants": [
+      {
+        "src": "/images/responsive/davg-palladiom-bedroom-shades-partial-01-1600w-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/davg-palladiom-bedroom-shades-partial-01-1600w-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/davg-palladiom-bedroom-shades-partial-01-1600w-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/davg-palladiom-bedroom-shades-partial-01-1600w-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/davg-palladiom-exposed-roller-bracket-01-800w.webp": {
+    "width": 800,
+    "height": 504,
+    "fingerprint": "d94cf8a6484bc09fc83d23c3756f5175901c5218e83ccb96a0d107e3db3b4666",
+    "variants": [
+      {
+        "src": "/images/responsive/davg-palladiom-exposed-roller-bracket-01-800w-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/davg-palladiom-exposed-roller-bracket-01-800w-800.webp",
+        "width": 800
+      }
+    ]
+  },
+  "/images/davg-palladiom-keypad-with-shade-01-800w.webp": {
+    "width": 800,
+    "height": 534,
+    "fingerprint": "a7ef5fae1fdac80a8b0d23008cb5c5fbe589367b70de58f913dd2d4def4be850",
+    "variants": [
+      {
+        "src": "/images/responsive/davg-palladiom-keypad-with-shade-01-800w-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/davg-palladiom-keypad-with-shade-01-800w-800.webp",
+        "width": 800
+      }
+    ]
+  },
+  "/images/davg-recessed-shade-study-01.jpg": {
+    "width": 1024,
+    "height": 576,
+    "fingerprint": "01a0cd564e78c0141e6ba1b178bb7b17caf22f0adbd0fb8996770b20bcdf655b",
+    "variants": [
+      {
+        "src": "/images/responsive/davg-recessed-shade-study-01-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/davg-recessed-shade-study-01-800.webp",
+        "width": 800
+      }
+    ]
+  },
+  "/images/davg-sivoia-living-room-shades-closed-01-1600w.webp": {
+    "width": 1600,
+    "height": 1066,
+    "fingerprint": "6fc942f44a2787e60c143b177a5fde3816dc5b871ef88844730e296d04fd7b4b",
+    "variants": [
+      {
+        "src": "/images/responsive/davg-sivoia-living-room-shades-closed-01-1600w-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/davg-sivoia-living-room-shades-closed-01-1600w-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/davg-sivoia-living-room-shades-closed-01-1600w-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/davg-sivoia-living-room-shades-closed-01-1600w-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/davg-sivoia-sheer-hembar-detail-01-800w.webp": {
+    "width": 800,
+    "height": 689,
+    "fingerprint": "edaa85000975ae44a53e913941238924f84e206d47d6dad6208b78e4f9bb8892",
+    "variants": [
+      {
+        "src": "/images/responsive/davg-sivoia-sheer-hembar-detail-01-800w-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/davg-sivoia-sheer-hembar-detail-01-800w-800.webp",
+        "width": 800
+      }
+    ]
+  },
+  "/images/davg-sivoia-slate-sheer-hem-01-800w.webp": {
+    "width": 800,
+    "height": 595,
+    "fingerprint": "691155355d4826c97a32edf8ff89dc964f3ea2a7782111ca1e98fe5cdc6d7526",
+    "variants": [
+      {
+        "src": "/images/responsive/davg-sivoia-slate-sheer-hem-01-800w-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/davg-sivoia-slate-sheer-hem-01-800w-800.webp",
+        "width": 800
+      }
+    ]
+  },
+  "/images/davg-triathlon-bedroom-shades-closed-01-800w.webp": {
+    "width": 800,
+    "height": 529,
+    "fingerprint": "761523d095df180a448eef5829f8977fb4848d9d81e753388c00966d2a86c9d0",
+    "variants": [
+      {
+        "src": "/images/responsive/davg-triathlon-bedroom-shades-closed-01-800w-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/davg-triathlon-bedroom-shades-closed-01-800w-800.webp",
+        "width": 800
+      }
+    ]
+  },
+  "/images/davg-triathlon-fascia-boucle-01-800w.webp": {
+    "width": 800,
+    "height": 533,
+    "fingerprint": "8764527cbf5c033e83ededf8f6ba707f34954f1c2338cbd5af4133a19fefb68f",
+    "variants": [
+      {
+        "src": "/images/responsive/davg-triathlon-fascia-boucle-01-800w-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/davg-triathlon-fascia-boucle-01-800w-800.webp",
+        "width": 800
+      }
+    ]
+  },
+  "/images/home-intelligence-asset-421bb68c4038.webp": {
+    "width": 1600,
+    "height": 1600,
+    "fingerprint": "06fc2253358936c31d6f96903a63f330edd701a8d39e132f66287ebd61769d3f",
+    "variants": [
+      {
+        "src": "/images/responsive/home-intelligence-asset-421bb68c4038-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/home-intelligence-asset-421bb68c4038-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/home-intelligence-asset-421bb68c4038-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/home-intelligence-asset-421bb68c4038-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/home-intelligence-asset-87c26824f722.webp": {
+    "width": 1600,
+    "height": 1600,
+    "fingerprint": "6548cff073516c87b2495248665106f41b5ef0775336394ae8765a9314ea967c",
+    "variants": [
+      {
+        "src": "/images/responsive/home-intelligence-asset-87c26824f722-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/home-intelligence-asset-87c26824f722-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/home-intelligence-asset-87c26824f722-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/home-intelligence-asset-87c26824f722-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/home-intelligence-asset-8b8986fe09f4.webp": {
+    "width": 1600,
+    "height": 1069,
+    "fingerprint": "4d228400fb8de9087e1e238ef52897366a2f42a5d554ea4cd2d2885c8d45ef0a",
+    "variants": [
+      {
+        "src": "/images/responsive/home-intelligence-asset-8b8986fe09f4-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/home-intelligence-asset-8b8986fe09f4-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/home-intelligence-asset-8b8986fe09f4-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/home-intelligence-asset-8b8986fe09f4-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/home-intelligence-asset-967ad568c106.webp": {
+    "width": 1600,
+    "height": 1067,
+    "fingerprint": "7d13eaf534721675682efffa15def9e4dc43822940a8f3384929530765457477",
+    "variants": [
+      {
+        "src": "/images/responsive/home-intelligence-asset-967ad568c106-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/home-intelligence-asset-967ad568c106-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/home-intelligence-asset-967ad568c106-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/home-intelligence-asset-967ad568c106-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/home-intelligence-asset-fb06409d0dde.webp": {
+    "width": 1600,
+    "height": 1067,
+    "fingerprint": "97960270dff5422983d35a65f746ee89711e511bc1a69170783c896ea03d2052",
+    "variants": [
+      {
+        "src": "/images/responsive/home-intelligence-asset-fb06409d0dde-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/home-intelligence-asset-fb06409d0dde-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/home-intelligence-asset-fb06409d0dde-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/home-intelligence-asset-fb06409d0dde-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/infrastructure-privacy-asset-127d9f4852e0.webp": {
+    "width": 1600,
+    "height": 1067,
+    "fingerprint": "a376417b5e273d3ba335594285deb1d9a718b78dbdb53f2632a68d8fba330285",
+    "variants": [
+      {
+        "src": "/images/responsive/infrastructure-privacy-asset-127d9f4852e0-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/infrastructure-privacy-asset-127d9f4852e0-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/infrastructure-privacy-asset-127d9f4852e0-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/infrastructure-privacy-asset-127d9f4852e0-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/infrastructure-privacy-asset-5ca3a2954b9a.webp": {
+    "width": 1600,
+    "height": 1067,
+    "fingerprint": "9d3440739c2200d5de21d5371492220c09332796354cf7bf4e9493f906959431",
+    "variants": [
+      {
+        "src": "/images/responsive/infrastructure-privacy-asset-5ca3a2954b9a-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/infrastructure-privacy-asset-5ca3a2954b9a-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/infrastructure-privacy-asset-5ca3a2954b9a-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/infrastructure-privacy-asset-5ca3a2954b9a-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/infrastructure-privacy-asset-71f477fc1a19.webp": {
+    "width": 1600,
+    "height": 1067,
+    "fingerprint": "d885f02c7eed587064271251352ddfd3b0df4a25a0f037603d21827b1cea8e10",
+    "variants": [
+      {
+        "src": "/images/responsive/infrastructure-privacy-asset-71f477fc1a19-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/infrastructure-privacy-asset-71f477fc1a19-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/infrastructure-privacy-asset-71f477fc1a19-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/infrastructure-privacy-asset-71f477fc1a19-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/infrastructure-privacy-asset-9ec3c359bfd7.webp": {
+    "width": 1600,
+    "height": 1067,
+    "fingerprint": "aff1a310a64797e43e257fd0484a18daa4fde70741d15864bc23a41c81f4ba1f",
+    "variants": [
+      {
+        "src": "/images/responsive/infrastructure-privacy-asset-9ec3c359bfd7-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/infrastructure-privacy-asset-9ec3c359bfd7-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/infrastructure-privacy-asset-9ec3c359bfd7-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/infrastructure-privacy-asset-9ec3c359bfd7-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/infrastructure-privacy-asset-c8be7164d85a.webp": {
+    "width": 1600,
+    "height": 1067,
+    "fingerprint": "ccc20693be86c724806626d70be6b4110751733492a08a4debdb1515dfe917c7",
+    "variants": [
+      {
+        "src": "/images/responsive/infrastructure-privacy-asset-c8be7164d85a-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/infrastructure-privacy-asset-c8be7164d85a-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/infrastructure-privacy-asset-c8be7164d85a-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/infrastructure-privacy-asset-c8be7164d85a-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/infrastructure-privacy-asset-e05b60da87ac.webp": {
+    "width": 1600,
+    "height": 1066,
+    "fingerprint": "01b2dd8e6aa2ce2d7120ba44807a62cb9f39ecd0efddd87ab54358f0cd7ddd0c",
+    "variants": [
+      {
+        "src": "/images/responsive/infrastructure-privacy-asset-e05b60da87ac-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/infrastructure-privacy-asset-e05b60da87ac-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/infrastructure-privacy-asset-e05b60da87ac-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/infrastructure-privacy-asset-e05b60da87ac-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/media-audio-asset-626933a0799d.webp": {
+    "width": 1600,
+    "height": 1067,
+    "fingerprint": "e44116245e67aa2d354f2b47d4cad947bb43d2b5be8ecaf47073f316a720c791",
+    "variants": [
+      {
+        "src": "/images/responsive/media-audio-asset-626933a0799d-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/media-audio-asset-626933a0799d-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/media-audio-asset-626933a0799d-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/media-audio-asset-626933a0799d-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/media-audio-asset-883219e614ca.webp": {
+    "width": 1600,
+    "height": 900,
+    "fingerprint": "baab529a74fbdac040b81805d4077aa45573d1a946b8ca569e6b36c13ea863ad",
+    "variants": [
+      {
+        "src": "/images/responsive/media-audio-asset-883219e614ca-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/media-audio-asset-883219e614ca-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/media-audio-asset-883219e614ca-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/media-audio-asset-883219e614ca-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/media-audio-asset-af788a98a8e9.webp": {
+    "width": 1600,
+    "height": 900,
+    "fingerprint": "a130d6062845481072a35cce308f1968b790ca682b0e2cf844b6e22671f35320",
+    "variants": [
+      {
+        "src": "/images/responsive/media-audio-asset-af788a98a8e9-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/media-audio-asset-af788a98a8e9-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/media-audio-asset-af788a98a8e9-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/media-audio-asset-af788a98a8e9-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/media-audio-asset-d37937341113.webp": {
+    "width": 1600,
+    "height": 1068,
+    "fingerprint": "39d461a39fa646735303ea75f2710449c8f7245e8887f446f194ced9f7d9056d",
+    "variants": [
+      {
+        "src": "/images/responsive/media-audio-asset-d37937341113-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/media-audio-asset-d37937341113-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/media-audio-asset-d37937341113-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/media-audio-asset-d37937341113-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/motorized-shades-asset-05664ebea9d8.webp": {
+    "width": 1600,
+    "height": 1066,
+    "fingerprint": "3f8bf123f0b081aa06839720449622ddbd0eda679a885e70da003c27f785f1f6",
+    "variants": [
+      {
+        "src": "/images/responsive/motorized-shades-asset-05664ebea9d8-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/motorized-shades-asset-05664ebea9d8-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/motorized-shades-asset-05664ebea9d8-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/motorized-shades-asset-05664ebea9d8-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/motorized-shades-asset-188ad59dc5ea.webp": {
+    "width": 1600,
+    "height": 1042,
+    "fingerprint": "7e6010de1505e527681e168ff00f992958a324385293b574ab9cf90bc63500df",
+    "variants": [
+      {
+        "src": "/images/responsive/motorized-shades-asset-188ad59dc5ea-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/motorized-shades-asset-188ad59dc5ea-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/motorized-shades-asset-188ad59dc5ea-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/motorized-shades-asset-188ad59dc5ea-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/motorized-shades-asset-235742865b29.webp": {
+    "width": 825,
+    "height": 929,
+    "fingerprint": "685b01fbde0854b04612aa595f0c8995608a415f1585717fc296faa7e766be8b",
+    "variants": [
+      {
+        "src": "/images/responsive/motorized-shades-asset-235742865b29-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/motorized-shades-asset-235742865b29-800.webp",
+        "width": 800
+      }
+    ]
+  },
+  "/images/motorized-shades-asset-5347174d5774.webp": {
+    "width": 600,
+    "height": 1200,
+    "fingerprint": "aada1fadbc35350ca446614610457c0670fb39d9c83115b08fd3cf889474bc30",
+    "variants": [
+      {
+        "src": "/images/responsive/motorized-shades-asset-5347174d5774-480.webp",
+        "width": 480
+      }
+    ]
+  },
+  "/images/motorized-shades-asset-8be5570aad2b.webp": {
+    "width": 1600,
+    "height": 1066,
+    "fingerprint": "1837b4c5a75952fe68462cbfb58e4e1191bc46783f1572c39cabf5ab6128b98a",
+    "variants": [
+      {
+        "src": "/images/responsive/motorized-shades-asset-8be5570aad2b-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/motorized-shades-asset-8be5570aad2b-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/motorized-shades-asset-8be5570aad2b-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/motorized-shades-asset-8be5570aad2b-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/motorized-shades-asset-c67b89430c99.webp": {
+    "width": 1600,
+    "height": 1600,
+    "fingerprint": "94e33f8f2b4376bf9765dd2b0221500d9b7452f0c6ed1a42f8b799b74364ed28",
+    "variants": [
+      {
+        "src": "/images/responsive/motorized-shades-asset-c67b89430c99-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/motorized-shades-asset-c67b89430c99-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/motorized-shades-asset-c67b89430c99-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/motorized-shades-asset-c67b89430c99-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/motorized-shades-asset-fbf46a6a93a1.webp": {
+    "width": 1600,
+    "height": 1200,
+    "fingerprint": "7bb75b4dee9d8deae37572c2f36cea49653cbf3fa34322acab098991ec2ae401",
+    "variants": [
+      {
+        "src": "/images/responsive/motorized-shades-asset-fbf46a6a93a1-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/motorized-shades-asset-fbf46a6a93a1-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/motorized-shades-asset-fbf46a6a93a1-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/motorized-shades-asset-fbf46a6a93a1-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/outdoor-entertainment-asset-38bf64fe7ec9.webp": {
+    "width": 1600,
+    "height": 1067,
+    "fingerprint": "bb580a8ae6c4e677d85f432e38ad5df39e2eff82d90a3a9603ae0b6fcf83b3ab",
+    "variants": [
+      {
+        "src": "/images/responsive/outdoor-entertainment-asset-38bf64fe7ec9-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/outdoor-entertainment-asset-38bf64fe7ec9-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/outdoor-entertainment-asset-38bf64fe7ec9-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/outdoor-entertainment-asset-38bf64fe7ec9-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/outdoor-entertainment-asset-96dbf5d296a8.webp": {
+    "width": 1600,
+    "height": 900,
+    "fingerprint": "b225d031b999404eedec18961b1af83870936ca1b65b40c7882e9f18ff27496e",
+    "variants": [
+      {
+        "src": "/images/responsive/outdoor-entertainment-asset-96dbf5d296a8-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/outdoor-entertainment-asset-96dbf5d296a8-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/outdoor-entertainment-asset-96dbf5d296a8-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/outdoor-entertainment-asset-96dbf5d296a8-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/outdoor-entertainment-asset-c48189cdd782.webp": {
+    "width": 1600,
+    "height": 1066,
+    "fingerprint": "73ee39d204ffa56ca1ef7d5b84f7683537e24b673709e3f3a7571632be9e6ae4",
+    "variants": [
+      {
+        "src": "/images/responsive/outdoor-entertainment-asset-c48189cdd782-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/outdoor-entertainment-asset-c48189cdd782-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/outdoor-entertainment-asset-c48189cdd782-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/outdoor-entertainment-asset-c48189cdd782-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/outdoor-entertainment-asset-ea4dad52aadc.webp": {
+    "width": 1600,
+    "height": 1067,
+    "fingerprint": "4fbba27dbb1fec2e846ec7467ca448f4eaec61bcab83c86d32ae85934e0ee3ce",
+    "variants": [
+      {
+        "src": "/images/responsive/outdoor-entertainment-asset-ea4dad52aadc-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/outdoor-entertainment-asset-ea4dad52aadc-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/outdoor-entertainment-asset-ea4dad52aadc-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/outdoor-entertainment-asset-ea4dad52aadc-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/private-cinemas-asset-123516146620.webp": {
+    "width": 1600,
+    "height": 1069,
+    "fingerprint": "c9ca03f922945810456a5c78f58afffbd5a27de15da996e084623873318a237e",
+    "variants": [
+      {
+        "src": "/images/responsive/private-cinemas-asset-123516146620-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/private-cinemas-asset-123516146620-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/private-cinemas-asset-123516146620-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/private-cinemas-asset-123516146620-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/private-cinemas-asset-9bd3ce26469a.webp": {
+    "width": 1600,
+    "height": 900,
+    "fingerprint": "a3cab7fe6d390485daa4b6a4cfdac8ba087313bd0b3ca4915559c579550fdd9d",
+    "variants": [
+      {
+        "src": "/images/responsive/private-cinemas-asset-9bd3ce26469a-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/private-cinemas-asset-9bd3ce26469a-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/private-cinemas-asset-9bd3ce26469a-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/private-cinemas-asset-9bd3ce26469a-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/private-cinemas-asset-d4ea83ac798a.webp": {
+    "width": 1600,
+    "height": 900,
+    "fingerprint": "1324a78327224e05af777eb445bb321c7a12b7dce0b15e1e59b6c89afab8243f",
+    "variants": [
+      {
+        "src": "/images/responsive/private-cinemas-asset-d4ea83ac798a-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/private-cinemas-asset-d4ea83ac798a-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/private-cinemas-asset-d4ea83ac798a-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/private-cinemas-asset-d4ea83ac798a-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/security-access-asset-8633411287bb.webp": {
+    "width": 1600,
+    "height": 1067,
+    "fingerprint": "dc5acb4dfd4554c495b3e22ea9988212527d7046e7c009ab4bd9bd43b06a6647",
+    "variants": [
+      {
+        "src": "/images/responsive/security-access-asset-8633411287bb-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/security-access-asset-8633411287bb-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/security-access-asset-8633411287bb-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/security-access-asset-8633411287bb-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/security-access-asset-884802d05a8f.webp": {
+    "width": 1600,
+    "height": 1058,
+    "fingerprint": "5aebbac899d81d208f527e46ddd526fabecdde7bd4afbd119abf439c4d227d62",
+    "variants": [
+      {
+        "src": "/images/responsive/security-access-asset-884802d05a8f-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/security-access-asset-884802d05a8f-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/security-access-asset-884802d05a8f-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/security-access-asset-884802d05a8f-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/security-access-asset-920db91036f0.webp": {
+    "width": 1600,
+    "height": 1067,
+    "fingerprint": "1fad3ea786857dea6a06f759cfba217440601efcc89ce1987512a53c33e73614",
+    "variants": [
+      {
+        "src": "/images/responsive/security-access-asset-920db91036f0-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/security-access-asset-920db91036f0-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/security-access-asset-920db91036f0-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/security-access-asset-920db91036f0-1600.webp",
+        "width": 1600
+      }
+    ]
+  },
+  "/images/security-access-asset-992c7624b463.webp": {
+    "width": 1600,
+    "height": 1067,
+    "fingerprint": "50e537c8f7fe721377bd0fa1f52875f6ca6a0571b68dd15c9b8330e2cce4fa9e",
+    "variants": [
+      {
+        "src": "/images/responsive/security-access-asset-992c7624b463-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/responsive/security-access-asset-992c7624b463-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/images/responsive/security-access-asset-992c7624b463-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/images/responsive/security-access-asset-992c7624b463-1600.webp",
+        "width": 1600
+      }
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import {services} from '../../config/site';
+---
+<Layout title="Home Systems | Denver AV Group" description="Explore residential lighting, shading, media, cinema, security, infrastructure and outdoor systems.">
+<main><a href="/">DAVG</a><h1>Home systems, planned together.</h1><p>Start with the rooms, everyday routines and construction opportunities that matter to your home.</p><ul>{services.map(s=><li><a href={s.href}>{s.label}<span aria-hidden="true">↗</span></a></li>)}</ul></main>
+</Layout>
+<style>main{padding:clamp(2rem,7vw,7rem) var(--spacing-page-inline);max-width:70rem;margin:auto;}a{color:inherit;text-decoration:none;}h1{font:300 clamp(2.5rem,5vw,5rem)/1 var(--font-display);letter-spacing:-.035em;max-width:18ch;margin:4rem 0 2rem;}p{line-height:1.6;max-width:42rem;}ul{list-style:none;padding:0;margin-top:3rem;}li{border-top:1px solid var(--color-border-dark);}li a{padding:1.5rem 0;display:flex;justify-content:space-between;font:400 clamp(1.25rem,2.3vw,2rem) var(--font-display);}:focus-visible{outline:2px solid var(--color-accent-signal);outline-offset:4px;}</style>

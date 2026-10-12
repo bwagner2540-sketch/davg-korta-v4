@@ -1,0 +1,11 @@
+---
+import HubPage from '../../components/services/hubs/HubPage.astro';
+import { loadGitHubs } from '../../lib/git-hubs.mjs';
+
+export function getStaticPaths() {
+  return loadGitHubs().map((hub) => ({ params: { slug: hub.slug } }));
+}
+
+const { slug } = Astro.params;
+---
+<HubPage slug={slug} />

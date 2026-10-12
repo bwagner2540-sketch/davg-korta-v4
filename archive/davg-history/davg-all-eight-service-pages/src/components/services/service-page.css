@@ -1,0 +1,37 @@
+/* Merge with existing tokens/fonts. Set --site-header-height to the real masthead. */
+.service-page{--ink:#090b0a;--forest:#183b31;--paper:#ede9e0;--text:#f1f0eb;--gutter:clamp(20px,3vw,64px);--sticky-offset:var(--site-header-height,0px);color:var(--text);background:var(--ink);font-family:'Instrument Sans',sans-serif}
+.service-page *{box-sizing:border-box}
+.service-page h1,.service-page h2,.service-page h3{font-family:'Schibsted Grotesk',sans-serif;font-weight:300;letter-spacing:-.025em;line-height:1.04}
+.service-page h1{font-size:clamp(40px,4.5vw,64px);letter-spacing:-.035em}
+.service-page h2{font-size:clamp(32px,3vw,44px)}
+.service-page h3{font-size:clamp(24px,2.2vw,32px)}
+.service-page p{max-width:65ch;line-height:1.5}
+.service-page a{color:inherit}
+.service-full{width:100%;padding:clamp(48px,6vw,96px) var(--gutter);position:relative}
+.service-measure{max-width:75ch;margin-inline:auto;position:relative;z-index:1}
+.service-hero{overflow:hidden}
+.service-hero .service-measure{margin-inline-start:0}
+.service-paper{background:var(--paper);color:var(--ink)}
+.service-middle{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,3fr);align-items:start}
+.service-rail{background:var(--forest);padding:32px var(--gutter);position:sticky;top:var(--sticky-offset)}
+.service-rail-name{font-family:'Schibsted Grotesk',sans-serif;font-size:28px;line-height:1.1;font-weight:300}
+.service-rail ol{list-style:none;padding:0;margin:24px 0 0}
+.service-rail a{display:block;padding:12px 0;text-decoration:none}
+.service-rail a[aria-current=location]{text-decoration:underline;text-underline-offset:6px}
+.service-reading-field{min-width:0}
+.service-group{padding:clamp(40px,5vw,80px) var(--gutter);scroll-margin-top:calc(var(--sticky-offset) + 24px)}
+.service-chapter{margin-block:40px}
+.service-study{position:relative;overflow:hidden;background:var(--forest)}
+.service-study-slot{aspect-ratio:16/9}
+.service-study img{display:block;width:100%;height:auto}
+.service-spatial{position:absolute;bottom:-.1em;left:-.035em;font-family:'Schibsted Grotesk',sans-serif;font-weight:300;font-size:clamp(80px,15vw,240px);line-height:.85;letter-spacing:-.04em;opacity:.1;pointer-events:none}
+.service-scopes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.service-scopes article{border-top:1px solid rgb(241 240 235 / 16%)}
+.service-table-scroll{overflow-x:auto}
+.service-page table{border-collapse:collapse;width:100%}
+.service-page th,.service-page td{text-align:left;vertical-align:top;padding:16px 12px;border-bottom:1px solid rgb(241 240 235 / 16%);font-weight:400}
+.service-page caption{text-align:left;padding-block:12px}
+.service-paper details{border-bottom:1px solid rgb(11 13 12 / 14%);padding-block:20px}
+.service-paper summary{font-size:18px}
+.service-inquiry{scroll-margin-top:calc(var(--sticky-offset) + 24px)}
+@media(max-width:1023px){.service-middle{display:block}.service-rail{position:static;padding:20px}.service-rail ol{display:flex;flex-wrap:wrap;gap:0 20px;margin-top:12px}.service-rail-name{font-size:24px}.service-scopes{grid-template-columns:1fr}}

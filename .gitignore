@@ -7,3 +7,8 @@ dist/
 .env
 .env.*
 !.env.example
+dist-sandbox/
+.build-src-*/
+.dev.vars
+.dev.vars.*
+public/images/responsive/

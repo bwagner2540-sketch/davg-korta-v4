@@ -1,0 +1,14 @@
+---
+import { primaryNavigation, utilityBar } from '../../config/navigation';
+---
+<div id="k-menu" class="k-menu" hidden data-menu-panel>
+  <p class="mono-label k-menu__label">{utilityBar.place}</p>
+  <p>{utilityBar.established}</p>
+  <a href={utilityBar.phoneHref}>{utilityBar.phoneDisplay}</a>
+  {primaryNavigation.map((menu) => (
+    <div class="k-menu__group">
+      <p class="mono-label k-menu__label">{menu.label}</p>
+      {menu.items.map((item) => <a href={item.href}>{item.label}</a>)}
+    </div>
+  ))}
+</div>

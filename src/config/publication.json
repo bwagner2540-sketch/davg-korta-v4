@@ -1,0 +1,14 @@
+{
+  "approvedPages": [],
+  "sandboxOnlyPages": [
+    "src/pages/solutions/motorized-shades.astro",
+    "src/pages/systems/[slug].astro"
+  ],
+  "releaseBlockers": [
+    "Homepage design and copy approval",
+    "One confirmed public phone",
+    "Inquiry delivery destination and secrets",
+    "Photo rights and verified project evidence"
+  ],
+  "note": "Only an explicit public-release decision adds an exact source page to approvedPages. Sandbox-only pages cannot be approved."
+}

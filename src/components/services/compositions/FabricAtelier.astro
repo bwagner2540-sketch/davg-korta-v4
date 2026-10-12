@@ -1,0 +1,77 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import MediaPlaceholder from '../../MediaPlaceholder.astro';
+import ComparisonTable from './ComparisonTable.astro';
+
+interface Props {
+  chapter: CollectionEntry<'services'>['data']['chapters'][number];
+}
+const { chapter } = Astro.props;
+const panels = [
+  {
+    id: 'view',
+    label: 'View-through',
+    src: '/images/davg-sivoia-slate-sheer-hem-01-800w.webp',
+    alt: 'Dark Sivoia QS sheer, with the hem and a narrow view of trees below the fabric',
+    caption: 'Sheer fabric and hem. Product photograph. Openness is the weave, not a glare or heat promise.',
+    text: 'A solar fabric filters daylight while preserving some view. Color, glass and lighting conditions also affect glare and visibility.',
+  },
+  {
+    id: 'privacy',
+    label: 'Privacy',
+    src: '/images/davg-sivoia-living-room-shades-closed-01-1600w.webp',
+    alt: 'Living room with two Sivoia QS woven shades fully closed beside built-in shelves',
+    caption: 'Closed woven shades in a living room. Product photograph. Daytime appearance does not settle nighttime privacy.',
+    text: 'Daytime view-through does not guarantee privacy at night. When the room is brighter than the exterior, people outside may be able to see inward.',
+  },
+  {
+    id: 'blackout',
+    label: 'Blackout',
+    src: '/images/davg-triathlon-bedroom-shades-closed-01-800w.webp',
+    alt: 'Bedroom with two white Triathlon shades fully closed across a wide window',
+    caption: 'Closed bedroom shades. Product photograph. Light can still enter at the edges.',
+    text: 'A blackout fabric blocks light through the material. Light can still enter at its edges unless the mounting and side details address those gaps.',
+  },
+];
+---
+<section class="composition fabric-study" data-surface-role="editorial" aria-labelledby={`chapter-${chapter.id}-title`}>
+  <span id="privacy" class="alias"></span>
+  <span id="light" class="alias"></span>
+  <h3 id={`chapter-${chapter.id}-title`}>{chapter.title}</h3>
+  {chapter.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+  <div class="tabset" data-tabset>
+    <div class="tabset-bar">
+      <div role="tablist" aria-label="Fabric behavior">
+        {panels.map((panel, index) => (
+          <button
+            type="button"
+            role="tab"
+            id={`fabric-tab-${panel.id}`}
+            aria-controls={`fabric-panel-${panel.id}`}
+            aria-selected={index === 0 ? 'true' : 'false'}
+            tabindex={index === 0 ? 0 : -1}
+          >
+            {panel.label}
+          </button>
+        ))}
+      </div>
+      <button type="button" data-show-all>Show all</button>
+    </div>
+    {panels.map((panel, index) => (
+      <div
+        role="tabpanel"
+        class:list={['tab-panel', 'media-split', { 'is-selected': index === 0 }]}
+        id={`fabric-panel-${panel.id}`}
+        aria-labelledby={`fabric-tab-${panel.id}`}
+      >
+        <figure>
+          <MediaPlaceholder id={`shading-fabric-${panel.id}`} subject={panel.caption} ratio="16 / 9" src={panel.src} alt={panel.alt} />
+          <figcaption>{panel.caption}</figcaption>
+        </figure>
+        <p>{panel.text}</p>
+      </div>
+    ))}
+  </div>
+  <p class="dual-layer"><strong>Dual layer.</strong> Separate daylight and darkness roles need more depth, hardware and coordination. A second fabric stays available beneath this choice.</p>
+  {chapter.table && <ComparisonTable title={chapter.title} table={chapter.table} />}
+</section>

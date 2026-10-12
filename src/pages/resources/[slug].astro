@@ -1,0 +1,27 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { interiorPages, primaryNavigation } from '../../config/navigation';
+export function getStaticPaths() {
+  return interiorPages.filter((item) => item.href.startsWith('/resources/')).map((item) => ({
+    params: { slug: item.href.split('/').filter(Boolean).at(-1) },
+    props: { title: item.label, href: item.href },
+  }));
+}
+const { title, href } = Astro.props;
+const menu = primaryNavigation.find((item) => item.id === 'resources');
+---
+<Layout title={`${title} | DAVG`} description={`${title} at Denver AV Group.`}>
+  <main class="interior">
+    <p class="section-kicker">Resources</p>
+    <h1>{title}</h1>
+    <p>This page is in the site navigation. Guides, brands, and trade notes are added when the source is confirmed.</p>
+    <nav aria-label="Resources">{menu?.items.map((item) => <a href={item.href} aria-current={item.href === href ? 'page' : undefined}>{item.label}</a>)}</nav>
+  </main>
+</Layout>
+<style>
+.interior { padding: clamp(3rem, 7vw, 6rem) var(--spacing-page-inline); }
+.interior h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing: -0.035em; }
+.interior p { max-width: 46ch; line-height: 1.5; }
+.interior nav { display: flex; flex-wrap: wrap; gap: 0.8rem 1.2rem; margin-top: 2rem; }
+.interior nav a { color: inherit; }
+</style>

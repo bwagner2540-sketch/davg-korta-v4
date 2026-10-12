@@ -1,0 +1,33 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  chapter: CollectionEntry<'services'>['data']['chapters'][number];
+}
+const { chapter } = Astro.props;
+const headers = ['Decision', 'Focused control', 'RadioRA 3', 'HomeWorks'];
+const rows = [
+  ['Role', 'Supported local shade controls', 'Coordinate compatible shades with lighting', 'Coordinate compatible shades with lighting'],
+  ['Before specifying', 'Exact shade and local control', 'Exact shade, communication, processor and interface', 'Exact shade, communication, processor and interface'],
+];
+---
+<section class="composition" data-surface-role="systems" aria-labelledby={`chapter-${chapter.id}-title`}>
+  <span id="system" class="alias"></span>
+  <h3 id={`chapter-${chapter.id}-title`}>{chapter.title}</h3>
+  {chapter.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Control platform comparison">
+    <table>
+      <caption>Focused control, RadioRA 3 and HomeWorks</caption>
+      <thead>
+        <tr>{headers.map((header) => <th scope="col">{header}</th>)}</tr>
+      </thead>
+      <tbody>
+        {rows.map((row) => (
+          <tr>
+            {row.map((cell, index) => (index === 0 ? <th scope="row">{cell}</th> : <td>{cell}</td>))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</section>

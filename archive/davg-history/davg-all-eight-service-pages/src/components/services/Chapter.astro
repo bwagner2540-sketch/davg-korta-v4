@@ -1,0 +1,16 @@
+---
+import type { CollectionEntry } from 'astro:content';
+type Props = { chapter: CollectionEntry<'services'>['data']['chapters'][number] };
+const { chapter: c } = Astro.props;
+---
+<section class="service-chapter" id={`chapter-${c.id}`} data-layout={c.layout} aria-labelledby={`chapter-${c.id}-title`}>
+  <h3 id={`chapter-${c.id}-title`}>{c.title}</h3>
+  {c.paragraphs.map(p => <p>{p}</p>)}
+  {c.table && <div class="service-table-scroll" tabindex="0" role="region" aria-label={`${c.title} comparison`}>
+    <table><caption>{c.title}</caption>
+      <thead><tr>{c.table.headers.map(h => <th scope="col">{h}</th>)}</tr></thead>
+      <tbody>{c.table.rows.map(row => <tr>{row.map((cell,i) => i === 0 ? <th scope="row">{cell}</th> : <td>{cell}</td>)}</tr>)}</tbody>
+    </table>
+  </div>}
+  <!-- Dispatch visual components by c.layout. Internal visual/source notes stay unpublished. -->
+</section>

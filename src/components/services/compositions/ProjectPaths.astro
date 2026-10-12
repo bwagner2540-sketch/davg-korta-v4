@@ -1,0 +1,70 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import MediaPlaceholder from '../../MediaPlaceholder.astro';
+
+interface Props {
+  paths: CollectionEntry<'services'>['data']['projectPaths'];
+}
+const { paths } = Astro.props;
+const labels: Record<string, string> = {
+  retrofit: 'Existing home',
+  remodel: 'Remodel',
+  'custom-build': 'Custom build',
+};
+const meta: Record<string, string> = {
+  retrofit: 'Survey · Access',
+  remodel: 'Blocking · Power',
+  'custom-build': 'Schedule · Coordination',
+};
+const thumbs = [
+  {
+    src: '/images/davg-bedroom-shade-fascia-detail-01-800w.webp',
+    alt: 'Recessed shade fascia and pocket detail for pre-construction coordination',
+  },
+  {
+    src: '/images/davg-triathlon-fascia-boucle-01-800w.webp',
+    alt: 'White Triathlon fascia box mounted on shiplap above a light woven shade',
+  },
+  {
+    src: '/images/davg-loft-tall-roller-shades-01-800w.webp',
+    alt: 'Tall glazed wall with translucent roller shades closed, tree shadows falling across the fabric',
+  },
+];
+---
+<section class="composition method-rows" data-surface-role="editorial" aria-labelledby="installation-paths-title">
+  <span id="stage" class="alias"></span>
+  <span id="construction" class="alias"></span>
+  <span id="pitfalls" class="alias"></span>
+  <header class="method-head">
+    <div>
+      <p class="section-kicker">Installation</p>
+      <h3 id="installation-paths-title">The project you have.</h3>
+    </div>
+    <p>Three paths, taken in the order the house allows. Each one is a scope in its own right — survey, coordination, then commissioning — handed on before the next decision is locked.</p>
+  </header>
+  <ol>
+    {paths.map((path, index) => (
+      <li>
+        <span class="method-index">§ {String(index + 1).padStart(2, '0')}</span>
+        <figure>
+          <MediaPlaceholder
+            id={`shading-path-${path.type}`}
+            subject={labels[path.type] ?? path.title}
+            ratio="16 / 10"
+            src={thumbs[index]?.src}
+            alt={thumbs[index]?.alt}
+          />
+        </figure>
+        <div class="method-copy">
+          <h4>{labels[path.type] ?? path.title}.</h4>
+          <p>{path.body}</p>
+          {path.type === 'retrofit' && (
+            <p>Buying or preparing to sell: identify the equipment, account access and service contact before assuming the system transfers. An upgrade is not a resale-value promise.</p>
+          )}
+          <button type="button" data-set-stage={path.type}>Use this path in the inquiry</button>
+        </div>
+        <p class="method-meta">{meta[path.type] ?? 'Coordination'}</p>
+      </li>
+    ))}
+  </ol>
+</section>
