@@ -2,6 +2,9 @@
   "plugins": {
     "mobbin": {
       "enabled": true
+    },
+    "playwright": {
+      "enabled": true
     }
   }
 }
